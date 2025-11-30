@@ -21,6 +21,7 @@ function ActionModule() {
   const [floatingTranslation, setFloatingTranslation] = useState(null);
   const [vocabulary, setVocabulary] = useState([]);
   const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const inputRef = useRef(null);
 
   // Lade Vokabeln von der API
@@ -28,7 +29,9 @@ function ActionModule() {
     const loadVocabulary = async () => {
       try {
         setIsLoadingVocabulary(true);
+        setLoadError(null);
         const data = await apiService.getVocabulary();
+        console.log('Loaded vocabulary from API:', data.length, 'items');
         // Konvertiere API-Format zu Component-Format
         const formattedVocab = data.map(v => ({
           id: v.id,
@@ -39,7 +42,7 @@ function ActionModule() {
         setVocabulary(formattedVocab);
       } catch (error) {
         console.error('Failed to load vocabulary:', error);
-        // Fallback zu leerer Liste wenn API-Fehler
+        setLoadError(error.message || 'Unbekannter Fehler beim Laden der Vokabeln');
         setVocabulary([]);
       } finally {
         setIsLoadingVocabulary(false);
@@ -298,10 +301,21 @@ function ActionModule() {
                 <div className="animate-spin w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto"></div>
                 <p className="mt-3 text-gray-600">Lade Vokabeln...</p>
               </div>
+            ) : loadError ? (
+              <div className="mb-6">
+                <p className="text-red-600 font-bold">⚠️ Fehler beim Laden der Vokabeln</p>
+                <p className="text-gray-600 text-sm mt-2">{loadError}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600"
+                >
+                  Neu laden
+                </button>
+              </div>
             ) : vocabulary.length === 0 ? (
               <div className="mb-6">
                 <p className="text-red-600 font-bold">⚠️ Keine Vokabeln verfügbar</p>
-                <p className="text-gray-600 text-sm mt-2">Bitte prüfe die API-Verbindung</p>
+                <p className="text-gray-600 text-sm mt-2">Die API hat keine Vokabeln zurückgegeben</p>
               </div>
             ) : (
               <>
