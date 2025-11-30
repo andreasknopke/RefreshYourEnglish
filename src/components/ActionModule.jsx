@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
+import VocabularyEditor from './VocabularyEditor';
 
 function ActionModule() {
   const [timeLimit, setTimeLimit] = useState(10);
@@ -22,6 +23,7 @@ function ActionModule() {
   const [vocabulary, setVocabulary] = useState([]);
   const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
   const [loadError, setLoadError] = useState(null);
+  const [selectedVocab, setSelectedVocab] = useState(null);
   const inputRef = useRef(null);
 
   // Lade Vokabeln von der API
@@ -389,16 +391,25 @@ function ActionModule() {
                       answer.correct ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-1">
                       <span className="text-xl">{answer.correct ? '✅' : '❌'}</span>
-                      <div>
+                      <div className="flex-1">
                         <p className="font-bold text-gray-800">{answer.word.de}</p>
                         <p className="text-sm text-gray-600">{answer.word.en}</p>
                       </div>
                     </div>
-                    {answer.correct && answer.points && (
-                      <span className="font-bold text-green-700">+{answer.points}</span>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {answer.correct && answer.points && (
+                        <span className="font-bold text-green-700">+{answer.points}</span>
+                      )}
+                      <button
+                        onClick={() => setSelectedVocab(answer.word)}
+                        className="px-3 py-1 text-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors"
+                        title="Bearbeiten & zum Trainer hinzufügen"
+                      >
+                        ✏️
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -484,6 +495,37 @@ function ActionModule() {
           </div>
         )}
       </div>
+
+      {/* Vocabulary Editor Modal */}
+      {selectedVocab && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="max-w-2xl w-full">
+            <VocabularyEditor
+              vocabulary={selectedVocab}
+              onUpdate={(updated) => {
+                // Update vocabulary in list
+                setVocabulary(vocab => 
+                  vocab.map(v => v.id === updated.id ? {
+                    ...v,
+                    en: updated.english,
+                    de: updated.german,
+                    level: updated.level
+                  } : v)
+                );
+                setSelectedVocab(null);
+              }}
+              onDelete={(id) => {
+                setVocabulary(vocab => vocab.filter(v => v.id !== id));
+                setSelectedVocab(null);
+              }}
+              onClose={() => setSelectedVocab(null)}
+              onAddedToTrainer={() => {
+                console.log('Added to trainer:', selectedVocab.id);
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { updateVocabulary, deleteVocabulary, addToFlashcardDeck } from '../services/apiService';
+import apiService from '../services/apiService';
 
 function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTrainer }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,7 +17,7 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
     setError(null);
 
     try {
-      await addToFlashcardDeck(vocabulary.id);
+      await apiService.addToFlashcardDeck(vocabulary.id);
       setAddedToTrainer(true);
       if (onAddedToTrainer) onAddedToTrainer(vocabulary.id);
       setTimeout(() => setAddedToTrainer(false), 3000); // Reset nach 3 Sekunden
@@ -42,7 +42,7 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
     setError(null);
 
     try {
-      const updated = await updateVocabulary(vocabulary.id, editedVocab);
+      const updated = await apiService.updateVocabulary(vocabulary.id, editedVocab);
       onUpdate(updated);
       setIsEditing(false);
     } catch (err) {
@@ -61,7 +61,7 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
     setError(null);
 
     try {
-      await deleteVocabulary(vocabulary.id);
+      await apiService.deleteVocabulary(vocabulary.id);
       onDelete(vocabulary.id);
     } catch (err) {
       setError(err.message || 'Fehler beim Löschen');
