@@ -26,7 +26,9 @@ export const optionalAuth = (req, res, next) => {
       if (!err) {
         req.user = user;
       }
+      next();
     });
+  } else {
+    next();
   }
-  next();
 };
