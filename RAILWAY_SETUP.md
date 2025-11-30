@@ -39,8 +39,11 @@ DB_PATH=/app/data/vocabulary.db
 2. Railway startet automatisch den ersten Deploy
 3. Warte bis Status "✅ Success" ist (kann 2-3 Minuten dauern)
 4. Gehe zu **"Settings"** → **"Networking"**
-5. Klicke **"Generate Domain"** um eine öffentliche URL zu erstellen
-6. **Kopiere die Backend-URL** (z.B. `https://backend-production-abc123.up.railway.app`)
+5. Klicke **"Generate Domain"**
+6. Railway fragt: **"Enter the port your app is listening on"**
+   - Trage ein: **`3001`**
+7. Klicke "Save" oder bestätige
+8. **Kopiere die Backend-URL** (z.B. `https://backend-production-abc123.up.railway.app`)
 
 ## Schritt 4: Frontend Service hinzufügen
 
@@ -69,7 +72,10 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 2. Warte bis "✅ Success"
 3. Gehe zu **"Settings"** → **"Networking"**
 4. Klicke **"Generate Domain"**
-5. **Kopiere die Frontend-URL** (z.B. `https://frontend-production-xyz789.up.railway.app`)
+5. Railway fragt: **"Enter the port your app is listening on"**
+   - Trage ein: **`5173`**
+6. Klicke "Save" oder bestätige
+7. **Kopiere die Frontend-URL** (z.B. `https://frontend-production-xyz789.up.railway.app`)
 
 ## Schritt 5: URLs verlinken
 
