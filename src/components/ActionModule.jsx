@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { generateVocabularyChallenge } from '../services/llmService';
 import { loadVocabulary, getRandomVocabulary } from '../utils/vocabularyLoader';
+import { updateProgress, startSession, completeSession } from '../services/apiService';
+import VocabularyEditor from './VocabularyEditor';
 
-function ActionModule() {
+function ActionModule({ user }) {
   const [timeLimit, setTimeLimit] = useState(10);
   const [isActive, setIsActive] = useState(false);
   const [currentWord, setCurrentWord] = useState(null);
@@ -22,6 +24,9 @@ function ActionModule() {
   const [vocabulary, setVocabulary] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [slideAnimation, setSlideAnimation] = useState(null);
+  const [editingWordId, setEditingWordId] = useState(null);
+  const [sessionId, setSessionId] = useState(null);
+  const [sessionStartTime, setSessionStartTime] = useState(null);
   const inputRef = useRef(null);
 
   // Lade Vokabeln beim Start
@@ -54,7 +59,7 @@ function ActionModule() {
     }
   }, [floatingTranslation]);
 
-  const startGame = () => {
+  const startGame = async () => {
     setGameStarted(true);
     setCurrentRound([]);
     setRoundProgress(0);
@@ -62,6 +67,18 @@ function ActionModule() {
     setStreak(0);
     setTotalAnswers(0);
     setShowFeedback(false);
+    
+    // Start session tracking if user is logged in
+    if (user) {
+      try {
+        const session = await startSession('action');
+        setSessionId(session.id);
+        setSessionStartTime(Date.now());
+      } catch (err) {
+        console.error('Failed to start session:', err);
+      }
+    }
+    
     startRound();
   };
 
@@ -87,6 +104,11 @@ function ActionModule() {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
+    // Update progress if user is logged in
+    if (user && currentWord.id) {
+      updateProgress(currentWord.id, false).catch(err => console.error('Failed to update progress:', err));
+    }
+    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
     
@@ -96,6 +118,25 @@ function ActionModule() {
         setIsActive(false);
         setSlideAnimation(null);
         setShowFeedback(true);
+        
+        // Complete session tracking if user is logged in
+        if (user && sessionId && sessionStartTime) {
+          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
+          const correctCount = currentRound.filter(a => a.correct).length + (answer.correct ? 1 : 0);
+          const details = [...currentRound, answer].map(a => ({
+            vocabularyId: a.word.id,
+            wasCorrect: a.correct,
+            responseTimeMs: 0
+          }));
+          
+          completeSession(sessionId, {
+            score,
+            correctAnswers: correctCount,
+            totalAnswers: wordsPerRound,
+            durationSeconds,
+            details
+          }).catch(err => console.error('Failed to complete session:', err));
+        }
       }, 600);
     } else {
       setRoundProgress(roundProgress + 1);
@@ -127,6 +168,11 @@ function ActionModule() {
     setStreak(streak + 1);
     setTotalAnswers(totalAnswers + 1);
     
+    // Update progress if user is logged in
+    if (user && currentWord.id) {
+      updateProgress(currentWord.id, true).catch(err => console.error('Failed to update progress:', err));
+    }
+    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: true });
     
@@ -135,6 +181,25 @@ function ActionModule() {
       setTimeout(() => {
         setSlideAnimation(null);
         setShowFeedback(true);
+        
+        // Complete session tracking if user is logged in
+        if (user && sessionId && sessionStartTime) {
+          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
+          const correctCount = currentRound.filter(a => a.correct).length + 1;
+          const details = [...currentRound, answer].map(a => ({
+            vocabularyId: a.word.id,
+            wasCorrect: a.correct,
+            responseTimeMs: 0
+          }));
+          
+          completeSession(sessionId, {
+            score: score + points,
+            correctAnswers: correctCount,
+            totalAnswers: wordsPerRound,
+            durationSeconds,
+            details
+          }).catch(err => console.error('Failed to complete session:', err));
+        }
       }, 600);
     } else {
       setRoundProgress(roundProgress + 1);
@@ -159,6 +224,11 @@ function ActionModule() {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
+    // Update progress if user is logged in
+    if (user && currentWord.id) {
+      updateProgress(currentWord.id, false).catch(err => console.error('Failed to update progress:', err));
+    }
+    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
     
@@ -167,6 +237,25 @@ function ActionModule() {
       setTimeout(() => {
         setSlideAnimation(null);
         setShowFeedback(true);
+        
+        // Complete session tracking if user is logged in
+        if (user && sessionId && sessionStartTime) {
+          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
+          const correctCount = currentRound.filter(a => a.correct).length;
+          const details = [...currentRound, answer].map(a => ({
+            vocabularyId: a.word.id,
+            wasCorrect: a.correct,
+            responseTimeMs: 0
+          }));
+          
+          completeSession(sessionId, {
+            score,
+            correctAnswers: correctCount,
+            totalAnswers: wordsPerRound,
+            durationSeconds,
+            details
+          }).catch(err => console.error('Failed to complete session:', err));
+        }
       }, 600);
     } else {
       setRoundProgress(roundProgress + 1);
@@ -192,6 +281,34 @@ function ActionModule() {
       default:
         setTimeLimit(10);
     }
+  };
+
+  const handleVocabularyUpdate = (updatedVocab) => {
+    // Update in vocabulary list
+    setVocabulary(prev => 
+      prev.map(v => v.id === updatedVocab.id ? { ...v, en: updatedVocab.english, de: updatedVocab.german, level: updatedVocab.level } : v)
+    );
+    
+    // Update in current round if present
+    setCurrentRound(prev => 
+      prev.map(answer => 
+        answer.word.id === updatedVocab.id 
+          ? { ...answer, word: { ...answer.word, en: updatedVocab.english, de: updatedVocab.german, level: updatedVocab.level } }
+          : answer
+      )
+    );
+    
+    setEditingWordId(null);
+  };
+
+  const handleVocabularyDelete = (deletedId) => {
+    // Remove from vocabulary list
+    setVocabulary(prev => prev.filter(v => v.id !== deletedId));
+    
+    // Remove from current round if present
+    setCurrentRound(prev => prev.filter(answer => answer.word.id !== deletedId));
+    
+    setEditingWordId(null);
   };
 
   const getProgressColor = () => {
@@ -287,7 +404,7 @@ function ActionModule() {
                 <option value={5}>5 Wörter</option>
                 <option value={10}>10 Wörter</option>
                 <option value={15}>15 Wörter</option>
-                <option value={20}>20 Wörter</option>
+                <option value={20}>20 Wörter (Standard)</option>
                 <option value={30}>30 Wörter</option>
                 <option value={50}>50 Wörter</option>
               </select>
@@ -317,29 +434,69 @@ function ActionModule() {
             </div>
             
             {/* Detailed Results */}
-            <div className="glass-card rounded-2xl p-4 mb-4 max-h-64 overflow-y-auto">
-              <h4 className="text-lg font-bold text-gray-800 mb-3">📊 Detaillierte Auswertung</h4>
-              <div className="space-y-2">
-                {currentRound.map((answer, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center justify-between p-3 rounded-xl ${
-                      answer.correct ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl">{answer.correct ? '✅' : '❌'}</span>
-                      <div>
-                        <p className="font-bold text-gray-800">{answer.word.de}</p>
-                        <p className="text-sm text-gray-600">{answer.word.en}</p>
+            <div className="glass-card rounded-2xl p-4 mb-4 max-h-96 overflow-y-auto">
+              {/* Falsch beantwortete Wörter */}
+              <h4 className="text-lg font-bold text-gray-800 mb-3">❌ Falsch beantwortete Wörter ({currentRound.filter(a => !a.correct).length})</h4>
+              {currentRound.filter(a => !a.correct).length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-2xl mb-2">🎉</p>
+                  <p className="text-green-600 font-bold">Perfekt! Alle Wörter gewusst!</p>
+                </div>
+              ) : (
+                <div className="space-y-2 mb-6">
+                  {currentRound.filter(a => !a.correct).map((answer, index) => (
+                    <div
+                      key={index}
+                      className="p-3 rounded-xl bg-red-50 border border-red-200"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">❌</span>
+                          {answer.timedOut && (
+                            <span className="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">⏱️ Zeit abgelaufen</span>
+                          )}
+                        </div>
                       </div>
+                      <VocabularyEditor
+                        vocabulary={answer.word}
+                        onUpdate={handleVocabularyUpdate}
+                        onDelete={handleVocabularyDelete}
+                        onClose={() => setEditingWordId(null)}
+                      />
                     </div>
-                    {answer.correct && answer.points && (
-                      <span className="font-bold text-green-700">+{answer.points}</span>
-                    )}
+                  ))}
+                </div>
+              )}
+              
+              {/* Richtig beantwortete Wörter */}
+              {currentRound.filter(a => a.correct).length > 0 && (
+                <>
+                  <h4 className="text-lg font-bold text-gray-800 mb-3 mt-4">✅ Gewusste Wörter ({currentRound.filter(a => a.correct).length})</h4>
+                  <div className="space-y-2">
+                    {currentRound.filter(a => a.correct).map((answer, index) => (
+                      <div
+                        key={index}
+                        className="p-3 rounded-xl bg-green-50 border border-green-200"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xl">✅</span>
+                          </div>
+                          {answer.points && (
+                            <span className="font-bold text-green-700">+{answer.points}</span>
+                          )}
+                        </div>
+                        <VocabularyEditor
+                          vocabulary={answer.word}
+                          onUpdate={handleVocabularyUpdate}
+                          onDelete={handleVocabularyDelete}
+                          onClose={() => setEditingWordId(null)}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </>
+              )}
             </div>
             
             <button

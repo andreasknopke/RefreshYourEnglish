@@ -530,32 +530,32 @@ to perceive;wahrnehmen
 to recall;sich entsinnen / erinnern
 to reflect;reflektieren / nachdenken
 to speculate;spekulieren / mutmaÃŸen
-to verify;Ã¼berprÃ¼fen / verifizieren
-to advocate;befÃ¼rworten / plÃ¤dieren fÃ¼r
-to articulate;artikulieren / ausdrÃ¼cken
+to verify;überprüfen / verifizieren
+to advocate;befürworten / plädieren für
+to articulate;artikulieren / ausdrücken
 to assert;behaupten / geltend machen
-to clarify;klÃ¤ren / klarstellen
+to clarify;klären / klarstellen
 to contradict;widersprechen
 to convey;vermitteln / Ã¼bermitteln
-to convince;Ã¼berzeugen
+to convince;überzeugen
 to deny;leugnen / bestreiten
-to elaborate;ausfÃ¼hren / nÃ¤her erlÃ¤utern
+to elaborate;ausführen / näher erläutern
 to emphasize;betonen / hervorheben
-to exaggerate;Ã¼bertreiben
+to exaggerate;übertreiben
 to imply;andeuten / implizieren
 to indicate;hinweisen auf / anzeigen
 to justify;rechtfertigen
 to negotiate;verhandeln
-to persuade;Ã¼berreden
+to persuade;überreden
 to propose;vorschlagen / angeregen
 to refuse;verweigern / ablehnen
-to urge;drÃ¤ngen / mahnen
+to urge;drängen / mahnen
 to accelerate;beschleunigen
 to adapt;anpassen
-to alter;abÃ¤ndern / verÃ¤ndern
-to cease;enden / aufhÃ¶ren
+to alter;abändern / verändern
+to cease;enden / aufhören
 to convert;umwandeln / konvertieren
-to decline;abnehmen / zurÃ¼ckgehen
+to decline;abnehmen / zurückgehen
 to diminish;verringern / schwinden
 to eliminate;beseitigen / eliminieren
 to emerge;auftauchen / entstehen
@@ -567,39 +567,39 @@ to generate;erzeugen / generieren
 to modify;modifizieren / abwandeln
 to postpone;verschieben / vertagen
 to proceed;fortfahren / vorgehen
-to reinforce;verstÃ¤rken / bekrÃ¤ftigen
-to restrict;einschrÃ¤nken / beschrÃ¤nken
+to reinforce;verstärken / bekräftigen
+to restrict;einschränken / beschränken
 to transform;verwandeln / umgestalten
 to accomplish;vollbringen / erreichen
 to administer;verwalten
 to appoint;ernennen / berufen
 to collaborate;zusammenarbeiten
-to conduct;durchfÃ¼hren / leiten
+to conduct;durchführen / leiten
 to coordinate;koordinieren / abstimmen
-to delegate;delegieren / Ã¼bertragen
+to delegate;delegieren / übertragen
 to distribute;verteilen / vertreiben
-to ensure;sicherstellen / gewÃ¤hrleisten
-to establish;etablieren / grÃ¼nden
-to facilitate;erleichtern / ermÃ¶glichen
+to ensure;sicherstellen / gewährleisten
+to establish;etablieren / gründen
+to facilitate;erleichtern / ermöglichen
 to implement;umsetzen / implementieren
 to investigate;untersuchen / ermitteln
-to monitor;Ã¼berwachen / kontrollieren
+to monitor;überwachen / kontrollieren
 to obtain;erhalten / beziehen
 to participate;teilnehmen / mitwirken
 to prioritize;priorisieren / vorziehen
-to resolve;lÃ¶sen / klÃ¤ren
+to resolve;lösen / klären
 to supervise;beaufsichtigen / betreuen
 to utilize;nutzen / verwenden
-to appreciate;schÃ¤tzen / wÃ¼rdigen
-to bother;stÃ¶ren / sich MÃ¼he geben
+to appreciate;schützen / würdigen
+to bother;stören / sich Mühe geben
 to compensate;ausgleichen / entschÃ¤digen
-to compromise;Kompromisse schlieÃŸen
-to cope;bewÃ¤ltigen / zurechtkommen
-to criticize;kritisieren / bemÃ¤ngeln
-to deceive;tÃ¤uschen / betrÃ¼gen
-to encourage;ermutigen / fÃ¶rdern
+to compromise;Kompromisse schließen
+to cope;bewältigen / zurechtkommen
+to criticize;kritisieren / bemängeln
+to deceive;täuschen / betrügen
+to encourage;ermutigen / fördern
 to envy;beneiden
-to hesitate;zÃ¶gern
+to hesitate;zögern
 to ignore;ignorieren / missachten
 to impose;auferlegen / aufzwingen
 to interfere;sich einmischen
@@ -617,7 +617,7 @@ to define;definieren / bestimmen
 to demonstrate;demonstrieren / aufzeigen
 to derive;ableiten
 to devise;entwerfen / sich ausdenken
-to examine;untersuchen / prÃ¼fen
+to examine;untersuchen / prüfen
 to experiment;experimentieren
 to explore;erforschen / erkunden
 to formulate;formulieren
@@ -626,34 +626,34 @@ to illustrate;veranschaulichen / bebildern
 to interpret;interpretieren / deuten
 to observe;beobachten
 to prove;beweisen / belegen
-to publish;verÃ¶ffentlichen / publizieren
-to review;rezensieren / Ã¼berprÃ¼fen
+to publish;veröffentlichen / publizieren
+to review;rezensieren / überprüfen
 to summarize;zusammenfassen
-to validate;validieren / bestÃ¤tigen
+to validate;validieren / bestätigen
 to abolish;abschaffen
 to accuse;anklagen / beschuldigen
-to authorize;autorisieren / ermÃ¤chtigen
+to authorize;autorisieren / ermächtigen
 to ban;verbieten / sperren
 to comply;befolgen / einhalten
 to confiscate;beschlagnahmen
 to debate;debattieren
 to decree;verordnen
-to elect;wÃ¤hlen
+to elect;wählen
 to enact;erlassen / gesetzlich verordnen
 to enforce;durchsetzen
 to govern;regieren
-to grant;gewÃ¤hren / bewilligen
+to grant;gewähren / bewilligen
 to legislate;Gesetze erlassen
 to prohibit;untersagen
 to regulate;regulieren / regeln
-to resign;kÃ¼ndigen / zurÃ¼cktreten
+to resign;kündigen / zurücktreten
 to revoke;widerrufen / entziehen
 to sentence;verurteilen
-to violate;verletzen / verstoÃŸen gegen
-to accumulate;anhÃ¤ufen / ansammeln
+to violate;verletzen / verstoßen gegen
+to accumulate;anhäufen / ansammeln
 to afford;sich leisten
 to allocate;zuweisen / zuteilen
-to audit;prÃ¼fen (Finanzen)
+to audit;prüfen (Finanzen)
 to calculate;berechnen / kalkulieren
 to consume;konsumieren / verbrauchen
 to contribute;beitragen / spenden
@@ -663,22 +663,22 @@ to invest;investieren / anlegen
 to owe;schulden
 to profit;profitieren / gewinnen
 to purchase;erwerben / kaufen
-to refund;erstatten / zurÃ¼ckzahlen
+to refund;erstatten / zurückzahlen
 to subsidize;subventionieren
-to transact;GeschÃ¤fte tÃ¤tigen
-to value;wertschÃ¤tzen / bewerten
-to withdraw;abheben / zurÃ¼ckziehen
+to transact;Geschäfte tätigen
+to value;wertschätzen / bewerten
+to withdraw;abheben / zurückziehen
 to yield;einbringen / abwerfen
 to bankrupt;in den Bankrott treiben
 to abandon;verlassen / aufgeben
-to annihilate;vernichten / auslÃ¶schen
+to annihilate;vernichten / auslöschen
 to betray;verraten
-to collapse;einstÃ¼rzen / kollabieren
+to collapse;einstürzen / kollabieren
 to confront;konfrontieren
-to damage;beschÃ¤digen
+to damage;beschädigen
 to deteriorate;sich verschlechtern
-to disrupt;stÃ¶ren / unterbrechen
-to endanger;gefÃ¤hrden
+to disrupt;stören / unterbrechen
+to endanger;gefährden
 to escalate;eskalieren
 to exploit;ausnutzen / ausbeuten
 to harm;schaden
@@ -693,34 +693,34 @@ to warn;warnen
 to appear;erscheinen / wirken
 to attempt;versuchen
 to attribute;zuschreiben
-to belong;gehÃ¶ren
+to belong;gehören
 to comprise;umfassen / beinhalten
 to constitute;darstellen / bilden
-to depend;abhÃ¤ngen von
+to depend;abhängen von
 to deserve;verdienen
 to exist;existieren / bestehen
 to lack;fehlen / mangeln an
 to matter;von Bedeutung sein
 to necessitate;erfordern / notwendig machen
 to occur;geschehen / auftreten
-to originate;stammen aus / herrÃ¼hren
+to originate;stammen aus / herrühren
 to possess;besitzen
 to prevail;vorherrschen / siegen
 to remain;verbleiben / bleiben
-to resemble;Ã¤hneln / gleichen
+to resemble;ähneln / gleichen
 to seem;scheinen
 to tend;tendieren / neigen zu
 to assemble;montieren / zusammenbauen
 to construct;konstruieren / errichten
-to detach;ablÃ¶sen / abtrennen
+to detach;ablösen / abtrennen
 to discard;entsorgen / verwerfen
 to dismantle;demontieren / zerlegen
-to equip;ausstatten / ausrÃ¼sten
+to equip;ausstatten / ausrüsten
 to extract;extrahieren / entnehmen
 to fabricate;fertigen / herstellen
 to fasten;befestigen
 to handle;handhaben / umgehen mit
-to insert;einfÃ¼gen / einsetzen
+to insert;einfügen / einsetzen
 to install;installieren / einrichten
 to load;laden / belasten
 to maintain;instand halten / warten
@@ -731,22 +731,22 @@ to restore;wiederherstellen / restaurieren
 to shape;formen / gestalten
 to sustain;aufrechterhalten
 to automate;automatisieren
-to browse;durchstÃ¶bern / surfen
+to browse;durchstöbern / surfen
 to compute;berechnen
 to configure;konfigurieren
 to connect;verbinden
-to detect;erkennen / aufspÃ¼ren
+to detect;erkennen / aufspüren
 to digitize;digitalisieren
 to display;anzeigen / darstellen
 to download;herunterladen
-to encode;verschlÃ¼sseln / codieren
+to encode;verschlüsseln / codieren
 to input;eingeben
-to launch;starten / einfÃ¼hren
+to launch;starten / einführen
 to navigate;navigieren / steuern
 to process;verarbeiten
 to program;programmieren
 to retrieve;abrufen / wiedererlangen
-to scan;scannen / Ã¼berfliegen
+to scan;scannen / überfliegen
 to stream;streamen
 to synchronize;synchronisieren
 to update;aktualisieren
@@ -759,34 +759,34 @@ to design;entwerfen / gestalten
 to divide;teilen / unterteilen
 to file;ablegen / einreichen
 to group;gruppieren
-to include;einbeziehen / einschlieÃŸen
+to include;einbeziehen / einschließen
 to incorporate;integrieren / einarbeiten
 to integrate;eingliedern / integrieren
 to list;auflisten
 to merge;fusionieren / verschmelzen
 to organize;organisieren
-to outline;skizzieren / umreiÃŸen
+to outline;skizzieren / umreißen
 to plan;planen
 to schedule;terminieren / ansetzen
 to sort;sortieren
 to structure;strukturieren
-to advance;vorrÃ¼cken / fortschreiten
+to advance;vorrücken / fortschreiten
 to approach;sich nÃ¤hern / herantreten an
 to commute;pendeln
 to depart;abreisen / abfahren
 to descend;herabsteigen / sinken
 to drift;treiben / abdriften
-to escape;entkommen / flÃ¼chten
+to escape;entkommen / flüchten
 to flee;fliehen
-to flow;flieÃŸen / strÃ¶men
+to flow;fließen / strömen
 to glide;gleiten
 to land;landen
 to migrate;migrieren / wandern
 to rotate;rotieren / sich drehen
 to shift;verlagern / verschieben
 to slide;rutschen / gleiten
-to transfer;Ã¼bertragen / versetzen
-to transport;transportieren / befÃ¶rdern
+to transfer;übertragen / versetzen
+to transport;transportieren / befördern
 to traverse;durchqueren
 to vanish;verschwinden
 to wander;umherwandern
@@ -796,32 +796,31 @@ to adjust;anpassen / einstellen
 to attract;anziehen
 to capture;einfangen / erbeuten
 to digest;verdauen
-to emit;ausstoÃŸen / abgeben
+to emit;ausstoßen / abgeben
 to endure;ertragen / aushalten
-to exhaust;erschÃ¶pfen
+to exhaust;erschöpfen
 to freeze;einfrieren
 to gaze;blicken / schauen
-to glance;flÃ¼chtig blicken
+to glance;flüchtig blicken
 to grip;greifen / packen
 to inspect;inspizieren
 to react;reagieren
 to release;freilassen / loslassen
-to reveal;enthÃ¼llen / offenbaren
-to sense;spÃ¼ren / erahnen
+to reveal;enthüllen / offenbaren
+to sense;spüren / erahnen
 to stare;anstarren
 to tremble;zittern / beben
-English Verb;German Translation
-to bloom;blÃ¼hen
-to breed;zÃ¼chten / brÃ¼ten
+to bloom;blühen
+to breed;züchten / brüten
 to cultivate;anbauen / kultivieren
 to decay;verfallen / verrotten
-to dissolve;auflÃ¶sen
+to dissolve;auflösen
 to erupt;ausbrechen
 to evaporate;verdunsten
 to fade;verblassen / schwinden
-to flood;Ã¼berfluten / Ã¼berschwemmen
+to flood;überfluten / Überschwemmen
 to harvest;ernten
-to hatch;schlÃ¼pfen / ausbrÃ¼ten
+to hatch;schlüpfen / ausbrüten
 to inhabit;bewohnen
 to irrigate;bewÃ¤ssern
 to melt;schmelzen
@@ -829,9 +828,8 @@ to pollute;verschmutzen
 to predict;vorhersagen
 to recycle;wiederverwerten / recyceln
 to ripen;reifen
-to sprout;sprieÃŸen / keimen
+to sprout;sprießen / keimen
 to wither;verwelken
-English Verb;German Translation
 to ache;schmerzen / wehtun
 to bleed;bluten
 to bruise;prellen / quetschen
@@ -847,25 +845,25 @@ to injure;verletzen
 to operate;operieren
 to prescribe;verschreiben
 to recover;sich erholen
-to shiver;zittern / frÃ¶steln
+to shiver;zittern / frösteln
 to soothe;lindern / beruhigen
 to sprain;verstauchen
 to suffer;leiden
-to vomit;sich Ã¼bergeben / erbrechen
+to vomit;sich übergeben / erbrechen
 to act;schauspielern / handeln
 to applaud;applaudieren / klatschen
 to broadcast;ausstrahlen / senden
-to carve;schnitzen / meiÃŸeln
-to cast;besetzen (Rolle) / gieÃŸen
+to carve;schnitzen / meißeln
+to cast;besetzen (Rolle) / gießen
 to compose;komponieren / verfassen
 to depict;darstellen / abbilden
-to direct;Regie fÃ¼hren / leiten
+to direct;Regie führen / leiten
 to display;ausstellen
 to draft;entwerfen
 to draw;zeichnen
 to exhibit;ausstellen
 to inspire;inspirieren
-to perform;auffÃ¼hren / leisten
+to perform;aufführen / leisten
 to portray;darstellen / schildern
 to rehearse;proben
 to sculpt;bildhauern / formen
@@ -879,8 +877,8 @@ to book;buchen / reservieren
 to celebrate;feiern / zelebrieren
 to dine;speisen
 to entertain;unterhalten
-to frequent;hÃ¤ufig besuchen
-to greet;grÃ¼ÃŸen / begrÃ¼ÃŸen
+to frequent;häufig besuchen
+to greet;grüßen / begrüßen
 to host;ausrichten / veranstalten
 to invite;einladen
 to lodge;logieren / wohnen
@@ -892,73 +890,72 @@ to settle;sich niederlassen / regeln
 to socialize;unter Leute gehen
 to tour;bereisen / besichtigen
 to visit;besuchen / besichtigen
-to complement;ergÃ¤nzen
-to connect;verbinden / anknÃ¼pfen
+to complement;ergänzen
+to connect;verbinden / anknüpfen
 to consist;bestehen aus
-to correlate;korrelieren / zusammenhÃ¤ngen
+to correlate;korrelieren / zusammenhängen
 to correspond;entsprechen / korrespondieren
 to equal;gleichen / entsprechen
-to exclude;ausschlieÃŸen
+to exclude;ausschließen
 to fit;passen
-to link;verknÃ¼pfen
+to link;verknüpfen
 to match;zusammenpassen
-to parallel;Ã¤hneln / parallel verlaufen
+to parallel;ähneln / parallel verlaufen
 to relate;beziehen auf / berichten
 to replace;ersetzen
-to represent;reprÃ¤sentieren / vertreten
+to represent;repräsentieren / vertreten
 to separate;trennen
 to substitute;substituieren / austauschen
 to succeed;nachfolgen / gelingen
 to suit;stehen / passen
-to surpass;Ã¼bertreffen
+to surpass;übertreffen
 to symbolize;symbolisieren
-to abduct;entfÃ¼hren
+to abduct;entführen
 to acquit;freisprechen
 to arrest;verhaften / festnehmen
 to assassinate;ermorden (Attentat)
 to blackmail;erpressen
 to bribe;bestechen
 to burgle;einbrechen
-to commit;begehen / verÃ¼ben
-to convict;verurteilen / Ã¼berfÃ¼hren
+to commit;begehen / verüben
+to convict;verurteilen / überführen
 to detain;inhaftieren / festhalten
 to embezzle;veruntreuen
 to imprison;einsperren / inhaftieren
-to interrogate;verhÃ¶ren / ausfragen
-to loot;plÃ¼ndern
+to interrogate;verhören / ausfragen
+to loot;plündern
 to patrol;patrouillieren
 to persecute;verfolgen
 to prosecute;strafrechtlich verfolgen
 to smuggle;schmuggeln
 to surrender;kapitulieren / sich ergeben
 to testify;aussagen / bezeugen
-to blend;vermischen / pÃ¼rieren
+to blend;vermischen / pürieren
 to chop;hacken / schneiden
-to crush;zerdrÃ¼cken / zermalmen
-to dilute;verdÃ¼nnen
-to drain;abgieÃŸen / entwÃ¤ssern
+to crush;zerdrücken / zermalmen
+to dilute;verdünnen
+to drain;abgießen / entwässern
 to garnish;garnieren
 to grate;reiben / raspeln
 to grind;mahlen
 to knead;kneten
 to marinate;marinieren / einlegen
-to peel;schÃ¤len
+to peel;schälen
 to polish;polieren
-to rinse;abspÃ¼len / auswaschen
-to roast;braten / rÃ¶sten
-to sautÃ©;anbraten / sautieren
+to rinse;abspülen / auswaschen
+to roast;braten / rösten
 to scrub;schrubben / scheuern
-to simmer;kÃ¶cheln
+to simmer;köcheln
 to soak;einweichen
-to squeeze;ausdrÃ¼cken / quetschen
-to stir;umrÃ¼hren
+to squeeze;ausdrücken / quetschen
+to stir;umrühren
 to baptize;taufen
 to bless;segnen
 to bury;begraben / beerdigen
 to commemorate;gedenken
 to confess;beichten / gestehen
 to convert;konvertieren
-to cremate;einÃ¤schern
+to cremate;einäschern
 to curse;verfluchen
 to devote;widmen
 to fast;fasten
@@ -967,41 +964,41 @@ to meditate;meditieren
 to mourn;trauern
 to pray;beten
 to preach;predigen
-to repent;bereuen / BuÃŸe tun
+to repent;bereuen / Buße tun
 to resurrect;auferstehen
 to sacrifice;opfern
-to sin;sÃ¼ndigen
+to sin;sündigen
 to worship;anbeten / verehren
 to admire;bewundern
-to amuse;amÃ¼sieren / belustigen
-to annoy;Ã¤rgern / nerven
+to amuse;amüsieren / belustigen
+to annoy;ärgern / nerven
 to astonish;erstaunen
-to comfort;trÃ¶sten
+to comfort;trösten
 to confuse;verwirren
-to delight;erfreuen / entzÃ¼cken
-to depress;deprimieren / niederdrÃ¼cken
-to disappoint;enttÃ¤uschen
+to delight;erfreuen / entzücken
+to depress;deprimieren / niederdrücken
+to disappoint;enttäuschen
 to disgust;anwidern / ekeln
 to embarrass;blamieren / in Verlegenheit bringen
 to fascinate;faszinieren
-to frighten;Ã¤ngstigen / erschrecken
+to frighten;ängstigen / erschrecken
 to impress;beeindrucken
 to irritate;irritieren / reizen
 to pity;bemitleiden
 to satisfy;befriedigen / zufriedenstellen
-to startle;erschrecken (plÃ¶tzlich)
+to startle;erschrecken (plötzlich)
 to terrify;in Schrecken versetzen
 to yearn;sich sehnen nach
 to alleviate;lindern / abschwÃ¤chen
 to ascertain;ermitteln / sicherstellen
 to commence;anfangen / beginnen
-to compel;zwingen / nÃ¶tigen
-to constrain;einschrÃ¤nken / zwingen
+to compel;zwingen / nötigen
+to constrain;einschränken / zwingen
 to deviate;abweichen
 to differentiate;differenzieren
-to disclose;enthÃ¼llen / bekanntgeben
+to disclose;enthüllen / bekanntgeben
 to disperse;zerstreuen / verteilen
-to exceed;Ã¼berschreiten
+to exceed;überschreiten
 to exemplify;veranschaulichen
 to inhibit;hemmen / hindern
 to initiate;initiieren / einleiten

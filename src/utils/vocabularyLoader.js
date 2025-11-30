@@ -1,7 +1,9 @@
 /**
- * Lädt und parst die Vokabeldatei
- * Format: Englisch ; Deutsch
+ * Lädt und parst die Vokabeldatei vom Backend-API
+ * Falls Backend nicht erreichbar, Fallback auf lokale Datei
  */
+
+import apiService from '../services/apiService';
 
 let cachedVocabulary = null;
 
@@ -12,39 +14,62 @@ export async function loadVocabulary() {
   }
 
   try {
-    const response = await fetch('/vocabulary.txt', {
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8'
-      }
-    });
-    if (!response.ok) {
-      throw new Error('Vokabeldatei konnte nicht geladen werden');
-    }
-    
-    const text = await response.text();
-    const lines = text.split('\n').filter(line => line.trim() !== '');
-    
-    const vocabulary = lines.map((line, index) => {
-      const parts = line.split(';').map(part => part.trim());
-      
-      if (parts.length >= 2) {
-        return {
-          id: index + 1,
-          en: parts[0],
-          de: parts[1]
-        };
-      }
-      return null;
-    }).filter(item => item !== null);
+    // Versuche vom Backend zu laden
+    const response = await apiService.getVocabulary();
+    const vocabulary = response.vocabulary.map(v => ({
+      id: v.id,
+      en: v.english,
+      de: v.german,
+      level: v.level,
+      // User progress wenn eingeloggt
+      correctCount: v.correct_count || 0,
+      incorrectCount: v.incorrect_count || 0,
+      masteryLevel: v.mastery_level || 0,
+    }));
     
     cachedVocabulary = vocabulary;
-    console.log(`✅ ${vocabulary.length} Vokabeln erfolgreich geladen`);
+    console.log(`✅ ${vocabulary.length} Vokabeln vom Backend geladen`);
     return vocabulary;
     
   } catch (error) {
-    console.error('Fehler beim Laden der Vokabeln:', error);
-    // Fallback auf Standard-Vokabeln
-    return getDefaultVocabulary();
+    console.warn('⚠️ Backend nicht erreichbar, lade lokale Datei:', error.message);
+    
+    // Fallback auf lokale Datei
+    try {
+      const response = await fetch('/vocabulary.txt', {
+        headers: {
+          'Content-Type': 'text/plain; charset=utf-8'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Vokabeldatei konnte nicht geladen werden');
+      }
+      
+      const text = await response.text();
+      const lines = text.split('\n').filter(line => line.trim() !== '');
+      
+      const vocabulary = lines.map((line, index) => {
+        const parts = line.split(';').map(part => part.trim());
+        
+        if (parts.length >= 2) {
+          return {
+            id: index + 1,
+            en: parts[0],
+            de: parts[1],
+            level: 'B2'
+          };
+        }
+        return null;
+      }).filter(item => item !== null);
+      
+      cachedVocabulary = vocabulary;
+      console.log(`✅ ${vocabulary.length} Vokabeln aus lokaler Datei geladen`);
+      return vocabulary;
+      
+    } catch (fallbackError) {
+      console.error('Fehler beim Laden der lokalen Vokabeln:', fallbackError);
+      return getDefaultVocabulary();
+    }
   }
 }
 

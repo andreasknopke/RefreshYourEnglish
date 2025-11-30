@@ -1,25 +1,59 @@
 # Refresh Your English 🇬🇧
 
-Eine moderne Vokabel-Trainings-App mit React und Tailwind CSS, die LLM-basierte Module für effektives Englischlernen bietet.
+Eine moderne Vokabel-Trainings-App mit React, Tailwind CSS und LLM-gestützten Modulen für effektives Englischlernen.
 
-## 🚀 Features
+## 🌟 Features
 
-### Modul 1: Übersetzungsübung
+### 📝 Modul 1: Übersetzungsübung
 - Übersetze deutsche Sätze ins Englische
-- Erhalte KI-basiertes Feedback zu deinen Übersetzungen
+- KI-basiertes Feedback mit GPT-4o-mini
 - Detaillierte Bewertung auf einer Skala von 1-10
 - Verbesserungsvorschläge für natürlichere Übersetzungen
 - Fortschrittsanzeige und Punktesystem
 
-### Modul 2: Action Modus
+### ⚡ Modul 2: Action Modus
 - Zeitbasiertes Vokabeltraining mit Countdown
-- **Einstellbare Wortanzahl pro Runde** (5-50 Wörter)
+- **Einstellbare Wortanzahl** pro Runde (5-50 Wörter)
 - **"I know" / "Forgot" Button-System** für schnelles Lernen
-- **Schwebende Übersetzungsanzeige** nach jeder Antwort
-- **Detaillierte Auswertung am Ende** jeder Runde
+- **Inline-Vokabel-Editor** zum Bearbeiten während des Trainings
+- **Detaillierte Auswertung** nach jeder Runde
 - Drei Schwierigkeitsstufen (Einfach 15s / Normal 10s / Schwer 5s)
-- Punktesystem mit Zeit- und Serien-Boni
-- Echtzeit-Statistiken und Genauigkeitsmessung
+- Button "📚 Zum Trainer" zum Hinzufügen ins Lernrepertoire
+
+### 📚 Modul 3: Vocabulary Trainer (NEU!)
+- **Flashcard-System** mit 3D-Flip-Animation
+- **Spaced Repetition (SM-2 Algorithmus)** für optimales Langzeitlernen
+- 4 Schwierigkeitsstufen beim Review: Keine Ahnung → Perfekt
+- Live-Statistiken: Gesamt, Fällig, Lernend, Gemeistert
+- Automatische Berechnung der nächsten Wiederholungstermine
+
+### 📱 Progressive Web App (PWA)
+- **Installierbar** auf Android & iOS
+- **Offline-fähig** mit Service Worker
+- **App-Icon** auf dem Homescreen
+- **Mobile-optimiert** für Touch-Bedienung
+
+### 🔐 User Management & Backend
+- **Benutzerregistrierung & Login** mit JWT-Authentication
+- **Persönlicher Fortschritt** wird gespeichert
+- **Session-Tracking** für alle Trainingsmodule
+- **SQLite-Datenbank** mit 1500+ B2-C1 Vokabeln
+
+---
+
+## 🚀 Deployment
+
+Die App ist bereit für Production-Deployment auf **Railway**, **Vercel** oder anderen Plattformen.
+
+👉 **[Siehe DEPLOYMENT.md für detaillierte Anleitung](./DEPLOYMENT.md)**
+
+### Quick Start (Railway):
+1. Backend & Frontend jeweils als eigene Services deployen
+2. Environment Variables setzen (siehe `.env.production.example`)
+3. URLs verlinken und neu deployen
+4. Fertig! 🎉
+
+---
 
 ## 📚 Vokabeln anpassen
 

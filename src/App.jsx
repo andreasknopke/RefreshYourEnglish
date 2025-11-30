@@ -1,9 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TranslationModule from './components/TranslationModule';
 import ActionModule from './components/ActionModule';
+import VocabularyTrainer from './components/VocabularyTrainer';
+import AuthModal from './components/AuthModal';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
+import apiService from './services/apiService';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Lade User aus localStorage
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
+  const handleLogout = () => {
+    apiService.logout();
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
@@ -14,6 +38,33 @@ function App() {
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
+        {/* User Info / Login Button */}
+        <div className="flex justify-end mb-4">
+          {user ? (
+            <div className="glass-card px-6 py-3 rounded-2xl flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">{user.username?.[0]?.toUpperCase()}</span>
+                </div>
+                <span className="font-bold text-gray-800">{user.username}</span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="text-sm text-gray-600 hover:text-gray-800 font-bold"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowAuthModal(true)}
+              className="glass-card px-6 py-3 rounded-2xl font-bold text-indigo-600 hover:text-indigo-800 hover:scale-105 transition-all"
+            >
+              Login / Registrieren
+            </button>
+          )}
+        </div>
+
         <header className="text-center mb-12 animate-fade-in">
           <h1 className="text-6xl md:text-7xl font-bold mb-4 gradient-text">
             Refresh Your English
@@ -24,7 +75,7 @@ function App() {
         </header>
 
         {!activeModule ? (
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -72,6 +123,31 @@ function App() {
                 <span className="relative z-10">Jetzt starten →</span>
               </button>
             </div>
+
+            {/* Modul 3: Vocabulary Trainer */}
+            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              
+              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
+                Vocabulary Trainer
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+                Lerne mit Flashcards und Spaced Repetition. Behalte deine Vokabeln langfristig im Gedächtnis.
+              </p>
+              <button
+                onClick={() => setActiveModule('trainer')}
+                disabled={!user}
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
+              >
+                <span className="relative z-10">{user ? 'Jetzt starten →' : '🔒 Login erforderlich'}</span>
+              </button>
+            </div>
           </div>
         ) : (
           <div className="animate-fade-in">
@@ -85,10 +161,22 @@ function App() {
               Zurück zur Modulauswahl
             </button>
             
-            {activeModule === 'translation' && <TranslationModule />}
-            {activeModule === 'action' && <ActionModule />}
+            {activeModule === 'translation' && <TranslationModule user={user} />}
+            {activeModule === 'action' && <ActionModule user={user} />}
+            {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
+            {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
           </div>
         )}
+
+        {showAuthModal && (
+          <AuthModal
+            onClose={() => setShowAuthModal(false)}
+            onLogin={(newUser) => setUser(newUser)}
+          />
+        )}
+
+        {/* PWA Install Prompt */}
+        <PWAInstallPrompt />
       </div>
     </div>
   );

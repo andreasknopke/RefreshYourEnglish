@@ -1,0 +1,198 @@
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+
+class ApiService {
+  constructor() {
+    this.token = localStorage.getItem('authToken');
+  }
+
+  setToken(token) {
+    this.token = token;
+    if (token) {
+      localStorage.setItem('authToken', token);
+    } else {
+      localStorage.removeItem('authToken');
+    }
+  }
+
+  getAuthHeaders() {
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    if (this.token) {
+      headers['Authorization'] = `Bearer ${this.token}`;
+    }
+    return headers;
+  }
+
+  async request(endpoint, options = {}) {
+    const url = `${API_URL}${endpoint}`;
+    const config = {
+      ...options,
+      headers: {
+        ...this.getAuthHeaders(),
+        ...options.headers,
+      },
+    };
+
+    console.log('API Request:', url, config);
+
+    try {
+      const response = await fetch(url, config);
+      const data = await response.json();
+
+      console.log('API Response:', response.status, data);
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Request failed');
+      }
+
+      return data;
+    } catch (error) {
+      console.error('API request failed:', error);
+      throw error;
+    }
+  }
+
+  // Auth endpoints
+  async register(username, email, password) {
+    const data = await this.request('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ username, email, password }),
+    });
+    this.setToken(data.token);
+    return data;
+  }
+
+  async login(email, password) {
+    const data = await this.request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    this.setToken(data.token);
+    return data;
+  }
+
+  logout() {
+    this.setToken(null);
+    localStorage.removeItem('user');
+  }
+
+  isAuthenticated() {
+    return !!this.token;
+  }
+
+  // Vocabulary endpoints
+  async getVocabulary() {
+    return this.request('/vocabulary');
+  }
+
+  async getVocabularyById(id) {
+    return this.request(`/vocabulary/${id}`);
+  }
+
+  async createVocabulary(english, german, level = 'B2') {
+    return this.request('/vocabulary', {
+      method: 'POST',
+      body: JSON.stringify({ english, german, level }),
+    });
+  }
+
+  async updateVocabulary(id, updates) {
+    return this.request(`/vocabulary/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates),
+    });
+  }
+
+  async deleteVocabulary(id) {
+    return this.request(`/vocabulary/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // Progress endpoints
+  async getProgress() {
+    return this.request('/progress');
+  }
+
+  async updateProgress(vocabularyId, wasCorrect, responseTimeMs = null) {
+    return this.request(`/progress/${vocabularyId}`, {
+      method: 'POST',
+      body: JSON.stringify({ wasCorrect, responseTimeMs }),
+    });
+  }
+
+  async startSession(mode) {
+    return this.request('/progress/session/start', {
+      method: 'POST',
+      body: JSON.stringify({ mode }),
+    });
+  }
+
+  async completeSession(sessionId, score, correctAnswers, totalAnswers, durationSeconds, details = []) {
+    return this.request(`/progress/session/${sessionId}/complete`, {
+      method: 'POST',
+      body: JSON.stringify({
+        score,
+        correctAnswers,
+        totalAnswers,
+        durationSeconds,
+        details,
+      }),
+    });
+  }
+
+  async getStats() {
+    return this.request('/progress/stats');
+  }
+
+  // Flashcard endpoints
+  async addToFlashcardDeck(vocabularyId) {
+    return this.request('/flashcards', {
+      method: 'POST',
+      body: JSON.stringify({ vocabularyId }),
+    });
+  }
+
+  async getDueFlashcards() {
+    return this.request('/flashcards/due');
+  }
+
+  async getAllFlashcards() {
+    return this.request('/flashcards');
+  }
+
+  async reviewFlashcard(flashcardId, quality) {
+    return this.request(`/flashcards/${flashcardId}/review`, {
+      method: 'POST',
+      body: JSON.stringify({ quality }),
+    });
+  }
+
+  async removeFromFlashcardDeck(flashcardId) {
+    return this.request(`/flashcards/${flashcardId}`, {
+      method: 'DELETE',
+    });
+  }
+
+  async getFlashcardStats() {
+    return this.request('/flashcards/stats');
+  }
+}
+
+const apiService = new ApiService();
+
+// Named exports for convenience
+export const updateVocabulary = (id, updates) => apiService.updateVocabulary(id, updates);
+export const deleteVocabulary = (id) => apiService.deleteVocabulary(id);
+export const updateProgress = (vocabularyId, wasCorrect, responseTimeMs) => apiService.updateProgress(vocabularyId, wasCorrect, responseTimeMs);
+export const startSession = (mode) => apiService.startSession(mode);
+export const completeSession = (sessionId, data) => apiService.completeSession(sessionId, data.score, data.correctAnswers, data.totalAnswers, data.durationSeconds, data.details);
+export const addToFlashcardDeck = (vocabularyId) => apiService.addToFlashcardDeck(vocabularyId);
+export const getDueFlashcards = () => apiService.getDueFlashcards();
+export const getAllFlashcards = () => apiService.getAllFlashcards();
+export const reviewFlashcard = (flashcardId, quality) => apiService.reviewFlashcard(flashcardId, quality);
+export const removeFromFlashcardDeck = (flashcardId) => apiService.removeFromFlashcardDeck(flashcardId);
+export const getFlashcardStats = () => apiService.getFlashcardStats();
+
+export default apiService;
