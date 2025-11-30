@@ -9,15 +9,20 @@
 1. Klicke "New Project"
 2. Wähle "Deploy from GitHub repo"
 3. Suche und wähle `andreasknopke/RefreshYourEnglish`
+4. Railway erstellt automatisch ein Service - das ist fürs **Backend**
 
-## Schritt 3: Backend Service einrichten
+## Schritt 3: Backend Service konfigurieren
 
-### Service erstellen:
-1. Railway fragt nach dem Root Directory
-2. Setze Root Directory auf: **`backend`**
-3. Railway erkennt automatisch Node.js
+### Root Directory setzen:
+1. Klicke auf den erstellten Service
+2. Gehe zu **"Settings"** (oben rechts)
+3. Scrolle zu **"Service"** Sektion
+4. Bei **"Root Directory"** trage ein: **`backend`**
+5. Klicke "Update" oder Railway speichert automatisch
 
 ### Environment Variables setzen:
+1. Gehe zum Tab **"Variables"** (oben)
+2. Klicke "+ New Variable" und füge hinzu:
 Klicke auf "Variables" und füge hinzu:
 
 ```
@@ -29,17 +34,27 @@ DB_PATH=/app/data/vocabulary.db
 
 ⚠️ **CORS_ORIGIN** kommt später (nach Frontend-Deployment)
 
-### Deploy:
-- Railway deployed automatisch
-- Warte bis Status "✅ Deployed" ist
-- **Kopiere die Backend-URL** (z.B. `https://web-production-abc123.up.railway.app`)
+### Deploy starten:
+1. Gehe zum Tab **"Deployments"**
+2. Railway startet automatisch den ersten Deploy
+3. Warte bis Status "✅ Success" ist (kann 2-3 Minuten dauern)
+4. Gehe zu **"Settings"** → **"Networking"**
+5. Klicke **"Generate Domain"** um eine öffentliche URL zu erstellen
+6. **Kopiere die Backend-URL** (z.B. `https://backend-production-abc123.up.railway.app`)
 
-## Schritt 4: Frontend Service einrichten
+## Schritt 4: Frontend Service hinzufügen
 
-### Neuen Service im gleichen Projekt:
-1. Klicke "+ New" → "GitHub Repo"
-2. Wähle wieder `andreasknopke/RefreshYourEnglish`
-3. Setze Root Directory: **`.`** (Root/leer lassen)
+### Neuen Service erstellen:
+1. Im gleichen Projekt: Klicke **"+ New"** (oben rechts)
+2. Wähle **"GitHub Repo"**
+3. Wähle wieder `andreasknopke/RefreshYourEnglish`
+4. Railway erstellt einen zweiten Service
+
+### Root Directory setzen:
+1. Klicke auf den neuen Service
+2. Gehe zu **"Settings"**
+3. Bei **"Root Directory"** lass es **leer** oder trage **`.`** ein
+4. Railway erkennt automatisch Vite
 
 ### Environment Variables:
 ```
@@ -49,9 +64,12 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 
 ⚠️ Ersetze `DEINE-BACKEND-URL` mit der URL aus Schritt 3!
 
-### Deploy:
-- Railway deployed automatisch
-- **Kopiere die Frontend-URL** (z.B. `https://web-production-xyz789.up.railway.app`)
+### Deploy & Domain:
+1. Railway deployed automatisch
+2. Warte bis "✅ Success"
+3. Gehe zu **"Settings"** → **"Networking"**
+4. Klicke **"Generate Domain"**
+5. **Kopiere die Frontend-URL** (z.B. `https://frontend-production-xyz789.up.railway.app`)
 
 ## Schritt 5: URLs verlinken
 
