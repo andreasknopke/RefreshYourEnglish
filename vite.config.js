@@ -10,7 +10,12 @@ export default defineConfig({
   },
   preview: {
     host: true,
-    port: 5173
+    port: 5173,
+    allowedHosts: [
+      '.railway.app',
+      '.up.railway.app',
+      'localhost'
+    ]
   },
   plugins: [
     react(),
