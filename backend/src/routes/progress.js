@@ -1,12 +1,16 @@
 import express from 'express';
 import db from '../models/database.js';
-import { authenticateToken } from '../middleware/auth.js';
+import { authenticateToken, optionalAuth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Get user progress
-router.get('/', authenticateToken, (req, res) => {
+// Get user progress (optional auth - returns empty for anonymous)
+router.get('/', optionalAuth, (req, res) => {
   try {
+    if (!req.user) {
+      return res.json({ progress: [], stats: { total_practiced: 0, total_correct: 0, total_incorrect: 0, avg_mastery: 0 } });
+    }
+
     const progress = db.prepare(`
       SELECT 
         up.*,
@@ -36,10 +40,16 @@ router.get('/', authenticateToken, (req, res) => {
   }
 });
 
-// Update progress for a vocabulary item
-router.post('/:vocabularyId', authenticateToken, (req, res) => {
+// Update progress for a vocabulary item (optional auth - ignores if anonymous)
+router.post('/:vocabularyId', optionalAuth, (req, res) => {
   const { wasCorrect, responseTimeMs } = req.body;
   const { vocabularyId } = req.params;
+  
+  // If not authenticated, just return success without saving
+  if (!req.user) {
+    return res.json({ message: 'Progress not saved (anonymous mode)', vocabularyId, wasCorrect });
+  }
+
   const userId = req.user.userId;
 
   try {
@@ -78,9 +88,20 @@ router.post('/:vocabularyId', authenticateToken, (req, res) => {
   }
 });
 
-// Start training session
-router.post('/session/start', authenticateToken, (req, res) => {
+// Start training session (optional auth - returns mock session for anonymous)
+router.post('/session/start', optionalAuth, (req, res) => {
   const { mode } = req.body;
+  
+  // If not authenticated, return a mock session
+  if (!req.user) {
+    return res.json({ 
+      id: 'anonymous-' + Date.now(), 
+      mode, 
+      started_at: new Date().toISOString(),
+      anonymous: true 
+    });
+  }
+
   const userId = req.user.userId;
 
   try {
@@ -93,10 +114,21 @@ router.post('/session/start', authenticateToken, (req, res) => {
   }
 });
 
-// Complete training session
-router.post('/session/:sessionId/complete', authenticateToken, (req, res) => {
+// Complete training session (optional auth - ignores for anonymous)
+router.post('/session/:sessionId/complete', optionalAuth, (req, res) => {
   const { sessionId } = req.params;
   const { score, correctAnswers, totalAnswers, durationSeconds, details } = req.body;
+  
+  // If not authenticated or anonymous session, just return success
+  if (!req.user || sessionId.startsWith('anonymous-')) {
+    return res.json({ 
+      message: 'Session completed (anonymous mode)', 
+      score, 
+      correctAnswers, 
+      totalAnswers 
+    });
+  }
+
   const userId = req.user.userId;
 
   try {

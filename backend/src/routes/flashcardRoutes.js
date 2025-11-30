@@ -7,29 +7,18 @@ import {
   removeFromFlashcardDeck,
   getFlashcardStats
 } from '../controllers/flashcardController.js';
-import { authenticateToken } from '../middleware/auth.js';
+import { authenticateToken, optionalAuth } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Alle Routes benötigen Authentication
-router.use(authenticateToken);
+// GET routes mit optionalAuth (geben leere Arrays für anonymous zurück)
+router.get('/due', optionalAuth, getDueFlashcards);
+router.get('/stats', optionalAuth, getFlashcardStats);
+router.get('/', optionalAuth, getAllFlashcards);
 
-// POST /api/flashcards - Füge Vokabel zum Deck hinzu
-router.post('/', addToFlashcardDeck);
-
-// GET /api/flashcards/due - Hole fällige Flashcards für heute
-router.get('/due', getDueFlashcards);
-
-// GET /api/flashcards/stats - Hole Statistiken
-router.get('/stats', getFlashcardStats);
-
-// GET /api/flashcards - Hole alle Flashcards des Users
-router.get('/', getAllFlashcards);
-
-// POST /api/flashcards/:flashcardId/review - Review einer Flashcard
-router.post('/:flashcardId/review', reviewFlashcard);
-
-// DELETE /api/flashcards/:flashcardId - Entferne Flashcard
-router.delete('/:flashcardId', removeFromFlashcardDeck);
+// POST/DELETE routes benötigen Authentication
+router.post('/', authenticateToken, addToFlashcardDeck);
+router.post('/:flashcardId/review', authenticateToken, reviewFlashcard);
+router.delete('/:flashcardId', authenticateToken, removeFromFlashcardDeck);
 
 export default router;

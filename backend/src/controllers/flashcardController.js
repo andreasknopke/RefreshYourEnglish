@@ -81,6 +81,11 @@ export const addToFlashcardDeck = (req, res) => {
 // Hole fällige Flashcards für heute
 export const getDueFlashcards = (req, res) => {
   try {
+    // Return empty for anonymous users
+    if (!req.user) {
+      return res.json({ dueCount: 0, flashcards: [] });
+    }
+
     const userId = req.user.userId;
     const today = new Date().toISOString().split('T')[0];
 
@@ -183,6 +188,14 @@ export const reviewFlashcard = (req, res) => {
 // Alle Flashcards eines Users abrufen (mit Stats)
 export const getAllFlashcards = (req, res) => {
   try {
+    // Return empty for anonymous users
+    if (!req.user) {
+      return res.json({ 
+        stats: { total: 0, due: 0, learning: 0, mastered: 0 },
+        flashcards: [] 
+      });
+    }
+
     const userId = req.user.userId;
     const today = new Date().toISOString().split('T')[0];
 
@@ -253,6 +266,17 @@ export const removeFromFlashcardDeck = (req, res) => {
 // Statistiken für Dashboard
 export const getFlashcardStats = (req, res) => {
   try {
+    // Anonyme Benutzer erhalten leere Statistiken
+    if (!req.user) {
+      return res.json({
+        total: 0,
+        due: 0,
+        learning: 0,
+        mastered: 0,
+        avg_ease_factor: null
+      });
+    }
+
     const userId = req.user.userId;
     const today = new Date().toISOString().split('T')[0];
 
