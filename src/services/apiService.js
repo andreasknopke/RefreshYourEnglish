@@ -38,13 +38,29 @@ class ApiService {
 
     try {
       const response = await fetch(url, config);
-      const data = await response.json();
-
-      console.log('API Response:', response.status, data);
-
+      
+      // Prüfe ob Response OK ist
       if (!response.ok) {
-        throw new Error(data.error || 'Request failed');
+        // Versuche JSON zu parsen, falls verfügbar
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        throw new Error(errorData.error || errorData.message || 'Request failed');
       }
+
+      // Prüfe ob Response JSON ist
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Non-JSON response:', text);
+        throw new Error('Server returned non-JSON response. Check API_URL configuration.');
+      }
+
+      const data = await response.json();
+      console.log('API Response:', response.status, data);
 
       return data;
     } catch (error) {
