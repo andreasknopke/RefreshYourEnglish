@@ -70,7 +70,10 @@ VITE_API_URL=https://DEINE-BACKEND-URL.railway.app/api
 VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 ```
 
-⚠️ Ersetze `DEINE-BACKEND-URL` mit der URL aus Schritt 3!
+⚠️ **WICHTIG**: 
+- Ersetze `DEINE-BACKEND-URL` mit der URL aus Schritt 3!
+- URL **muss** mit `https://` beginnen und mit `/api` enden!
+- **Beispiel**: `VITE_API_URL=https://refreshyourenglish-production.up.railway.app/api`
 
 ### Deploy & Domain:
 1. Railway deployed automatisch
@@ -101,6 +104,14 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 ---
 
 ## 🔧 Troubleshooting
+
+### CORS-Fehler: "No 'Access-Control-Allow-Origin' header"
+→ **Das Backend blockiert das Frontend**:
+   1. Gehe zum **Backend Service** → **Variables**
+   2. Füge hinzu: `CORS_ORIGIN=https://deine-frontend-url.railway.app`
+   3. **Wichtig**: Muss die **exakte Frontend-URL** sein!
+   4. Backend wird automatisch neu deployed
+   5. Nach 1-2 Minuten erneut versuchen
 
 ### "Unexpected end of JSON input" beim Registrieren
 → **Backend nicht erreichbar** - Prüfe die Backend-URL:
