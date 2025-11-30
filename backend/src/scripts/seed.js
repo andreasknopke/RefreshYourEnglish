@@ -6,12 +6,34 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Lade Vokabeln aus der vocabulary.txt
-const vocabFilePath = path.join(__dirname, '../../../public/vocabulary.txt');
+// Try multiple paths for the vocabulary file
+const possiblePaths = [
+  path.join(__dirname, '../../vocabulary.txt'),  // Backend root
+  path.join(__dirname, '../../../public/vocabulary.txt'),
+  path.join(__dirname, '../../public/vocabulary.txt'),
+  path.join(process.cwd(), 'vocabulary.txt'),
+  path.join(process.cwd(), 'public/vocabulary.txt'),
+  path.join(process.cwd(), '../public/vocabulary.txt'),
+];
+
+let vocabFilePath = null;
+for (const p of possiblePaths) {
+  if (fs.existsSync(p)) {
+    vocabFilePath = p;
+    console.log(`📁 Found vocabulary file at: ${p}`);
+    break;
+  }
+}
+
+if (!vocabFilePath) {
+  console.error('❌ Could not find vocabulary.txt file. Tried:');
+  possiblePaths.forEach(p => console.error(`   - ${p}`));
+  process.exit(1);
+}
 
 try {
   const content = fs.readFileSync(vocabFilePath, 'utf-8');
-  const lines = content.split('\n').filter(line => line.trim() !== '');
+  const lines = content.split('\n').filter(line => line.trim() !== '' && !line.trim().startsWith('#'));
   
   console.log(`📚 Importing ${lines.length} vocabulary items...`);
   
