@@ -31,9 +31,19 @@ function ActionModule() {
         setIsLoadingVocabulary(true);
         setLoadError(null);
         const data = await apiService.getVocabulary();
-        console.log('Loaded vocabulary from API:', data.length, 'items');
+        console.log('Loaded vocabulary from API:', data);
+        
+        // API gibt { count: number, vocabulary: array } zurück
+        const vocabArray = data.vocabulary || data;
+        
+        if (!Array.isArray(vocabArray)) {
+          throw new Error('API response is not an array');
+        }
+        
+        console.log('Processing', vocabArray.length, 'vocabulary items');
+        
         // Konvertiere API-Format zu Component-Format
-        const formattedVocab = data.map(v => ({
+        const formattedVocab = vocabArray.map(v => ({
           id: v.id,
           de: v.german,
           en: v.english,
