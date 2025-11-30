@@ -1,23 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { generateVocabularyChallenge } from '../services/llmService';
-
-const initialVocabulary = [
-  { de: 'Haus', en: 'house' },
-  { de: 'Auto', en: 'car' },
-  { de: 'Baum', en: 'tree' },
-  { de: 'Buch', en: 'book' },
-  { de: 'Wasser', en: 'water' },
-  { de: 'Sonne', en: 'sun' },
-  { de: 'Mond', en: 'moon' },
-  { de: 'Tisch', en: 'table' },
-  { de: 'Stuhl', en: 'chair' },
-  { de: 'Fenster', en: 'window' },
-  { de: 'Tür', en: 'door' },
-  { de: 'Blume', en: 'flower' },
-  { de: 'Katze', en: 'cat' },
-  { de: 'Hund', en: 'dog' },
-  { de: 'Vogel', en: 'bird' },
-];
+import apiService from '../services/apiService';
 
 function ActionModule() {
   const [timeLimit, setTimeLimit] = useState(10);
@@ -36,7 +19,34 @@ function ActionModule() {
   const [roundProgress, setRoundProgress] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [floatingTranslation, setFloatingTranslation] = useState(null);
+  const [vocabulary, setVocabulary] = useState([]);
+  const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
   const inputRef = useRef(null);
+
+  // Lade Vokabeln von der API
+  useEffect(() => {
+    const loadVocabulary = async () => {
+      try {
+        setIsLoadingVocabulary(true);
+        const data = await apiService.getVocabulary();
+        // Konvertiere API-Format zu Component-Format
+        const formattedVocab = data.map(v => ({
+          id: v.id,
+          de: v.german,
+          en: v.english,
+          level: v.level
+        }));
+        setVocabulary(formattedVocab);
+      } catch (error) {
+        console.error('Failed to load vocabulary:', error);
+        // Fallback zu leerer Liste wenn API-Fehler
+        setVocabulary([]);
+      } finally {
+        setIsLoadingVocabulary(false);
+      }
+    };
+    loadVocabulary();
+  }, []);
 
   useEffect(() => {
     let timer;
@@ -69,14 +79,18 @@ function ActionModule() {
   };
 
   const startRound = () => {
-    const randomWord = initialVocabulary[Math.floor(Math.random() * initialVocabulary.length)];
+    if (vocabulary.length === 0) {
+      console.error('No vocabulary available');
+      return;
+    }
+    const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)];
     setCurrentWord(randomWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
-  const handleTimeout = () => {
+  const handleTimeout = async () => {
     const answer = {
       word: currentWord,
       correct: false,
@@ -86,6 +100,15 @@ function ActionModule() {
     setCurrentRound([...currentRound, answer]);
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
+    
+    // Speichere Fortschritt in der API (Timeout = falsche Antwort)
+    if (currentWord.id) {
+      try {
+        await apiService.updateProgress(currentWord.id, false);
+      } catch (error) {
+        console.error('Failed to save progress:', error);
+      }
+    }
     
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
@@ -102,7 +125,7 @@ function ActionModule() {
     }
   };
 
-  const handleKnow = () => {
+  const handleKnow = async () => {
     setIsActive(false);
     
     const timeBonus = Math.floor(timeLeft / 2);
@@ -122,6 +145,15 @@ function ActionModule() {
     setStreak(streak + 1);
     setTotalAnswers(totalAnswers + 1);
     
+    // Speichere Fortschritt in der API
+    if (currentWord.id) {
+      try {
+        await apiService.updateProgress(currentWord.id, true);
+      } catch (error) {
+        console.error('Failed to save progress:', error);
+      }
+    }
+    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: true });
     
@@ -136,7 +168,7 @@ function ActionModule() {
     }
   };
 
-  const handleForgot = () => {
+  const handleForgot = async () => {
     setIsActive(false);
     
     const answer = {
@@ -148,6 +180,15 @@ function ActionModule() {
     setCurrentRound([...currentRound, answer]);
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
+    
+    // Speichere Fortschritt in der API (falsche Antwort)
+    if (currentWord.id) {
+      try {
+        await apiService.updateProgress(currentWord.id, false);
+      } catch (error) {
+        console.error('Failed to save progress:', error);
+      }
+    }
     
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
@@ -252,31 +293,50 @@ function ActionModule() {
               Teste so viele Wörter wie möglich bevor die Zeit abläuft!
             </p>
             
-            {/* Words per round selector */}
-            <div className="mb-6 max-w-xs mx-auto">
-              <label className="block text-sm font-bold text-gray-700 mb-2">
-                Anzahl der Wörter pro Runde:
-              </label>
-              <select
-                value={wordsPerRound}
-                onChange={(e) => setWordsPerRound(Number(e.target.value))}
-                className="w-full px-4 py-2 rounded-xl border-2 border-indigo-300 focus:border-indigo-500 focus:outline-none bg-white font-bold text-gray-800"
-              >
-                <option value={5}>5 Wörter</option>
-                <option value={10}>10 Wörter</option>
-                <option value={15}>15 Wörter</option>
-                <option value={20}>20 Wörter</option>
-                <option value={30}>30 Wörter</option>
-                <option value={50}>50 Wörter</option>
-              </select>
-            </div>
-            
-            <button
-              onClick={startGame}
-              className="btn-secondary text-lg py-3 px-8"
-            >
-              🚀 Start
-            </button>
+            {isLoadingVocabulary ? (
+              <div className="mb-6">
+                <div className="animate-spin w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto"></div>
+                <p className="mt-3 text-gray-600">Lade Vokabeln...</p>
+              </div>
+            ) : vocabulary.length === 0 ? (
+              <div className="mb-6">
+                <p className="text-red-600 font-bold">⚠️ Keine Vokabeln verfügbar</p>
+                <p className="text-gray-600 text-sm mt-2">Bitte prüfe die API-Verbindung</p>
+              </div>
+            ) : (
+              <>
+                <p className="text-sm text-gray-500 mb-4">
+                  {vocabulary.length} Vokabeln geladen
+                </p>
+                
+                {/* Words per round selector */}
+                <div className="mb-6 max-w-xs mx-auto">
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Anzahl der Wörter pro Runde:
+                  </label>
+                  <select
+                    value={wordsPerRound}
+                    onChange={(e) => setWordsPerRound(Number(e.target.value))}
+                    className="w-full px-4 py-2 rounded-xl border-2 border-indigo-300 focus:border-indigo-500 focus:outline-none bg-white font-bold text-gray-800"
+                  >
+                    <option value={5}>5 Wörter</option>
+                    <option value={10}>10 Wörter</option>
+                    <option value={15}>15 Wörter</option>
+                    <option value={20}>20 Wörter</option>
+                    <option value={30}>30 Wörter</option>
+                    <option value={50}>50 Wörter</option>
+                  </select>
+                </div>
+                
+                <button
+                  onClick={startGame}
+                  disabled={isLoadingVocabulary || vocabulary.length === 0}
+                  className="btn-secondary text-lg py-3 px-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  🚀 Start
+                </button>
+              </>
+            )}
           </div>
         ) : showFeedback ? (
           // Final Results Screen
