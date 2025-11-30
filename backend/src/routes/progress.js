@@ -53,12 +53,15 @@ router.post('/:vocabularyId', optionalAuth, (req, res) => {
   const userId = req.user.userId;
 
   try {
+    console.log('Update progress - userId:', userId, 'vocabularyId:', vocabularyId, 'wasCorrect:', wasCorrect);
+    
     // Get or create progress entry
-    let progress = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, vocabularyId);
+    let progress = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, parseInt(vocabularyId));
 
     if (!progress) {
-      db.prepare('INSERT INTO user_progress (user_id, vocabulary_id) VALUES (?, ?)').run(userId, vocabularyId);
-      progress = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, vocabularyId);
+      console.log('Creating new progress entry for userId:', userId, 'vocabularyId:', vocabularyId);
+      db.prepare('INSERT INTO user_progress (user_id, vocabulary_id) VALUES (?, ?)').run(userId, parseInt(vocabularyId));
+      progress = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, parseInt(vocabularyId));
     }
 
     // Update counts
@@ -78,13 +81,15 @@ router.post('/:vocabularyId', optionalAuth, (req, res) => {
         mastery_level = ?,
         last_practiced = CURRENT_TIMESTAMP
       WHERE user_id = ? AND vocabulary_id = ?
-    `).run(correctIncrement, incorrectIncrement, masteryLevel, userId, vocabularyId);
+    `).run(correctIncrement, incorrectIncrement, masteryLevel, userId, parseInt(vocabularyId));
 
-    const updated = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, vocabularyId);
+    const updated = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, parseInt(vocabularyId));
     res.json(updated);
   } catch (error) {
     console.error('Update progress error:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error details:', error.message);
+    console.error('Stack:', error.stack);
+    res.status(500).json({ error: 'Server error', message: error.message });
   }
 });
 

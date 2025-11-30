@@ -1,10 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { generateVocabularyChallenge } from '../services/llmService';
-import { loadVocabulary, getRandomVocabulary } from '../utils/vocabularyLoader';
-import { updateProgress, startSession, completeSession } from '../services/apiService';
-import VocabularyEditor from './VocabularyEditor';
 
-function ActionModule({ user }) {
+const initialVocabulary = [
+  { de: 'Haus', en: 'house' },
+  { de: 'Auto', en: 'car' },
+  { de: 'Baum', en: 'tree' },
+  { de: 'Buch', en: 'book' },
+  { de: 'Wasser', en: 'water' },
+  { de: 'Sonne', en: 'sun' },
+  { de: 'Mond', en: 'moon' },
+  { de: 'Tisch', en: 'table' },
+  { de: 'Stuhl', en: 'chair' },
+  { de: 'Fenster', en: 'window' },
+  { de: 'Tür', en: 'door' },
+  { de: 'Blume', en: 'flower' },
+  { de: 'Katze', en: 'cat' },
+  { de: 'Hund', en: 'dog' },
+  { de: 'Vogel', en: 'bird' },
+];
+
+function ActionModule() {
   const [timeLimit, setTimeLimit] = useState(10);
   const [isActive, setIsActive] = useState(false);
   const [currentWord, setCurrentWord] = useState(null);
@@ -21,24 +36,7 @@ function ActionModule({ user }) {
   const [roundProgress, setRoundProgress] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [floatingTranslation, setFloatingTranslation] = useState(null);
-  const [vocabulary, setVocabulary] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [slideAnimation, setSlideAnimation] = useState(null);
-  const [editingWordId, setEditingWordId] = useState(null);
-  const [sessionId, setSessionId] = useState(null);
-  const [sessionStartTime, setSessionStartTime] = useState(null);
   const inputRef = useRef(null);
-
-  // Lade Vokabeln beim Start
-  useEffect(() => {
-    const initVocabulary = async () => {
-      setIsLoading(true);
-      const vocab = await loadVocabulary();
-      setVocabulary(vocab);
-      setIsLoading(false);
-    };
-    initVocabulary();
-  }, []);
 
   useEffect(() => {
     let timer;
@@ -59,7 +57,7 @@ function ActionModule({ user }) {
     }
   }, [floatingTranslation]);
 
-  const startGame = async () => {
+  const startGame = () => {
     setGameStarted(true);
     setCurrentRound([]);
     setRoundProgress(0);
@@ -67,24 +65,11 @@ function ActionModule({ user }) {
     setStreak(0);
     setTotalAnswers(0);
     setShowFeedback(false);
-    
-    // Start session tracking if user is logged in
-    if (user) {
-      try {
-        const session = await startSession('action');
-        setSessionId(session.id);
-        setSessionStartTime(Date.now());
-      } catch (err) {
-        console.error('Failed to start session:', err);
-      }
-    }
-    
     startRound();
   };
 
   const startRound = () => {
-    if (vocabulary.length === 0) return;
-    const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+    const randomWord = initialVocabulary[Math.floor(Math.random() * initialVocabulary.length)];
     setCurrentWord(randomWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
@@ -92,8 +77,6 @@ function ActionModule({ user }) {
   };
 
   const handleTimeout = () => {
-    setSlideAnimation('right');
-    
     const answer = {
       word: currentWord,
       correct: false,
@@ -104,11 +87,6 @@ function ActionModule({ user }) {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
-    // Update progress if user is logged in
-    if (user && currentWord.id) {
-      updateProgress(currentWord.id, false).catch(err => console.error('Failed to update progress:', err));
-    }
-    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
     
@@ -116,40 +94,16 @@ function ActionModule({ user }) {
     if (roundProgress + 1 >= wordsPerRound) {
       setTimeout(() => {
         setIsActive(false);
-        setSlideAnimation(null);
         setShowFeedback(true);
-        
-        // Complete session tracking if user is logged in
-        if (user && sessionId && sessionStartTime) {
-          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
-          const correctCount = currentRound.filter(a => a.correct).length + (answer.correct ? 1 : 0);
-          const details = [...currentRound, answer].map(a => ({
-            vocabularyId: a.word.id,
-            wasCorrect: a.correct,
-            responseTimeMs: 0
-          }));
-          
-          completeSession(sessionId, {
-            score,
-            correctAnswers: correctCount,
-            totalAnswers: wordsPerRound,
-            durationSeconds,
-            details
-          }).catch(err => console.error('Failed to complete session:', err));
-        }
-      }, 600);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => {
-        setSlideAnimation(null);
-        startRound();
-      }, 600);
+      setTimeout(() => startRound(), 2000);
     }
   };
 
   const handleKnow = () => {
     setIsActive(false);
-    setSlideAnimation('left');
     
     const timeBonus = Math.floor(timeLeft / 2);
     const streakBonus = streak >= 5 ? 5 : 0;
@@ -168,51 +122,22 @@ function ActionModule({ user }) {
     setStreak(streak + 1);
     setTotalAnswers(totalAnswers + 1);
     
-    // Update progress if user is logged in
-    if (user && currentWord.id) {
-      updateProgress(currentWord.id, true).catch(err => console.error('Failed to update progress:', err));
-    }
-    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: true });
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
       setTimeout(() => {
-        setSlideAnimation(null);
         setShowFeedback(true);
-        
-        // Complete session tracking if user is logged in
-        if (user && sessionId && sessionStartTime) {
-          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
-          const correctCount = currentRound.filter(a => a.correct).length + 1;
-          const details = [...currentRound, answer].map(a => ({
-            vocabularyId: a.word.id,
-            wasCorrect: a.correct,
-            responseTimeMs: 0
-          }));
-          
-          completeSession(sessionId, {
-            score: score + points,
-            correctAnswers: correctCount,
-            totalAnswers: wordsPerRound,
-            durationSeconds,
-            details
-          }).catch(err => console.error('Failed to complete session:', err));
-        }
-      }, 600);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => {
-        setSlideAnimation(null);
-        startRound();
-      }, 600);
+      setTimeout(() => startRound(), 2000);
     }
   };
 
   const handleForgot = () => {
     setIsActive(false);
-    setSlideAnimation('right');
     
     const answer = {
       word: currentWord,
@@ -224,45 +149,17 @@ function ActionModule({ user }) {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
-    // Update progress if user is logged in
-    if (user && currentWord.id) {
-      updateProgress(currentWord.id, false).catch(err => console.error('Failed to update progress:', err));
-    }
-    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: false });
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
       setTimeout(() => {
-        setSlideAnimation(null);
         setShowFeedback(true);
-        
-        // Complete session tracking if user is logged in
-        if (user && sessionId && sessionStartTime) {
-          const durationSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
-          const correctCount = currentRound.filter(a => a.correct).length;
-          const details = [...currentRound, answer].map(a => ({
-            vocabularyId: a.word.id,
-            wasCorrect: a.correct,
-            responseTimeMs: 0
-          }));
-          
-          completeSession(sessionId, {
-            score,
-            correctAnswers: correctCount,
-            totalAnswers: wordsPerRound,
-            durationSeconds,
-            details
-          }).catch(err => console.error('Failed to complete session:', err));
-        }
-      }, 600);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => {
-        setSlideAnimation(null);
-        startRound();
-      }, 600);
+      setTimeout(() => startRound(), 2000);
     }
   };
 
@@ -281,34 +178,6 @@ function ActionModule({ user }) {
       default:
         setTimeLimit(10);
     }
-  };
-
-  const handleVocabularyUpdate = (updatedVocab) => {
-    // Update in vocabulary list
-    setVocabulary(prev => 
-      prev.map(v => v.id === updatedVocab.id ? { ...v, en: updatedVocab.english, de: updatedVocab.german, level: updatedVocab.level } : v)
-    );
-    
-    // Update in current round if present
-    setCurrentRound(prev => 
-      prev.map(answer => 
-        answer.word.id === updatedVocab.id 
-          ? { ...answer, word: { ...answer.word, en: updatedVocab.english, de: updatedVocab.german, level: updatedVocab.level } }
-          : answer
-      )
-    );
-    
-    setEditingWordId(null);
-  };
-
-  const handleVocabularyDelete = (deletedId) => {
-    // Remove from vocabulary list
-    setVocabulary(prev => prev.filter(v => v.id !== deletedId));
-    
-    // Remove from current round if present
-    setCurrentRound(prev => prev.filter(answer => answer.word.id !== deletedId));
-    
-    setEditingWordId(null);
   };
 
   const getProgressColor = () => {
@@ -338,7 +207,7 @@ function ActionModule({ user }) {
             <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 text-center border border-purple-100">
               <p className="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Genauigkeit</p>
               <p className="text-2xl md:text-3xl font-bold text-purple-600">
-                {totalAnswers > 0 ? Math.round((currentRound.filter(a => a.correct).length / totalAnswers) * 100) : 0}%
+                {totalAnswers > 0 ? Math.round((score / (totalAnswers * 10)) * 100) : 0}%
               </p>
             </div>
           </div>
@@ -367,12 +236,7 @@ function ActionModule({ user }) {
         </div>
 
         {/* Game Area */}
-        {isLoading ? (
-          <div className="text-center py-16">
-            <div className="w-16 h-16 mx-auto mb-4 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-            <p className="text-gray-600">Lade Vokabeln...</p>
-          </div>
-        ) : !gameStarted ? (
+        {!gameStarted ? (
           <div className="text-center py-8">
             <div className="mb-6">
               <div className="w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl">
@@ -384,11 +248,8 @@ function ActionModule({ user }) {
             <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">
               Bereit für den Action Modus?
             </h3>
-            <p className="text-base text-gray-600 mb-2 max-w-md mx-auto">
+            <p className="text-base text-gray-600 mb-4 max-w-md mx-auto">
               Teste so viele Wörter wie möglich bevor die Zeit abläuft!
-            </p>
-            <p className="text-sm text-gray-500 mb-4">
-              📚 {vocabulary.length} Vokabeln geladen
             </p>
             
             {/* Words per round selector */}
@@ -404,7 +265,7 @@ function ActionModule({ user }) {
                 <option value={5}>5 Wörter</option>
                 <option value={10}>10 Wörter</option>
                 <option value={15}>15 Wörter</option>
-                <option value={20}>20 Wörter (Standard)</option>
+                <option value={20}>20 Wörter</option>
                 <option value={30}>30 Wörter</option>
                 <option value={50}>50 Wörter</option>
               </select>
@@ -434,69 +295,29 @@ function ActionModule({ user }) {
             </div>
             
             {/* Detailed Results */}
-            <div className="glass-card rounded-2xl p-4 mb-4 max-h-96 overflow-y-auto">
-              {/* Falsch beantwortete Wörter */}
-              <h4 className="text-lg font-bold text-gray-800 mb-3">❌ Falsch beantwortete Wörter ({currentRound.filter(a => !a.correct).length})</h4>
-              {currentRound.filter(a => !a.correct).length === 0 ? (
-                <div className="text-center py-8">
-                  <p className="text-2xl mb-2">🎉</p>
-                  <p className="text-green-600 font-bold">Perfekt! Alle Wörter gewusst!</p>
-                </div>
-              ) : (
-                <div className="space-y-2 mb-6">
-                  {currentRound.filter(a => !a.correct).map((answer, index) => (
-                    <div
-                      key={index}
-                      className="p-3 rounded-xl bg-red-50 border border-red-200"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl">❌</span>
-                          {answer.timedOut && (
-                            <span className="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">⏱️ Zeit abgelaufen</span>
-                          )}
-                        </div>
+            <div className="glass-card rounded-2xl p-4 mb-4 max-h-64 overflow-y-auto">
+              <h4 className="text-lg font-bold text-gray-800 mb-3">📊 Detaillierte Auswertung</h4>
+              <div className="space-y-2">
+                {currentRound.map((answer, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center justify-between p-3 rounded-xl ${
+                      answer.correct ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl">{answer.correct ? '✅' : '❌'}</span>
+                      <div>
+                        <p className="font-bold text-gray-800">{answer.word.de}</p>
+                        <p className="text-sm text-gray-600">{answer.word.en}</p>
                       </div>
-                      <VocabularyEditor
-                        vocabulary={answer.word}
-                        onUpdate={handleVocabularyUpdate}
-                        onDelete={handleVocabularyDelete}
-                        onClose={() => setEditingWordId(null)}
-                      />
                     </div>
-                  ))}
-                </div>
-              )}
-              
-              {/* Richtig beantwortete Wörter */}
-              {currentRound.filter(a => a.correct).length > 0 && (
-                <>
-                  <h4 className="text-lg font-bold text-gray-800 mb-3 mt-4">✅ Gewusste Wörter ({currentRound.filter(a => a.correct).length})</h4>
-                  <div className="space-y-2">
-                    {currentRound.filter(a => a.correct).map((answer, index) => (
-                      <div
-                        key={index}
-                        className="p-3 rounded-xl bg-green-50 border border-green-200"
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xl">✅</span>
-                          </div>
-                          {answer.points && (
-                            <span className="font-bold text-green-700">+{answer.points}</span>
-                          )}
-                        </div>
-                        <VocabularyEditor
-                          vocabulary={answer.word}
-                          onUpdate={handleVocabularyUpdate}
-                          onDelete={handleVocabularyDelete}
-                          onClose={() => setEditingWordId(null)}
-                        />
-                      </div>
-                    ))}
+                    {answer.correct && answer.points && (
+                      <span className="font-bold text-green-700">+{answer.points}</span>
+                    )}
                   </div>
-                </>
-              )}
+                ))}
+              </div>
             </div>
             
             <button
@@ -550,21 +371,11 @@ function ActionModule({ user }) {
             )}
 
             {/* Word to translate */}
-            <div className={`glass-card bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 mb-4 text-center border-2 shadow-xl transition-all duration-600 ${
-              slideAnimation === 'left' 
-                ? 'animate-slide-left bg-green-500 border-green-600' 
-                : slideAnimation === 'right' 
-                ? 'animate-slide-right bg-red-500 border-red-600' 
-                : 'border-green-200'
-            }`}>
-              <p className={`text-xs font-bold mb-2 uppercase tracking-wide transition-colors ${
-                slideAnimation ? 'text-white' : 'text-green-700'
-              }`}>
+            <div className="glass-card bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 mb-4 text-center border-2 border-green-200 shadow-xl">
+              <p className="text-xs text-green-700 font-bold mb-2 uppercase tracking-wide">
                 🇩🇪 Deutsche Vokabel 🇬🇧
               </p>
-              <p className={`text-3xl md:text-4xl font-bold mb-4 transition-colors ${
-                slideAnimation ? 'text-white' : 'text-gray-800'
-              }`}>
+              <p className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 {currentWord?.de}
               </p>
               

@@ -1,40 +1,28 @@
-import { useState, useEffect } from 'react';
-import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
+import { useState } from 'react';
+import { evaluateTranslation } from '../services/llmService';
 
-const hasOpenAIKey = !!import.meta.env.VITE_OPENAI_API_KEY && 
-                     import.meta.env.VITE_OPENAI_API_KEY !== 'your_openai_api_key_here';
+const sampleSentences = [
+  { id: 1, de: "Der Hund spielt im Garten.", en: "The dog plays in the garden." },
+  { id: 2, de: "Ich gehe jeden Tag zur Arbeit.", en: "I go to work every day." },
+  { id: 3, de: "Das Wetter ist heute sehr schön.", en: "The weather is very nice today." },
+  { id: 4, de: "Sie lernt seit drei Jahren Englisch.", en: "She has been learning English for three years." },
+  { id: 5, de: "Wir haben gestern einen Film gesehen.", en: "We watched a movie yesterday." },
+  { id: 6, de: "Kannst du mir bitte helfen?", en: "Can you please help me?" },
+  { id: 7, de: "Er möchte ein neues Auto kaufen.", en: "He wants to buy a new car." },
+  { id: 8, de: "Die Kinder spielen im Park.", en: "The children are playing in the park." },
+];
 
 function TranslationModule() {
-  const [currentSentence, setCurrentSentence] = useState(null);
+  const [currentSentence, setCurrentSentence] = useState(sampleSentences[0]);
   const [userTranslation, setUserTranslation] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingSentence, setIsLoadingSentence] = useState(false);
   const [score, setScore] = useState(0);
   const [totalAttempts, setTotalAttempts] = useState(0);
 
-  // Lade ersten Satz beim Start
-  useEffect(() => {
-    loadNewSentence();
-  }, []);
-
-  const loadNewSentence = async () => {
-    setIsLoadingSentence(true);
-    try {
-      const sentence = await generateTranslationSentence();
-      setCurrentSentence(sentence);
-      setUserTranslation('');
-      setFeedback(null);
-    } catch (error) {
-      console.error('Error loading sentence:', error);
-    } finally {
-      setIsLoadingSentence(false);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userTranslation.trim() || !currentSentence) return;
+    if (!userTranslation.trim()) return;
 
     setIsLoading(true);
     try {
@@ -60,11 +48,17 @@ function TranslationModule() {
   };
 
   const nextSentence = () => {
-    loadNewSentence();
+    const nextIndex = (sampleSentences.indexOf(currentSentence) + 1) % sampleSentences.length;
+    setCurrentSentence(sampleSentences[nextIndex]);
+    setUserTranslation('');
+    setFeedback(null);
   };
 
   const randomSentence = () => {
-    loadNewSentence();
+    const randomIndex = Math.floor(Math.random() * sampleSentences.length);
+    setCurrentSentence(sampleSentences[randomIndex]);
+    setUserTranslation('');
+    setFeedback(null);
   };
 
   return (
@@ -73,20 +67,7 @@ function TranslationModule() {
         {/* Header with Score */}
         <div className="mb-4">
           <div className="flex justify-between items-center mb-3">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold gradient-text">Übersetzungsübung</h2>
-              {hasOpenAIKey && (
-                <p className="text-xs text-green-600 font-semibold mt-1 flex items-center">
-                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                  GPT-4o-mini aktiv
-                </p>
-              )}
-              {!hasOpenAIKey && (
-                <p className="text-xs text-gray-500 font-semibold mt-1">
-                  Demo-Modus (Simuliert)
-                </p>
-              )}
-            </div>
+            <h2 className="text-2xl md:text-3xl font-bold gradient-text">Übersetzungsübung</h2>
             <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-xl px-4 py-2 shadow-lg">
               <p className="text-xs opacity-90 mb-1">Punktzahl</p>
               <p className="text-2xl font-bold">
@@ -105,19 +86,12 @@ function TranslationModule() {
         </div>
 
         {/* German Sentence Card */}
-        {isLoadingSentence ? (
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 mb-4 shadow-lg border border-blue-100 text-center">
-            <div className="w-12 h-12 mx-auto mb-3 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-            <p className="text-gray-600">Generiere neuen Satz...</p>
-          </div>
-        ) : currentSentence ? (
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 md:p-6 mb-4 shadow-lg border border-blue-100">
-            <p className="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide">Zu übersetzen:</p>
-            <p className="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed">
-              {currentSentence.de}
-            </p>
-          </div>
-        ) : null}
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 md:p-6 mb-4 shadow-lg border border-blue-100">
+          <p className="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide">Zu übersetzen:</p>
+          <p className="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed">
+            {currentSentence.de}
+          </p>
+        </div>
 
         {/* Translation Form */}
         <form onSubmit={handleSubmit} className="mb-4">
@@ -135,7 +109,7 @@ function TranslationModule() {
           <div className="flex gap-3 mt-4">
             <button
               type="submit"
-              disabled={isLoading || !userTranslation.trim() || isLoadingSentence}
+              disabled={isLoading || !userTranslation.trim()}
               className="flex-1 btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-base py-2"
             >
               {isLoading ? (
@@ -151,15 +125,9 @@ function TranslationModule() {
             <button
               type="button"
               onClick={randomSentence}
-              disabled={isLoadingSentence}
-              className="px-6 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 text-base"
             >
-              {isLoadingSentence ? (
-                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : '🎲'}
+              🎲
             </button>
           </div>
         </form>

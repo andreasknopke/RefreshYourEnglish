@@ -39,11 +39,17 @@ const calculateNextReview = (quality, easeFactor, interval, repetitions) => {
 // Füge Vokabel zum Flashcard Deck hinzu
 export const addToFlashcardDeck = (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+    
     const { vocabularyId } = req.body;
     const userId = req.user.userId;
 
+    console.log('Add to flashcard deck - userId:', userId, 'vocabularyId:', vocabularyId);
+
     // Prüfe ob Vokabel existiert
-    const vocab = db.prepare('SELECT * FROM vocabulary WHERE id = ?').get(vocabularyId);
+    const vocab = db.prepare('SELECT * FROM vocabulary WHERE id = ?').get(parseInt(vocabularyId));
     if (!vocab) {
       return res.status(404).json({ message: 'Vocabulary not found' });
     }
@@ -51,7 +57,7 @@ export const addToFlashcardDeck = (req, res) => {
     // Prüfe ob bereits im Deck
     const existing = db.prepare(
       'SELECT * FROM flashcard_deck WHERE user_id = ? AND vocabulary_id = ?'
-    ).get(userId, vocabularyId);
+    ).get(userId, parseInt(vocabularyId));
 
     if (existing) {
       return res.status(400).json({ message: 'Vocabulary already in flashcard deck' });
@@ -65,7 +71,7 @@ export const addToFlashcardDeck = (req, res) => {
       VALUES (?, ?, 2.5, 0, 0, ?, CURRENT_TIMESTAMP)
     `);
 
-    const result = stmt.run(userId, vocabularyId, today);
+    const result = stmt.run(userId, parseInt(vocabularyId), today);
 
     res.json({
       message: 'Added to flashcard deck',
@@ -113,6 +119,9 @@ export const getDueFlashcards = (req, res) => {
     });
   } catch (error) {
     console.error('Error getting due flashcards:', error);
+    console.error('Error details:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
+    console.error('Error getting due flashcards:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -120,6 +129,10 @@ export const getDueFlashcards = (req, res) => {
 // Review einer Flashcard (mit Spaced Repetition Update)
 export const reviewFlashcard = (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+    
     const { flashcardId } = req.params;
     const { quality } = req.body; // 0-5
     const userId = req.user.userId;
@@ -235,13 +248,18 @@ export const getAllFlashcards = (req, res) => {
     });
   } catch (error) {
     console.error('Error getting flashcards:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Error details:', error.message);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
 // Flashcard aus Deck entfernen
 export const removeFromFlashcardDeck = (req, res) => {
   try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+    
     const { flashcardId } = req.params;
     const userId = req.user.userId;
 
