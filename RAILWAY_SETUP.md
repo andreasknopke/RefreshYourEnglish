@@ -97,6 +97,18 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 
 ## 🔧 Troubleshooting
 
+### "Unexpected end of JSON input" beim Registrieren
+→ **Backend nicht erreichbar** - Prüfe die Backend-URL:
+   1. Öffne die Backend-URL direkt im Browser (z.B. `https://dein-backend.railway.app`)
+   2. Du solltest JSON sehen mit "name": "RefreshYourEnglish API"
+   3. Wenn nicht, prüfe Backend-Logs in Railway
+   4. Stelle sicher, dass `VITE_API_URL` im Frontend korrekt ist (mit `/api` am Ende!)
+
+→ **CORS-Fehler** - Prüfe Browser-Console (F12):
+   1. Wenn "CORS error" erscheint, fehlt die Frontend-URL in `CORS_ORIGIN`
+   2. Backend Variables → `CORS_ORIGIN=https://deine-frontend-url.railway.app`
+   3. Backend neu deployen
+
 ### "Failed to fetch" Fehler
 → Prüfe `VITE_API_URL` im Frontend (muss `/api` am Ende haben)  
 → Prüfe `CORS_ORIGIN` im Backend (muss Frontend-URL sein)
@@ -104,6 +116,7 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 ### Backend startet nicht
 → Prüfe Logs im Railway Dashboard  
 → Stelle sicher, dass alle Environment Variables gesetzt sind
+→ Wichtig: `PORT=3001` muss gesetzt sein!
 
 ### Database Fehler
 → `DB_PATH=/app/data/vocabulary.db` muss gesetzt sein  
