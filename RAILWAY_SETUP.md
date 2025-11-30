@@ -38,12 +38,17 @@ DB_PATH=/app/data/vocabulary.db
 1. Gehe zum Tab **"Deployments"**
 2. Railway startet automatisch den ersten Deploy
 3. Warte bis Status "✅ Success" ist (kann 2-3 Minuten dauern)
-4. Gehe zu **"Settings"** → **"Networking"**
-5. Klicke **"Generate Domain"**
-6. Railway fragt: **"Enter the port your app is listening on"**
+4. **WICHTIG**: Wenn Deploy fehlschlägt, prüfe die **Logs**:
+   - Klicke auf das fehlgeschlagene Deployment
+   - Schaue dir die Build- und Deploy-Logs an
+   - Häufige Fehler: `npm install` schlägt fehl → Root Directory falsch gesetzt
+5. Gehe zu **"Settings"** → **"Networking"**
+6. Klicke **"Generate Domain"**
+7. Railway fragt: **"Enter the port your app is listening on"**
    - Trage ein: **`3001`**
-7. Klicke "Save" oder bestätige
-8. **Kopiere die Backend-URL** (z.B. `https://backend-production-abc123.up.railway.app`)
+8. Klicke "Save" oder bestätige
+9. **Kopiere die Backend-URL** (z.B. `https://backend-production-abc123.up.railway.app`)
+10. **Teste die URL** im Browser - du solltest JSON mit API-Info sehen!
 
 ## Schritt 4: Frontend Service hinzufügen
 
@@ -114,9 +119,18 @@ VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
 → Prüfe `CORS_ORIGIN` im Backend (muss Frontend-URL sein)
 
 ### Backend startet nicht
-→ Prüfe Logs im Railway Dashboard  
+→ Prüfe Logs im Railway Dashboard (klicke auf das Deployment)  
 → Stelle sicher, dass alle Environment Variables gesetzt sind
 → Wichtig: `PORT=3001` muss gesetzt sein!
+→ **Root Directory muss `backend` sein** in Settings → Service
+→ Wenn "module not found" Fehler: Root Directory ist falsch
+→ Versuche "Redeploy" nach dem Setzen der Variables
+
+### Backend erreichbar aber "Application failed to respond"
+→ Prüfe ob `PORT` Environment Variable gesetzt ist
+→ Schaue in die Deployment-Logs ob der Server wirklich startet
+→ Sollte sehen: "🚀 Server running on http://localhost:3001"
+→ Wenn nicht, prüfe ob `npm start` funktionieren würde
 
 ### Database Fehler
 → `DB_PATH=/app/data/vocabulary.db` muss gesetzt sein  
