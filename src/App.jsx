@@ -21,6 +21,16 @@ function App() {
         localStorage.removeItem('user');
       }
     }
+    
+    // Listen for auth-required events (e.g., when session is invalid)
+    const handleAuthRequired = (event) => {
+      console.warn('Authentication required:', event.detail);
+      handleLogout();
+      setShowAuthModal(true);
+    };
+    
+    window.addEventListener('auth-required', handleAuthRequired);
+    return () => window.removeEventListener('auth-required', handleAuthRequired);
   }, []);
 
   const handleLogout = () => {

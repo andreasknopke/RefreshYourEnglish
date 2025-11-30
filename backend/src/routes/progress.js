@@ -55,6 +55,24 @@ router.post('/:vocabularyId', optionalAuth, (req, res) => {
   try {
     console.log('Update progress - userId:', userId, 'vocabularyId:', vocabularyId, 'wasCorrect:', wasCorrect);
     
+    // Verify user exists
+    const userExists = db.prepare('SELECT id FROM users WHERE id = ?').get(userId);
+    if (!userExists) {
+      console.error('User not found in database - userId:', userId);
+      return res.status(401).json({ 
+        error: 'User not found', 
+        message: 'Your session is invalid. Please log in again.',
+        requiresReauth: true 
+      });
+    }
+    
+    // Verify vocabulary exists
+    const vocabExists = db.prepare('SELECT id FROM vocabulary WHERE id = ?').get(parseInt(vocabularyId));
+    if (!vocabExists) {
+      console.error('Vocabulary not found - vocabularyId:', vocabularyId);
+      return res.status(404).json({ error: 'Vocabulary not found' });
+    }
+    
     // Get or create progress entry
     let progress = db.prepare('SELECT * FROM user_progress WHERE user_id = ? AND vocabulary_id = ?').get(userId, parseInt(vocabularyId));
 

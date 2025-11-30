@@ -48,6 +48,14 @@ class ApiService {
         } catch (e) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
+        
+        // Check if user needs to re-authenticate
+        if (errorData.requiresReauth || response.status === 401) {
+          console.warn('Session invalid, logging out user');
+          this.logout();
+          window.dispatchEvent(new CustomEvent('auth-required', { detail: errorData }));
+        }
+        
         throw new Error(errorData.error || errorData.message || 'Request failed');
       }
 
