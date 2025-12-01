@@ -127,7 +127,7 @@ const createTables = () => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER NOT NULL,
       date DATE NOT NULL,
-      minutes_practiced INTEGER DEFAULT 0,
+      seconds_practiced INTEGER DEFAULT 0,
       exercises_completed INTEGER DEFAULT 0,
       goal_achieved BOOLEAN DEFAULT 0,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

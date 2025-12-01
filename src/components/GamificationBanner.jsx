@@ -8,6 +8,10 @@ function GamificationBanner({ user }) {
   useEffect(() => {
     if (user) {
       loadStats();
+      
+      // Polling alle 5 Sekunden für Live-Updates
+      const interval = setInterval(loadStats, 5000);
+      return () => clearInterval(interval);
     }
   }, [user]);
 

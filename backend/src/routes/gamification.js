@@ -21,7 +21,10 @@ router.post('/activity', authenticateToken, (req, res) => {
   try {
     const userId = req.user.userId;
     const { minutesPracticed, exercisesCompleted } = req.body;
+    const secondsPracticed = Math.round((minutesPracticed || 0) * 60);
     const today = getTodayDate();
+
+    console.log(`📊 Activity tracking: User ${userId}, ${minutesPracticed} min (${secondsPracticed}s), ${exercisesCompleted} exercises`);
 
     // Hole oder erstelle heutigen Eintrag
     let activity = db.prepare(`
@@ -30,33 +33,38 @@ router.post('/activity', authenticateToken, (req, res) => {
 
     if (activity) {
       // Update existierenden Eintrag
-      const newMinutes = activity.minutes_practiced + (minutesPracticed || 0);
+      const newSeconds = activity.seconds_practiced + secondsPracticed;
+      const newMinutes = newSeconds / 60;
       const newExercises = activity.exercises_completed + (exercisesCompleted || 0);
       const goalAchieved = newMinutes >= 15;
 
+      console.log(`📊 Updating activity: ${activity.seconds_practiced}s -> ${newSeconds}s (${newMinutes.toFixed(2)} min), goal: ${goalAchieved}`);
+
       db.prepare(`
         UPDATE daily_activity 
-        SET minutes_practiced = ?, exercises_completed = ?, goal_achieved = ?
+        SET seconds_practiced = ?, exercises_completed = ?, goal_achieved = ?
         WHERE id = ?
-      `).run(newMinutes, newExercises, goalAchieved ? 1 : 0, activity.id);
+      `).run(newSeconds, newExercises, goalAchieved ? 1 : 0, activity.id);
 
-      activity.minutes_practiced = newMinutes;
+      activity.seconds_practiced = newSeconds;
       activity.exercises_completed = newExercises;
       activity.goal_achieved = goalAchieved;
     } else {
       // Erstelle neuen Eintrag
-      const goalAchieved = (minutesPracticed || 0) >= 15;
+      const goalAchieved = (secondsPracticed / 60) >= 15;
       
+      console.log(`📊 Creating new activity: ${secondsPracticed}s (${(secondsPracticed/60).toFixed(2)} min), goal: ${goalAchieved}`);
+
       const result = db.prepare(`
-        INSERT INTO daily_activity (user_id, date, minutes_practiced, exercises_completed, goal_achieved)
+        INSERT INTO daily_activity (user_id, date, seconds_practiced, exercises_completed, goal_achieved)
         VALUES (?, ?, ?, ?, ?)
-      `).run(userId, today, minutesPracticed || 0, exercisesCompleted || 0, goalAchieved ? 1 : 0);
+      `).run(userId, today, secondsPracticed, exercisesCompleted || 0, goalAchieved ? 1 : 0);
 
       activity = {
         id: result.lastInsertRowid,
         user_id: userId,
         date: today,
-        minutes_practiced: minutesPracticed || 0,
+        seconds_practiced: secondsPracticed,
         exercises_completed: exercisesCompleted || 0,
         goal_achieved: goalAchieved
       };
@@ -114,7 +122,9 @@ function getGamificationStats(userId) {
   // Heutige Aktivität
   const todayActivity = db.prepare(`
     SELECT * FROM daily_activity WHERE user_id = ? AND date = ?
-  `).get(userId, today) || { minutes_practiced: 0, goal_achieved: 0 };
+  `).get(userId, today) || { seconds_practiced: 0, goal_achieved: 0 };
+
+  const todayMinutes = Math.round((todayActivity.seconds_practiced || 0) / 60 * 10) / 10;
 
   // Gestrige Aktivität (für Streak-Prüfung)
   const yesterdayActivity = db.prepare(`
@@ -175,14 +185,15 @@ function getGamificationStats(userId) {
   `).all(userId);
 
   return {
-    todayMinutes: todayActivity.minutes_practiced,
+    todayMinutes: todayMinutes,
+    todaySeconds: todayActivity.seconds_practiced || 0,
     todayGoalAchieved: todayActivity.goal_achieved === 1,
     currentStreak,
     dailyTrophies,
     weeklyTrophies,
     totalTrophies: dailyTrophies + weeklyTrophies,
     recentTrophies,
-    needsMinutes: Math.max(0, 15 - todayActivity.minutes_practiced)
+    needsMinutes: Math.max(0, Math.round((15 - todayMinutes) * 10) / 10)
   };
 }
 
