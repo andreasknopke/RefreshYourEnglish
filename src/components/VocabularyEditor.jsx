@@ -4,8 +4,8 @@ import apiService from '../services/apiService';
 function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTrainer }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedVocab, setEditedVocab] = useState({
-    english: vocabulary.en,
-    german: vocabulary.de,
+    english: vocabulary.english || vocabulary.en,
+    german: vocabulary.german || vocabulary.de,
     level: vocabulary.level || 'B2'
   });
   const [isSaving, setIsSaving] = useState(false);
@@ -73,8 +73,8 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
     return (
       <div className="flex items-center justify-between gap-2">
         <div className="flex-1">
-          <p className="font-bold text-gray-800">{vocabulary.de}</p>
-          <p className="text-sm text-gray-600">{vocabulary.en}</p>
+          <p className="font-bold text-gray-800">{vocabulary.german || vocabulary.de}</p>
+          <p className="text-sm text-gray-600">{vocabulary.english || vocabulary.en}</p>
         </div>
         <div className="flex gap-2">
           <button
@@ -151,6 +151,19 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
       
       <div className="flex gap-2">
         <button
+          onClick={handleAddToTrainer}
+          disabled={isSaving || addedToTrainer}
+          className={`${
+            addedToTrainer 
+              ? 'bg-green-500 text-white' 
+              : 'bg-purple-500 hover:bg-purple-600 text-white'
+          } font-semibold py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+          title="Zum Vokabeltrainer hinzufügen"
+        >
+          {addedToTrainer ? '✅ Hinzugefügt!' : '📚 Zum Trainer'}
+        </button>
+        
+        <button
           onClick={handleSave}
           disabled={isSaving}
           className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -163,8 +176,8 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
             setIsEditing(false);
             setError(null);
             setEditedVocab({
-              english: vocabulary.en,
-              german: vocabulary.de,
+              english: vocabulary.english || vocabulary.en,
+              german: vocabulary.german || vocabulary.de,
               level: vocabulary.level || 'B2'
             });
           }}
