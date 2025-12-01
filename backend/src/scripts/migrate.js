@@ -3,10 +3,18 @@ import db from '../models/database.js';
 console.log('🔄 Running database migration...');
 
 try {
-  // Normalisiere alle E-Mails zu lowercase
-  console.log('📧 Normalizing email addresses...');
-  const result = db.prepare('UPDATE users SET email = LOWER(TRIM(email))').run();
-  console.log(`✅ Normalized ${result.changes} email addresses`);
+  // Prüfe ob Users existieren
+  const userCount = db.prepare('SELECT COUNT(*) as count FROM users').get();
+  console.log(`👥 Current user count: ${userCount.count}`);
+  
+  if (userCount.count > 0) {
+    // Normalisiere alle E-Mails zu lowercase
+    console.log('📧 Normalizing email addresses...');
+    const result = db.prepare('UPDATE users SET email = LOWER(TRIM(email))').run();
+    console.log(`✅ Normalized ${result.changes} email addresses`);
+  } else {
+    console.log('ℹ️  No users found, skipping email normalization');
+  }
   
   // Versuche neue Spalten hinzuzufügen (falls sie nicht existieren)
   console.log('🔧 Adding new columns if they don\'t exist...');
@@ -31,6 +39,10 @@ try {
       }
     }
   }
+  
+  // Prüfe Vocabulary-Tabelle
+  const vocabCount = db.prepare('SELECT COUNT(*) as count FROM vocabulary').get();
+  console.log(`📚 Current vocabulary count: ${vocabCount.count}`);
   
   console.log('✅ Migration completed successfully!');
   process.exit(0);
