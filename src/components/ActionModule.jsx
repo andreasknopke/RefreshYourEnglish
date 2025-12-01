@@ -170,26 +170,23 @@ function ActionModule({ user }) {
         console.error('Failed to save progress:', error);
       }
     }
+
+    // Track activity für Gamification (10 Sekunden pro Karte)
+    if (user) {
+      try {
+        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
+        console.log('🎮 Tracking activity (ActionModule - Timeout):', { secondsToAdd, user: user.username });
+        const result = await apiService.trackActivity(secondsToAdd);
+        console.log('✅ Activity tracked:', result);
+      } catch (error) {
+        console.error('❌ Failed to track activity:', error);
+      }
+    }
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
       setIsActive(false);
       setShowFeedback(true);
-      
-      // Track activity für Gamification
-      if (user && sessionStartTime) {
-        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
-        const secondsPracticed = (roundProgress + 1) * 10; // 10 Sekunden pro Flashcard
-        console.log('🎮 Tracking activity (ActionModule):', { roundProgress: roundProgress + 1, minutesPracticed, secondsPracticed, user: user.username });
-        if (minutesPracticed > 0 || secondsPracticed > 0) {
-          try {
-            const result = await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
-            console.log('✅ Activity tracked:', result);
-          } catch (error) {
-            console.error('❌ Failed to track activity:', error);
-          }
-        }
-      }
     } else {
       setRoundProgress(roundProgress + 1);
       setIsFlipped(false);
@@ -223,6 +220,18 @@ function ActionModule({ user }) {
         console.error('Failed to save progress:', error);
       }
     }
+
+    // Track activity für Gamification (10 Sekunden pro Karte)
+    if (user) {
+      try {
+        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
+        console.log('🎮 Tracking activity (ActionModule - Know):', { secondsToAdd, user: user.username });
+        const result = await apiService.trackActivity(secondsToAdd);
+        console.log('✅ Activity tracked:', result);
+      } catch (error) {
+        console.error('❌ Failed to track activity:', error);
+      }
+    }
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
@@ -251,6 +260,18 @@ function ActionModule({ user }) {
         await apiService.updateProgress(currentWord.id, false);
       } catch (error) {
         console.error('Failed to save progress:', error);
+      }
+    }
+
+    // Track activity für Gamification (10 Sekunden pro Karte)
+    if (user) {
+      try {
+        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
+        console.log('🎮 Tracking activity (ActionModule - Forgot):', { secondsToAdd, user: user.username });
+        const result = await apiService.trackActivity(secondsToAdd);
+        console.log('✅ Activity tracked:', result);
+      } catch (error) {
+        console.error('❌ Failed to track activity:', error);
       }
     }
     
