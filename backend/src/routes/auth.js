@@ -21,10 +21,13 @@ router.post('/register',
     const { username, password } = req.body;
     const email = req.body.email.toLowerCase().trim(); // Manuell normalisieren
 
+    console.log('📝 Registration attempt:', { username, email });
+
     try {
       // Check if user exists
       const existingUser = db.prepare('SELECT id FROM users WHERE email = ? OR username = ?').get(email, username);
       if (existingUser) {
+        console.log('❌ User already exists:', email);
         return res.status(400).json({ error: 'User already exists' });
       }
 
@@ -32,7 +35,13 @@ router.post('/register',
       const passwordHash = await bcrypt.hash(password, 10);
 
       // Insert user
+      console.log('💾 Inserting user into database...');
       const result = db.prepare('INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)').run(username, email, passwordHash);
+      console.log('✅ User inserted with ID:', result.lastInsertRowid);
+
+      // Verify insertion
+      const verifyUser = db.prepare('SELECT id, username, email FROM users WHERE id = ?').get(result.lastInsertRowid);
+      console.log('🔍 Verified user in DB:', verifyUser);
 
       // Generate verification token
       const verificationToken = emailService.generateToken();
@@ -72,16 +81,27 @@ router.post('/login',
     const email = req.body.email.toLowerCase().trim(); // Manuell normalisieren
     const { password } = req.body;
 
+    console.log('🔐 Login attempt for email:', email);
+
     try {
       const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
       if (!user) {
+        console.log('❌ User not found:', email);
+        // List all users for debugging
+        const allUsers = db.prepare('SELECT id, username, email FROM users').all();
+        console.log('📋 All users in DB:', allUsers);
         return res.status(401).json({ error: 'Invalid credentials' });
       }
 
+      console.log('✅ User found:', { id: user.id, username: user.username, email: user.email });
+
       const isValidPassword = await bcrypt.compare(password, user.password_hash);
       if (!isValidPassword) {
+        console.log('❌ Invalid password for user:', email);
         return res.status(401).json({ error: 'Invalid credentials' });
       }
+
+      console.log('✅ Password valid, logging in user:', user.username);
 
       // Update last login
       db.prepare('UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?').run(user.id);
