@@ -111,39 +111,91 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation)
 }
 
 /**
- * Generiert eine Vokabel-Challenge mit Hilfe eines LLM
- * @param {string} difficulty - Schwierigkeitsgrad (easy, medium, hard)
- * @param {string} category - Kategorie (optional)
- * @returns {Promise<{word: string, translation: string, example: string}>}
+ * Generiert einen deutschen Satz zum Übersetzen mit Hilfe eines LLM
+ * @param {string} level - Sprachniveau (B2, C1, C2)
+ * @returns {Promise<{de: string, en: string}>}
  */
-export async function generateVocabularyChallenge(difficulty = 'medium', category = '') {
-  // Simulierte LLM-Antwort für Demo-Zwecke
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const challenges = {
-        easy: [
-          { de: 'Apfel', en: 'apple', example: 'An apple a day keeps the doctor away.' },
-          { de: 'Brot', en: 'bread', example: 'I eat bread for breakfast.' },
-          { de: 'Milch', en: 'milk', example: 'Do you want milk in your coffee?' }
-        ],
-        medium: [
-          { de: 'Freundschaft', en: 'friendship', example: 'Their friendship lasted for years.' },
-          { de: 'Verantwortung', en: 'responsibility', example: 'It is your responsibility.' },
-          { de: 'Gelegenheit', en: 'opportunity', example: 'This is a great opportunity.' }
-        ],
-        hard: [
-          { de: 'Durchsetzungsvermögen', en: 'assertiveness', example: 'Assertiveness is an important skill.' },
-          { de: 'Nachhaltigkeit', en: 'sustainability', example: 'We need to focus on sustainability.' },
-          { de: 'Gewissenhaft', en: 'conscientious', example: 'She is a conscientious worker.' }
-        ]
+export async function generateTranslationSentence(level = 'B2') {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  console.log('📝 Generating translation sentence, API Key exists:', !!API_KEY);
+  
+  if (!API_KEY) {
+    console.warn('⚠️ No OpenAI API key, using fallback sentences');
+    return getFallbackSentence(level);
+  }
+  
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: `Du bist ein Englischlehrer. Generiere einen deutschen Satz auf ${level}-Niveau zum Übersetzen ins Englische. Der Satz sollte interessant und lehrreich sein. Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
+        }, {
+          role: 'user',
+          content: `Generiere einen neuen deutschen Satz auf ${level}-Niveau mit der korrekten englischen Übersetzung.`
+        }],
+        temperature: 0.8,
+        max_tokens: 150
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const content = data.choices[0].message.content;
+    
+    try {
+      const parsed = JSON.parse(content);
+      console.log('✨ Generated sentence via OpenAI:', parsed);
+      return {
+        de: parsed.de || parsed.german || 'Fehler beim Generieren',
+        en: parsed.en || parsed.english || 'Error generating'
       };
-      
-      const level = challenges[difficulty] || challenges.medium;
-      const randomChallenge = level[Math.floor(Math.random() * level.length)];
-      
-      resolve(randomChallenge);
-    }, 500);
-  });
+    } catch {
+      throw new Error('Failed to parse OpenAI response');
+    }
+  } catch (error) {
+    console.error('OpenAI sentence generation failed, using fallback:', error);
+    return getFallbackSentence(level);
+  }
+}
+
+/**
+ * Fallback-Sätze wenn keine API verfügbar ist
+ */
+function getFallbackSentence(level) {
+  const sentences = {
+    B2: [
+      { de: "Die zunehmende Digitalisierung verändert unsere Arbeitswelt grundlegend.", en: "Increasing digitalization is fundamentally changing our world of work." },
+      { de: "Trotz der Herausforderungen haben wir unser Ziel erreicht.", en: "Despite the challenges, we achieved our goal." },
+      { de: "Die Wissenschaftler haben eine bahnbrechende Entdeckung gemacht.", en: "The scientists have made a groundbreaking discovery." },
+      { de: "Nachhaltige Entwicklung ist eine der größten Herausforderungen unserer Zeit.", en: "Sustainable development is one of the greatest challenges of our time." }
+    ],
+    C1: [
+      { de: "Die gesellschaftlichen Auswirkungen des Klimawandels werden oft unterschätzt.", en: "The societal impacts of climate change are often underestimated." },
+      { de: "Angesichts der komplexen Situation müssen wir alternative Lösungsansätze in Betracht ziehen.", en: "Given the complex situation, we must consider alternative approaches to solutions." },
+      { de: "Die Authentizität seiner Argumentation wurde von mehreren Experten in Frage gestellt.", en: "The authenticity of his argumentation was questioned by several experts." },
+      { de: "Zwischenmenschliche Beziehungen erfordern kontinuierliche Kommunikation und gegenseitiges Verständnis.", en: "Interpersonal relationships require continuous communication and mutual understanding." }
+    ],
+    C2: [
+      { de: "Die ambivalente Haltung der Regierung gegenüber den Reformen spiegelt die Zerrissenheit der Gesellschaft wider.", en: "The government's ambivalent stance toward the reforms reflects society's divisiveness." },
+      { de: "Sein eloquentes Plädoyer für mehr soziale Gerechtigkeit fand breite Zustimmung unter den Anwesenden.", en: "His eloquent plea for greater social justice found broad approval among those present." }
+    ]
+  };
+  
+  const levelSentences = sentences[level] || sentences.B2;
+  const random = levelSentences[Math.floor(Math.random() * levelSentences.length)];
+  console.log('📚 Using fallback sentence:', random);
+  return random;
 }
 
 /**

@@ -1,31 +1,45 @@
-import { useState } from 'react';
-import { evaluateTranslation } from '../services/llmService';
-
-const sampleSentences = [
-  { id: 1, de: "Der Hund spielt im Garten.", en: "The dog plays in the garden." },
-  { id: 2, de: "Ich gehe jeden Tag zur Arbeit.", en: "I go to work every day." },
-  { id: 3, de: "Das Wetter ist heute sehr schön.", en: "The weather is very nice today." },
-  { id: 4, de: "Sie lernt seit drei Jahren Englisch.", en: "She has been learning English for three years." },
-  { id: 5, de: "Wir haben gestern einen Film gesehen.", en: "We watched a movie yesterday." },
-  { id: 6, de: "Kannst du mir bitte helfen?", en: "Can you please help me?" },
-  { id: 7, de: "Er möchte ein neues Auto kaufen.", en: "He wants to buy a new car." },
-  { id: 8, de: "Die Kinder spielen im Park.", en: "The children are playing in the park." },
-];
+import { useState, useEffect } from 'react';
+import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
 
 function TranslationModule({ user }) {
-  const [currentSentence, setCurrentSentence] = useState(sampleSentences[0]);
+  const [currentSentence, setCurrentSentence] = useState(null);
   const [userTranslation, setUserTranslation] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [score, setScore] = useState(0);
   const [totalAttempts, setTotalAttempts] = useState(0);
+  const [level, setLevel] = useState('B2');
+  const [isGeneratingSentence, setIsGeneratingSentence] = useState(false);
 
   // Debug: Prüfe API-Key beim Laden
   console.log('🎯 TranslationModule loaded');
-  console.log('🔑 API Key check:', {
+  console.log('🔑 API Key exists:', !!import.meta.env.VITE_OPENAI_API_KEY);
+  console.log('🔑 API Key length:', import.meta.env.VITE_OPENAI_API_KEY?.length || 0);
+  console.log('🔑 All OPENAI env vars:', Object.keys(import.meta.env).filter(k => k.includes('OPENAI')));
+  console.log('🔑 Full check:', {
     exists: !!import.meta.env.VITE_OPENAI_API_KEY,
-    envVars: Object.keys(import.meta.env).filter(k => k.includes('OPENAI'))
+    length: import.meta.env.VITE_OPENAI_API_KEY?.length || 0,
+    prefix: import.meta.env.VITE_OPENAI_API_KEY?.substring(0, 10) || 'none'
   });
+
+  // Lade ersten Satz beim Start
+  useEffect(() => {
+    loadNewSentence();
+  }, []);
+
+  const loadNewSentence = async () => {
+    setIsGeneratingSentence(true);
+    setUserTranslation('');
+    setFeedback(null);
+    try {
+      const sentence = await generateTranslationSentence(level);
+      setCurrentSentence(sentence);
+    } catch (error) {
+      console.error('Failed to generate sentence:', error);
+    } finally {
+      setIsGeneratingSentence(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,18 +79,23 @@ function TranslationModule({ user }) {
   };
 
   const nextSentence = () => {
-    const nextIndex = (sampleSentences.indexOf(currentSentence) + 1) % sampleSentences.length;
-    setCurrentSentence(sampleSentences[nextIndex]);
-    setUserTranslation('');
-    setFeedback(null);
+    loadNewSentence();
   };
 
   const randomSentence = () => {
-    const randomIndex = Math.floor(Math.random() * sampleSentences.length);
-    setCurrentSentence(sampleSentences[randomIndex]);
-    setUserTranslation('');
-    setFeedback(null);
+    loadNewSentence();
   };
+
+  if (!currentSentence) {
+    return (
+      <div className="max-w-4xl mx-auto animate-fade-in">
+        <div className="glass-card rounded-3xl shadow-2xl p-8 text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Generiere Übungssatz...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
@@ -91,6 +110,26 @@ function TranslationModule({ user }) {
                 {score} / {totalAttempts}
               </p>
             </div>
+          </div>
+          
+          {/* Level Selector */}
+          <div className="mb-3 flex gap-2">
+            {['B2', 'C1', 'C2'].map((lvl) => (
+              <button
+                key={lvl}
+                onClick={() => {
+                  setLevel(lvl);
+                  loadNewSentence();
+                }}
+                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                  level === lvl
+                    ? 'bg-indigo-600 text-white shadow-lg'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {lvl}
+              </button>
+            ))}
           </div>
           
           {/* Progress Bar */}
@@ -142,9 +181,10 @@ function TranslationModule({ user }) {
             <button
               type="button"
               onClick={randomSentence}
-              className="px-6 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 text-base"
+              disabled={isGeneratingSentence}
+              className="px-6 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 text-base disabled:opacity-50"
             >
-              🎲
+              {isGeneratingSentence ? '⏳' : '🎲'}
             </button>
           </div>
         </form>
