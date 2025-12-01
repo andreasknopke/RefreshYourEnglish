@@ -398,28 +398,7 @@ function ActionModule() {
             {/* Final Score */}
             <div className="glass-card bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-6 mb-4 border-2 border-indigo-300">
               <p className="text-sm text-indigo-700 font-bold mb-2">GESAMT-PUNKTE</p>
-              <p className="text-5xl font-bold gradient-text mb-4">{score}</p>
-              
-              {/* Quick Actions for wrong answers */}
-              {currentRound.filter(a => !a.correct).length > 0 && (
-                <div className="mt-4 flex gap-2 justify-center">
-                  <button
-                    onClick={() => handleAddMultipleToTrainer(currentRound.filter(a => !a.correct).map(a => a.word))}
-                    className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-bold transition-colors text-sm"
-                  >
-                    📥 Zum Trainer
-                  </button>
-                  <button
-                    onClick={() => {
-                      const firstWrong = currentRound.find(a => !a.correct);
-                      if (firstWrong) setSelectedVocab(firstWrong.word);
-                    }}
-                    className="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-bold transition-colors text-sm"
-                  >
-                    ✏️ Bearbeiten
-                  </button>
-                </div>
-              )}
+              <p className="text-5xl font-bold gradient-text">{score}</p>
             </div>
             
             {/* Detailed Results */}
@@ -433,35 +412,39 @@ function ActionModule() {
                       answer.correct ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
                     }`}
                   >
-                    <div className="flex items-center gap-2 flex-1">
-                      <span className="text-xl">{answer.correct ? '✅' : '❌'}</span>
-                      <div className="flex-1">
-                        <p className="font-bold text-gray-800">{answer.word.de}</p>
-                        <p className="text-sm text-gray-600">{answer.word.en}</p>
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      <span className="text-xl flex-shrink-0">{answer.correct ? '✅' : '❌'}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-gray-800 truncate">{answer.word.de}</p>
+                        <p className="text-sm text-gray-600 truncate">{answer.word.en}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       {answer.correct && answer.points && (
-                        <span className="font-bold text-green-700">+{answer.points}</span>
+                        <span className="font-bold text-green-700 mr-2">+{answer.points}</span>
                       )}
-                      {!answer.correct && (
-                        <>
-                          <button
-                            onClick={() => apiService.addToFlashcardDeck(answer.word.id).then(() => alert('Zum Trainer hinzugefügt!')).catch(e => alert('Fehler: ' + e.message))}
-                            className="px-2 py-1 text-xs bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
-                            title="Zum Trainer hinzufügen"
-                          >
-                            📥
-                          </button>
-                          <button
-                            onClick={() => setSelectedVocab(answer.word)}
-                            className="px-2 py-1 text-xs bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors"
-                            title="Bearbeiten"
-                          >
-                            ✏️
-                          </button>
-                        </>
-                      )}
+                      <button
+                        onClick={() => apiService.addToFlashcardDeck(answer.word.id)
+                          .then(() => alert('✅ Zum Trainer hinzugefügt!'))
+                          .catch(e => {
+                            if (e.message.includes('already in flashcard deck')) {
+                              alert('Diese Vokabel ist bereits im Trainer!');
+                            } else {
+                              alert('Fehler: ' + e.message);
+                            }
+                          })}
+                        className="px-2 py-1 text-sm bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
+                        title="Zum Vokabeltrainer hinzufügen"
+                      >
+                        📚
+                      </button>
+                      <button
+                        onClick={() => setSelectedVocab(answer.word)}
+                        className="px-2 py-1 text-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors"
+                        title="Vokabel bearbeiten"
+                      >
+                        ✏️
+                      </button>
                     </div>
                   </div>
                 ))}
