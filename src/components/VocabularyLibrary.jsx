@@ -10,6 +10,8 @@ function VocabularyLibrary({ user }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('all');
   const [addedToTrainer, setAddedToTrainer] = useState(new Set());
+  const [showNewVocabForm, setShowNewVocabForm] = useState(false);
+  const [newVocab, setNewVocab] = useState({ english: '', german: '', level: 'B2' });
 
   useEffect(() => {
     loadVocabularyData();
@@ -107,6 +109,51 @@ function VocabularyLibrary({ user }) {
     alert(`${successCount} Vokabeln hinzugefügt${errorCount > 0 ? `, ${errorCount} Fehler` : ''}`);
   };
 
+  const handleCreateVocabulary = async () => {
+    if (!user) {
+      alert('Bitte melde dich an, um Vokabeln zu erstellen.');
+      return;
+    }
+
+    if (!newVocab.english.trim() || !newVocab.german.trim()) {
+      alert('Bitte fülle alle Felder aus.');
+      return;
+    }
+
+    try {
+      const created = await apiService.createVocabulary(
+        newVocab.english.trim(),
+        newVocab.german.trim(),
+        newVocab.level
+      );
+      setVocabulary(prev => [created, ...prev]);
+      setNewVocab({ english: '', german: '', level: 'B2' });
+      setShowNewVocabForm(false);
+      alert('✅ Vokabel erfolgreich erstellt!');
+    } catch (err) {
+      alert('Fehler beim Erstellen: ' + err.message);
+    }
+  };
+
+  const handleDeleteVocabulary = async (id) => {
+    if (!user) {
+      alert('Bitte melde dich an, um Vokabeln zu löschen.');
+      return;
+    }
+
+    if (!confirm('Möchtest du diese Vokabel wirklich löschen?')) {
+      return;
+    }
+
+    try {
+      await apiService.deleteVocabulary(id);
+      setVocabulary(prev => prev.filter(v => v.id !== id));
+      alert('✅ Vokabel gelöscht!');
+    } catch (err) {
+      alert('Fehler beim Löschen: ' + err.message);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
@@ -166,19 +213,29 @@ function VocabularyLibrary({ user }) {
         </div>
 
         {/* Stats and Actions */}
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-4 flex items-center justify-between flex-wrap gap-3">
           <div className="text-sm text-gray-600">
             <span className="font-bold text-indigo-600">{filteredVocabulary.length}</span> von{' '}
             <span className="font-bold">{vocabulary.length}</span> Vokabeln
           </div>
-          {user && filteredVocabulary.length > 0 && (
-            <button
-              onClick={handleAddAllToTrainer}
-              className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-semibold text-sm transition-colors"
-            >
-              📥 Alle zum Trainer hinzufügen
-            </button>
-          )}
+          <div className="flex gap-2">
+            {user && (
+              <button
+                onClick={() => setShowNewVocabForm(true)}
+                className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors"
+              >
+                ➕ Neue Vokabel
+              </button>
+            )}
+            {user && filteredVocabulary.length > 0 && (
+              <button
+                onClick={handleAddAllToTrainer}
+                className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-semibold text-sm transition-colors"
+              >
+                📥 Alle zum Trainer
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -223,26 +280,44 @@ function VocabularyLibrary({ user }) {
                   {/* Actions */}
                   <div className="flex gap-2 flex-shrink-0">
                     {user && (
+                      <>
+                        <button
+                          onClick={() => handleAddToTrainer(vocab.id)}
+                          disabled={addedToTrainer.has(vocab.id)}
+                          className={`${
+                            addedToTrainer.has(vocab.id)
+                              ? 'bg-green-500 text-white'
+                              : 'bg-purple-500 hover:bg-purple-600 text-white'
+                          } font-semibold text-sm px-3 py-2 rounded-lg transition-colors disabled:opacity-50`}
+                          title="Zum Vokabeltrainer hinzufügen"
+                        >
+                          {addedToTrainer.has(vocab.id) ? '✅' : '📚'}
+                        </button>
+                        <button
+                          onClick={() => setSelectedVocab(vocab)}
+                          className="text-indigo-600 hover:bg-indigo-50 font-semibold text-sm px-3 py-2 rounded-lg transition-colors"
+                          title="Bearbeiten"
+                        >
+                          ✏️
+                        </button>
+                        <button
+                          onClick={() => handleDeleteVocabulary(vocab.id)}
+                          className="text-red-600 hover:bg-red-50 font-semibold text-sm px-3 py-2 rounded-lg transition-colors"
+                          title="Löschen"
+                        >
+                          🗑️
+                        </button>
+                      </>
+                    )}
+                    {!user && (
                       <button
-                        onClick={() => handleAddToTrainer(vocab.id)}
-                        disabled={addedToTrainer.has(vocab.id)}
-                        className={`${
-                          addedToTrainer.has(vocab.id)
-                            ? 'bg-green-500 text-white'
-                            : 'bg-purple-500 hover:bg-purple-600 text-white'
-                        } font-semibold text-sm px-3 py-2 rounded-lg transition-colors disabled:opacity-50`}
-                        title="Zum Vokabeltrainer hinzufügen"
+                        onClick={() => setSelectedVocab(vocab)}
+                        className="text-indigo-600 hover:bg-indigo-50 font-semibold text-sm px-3 py-2 rounded-lg transition-colors"
+                        title="Bearbeiten"
                       >
-                        {addedToTrainer.has(vocab.id) ? '✅' : '📚'}
+                        ✏️
                       </button>
                     )}
-                    <button
-                      onClick={() => setSelectedVocab(vocab)}
-                      className="text-indigo-600 hover:bg-indigo-50 font-semibold text-sm px-3 py-2 rounded-lg transition-colors"
-                      title="Bearbeiten"
-                    >
-                      ✏️
-                    </button>
                   </div>
                 </div>
               </div>
@@ -296,6 +371,84 @@ function VocabularyLibrary({ user }) {
             >
               ✕ Schließen
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* New Vocabulary Modal */}
+      {showNewVocabForm && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="glass-card max-w-2xl w-full rounded-2xl p-6">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">➕ Neue Vokabel erstellen</h3>
+            
+            <div className="space-y-4">
+              {/* English Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  🇬🇧 Englisch
+                </label>
+                <input
+                  type="text"
+                  value={newVocab.english}
+                  onChange={(e) => setNewVocab(prev => ({ ...prev, english: e.target.value }))}
+                  placeholder="z.B. apple"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors"
+                  autoFocus
+                />
+              </div>
+
+              {/* German Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  🇩🇪 Deutsch
+                </label>
+                <input
+                  type="text"
+                  value={newVocab.german}
+                  onChange={(e) => setNewVocab(prev => ({ ...prev, german: e.target.value }))}
+                  placeholder="z.B. Apfel"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors"
+                />
+              </div>
+
+              {/* Level Select */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  📊 Niveau
+                </label>
+                <select
+                  value={newVocab.level}
+                  onChange={(e) => setNewVocab(prev => ({ ...prev, level: e.target.value }))}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors"
+                >
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B1">B1</option>
+                  <option value="B2">B2</option>
+                  <option value="C1">C1</option>
+                  <option value="C2">C2</option>
+                </select>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  onClick={handleCreateVocabulary}
+                  className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  ✓ Erstellen
+                </button>
+                <button
+                  onClick={() => {
+                    setShowNewVocabForm(false);
+                    setNewVocab({ english: '', german: '', level: 'B2' });
+                  }}
+                  className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  ✕ Abbrechen
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
