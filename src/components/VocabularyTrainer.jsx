@@ -63,12 +63,14 @@ function VocabularyTrainer({ user }) {
       if (user && sessionStartTime) {
         const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
         const secondsPracticed = 10; // 10 Sekunden pro Flashcard
+        console.log('🎮 Tracking activity (VocabularyTrainer):', { minutesPracticed, secondsPracticed, user: user.username });
         if (minutesPracticed > 0 || secondsPracticed > 0) {
           try {
-            await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
+            const result = await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
+            console.log('✅ Activity tracked:', result);
             setSessionStartTime(Date.now()); // Reset für nächste Messung
           } catch (error) {
-            console.error('Failed to track activity:', error);
+            console.error('❌ Failed to track activity:', error);
           }
         }
       }

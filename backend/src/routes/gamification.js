@@ -91,6 +91,8 @@ router.post('/activity', authenticateToken, (req, res) => {
     // Hole aktuelle Streak und Trophäen
     const stats = getGamificationStats(userId);
 
+    console.log(`📊 Stats after activity:`, stats);
+
     res.json({
       activity,
       stats,

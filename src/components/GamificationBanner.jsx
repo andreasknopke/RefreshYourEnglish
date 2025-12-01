@@ -18,6 +18,7 @@ function GamificationBanner({ user }) {
   const loadStats = async () => {
     try {
       const data = await apiService.getGamificationStats();
+      console.log('📊 Gamification stats loaded:', data);
       setStats(data);
       
       // Animation bei neuer Trophäe

@@ -180,11 +180,13 @@ function ActionModule({ user }) {
       if (user && sessionStartTime) {
         const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
         const secondsPracticed = (roundProgress + 1) * 10; // 10 Sekunden pro Flashcard
+        console.log('🎮 Tracking activity (ActionModule):', { roundProgress: roundProgress + 1, minutesPracticed, secondsPracticed, user: user.username });
         if (minutesPracticed > 0 || secondsPracticed > 0) {
           try {
-            await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
+            const result = await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
+            console.log('✅ Activity tracked:', result);
           } catch (error) {
-            console.error('Failed to track activity:', error);
+            console.error('❌ Failed to track activity:', error);
           }
         }
       }

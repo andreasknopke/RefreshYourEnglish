@@ -135,6 +135,27 @@ const createTables = () => {
     )
   `);
 
+  // Migration: Wenn alte Spalte minutes_practiced existiert, migriere zu seconds_practiced
+  try {
+    const tableInfo = db.prepare("PRAGMA table_info(daily_activity)").all();
+    const hasMinutesColumn = tableInfo.some(col => col.name === 'minutes_practiced');
+    const hasSecondsColumn = tableInfo.some(col => col.name === 'seconds_practiced');
+    
+    if (hasMinutesColumn && !hasSecondsColumn) {
+      console.log('🔄 Migrating daily_activity from minutes to seconds...');
+      db.exec(`
+        ALTER TABLE daily_activity ADD COLUMN seconds_practiced INTEGER DEFAULT 0;
+        UPDATE daily_activity SET seconds_practiced = minutes_practiced * 60;
+      `);
+      console.log('✅ Migration completed');
+    } else if (hasMinutesColumn && hasSecondsColumn) {
+      console.log('🔄 Syncing seconds_practiced from minutes_practiced...');
+      db.exec(`UPDATE daily_activity SET seconds_practiced = minutes_practiced * 60 WHERE seconds_practiced = 0;`);
+    }
+  } catch (error) {
+    console.error('Migration error:', error);
+  }
+
   // Gamification: Trophies/Achievements
   db.exec(`
     CREATE TABLE IF NOT EXISTS user_trophies (
