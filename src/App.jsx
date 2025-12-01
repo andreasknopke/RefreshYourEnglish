@@ -108,21 +108,21 @@ function App() {
         </header>
 
         {!activeModule ? (
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Modul 1: Übersetzungsübung */}
-            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                 </svg>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
+              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
                 Übersetzungsübung
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
                 Übersetze deutsche Sätze ins Englische und erhalte KI-basiertes Feedback zu deinen Übersetzungen.
               </p>
               <button
@@ -134,19 +134,19 @@ function App() {
             </div>
 
             {/* Modul 2: Action Modus */}
-            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
+              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
                 Action Modus
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
                 Trainiere deinen aktiven Wortschatz mit zeitbasierten Vokabelübungen im Countdown-Modus.
               </p>
               <button
@@ -158,19 +158,19 @@ function App() {
             </div>
 
             {/* Modul 3: Vocabulary Trainer */}
-            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
+            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
-                Vocabulary Trainer
+              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
+                Vokabeltrainer
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
                 Lerne mit Flashcards und Spaced Repetition. Behalte deine Vokabeln langfristig im Gedächtnis.
               </p>
               <button
@@ -183,19 +183,19 @@ function App() {
             </div>
 
             {/* Modul 4: Vokabelbibliothek */}
-            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
                 </svg>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
+              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
                 Vokabelbibliothek
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
                 Durchsuche und verwalte alle Vokabeln. Füge beliebige Wörter zum Trainer hinzu.
               </p>
               <button
