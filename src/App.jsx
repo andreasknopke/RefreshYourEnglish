@@ -14,6 +14,7 @@ function App() {
   const [activeModule, setActiveModule] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
+  const [dueFlashcardsCount, setDueFlashcardsCount] = useState(0);
 
   useEffect(() => {
     // Check for special routes
@@ -47,6 +48,25 @@ function App() {
     window.addEventListener('auth-required', handleAuthRequired);
     return () => window.removeEventListener('auth-required', handleAuthRequired);
   }, []);
+
+  // Lade fällige Flashcards für Badge
+  useEffect(() => {
+    if (user) {
+      loadDueFlashcardsCount();
+      // Update alle 30 Sekunden
+      const interval = setInterval(loadDueFlashcardsCount, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [user]);
+
+  const loadDueFlashcardsCount = async () => {
+    try {
+      const data = await apiService.getDueFlashcards();
+      setDueFlashcardsCount(data.flashcards?.length || 0);
+    } catch (error) {
+      console.error('Failed to load due flashcards count:', error);
+    }
+  };
 
   const handleLogout = () => {
     apiService.logout();
@@ -155,6 +175,15 @@ function App() {
             {/* Modul 3: Vocabulary Trainer */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Badge für fällige Karten */}
+              {user && dueFlashcardsCount > 0 && (
+                <div className="absolute top-2 right-2 z-20">
+                  <div className="bg-red-500 text-white text-xs font-bold rounded-full w-7 h-7 flex items-center justify-center shadow-lg animate-pulse">
+                    {dueFlashcardsCount}
+                  </div>
+                </div>
+              )}
               
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
