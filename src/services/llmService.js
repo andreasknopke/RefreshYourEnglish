@@ -11,11 +11,19 @@
 export async function evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
+  console.log('🔑 OpenAI API Key status:', {
+    exists: !!API_KEY,
+    length: API_KEY ? API_KEY.length : 0,
+    prefix: API_KEY ? API_KEY.substring(0, 7) + '...' : 'none'
+  });
+  
   // Wenn kein API-Key vorhanden ist, verwende Simulation
   if (!API_KEY) {
-    console.log('No OpenAI API key found, using simulation');
+    console.warn('⚠️ No OpenAI API key found, using simulation mode');
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
   }
+  
+  console.log('✨ Using OpenAI API for translation evaluation');
   
   // Echte OpenAI-Integration (nur wenn API-Key vorhanden)
   try {
