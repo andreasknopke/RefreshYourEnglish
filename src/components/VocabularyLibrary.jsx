@@ -23,8 +23,10 @@ function VocabularyLibrary({ user }) {
     setLoading(true);
     try {
       const data = await apiService.getVocabulary();
-      setVocabulary(data);
-      setFilteredVocabulary(data);
+      // API returns { count: X, vocabulary: [...] }
+      const vocabArray = data.vocabulary || data;
+      setVocabulary(vocabArray);
+      setFilteredVocabulary(vocabArray);
     } catch (error) {
       console.error('Error loading vocabulary:', error);
     } finally {
