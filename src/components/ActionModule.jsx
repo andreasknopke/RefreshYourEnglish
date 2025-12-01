@@ -24,6 +24,7 @@ function ActionModule() {
   const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [selectedVocab, setSelectedVocab] = useState(null);
+  const [isFlipped, setIsFlipped] = useState(false);
   const inputRef = useRef(null);
 
   // Funktion zum Hinzufügen mehrerer Vokabeln zum Trainer
@@ -123,7 +124,13 @@ function ActionModule() {
     setCurrentWord(randomWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
+    setIsFlipped(false);
     setTimeout(() => inputRef.current?.focus(), 100);
+  };
+
+  const handleBuzzer = () => {
+    setIsActive(false);
+    setIsFlipped(true);
   };
 
   const handleTimeout = async () => {
@@ -162,7 +169,7 @@ function ActionModule() {
   };
 
   const handleKnow = async () => {
-    setIsActive(false);
+    setIsFlipped(false);
     
     const timeBonus = Math.floor(timeLeft / 2);
     const streakBonus = streak >= 5 ? 5 : 0;
@@ -205,7 +212,7 @@ function ActionModule() {
   };
 
   const handleForgot = async () => {
-    setIsActive(false);
+    setIsFlipped(false);
     
     const answer = {
       word: currentWord,
@@ -501,33 +508,81 @@ function ActionModule() {
               </div>
             )}
 
-            {/* Word to translate */}
-            <div className="glass-card bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 mb-4 text-center border-2 border-green-200 shadow-xl">
-              <p className="text-xs text-green-700 font-bold mb-2 uppercase tracking-wide">
-                🇩🇪 Deutsche Vokabel 🇬🇧
-              </p>
-              <p className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                {currentWord?.de}
-              </p>
-              
-              {/* Buttons */}
-              {isActive && (
-                <div className="flex gap-3 justify-center">
-                  <button
-                    onClick={handleKnow}
-                    className="flex-1 max-w-xs bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-xl text-lg md:text-xl transition-all shadow-lg hover:scale-105"
-                  >
-                    ✓ I know
-                  </button>
-                  <button
-                    onClick={handleForgot}
-                    className="flex-1 max-w-xs bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-xl text-lg md:text-xl transition-all shadow-lg hover:scale-105"
-                  >
-                    ✗ Forgot
-                  </button>
+            {/* Flashcard */}
+            <div 
+              className={`relative h-96 perspective-1000 ${isActive ? 'cursor-pointer' : ''}`}
+              onClick={() => isActive && handleBuzzer()}
+            >
+              <div 
+                className={`absolute w-full h-full transition-all duration-500 transform-style-3d ${
+                  isFlipped ? 'rotate-y-180' : ''
+                }`}
+              >
+                {/* Vorderseite (Deutsch) */}
+                <div className="absolute w-full h-full backface-hidden">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
+                    <div className="text-sm text-green-700 font-bold mb-4">🇩🇪 Deutsche Vokabel</div>
+                    <div className="text-5xl font-bold text-gray-800 mb-4 text-center">
+                      {currentWord?.de}
+                    </div>
+                    {isActive && (
+                      <div className="text-sm text-gray-400 mt-8">
+                        ⚡ Klicke wenn du bereit bist!
+                      </div>
+                    )}
+                    <div className="mt-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+                      {currentWord?.level}
+                    </div>
+                  </div>
                 </div>
-              )}
+
+                {/* Rückseite (Englisch) */}
+                <div className="absolute w-full h-full backface-hidden rotate-y-180">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
+                    <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
+                    <div className="text-5xl font-bold text-indigo-700 mb-8 text-center">
+                      {currentWord?.en}
+                    </div>
+                    
+                    {/* Bewertungs-Buttons */}
+                    {!isActive && isFlipped && (
+                      <div className="flex gap-4 justify-center w-full max-w-lg">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleKnow();
+                          }}
+                          className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                        >
+                          ✓ Know
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleForgot();
+                          }}
+                          className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                        >
+                          ✗ Forgot
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Buzzer Button (alternative wenn nicht auf Karte klicken will) */}
+            {isActive && !isFlipped && (
+              <div className="text-center mt-4">
+                <button
+                  onClick={handleBuzzer}
+                  className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-full text-2xl transition-all shadow-lg hover:scale-110 animate-pulse"
+                >
+                  ⚡ BUZZER
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
