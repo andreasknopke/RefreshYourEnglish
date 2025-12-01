@@ -202,6 +202,22 @@ class ApiService {
   async getFlashcardStats() {
     return this.request('/flashcards/stats');
   }
+
+  // Gamification endpoints
+  async trackActivity(minutesOrSeconds) {
+    return this.request('/gamification/activity', {
+      method: 'POST',
+      body: JSON.stringify({ minutesPracticed: minutesOrSeconds }),
+    });
+  }
+
+  async getGamificationStats() {
+    return this.request('/gamification/stats');
+  }
+
+  async getTrophies() {
+    return this.request('/gamification/trophies');
+  }
 }
 
 const apiService = new ApiService();
