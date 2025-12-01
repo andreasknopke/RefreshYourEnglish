@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
+import apiService from '../services/apiService';
 
-function DialogModule() {
+function DialogModule({ user }) {
   const [scenario, setScenario] = useState(null);
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
@@ -99,6 +100,28 @@ function DialogModule() {
         );
         setEvaluation(evalResult);
         setIsEvaluating(false);
+        
+        // Zeitgutschrift bei guter Performance (mindestens 7/10 in correctness oder appropriateness)
+        if (user && (evalResult.correctness >= 7 || evalResult.appropriateness >= 7)) {
+          try {
+            const minutesToAdd = 5; // 5 Minuten Zeitgutschrift
+            console.log('🎮 Tracking activity (DialogModule):', { 
+              correctness: evalResult.correctness, 
+              appropriateness: evalResult.appropriateness,
+              minutesToAdd, 
+              user: user.username 
+            });
+            const result = await apiService.trackActivity(minutesToAdd);
+            console.log('✅ Activity tracked - 5 minutes bonus:', result);
+          } catch (error) {
+            console.error('❌ Failed to track activity:', error);
+          }
+        } else if (user) {
+          console.log('⏭️ No time credit (score < 7/10):', { 
+            correctness: evalResult.correctness, 
+            appropriateness: evalResult.appropriateness 
+          });
+        }
       } else {
         const response = await generateDialogResponse(scenario, conversationHistory, level);
         
@@ -317,6 +340,21 @@ function DialogModule() {
                         <li key={index} className="text-gray-700">{tip}</li>
                       ))}
                     </ul>
+                  </div>
+                )}
+                
+                {/* Zeitgutschrift Anzeige */}
+                {user && (evaluation.correctness >= 7 || evaluation.appropriateness >= 7) && (
+                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border-2 border-indigo-300 mt-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl">🎉</span>
+                      <div>
+                        <p className="font-bold text-indigo-800">Belohnung erhalten!</p>
+                        <p className="text-sm text-indigo-700">
+                          +5 Minuten Zeitgutschrift für deine gute Performance!
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
