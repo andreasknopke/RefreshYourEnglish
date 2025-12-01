@@ -62,9 +62,10 @@ function VocabularyTrainer({ user }) {
       // Track activity für Gamification
       if (user && sessionStartTime) {
         const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
-        if (minutesPracticed > 0) {
+        const secondsPracticed = 10; // 10 Sekunden pro Flashcard
+        if (minutesPracticed > 0 || secondsPracticed > 0) {
           try {
-            await apiService.trackActivity(minutesPracticed);
+            await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
             setSessionStartTime(Date.now()); // Reset für nächste Messung
           } catch (error) {
             console.error('Failed to track activity:', error);
