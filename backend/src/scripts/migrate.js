@@ -1,4 +1,5 @@
 import db from '../models/database.js';
+import bcrypt from 'bcryptjs';
 
 console.log('🔄 Running database migration...');
 
@@ -38,6 +39,21 @@ try {
         throw error;
       }
     }
+  }
+  
+  // Erstelle Standard-Admin-User "andreas" falls er nicht existiert
+  console.log('👤 Checking for default admin user...');
+  const adminEmail = 'andreasknopke@gmx.net';
+  const adminUser = db.prepare('SELECT id FROM users WHERE email = ?').get(adminEmail);
+  
+  if (!adminUser) {
+    console.log('🔨 Creating default admin user...');
+    const passwordHash = await bcrypt.hash('England1', 10);
+    const result = db.prepare('INSERT INTO users (username, email, password_hash, email_verified) VALUES (?, ?, ?, 1)')
+      .run('andreas', adminEmail, passwordHash);
+    console.log(`✅ Admin user created with ID: ${result.lastInsertRowid}`);
+  } else {
+    console.log(`✅ Admin user already exists with ID: ${adminUser.id}`);
   }
   
   // Prüfe Vocabulary-Tabelle
