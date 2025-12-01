@@ -42,8 +42,8 @@ function VocabularyLibrary({ user }) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(
         vocab =>
-          vocab.de.toLowerCase().includes(term) ||
-          vocab.en.toLowerCase().includes(term)
+          vocab.german.toLowerCase().includes(term) ||
+          vocab.english.toLowerCase().includes(term)
       );
     }
 
@@ -211,11 +211,11 @@ function VocabularyLibrary({ user }) {
                     <div className="grid md:grid-cols-2 gap-2">
                       <div>
                         <div className="text-xs text-gray-500 font-semibold">🇩🇪 Deutsch</div>
-                        <div className="font-bold text-gray-800">{vocab.de}</div>
+                        <div className="font-bold text-gray-800">{vocab.german}</div>
                       </div>
                       <div>
                         <div className="text-xs text-gray-500 font-semibold">🇬🇧 Englisch</div>
-                        <div className="font-bold text-gray-800">{vocab.en}</div>
+                        <div className="font-bold text-gray-800">{vocab.english}</div>
                       </div>
                     </div>
                   </div>
@@ -265,8 +265,8 @@ function VocabularyLibrary({ user }) {
                     v.id === updated.id
                       ? {
                           ...v,
-                          en: updated.english,
-                          de: updated.german,
+                          english: updated.english,
+                          german: updated.german,
                           level: updated.level,
                         }
                       : v
