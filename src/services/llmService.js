@@ -309,10 +309,10 @@ export async function generateDialogScenario(level = 'B2') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du erstellst realistische Gesprächsszenarios für Englischlernende auf ${level}-Niveau. Erstelle ein Szenario mit einer Beschreibung auf Deutsch, der Rolle des Gesprächspartners und einer ersten Nachricht auf Englisch. Antworte im JSON-Format: {"description": string, "role": string, "firstMessage": string}`
+          content: `You create realistic conversation scenarios for English learners at ${level} level. Create a scenario with a description in German, the role of the conversation partner, and a first message in English. Respond in JSON format: {"description": string, "role": string, "firstMessage": string}`
         }, {
           role: 'user',
-          content: `Erstelle ein realistisches Alltagsszenario für ein Englisch-Gespräch auf ${level}-Niveau.`
+          content: `Create a realistic everyday scenario for an English conversation at ${level} level. The description should be in German, but the firstMessage must be in English only.`
         }],
         temperature: 0.9,
         max_tokens: 200

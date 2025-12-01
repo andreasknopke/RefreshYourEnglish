@@ -147,7 +147,7 @@ function App() {
               </div>
               
               <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
-                Vocabulary Trainer
+                Vokabeltrainer
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
                 Lerne mit Flashcards und Spaced Repetition. Behalte deine Vokabeln langfristig im Gedächtnis.
