@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import TranslationModule from './components/TranslationModule';
 import ActionModule from './components/ActionModule';
 import VocabularyTrainer from './components/VocabularyTrainer';
-import DialogModule from './components/DialogModule';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import apiService from './services/apiService';
@@ -86,7 +85,7 @@ function App() {
         </header>
 
         {!activeModule ? (
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -159,30 +158,6 @@ function App() {
                 <span className="relative z-10">{user ? 'Jetzt starten →' : '🔒 Login erforderlich'}</span>
               </button>
             </div>
-
-            {/* Modul 4: Dialog Trainer */}
-            <div className="glass-card rounded-3xl p-8 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-6 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </div>
-              
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 relative z-10">
-                Dialog Trainer
-              </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
-                Führe realistische Gespräche auf Englisch mit KI-Unterstützung und erhalte Tipps bei Bedarf.
-              </p>
-              <button
-                onClick={() => setActiveModule('dialog')}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold py-3 px-6 rounded-lg hover:scale-105 transition-all relative z-10"
-              >
-                <span className="relative z-10">Jetzt starten →</span>
-              </button>
-            </div>
           </div>
         ) : (
           <div className="animate-fade-in">
@@ -199,7 +174,7 @@ function App() {
             {activeModule === 'translation' && <TranslationModule user={user} />}
             {activeModule === 'action' && <ActionModule user={user} />}
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
-            {activeModule === 'dialog' && <DialogModule user={user} />}
+            {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
           </div>
         )}
 

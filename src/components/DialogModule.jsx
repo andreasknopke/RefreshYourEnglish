@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { generateDialogScenario, generateDialogResponse, generateDialogHint } from '../services/llmService';
+import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
 
 function DialogModule() {
   const [scenario, setScenario] = useState(null);
@@ -9,6 +9,10 @@ function DialogModule() {
   const [showHint, setShowHint] = useState(false);
   const [currentHint, setCurrentHint] = useState('');
   const [isLoadingHint, setIsLoadingHint] = useState(false);
+  const [level, setLevel] = useState('B2');
+  const [userMessageCount, setUserMessageCount] = useState(0);
+  const [evaluation, setEvaluation] = useState(null);
+  const [isEvaluating, setIsEvaluating] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -25,9 +29,11 @@ function DialogModule() {
     setMessages([]);
     setShowHint(false);
     setCurrentHint('');
+    setUserMessageCount(0);
+    setEvaluation(null);
     
     try {
-      const newScenario = await generateDialogScenario();
+      const newScenario = await generateDialogScenario(level);
       setScenario(newScenario);
       
       // Füge die erste Nachricht der LLM hinzu
@@ -54,6 +60,8 @@ function DialogModule() {
       timestamp: new Date()
     };
 
+    const newUserMessageCount = userMessageCount + 1;
+    setUserMessageCount(newUserMessageCount);
     setMessages(prev => [...prev, userMessage]);
     setUserInput('');
     setShowHint(false);
@@ -71,13 +79,35 @@ function DialogModule() {
         content: userInput.trim()
       });
 
-      const response = await generateDialogResponse(scenario, conversationHistory);
-      
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: response,
-        timestamp: new Date()
-      }]);
+      // Prüfe ob das Gespräch nach dieser Nachricht beendet werden soll
+      if (newUserMessageCount >= 5) {
+        // Letzte Antwort der LLM, dann Bewertung
+        const response = await generateDialogResponse(scenario, conversationHistory, level);
+        
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: response,
+          timestamp: new Date()
+        }]);
+        
+        // Starte Bewertung
+        setIsEvaluating(true);
+        const evalResult = await evaluateDialogPerformance(
+          scenario,
+          conversationHistory.concat([{ role: 'assistant', content: response }]),
+          level
+        );
+        setEvaluation(evalResult);
+        setIsEvaluating(false);
+      } else {
+        const response = await generateDialogResponse(scenario, conversationHistory, level);
+        
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: response,
+          timestamp: new Date()
+        }]);
+      }
     } catch (error) {
       console.error('Failed to get response:', error);
       setMessages(prev => [...prev, {
@@ -148,6 +178,28 @@ function DialogModule() {
               Die KI erstellt ein realistisches Gesprächsszenario und unterhält sich mit dir auf Englisch. 
               Du kannst jederzeit einen Tipp bekommen!
             </p>
+            
+            {/* Level Selector */}
+            <div className="mb-6 max-w-md mx-auto">
+              <label className="block text-sm font-bold text-gray-700 mb-3">
+                Wähle dein Sprachniveau:
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map(lvl => (
+                  <button
+                    key={lvl}
+                    onClick={() => setLevel(lvl)}
+                    className={`py-2 px-4 rounded-xl font-bold transition-all ${
+                      level === lvl
+                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {lvl}
+                  </button>
+                ))}
+              </div>
+            </div>
             
             <button
               onClick={startNewDialog}
@@ -230,6 +282,53 @@ function DialogModule() {
               </div>
             )}
 
+            {/* Evaluation Section */}
+            {evaluation && (
+              <div className="glass-card rounded-2xl p-6 mb-4 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                  📊 Bewertung deiner Performance
+                </h3>
+                
+                <div className="grid md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white rounded-xl p-4 border-2 border-blue-200">
+                    <p className="text-xs font-bold text-gray-500 mb-1">KORREKTHEIT</p>
+                    <p className="text-3xl font-bold text-blue-600">{evaluation.correctness}/10</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border-2 border-purple-200">
+                    <p className="text-xs font-bold text-gray-500 mb-1">ANGEMESSENHEIT</p>
+                    <p className="text-3xl font-bold text-purple-600">{evaluation.appropriateness}/10</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border-2 border-indigo-200">
+                    <p className="text-xs font-bold text-gray-500 mb-1">SPRACHNIVEAU</p>
+                    <p className="text-3xl font-bold text-indigo-600">{evaluation.languageLevel}</p>
+                  </div>
+                </div>
+                
+                <div className="bg-white rounded-xl p-4 mb-4">
+                  <p className="font-bold text-gray-800 mb-2">💬 Feedback:</p>
+                  <p className="text-gray-700">{evaluation.feedback}</p>
+                </div>
+                
+                {evaluation.tips && evaluation.tips.length > 0 && (
+                  <div className="bg-yellow-50 rounded-xl p-4 border-2 border-yellow-200">
+                    <p className="font-bold text-gray-800 mb-2">💡 Tipps für das nächste Mal:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      {evaluation.tips.map((tip, index) => (
+                        <li key={index} className="text-gray-700">{tip}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {isEvaluating && (
+              <div className="glass-card rounded-2xl p-6 mb-4 text-center">
+                <div className="animate-spin w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto mb-3"></div>
+                <p className="text-gray-700 font-bold">Bewerte deine Antworten...</p>
+              </div>
+            )}
+
             {/* Input Area */}
             <div className="space-y-3">
               <textarea
@@ -238,7 +337,7 @@ function DialogModule() {
                 onChange={(e) => setUserInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Antworte auf Englisch..."
-                disabled={isLoading}
+                disabled={isLoading || evaluation !== null}
                 className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none resize-none"
                 rows={3}
               />
@@ -246,15 +345,15 @@ function DialogModule() {
               <div className="flex gap-2">
                 <button
                   onClick={handleSendMessage}
-                  disabled={!userInput.trim() || isLoading}
+                  disabled={!userInput.trim() || isLoading || evaluation !== null}
                   className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  📤 Senden
+                  📤 Senden {userMessageCount < 5 && `(${userMessageCount}/5)`}
                 </button>
                 
                 <button
                   onClick={handleGetHint}
-                  disabled={isLoading || isLoadingHint || messages.length === 0}
+                  disabled={isLoading || isLoadingHint || messages.length === 0 || evaluation !== null}
                   className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   title="Tipp bekommen"
                 >

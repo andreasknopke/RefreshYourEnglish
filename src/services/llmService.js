@@ -259,9 +259,10 @@ export const LLM_CONFIG = {
 
 /**
  * Generiert ein Gesprächsszenario für den Dialog-Trainer
+ * @param {string} level - Das Sprachniveau (A1-C2)
  * @returns {Promise<{description: string, role: string, firstMessage: string}>}
  */
-export async function generateDialogScenario() {
+export async function generateDialogScenario(level = 'B2') {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   if (!API_KEY) {
@@ -308,10 +309,10 @@ export async function generateDialogScenario() {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: 'Du erstellst realistische Gesprächsszenarios für Englischlernende. Erstelle ein Szenario mit einer Beschreibung auf Deutsch, der Rolle des Gesprächspartners und einer ersten Nachricht auf Englisch. Antworte im JSON-Format: {"description": string, "role": string, "firstMessage": string}'
+          content: `Du erstellst realistische Gesprächsszenarios für Englischlernende auf ${level}-Niveau. Erstelle ein Szenario mit einer Beschreibung auf Deutsch, der Rolle des Gesprächspartners und einer ersten Nachricht auf Englisch. Antworte im JSON-Format: {"description": string, "role": string, "firstMessage": string}`
         }, {
           role: 'user',
-          content: 'Erstelle ein realistisches Alltagsszenario für ein Englisch-Gespräch (B2-C1 Level).'
+          content: `Erstelle ein realistisches Alltagsszenario für ein Englisch-Gespräch auf ${level}-Niveau.`
         }],
         temperature: 0.9,
         max_tokens: 200
@@ -350,9 +351,10 @@ export async function generateDialogScenario() {
  * Generiert eine Antwort der LLM im Dialog
  * @param {object} scenario - Das aktuelle Szenario
  * @param {Array} conversationHistory - Die bisherige Konversation
+ * @param {string} level - Das Sprachniveau (A1-C2)
  * @returns {Promise<string>}
  */
-export async function generateDialogResponse(scenario, conversationHistory) {
+export async function generateDialogResponse(scenario, conversationHistory, level = 'B2') {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   if (!API_KEY) {
@@ -370,9 +372,10 @@ export async function generateDialogResponse(scenario, conversationHistory) {
   try {
     const systemPrompt = `Du spielst die Rolle: ${scenario.role}. 
 Szenario: ${scenario.description}
-Führe ein natürliches Gespräch auf Englisch (B2-C1 Level). 
+Führe ein natürliches Gespräch auf Englisch (${level}-Niveau). 
 Bleibe in deiner Rolle und reagiere angemessen auf die Antworten des Lernenden.
-Halte deine Antworten kurz und natürlich (1-3 Sätze).`;
+Halte deine Antworten kurz und natürlich (1-3 Sätze).
+Passe dein Vokabular und deine Satzstruktur an das ${level}-Niveau an.`;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -454,3 +457,104 @@ Gib keine komplette Übersetzung, sondern nur einen Hinweis oder eine Idee (1-2 
     return "Tipp: Antworte freundlich und stelle bei Bedarf eine Rückfrage, um das Gespräch fortzuführen.";
   }
 }
+
+/**
+ * Bewertet die Performance des Users im Dialog
+ * @param {object} scenario - Das Szenario
+ * @param {Array} conversationHistory - Die komplette Konversation
+ * @param {string} level - Das gewählte Sprachniveau (A1-C2)
+ * @returns {Promise<{correctness: number, appropriateness: number, languageLevel: string, feedback: string, tips: string[]}>}
+ */
+export async function evaluateDialogPerformance(scenario, conversationHistory, level = 'B2') {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    // Simulationsmodus - erstelle eine einfache Bewertung
+    return {
+      correctness: 7,
+      appropriateness: 8,
+      languageLevel: level,
+      feedback: "Gute Arbeit! Du hast das Gespräch gut geführt und angemessen reagiert.",
+      tips: [
+        "Versuche, mehr vollständige Sätze zu verwenden",
+        "Achte auf die Verwendung von Zeitformen",
+        "Variiere dein Vokabular für natürlichere Konversationen"
+      ]
+    };
+  }
+
+  try {
+    // Filtere nur User-Nachrichten für die Bewertung
+    const userMessages = conversationHistory
+      .filter(msg => msg.role === 'user')
+      .map(msg => msg.content)
+      .join('\n');
+
+    const systemPrompt = `Du bist ein Englischlehrer und bewertest die Performance eines Lernenden in einem Dialog.
+
+Szenario: ${scenario.description}
+Gewähltes Niveau: ${level}
+
+Bewerte die folgenden Aspekte auf einer Skala von 1-10:
+1. Korrektheit (Grammatik, Rechtschreibung)
+2. Angemessenheit (passt die Antwort zum Kontext?)
+3. Einschätze das tatsächliche Sprachniveau (A1, A2, B1, B2, C1, C2)
+
+Gib konstruktives Feedback und 2-3 konkrete Tipps zur Verbesserung.
+
+Antworte im JSON-Format:
+{
+  "correctness": number (1-10),
+  "appropriateness": number (1-10),
+  "languageLevel": string (A1-C2),
+  "feedback": string,
+  "tips": [string, string, string]
+}`;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: `Bewerte diese Antworten des Lernenden:\n\n${userMessages}` }
+        ],
+        temperature: 0.5,
+        max_tokens: 400
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices[0].message.content;
+    
+    // Parse JSON response
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+    
+    throw new Error('Invalid response format');
+  } catch (error) {
+    console.error('Failed to evaluate dialog performance:', error);
+    // Fallback
+    return {
+      correctness: 7,
+      appropriateness: 7,
+      languageLevel: level,
+      feedback: "Gut gemacht! Du hast das Gespräch erfolgreich geführt.",
+      tips: [
+        "Übe weiter, um dein Sprachniveau zu verbessern",
+        "Achte auf korrekte Grammatik und Zeitformen"
+      ]
+    };
+  }
+}
+
