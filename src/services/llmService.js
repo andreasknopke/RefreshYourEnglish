@@ -9,34 +9,65 @@
  * @returns {Promise<{score: number, feedback: string, improvements: string[], correctTranslation: string}>}
  */
 export async function evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
-  // Simulierte LLM-Antwort für Demo-Zwecke
-  // In Produktion würde hier ein echter API-Call stattfinden
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
-  // Beispiel für einen echten API-Call (auskommentiert):
-  /*
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
-    },
-    body: JSON.stringify({
-      model: 'gpt-4',
-      messages: [{
-        role: 'system',
-        content: 'Du bist ein Englischlehrer. Bewerte die Übersetzung und gib konstruktives Feedback.'
-      }, {
-        role: 'user',
-        content: `Deutscher Satz: "${germanSentence}"\nÜbersetzung des Schülers: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBitte bewerte die Übersetzung auf einer Skala von 1-10 und gib Feedback.`
-      }]
-    })
-  });
+  // Wenn kein API-Key vorhanden ist, verwende Simulation
+  if (!API_KEY) {
+    console.log('No OpenAI API key found, using simulation');
+    return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+  }
   
-  const data = await response.json();
-  // Parse die Antwort und extrahiere Score, Feedback, etc.
-  */
-  
-  // Simulierte Bewertung für Demo
+  // Echte OpenAI-Integration (nur wenn API-Key vorhanden)
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: 'Du bist ein hilfreicher Englischlehrer. Bewerte die Übersetzung auf einer Skala von 1-10 und gib konstruktives Feedback. Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": string[]}'
+        }, {
+          role: 'user',
+          content: `Deutscher Satz: "${germanSentence}"\nÜbersetzung des Schülers: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBitte bewerte die Übersetzung.`
+        }],
+        temperature: 0.7,
+        max_tokens: 300
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const content = data.choices[0].message.content;
+    
+    try {
+      const parsed = JSON.parse(content);
+      return {
+        score: parsed.score || 5,
+        feedback: parsed.feedback || 'Gute Übersetzung!',
+        improvements: parsed.improvements || [],
+        correctTranslation
+      };
+    } catch {
+      // Fallback wenn JSON-Parsing fehlschlägt
+      return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+    }
+  } catch (error) {
+    console.error('OpenAI API failed, falling back to simulation:', error);
+    return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+  }
+}
+
+/**
+ * Simulierte Bewertung (funktioniert ohne API-Key)
+ */
+function simulateEvaluation(germanSentence, userTranslation, correctTranslation) {
   return new Promise((resolve) => {
     setTimeout(() => {
       const similarity = calculateSimilarity(userTranslation.toLowerCase(), correctTranslation.toLowerCase());
@@ -46,7 +77,7 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
       let improvements = [];
       
       if (score >= 9) {
-        feedback = 'Ausgezeichnet! Deine Übersetzung ist nahezu perfekt.';
+        feedback = 'Ausgezeichnet! Deine Übersetzung ist nahezu perfekt. 🎉';
       } else if (score >= 7) {
         feedback = 'Sehr gut! Deine Übersetzung ist korrekt, könnte aber noch natürlicher klingen.';
         improvements.push('Versuche, idiomatischere Ausdrücke zu verwenden');
@@ -67,7 +98,7 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
         improvements,
         correctTranslation
       });
-    }, 1000); // Simuliere API-Latenz
+    }, 800); // Simuliere API-Latenz
   });
 }
 

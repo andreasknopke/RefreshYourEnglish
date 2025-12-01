@@ -12,7 +12,7 @@ const sampleSentences = [
   { id: 8, de: "Die Kinder spielen im Park.", en: "The children are playing in the park." },
 ];
 
-function TranslationModule() {
+function TranslationModule({ user }) {
   const [currentSentence, setCurrentSentence] = useState(sampleSentences[0]);
   const [userTranslation, setUserTranslation] = useState('');
   const [feedback, setFeedback] = useState(null);
@@ -26,21 +26,31 @@ function TranslationModule() {
 
     setIsLoading(true);
     try {
+      console.log('Evaluating translation:', { 
+        german: currentSentence.de, 
+        user: userTranslation, 
+        correct: currentSentence.en 
+      });
+      
       const result = await evaluateTranslation(
         currentSentence.de,
         userTranslation,
         currentSentence.en
       );
+      
+      console.log('Evaluation result:', result);
       setFeedback(result);
       setTotalAttempts(totalAttempts + 1);
       if (result.score >= 7) {
         setScore(score + 1);
       }
     } catch (error) {
+      console.error('Translation evaluation error:', error);
       setFeedback({
         score: 0,
-        feedback: 'Fehler bei der Bewertung. Bitte stelle sicher, dass die LLM-API konfiguriert ist.',
-        improvements: []
+        feedback: `Fehler bei der Bewertung: ${error.message}. Die Simulation sollte trotzdem funktionieren.`,
+        improvements: ['Überprüfe die Browser-Konsole für weitere Details'],
+        correctTranslation: currentSentence.en
       });
     } finally {
       setIsLoading(false);
