@@ -12,6 +12,7 @@ function ActionModule({ user }) {
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [totalAnswers, setTotalAnswers] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [difficulty, setDifficulty] = useState('normal');
@@ -128,6 +129,7 @@ function ActionModule({ user }) {
     setScore(0);
     setStreak(0);
     setTotalAnswers(0);
+    setCorrectAnswers(0);
     setShowFeedback(false);
     setSessionStartTime(Date.now());
     startRound();
@@ -201,6 +203,7 @@ function ActionModule({ user }) {
     setScore(score + points);
     setStreak(streak + 1);
     setTotalAnswers(totalAnswers + 1);
+    setCorrectAnswers(correctAnswers + 1);
     
     // Speichere Fortschritt in der API
     if (currentWord.id) {
@@ -309,7 +312,7 @@ function ActionModule({ user }) {
             <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-2 text-center border border-purple-100">
               <p className="text-[10px] text-purple-600 font-bold uppercase tracking-wider">%</p>
               <p className="text-xl md:text-2xl font-bold text-purple-600">
-                {totalAnswers > 0 ? Math.round((score / (totalAnswers * 10)) * 100) : 0}%
+                {totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) : 0}%
               </p>
             </div>
           </div>
@@ -479,6 +482,10 @@ function ActionModule({ user }) {
                 setCurrentWord(null);
                 setCurrentRound([]);
                 setRoundProgress(0);
+                setScore(0);
+                setStreak(0);
+                setTotalAnswers(0);
+                setCorrectAnswers(0);
               }}
               className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-xl text-base md:text-lg transition-all shadow-lg hover:scale-105"
             >
