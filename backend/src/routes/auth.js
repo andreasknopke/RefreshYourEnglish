@@ -9,7 +9,7 @@ const router = express.Router();
 // Register
 router.post('/register',
   body('username').isLength({ min: 3 }).trim(),
-  body('email').isEmail().normalizeEmail(),
+  body('email').isEmail(),
   body('password').isLength({ min: 6 }),
   async (req, res) => {
     const errors = validationResult(req);
@@ -17,7 +17,8 @@ router.post('/register',
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
+    const email = req.body.email.toLowerCase().trim(); // Manuell normalisieren
 
     try {
       // Check if user exists
@@ -49,7 +50,7 @@ router.post('/register',
 
 // Login
 router.post('/login',
-  body('email').isEmail().normalizeEmail(),
+  body('email').isEmail(),
   body('password').exists(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -57,7 +58,8 @@ router.post('/login',
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const email = req.body.email.toLowerCase().trim(); // Manuell normalisieren
+    const { password } = req.body;
 
     try {
       const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
