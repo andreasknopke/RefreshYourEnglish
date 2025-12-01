@@ -99,21 +99,21 @@ function TranslationModule({ user }) {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="glass-card rounded-3xl shadow-2xl p-4 md:p-6 max-h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="glass-card rounded-2xl shadow-xl p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
         {/* Header with Score */}
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-3">
-            <h2 className="text-2xl md:text-3xl font-bold gradient-text">Übersetzungsübung</h2>
-            <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-xl px-4 py-2 shadow-lg">
-              <p className="text-xs opacity-90 mb-1">Punktzahl</p>
-              <p className="text-2xl font-bold">
+        <div className="mb-3">
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-xl md:text-2xl font-bold gradient-text">Übersetzung</h2>
+            <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg px-3 py-1.5 shadow-lg">
+              <p className="text-[10px] opacity-90">Punkte</p>
+              <p className="text-lg font-bold">
                 {score} / {totalAttempts}
               </p>
             </div>
           </div>
           
           {/* Level Selector */}
-          <div className="mb-3 flex gap-2">
+          <div className="mb-2 flex gap-1">
             {['B2', 'C1', 'C2'].map((lvl) => (
               <button
                 key={lvl}
@@ -121,7 +121,7 @@ function TranslationModule({ user }) {
                   setLevel(lvl);
                   loadNewSentence();
                 }}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
                   level === lvl
                     ? 'bg-indigo-600 text-white shadow-lg'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -133,44 +133,44 @@ function TranslationModule({ user }) {
           </div>
           
           {/* Progress Bar */}
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+          <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden shadow-inner">
             <div 
-              className="h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500"
+              className="h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500"
               style={{ width: totalAttempts > 0 ? `${(score / totalAttempts) * 100}%` : '0%' }}
             />
           </div>
         </div>
 
         {/* German Sentence Card */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 md:p-6 mb-4 shadow-lg border border-blue-100">
-          <p className="text-xs text-indigo-600 font-semibold mb-2 uppercase tracking-wide">Zu übersetzen:</p>
-          <p className="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 md:p-4 mb-3 shadow-lg border border-blue-100">
+          <p className="text-[10px] text-indigo-600 font-semibold mb-1 uppercase tracking-wide">Zu übersetzen:</p>
+          <p className="text-base md:text-lg font-bold text-gray-800 leading-relaxed">
             {currentSentence.de}
           </p>
         </div>
 
         {/* Translation Form */}
-        <form onSubmit={handleSubmit} className="mb-4">
-          <label className="block text-xs font-bold text-gray-700 mb-2 uppercase tracking-wide">
+        <form onSubmit={handleSubmit} className="mb-3">
+          <label className="block text-[10px] font-bold text-gray-700 mb-1 uppercase tracking-wide">
             Deine Übersetzung:
           </label>
           <textarea
             value={userTranslation}
             onChange={(e) => setUserTranslation(e.target.value)}
-            className="input-modern resize-none text-base"
+            className="input-modern resize-none text-sm"
             rows="2"
-            placeholder="Gib hier deine englische Übersetzung ein..."
+            placeholder="Englische Übersetzung..."
             disabled={isLoading}
           />
-          <div className="flex gap-3 mt-4">
+          <div className="flex gap-2 mt-2">
             <button
               type="submit"
               disabled={isLoading || !userTranslation.trim()}
-              className="flex-1 btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-base py-2"
+              className="flex-1 btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm py-2"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center">
-                  <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                  <svg className="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -182,7 +182,7 @@ function TranslationModule({ user }) {
               type="button"
               onClick={randomSentence}
               disabled={isGeneratingSentence}
-              className="px-6 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 text-base disabled:opacity-50"
+              className="px-4 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 text-sm disabled:opacity-50"
             >
               {isGeneratingSentence ? '⏳' : '🎲'}
             </button>
@@ -191,13 +191,13 @@ function TranslationModule({ user }) {
 
         {/* Feedback Section */}
         {feedback && (
-          <div className="glass-card rounded-2xl p-4 mb-4 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 animate-fade-in">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg md:text-xl font-bold text-gray-800 flex items-center">
-                <span className="mr-2 text-2xl">🤖</span>
+          <div className="glass-card rounded-xl p-3 mb-3 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 animate-fade-in">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-base md:text-lg font-bold text-gray-800 flex items-center">
+                <span className="mr-1 text-xl">🤖</span>
                 KI-Bewertung
               </h3>
-              <div className="flex items-center bg-white rounded-xl px-4 py-2 shadow-lg">
+              <div className="flex items-center bg-white rounded-lg px-3 py-1 shadow-lg">
                 <span className="text-2xl md:text-3xl font-bold gradient-text mr-2">{feedback.score}</span>
                 <span className="text-gray-600 text-lg">/10</span>
               </div>

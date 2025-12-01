@@ -70,9 +70,9 @@ function App() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 relative z-10">
+      <div className="container mx-auto px-3 py-4 relative z-10">
         {/* User Info / Login Button */}
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-end mb-3">
           {user ? (
             <div className="glass-card px-6 py-3 rounded-2xl flex items-center gap-4">
               <div className="flex items-center gap-2">
@@ -98,111 +98,102 @@ function App() {
           )}
         </div>
 
-        <header className="text-center mb-12 animate-fade-in">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 gradient-text">
-            Refresh Your English
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-700 font-medium">
-            ✨ LLM-gestütztes Vokabeltraining ✨
-          </p>
-        </header>
-
         {!activeModule ? (
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Modul 1: Übersetzungsübung */}
-            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                 </svg>
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
-                Übersetzungsübung
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Übersetzung
               </h2>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
-                Übersetze deutsche Sätze ins Englische und erhalte KI-basiertes Feedback zu deinen Übersetzungen.
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+                Übersetze Sätze mit KI-Feedback
               </p>
               <button
                 onClick={() => setActiveModule('translation')}
-                className="w-full btn-primary relative z-10"
+                className="w-full btn-primary relative z-10 text-sm py-2"
               >
-                <span className="relative z-10">Jetzt starten →</span>
+                <span className="relative z-10">Starten →</span>
               </button>
             </div>
 
             {/* Modul 2: Action Modus */}
-            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Action Modus
               </h2>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
-                Trainiere deinen aktiven Wortschatz mit zeitbasierten Vokabelübungen im Countdown-Modus.
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+                Vokabeln mit Countdown-Timer
               </p>
               <button
                 onClick={() => setActiveModule('action')}
-                className="w-full btn-secondary relative z-10"
+                className="w-full btn-secondary relative z-10 text-sm py-2"
               >
-                <span className="relative z-10">Jetzt starten →</span>
+                <span className="relative z-10">Starten →</span>
               </button>
             </div>
 
             {/* Modul 3: Vocabulary Trainer */}
-            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
-                Vokabeltrainer
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Flashcards
               </h2>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
-                Lerne mit Flashcards und Spaced Repetition. Behalte deine Vokabeln langfristig im Gedächtnis.
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+                Spaced Repetition Lernen
               </p>
               <button
                 onClick={() => setActiveModule('trainer')}
                 disabled={!user}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
               >
-                <span className="relative z-10">{user ? 'Jetzt starten →' : '🔒 Login erforderlich'}</span>
+                <span className="relative z-10">{user ? 'Starten →' : '🔒 Login'}</span>
               </button>
             </div>
 
             {/* Modul 4: Vokabelbibliothek */}
-            <div className="glass-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl mb-4 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
                 </svg>
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-800 mb-3 relative z-10 min-h-[3.5rem] flex items-center">
-                Vokabelbibliothek
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Bibliothek
               </h2>
-              <p className="text-sm text-gray-600 mb-6 leading-relaxed relative z-10">
-                Durchsuche und verwalte alle Vokabeln. Füge beliebige Wörter zum Trainer hinzu.
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+                Vokabeln verwalten und suchen
               </p>
               <button
                 onClick={() => setActiveModule('library')}
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:scale-105 transition-all relative z-10"
+                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all relative z-10"
               >
-                <span className="relative z-10">Jetzt starten →</span>
+                <span className="relative z-10">Starten →</span>
               </button>
             </div>
           </div>
@@ -210,12 +201,12 @@ function App() {
           <div className="animate-fade-in">
             <button
               onClick={() => setActiveModule(null)}
-              className="mb-8 flex items-center text-indigo-600 hover:text-indigo-800 font-semibold text-lg hover:-translate-x-2 transition-transform duration-200"
+              className="mb-4 flex items-center text-indigo-600 hover:text-indigo-800 font-semibold text-base hover:-translate-x-2 transition-transform duration-200"
             >
-              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Zurück zur Modulauswahl
+              Zurück
             </button>
             
             {activeModule === 'translation' && <TranslationModule user={user} />}

@@ -273,36 +273,36 @@ function ActionModule() {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="glass-card rounded-3xl shadow-2xl p-4 md:p-6 max-h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="glass-card rounded-2xl shadow-xl p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
         {/* Header */}
-        <div className="mb-4">
-          <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3">⚡ Action Modus</h2>
+        <div className="mb-3">
+          <h2 className="text-xl md:text-2xl font-bold gradient-text mb-2">⚡ Action Modus</h2>
           
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-2 md:gap-3 mb-3">
-            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-3 text-center border border-indigo-100">
-              <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider mb-1">Punkte</p>
-              <p className="text-2xl md:text-3xl font-bold gradient-text">{score}</p>
+          <div className="grid grid-cols-3 gap-2 mb-2">
+            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-2 text-center border border-indigo-100">
+              <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Punkte</p>
+              <p className="text-xl md:text-2xl font-bold gradient-text">{score}</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 text-center border border-green-100">
-              <p className="text-xs text-green-600 font-bold uppercase tracking-wider mb-1">Serie</p>
-              <p className="text-2xl md:text-3xl font-bold text-green-600">{streak} 🔥</p>
+            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-2 text-center border border-green-100">
+              <p className="text-[10px] text-green-600 font-bold uppercase tracking-wider">Serie</p>
+              <p className="text-xl md:text-2xl font-bold text-green-600">{streak} 🔥</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 text-center border border-purple-100">
-              <p className="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Genauigkeit</p>
-              <p className="text-2xl md:text-3xl font-bold text-purple-600">
+            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-2 text-center border border-purple-100">
+              <p className="text-[10px] text-purple-600 font-bold uppercase tracking-wider">%</p>
+              <p className="text-xl md:text-2xl font-bold text-purple-600">
                 {totalAnswers > 0 ? Math.round((score / (totalAnswers * 10)) * 100) : 0}%
               </p>
             </div>
           </div>
 
           {/* Difficulty Selector */}
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             {['easy', 'normal', 'hard'].map((level) => (
               <button
                 key={level}
                 onClick={() => adjustDifficulty(level)}
-                className={`flex-1 py-2 px-2 text-xs md:text-sm rounded-lg font-bold transition-all duration-200 ${
+                className={`flex-1 py-1.5 px-1 text-[10px] md:text-xs rounded-lg font-bold transition-all duration-200 ${
                   difficulty === level
                     ? level === 'easy' 
                       ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
