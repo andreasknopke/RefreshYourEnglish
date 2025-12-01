@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
+import apiService from '../services/apiService';
 
 function TranslationModule({ user }) {
   const [currentSentence, setCurrentSentence] = useState(null);
@@ -10,6 +11,7 @@ function TranslationModule({ user }) {
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [level, setLevel] = useState('B2');
   const [isGeneratingSentence, setIsGeneratingSentence] = useState(false);
+  const [sessionStartTime, setSessionStartTime] = useState(null);
 
   // Debug: Prüfe API-Key beim Laden
   console.log('🎯 TranslationModule loaded');
@@ -24,6 +26,7 @@ function TranslationModule({ user }) {
 
   // Lade ersten Satz beim Start
   useEffect(() => {
+    setSessionStartTime(Date.now());
     loadNewSentence();
   }, []);
 
@@ -64,6 +67,19 @@ function TranslationModule({ user }) {
       setTotalAttempts(totalAttempts + 1);
       if (result.score >= 7) {
         setScore(score + 1);
+      }
+
+      // Track activity für Gamification
+      if (user && sessionStartTime) {
+        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
+        if (minutesPracticed > 0) {
+          try {
+            await apiService.trackActivity(minutesPracticed);
+            setSessionStartTime(Date.now()); // Reset für nächste Messung
+          } catch (error) {
+            console.error('Failed to track activity:', error);
+          }
+        }
       }
     } catch (error) {
       console.error('Translation evaluation error:', error);

@@ -3,7 +3,7 @@ import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
 
-function ActionModule() {
+function ActionModule({ user }) {
   const [timeLimit, setTimeLimit] = useState(10);
   const [isActive, setIsActive] = useState(false);
   const [currentWord, setCurrentWord] = useState(null);
@@ -25,6 +25,7 @@ function ActionModule() {
   const [selectedVocab, setSelectedVocab] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [addedToTrainer, setAddedToTrainer] = useState(new Set());
+  const [sessionStartTime, setSessionStartTime] = useState(null);
   const inputRef = useRef(null);
 
   // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
@@ -128,6 +129,7 @@ function ActionModule() {
     setStreak(0);
     setTotalAnswers(0);
     setShowFeedback(false);
+    setSessionStartTime(Date.now());
     startRound();
   };
 
@@ -173,6 +175,18 @@ function ActionModule() {
     if (roundProgress + 1 >= wordsPerRound) {
       setIsActive(false);
       setShowFeedback(true);
+      
+      // Track activity für Gamification
+      if (user && sessionStartTime) {
+        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
+        if (minutesPracticed > 0) {
+          try {
+            await apiService.trackActivity(minutesPracticed);
+          } catch (error) {
+            console.error('Failed to track activity:', error);
+          }
+        }
+      }
     } else {
       setRoundProgress(roundProgress + 1);
       setIsFlipped(false);

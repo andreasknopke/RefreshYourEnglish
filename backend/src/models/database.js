@@ -121,6 +121,38 @@ const createTables = () => {
     CREATE INDEX IF NOT EXISTS idx_flashcard_review ON flashcard_deck(user_id, next_review_date);
   `);
 
+  // Gamification: Daily Activity Tracking
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS daily_activity (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      date DATE NOT NULL,
+      minutes_practiced INTEGER DEFAULT 0,
+      exercises_completed INTEGER DEFAULT 0,
+      goal_achieved BOOLEAN DEFAULT 0,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      UNIQUE(user_id, date)
+    )
+  `);
+
+  // Gamification: Trophies/Achievements
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS user_trophies (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      trophy_type TEXT NOT NULL,
+      earned_date DATE NOT NULL,
+      streak_days INTEGER DEFAULT 1,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+  `);
+
+  // Index für Daily Activity
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_daily_activity_user_date ON daily_activity(user_id, date);
+    CREATE INDEX IF NOT EXISTS idx_trophies_user ON user_trophies(user_id);
+  `);
+
   console.log('✅ Database tables created successfully');
 };
 

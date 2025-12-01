@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getDueFlashcards, reviewFlashcard, removeFromFlashcardDeck, getFlashcardStats } from '../services/apiService';
+import apiService from '../services/apiService';
 
 function VocabularyTrainer({ user }) {
   const [stats, setStats] = useState(null);
@@ -9,8 +10,10 @@ function VocabularyTrainer({ user }) {
   const [loading, setLoading] = useState(true);
   const [reviewing, setReviewing] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [sessionStartTime, setSessionStartTime] = useState(null);
 
   useEffect(() => {
+    setSessionStartTime(Date.now());
     loadFlashcards();
     loadStats();
   }, []);
@@ -55,6 +58,19 @@ function VocabularyTrainer({ user }) {
       const newFlashcards = flashcards.filter((_, idx) => idx !== currentIndex);
       setFlashcards(newFlashcards);
       setIsFlipped(false);
+
+      // Track activity für Gamification
+      if (user && sessionStartTime) {
+        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
+        if (minutesPracticed > 0) {
+          try {
+            await apiService.trackActivity(minutesPracticed);
+            setSessionStartTime(Date.now()); // Reset für nächste Messung
+          } catch (error) {
+            console.error('Failed to track activity:', error);
+          }
+        }
+      }
 
       if (newFlashcards.length === 0) {
         // Alle Karten durch - Stats neu laden

@@ -5,6 +5,7 @@ import authRoutes from './routes/auth.js';
 import vocabularyRoutes from './routes/vocabulary.js';
 import progressRoutes from './routes/progress.js';
 import flashcardRoutes from './routes/flashcardRoutes.js';
+import gamificationRoutes from './routes/gamification.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/vocabulary', vocabularyRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/flashcards', flashcardRoutes);
+app.use('/api/gamification', gamificationRoutes);
 
 // Welcome page
 app.get('/', (req, res) => {

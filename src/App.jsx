@@ -7,6 +7,7 @@ import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import VerifyEmail from './components/VerifyEmail';
 import ResetPassword from './components/ResetPassword';
+import GamificationBanner from './components/GamificationBanner';
 import apiService from './services/apiService';
 
 function App() {
@@ -97,6 +98,9 @@ function App() {
             </button>
           )}
         </div>
+
+        {/* Gamification Banner */}
+        {user && <GamificationBanner user={user} />}
 
         {!activeModule ? (
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-3">
