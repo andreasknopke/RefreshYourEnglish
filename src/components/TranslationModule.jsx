@@ -20,6 +20,13 @@ function TranslationModule({ user }) {
   const [score, setScore] = useState(0);
   const [totalAttempts, setTotalAttempts] = useState(0);
 
+  // Debug: Prüfe API-Key beim Laden
+  console.log('🎯 TranslationModule loaded');
+  console.log('🔑 API Key check:', {
+    exists: !!import.meta.env.VITE_OPENAI_API_KEY,
+    envVars: Object.keys(import.meta.env).filter(k => k.includes('OPENAI'))
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userTranslation.trim()) return;
