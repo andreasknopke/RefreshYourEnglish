@@ -19,13 +19,34 @@ function ActionModule() {
   const [currentRound, setCurrentRound] = useState([]);
   const [roundProgress, setRoundProgress] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
-  const [floatingTranslation, setFloatingTranslation] = useState(null);
   const [vocabulary, setVocabulary] = useState([]);
   const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [selectedVocab, setSelectedVocab] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [addedToTrainer, setAddedToTrainer] = useState(new Set());
   const inputRef = useRef(null);
+
+  // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
+  const handleAddToTrainer = async (vocabId) => {
+    try {
+      await apiService.addToFlashcardDeck(vocabId);
+      setAddedToTrainer(prev => new Set([...prev, vocabId]));
+      setTimeout(() => {
+        setAddedToTrainer(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(vocabId);
+          return newSet;
+        });
+      }, 3000);
+    } catch (err) {
+      if (err.message.includes('already in flashcard deck')) {
+        alert('Diese Vokabel ist bereits im Trainer!');
+      } else {
+        alert('Fehler beim Hinzufügen: ' + err.message);
+      }
+    }
+  };
 
   // Funktion zum Hinzufügen mehrerer Vokabeln zum Trainer
   const handleAddMultipleToTrainer = async (words) => {
@@ -97,12 +118,7 @@ function ActionModule() {
     return () => clearInterval(timer);
   }, [isActive, timeLeft]);
 
-  useEffect(() => {
-    if (floatingTranslation) {
-      const timer = setTimeout(() => setFloatingTranslation(null), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [floatingTranslation]);
+
 
   const startGame = () => {
     setGameStarted(true);
@@ -153,24 +169,18 @@ function ActionModule() {
       }
     }
     
-    // Show floating translation
-    setFloatingTranslation({ text: currentWord.en, correct: false });
-    
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setTimeout(() => {
-        setIsActive(false);
-        setShowFeedback(true);
-      }, 2000);
+      setIsActive(false);
+      setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => startRound(), 2000);
+      setIsFlipped(false);
+      startRound();
     }
   };
 
   const handleKnow = async () => {
-    setIsFlipped(false);
-    
     const timeBonus = Math.floor(timeLeft / 2);
     const streakBonus = streak >= 5 ? 5 : 0;
     const points = 10 + timeBonus + streakBonus;
@@ -197,23 +207,17 @@ function ActionModule() {
       }
     }
     
-    // Show floating translation
-    setFloatingTranslation({ text: currentWord.en, correct: true });
-    
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setTimeout(() => {
-        setShowFeedback(true);
-      }, 2000);
+      setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => startRound(), 2000);
+      setIsFlipped(false);
+      startRound();
     }
   };
 
   const handleForgot = async () => {
-    setIsFlipped(false);
-    
     const answer = {
       word: currentWord,
       correct: false,
@@ -224,7 +228,7 @@ function ActionModule() {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
-    // Speichere Fortschritt in der API (falsche Antwort)
+    // Speichere Fortschrift in der API (falsche Antwort)
     if (currentWord.id) {
       try {
         await apiService.updateProgress(currentWord.id, false);
@@ -233,17 +237,13 @@ function ActionModule() {
       }
     }
     
-    // Show floating translation
-    setFloatingTranslation({ text: currentWord.en, correct: false });
-    
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setTimeout(() => {
-        setShowFeedback(true);
-      }, 2000);
+      setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
-      setTimeout(() => startRound(), 2000);
+      setIsFlipped(false);
+      startRound();
     }
   };
 
@@ -431,16 +431,12 @@ function ActionModule() {
                         <span className="font-bold text-green-700 mr-2">+{answer.points}</span>
                       )}
                       <button
-                        onClick={() => apiService.addToFlashcardDeck(answer.word.id)
-                          .then(() => alert('✅ Zum Trainer hinzugefügt!'))
-                          .catch(e => {
-                            if (e.message.includes('already in flashcard deck')) {
-                              alert('Diese Vokabel ist bereits im Trainer!');
-                            } else {
-                              alert('Fehler: ' + e.message);
-                            }
-                          })}
-                        className="px-2 py-1 text-sm bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
+                        onClick={() => handleAddToTrainer(answer.word.id)}
+                        className={`px-2 py-1 text-sm rounded-lg transition-all ${
+                          addedToTrainer.has(answer.word.id)
+                            ? 'bg-green-500 text-white scale-110'
+                            : 'bg-purple-500 hover:bg-purple-600 text-white'
+                        }`}
                         title="Zum Vokabeltrainer hinzufügen"
                       >
                         📚
@@ -494,19 +490,6 @@ function ActionModule() {
                 />
               </div>
             </div>
-
-            {/* Floating Translation Animation */}
-            {floatingTranslation && (
-              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 animate-float-up pointer-events-none">
-                <div className={`text-4xl md:text-6xl font-bold px-8 py-4 rounded-2xl shadow-2xl ${
-                  floatingTranslation.correct 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-red-500 text-white'
-                }`}>
-                  {floatingTranslation.text}
-                </div>
-              </div>
-            )}
 
             {/* Flashcard */}
             <div 
