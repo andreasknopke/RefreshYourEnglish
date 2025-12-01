@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import apiService from '../services/apiService';
+import ForgotPassword from './ForgotPassword';
 
 function AuthModal({ onClose, onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -43,6 +45,15 @@ function AuthModal({ onClose, onLogin }) {
       [e.target.name]: e.target.value,
     });
   };
+
+  if (showForgotPassword) {
+    return (
+      <ForgotPassword
+        onClose={onClose}
+        onBack={() => setShowForgotPassword(false)}
+      />
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -123,6 +134,17 @@ function AuthModal({ onClose, onLogin }) {
             {loading ? 'Bitte warten...' : isLogin ? 'Einloggen' : 'Registrieren'}
           </button>
         </form>
+
+        {isLogin && (
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => setShowForgotPassword(true)}
+              className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold"
+            >
+              Passwort vergessen?
+            </button>
+          </div>
+        )}
 
         <div className="mt-6 text-center">
           <button

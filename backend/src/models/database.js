@@ -26,6 +26,11 @@ const createTables = () => {
       username TEXT UNIQUE NOT NULL,
       email TEXT UNIQUE NOT NULL,
       password_hash TEXT NOT NULL,
+      email_verified INTEGER DEFAULT 0,
+      verification_token TEXT,
+      verification_token_expires DATETIME,
+      reset_token TEXT,
+      reset_token_expires DATETIME,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       last_login DATETIME
     )

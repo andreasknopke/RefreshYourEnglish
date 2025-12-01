@@ -5,6 +5,8 @@ import VocabularyTrainer from './components/VocabularyTrainer';
 import VocabularyLibrary from './components/VocabularyLibrary';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
+import VerifyEmail from './components/VerifyEmail';
+import ResetPassword from './components/ResetPassword';
 import apiService from './services/apiService';
 
 function App() {
@@ -13,6 +15,17 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Check for special routes
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('token')) {
+      const path = window.location.pathname;
+      if (path.includes('verify-email') || window.location.href.includes('verify-email')) {
+        setActiveModule('verify-email');
+      } else if (path.includes('reset-password') || window.location.href.includes('reset-password')) {
+        setActiveModule('reset-password');
+      }
+    }
+
     // Lade User aus localStorage
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
@@ -39,6 +52,15 @@ function App() {
     setUser(null);
     localStorage.removeItem('user');
   };
+
+  // Handle special routes
+  if (activeModule === 'verify-email') {
+    return <VerifyEmail onClose={() => setActiveModule(null)} />;
+  }
+
+  if (activeModule === 'reset-password') {
+    return <ResetPassword onClose={() => setActiveModule(null)} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
