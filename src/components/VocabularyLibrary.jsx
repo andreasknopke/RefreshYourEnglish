@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import VocabularyEditor from './VocabularyEditor';
 import apiService from '../services/apiService';
-import { loadVocabulary } from '../utils/vocabularyLoader';
 
 function VocabularyLibrary({ user }) {
   const [vocabulary, setVocabulary] = useState([]);
@@ -23,7 +22,7 @@ function VocabularyLibrary({ user }) {
   const loadVocabularyData = async () => {
     setLoading(true);
     try {
-      const data = await loadVocabulary();
+      const data = await apiService.getVocabulary();
       setVocabulary(data);
       setFilteredVocabulary(data);
     } catch (error) {
