@@ -12,6 +12,9 @@ function VocabularyLibrary({ user }) {
   const [addedToTrainer, setAddedToTrainer] = useState(new Set());
   const [showNewVocabForm, setShowNewVocabForm] = useState(false);
   const [newVocab, setNewVocab] = useState({ english: '', german: '', level: 'B2' });
+  const [showBulkImport, setShowBulkImport] = useState(false);
+  const [bulkImportText, setBulkImportText] = useState('');
+  const [importResults, setImportResults] = useState(null);
 
   useEffect(() => {
     loadVocabularyData();
@@ -109,6 +112,13 @@ function VocabularyLibrary({ user }) {
     alert(`${successCount} Vokabeln hinzugefügt${errorCount > 0 ? `, ${errorCount} Fehler` : ''}`);
   };
 
+  const checkDuplicate = (english, german) => {
+    return vocabulary.some(
+      v => v.english.toLowerCase() === english.toLowerCase() || 
+           v.german.toLowerCase() === german.toLowerCase()
+    );
+  };
+
   const handleCreateVocabulary = async () => {
     if (!user) {
       alert('Bitte melde dich an, um Vokabeln zu erstellen.');
@@ -117,6 +127,12 @@ function VocabularyLibrary({ user }) {
 
     if (!newVocab.english.trim() || !newVocab.german.trim()) {
       alert('Bitte fülle alle Felder aus.');
+      return;
+    }
+
+    // Duplikat-Prüfung
+    if (checkDuplicate(newVocab.english.trim(), newVocab.german.trim())) {
+      alert('⚠️ Diese Vokabel existiert bereits!');
       return;
     }
 
@@ -133,6 +149,74 @@ function VocabularyLibrary({ user }) {
     } catch (err) {
       alert('Fehler beim Erstellen: ' + err.message);
     }
+  };
+
+  const handleBulkImport = async () => {
+    if (!user) {
+      alert('Bitte melde dich an, um Vokabeln zu importieren.');
+      return;
+    }
+
+    if (!bulkImportText.trim()) {
+      alert('Bitte füge Vokabeln im Format "englisch;deutsch" ein (eine pro Zeile).');
+      return;
+    }
+
+    const lines = bulkImportText.split('\n').filter(line => line.trim());
+    let imported = 0;
+    let skipped = 0;
+    let errors = 0;
+    const newVocabs = [];
+
+    for (const line of lines) {
+      const parts = line.split(';').map(p => p.trim());
+      if (parts.length !== 2 || !parts[0] || !parts[1]) {
+        errors++;
+        continue;
+      }
+
+      const [english, german] = parts;
+
+      // Duplikat-Prüfung
+      if (checkDuplicate(english, german)) {
+        skipped++;
+        continue;
+      }
+
+      try {
+        const created = await apiService.createVocabulary(english, german, 'B2');
+        newVocabs.push(created);
+        imported++;
+      } catch (err) {
+        errors++;
+      }
+    }
+
+    // Update vocabulary list
+    if (newVocabs.length > 0) {
+      setVocabulary(prev => [...newVocabs, ...prev]);
+    }
+
+    // Show results
+    setImportResults({
+      total: lines.length,
+      imported,
+      skipped,
+      errors
+    });
+
+    setBulkImportText('');
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setBulkImportText(e.target.result);
+    };
+    reader.readAsText(file);
   };
 
   const handleDeleteVocabulary = async (id) => {
@@ -218,14 +302,22 @@ function VocabularyLibrary({ user }) {
             <span className="font-bold text-indigo-600">{filteredVocabulary.length}</span> von{' '}
             <span className="font-bold">{vocabulary.length}</span> Vokabeln
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             {user && (
-              <button
-                onClick={() => setShowNewVocabForm(true)}
-                className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors"
-              >
-                ➕ Neue Vokabel
-              </button>
+              <>
+                <button
+                  onClick={() => setShowNewVocabForm(true)}
+                  className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors"
+                >
+                  ➕ Neue Vokabel
+                </button>
+                <button
+                  onClick={() => setShowBulkImport(true)}
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold text-sm transition-colors"
+                >
+                  📂 Bulk-Import
+                </button>
+              </>
             )}
             {user && filteredVocabulary.length > 0 && (
               <button
@@ -446,6 +538,88 @@ function VocabularyLibrary({ user }) {
                   className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                   ✕ Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Import Modal */}
+      {showBulkImport && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="glass-card max-w-3xl w-full rounded-2xl p-6 max-h-[90vh] overflow-y-auto">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">📂 Bulk-Import</h3>
+            
+            <div className="space-y-4">
+              {/* Format Instructions */}
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                <p className="text-sm text-gray-700 font-semibold mb-2">📝 Format:</p>
+                <p className="text-sm text-gray-600 mb-2">Jede Zeile: <code className="bg-white px-2 py-1 rounded">englisch;deutsch</code></p>
+                <p className="text-xs text-gray-500">Beispiel:</p>
+                <pre className="text-xs bg-white p-2 rounded mt-1 text-gray-700">
+hello;hallo
+world;welt
+apple;apfel</pre>
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  📁 Datei hochladen
+                </label>
+                <input
+                  type="file"
+                  accept=".txt"
+                  onChange={handleFileUpload}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors"
+                />
+              </div>
+
+              {/* Text Area */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  ✍️ Oder direkt einfügen
+                </label>
+                <textarea
+                  value={bulkImportText}
+                  onChange={(e) => setBulkImportText(e.target.value)}
+                  placeholder="hello;hallo&#10;world;welt&#10;apple;apfel"
+                  rows={10}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors font-mono text-sm"
+                />
+              </div>
+
+              {/* Import Results */}
+              {importResults && (
+                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                  <p className="text-sm font-semibold text-gray-800 mb-2">✅ Import abgeschlossen</p>
+                  <div className="text-sm text-gray-700 space-y-1">
+                    <p>✅ Importiert: <span className="font-bold text-green-600">{importResults.imported}</span></p>
+                    <p>⏭️ Übersprungen (Duplikate): <span className="font-bold text-yellow-600">{importResults.skipped}</span></p>
+                    <p>❌ Fehler: <span className="font-bold text-red-600">{importResults.errors}</span></p>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  onClick={handleBulkImport}
+                  disabled={!bulkImportText.trim()}
+                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                >
+                  📥 Importieren
+                </button>
+                <button
+                  onClick={() => {
+                    setShowBulkImport(false);
+                    setBulkImportText('');
+                    setImportResults(null);
+                  }}
+                  className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  ✕ Schließen
                 </button>
               </div>
             </div>
