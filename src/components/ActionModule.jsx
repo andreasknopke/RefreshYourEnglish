@@ -3,7 +3,7 @@ import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
 
-function ActionModule() {
+function ActionModule({ user }) {
   const [timeLimit, setTimeLimit] = useState(10);
   const [isActive, setIsActive] = useState(false);
   const [currentWord, setCurrentWord] = useState(null);
@@ -190,6 +190,18 @@ function ActionModule() {
       }
     }
     
+    // Track activity für Gamification - 10 Sekunden pro richtiger Antwort
+    if (user) {
+      try {
+        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
+        console.log('🎮 Tracking activity (ActionModule):', { secondsToAdd, user: user.username });
+        const result = await apiService.trackActivity(secondsToAdd);
+        console.log('✅ Activity tracked:', result);
+      } catch (error) {
+        console.error('❌ Failed to track activity:', error);
+      }
+    }
+    
     // Show floating translation
     setFloatingTranslation({ text: currentWord.en, correct: true });
     
@@ -284,7 +296,7 @@ function ActionModule() {
             <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 text-center border border-purple-100">
               <p className="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Genauigkeit</p>
               <p className="text-2xl md:text-3xl font-bold text-purple-600">
-                {totalAnswers > 0 ? Math.round((score / (totalAnswers * 10)) * 100) : 0}%
+                {totalAnswers > 0 ? Math.min(100, Math.round((score / (totalAnswers * 10)) * 100)) : 0}%
               </p>
             </div>
           </div>
