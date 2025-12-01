@@ -4,6 +4,7 @@ import ActionModule from './components/ActionModule';
 import VocabularyTrainer from './components/VocabularyTrainer';
 import DialogModule from './components/DialogModule';
 import VocabularyManager from './components/VocabularyManager';
+import GamificationBanner from './components/GamificationBanner';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import apiService from './services/apiService';
@@ -85,6 +86,9 @@ function App() {
             ✨ LLM-gestütztes Vokabeltraining ✨
           </p>
         </header>
+
+        {/* Gamification Banner */}
+        {user && <GamificationBanner user={user} />}
 
         {!activeModule ? (
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
