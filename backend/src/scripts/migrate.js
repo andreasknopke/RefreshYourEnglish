@@ -5,7 +5,8 @@ console.log('🔄 Running database migration...');
 try {
   // Normalisiere alle E-Mails zu lowercase
   console.log('📧 Normalizing email addresses...');
-  db.prepare('UPDATE users SET email = LOWER(TRIM(email))').run();
+  const result = db.prepare('UPDATE users SET email = LOWER(TRIM(email))').run();
+  console.log(`✅ Normalized ${result.changes} email addresses`);
   
   // Versuche neue Spalten hinzuzufügen (falls sie nicht existieren)
   console.log('🔧 Adding new columns if they don\'t exist...');
@@ -32,6 +33,7 @@ try {
   }
   
   console.log('✅ Migration completed successfully!');
+  process.exit(0);
 } catch (error) {
   console.error('❌ Migration failed:', error);
   process.exit(1);
