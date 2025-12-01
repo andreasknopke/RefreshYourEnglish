@@ -59,20 +59,18 @@ function VocabularyTrainer({ user }) {
       setFlashcards(newFlashcards);
       setIsFlipped(false);
 
-      // Track activity für Gamification
-      if (user && sessionStartTime) {
-        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
-        const secondsPracticed = 10; // 10 Sekunden pro Flashcard
-        console.log('🎮 Tracking activity (VocabularyTrainer):', { minutesPracticed, secondsPracticed, user: user.username });
-        if (minutesPracticed > 0 || secondsPracticed > 0) {
-          try {
-            const result = await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
-            console.log('✅ Activity tracked:', result);
-            setSessionStartTime(Date.now()); // Reset für nächste Messung
-          } catch (error) {
-            console.error('❌ Failed to track activity:', error);
-          }
+      // Track activity für Gamification (nur bei quality >= 4, also "Gut" oder "Perfekt")
+      if (user && quality >= 4) {
+        try {
+          const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
+          console.log('🎮 Tracking activity (VocabularyTrainer):', { quality, secondsToAdd, user: user.username });
+          const result = await apiService.trackActivity(secondsToAdd);
+          console.log('✅ Activity tracked:', result);
+        } catch (error) {
+          console.error('❌ Failed to track activity:', error);
         }
+      } else if (user) {
+        console.log('⏭️ No time credit (quality < 4):', { quality });
       }
 
       if (newFlashcards.length === 0) {

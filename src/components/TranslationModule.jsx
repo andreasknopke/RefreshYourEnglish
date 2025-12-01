@@ -69,20 +69,18 @@ function TranslationModule({ user }) {
         setScore(score + 1);
       }
 
-      // Track activity für Gamification
-      if (user && sessionStartTime) {
-        const minutesPracticed = Math.round((Date.now() - sessionStartTime) / 60000);
-        const secondsPracticed = 45; // 45 Sekunden pro Übersetzung
-        console.log('🎮 Tracking activity (TranslationModule):', { minutesPracticed, secondsPracticed, user: user.username });
-        if (minutesPracticed > 0 || secondsPracticed > 0) {
-          try {
-            const result = await apiService.trackActivity(Math.max(minutesPracticed, secondsPracticed / 60));
-            console.log('✅ Activity tracked:', result);
-            setSessionStartTime(Date.now()); // Reset für nächste Messung
-          } catch (error) {
-            console.error('❌ Failed to track activity:', error);
-          }
+      // Track activity für Gamification (nur bei score >= 8/10)
+      if (user && result.score >= 8) {
+        try {
+          const secondsToAdd = 45 / 60; // 45 Sekunden als Minuten
+          console.log('🎮 Tracking activity (TranslationModule):', { score: result.score, secondsToAdd, user: user.username });
+          const apiResult = await apiService.trackActivity(secondsToAdd);
+          console.log('✅ Activity tracked:', apiResult);
+        } catch (error) {
+          console.error('❌ Failed to track activity:', error);
         }
+      } else if (user) {
+        console.log('⏭️ No time credit (score < 8):', { score: result.score });
       }
     } catch (error) {
       console.error('Translation evaluation error:', error);

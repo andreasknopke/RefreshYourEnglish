@@ -171,17 +171,7 @@ function ActionModule({ user }) {
       }
     }
 
-    // Track activity für Gamification (10 Sekunden pro Karte)
-    if (user) {
-      try {
-        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
-        console.log('🎮 Tracking activity (ActionModule - Timeout):', { secondsToAdd, user: user.username });
-        const result = await apiService.trackActivity(secondsToAdd);
-        console.log('✅ Activity tracked:', result);
-      } catch (error) {
-        console.error('❌ Failed to track activity:', error);
-      }
-    }
+    // Keine Zeitgutschrift für Timeouts
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
@@ -263,17 +253,7 @@ function ActionModule({ user }) {
       }
     }
 
-    // Track activity für Gamification (10 Sekunden pro Karte)
-    if (user) {
-      try {
-        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
-        console.log('🎮 Tracking activity (ActionModule - Forgot):', { secondsToAdd, user: user.username });
-        const result = await apiService.trackActivity(secondsToAdd);
-        console.log('✅ Activity tracked:', result);
-      } catch (error) {
-        console.error('❌ Failed to track activity:', error);
-      }
-    }
+    // Keine Zeitgutschrift für falsche Antworten
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
