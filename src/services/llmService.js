@@ -256,3 +256,201 @@ export const LLM_CONFIG = {
   temperature: 0.7,
   maxTokens: 500
 };
+
+/**
+ * Generiert ein Gesprächsszenario für den Dialog-Trainer
+ * @returns {Promise<{description: string, role: string, firstMessage: string}>}
+ */
+export async function generateDialogScenario() {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    // Simulationsmodus - erstelle ein zufälliges Szenario
+    const scenarios = [
+      {
+        description: "Du bist in einem Café in London und möchtest etwas bestellen.",
+        role: "Kellner/Kellnerin",
+        firstMessage: "Good morning! Welcome to our café. What can I get you today?"
+      },
+      {
+        description: "Du bist am Flughafen und fragst nach deinem Gate.",
+        role: "Flughafen-Mitarbeiter",
+        firstMessage: "Hello! How can I help you today?"
+      },
+      {
+        description: "Du bist in einem Geschäft und suchst nach einem bestimmten Produkt.",
+        role: "Verkäufer/Verkäuferin",
+        firstMessage: "Good afternoon! Are you looking for something specific?"
+      },
+      {
+        description: "Du triffst einen neuen Kollegen am ersten Arbeitstag.",
+        role: "Neuer Kollege",
+        firstMessage: "Hi there! You must be the new team member. Welcome! How are you settling in?"
+      },
+      {
+        description: "Du bist im Hotel und hast ein Problem mit deinem Zimmer.",
+        role: "Hotel-Rezeptionist",
+        firstMessage: "Good evening! How can I assist you today?"
+      }
+    ];
+    
+    return scenarios[Math.floor(Math.random() * scenarios.length)];
+  }
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: 'Du erstellst realistische Gesprächsszenarios für Englischlernende. Erstelle ein Szenario mit einer Beschreibung auf Deutsch, der Rolle des Gesprächspartners und einer ersten Nachricht auf Englisch. Antworte im JSON-Format: {"description": string, "role": string, "firstMessage": string}'
+        }, {
+          role: 'user',
+          content: 'Erstelle ein realistisches Alltagsszenario für ein Englisch-Gespräch (B2-C1 Level).'
+        }],
+        temperature: 0.9,
+        max_tokens: 200
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices[0].message.content;
+    
+    // Parse JSON response
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+    
+    throw new Error('Invalid response format');
+  } catch (error) {
+    console.error('Failed to generate scenario with OpenAI:', error);
+    // Fallback zu Simulation
+    const scenarios = [
+      {
+        description: "Du bist in einem Restaurant und bestellst Essen.",
+        role: "Kellner/Kellnerin",
+        firstMessage: "Good evening! Here's the menu. Can I get you something to drink while you decide?"
+      }
+    ];
+    return scenarios[0];
+  }
+}
+
+/**
+ * Generiert eine Antwort der LLM im Dialog
+ * @param {object} scenario - Das aktuelle Szenario
+ * @param {Array} conversationHistory - Die bisherige Konversation
+ * @returns {Promise<string>}
+ */
+export async function generateDialogResponse(scenario, conversationHistory) {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    // Simulationsmodus - generiere eine einfache Antwort
+    const responses = [
+      "That sounds interesting! Could you tell me more about that?",
+      "I see. And what would you like to do next?",
+      "Great! Is there anything else I can help you with?",
+      "Perfect! Let me take care of that for you.",
+      "I understand. Would you like me to explain that in more detail?"
+    ];
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+
+  try {
+    const systemPrompt = `Du spielst die Rolle: ${scenario.role}. 
+Szenario: ${scenario.description}
+Führe ein natürliches Gespräch auf Englisch (B2-C1 Level). 
+Bleibe in deiner Rolle und reagiere angemessen auf die Antworten des Lernenden.
+Halte deine Antworten kurz und natürlich (1-3 Sätze).`;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          ...conversationHistory
+        ],
+        temperature: 0.8,
+        max_tokens: 150
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content.trim();
+  } catch (error) {
+    console.error('Failed to generate dialog response:', error);
+    return "I'm sorry, could you repeat that? I didn't quite catch what you said.";
+  }
+}
+
+/**
+ * Generiert einen Tipp für den Benutzer auf Deutsch
+ * @param {object} scenario - Das aktuelle Szenario
+ * @param {Array} conversationHistory - Die bisherige Konversation
+ * @returns {Promise<string>}
+ */
+export async function generateDialogHint(scenario, conversationHistory) {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    // Simulationsmodus
+    return "Versuche auf Englisch zu antworten und bleibe im Gespräch. Frage nach Details oder antworte auf die gestellte Frage.";
+  }
+
+  try {
+    const systemPrompt = `Du bist ein Englischlehrer. 
+Szenario: ${scenario.description}
+Rolle des Gesprächspartners: ${scenario.role}
+
+Gib einen kurzen, hilfreichen Tipp auf DEUTSCH, was der Lernende als nächstes auf Englisch sagen könnte. 
+Gib keine komplette Übersetzung, sondern nur einen Hinweis oder eine Idee (1-2 Sätze auf Deutsch).`;
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          ...conversationHistory,
+          { role: 'user', content: 'Gib mir einen Tipp auf Deutsch, was ich antworten könnte.' }
+        ],
+        temperature: 0.7,
+        max_tokens: 100
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content.trim();
+  } catch (error) {
+    console.error('Failed to generate hint:', error);
+    return "Tipp: Antworte freundlich und stelle bei Bedarf eine Rückfrage, um das Gespräch fortzuführen.";
+  }
+}

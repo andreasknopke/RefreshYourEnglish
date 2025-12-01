@@ -3,7 +3,7 @@ import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
 
-function ActionModule({ user }) {
+function ActionModule() {
   const [timeLimit, setTimeLimit] = useState(10);
   const [isActive, setIsActive] = useState(false);
   const [currentWord, setCurrentWord] = useState(null);
@@ -12,7 +12,6 @@ function ActionModule({ user }) {
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [totalAnswers, setTotalAnswers] = useState(0);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [difficulty, setDifficulty] = useState('normal');
@@ -20,35 +19,12 @@ function ActionModule({ user }) {
   const [currentRound, setCurrentRound] = useState([]);
   const [roundProgress, setRoundProgress] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
+  const [floatingTranslation, setFloatingTranslation] = useState(null);
   const [vocabulary, setVocabulary] = useState([]);
   const [isLoadingVocabulary, setIsLoadingVocabulary] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [selectedVocab, setSelectedVocab] = useState(null);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [addedToTrainer, setAddedToTrainer] = useState(new Set());
-  const [sessionStartTime, setSessionStartTime] = useState(null);
   const inputRef = useRef(null);
-
-  // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
-  const handleAddToTrainer = async (vocabId) => {
-    try {
-      await apiService.addToFlashcardDeck(vocabId);
-      setAddedToTrainer(prev => new Set([...prev, vocabId]));
-      setTimeout(() => {
-        setAddedToTrainer(prev => {
-          const newSet = new Set(prev);
-          newSet.delete(vocabId);
-          return newSet;
-        });
-      }, 3000);
-    } catch (err) {
-      if (err.message.includes('already in flashcard deck')) {
-        alert('Diese Vokabel ist bereits im Trainer!');
-      } else {
-        alert('Fehler beim Hinzufügen: ' + err.message);
-      }
-    }
-  };
 
   // Funktion zum Hinzufügen mehrerer Vokabeln zum Trainer
   const handleAddMultipleToTrainer = async (words) => {
@@ -120,7 +96,12 @@ function ActionModule({ user }) {
     return () => clearInterval(timer);
   }, [isActive, timeLeft]);
 
-
+  useEffect(() => {
+    if (floatingTranslation) {
+      const timer = setTimeout(() => setFloatingTranslation(null), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [floatingTranslation]);
 
   const startGame = () => {
     setGameStarted(true);
@@ -129,9 +110,7 @@ function ActionModule({ user }) {
     setScore(0);
     setStreak(0);
     setTotalAnswers(0);
-    setCorrectAnswers(0);
     setShowFeedback(false);
-    setSessionStartTime(Date.now());
     startRound();
   };
 
@@ -144,13 +123,7 @@ function ActionModule({ user }) {
     setCurrentWord(randomWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
-    setIsFlipped(false);
     setTimeout(() => inputRef.current?.focus(), 100);
-  };
-
-  const handleBuzzer = () => {
-    setIsActive(false);
-    setIsFlipped(true);
   };
 
   const handleTimeout = async () => {
@@ -172,21 +145,25 @@ function ActionModule({ user }) {
         console.error('Failed to save progress:', error);
       }
     }
-
-    // Keine Zeitgutschrift für Timeouts
+    
+    // Show floating translation
+    setFloatingTranslation({ text: currentWord.en, correct: false });
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setIsActive(false);
-      setShowFeedback(true);
+      setTimeout(() => {
+        setIsActive(false);
+        setShowFeedback(true);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setIsFlipped(false);
-      startRound();
+      setTimeout(() => startRound(), 2000);
     }
   };
 
   const handleKnow = async () => {
+    setIsActive(false);
+    
     const timeBonus = Math.floor(timeLeft / 2);
     const streakBonus = streak >= 5 ? 5 : 0;
     const points = 10 + timeBonus + streakBonus;
@@ -203,7 +180,6 @@ function ActionModule({ user }) {
     setScore(score + points);
     setStreak(streak + 1);
     setTotalAnswers(totalAnswers + 1);
-    setCorrectAnswers(correctAnswers + 1);
     
     // Speichere Fortschritt in der API
     if (currentWord.id) {
@@ -213,30 +189,24 @@ function ActionModule({ user }) {
         console.error('Failed to save progress:', error);
       }
     }
-
-    // Track activity für Gamification (10 Sekunden pro Karte)
-    if (user) {
-      try {
-        const secondsToAdd = 10 / 60; // 10 Sekunden als Minuten
-        console.log('🎮 Tracking activity (ActionModule - Know):', { secondsToAdd, user: user.username });
-        const result = await apiService.trackActivity(secondsToAdd);
-        console.log('✅ Activity tracked:', result);
-      } catch (error) {
-        console.error('❌ Failed to track activity:', error);
-      }
-    }
+    
+    // Show floating translation
+    setFloatingTranslation({ text: currentWord.en, correct: true });
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setShowFeedback(true);
+      setTimeout(() => {
+        setShowFeedback(true);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setIsFlipped(false);
-      startRound();
+      setTimeout(() => startRound(), 2000);
     }
   };
 
   const handleForgot = async () => {
+    setIsActive(false);
+    
     const answer = {
       word: currentWord,
       correct: false,
@@ -247,7 +217,7 @@ function ActionModule({ user }) {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
-    // Speichere Fortschrift in der API (falsche Antwort)
+    // Speichere Fortschritt in der API (falsche Antwort)
     if (currentWord.id) {
       try {
         await apiService.updateProgress(currentWord.id, false);
@@ -255,16 +225,18 @@ function ActionModule({ user }) {
         console.error('Failed to save progress:', error);
       }
     }
-
-    // Keine Zeitgutschrift für falsche Antworten
+    
+    // Show floating translation
+    setFloatingTranslation({ text: currentWord.en, correct: false });
     
     // Check if round is complete
     if (roundProgress + 1 >= wordsPerRound) {
-      setShowFeedback(true);
+      setTimeout(() => {
+        setShowFeedback(true);
+      }, 2000);
     } else {
       setRoundProgress(roundProgress + 1);
-      setIsFlipped(false);
-      startRound();
+      setTimeout(() => startRound(), 2000);
     }
   };
 
@@ -294,36 +266,36 @@ function ActionModule({ user }) {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="glass-card rounded-2xl shadow-xl p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
+      <div className="glass-card rounded-3xl shadow-2xl p-4 md:p-6 max-h-[calc(100vh-12rem)] overflow-y-auto">
         {/* Header */}
-        <div className="mb-3">
-          <h2 className="text-xl md:text-2xl font-bold gradient-text mb-2">⚡ Action Modus</h2>
+        <div className="mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3">⚡ Action Modus</h2>
           
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-2 mb-2">
-            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-2 text-center border border-indigo-100">
-              <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Punkte</p>
-              <p className="text-xl md:text-2xl font-bold gradient-text">{score}</p>
+          <div className="grid grid-cols-3 gap-2 md:gap-3 mb-3">
+            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-3 text-center border border-indigo-100">
+              <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider mb-1">Punkte</p>
+              <p className="text-2xl md:text-3xl font-bold gradient-text">{score}</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-2 text-center border border-green-100">
-              <p className="text-[10px] text-green-600 font-bold uppercase tracking-wider">Serie</p>
-              <p className="text-xl md:text-2xl font-bold text-green-600">{streak} 🔥</p>
+            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 text-center border border-green-100">
+              <p className="text-xs text-green-600 font-bold uppercase tracking-wider mb-1">Serie</p>
+              <p className="text-2xl md:text-3xl font-bold text-green-600">{streak} 🔥</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-2 text-center border border-purple-100">
-              <p className="text-[10px] text-purple-600 font-bold uppercase tracking-wider">%</p>
-              <p className="text-xl md:text-2xl font-bold text-purple-600">
-                {totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) : 0}%
+            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-3 text-center border border-purple-100">
+              <p className="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">Genauigkeit</p>
+              <p className="text-2xl md:text-3xl font-bold text-purple-600">
+                {totalAnswers > 0 ? Math.round((score / (totalAnswers * 10)) * 100) : 0}%
               </p>
             </div>
           </div>
 
           {/* Difficulty Selector */}
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             {['easy', 'normal', 'hard'].map((level) => (
               <button
                 key={level}
                 onClick={() => adjustDifficulty(level)}
-                className={`flex-1 py-1.5 px-1 text-[10px] md:text-xs rounded-lg font-bold transition-all duration-200 ${
+                className={`flex-1 py-2 px-2 text-xs md:text-sm rounded-lg font-bold transition-all duration-200 ${
                   difficulty === level
                     ? level === 'easy' 
                       ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
@@ -426,7 +398,28 @@ function ActionModule({ user }) {
             {/* Final Score */}
             <div className="glass-card bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-6 mb-4 border-2 border-indigo-300">
               <p className="text-sm text-indigo-700 font-bold mb-2">GESAMT-PUNKTE</p>
-              <p className="text-5xl font-bold gradient-text">{score}</p>
+              <p className="text-5xl font-bold gradient-text mb-4">{score}</p>
+              
+              {/* Quick Actions for wrong answers */}
+              {currentRound.filter(a => !a.correct).length > 0 && (
+                <div className="mt-4 flex gap-2 justify-center">
+                  <button
+                    onClick={() => handleAddMultipleToTrainer(currentRound.filter(a => !a.correct).map(a => a.word))}
+                    className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-bold transition-colors text-sm"
+                  >
+                    📥 Zum Trainer
+                  </button>
+                  <button
+                    onClick={() => {
+                      const firstWrong = currentRound.find(a => !a.correct);
+                      if (firstWrong) setSelectedVocab(firstWrong.word);
+                    }}
+                    className="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-bold transition-colors text-sm"
+                  >
+                    ✏️ Bearbeiten
+                  </button>
+                </div>
+              )}
             </div>
             
             {/* Detailed Results */}
@@ -440,35 +433,35 @@ function ActionModule({ user }) {
                       answer.correct ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
                     }`}
                   >
-                    <div className="flex items-center gap-2 flex-1 min-w-0">
-                      <span className="text-xl flex-shrink-0">{answer.correct ? '✅' : '❌'}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-bold text-gray-800 truncate">{answer.word.de}</p>
-                        <p className="text-sm text-gray-600 truncate">{answer.word.en}</p>
+                    <div className="flex items-center gap-2 flex-1">
+                      <span className="text-xl">{answer.correct ? '✅' : '❌'}</span>
+                      <div className="flex-1">
+                        <p className="font-bold text-gray-800">{answer.word.de}</p>
+                        <p className="text-sm text-gray-600">{answer.word.en}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="flex items-center gap-2">
                       {answer.correct && answer.points && (
-                        <span className="font-bold text-green-700 mr-2">+{answer.points}</span>
+                        <span className="font-bold text-green-700">+{answer.points}</span>
                       )}
-                      <button
-                        onClick={() => handleAddToTrainer(answer.word.id)}
-                        className={`px-2 py-1 text-sm rounded-lg transition-all ${
-                          addedToTrainer.has(answer.word.id)
-                            ? 'bg-green-500 text-white scale-110'
-                            : 'bg-purple-500 hover:bg-purple-600 text-white'
-                        }`}
-                        title="Zum Vokabeltrainer hinzufügen"
-                      >
-                        📚
-                      </button>
-                      <button
-                        onClick={() => setSelectedVocab(answer.word)}
-                        className="px-2 py-1 text-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors"
-                        title="Vokabel bearbeiten"
-                      >
-                        ✏️
-                      </button>
+                      {!answer.correct && (
+                        <>
+                          <button
+                            onClick={() => apiService.addToFlashcardDeck(answer.word.id).then(() => alert('Zum Trainer hinzugefügt!')).catch(e => alert('Fehler: ' + e.message))}
+                            className="px-2 py-1 text-xs bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
+                            title="Zum Trainer hinzufügen"
+                          >
+                            📥
+                          </button>
+                          <button
+                            onClick={() => setSelectedVocab(answer.word)}
+                            className="px-2 py-1 text-xs bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg transition-colors"
+                            title="Bearbeiten"
+                          >
+                            ✏️
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -482,10 +475,6 @@ function ActionModule({ user }) {
                 setCurrentWord(null);
                 setCurrentRound([]);
                 setRoundProgress(0);
-                setScore(0);
-                setStreak(0);
-                setTotalAnswers(0);
-                setCorrectAnswers(0);
               }}
               className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-xl text-base md:text-lg transition-all shadow-lg hover:scale-105"
             >
@@ -516,81 +505,46 @@ function ActionModule({ user }) {
               </div>
             </div>
 
-            {/* Flashcard */}
-            <div 
-              className={`relative h-96 perspective-1000 ${isActive ? 'cursor-pointer' : ''}`}
-              onClick={() => isActive && handleBuzzer()}
-            >
-              <div 
-                className={`absolute w-full h-full transition-all duration-500 transform-style-3d ${
-                  isFlipped ? 'rotate-y-180' : ''
-                }`}
-              >
-                {/* Vorderseite (Deutsch) */}
-                <div className="absolute w-full h-full backface-hidden">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
-                    <div className="text-sm text-green-700 font-bold mb-4">🇩🇪 Deutsche Vokabel</div>
-                    <div className="text-5xl font-bold text-gray-800 mb-4 text-center">
-                      {currentWord?.de}
-                    </div>
-                    {isActive && (
-                      <div className="text-sm text-gray-400 mt-8">
-                        ⚡ Klicke wenn du bereit bist!
-                      </div>
-                    )}
-                    <div className="mt-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
-                      {currentWord?.level}
-                    </div>
-                  </div>
+            {/* Floating Translation Animation */}
+            {floatingTranslation && (
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 animate-float-up pointer-events-none">
+                <div className={`text-4xl md:text-6xl font-bold px-8 py-4 rounded-2xl shadow-2xl ${
+                  floatingTranslation.correct 
+                    ? 'bg-green-500 text-white' 
+                    : 'bg-red-500 text-white'
+                }`}>
+                  {floatingTranslation.text}
                 </div>
-
-                {/* Rückseite (Englisch) */}
-                <div className="absolute w-full h-full backface-hidden rotate-y-180">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
-                    <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
-                    <div className="text-5xl font-bold text-indigo-700 mb-8 text-center">
-                      {currentWord?.en}
-                    </div>
-                    
-                    {/* Bewertungs-Buttons */}
-                    {!isActive && isFlipped && (
-                      <div className="flex gap-4 justify-center w-full max-w-lg">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleKnow();
-                          }}
-                          className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
-                        >
-                          ✓ Know
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleForgot();
-                          }}
-                          className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
-                        >
-                          ✗ Forgot
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Buzzer Button (alternative wenn nicht auf Karte klicken will) */}
-            {isActive && !isFlipped && (
-              <div className="text-center mt-4">
-                <button
-                  onClick={handleBuzzer}
-                  className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-full text-2xl transition-all shadow-lg hover:scale-110 animate-pulse"
-                >
-                  ⚡ BUZZER
-                </button>
               </div>
             )}
+
+            {/* Word to translate */}
+            <div className="glass-card bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 mb-4 text-center border-2 border-green-200 shadow-xl">
+              <p className="text-xs text-green-700 font-bold mb-2 uppercase tracking-wide">
+                🇩🇪 Deutsche Vokabel 🇬🇧
+              </p>
+              <p className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                {currentWord?.de}
+              </p>
+              
+              {/* Buttons */}
+              {isActive && (
+                <div className="flex gap-3 justify-center">
+                  <button
+                    onClick={handleKnow}
+                    className="flex-1 max-w-xs bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-xl text-lg md:text-xl transition-all shadow-lg hover:scale-105"
+                  >
+                    ✓ I know
+                  </button>
+                  <button
+                    onClick={handleForgot}
+                    className="flex-1 max-w-xs bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-xl text-lg md:text-xl transition-all shadow-lg hover:scale-105"
+                  >
+                    ✗ Forgot
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
