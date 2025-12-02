@@ -101,6 +101,31 @@ class ApiService {
     localStorage.removeItem('user');
   }
 
+  async verifyEmail(token) {
+    return this.request(`/auth/verify-email/${token}`);
+  }
+
+  async resendVerification(email) {
+    return this.request('/auth/resend-verification', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
+
+  async forgotPassword(email) {
+    return this.request('/auth/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
+
+  async resetPassword(token, password) {
+    return this.request('/auth/reset-password', {
+      method: 'POST',
+      body: JSON.stringify({ token, password }),
+    });
+  }
+
   isAuthenticated() {
     return !!this.token;
   }
@@ -204,10 +229,10 @@ class ApiService {
   }
 
   // Gamification endpoints
-  async trackActivity(minutesOrSeconds) {
+  async trackActivity(minutesPracticed, exercisesCompleted = 1) {
     return this.request('/gamification/activity', {
       method: 'POST',
-      body: JSON.stringify({ minutesPracticed: minutesOrSeconds }),
+      body: JSON.stringify({ minutesPracticed, exercisesCompleted }),
     });
   }
 
@@ -215,8 +240,10 @@ class ApiService {
     return this.request('/gamification/stats');
   }
 
-  async getTrophies() {
-    return this.request('/gamification/trophies');
+  async resetStreak() {
+    return this.request('/gamification/reset-streak', {
+      method: 'POST',
+    });
   }
 }
 

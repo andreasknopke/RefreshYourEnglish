@@ -31,7 +31,6 @@ const createTables = () => {
       verification_token_expires DATETIME,
       reset_token TEXT,
       reset_token_expires DATETIME,
-      time_credit_minutes INTEGER DEFAULT 0,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       last_login DATETIME
     )
