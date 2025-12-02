@@ -256,3 +256,158 @@ export const LLM_CONFIG = {
   temperature: 0.7,
   maxTokens: 500
 };
+
+/**
+ * Generiert ein Dialog-Szenario
+ * @param {string} level - Sprachniveau (B2, C1, C2)
+ * @returns {Promise<{situation: string, role: string, context: string}>}
+ */
+export async function generateDialogScenario(level = 'B2') {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    return getFallbackScenario(level);
+  }
+  
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: `Du bist ein Englischlehrer. Erstelle ein realistisches Gesprächsszenario auf ${level}-Niveau für Englischlerner. Antworte im JSON-Format: {"situation": "kurze Beschreibung", "role": "deine Rolle", "context": "zusätzlicher Kontext"}`
+        }, {
+          role: 'user',
+          content: `Erstelle ein neues Konversationsszenario auf ${level}-Niveau.`
+        }],
+        temperature: 0.8,
+        max_tokens: 200
+      })
+    });
+    
+    if (!response.ok) throw new Error('API error');
+    
+    const data = await response.json();
+    const parsed = JSON.parse(data.choices[0].message.content);
+    return parsed;
+  } catch (error) {
+    console.error('Dialog scenario generation failed, using fallback:', error);
+    return getFallbackScenario(level);
+  }
+}
+
+/**
+ * Generiert eine Antwort im Dialog
+ */
+export async function generateDialogResponse(scenario, conversationHistory, level = 'B2') {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    return getFallbackResponse();
+  }
+  
+  try {
+    const messages = [
+      {
+        role: 'system',
+        content: `Du bist ein Gesprächspartner in folgendem Szenario: ${scenario.situation}. Deine Rolle: ${scenario.role}. Antworte natürlich und auf ${level}-Niveau.`
+      },
+      ...conversationHistory.map(msg => ({
+        role: msg.role === 'user' ? 'user' : 'assistant',
+        content: msg.text
+      }))
+    ];
+    
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages,
+        temperature: 0.7,
+        max_tokens: 150
+      })
+    });
+    
+    if (!response.ok) throw new Error('API error');
+    
+    const data = await response.json();
+    return data.choices[0].message.content;
+  } catch (error) {
+    console.error('Dialog response generation failed:', error);
+    return getFallbackResponse();
+  }
+}
+
+/**
+ * Generiert einen Hinweis für den Dialog
+ */
+export async function generateDialogHint(scenario, conversationHistory) {
+  const hints = [
+    "Versuche eine offene Frage zu stellen",
+    "Nutze Phrasen wie 'Could you...' oder 'Would you mind...'",
+    "Frage nach weiteren Details",
+    "Drücke deine Meinung höflich aus"
+  ];
+  return hints[Math.floor(Math.random() * hints.length)];
+}
+
+/**
+ * Bewertet die Dialog-Performance
+ */
+export async function evaluateDialogPerformance(conversationHistory, level) {
+  const messageCount = conversationHistory.filter(m => m.role === 'user').length;
+  const score = Math.min(10, Math.max(1, messageCount * 2));
+  
+  return {
+    score,
+    feedback: score >= 8 ? 'Sehr gut! Du hast aktiv am Gespräch teilgenommen.' : 'Gut gemacht! Versuche noch mehr ins Gespräch einzubringen.',
+    strengths: ['Aktive Teilnahme', 'Gute Gesprächsführung'],
+    improvements: score < 8 ? ['Stelle mehr Fragen', 'Gehe mehr ins Detail'] : []
+  };
+}
+
+/**
+ * Fallback-Szenarios
+ */
+function getFallbackScenario(level) {
+  const scenarios = [
+    {
+      situation: "At a job interview",
+      role: "Hiring manager at a tech company",
+      context: "You're interviewing for a software developer position"
+    },
+    {
+      situation: "At a restaurant",
+      role: "Waiter at an upscale restaurant",
+      context: "You're ordering dinner with business colleagues"
+    },
+    {
+      situation: "At a doctor's office",
+      role: "Medical receptionist",
+      context: "You need to schedule an appointment"
+    }
+  ];
+  return scenarios[Math.floor(Math.random() * scenarios.length)];
+}
+
+/**
+ * Fallback-Antworten
+ */
+function getFallbackResponse() {
+  const responses = [
+    "That's interesting. Could you tell me more about that?",
+    "I see. What do you think about this?",
+    "Thank you for sharing. How does that make you feel?",
+    "Interesting perspective. What else can you tell me?"
+  ];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
