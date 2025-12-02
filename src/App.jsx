@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TranslationModule from './components/TranslationModule';
 import ActionModule from './components/ActionModule';
+import DialogModule from './components/DialogModule';
 import VocabularyTrainer from './components/VocabularyTrainer';
 import VocabularyLibrary from './components/VocabularyLibrary';
 import AuthModal from './components/AuthModal';
@@ -123,7 +124,7 @@ function App() {
         {user && <GamificationBanner user={user} />}
 
         {!activeModule ? (
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-5 gap-3">
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -172,7 +173,31 @@ function App() {
               </button>
             </div>
 
-            {/* Modul 3: Vocabulary Trainer */}
+            {/* Modul 3: Dialog Trainer */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Dialog
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+                Konversationstraining mit KI
+              </p>
+              <button
+                onClick={() => setActiveModule('dialog')}
+                className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all relative z-10"
+              >
+                <span className="relative z-10">Starten →</span>
+              </button>
+            </div>
+
+            {/* Modul 4: Vocabulary Trainer */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
@@ -206,7 +231,7 @@ function App() {
               </button>
             </div>
 
-            {/* Modul 4: Vokabelbibliothek */}
+            {/* Modul 5: Vokabelbibliothek */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
@@ -244,6 +269,7 @@ function App() {
             
             {activeModule === 'translation' && <TranslationModule user={user} />}
             {activeModule === 'action' && <ActionModule user={user} />}
+            {activeModule === 'dialog' && <DialogModule user={user} />}
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
           </div>
