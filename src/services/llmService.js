@@ -312,13 +312,14 @@ export const LLM_CONFIG = {
 /**
  * Generiert ein Dialog-Szenario
  * @param {string} level - Sprachniveau (B2, C1, C2)
- * @returns {Promise<{situation: string, role: string, context: string}>}
+ * @param {string} topic - Themenbereich (optional)
+ * @returns {Promise<{situation: string, role: string, context: string, firstMessage: string, description: string}>}
  */
-export async function generateDialogScenario(level = 'B2') {
+export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   if (!API_KEY) {
-    return getFallbackScenario(level);
+    return getFallbackScenario(level, topic);
   }
   
   try {
@@ -332,10 +333,10 @@ export async function generateDialogScenario(level = 'B2') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du bist ein Englischlehrer. Erstelle ein realistisches Gesprächsszenario auf ${level}-Niveau für Englischlerner. Antworte im JSON-Format: {"situation": "kurze Beschreibung", "role": "deine Rolle", "context": "zusätzlicher Kontext"}`
+          content: `Du bist ein Englischlehrer. Erstelle ein realistisches Gesprächsszenario auf ${level}-Niveau zum Thema "${topic}" für Englischlerner. Antworte im JSON-Format: {"description": "Beschreibung des Szenarios", "firstMessage": "Erste Nachricht um das Gespräch zu starten"}`
         }, {
           role: 'user',
-          content: `Erstelle ein neues Konversationsszenario auf ${level}-Niveau.`
+          content: `Erstelle ein neues Konversationsszenario auf ${level}-Niveau zum Thema "${topic}".`
         }],
         temperature: 0.8,
         max_tokens: 200
@@ -349,7 +350,7 @@ export async function generateDialogScenario(level = 'B2') {
     return parsed;
   } catch (error) {
     console.error('Dialog scenario generation failed, using fallback:', error);
-    return getFallbackScenario(level);
+    return getFallbackScenario(level, topic);
   }
 }
 
@@ -430,25 +431,76 @@ export async function evaluateDialogPerformance(conversationHistory, level) {
 /**
  * Fallback-Szenarios
  */
-function getFallbackScenario(level) {
-  const scenarios = [
-    {
-      situation: "At a job interview",
-      role: "Hiring manager at a tech company",
-      context: "You're interviewing for a software developer position"
-    },
-    {
-      situation: "At a restaurant",
-      role: "Waiter at an upscale restaurant",
-      context: "You're ordering dinner with business colleagues"
-    },
-    {
-      situation: "At a doctor's office",
-      role: "Medical receptionist",
-      context: "You need to schedule an appointment"
-    }
-  ];
-  return scenarios[Math.floor(Math.random() * scenarios.length)];
+function getFallbackScenario(level, topic = 'Alltag') {
+  const scenarios = {
+    'Politik': [
+      {
+        description: "Political discussion at a town hall meeting",
+        firstMessage: "Hello! I'm interested in hearing your thoughts on the upcoming local elections. What issues matter most to you?"
+      },
+      {
+        description: "Debate about environmental policies",
+        firstMessage: "Good afternoon! I'm conducting a survey about environmental policies. Do you have a few minutes to share your opinion?"
+      }
+    ],
+    'Sport': [
+      {
+        description: "At a sports club registration desk",
+        firstMessage: "Welcome to our sports club! Are you interested in joining any particular sport or fitness program?"
+      },
+      {
+        description: "Discussion about a recent sporting event",
+        firstMessage: "Did you watch the big game yesterday? What did you think about the final result?"
+      }
+    ],
+    'Literatur': [
+      {
+        description: "At a bookstore or library",
+        firstMessage: "Hello! I see you're browsing the literature section. Are you looking for anything specific today?"
+      },
+      {
+        description: "Book club discussion",
+        firstMessage: "Welcome to our book club! Have you read this month's selection yet? What are your initial thoughts?"
+      }
+    ],
+    'Film, Musik, Kunst': [
+      {
+        description: "At a museum or art gallery",
+        firstMessage: "Good afternoon! I'm the gallery guide. Would you like to hear about the current exhibition?"
+      },
+      {
+        description: "Discussion about a new movie release",
+        firstMessage: "Hi! I heard you just saw the new movie everyone's talking about. What did you think of it?"
+      }
+    ],
+    'Alltag': [
+      {
+        description: "At a job interview",
+        firstMessage: "Good morning! Thank you for coming in today. Could you start by telling me a bit about yourself and your background?"
+      },
+      {
+        description: "At a restaurant",
+        firstMessage: "Good evening! Welcome to our restaurant. Have you dined with us before, or is this your first visit?"
+      },
+      {
+        description: "At a doctor's office",
+        firstMessage: "Hello, I'm the receptionist. How can I help you today? Do you need to schedule an appointment?"
+      }
+    ],
+    'Persönliche Gespräche': [
+      {
+        description: "Meeting an old friend",
+        firstMessage: "Hey! It's been so long! How have you been? What have you been up to lately?"
+      },
+      {
+        description: "Getting to know a new neighbor",
+        firstMessage: "Hi there! I just moved in next door. I wanted to introduce myself and say hello!"
+      }
+    ]
+  };
+  
+  const topicScenarios = scenarios[topic] || scenarios['Alltag'];
+  return topicScenarios[Math.floor(Math.random() * topicScenarios.length)];
 }
 
 /**

@@ -11,11 +11,22 @@ function DialogModule({ user }) {
   const [currentHint, setCurrentHint] = useState('');
   const [isLoadingHint, setIsLoadingHint] = useState(false);
   const [level, setLevel] = useState('B2');
+  const [topic, setTopic] = useState('Alltag');
   const [userMessageCount, setUserMessageCount] = useState(0);
   const [evaluation, setEvaluation] = useState(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Themenbereiche
+  const topics = [
+    'Politik',
+    'Sport', 
+    'Literatur',
+    'Film, Musik, Kunst',
+    'Alltag',
+    'Persönliche Gespräche'
+  ];
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -34,7 +45,7 @@ function DialogModule({ user }) {
     setEvaluation(null);
     
     try {
-      const newScenario = await generateDialogScenario(level);
+      const newScenario = await generateDialogScenario(level, topic);
       setScenario(newScenario);
       
       // Füge die erste Nachricht der LLM hinzu
@@ -205,7 +216,7 @@ function DialogModule({ user }) {
             {/* Level Selector */}
             <div className="mb-6 max-w-md mx-auto">
               <label className="block text-sm font-bold text-gray-700 mb-3">
-                Wähle dein Sprachniveau:
+                📊 Sprachniveau wählen:
               </label>
               <div className="grid grid-cols-3 gap-2">
                 {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map(lvl => (
@@ -219,6 +230,28 @@ function DialogModule({ user }) {
                     }`}
                   >
                     {lvl}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Topic Selector */}
+            <div className="mb-8 max-w-md mx-auto">
+              <label className="block text-sm font-bold text-gray-700 mb-3">
+                📚 Themenbereich wählen:
+              </label>
+              <div className="grid grid-cols-2 gap-2">
+                {topics.map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => setTopic(t)}
+                    className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
+                      topic === t
+                        ? 'bg-purple-600 text-white shadow-lg scale-105'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {t}
                   </button>
                 ))}
               </div>
