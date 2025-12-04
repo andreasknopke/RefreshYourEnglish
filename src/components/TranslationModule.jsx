@@ -10,8 +10,19 @@ function TranslationModule({ user }) {
   const [score, setScore] = useState(0);
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [level, setLevel] = useState('B2');
+  const [topic, setTopic] = useState('Alltag');
   const [isGeneratingSentence, setIsGeneratingSentence] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState(null);
+
+  // Themenbereiche
+  const topics = [
+    'Politik',
+    'Sport', 
+    'Literatur',
+    'Film, Musik, Kunst',
+    'Alltag',
+    'Persönliche Gespräche'
+  ];
 
   // Debug: Prüfe API-Key beim Laden
   console.log('🎯 TranslationModule loaded');
@@ -24,10 +35,9 @@ function TranslationModule({ user }) {
     prefix: import.meta.env.VITE_OPENAI_API_KEY?.substring(0, 10) || 'none'
   });
 
-  // Lade ersten Satz beim Start
+  // Session Start initialisieren
   useEffect(() => {
     setSessionStartTime(Date.now());
-    loadNewSentence();
   }, []);
 
   const loadNewSentence = async () => {
@@ -35,7 +45,7 @@ function TranslationModule({ user }) {
     setUserTranslation('');
     setFeedback(null);
     try {
-      const sentence = await generateTranslationSentence(level);
+      const sentence = await generateTranslationSentence(level, topic);
       setCurrentSentence(sentence);
     } catch (error) {
       console.error('Failed to generate sentence:', error);
@@ -103,12 +113,77 @@ function TranslationModule({ user }) {
     loadNewSentence();
   };
 
+  // Startbildschirm wenn noch kein Satz generiert wurde
   if (!currentSentence) {
     return (
       <div className="max-w-4xl mx-auto animate-fade-in">
-        <div className="glass-card rounded-3xl shadow-2xl p-8 text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Generiere Übungssatz...</p>
+        <div className="glass-card rounded-2xl shadow-xl p-6 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-6 text-center">
+            Übersetzungstrainer
+          </h2>
+          
+          {/* Level Selector */}
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-3">
+              📊 Sprachniveau wählen:
+            </label>
+            <div className="flex gap-2 flex-wrap">
+              {['B2', 'C1', 'C2'].map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => setLevel(lvl)}
+                  className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
+                    level === lvl
+                      ? 'bg-indigo-600 text-white shadow-lg scale-105'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Topic Selector */}
+          <div className="mb-8">
+            <label className="block text-sm font-bold text-gray-700 mb-3">
+              📚 Themenbereich wählen:
+            </label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+              {topics.map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setTopic(t)}
+                  className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
+                    topic === t
+                      ? 'bg-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Start Button */}
+          <button
+            onClick={loadNewSentence}
+            disabled={isGeneratingSentence}
+            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isGeneratingSentence ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Generiere Übungssatz...
+              </span>
+            ) : (
+              '🚀 Übung starten'
+            )}
+          </button>
         </div>
       </div>
     );
@@ -134,10 +209,7 @@ function TranslationModule({ user }) {
             {['B2', 'C1', 'C2'].map((lvl) => (
               <button
                 key={lvl}
-                onClick={() => {
-                  setLevel(lvl);
-                  loadNewSentence();
-                }}
+                onClick={() => setLevel(lvl)}
                 className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
                   level === lvl
                     ? 'bg-indigo-600 text-white shadow-lg'
@@ -147,6 +219,19 @@ function TranslationModule({ user }) {
                 {lvl}
               </button>
             ))}
+          </div>
+
+          {/* Topic Selector */}
+          <div className="mb-2">
+            <select
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              className="w-full px-3 py-1.5 rounded-lg border-2 border-gray-300 focus:border-purple-500 focus:outline-none text-xs font-semibold"
+            >
+              {topics.map((t) => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
           </div>
           
           {/* Progress Bar */}
@@ -197,11 +282,12 @@ function TranslationModule({ user }) {
             </button>
             <button
               type="button"
-              onClick={randomSentence}
+              onClick={loadNewSentence}
               disabled={isGeneratingSentence}
-              className="px-4 py-2 border-2 border-indigo-300 hover:border-indigo-500 bg-white/50 text-indigo-700 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 text-sm disabled:opacity-50"
+              className="px-4 py-2 border-2 border-purple-300 hover:border-purple-500 bg-white/50 text-purple-700 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 text-sm disabled:opacity-50"
+              title="Neuen Satz generieren"
             >
-              {isGeneratingSentence ? '⏳' : '🎲'}
+              {isGeneratingSentence ? '⏳' : '🔄 Neu'}
             </button>
           </div>
         </form>

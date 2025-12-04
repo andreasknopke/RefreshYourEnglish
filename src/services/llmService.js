@@ -113,16 +113,17 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation)
 /**
  * Generiert einen deutschen Satz zum Übersetzen mit Hilfe eines LLM
  * @param {string} level - Sprachniveau (B2, C1, C2)
+ * @param {string} topic - Themenbereich (optional)
  * @returns {Promise<{de: string, en: string}>}
  */
-export async function generateTranslationSentence(level = 'B2') {
+export async function generateTranslationSentence(level = 'B2', topic = 'Alltag') {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   console.log('📝 Generating translation sentence, API Key exists:', !!API_KEY);
   
   if (!API_KEY) {
     console.warn('⚠️ No OpenAI API key, using fallback sentences');
-    return getFallbackSentence(level);
+    return getFallbackSentence(level, topic);
   }
   
   try {
@@ -136,10 +137,10 @@ export async function generateTranslationSentence(level = 'B2') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du bist ein Englischlehrer. Generiere einen deutschen Satz auf ${level}-Niveau zum Übersetzen ins Englische. Der Satz sollte interessant und lehrreich sein. Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
+          content: `Du bist ein Englischlehrer. Generiere einen deutschen Satz auf ${level}-Niveau zum Thema "${topic}" zum Übersetzen ins Englische. Der Satz sollte interessant und lehrreich sein. Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
         }, {
           role: 'user',
-          content: `Generiere einen neuen deutschen Satz auf ${level}-Niveau mit der korrekten englischen Übersetzung.`
+          content: `Generiere einen neuen deutschen Satz auf ${level}-Niveau zum Thema "${topic}" mit der korrekten englischen Übersetzung.`
         }],
         temperature: 0.8,
         max_tokens: 150
@@ -165,34 +166,85 @@ export async function generateTranslationSentence(level = 'B2') {
     }
   } catch (error) {
     console.error('OpenAI sentence generation failed, using fallback:', error);
-    return getFallbackSentence(level);
+    return getFallbackSentence(level, topic);
   }
 }
 
 /**
  * Fallback-Sätze wenn keine API verfügbar ist
  */
-function getFallbackSentence(level) {
+function getFallbackSentence(level, topic = 'Alltag') {
   const sentences = {
-    B2: [
-      { de: "Die zunehmende Digitalisierung verändert unsere Arbeitswelt grundlegend.", en: "Increasing digitalization is fundamentally changing our world of work." },
-      { de: "Trotz der Herausforderungen haben wir unser Ziel erreicht.", en: "Despite the challenges, we achieved our goal." },
-      { de: "Die Wissenschaftler haben eine bahnbrechende Entdeckung gemacht.", en: "The scientists have made a groundbreaking discovery." },
-      { de: "Nachhaltige Entwicklung ist eine der größten Herausforderungen unserer Zeit.", en: "Sustainable development is one of the greatest challenges of our time." }
-    ],
-    C1: [
-      { de: "Die gesellschaftlichen Auswirkungen des Klimawandels werden oft unterschätzt.", en: "The societal impacts of climate change are often underestimated." },
-      { de: "Angesichts der komplexen Situation müssen wir alternative Lösungsansätze in Betracht ziehen.", en: "Given the complex situation, we must consider alternative approaches to solutions." },
-      { de: "Die Authentizität seiner Argumentation wurde von mehreren Experten in Frage gestellt.", en: "The authenticity of his argumentation was questioned by several experts." },
-      { de: "Zwischenmenschliche Beziehungen erfordern kontinuierliche Kommunikation und gegenseitiges Verständnis.", en: "Interpersonal relationships require continuous communication and mutual understanding." }
-    ],
-    C2: [
-      { de: "Die ambivalente Haltung der Regierung gegenüber den Reformen spiegelt die Zerrissenheit der Gesellschaft wider.", en: "The government's ambivalent stance toward the reforms reflects society's divisiveness." },
-      { de: "Sein eloquentes Plädoyer für mehr soziale Gerechtigkeit fand breite Zustimmung unter den Anwesenden.", en: "His eloquent plea for greater social justice found broad approval among those present." }
-    ]
+    B2: {
+      'Politik': [
+        { de: "Die Regierung kündigte neue Maßnahmen zur Bekämpfung des Klimawandels an.", en: "The government announced new measures to combat climate change." },
+        { de: "Die Wahlbeteiligung bei der letzten Bundestagswahl war überraschend hoch.", en: "The voter turnout in the last federal election was surprisingly high." }
+      ],
+      'Sport': [
+        { de: "Der Fußballverein gewann das Finale in letzter Minute.", en: "The football club won the final in the last minute." },
+        { de: "Die Athletin brach den Weltrekord im Hochsprung.", en: "The athlete broke the world record in high jump." }
+      ],
+      'Literatur': [
+        { de: "Der Roman wurde von Kritikern weltweit gelobt.", en: "The novel was praised by critics worldwide." },
+        { de: "Die Autorin erhielt einen renommierten Literaturpreis.", en: "The author received a prestigious literary award." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Die Ausstellung zeitgenössischer Kunst zog viele Besucher an.", en: "The contemporary art exhibition attracted many visitors." },
+        { de: "Der Film gewann mehrere Oscars bei der diesjährigen Verleihung.", en: "The film won several Oscars at this year's ceremony." }
+      ],
+      'Alltag': [
+        { de: "Die zunehmende Digitalisierung verändert unsere Arbeitswelt grundlegend.", en: "Increasing digitalization is fundamentally changing our world of work." },
+        { de: "Trotz der Herausforderungen haben wir unser Ziel erreicht.", en: "Despite the challenges, we achieved our goal." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Wir sollten uns bald mal wieder treffen und über alte Zeiten reden.", en: "We should meet up soon and talk about old times." },
+        { de: "Ich freue mich sehr auf deinen Besuch nächste Woche.", en: "I'm really looking forward to your visit next week." }
+      ]
+    },
+    C1: {
+      'Politik': [
+        { de: "Die gesellschaftlichen Auswirkungen des Klimawandels werden oft unterschätzt.", en: "The societal impacts of climate change are often underestimated." },
+        { de: "Die diplomatischen Beziehungen zwischen den beiden Ländern haben sich deutlich verbessert.", en: "Diplomatic relations between the two countries have improved significantly." }
+      ],
+      'Sport': [
+        { de: "Die olympischen Spiele fördern den internationalen Zusammenhalt und sportlichen Ehrgeiz.", en: "The Olympic Games promote international unity and athletic ambition." }
+      ],
+      'Literatur': [
+        { de: "Die Authentizität seiner Argumentation wurde von mehreren Experten in Frage gestellt.", en: "The authenticity of his argumentation was questioned by several experts." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Die Symphonie vereint klassische Elemente mit modernen experimentellen Klängen.", en: "The symphony combines classical elements with modern experimental sounds." }
+      ],
+      'Alltag': [
+        { de: "Angesichts der komplexen Situation müssen wir alternative Lösungsansätze in Betracht ziehen.", en: "Given the complex situation, we must consider alternative approaches to solutions." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Zwischenmenschliche Beziehungen erfordern kontinuierliche Kommunikation und gegenseitiges Verständnis.", en: "Interpersonal relationships require continuous communication and mutual understanding." }
+      ]
+    },
+    C2: {
+      'Politik': [
+        { de: "Die ambivalente Haltung der Regierung gegenüber den Reformen spiegelt die Zerrissenheit der Gesellschaft wider.", en: "The government's ambivalent stance toward the reforms reflects society's divisiveness." }
+      ],
+      'Sport': [
+        { de: "Seine außergewöhnliche Leistung demonstrierte eindrucksvoll die Synthese aus jahrelangem Training und mentaler Stärke.", en: "His exceptional performance impressively demonstrated the synthesis of years of training and mental strength." }
+      ],
+      'Literatur': [
+        { de: "Sein eloquentes Plädoyer für mehr soziale Gerechtigkeit fand breite Zustimmung unter den Anwesenden.", en: "His eloquent plea for greater social justice found broad approval among those present." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Die postmoderne Inszenierung hinterfragt konventionelle narrative Strukturen auf provokante Weise.", en: "The postmodern production provocatively questions conventional narrative structures." }
+      ],
+      'Alltag': [
+        { de: "Die Komplexität moderner Lebensführung erfordert eine ausgeprägte Fähigkeit zur Priorisierung.", en: "The complexity of modern life requires a pronounced ability to prioritize." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Unsere jahrelange Freundschaft basiert auf gegenseitigem Respekt und unerschütterlichem Vertrauen.", en: "Our long-standing friendship is based on mutual respect and unwavering trust." }
+      ]
+    }
   };
   
-  const levelSentences = sentences[level] || sentences.B2;
+  const levelSentences = sentences[level]?.[topic] || sentences.B2['Alltag'];
   const random = levelSentences[Math.floor(Math.random() * levelSentences.length)];
   console.log('📚 Using fallback sentence:', random);
   return random;
