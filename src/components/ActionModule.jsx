@@ -585,7 +585,8 @@ function ActionModule({ user }) {
       {/* Vocabulary Editor Modal */}
       {selectedVocab && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="max-w-2xl w-full">
+          <div className="glass-card max-w-2xl w-full rounded-2xl p-6">
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Vokabel bearbeiten</h3>
             <VocabularyEditor
               vocabulary={selectedVocab}
               onUpdate={(updated) => {
@@ -609,6 +610,12 @@ function ActionModule({ user }) {
                 console.log('Added to trainer:', selectedVocab.id);
               }}
             />
+            <button
+              onClick={() => setSelectedVocab(null)}
+              className="mt-4 w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors"
+            >
+              ✕ Schließen
+            </button>
           </div>
         </div>
       )}
