@@ -539,27 +539,31 @@ function ActionModule({ user }) {
                 {/* Rückseite (Englisch) */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180">
                   <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
-                    <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
-                    <div className="text-5xl font-bold text-indigo-700 mb-8 text-center animate-slide-in">
-                      {currentWord?.en}
-                    </div>
-                    
-                    {/* Bewertungs-Buttons */}
-                    {isFlipped && (
-                      <div className="flex gap-4 justify-center w-full max-w-lg animate-slide-in">
-                        <button
-                          onClick={handleKnow}
-                          className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
-                        >
-                          ✓ Know
-                        </button>
-                        <button
-                          onClick={handleForgot}
-                          className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
-                        >
-                          ✗ Forgot
-                        </button>
-                      </div>
+                    {isFlipped ? (
+                      <>
+                        <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
+                        <div className="text-5xl font-bold text-indigo-700 mb-8 text-center animate-slide-in">
+                          {currentWord?.en}
+                        </div>
+                        
+                        {/* Bewertungs-Buttons */}
+                        <div className="flex gap-4 justify-center w-full max-w-lg animate-slide-in">
+                          <button
+                            onClick={handleKnow}
+                            className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                          >
+                            ✓ Know
+                          </button>
+                          <button
+                            onClick={handleForgot}
+                            className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                          >
+                            ✗ Forgot
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-sm text-gray-400">Drücke den Buzzer...</div>
                     )}
                   </div>
                 </div>
