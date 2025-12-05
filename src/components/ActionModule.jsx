@@ -603,6 +603,29 @@ function ActionModule({ user }) {
                     level: updated.level
                   } : v)
                 );
+                // Update in currentRound if exists
+                setCurrentRound(round =>
+                  round.map(answer => 
+                    answer.word.id === updated.id ? {
+                      ...answer,
+                      word: {
+                        ...answer.word,
+                        en: updated.english,
+                        de: updated.german,
+                        level: updated.level
+                      }
+                    } : answer
+                  )
+                );
+                // Update currentWord if it's the selected one
+                if (currentWord?.id === updated.id) {
+                  setCurrentWord({
+                    ...currentWord,
+                    en: updated.english,
+                    de: updated.german,
+                    level: updated.level
+                  });
+                }
                 setSelectedVocab(null);
               }}
               onDelete={(id) => {
@@ -610,8 +633,15 @@ function ActionModule({ user }) {
                 setSelectedVocab(null);
               }}
               onClose={() => setSelectedVocab(null)}
-              onAddedToTrainer={() => {
-                console.log('Added to trainer:', selectedVocab.id);
+              onAddedToTrainer={(id) => {
+                setAddedToTrainer(prev => new Set([...prev, id]));
+                setTimeout(() => {
+                  setAddedToTrainer(prev => {
+                    const newSet = new Set(prev);
+                    newSet.delete(id);
+                    return newSet;
+                  });
+                }, 3000);
               }}
             />
             <button
