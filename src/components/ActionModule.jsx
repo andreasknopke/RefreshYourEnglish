@@ -29,7 +29,10 @@ function ActionModule({ user }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [addedToTrainer, setAddedToTrainer] = useState(new Set());
   const [sessionStartTime, setSessionStartTime] = useState(null);
-  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(() => {
+    const saved = localStorage.getItem('actionModule_autoPlayTTS');
+    return saved === 'true';
+  });
   const inputRef = useRef(null);
 
   // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
@@ -110,6 +113,11 @@ function ActionModule({ user }) {
     };
     loadVocabulary();
   }, []);
+
+  // Save autoPlayTTS preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('actionModule_autoPlayTTS', autoPlayTTS);
+  }, [autoPlayTTS]);
 
   // Auto-play TTS when card is flipped to English
   useEffect(() => {

@@ -13,13 +13,21 @@ function VocabularyTrainer({ user }) {
   const [reviewing, setReviewing] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState(null);
-  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(() => {
+    const saved = localStorage.getItem('vocabularyTrainer_autoPlayTTS');
+    return saved === 'true';
+  });
 
   useEffect(() => {
     setSessionStartTime(Date.now());
     loadFlashcards();
     loadStats();
   }, []);
+
+  // Save autoPlayTTS preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('vocabularyTrainer_autoPlayTTS', autoPlayTTS);
+  }, [autoPlayTTS]);
 
   // Auto-play TTS when card is flipped to English
   useEffect(() => {

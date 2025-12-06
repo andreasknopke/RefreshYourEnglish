@@ -17,7 +17,10 @@ function DialogModule({ user }) {
   const [userMessageCount, setUserMessageCount] = useState(0);
   const [evaluation, setEvaluation] = useState(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
-  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(() => {
+    const saved = localStorage.getItem('dialogModule_autoPlayTTS');
+    return saved === 'true';
+  });
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -34,6 +37,11 @@ function DialogModule({ user }) {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Save autoPlayTTS preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('dialogModule_autoPlayTTS', autoPlayTTS);
+  }, [autoPlayTTS]);
 
   useEffect(() => {
     scrollToBottom();
