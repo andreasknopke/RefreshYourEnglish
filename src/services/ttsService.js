@@ -7,11 +7,24 @@ const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
 const ELEVENLABS_API_URL = 'https://api.elevenlabs.io/v1';
 
 // Vordefinierte Stimmen für verschiedene Sprachen
-const VOICES = {
+// Diese werden verwendet, falls keine benutzerdefinierte Voice-ID gesetzt ist
+const DEFAULT_VOICES = {
   en: 'EXAVITQu4vr4xnSDxMaL', // Rachel - weiblich, amerikanisches Englisch
   de: 'pFZP5JQG7iQjIQuC4Bku', // Lily - weiblich, deutsch
-  // Weitere Stimmen können hier hinzugefügt werden
 };
+
+// Benutzerdefinierte Voice-ID aus Umgebungsvariablen (hat Vorrang)
+const CUSTOM_VOICE_ID = import.meta.env.VITE_ELEVENLABS_VOICE_ID;
+
+// Funktion um die richtige Voice-ID zu ermitteln
+function getVoiceId(language) {
+  // Wenn eine benutzerdefinierte Voice-ID gesetzt ist, verwende diese für alle Sprachen
+  if (CUSTOM_VOICE_ID) {
+    return CUSTOM_VOICE_ID;
+  }
+  // Ansonsten verwende die Standard-Stimme für die Sprache
+  return DEFAULT_VOICES[language] || DEFAULT_VOICES.en;
+}
 
 class TTSService {
   constructor() {
@@ -33,7 +46,7 @@ class TTSService {
     }
 
     const {
-      voiceId = VOICES[language] || VOICES.en,
+      voiceId = getVoiceId(language),
       modelId = 'eleven_monolingual_v1',
       stability = 0.5,
       similarityBoost = 0.75,

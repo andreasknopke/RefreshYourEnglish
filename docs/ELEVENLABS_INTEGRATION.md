@@ -13,13 +13,32 @@ Die App integriert die ElevenLabs API für hochwertige Text-to-Speech-Ausgabe in
 3. Navigiere zu Profile Settings → API Keys
 4. Erstelle einen neuen API-Key
 
-### 2. Konfiguration
+### 2. Voice-ID finden (Optional)
 
-Füge den API-Key zur `.env`-Datei hinzu:
+Wenn du eine spezielle Stimme verwenden möchtest:
+1. Gehe zu [ElevenLabs Voices](https://elevenlabs.io/app/voice-library)
+2. Wähle oder erstelle eine Stimme
+3. Klicke auf die Stimme und kopiere die Voice-ID
+4. Die Voice-ID ist ein langer String wie `21m00Tcm4TlvDq8ikWAM`
+
+### 3. Konfiguration
+
+Füge die Keys zur `.env`-Datei hinzu:
 
 ```bash
+# Erforderlich
 VITE_ELEVENLABS_API_KEY=your_api_key_here
+
+# Optional: Verwende eine spezielle Stimme für alle Sprachen
+VITE_ELEVENLABS_VOICE_ID=your_custom_voice_id_here
 ```
+
+**Standard-Stimmen (wenn keine VOICE_ID gesetzt):**
+- Englisch: Rachel (weiblich, amerikanisch)
+- Deutsch: Lily (weiblich)
+
+**Mit Custom Voice-ID:**
+- Alle Texte (EN + DE) verwenden deine spezielle Stimme
 
 **Wichtig für Railway Deployment:**
 - Füge die Umgebungsvariable `VITE_ELEVENLABS_API_KEY` in den Railway-Einstellungen hinzu
