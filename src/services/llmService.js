@@ -125,7 +125,39 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
     console.warn('⚠️ No OpenAI API key, using fallback sentences');
     return getFallbackSentence(level, topic);
   }
-  
+
+  // Detaillierte Anweisungen für verschiedene Satztypen und Variationen
+  const sentenceTypes = [
+    'eine Aussage über aktuelle Ereignisse',
+    'eine Frage zu einem hypothetischen Szenario',
+    'eine Meinungsäußerung mit Begründung',
+    'eine Beschreibung einer komplexen Situation',
+    'einen Vergleich zwischen zwei Konzepten',
+    'eine Empfehlung oder einen Rat',
+    'eine Zusammenfassung eines Sachverhalts',
+    'eine kritische Analyse',
+    'eine persönliche Erfahrung oder Anekdote',
+    'eine Zukunftsprognose oder Spekulation',
+    'einen Konditionalssatz (wenn-dann)',
+    'eine Konsequenz oder Schlussfolgerung',
+    'einen Ausdruck von Emotionen oder Gefühlen',
+    'eine Aufforderung oder einen Vorschlag'
+  ];
+
+  const sentenceType = sentenceTypes[Math.floor(Math.random() * sentenceTypes.length)];
+
+  // Spezifische Themenaspekte für mehr Variation
+  const topicVariations = {
+    'Politik': ['Wahlen', 'internationale Beziehungen', 'Gesetzgebung', 'Demokratie', 'Klimapolitik', 'Wirtschaftspolitik', 'Sozialpolitik', 'Außenpolitik'],
+    'Sport': ['Mannschaftssport', 'Einzelsport', 'Olympia', 'Fitness', 'E-Sport', 'Extremsport', 'Sportpsychologie', 'Doping'],
+    'Literatur': ['Romane', 'Lyrik', 'Sachbücher', 'Biografien', 'Literaturkritik', 'Bestseller', 'klassische Literatur', 'moderne Literatur'],
+    'Film, Musik, Kunst': ['Kino', 'Streaming', 'Konzerte', 'Museen', 'Street Art', 'Pop-Kultur', 'Klassik', 'zeitgenössische Kunst'],
+    'Alltag': ['Technologie', 'soziale Medien', 'Arbeitswelt', 'Familie', 'Freundschaft', 'Freizeit', 'Gesundheit', 'Bildung', 'Konsum', 'Mobilität'],
+    'Persönliche Gespräche': ['Beziehungen', 'Lebensentscheidungen', 'Karriere', 'Hobbys', 'Reisen', 'Zukunftspläne', 'Erinnerungen', 'persönliche Entwicklung']
+  };
+
+  const specificTopic = topicVariations[topic]?.[Math.floor(Math.random() * (topicVariations[topic]?.length || 1))] || topic;
+
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -137,13 +169,29 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du bist ein Englischlehrer. Generiere einen deutschen Satz auf ${level}-Niveau zum Thema "${topic}" zum Übersetzen ins Englische. Der Satz sollte interessant und lehrreich sein. Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
+          content: `Du bist ein kreativer Englischlehrer, der SEHR UNTERSCHIEDLICHE und ABWECHSLUNGSREICHE Übersetzungssätze erstellt.
+
+WICHTIG - VARIATIONSREGELN:
+1. Vermeide repetitive Satzstrukturen - nutze verschiedene Satzarten (Haupt-, Nebensätze, Fragen, etc.)
+2. Wechsle zwischen verschiedenen Zeitformen (Präsens, Perfekt, Futur, Konjunktiv, etc.)
+3. Verwende unterschiedliche Perspektiven (ich, du, wir, man, sie, etc.)
+4. Variiere die Satzlänge (kurz, mittel, lang)
+5. Nutze verschiedene Stilebenen (formal, informell, neutral)
+6. Integriere unterschiedliche sprachliche Mittel (Metaphern, direkte Rede, Modalverben, etc.)
+7. NIEMALS den gleichen Satzbau oder ähnliche Formulierungen wie zuvor verwenden
+
+Erstelle ${sentenceType} zum Aspekt "${specificTopic}" auf ${level}-Niveau.
+Der Satz muss KREATIV, ORIGINELL und ANDERS als typische Lehrbuchsätze sein.
+
+Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
         }, {
           role: 'user',
-          content: `Generiere einen neuen deutschen Satz auf ${level}-Niveau zum Thema "${topic}" mit der korrekten englischen Übersetzung.`
+          content: `Generiere einen VÖLLIG NEUEN und EINZIGARTIGEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" auf ${level}-Niveau. Sei kreativ und vermeide Standard-Formulierungen!`
         }],
-        temperature: 0.8,
-        max_tokens: 150
+        temperature: 1.0, // Erhöht für mehr Kreativität
+        max_tokens: 200,
+        presence_penalty: 0.6, // Reduziert Wiederholungen
+        frequency_penalty: 0.6 // Fördert neue Wortwahl
       })
     });
     
