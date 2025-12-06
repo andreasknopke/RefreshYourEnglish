@@ -126,24 +126,72 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
     return getFallbackSentence(level, topic);
   }
 
-  // Detaillierte Anweisungen für verschiedene Satztypen und Variationen
-  const sentenceTypes = [
-    'eine Aussage über aktuelle Ereignisse',
-    'eine Frage zu einem hypothetischen Szenario',
-    'eine Meinungsäußerung mit Begründung',
-    'eine Beschreibung einer komplexen Situation',
-    'einen Vergleich zwischen zwei Konzepten',
-    'eine Empfehlung oder einen Rat',
-    'eine Zusammenfassung eines Sachverhalts',
-    'eine kritische Analyse',
-    'eine persönliche Erfahrung oder Anekdote',
-    'eine Zukunftsprognose oder Spekulation',
-    'einen Konditionalssatz (wenn-dann)',
-    'eine Konsequenz oder Schlussfolgerung',
-    'einen Ausdruck von Emotionen oder Gefühlen',
-    'eine Aufforderung oder einen Vorschlag'
-  ];
+  // Niveau-spezifische Anforderungen
+  const levelRequirements = {
+    B2: {
+      complexity: 'mittel',
+      vocabulary: 'gebräuchlich und alltäglich',
+      structures: 'Hauptsätze mit gelegentlichen Nebensätzen, einfache Konjunktionen',
+      wordCount: '8-15 Wörter',
+      examples: 'Themen aus dem täglichen Leben, Arbeit, Freizeit',
+      avoid: 'Fachbegriffe, komplexe Satzgefüge, literarische Sprache, abstrakte Konzepte',
+      tenses: 'Präsens, Perfekt, gelegentlich Futur',
+      instructions: 'Erstelle einen EINFACHEN, KLAREN Satz, den ein fortgeschrittener Lerner problemlos verstehen kann. Nutze ALLTÄGLICHE Vokabeln und DIREKTE Aussagen.'
+    },
+    C1: {
+      complexity: 'hoch',
+      vocabulary: 'differenziert, teils anspruchsvoll',
+      structures: 'komplexe Satzkonstruktionen, Nebensätze, gehobene Konjunktionen',
+      wordCount: '15-25 Wörter',
+      examples: 'abstrakte Themen, Fachthemen, gesellschaftliche Diskurse',
+      avoid: 'zu einfache Alltagssprache, extrem seltene Fachbegriffe',
+      tenses: 'alle Zeitformen inklusive Konjunktiv I und II',
+      instructions: 'Erstelle einen ANSPRUCHSVOLLEN Satz mit DIFFERENZIERTER Wortwahl und komplexerer Satzstruktur. Nutze gehobenes Vokabular, aber bleibe verständlich.'
+    },
+    C2: {
+      complexity: 'sehr hoch',
+      vocabulary: 'elaboriert, Fachsprache, idiomatisch',
+      structures: 'hochkomplexe Satzkonstruktionen, verschachtelte Nebensätze, Partizipialkonstruktionen',
+      wordCount: '20-35 Wörter',
+      examples: 'philosophische Konzepte, wissenschaftliche Themen, literarische Analysen',
+      avoid: 'einfache oder alltägliche Formulierungen',
+      tenses: 'alle Zeitformen, komplexe Modi, Passivkonstruktionen',
+      instructions: 'Erstelle einen HOCHKOMPLEXEN Satz mit ELABORIERTER, fast literarischer Sprache. Nutze ABSTRAKTE Konzepte, FACHVOKABULAR und anspruchsvolle Satzstrukturen.'
+    }
+  };
 
+  const currentLevel = levelRequirements[level];
+
+  // Detaillierte Anweisungen für verschiedene Satztypen und Variationen
+  const sentenceTypesByLevel = {
+    B2: [
+      'eine einfache Aussage über alltägliche Aktivitäten',
+      'eine direkte Frage zu persönlichen Präferenzen',
+      'eine klare Meinungsäußerung',
+      'eine Beschreibung einer Situation',
+      'einen einfachen Vergleich',
+      'eine Empfehlung',
+      'eine persönliche Erfahrung'
+    ],
+    C1: [
+      'eine differenzierte Analyse',
+      'eine hypothetische Überlegung mit Konsequenzen',
+      'eine kritische Bewertung',
+      'einen komplexen Vergleich mit mehreren Aspekten',
+      'eine begründete Argumentation',
+      'eine Schlussfolgerung aus verschiedenen Faktoren'
+    ],
+    C2: [
+      'eine philosophische Reflexion',
+      'eine wissenschaftliche Hypothese',
+      'eine literarische Analyse',
+      'eine abstrakte Konzeptualisierung',
+      'eine epistemologische Betrachtung',
+      'eine interdisziplinäre Synthese'
+    ]
+  };
+
+  const sentenceTypes = sentenceTypesByLevel[level];
   const sentenceType = sentenceTypes[Math.floor(Math.random() * sentenceTypes.length)];
 
   // Spezifische Themenaspekte für mehr Variation
@@ -169,29 +217,53 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du bist ein kreativer Englischlehrer, der SEHR UNTERSCHIEDLICHE und ABWECHSLUNGSREICHE Übersetzungssätze erstellt.
+          content: `Du bist ein erfahrener Englischlehrer, der Übersetzungssätze für VERSCHIEDENE Sprachniveaus erstellt.
+
+KRITISCH - NIVEAU ${level} ANFORDERUNGEN:
+- Komplexität: ${currentLevel.complexity}
+- Vokabular: ${currentLevel.vocabulary}
+- Satzstrukturen: ${currentLevel.structures}
+- Wortanzahl: ${currentLevel.wordCount}
+- Thematik: ${currentLevel.examples}
+- VERMEIDE: ${currentLevel.avoid}
+- Zeitformen: ${currentLevel.tenses}
+
+SPEZIFISCHE ANWEISUNG FÜR ${level}:
+${currentLevel.instructions}
+
+NIVEAUBEISPIELE ZUR ORIENTIERUNG:
+
+B2-Beispiele (EINFACH):
+- "Ich gehe heute Abend mit meinen Freunden ins Kino."
+- "Viele Menschen arbeiten heutzutage von zu Hause aus."
+- "Kannst du mir bitte bei den Hausaufgaben helfen?"
+
+C1-Beispiele (ANSPRUCHSVOLL):
+- "Die zunehmende Digitalisierung erfordert eine grundlegende Anpassung unserer Bildungssysteme."
+- "Angesichts der komplexen Situation müssen wir verschiedene Lösungsansätze in Betracht ziehen."
+
+C2-Beispiele (HOCHKOMPLEX):
+- "Die postmoderne Dekonstruktion traditioneller Narrative manifestiert sich in der ambivalenten Haltung zeitgenössischer Künstler."
+- "Die epistemologischen Implikationen dieser Theorie werfen fundamentale Fragen bezüglich der Natur wissenschaftlicher Erkenntnis auf."
 
 WICHTIG - VARIATIONSREGELN:
-1. Vermeide repetitive Satzstrukturen - nutze verschiedene Satzarten (Haupt-, Nebensätze, Fragen, etc.)
-2. Wechsle zwischen verschiedenen Zeitformen (Präsens, Perfekt, Futur, Konjunktiv, etc.)
-3. Verwende unterschiedliche Perspektiven (ich, du, wir, man, sie, etc.)
-4. Variiere die Satzlänge (kurz, mittel, lang)
-5. Nutze verschiedene Stilebenen (formal, informell, neutral)
-6. Integriere unterschiedliche sprachliche Mittel (Metaphern, direkte Rede, Modalverben, etc.)
-7. NIEMALS den gleichen Satzbau oder ähnliche Formulierungen wie zuvor verwenden
+1. Vermeide repetitive Satzstrukturen
+2. Wechsle zwischen verschiedenen Zeitformen (innerhalb des Niveaus)
+3. Verwende unterschiedliche Perspektiven
+4. Variiere die Satzlänge (innerhalb der Niveau-Vorgaben)
+5. NIEMALS den gleichen Satzbau wie zuvor verwenden
 
-Erstelle ${sentenceType} zum Aspekt "${specificTopic}" auf ${level}-Niveau.
-Der Satz muss KREATIV, ORIGINELL und ANDERS als typische Lehrbuchsätze sein.
+Erstelle ${sentenceType} zum Aspekt "${specificTopic}" STRIKT auf ${level}-Niveau.
 
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
         }, {
           role: 'user',
-          content: `Generiere einen VÖLLIG NEUEN und EINZIGARTIGEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" auf ${level}-Niveau. Sei kreativ und vermeide Standard-Formulierungen!`
+          content: `Generiere einen NEUEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" EXAKT auf ${level}-Niveau (nicht einfacher, nicht schwieriger!). Beachte die Wortanzahl ${currentLevel.wordCount} und die Komplexität "${currentLevel.complexity}".`
         }],
-        temperature: 1.0, // Erhöht für mehr Kreativität
+        temperature: 0.9,
         max_tokens: 200,
-        presence_penalty: 0.6, // Reduziert Wiederholungen
-        frequency_penalty: 0.6 // Fördert neue Wortwahl
+        presence_penalty: 0.6,
+        frequency_penalty: 0.6
       })
     });
     
@@ -204,7 +276,7 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
     
     try {
       const parsed = JSON.parse(content);
-      console.log('✨ Generated sentence via OpenAI:', parsed);
+      console.log(`✨ Generated ${level} sentence via OpenAI:`, parsed);
       return {
         de: parsed.de || parsed.german || 'Fehler beim Generieren',
         en: parsed.en || parsed.english || 'Error generating'
