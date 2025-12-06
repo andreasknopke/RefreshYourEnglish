@@ -1,6 +1,6 @@
 /**
- * ElevenLabs Text-to-Speech Service
- * Dokumentation: https://elevenlabs.io/docs/api-reference/text-to-speech
+ * Text-to-Speech Service
+ * Unterstützt Web Speech API (Browser) und ElevenLabs API
  */
 
 const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
@@ -30,6 +30,46 @@ class TTSService {
   constructor() {
     this.audioCache = new Map();
     this.currentAudio = null;
+    this.isBrowserSpeaking = false;
+    
+    // Load TTS provider preference from localStorage
+    this.provider = localStorage.getItem('tts_provider') || 'elevenlabs';
+    
+    // Check browser support for Web Speech API
+    this.isBrowserTTSSupported = 'speechSynthesis' in window;
+  }
+
+  /**
+   * Setzt den TTS-Provider
+   * @param {string} provider - 'browser' oder 'elevenlabs'
+   */
+  setProvider(provider) {
+    if (provider !== 'browser' && provider !== 'elevenlabs') {
+      throw new Error('Invalid provider. Use "browser" or "elevenlabs"');
+    }
+    this.provider = provider;
+    localStorage.setItem('tts_provider', provider);
+  }
+
+  /**
+   * Gibt den aktuellen Provider zurück
+   */
+  getProvider() {
+    return this.provider;
+  }
+
+  /**
+   * Prüft ob ElevenLabs verfügbar ist
+   */
+  isElevenLabsAvailable() {
+    return !!ELEVENLABS_API_KEY;
+  }
+
+  /**
+   * Prüft ob Browser TTS verfügbar ist
+   */
+  isBrowserTTSAvailable() {
+    return this.isBrowserTTSSupported;
   }
 
   /**
@@ -105,6 +145,42 @@ class TTSService {
   }
 
   /**
+   * Spricht Text mit Browser Web Speech API
+   * @param {string} text - Der zu sprechende Text
+   * @param {string} language - Sprache ('en' oder 'de')
+   */
+  speakWithBrowser(text, language = 'en') {
+    return new Promise((resolve, reject) => {
+      if (!this.isBrowserTTSSupported) {
+        reject(new Error('Browser unterstützt keine Sprachausgabe'));
+        return;
+      }
+
+      // Stoppe vorherige Ausgabe
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = language === 'de' ? 'de-DE' : 'en-US';
+      utterance.rate = 0.9; // Etwas langsamer für besseres Verständnis
+      utterance.pitch = 1;
+      utterance.volume = 1;
+
+      utterance.onend = () => {
+        this.isBrowserSpeaking = false;
+        resolve();
+      };
+
+      utterance.onerror = (event) => {
+        this.isBrowserSpeaking = false;
+        reject(new Error(`Browser TTS Error: ${event.error}`));
+      };
+
+      this.isBrowserSpeaking = true;
+      window.speechSynthesis.speak(utterance);
+    });
+  }
+
+  /**
    * Spielt einen Text ab
    * @param {string} text - Der zu sprechende Text
    * @param {string} language - Sprache ('en' oder 'de')
@@ -115,6 +191,12 @@ class TTSService {
       // Stoppe aktuelles Audio
       this.stop();
 
+      // Browser TTS
+      if (this.provider === 'browser') {
+        return await this.speakWithBrowser(text, language);
+      }
+
+      // ElevenLabs API
       const audioBlob = await this.generateAudio(text, language, options);
       if (!audioBlob) return;
 
@@ -137,6 +219,13 @@ class TTSService {
    * Stoppt die aktuelle Wiedergabe
    */
   stop() {
+    // Stoppe Browser TTS
+    if (this.isBrowserSpeaking && this.isBrowserTTSSupported) {
+      window.speechSynthesis.cancel();
+      this.isBrowserSpeaking = false;
+    }
+    
+    // Stoppe ElevenLabs Audio
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.currentTime = 0;
@@ -149,6 +238,9 @@ class TTSService {
    * @returns {boolean}
    */
   isPlaying() {
+    if (this.provider === 'browser') {
+      return this.isBrowserSpeaking;
+    }
     return this.currentAudio && !this.currentAudio.paused;
   }
 
