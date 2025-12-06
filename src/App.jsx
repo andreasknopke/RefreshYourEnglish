@@ -4,6 +4,7 @@ import ActionModule from './components/ActionModule';
 import DialogModule from './components/DialogModule';
 import VocabularyTrainer from './components/VocabularyTrainer';
 import VocabularyLibrary from './components/VocabularyLibrary';
+import SettingsModule from './components/SettingsModule';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import VerifyEmail from './components/VerifyEmail';
@@ -93,8 +94,17 @@ function App() {
       </div>
 
       <div className="container mx-auto px-3 py-4 relative z-10">
-        {/* User Info / Login Button */}
-        <div className="flex justify-end mb-3">
+        {/* User Info / Login Button / Settings */}
+        <div className="flex justify-end mb-3 gap-2">
+          {/* Settings Button */}
+          <button
+            onClick={() => setActiveModule('settings')}
+            className="glass-card px-4 py-3 rounded-2xl font-bold text-gray-700 hover:text-indigo-600 hover:scale-105 transition-all"
+            title="Einstellungen"
+          >
+            ⚙️
+          </button>
+          
           {user ? (
             <div className="glass-card px-6 py-3 rounded-2xl flex items-center gap-4">
               <div className="flex items-center gap-2">
@@ -272,6 +282,7 @@ function App() {
             {activeModule === 'dialog' && <DialogModule user={user} />}
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
+            {activeModule === 'settings' && <SettingsModule />}
           </div>
         )}
 

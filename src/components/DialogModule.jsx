@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
+import STTButton from './STTButton';
 import ttsService from '../services/ttsService';
 
 function DialogModule({ user }) {
@@ -442,16 +443,23 @@ function DialogModule({ user }) {
 
             {/* Input Area */}
             <div className="space-y-2">
-              <textarea
-                ref={inputRef}
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Antworte auf Englisch..."
-                disabled={isLoading || evaluation !== null}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none resize-none text-sm"
-                rows={2}
-              />
+              <div className="flex gap-2">
+                <textarea
+                  ref={inputRef}
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Antworte auf Englisch..."
+                  disabled={isLoading || evaluation !== null}
+                  className="flex-1 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none resize-none text-sm"
+                  rows={2}
+                />
+                <STTButton
+                  onTranscript={(text) => setUserInput(prev => prev + (prev ? ' ' : '') + text)}
+                  language="en"
+                  disabled={isLoading || evaluation !== null}
+                />
+              </div>
               
               <div className="flex gap-2">
                 <button

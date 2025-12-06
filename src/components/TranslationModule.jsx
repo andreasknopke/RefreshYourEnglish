@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
+import STTButton from './STTButton';
 
 function TranslationModule({ user }) {
   const [currentSentence, setCurrentSentence] = useState(null);
@@ -257,14 +258,21 @@ function TranslationModule({ user }) {
           <label className="block text-[9px] sm:text-[10px] font-bold text-gray-700 mb-1 uppercase tracking-wide">
             Deine Übersetzung:
           </label>
-          <textarea
-            value={userTranslation}
-            onChange={(e) => setUserTranslation(e.target.value)}
-            className="input-modern resize-none text-sm"
-            rows="2"
-            placeholder="Englische Übersetzung..."
-            disabled={isLoading}
-          />
+          <div className="flex gap-2 mb-2">
+            <textarea
+              value={userTranslation}
+              onChange={(e) => setUserTranslation(e.target.value)}
+              className="flex-1 input-modern resize-none text-sm"
+              rows="2"
+              placeholder="Englische Übersetzung..."
+              disabled={isLoading}
+            />
+            <STTButton
+              onTranscript={(text) => setUserTranslation(prev => prev + (prev ? ' ' : '') + text)}
+              language="en"
+              disabled={isLoading}
+            />
+          </div>
           <div className="flex gap-2 mt-2">
             <button
               type="submit"
