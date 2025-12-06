@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getDueFlashcards, reviewFlashcard, removeFromFlashcardDeck, getFlashcardStats } from '../services/apiService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
+import ttsService from '../services/ttsService';
 
 function VocabularyTrainer({ user }) {
   const [stats, setStats] = useState(null);
@@ -12,12 +13,23 @@ function VocabularyTrainer({ user }) {
   const [reviewing, setReviewing] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState(null);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
 
   useEffect(() => {
     setSessionStartTime(Date.now());
     loadFlashcards();
     loadStats();
   }, []);
+
+  // Auto-play TTS when card is flipped to English
+  useEffect(() => {
+    if (autoPlayTTS && isFlipped && flashcards[currentIndex]) {
+      const currentCard = flashcards[currentIndex];
+      ttsService.speak(currentCard.english, 'en').catch(err => 
+        console.error('Auto-play TTS failed:', err)
+      );
+    }
+  }, [isFlipped, autoPlayTTS, currentIndex, flashcards]);
 
   const loadFlashcards = async () => {
     setLoading(true);
@@ -142,6 +154,20 @@ function VocabularyTrainer({ user }) {
         </div>
       </div>
 
+      {/* Auto-Play Toggle */}
+      <div className="mb-6 flex items-center justify-center gap-2">
+        <button
+          onClick={() => setAutoPlayTTS(!autoPlayTTS)}
+          className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+            autoPlayTTS 
+              ? 'bg-green-500 text-white shadow-lg' 
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          }`}
+        >
+          {autoPlayTTS ? '🔊 Auto-Play: AN' : '🔇 Auto-Play: AUS'}
+        </button>
+      </div>
+
       {flashcards.length === 0 ? (
         <div className="glass-card p-12 text-center">
           <div className="text-6xl mb-4">🎉</div>
@@ -197,11 +223,8 @@ function VocabularyTrainer({ user }) {
               <div className="absolute w-full h-full backface-hidden">
                 <div className="glass-card h-full flex flex-col items-center justify-center p-4">
                   <div className="text-xs text-gray-500 mb-2">🇩🇪 Deutsch</div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-3xl md:text-4xl font-bold text-gray-800 text-center">
-                      {currentCard.german}
-                    </div>
-                    <TTSButton text={currentCard.german} language="de" />
+                  <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center">
+                    {currentCard.german}
                   </div>
                   <div className="text-xs text-gray-400 mt-4">
                     Klicke zum Umdrehen

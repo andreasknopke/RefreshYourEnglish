@@ -3,6 +3,7 @@ import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
 import TTSButton from './TTSButton';
+import ttsService from '../services/ttsService';
 
 function ActionModule({ user }) {
   const [timeLimit, setTimeLimit] = useState(10);
@@ -28,6 +29,7 @@ function ActionModule({ user }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [addedToTrainer, setAddedToTrainer] = useState(new Set());
   const [sessionStartTime, setSessionStartTime] = useState(null);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
   const inputRef = useRef(null);
 
   // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
@@ -108,6 +110,15 @@ function ActionModule({ user }) {
     };
     loadVocabulary();
   }, []);
+
+  // Auto-play TTS when card is flipped to English
+  useEffect(() => {
+    if (autoPlayTTS && isFlipped && currentWord) {
+      ttsService.speak(currentWord.en, 'en').catch(err => 
+        console.error('Auto-play TTS failed:', err)
+      );
+    }
+  }, [isFlipped, autoPlayTTS, currentWord]);
 
   useEffect(() => {
     let timer;
@@ -528,11 +539,8 @@ function ActionModule({ user }) {
                 <div className="absolute w-full h-full backface-hidden">
                   <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
                     <div className="text-sm text-green-700 font-bold mb-4">🇩🇪 Deutsche Vokabel</div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="text-5xl font-bold text-gray-800 text-center">
-                        {currentWord?.de}
-                      </div>
-                      <TTSButton text={currentWord?.de} language="de" />
+                    <div className="text-5xl font-bold text-gray-800 mb-4 text-center">
+                      {currentWord?.de}
                     </div>
                     <div className="mt-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
                       {currentWord?.level}
@@ -580,6 +588,20 @@ function ActionModule({ user }) {
             {/* Buzzer Button */}
             {isActive && !isFlipped && (
               <div className="text-center mt-4">
+                {/* Auto-Play Toggle */}
+                <div className="mb-3">
+                  <button
+                    onClick={() => setAutoPlayTTS(!autoPlayTTS)}
+                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                      autoPlayTTS 
+                        ? 'bg-green-500 text-white shadow-lg' 
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {autoPlayTTS ? '🔊 Auto-Play: AN' : '🔇 Auto-Play: AUS'}
+                  </button>
+                </div>
+                
                 <button
                   onClick={handleBuzzer}
                   className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-6 px-12 rounded-full text-3xl transition-all shadow-lg hover:scale-110 animate-pulse"

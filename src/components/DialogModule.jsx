@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
+import ttsService from '../services/ttsService';
 
 function DialogModule({ user }) {
   const [scenario, setScenario] = useState(null);
@@ -16,6 +17,7 @@ function DialogModule({ user }) {
   const [userMessageCount, setUserMessageCount] = useState(0);
   const [evaluation, setEvaluation] = useState(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
+  const [autoPlayTTS, setAutoPlayTTS] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -35,7 +37,17 @@ function DialogModule({ user }) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+    
+    // Auto-play last assistant message if auto-play is enabled
+    if (autoPlayTTS && messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'assistant' && !lastMessage.isError) {
+        ttsService.speak(lastMessage.content, 'en').catch(err => 
+          console.error('Auto-play TTS failed:', err)
+        );
+      }
+    }
+  }, [messages, autoPlayTTS]);
 
   const startNewDialog = async () => {
     setIsLoading(true);
@@ -278,8 +290,22 @@ function DialogModule({ user }) {
           <div className="glass-card rounded-3xl p-6 mb-20">
             {/* Scenario Description */}
             <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 mb-4 border-2 border-blue-300">
-              <h3 className="font-bold text-gray-800 mb-2">📍 Szenario:</h3>
-              <p className="text-gray-700">{scenario.description}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-800 mb-2">📍 Szenario:</h3>
+                  <p className="text-gray-700">{scenario.description}</p>
+                </div>
+                <button
+                  onClick={() => setAutoPlayTTS(!autoPlayTTS)}
+                  className={`ml-4 px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
+                    autoPlayTTS 
+                      ? 'bg-green-500 text-white shadow-lg' 
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {autoPlayTTS ? '🔊 Auto' : '🔇 Auto'}
+                </button>
+              </div>
             </div>
 
             {/* Messages */}

@@ -333,10 +333,10 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `Du bist ein Englischlehrer. Erstelle ein realistisches Gesprächsszenario auf ${level}-Niveau zum Thema "${topic}" für Englischlerner. Antworte im JSON-Format: {"description": "Beschreibung des Szenarios", "firstMessage": "Erste Nachricht um das Gespräch zu starten"}`
+          content: `You are an English teacher creating conversation scenarios for German learners. Create a realistic conversation scenario at ${level} level about "${topic}". CRITICAL: The "firstMessage" MUST be in English only, as the student needs to practice English. The "description" should be in German to help them understand the context. Respond in JSON format: {"description": "German description of the scenario", "firstMessage": "First message in ENGLISH to start the conversation"}`
         }, {
           role: 'user',
-          content: `Erstelle ein neues Konversationsszenario auf ${level}-Niveau zum Thema "${topic}".`
+          content: `Create a new conversation scenario at ${level} level about "${topic}". Remember: firstMessage MUST be in English!`
         }],
         temperature: 0.8,
         max_tokens: 200
@@ -368,11 +368,21 @@ export async function generateDialogResponse(scenario, conversationHistory, leve
     const messages = [
       {
         role: 'system',
-        content: `Du bist ein Gesprächspartner in folgendem Szenario: ${scenario.situation}. Deine Rolle: ${scenario.role}. Antworte natürlich und auf ${level}-Niveau.`
+        content: `You are a conversation partner in the following scenario: ${scenario.description}. 
+
+CRITICAL RULES:
+1. You MUST respond ONLY in English - never use German or any other language
+2. Stay strictly within the scenario context: ${scenario.description}
+3. Refer to and build upon the user's previous messages
+4. Match the language level: ${level}
+5. Be natural and conversational, but stay in character
+6. If the user goes off-topic, gently guide them back to the scenario
+
+Respond naturally in English while staying in the scenario context.`
       },
       ...conversationHistory.map(msg => ({
         role: msg.role === 'user' ? 'user' : 'assistant',
-        content: msg.text
+        content: msg.content
       }))
     ];
     
@@ -416,16 +426,82 @@ export async function generateDialogHint(scenario, conversationHistory) {
 /**
  * Bewertet die Dialog-Performance
  */
-export async function evaluateDialogPerformance(conversationHistory, level) {
-  const messageCount = conversationHistory.filter(m => m.role === 'user').length;
-  const score = Math.min(10, Math.max(1, messageCount * 2));
+export async function evaluateDialogPerformance(scenario, conversationHistory, level) {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
-  return {
-    score,
-    feedback: score >= 8 ? 'Sehr gut! Du hast aktiv am Gespräch teilgenommen.' : 'Gut gemacht! Versuche noch mehr ins Gespräch einzubringen.',
-    strengths: ['Aktive Teilnahme', 'Gute Gesprächsführung'],
-    improvements: score < 8 ? ['Stelle mehr Fragen', 'Gehe mehr ins Detail'] : []
-  };
+  if (!API_KEY) {
+    // Fallback evaluation
+    const userMessages = conversationHistory.filter(m => m.role === 'user');
+    const messageCount = userMessages.length;
+    const avgLength = userMessages.reduce((sum, m) => sum + m.content.length, 0) / messageCount;
+    
+    return {
+      correctness: Math.min(10, Math.max(5, Math.round(avgLength / 10))),
+      appropriateness: Math.min(10, Math.max(5, messageCount)),
+      languageLevel: level,
+      feedback: 'Gute Leistung! Du hast aktiv am Gespräch teilgenommen.',
+      tips: ['Versuche vollständige Sätze zu bilden', 'Stelle offene Fragen']
+    };
+  }
+  
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: `You are an English language teacher evaluating a student's performance in a conversation scenario: "${scenario.description}".
+
+Evaluate the student's performance based on:
+1. CORRECTNESS (1-10): Grammar, vocabulary, and sentence structure
+2. APPROPRIATENESS (1-10): How well they stayed in the scenario context and responded relevantly to the conversation partner
+3. LANGUAGE LEVEL: Estimate their actual level (A1, A2, B1, B2, C1, C2)
+
+Provide constructive feedback in German and practical tips for improvement.
+
+Respond in JSON format:
+{
+  "correctness": 1-10,
+  "appropriateness": 1-10,
+  "languageLevel": "A1|A2|B1|B2|C1|C2",
+  "feedback": "Detailed feedback in German about their performance",
+  "tips": ["Tip 1 in German", "Tip 2 in German"]
+}`
+        }, {
+          role: 'user',
+          content: `Evaluate this conversation at target level ${level}:\n\n${conversationHistory.map(m => `${m.role === 'user' ? 'STUDENT' : 'PARTNER'}: ${m.content}`).join('\n\n')}`
+        }],
+        temperature: 0.3,
+        max_tokens: 400
+      })
+    });
+    
+    if (!response.ok) throw new Error('API error');
+    
+    const data = await response.json();
+    const evaluation = JSON.parse(data.choices[0].message.content);
+    
+    return evaluation;
+  } catch (error) {
+    console.error('Dialog evaluation failed, using fallback:', error);
+    // Fallback
+    const userMessages = conversationHistory.filter(m => m.role === 'user');
+    const messageCount = userMessages.length;
+    const avgLength = userMessages.reduce((sum, m) => sum + m.content.length, 0) / messageCount;
+    
+    return {
+      correctness: Math.min(10, Math.max(5, Math.round(avgLength / 10))),
+      appropriateness: Math.min(10, Math.max(5, messageCount)),
+      languageLevel: level,
+      feedback: 'Gute Leistung! Du hast aktiv am Gespräch teilgenommen.',
+      tips: ['Versuche vollständige Sätze zu bilden', 'Stelle offene Fragen']
+    };
+  }
 }
 
 /**
