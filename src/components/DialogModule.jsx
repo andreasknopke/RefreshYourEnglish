@@ -199,12 +199,12 @@ function DialogModule({ user }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-2 sm:p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-6">
-          <h2 className="text-4xl font-bold gradient-text mb-2">💬 Dialog Trainer</h2>
-          <p className="text-gray-600">Übe Englisch in realistischen Gesprächssituationen</p>
+        <div className="text-center mb-3 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-1 sm:mb-2">💬 Dialog Trainer</h2>
+          <p className="text-sm sm:text-base text-gray-600">Übe Englisch in realistischen Gesprächssituationen</p>
         </div>
 
         {!scenario ? (
@@ -309,14 +309,14 @@ function DialogModule({ user }) {
             </div>
 
             {/* Messages */}
-            <div className="space-y-4 mb-4 max-h-96 overflow-y-auto">
+            <div className="space-y-2 mb-2 sm:mb-3 max-h-56 sm:max-h-64 md:max-h-96 overflow-y-auto">
               {messages.map((msg, index) => (
                 <div
                   key={index}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl p-4 ${
+                    className={`max-w-[85%] sm:max-w-[80%] rounded-2xl p-2 sm:p-3 ${
                       msg.role === 'user'
                         ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
                         : msg.isError
@@ -324,13 +324,13 @@ function DialogModule({ user }) {
                         : 'bg-white text-gray-800 border-2 border-gray-200'
                     }`}
                   >
-                    <div className="flex items-start gap-2">
-                      <p className="whitespace-pre-wrap flex-1">{msg.content}</p>
+                    <div className="flex items-start gap-1 sm:gap-2">
+                      <p className="whitespace-pre-wrap flex-1 text-sm">{msg.content}</p>
                       {msg.role === 'assistant' && !msg.isError && (
                         <TTSButton text={msg.content} language="en" className="scale-75" />
                       )}
                     </div>
-                    <p className={`text-xs mt-2 ${msg.role === 'user' ? 'text-indigo-200' : 'text-gray-400'}`}>
+                    <p className={`text-[9px] sm:text-[10px] mt-1 ${msg.role === 'user' ? 'text-indigo-200' : 'text-gray-400'}`}>
                       {msg.timestamp.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -338,7 +338,7 @@ function DialogModule({ user }) {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white text-gray-800 border-2 border-gray-200 rounded-2xl p-4">
+                  <div className="bg-white text-gray-800 border-2 border-gray-200 rounded-2xl p-3 sm:p-4">
                     <div className="flex gap-2">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
@@ -352,11 +352,11 @@ function DialogModule({ user }) {
 
             {/* Hint Section */}
             {showHint && (
-              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-4 mb-4">
+              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-2 sm:p-4 mb-2 sm:mb-4">
                 <div className="flex items-start gap-2">
-                  <span className="text-2xl">💡</span>
+                  <span className="text-xl sm:text-2xl">💡</span>
                   <div className="flex-1">
-                    <p className="font-bold text-gray-800 mb-1">Tipp:</p>
+                    <p className="font-bold text-gray-800 mb-1 text-sm sm:text-base">Tipp:</p>
                     {isLoadingHint ? (
                       <div className="flex items-center gap-2">
                         <div className="animate-spin w-4 h-4 border-2 border-yellow-600 border-t-transparent rounded-full"></div>
@@ -372,37 +372,37 @@ function DialogModule({ user }) {
 
             {/* Evaluation Section */}
             {evaluation && (
-              <div className="glass-card rounded-2xl p-6 mb-4 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <div className="glass-card rounded-2xl p-3 sm:p-4 md:p-6 mb-2 sm:mb-3 md:mb-4 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 md:mb-4 flex items-center gap-2">
                   📊 Bewertung deiner Performance
                 </h3>
                 
-                <div className="grid md:grid-cols-3 gap-4 mb-4">
-                  <div className="bg-white rounded-xl p-4 border-2 border-blue-200">
-                    <p className="text-xs font-bold text-gray-500 mb-1">KORREKTHEIT</p>
-                    <p className="text-3xl font-bold text-blue-600">{evaluation.correctness}/10</p>
+                <div className="grid grid-cols-3 gap-2 mb-2 sm:mb-3 md:mb-4">
+                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-blue-200">
+                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">KORREKTHEIT</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">{evaluation.correctness}/10</p>
                   </div>
-                  <div className="bg-white rounded-xl p-4 border-2 border-purple-200">
-                    <p className="text-xs font-bold text-gray-500 mb-1">ANGEMESSENHEIT</p>
-                    <p className="text-3xl font-bold text-purple-600">{evaluation.appropriateness}/10</p>
+                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-purple-200">
+                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">ANGEMESSENHEIT</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-600">{evaluation.appropriateness}/10</p>
                   </div>
-                  <div className="bg-white rounded-xl p-4 border-2 border-indigo-200">
-                    <p className="text-xs font-bold text-gray-500 mb-1">SPRACHNIVEAU</p>
-                    <p className="text-3xl font-bold text-indigo-600">{evaluation.languageLevel}</p>
+                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-indigo-200">
+                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">NIVEAU</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-600">{evaluation.languageLevel}</p>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-xl p-4 mb-4">
-                  <p className="font-bold text-gray-800 mb-2">💬 Feedback:</p>
-                  <p className="text-gray-700">{evaluation.feedback}</p>
+                <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 mb-2 sm:mb-3 md:mb-4">
+                  <p className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">💬 Feedback:</p>
+                  <p className="text-gray-700 text-sm">{evaluation.feedback}</p>
                 </div>
                 
                 {evaluation.tips && evaluation.tips.length > 0 && (
-                  <div className="bg-yellow-50 rounded-xl p-4 border-2 border-yellow-200">
-                    <p className="font-bold text-gray-800 mb-2">💡 Tipps für das nächste Mal:</p>
-                    <ul className="list-disc list-inside space-y-1">
+                  <div className="bg-yellow-50 rounded-xl p-2 sm:p-3 md:p-4 border-2 border-yellow-200">
+                    <p className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">💡 Tipps für das nächste Mal:</p>
+                    <ul className="list-disc list-inside space-y-0.5 sm:space-y-1">
                       {evaluation.tips.map((tip, index) => (
-                        <li key={index} className="text-gray-700">{tip}</li>
+                        <li key={index} className="text-gray-700 text-xs sm:text-sm">{tip}</li>
                       ))}
                     </ul>
                   </div>
@@ -410,12 +410,12 @@ function DialogModule({ user }) {
                 
                 {/* Zeitgutschrift Anzeige */}
                 {user && (evaluation.correctness >= 7 || evaluation.appropriateness >= 7) && (
-                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border-2 border-indigo-300 mt-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl">🎉</span>
+                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-2 sm:p-3 md:p-4 border-2 border-indigo-300 mt-2 sm:mt-3 md:mt-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <span className="text-2xl sm:text-3xl">🎉</span>
                       <div>
-                        <p className="font-bold text-indigo-800">Belohnung erhalten!</p>
-                        <p className="text-sm text-indigo-700">
+                        <p className="font-bold text-indigo-800 text-sm sm:text-base">Belohnung erhalten!</p>
+                        <p className="text-xs sm:text-sm text-indigo-700">
                           +5 Minuten Zeitgutschrift für deine gute Performance!
                         </p>
                       </div>
@@ -426,14 +426,14 @@ function DialogModule({ user }) {
             )}
             
             {isEvaluating && (
-              <div className="glass-card rounded-2xl p-6 mb-4 text-center">
-                <div className="animate-spin w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto mb-3"></div>
-                <p className="text-gray-700 font-bold">Bewerte deine Antworten...</p>
+              <div className="glass-card rounded-2xl p-3 sm:p-4 md:p-6 mb-2 sm:mb-3 md:mb-4 text-center">
+                <div className="animate-spin w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto mb-2 sm:mb-3"></div>
+                <p className="text-gray-700 font-bold text-sm sm:text-base">Bewerte deine Antworten...</p>
               </div>
             )}
 
             {/* Input Area */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <textarea
                 ref={inputRef}
                 value={userInput}
@@ -441,15 +441,15 @@ function DialogModule({ user }) {
                 onKeyPress={handleKeyPress}
                 placeholder="Antworte auf Englisch..."
                 disabled={isLoading || evaluation !== null}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none resize-none"
-                rows={3}
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none resize-none text-sm"
+                rows={2}
               />
               
               <div className="flex gap-2">
                 <button
                   onClick={handleSendMessage}
                   disabled={!userInput.trim() || isLoading || evaluation !== null}
-                  className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                 >
                   📤 Senden {userMessageCount < 5 && `(${userMessageCount}/5)`}
                 </button>
@@ -457,7 +457,7 @@ function DialogModule({ user }) {
                 <button
                   onClick={handleGetHint}
                   disabled={isLoading || isLoadingHint || messages.length === 0 || evaluation !== null}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   title="Tipp bekommen"
                 >
                   💡 Tipp
@@ -466,7 +466,7 @@ function DialogModule({ user }) {
                 <button
                   onClick={startNewDialog}
                   disabled={isLoading}
-                  className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 sm:py-2.5 md:py-3 px-3 sm:px-4 md:px-6 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   title="Neues Gespräch"
                 >
                   🔄

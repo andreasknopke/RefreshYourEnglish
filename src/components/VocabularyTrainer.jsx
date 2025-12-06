@@ -133,38 +133,38 @@ function VocabularyTrainer({ user }) {
   const currentCard = flashcards[currentIndex];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto px-2 sm:px-4">
       {/* Header mit Statistiken */}
-      <div className="mb-8 grid grid-cols-4 gap-4">
-        <div className="glass-card p-4 text-center">
-          <div className="text-3xl font-bold text-indigo-600">{stats?.total || 0}</div>
-          <div className="text-sm text-gray-600">Gesamt</div>
+      <div className="mb-4 grid grid-cols-4 gap-2">
+        <div className="glass-card p-2 text-center">
+          <div className="text-xl sm:text-3xl font-bold text-indigo-600">{stats?.total || 0}</div>
+          <div className="text-[10px] sm:text-sm text-gray-600">Gesamt</div>
         </div>
-        <div className="glass-card p-4 text-center">
-          <div className="text-3xl font-bold text-orange-500">{stats?.due || 0}</div>
-          <div className="text-sm text-gray-600">Fällig</div>
+        <div className="glass-card p-2 text-center">
+          <div className="text-xl sm:text-3xl font-bold text-orange-500">{stats?.due || 0}</div>
+          <div className="text-[10px] sm:text-sm text-gray-600">Fällig</div>
         </div>
-        <div className="glass-card p-4 text-center">
-          <div className="text-3xl font-bold text-blue-500">{stats?.learning || 0}</div>
-          <div className="text-sm text-gray-600">Lernend</div>
+        <div className="glass-card p-2 text-center">
+          <div className="text-xl sm:text-3xl font-bold text-blue-500">{stats?.learning || 0}</div>
+          <div className="text-[10px] sm:text-sm text-gray-600">Lernend</div>
         </div>
-        <div className="glass-card p-4 text-center">
-          <div className="text-3xl font-bold text-green-500">{stats?.mastered || 0}</div>
-          <div className="text-sm text-gray-600">Gemeistert</div>
+        <div className="glass-card p-2 text-center">
+          <div className="text-xl sm:text-3xl font-bold text-green-500">{stats?.mastered || 0}</div>
+          <div className="text-[10px] sm:text-sm text-gray-600">Gemeistert</div>
         </div>
       </div>
 
       {/* Auto-Play Toggle */}
-      <div className="mb-6 flex items-center justify-center gap-2">
+      <div className="mb-3 flex items-center justify-center gap-2">
         <button
           onClick={() => setAutoPlayTTS(!autoPlayTTS)}
-          className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
             autoPlayTTS 
               ? 'bg-green-500 text-white shadow-lg' 
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          {autoPlayTTS ? '🔊 Auto-Play: AN' : '🔇 Auto-Play: AUS'}
+          {autoPlayTTS ? '🔊 Auto' : '🔇 Auto'}
         </button>
       </div>
 
@@ -211,7 +211,7 @@ function VocabularyTrainer({ user }) {
 
           {/* Flashcard */}
           <div 
-            className={`relative h-72 md:h-80 cursor-pointer perspective-1000 ${showSuccess ? 'animate-pulse' : ''}`}
+            className={`relative h-56 sm:h-72 md:h-80 cursor-pointer perspective-1000 ${showSuccess ? 'animate-pulse' : ''}`}
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <div 
@@ -221,15 +221,15 @@ function VocabularyTrainer({ user }) {
             >
               {/* Vorderseite (Deutsch) */}
               <div className="absolute w-full h-full backface-hidden">
-                <div className="glass-card h-full flex flex-col items-center justify-center p-4">
-                  <div className="text-xs text-gray-500 mb-2">🇩🇪 Deutsch</div>
-                  <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center">
+                <div className="glass-card h-full flex flex-col items-center justify-center p-3 sm:p-4">
+                  <div className="text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">🇩🇪 Deutsch</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center">
                     {currentCard.german}
                   </div>
-                  <div className="text-xs text-gray-400 mt-4">
+                  <div className="text-[10px] sm:text-xs text-gray-400 mt-2 sm:mt-4">
                     Klicke zum Umdrehen
                   </div>
-                  <div className="mt-3 px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold">
+                  <div className="mt-2 sm:mt-3 px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-full text-[10px] sm:text-xs font-semibold">
                     {currentCard.level}
                   </div>
                 </div>
@@ -237,15 +237,15 @@ function VocabularyTrainer({ user }) {
 
               {/* Rückseite (Englisch) */}
               <div className="absolute w-full h-full backface-hidden rotate-y-180">
-                <div className="glass-card h-full flex flex-col items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-                  <div className="text-xs text-gray-500 mb-2">🇬🇧 Englisch</div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="text-3xl md:text-4xl font-bold text-indigo-700 text-center">
+                <div className="glass-card h-full flex flex-col items-center justify-center p-3 sm:p-4 bg-gradient-to-br from-indigo-50 to-purple-50">
+                  <div className="text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">🇬🇧 Englisch</div>
+                  <div className="flex items-center gap-2 mb-2 sm:mb-4">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-700 text-center">
                       {currentCard.english}
                     </div>
                     <TTSButton text={currentCard.english} language="en" />
                   </div>
-                  <div className="text-xs text-gray-400">
+                  <div className="text-[10px] sm:text-xs text-gray-400">
                     Wie gut kanntest du diese Vokabel?
                   </div>
                 </div>
@@ -255,7 +255,7 @@ function VocabularyTrainer({ user }) {
 
           {/* Bewertungs-Buttons (nur wenn umgedreht) */}
           {isFlipped && (
-            <div className="mt-3 grid grid-cols-4 gap-2">
+            <div className="mt-2 sm:mt-3 grid grid-cols-4 gap-1.5 sm:gap-2">
               <button
                 onClick={() => handleReview(0)}
                 disabled={reviewing}

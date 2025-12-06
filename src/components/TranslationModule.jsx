@@ -191,15 +191,15 @@ function TranslationModule({ user }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="glass-card rounded-2xl shadow-xl p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
+    <div className="max-w-4xl mx-auto animate-fade-in px-2 sm:px-4">
+      <div className="glass-card rounded-2xl shadow-xl p-2 sm:p-3 md:p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
         {/* Header with Score */}
-        <div className="mb-3">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl md:text-2xl font-bold gradient-text">Übersetzung</h2>
-            <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg px-3 py-1.5 shadow-lg">
-              <p className="text-[10px] opacity-90">Punkte</p>
-              <p className="text-lg font-bold">
+        <div className="mb-2 sm:mb-3">
+          <div className="flex justify-between items-center mb-1 sm:mb-2">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text">Übersetzung</h2>
+            <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shadow-lg">
+              <p className="text-[9px] sm:text-[10px] opacity-90">Punkte</p>
+              <p className="text-sm sm:text-lg font-bold">
                 {score} / {totalAttempts}
               </p>
             </div>
@@ -245,16 +245,16 @@ function TranslationModule({ user }) {
         </div>
 
         {/* German Sentence Card */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 md:p-4 mb-3 shadow-lg border border-blue-100">
-          <p className="text-[10px] text-indigo-600 font-semibold mb-1 uppercase tracking-wide">Zu übersetzen:</p>
-          <p className="text-base md:text-lg font-bold text-gray-800 leading-relaxed">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-2 sm:p-3 md:p-4 mb-2 sm:mb-3 shadow-lg border border-blue-100">
+          <p className="text-[9px] sm:text-[10px] text-indigo-600 font-semibold mb-1 uppercase tracking-wide">Zu übersetzen:</p>
+          <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800 leading-relaxed">
             {currentSentence.de}
           </p>
         </div>
 
         {/* Translation Form */}
-        <form onSubmit={handleSubmit} className="mb-3">
-          <label className="block text-[10px] font-bold text-gray-700 mb-1 uppercase tracking-wide">
+        <form onSubmit={handleSubmit} className="mb-2 sm:mb-3">
+          <label className="block text-[9px] sm:text-[10px] font-bold text-gray-700 mb-1 uppercase tracking-wide">
             Deine Übersetzung:
           </label>
           <textarea

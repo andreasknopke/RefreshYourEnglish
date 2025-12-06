@@ -529,7 +529,7 @@ function ActionModule({ user }) {
             </div>
 
             {/* Flashcard */}
-            <div className="relative h-96">
+            <div className="relative h-64 sm:h-80 md:h-96">
               <div 
                 className={`absolute w-full h-full transition-all duration-500 transform-style-3d ${
                   isFlipped ? 'rotate-y-180' : ''
@@ -537,12 +537,12 @@ function ActionModule({ user }) {
               >
                 {/* Vorderseite (Deutsch) */}
                 <div className="absolute w-full h-full backface-hidden">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
-                    <div className="text-sm text-green-700 font-bold mb-4">🇩🇪 Deutsche Vokabel</div>
-                    <div className="text-5xl font-bold text-gray-800 mb-4 text-center">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
+                    <div className="text-xs sm:text-sm text-green-700 font-bold mb-2 sm:mb-4">🇩🇪 Deutsche Vokabel</div>
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2 sm:mb-4 text-center">
                       {currentWord?.de}
                     </div>
-                    <div className="mt-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
+                    <div className="mt-2 sm:mt-4 px-2 sm:px-3 py-0.5 sm:py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm font-semibold">
                       {currentWord?.level}
                     </div>
                   </div>
@@ -550,28 +550,28 @@ function ActionModule({ user }) {
 
                 {/* Rückseite (Englisch) */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
                     {isFlipped ? (
                       <>
-                        <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
-                        <div className="flex items-center gap-3 mb-8">
-                          <div className="text-5xl font-bold text-indigo-700 text-center animate-slide-in">
+                        <div className="text-xs sm:text-sm text-indigo-700 font-bold mb-2 sm:mb-4">🇬🇧 Englisch</div>
+                        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-8">
+                          <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-700 text-center animate-slide-in">
                             {currentWord?.en}
                           </div>
                           <TTSButton text={currentWord?.en} language="en" />
                         </div>
                         
                         {/* Bewertungs-Buttons */}
-                        <div className="flex gap-4 justify-center w-full max-w-lg animate-slide-in">
+                        <div className="flex gap-2 sm:gap-4 justify-center w-full max-w-lg animate-slide-in">
                           <button
                             onClick={handleKnow}
-                            className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                            className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 rounded-xl text-base sm:text-lg md:text-xl transition-all shadow-lg hover:scale-105"
                           >
                             ✓ Know
                           </button>
                           <button
                             onClick={handleForgot}
-                            className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-xl text-xl transition-all shadow-lg hover:scale-105"
+                            className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 rounded-xl text-base sm:text-lg md:text-xl transition-all shadow-lg hover:scale-105"
                           >
                             ✗ Forgot
                           </button>
@@ -587,12 +587,12 @@ function ActionModule({ user }) {
 
             {/* Buzzer Button */}
             {isActive && !isFlipped && (
-              <div className="text-center mt-4">
+              <div className="text-center mt-2 sm:mt-4">
                 {/* Auto-Play Toggle */}
-                <div className="mb-3">
+                <div className="mb-2 sm:mb-3">
                   <button
                     onClick={() => setAutoPlayTTS(!autoPlayTTS)}
-                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                       autoPlayTTS 
                         ? 'bg-green-500 text-white shadow-lg' 
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -604,7 +604,7 @@ function ActionModule({ user }) {
                 
                 <button
                   onClick={handleBuzzer}
-                  className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-6 px-12 rounded-full text-3xl transition-all shadow-lg hover:scale-110 animate-pulse"
+                  className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 sm:py-4 md:py-6 px-6 sm:px-8 md:px-12 rounded-full text-xl sm:text-2xl md:text-3xl transition-all shadow-lg hover:scale-110 animate-pulse"
                 >
                   ⚡ BUZZER
                 </button>

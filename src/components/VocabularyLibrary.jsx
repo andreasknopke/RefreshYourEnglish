@@ -249,14 +249,14 @@ function VocabularyLibrary({ user }) {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Header */}
-      <div className="glass-card rounded-2xl p-6 mb-6">
-        <h2 className="text-3xl font-bold gradient-text mb-4">📚 Vokabelbibliothek</h2>
-        <p className="text-gray-600 mb-6">
+      <div className="glass-card rounded-2xl p-3 sm:p-4 md:p-6 mb-3 sm:mb-4 md:mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-2 sm:mb-3 md:mb-4">📚 Vokabelbibliothek</h2>
+        <p className="text-gray-600 mb-3 sm:mb-4 md:mb-6 text-sm sm:text-base">
           Durchsuche alle Vokabeln, bearbeite sie oder füge sie deinem Vokabeltrainer hinzu.
         </p>
 
         {/* Search and Filter Controls */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
           {/* Search Input */}
           <div className="md:col-span-2">
             <div className="relative">
@@ -265,10 +265,10 @@ function VocabularyLibrary({ user }) {
                 placeholder="Suche nach Deutsch oder Englisch..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-12 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 pl-10 sm:pl-12 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:outline-none transition-colors text-sm sm:text-base"
               />
               <svg
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -332,32 +332,32 @@ function VocabularyLibrary({ user }) {
       </div>
 
       {/* Vocabulary List */}
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {filteredVocabulary.length === 0 ? (
-          <div className="glass-card rounded-2xl p-12 text-center">
-            <div className="text-6xl mb-4">🔍</div>
-            <p className="text-xl text-gray-600">Keine Vokabeln gefunden</p>
-            <p className="text-sm text-gray-500 mt-2">
+          <div className="glass-card rounded-2xl p-6 sm:p-8 md:p-12 text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl mb-2 sm:mb-3 md:mb-4">🔍</div>
+            <p className="text-lg sm:text-xl text-gray-600">Keine Vokabeln gefunden</p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1 sm:mt-2">
               Versuche eine andere Suche oder wähle ein anderes Level
             </p>
           </div>
         ) : (
-          <div className="grid gap-3">
+          <div className="grid gap-2 sm:gap-3">
             {filteredVocabulary.map((vocab) => (
               <div
                 key={vocab.id}
-                className="glass-card rounded-xl p-4 hover:shadow-lg transition-shadow"
+                className="glass-card rounded-xl p-2 sm:p-3 md:p-4 hover:shadow-lg transition-shadow"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4">
                   {/* Vocabulary Info */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs font-bold">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1">
+                      <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-indigo-100 text-indigo-700 rounded text-[10px] sm:text-xs font-bold">
                         {vocab.level}
                       </span>
-                      <span className="text-xs text-gray-500">#{vocab.id}</span>
+                      <span className="text-[10px] sm:text-xs text-gray-500">#{vocab.id}</span>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-2">
+                    <div className="grid md:grid-cols-2 gap-1 sm:gap-2">
                       <div>
                         <div className="text-xs text-gray-500 font-semibold">🇩🇪 Deutsch</div>
                         <div className="font-bold text-gray-800">{vocab.german}</div>
