@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
 import apiService from '../services/apiService';
+import TTSButton from './TTSButton';
 
 function TranslationModule({ user }) {
   const [currentSentence, setCurrentSentence] = useState(null);
@@ -246,9 +247,12 @@ function TranslationModule({ user }) {
         {/* German Sentence Card */}
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-3 md:p-4 mb-3 shadow-lg border border-blue-100">
           <p className="text-[10px] text-indigo-600 font-semibold mb-1 uppercase tracking-wide">Zu übersetzen:</p>
-          <p className="text-base md:text-lg font-bold text-gray-800 leading-relaxed">
-            {currentSentence.de}
-          </p>
+          <div className="flex items-start gap-2">
+            <p className="text-base md:text-lg font-bold text-gray-800 leading-relaxed flex-1">
+              {currentSentence.de}
+            </p>
+            <TTSButton text={currentSentence.de} language="de" />
+          </div>
         </div>
 
         {/* Translation Form */}

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
+import TTSButton from './TTSButton';
 
 function ActionModule({ user }) {
   const [timeLimit, setTimeLimit] = useState(10);
@@ -527,8 +528,11 @@ function ActionModule({ user }) {
                 <div className="absolute w-full h-full backface-hidden">
                   <div className="glass-card h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
                     <div className="text-sm text-green-700 font-bold mb-4">🇩🇪 Deutsche Vokabel</div>
-                    <div className="text-5xl font-bold text-gray-800 mb-4 text-center">
-                      {currentWord?.de}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="text-5xl font-bold text-gray-800 text-center">
+                        {currentWord?.de}
+                      </div>
+                      <TTSButton text={currentWord?.de} language="de" />
                     </div>
                     <div className="mt-4 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">
                       {currentWord?.level}
@@ -542,8 +546,11 @@ function ActionModule({ user }) {
                     {isFlipped ? (
                       <>
                         <div className="text-sm text-indigo-700 font-bold mb-4">🇬🇧 Englisch</div>
-                        <div className="text-5xl font-bold text-indigo-700 mb-8 text-center animate-slide-in">
-                          {currentWord?.en}
+                        <div className="flex items-center gap-3 mb-8">
+                          <div className="text-5xl font-bold text-indigo-700 text-center animate-slide-in">
+                            {currentWord?.en}
+                          </div>
+                          <TTSButton text={currentWord?.en} language="en" />
                         </div>
                         
                         {/* Bewertungs-Buttons */}

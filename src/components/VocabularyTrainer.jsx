@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getDueFlashcards, reviewFlashcard, removeFromFlashcardDeck, getFlashcardStats } from '../services/apiService';
 import apiService from '../services/apiService';
+import TTSButton from './TTSButton';
 
 function VocabularyTrainer({ user }) {
   const [stats, setStats] = useState(null);
@@ -196,8 +197,11 @@ function VocabularyTrainer({ user }) {
               <div className="absolute w-full h-full backface-hidden">
                 <div className="glass-card h-full flex flex-col items-center justify-center p-4">
                   <div className="text-xs text-gray-500 mb-2">🇩🇪 Deutsch</div>
-                  <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center">
-                    {currentCard.german}
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="text-3xl md:text-4xl font-bold text-gray-800 text-center">
+                      {currentCard.german}
+                    </div>
+                    <TTSButton text={currentCard.german} language="de" />
                   </div>
                   <div className="text-xs text-gray-400 mt-4">
                     Klicke zum Umdrehen
@@ -212,8 +216,11 @@ function VocabularyTrainer({ user }) {
               <div className="absolute w-full h-full backface-hidden rotate-y-180">
                 <div className="glass-card h-full flex flex-col items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50">
                   <div className="text-xs text-gray-500 mb-2">🇬🇧 Englisch</div>
-                  <div className="text-3xl md:text-4xl font-bold text-indigo-700 mb-4 text-center">
-                    {currentCard.english}
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="text-3xl md:text-4xl font-bold text-indigo-700 text-center">
+                      {currentCard.english}
+                    </div>
+                    <TTSButton text={currentCard.english} language="en" />
                   </div>
                   <div className="text-xs text-gray-400">
                     Wie gut kanntest du diese Vokabel?

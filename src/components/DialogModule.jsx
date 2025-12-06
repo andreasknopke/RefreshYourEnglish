@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
 import apiService from '../services/apiService';
+import TTSButton from './TTSButton';
 
 function DialogModule({ user }) {
   const [scenario, setScenario] = useState(null);
@@ -297,7 +298,12 @@ function DialogModule({ user }) {
                         : 'bg-white text-gray-800 border-2 border-gray-200'
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    <div className="flex items-start gap-2">
+                      <p className="whitespace-pre-wrap flex-1">{msg.content}</p>
+                      {msg.role === 'assistant' && !msg.isError && (
+                        <TTSButton text={msg.content} language="en" className="scale-75" />
+                      )}
+                    </div>
                     <p className={`text-xs mt-2 ${msg.role === 'user' ? 'text-indigo-200' : 'text-gray-400'}`}>
                       {msg.timestamp.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                     </p>
