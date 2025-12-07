@@ -337,6 +337,23 @@ function TranslationModule({ user }) {
               </div>
             )}
 
+            {feedback.spellingNotes && feedback.spellingNotes.length > 0 && (
+              <div className="mb-3 bg-blue-50/70 rounded-lg p-3 border border-blue-200">
+                <p className="text-xs font-bold text-blue-700 mb-2 uppercase tracking-wide flex items-center">
+                  <span className="mr-2">✏️</span>
+                  Rechtschreibhinweise (kein Punktabzug):
+                </p>
+                <ul className="space-y-1">
+                  {feedback.spellingNotes.map((note, index) => (
+                    <li key={index} className="flex items-start text-gray-700 text-sm">
+                      <span className="text-blue-500 mr-2 mt-0.5">▸</span>
+                      <span>{note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {feedback.correctTranslation && (
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-3 mb-3">
                 <p className="text-xs font-bold text-green-700 mb-1 uppercase tracking-wide flex items-center">

@@ -37,13 +37,28 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: 'Du bist ein hilfreicher Englischlehrer. Bewerte die Übersetzung auf einer Skala von 1-10 und gib konstruktives Feedback. Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": string[]}'
+          content: `Du bist ein freundlicher und ermutigender Englischlehrer. 
+
+WICHTIGE BEWERTUNGSRICHTLINIEN:
+1. Rechtschreibfehler und Tippfehler: Erwähne sie im Feedback, aber ziehe KEINE Punkte ab
+2. Wenn die Übersetzung den SINN des Satzes korrekt wiedergibt: Mindestens 8/10 Punkte
+3. Grammatikfehler: Nur bei gravierenden Fehlern Punktabzug (max. -2 Punkte)
+4. Wortwahl: Akzeptiere verschiedene gültige Formulierungen
+
+BEWERTUNGSSKALA:
+- 10/10: Perfekte Übersetzung (Sinn, Grammatik, Wortwahl)
+- 9/10: Sehr gut (minimale stilistische Unterschiede)
+- 8/10: Gut (Sinn korrekt, kleine grammatische Ungenauigkeiten ODER unnatürliche Wortwahl)
+- 7/10: Akzeptabel (Sinn größtenteils korrekt, einige Fehler)
+- 6/10 oder weniger: Nur wenn der Sinn verfehlt oder Grammatik gravierend falsch ist
+
+Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": string[], "spellingNotes": string[]}`
         }, {
           role: 'user',
-          content: `Deutscher Satz: "${germanSentence}"\nÜbersetzung des Schülers: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBitte bewerte die Übersetzung.`
+          content: `Deutscher Satz: "${germanSentence}"\nÜbersetzung des Schülers: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBitte bewerte die Übersetzung nach den Richtlinien.`
         }],
         temperature: 0.7,
-        max_tokens: 300
+        max_tokens: 400
       })
     });
     
@@ -57,9 +72,10 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
     try {
       const parsed = JSON.parse(content);
       return {
-        score: parsed.score || 5,
+        score: parsed.score || 8,
         feedback: parsed.feedback || 'Gute Übersetzung!',
         improvements: parsed.improvements || [],
+        spellingNotes: parsed.spellingNotes || [],
         correctTranslation
       };
     } catch {
@@ -78,32 +94,57 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
 function simulateEvaluation(germanSentence, userTranslation, correctTranslation) {
   return new Promise((resolve) => {
     setTimeout(() => {
+      // Berechne Ähnlichkeit basierend auf verschiedenen Faktoren
       const similarity = calculateSimilarity(userTranslation.toLowerCase(), correctTranslation.toLowerCase());
-      const score = Math.round(similarity * 10);
+      
+      // Großzügigere Bewertung: Wenn Ähnlichkeit > 0.6, gib mindestens 8 Punkte
+      let score;
+      if (similarity >= 0.9) {
+        score = 10;
+      } else if (similarity >= 0.75) {
+        score = 9;
+      } else if (similarity >= 0.6) {
+        score = 8;
+      } else if (similarity >= 0.5) {
+        score = 7;
+      } else if (similarity >= 0.35) {
+        score = 6;
+      } else {
+        score = Math.max(5, Math.round(similarity * 10));
+      }
       
       let feedback = '';
       let improvements = [];
+      let spellingNotes = [];
       
       if (score >= 9) {
         feedback = 'Ausgezeichnet! Deine Übersetzung ist nahezu perfekt. 🎉';
-      } else if (score >= 7) {
-        feedback = 'Sehr gut! Deine Übersetzung ist korrekt, könnte aber noch natürlicher klingen.';
+      } else if (score >= 8) {
+        feedback = 'Sehr gut! Du hast den Sinn korrekt wiedergegeben. 👍';
         improvements.push('Versuche, idiomatischere Ausdrücke zu verwenden');
-      } else if (score >= 5) {
-        feedback = 'Gut! Die grundlegende Bedeutung ist richtig, aber es gibt Raum für Verbesserungen.';
+      } else if (score >= 7) {
+        feedback = 'Gut! Die grundlegende Bedeutung stimmt.';
         improvements.push('Achte auf die Wortstellung');
-        improvements.push('Überprüfe die verwendeten Zeitformen');
+      } else if (score >= 5) {
+        feedback = 'Solide Grundlage, aber der Sinn könnte präziser sein.';
+        improvements.push('Überprüfe die Kernaussage des Satzes');
+        improvements.push('Achte auf die verwendeten Zeitformen');
       } else {
-        feedback = 'Nicht schlecht für einen Versuch! Lass uns gemeinsam daran arbeiten.';
-        improvements.push('Achte auf die Grundstruktur des Satzes');
-        improvements.push('Überprüfe die Vokabeln');
-        improvements.push('Beachte die Grammatik');
+        feedback = 'Guter Versuch! Lass uns gemeinsam daran arbeiten.';
+        improvements.push('Versuche, den Satz Schritt für Schritt zu übersetzen');
+        improvements.push('Achte auf die Grundstruktur');
+      }
+      
+      // Hinweis: In der Simulation können wir keine echten Rechtschreibfehler erkennen
+      if (similarity >= 0.6 && similarity < 0.9) {
+        spellingNotes.push('Überprüfe die Rechtschreibung einiger Wörter');
       }
       
       resolve({
         score,
         feedback,
         improvements,
+        spellingNotes,
         correctTranslation
       });
     }, 800); // Simuliere API-Latenz
