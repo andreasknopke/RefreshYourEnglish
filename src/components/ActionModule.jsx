@@ -33,6 +33,7 @@ function ActionModule({ user }) {
     const saved = localStorage.getItem('actionModule_autoPlayTTS');
     return saved === 'true';
   });
+  const [dueReviewWords, setDueReviewWords] = useState([]);
   const inputRef = useRef(null);
 
   // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
@@ -83,6 +84,8 @@ function ActionModule({ user }) {
       try {
         setIsLoadingVocabulary(true);
         setLoadError(null);
+        
+        // Lade reguläre Vokabeln
         const data = await apiService.getVocabulary();
         console.log('Loaded vocabulary from API:', data);
         
@@ -102,6 +105,19 @@ function ActionModule({ user }) {
           en: v.english,
           level: v.level
         }));
+        
+        // Lade fällige Review-Wörter (für Spaced Repetition)
+        if (user) {
+          try {
+            const reviewData = await apiService.getDueActionReviews();
+            console.log('Loaded due review words:', reviewData);
+            const reviewWords = reviewData.dueWords || [];
+            setDueReviewWords(reviewWords);
+          } catch (error) {
+            console.error('Failed to load review words:', error);
+          }
+        }
+        
         setVocabulary(formattedVocab);
       } catch (error) {
         console.error('Failed to load vocabulary:', error);
@@ -160,7 +176,25 @@ function ActionModule({ user }) {
       console.error('No vocabulary available');
       return;
     }
-    const randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+    
+    // Priorisiere fällige Review-Wörter (20% Chance)
+    let randomWord;
+    if (dueReviewWords.length > 0 && Math.random() < 0.2) {
+      // Wähle ein fälliges Review-Wort
+      const randomReview = dueReviewWords[Math.floor(Math.random() * dueReviewWords.length)];
+      randomWord = {
+        id: randomReview.vocabulary_id,
+        de: randomReview.german,
+        en: randomReview.english,
+        level: randomReview.level,
+        isReview: true // Markiere als Review-Wort
+      };
+      console.log('📚 Using review word:', randomWord.de);
+    } else {
+      // Wähle eine zufällige Vokabel
+      randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+    }
+    
     setCurrentWord(randomWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
@@ -188,6 +222,12 @@ function ActionModule({ user }) {
     if (currentWord.id) {
       try {
         await apiService.updateProgress(currentWord.id, false);
+        
+        // Füge zum Spaced Repetition System hinzu
+        if (user) {
+          await apiService.addToActionReviews(currentWord.id);
+          console.log('📚 Added to review system for later practice (timeout)');
+        }
       } catch (error) {
         console.error('Failed to save progress:', error);
       }
@@ -229,6 +269,14 @@ function ActionModule({ user }) {
     if (currentWord.id) {
       try {
         await apiService.updateProgress(currentWord.id, true);
+        
+        // Wenn es ein Review-Wort war, markiere als "remembered"
+        if (currentWord.isReview && user) {
+          await apiService.markAsRemembered(currentWord.id);
+          // Entferne aus dueReviewWords
+          setDueReviewWords(prev => prev.filter(w => w.vocabulary_id !== currentWord.id));
+          console.log('✅ Review word marked as remembered');
+        }
       } catch (error) {
         console.error('Failed to save progress:', error);
       }
@@ -267,10 +315,16 @@ function ActionModule({ user }) {
     setStreak(0);
     setTotalAnswers(totalAnswers + 1);
     
-    // Speichere Fortschrift in der API (falsche Antwort)
+    // Speichere Fortschritt in der API (falsche Antwort)
     if (currentWord.id) {
       try {
         await apiService.updateProgress(currentWord.id, false);
+        
+        // Füge zum Spaced Repetition System hinzu
+        if (user) {
+          await apiService.addToActionReviews(currentWord.id);
+          console.log('📚 Added to review system for later practice');
+        }
       } catch (error) {
         console.error('Failed to save progress:', error);
       }

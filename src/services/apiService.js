@@ -228,6 +228,29 @@ class ApiService {
     return this.request('/flashcards/stats');
   }
 
+  // Action Mode Spaced Repetition
+  async addToActionReviews(vocabularyId) {
+    return this.request('/action-mode/reviews', {
+      method: 'POST',
+      body: JSON.stringify({ vocabularyId }),
+    });
+  }
+
+  async markAsRemembered(vocabularyId) {
+    return this.request('/action-mode/reviews/remember', {
+      method: 'POST',
+      body: JSON.stringify({ vocabularyId }),
+    });
+  }
+
+  async getDueActionReviews() {
+    return this.request('/action-mode/reviews/due');
+  }
+
+  async getActionReviewStats() {
+    return this.request('/action-mode/reviews/stats');
+  }
+
   // Gamification endpoints
   async trackActivity(minutesPracticed, exercisesCompleted = 1) {
     return this.request('/gamification/activity', {

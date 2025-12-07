@@ -111,6 +111,25 @@ const createTables = () => {
     )
   `);
 
+  // Action Mode Spaced Repetition (für "Forgot" Wörter)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS action_mode_reviews (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      vocabulary_id INTEGER NOT NULL,
+      ease_factor REAL DEFAULT 2.5,
+      interval_days INTEGER DEFAULT 1,
+      repetitions INTEGER DEFAULT 0,
+      next_review_date DATE NOT NULL,
+      last_reviewed_date DATE,
+      times_forgotten INTEGER DEFAULT 1,
+      added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (vocabulary_id) REFERENCES vocabulary(id) ON DELETE CASCADE,
+      UNIQUE(user_id, vocabulary_id)
+    )
+  `);
+
   // Indizes für Performance
   db.exec(`
     CREATE INDEX IF NOT EXISTS idx_user_progress_user ON user_progress(user_id);
@@ -119,6 +138,7 @@ const createTables = () => {
     CREATE INDEX IF NOT EXISTS idx_session_details_session ON session_details(session_id);
     CREATE INDEX IF NOT EXISTS idx_flashcard_user ON flashcard_deck(user_id);
     CREATE INDEX IF NOT EXISTS idx_flashcard_review ON flashcard_deck(user_id, next_review_date);
+    CREATE INDEX IF NOT EXISTS idx_action_review ON action_mode_reviews(user_id, next_review_date);
   `);
 
   // Gamification: Daily Activity Tracking
