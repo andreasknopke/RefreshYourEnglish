@@ -165,18 +165,18 @@ class TTSService {
       utterance.pitch = 1;
       utterance.volume = 1;
 
-      // Versuche die Microsoft "Ryan (Natural)" Stimme zu verwenden
+      // Versuche die Microsoft "Jenny (Natural)" Stimme zu verwenden
       const voices = window.speechSynthesis.getVoices();
       
-      // Suche nach Ryan (Natural) für Englisch
+      // Suche nach Jenny (Natural) für Englisch
       if (language === 'en') {
-        const ryanNatural = voices.find(voice => 
-          voice.name.includes('Ryan') && voice.name.includes('Natural')
+        const jennyNatural = voices.find(voice => 
+          voice.name.includes('Jenny') && voice.name.includes('Natural')
         );
         
-        if (ryanNatural) {
-          utterance.voice = ryanNatural;
-          console.log('✅ Using Ryan (Natural) voice');
+        if (jennyNatural) {
+          utterance.voice = jennyNatural;
+          console.log('✅ Using Jenny (Natural) voice');
         } else {
           // Fallback: Suche nach beliebiger natürlicher Microsoft Stimme
           const naturalVoice = voices.find(voice => 
@@ -186,7 +186,7 @@ class TTSService {
             utterance.voice = naturalVoice;
             console.log('✅ Using natural voice:', naturalVoice.name);
           } else {
-            console.log('⚠️ Ryan (Natural) nicht gefunden, verwende Standard-Stimme');
+            console.log('⚠️ Jenny (Natural) nicht gefunden, verwende Standard-Stimme');
           }
         }
       }
