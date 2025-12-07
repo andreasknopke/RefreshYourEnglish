@@ -54,24 +54,20 @@ export const addToFlashcardDeck = (req, res) => {
       return res.status(404).json({ message: 'Vocabulary not found' });
     }
 
-    // Prüfe ob bereits im Deck
-    const existing = db.prepare(
-      'SELECT * FROM flashcard_deck WHERE user_id = ? AND vocabulary_id = ?'
-    ).get(userId, parseInt(vocabularyId));
-
-    if (existing) {
-      return res.status(400).json({ message: 'Vocabulary already in flashcard deck' });
-    }
-
-    // Füge hinzu
+    // Verwende INSERT OR IGNORE für atomare Duplikatsprüfung
     const today = new Date().toISOString().split('T')[0];
     const stmt = db.prepare(`
-      INSERT INTO flashcard_deck 
+      INSERT OR IGNORE INTO flashcard_deck 
       (user_id, vocabulary_id, ease_factor, interval_days, repetitions, next_review_date, added_at)
       VALUES (?, ?, 2.5, 0, 0, ?, CURRENT_TIMESTAMP)
     `);
 
     const result = stmt.run(userId, parseInt(vocabularyId), today);
+
+    // Wenn changes = 0, war die Vokabel bereits im Deck
+    if (result.changes === 0) {
+      return res.status(400).json({ message: 'Vocabulary already in flashcard deck' });
+    }
 
     res.json({
       message: 'Added to flashcard deck',
@@ -80,6 +76,12 @@ export const addToFlashcardDeck = (req, res) => {
     });
   } catch (error) {
     console.error('Error adding to flashcard deck:', error);
+    
+    // Prüfe auf UNIQUE constraint violation (falls INSERT OR IGNORE nicht funktioniert)
+    if (error.message.includes('UNIQUE constraint failed')) {
+      return res.status(400).json({ message: 'Vocabulary already in flashcard deck' });
+    }
+    
     res.status(500).json({ message: 'Server error' });
   }
 };
