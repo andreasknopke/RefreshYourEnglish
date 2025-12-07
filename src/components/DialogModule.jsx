@@ -211,9 +211,9 @@ function DialogModule({ user }) {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-2 sm:p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-3 sm:mb-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-1 sm:mb-2">💬 Dialog Trainer</h2>
-          <p className="text-sm sm:text-base text-gray-600">Übe Englisch in realistischen Gesprächssituationen</p>
+        <div className="text-center mb-2 sm:mb-3 md:mb-6 lg:mb-3">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-bold gradient-text mb-1 sm:mb-2 lg:mb-1">💬 Dialog Trainer</h2>
+          <p className="text-xs sm:text-sm md:text-base lg:text-sm text-gray-600">Übe Englisch in realistischen Gesprächssituationen</p>
         </div>
 
         {!scenario ? (
@@ -296,13 +296,13 @@ function DialogModule({ user }) {
           </div>
         ) : (
           // Dialog Screen
-          <div className="glass-card rounded-3xl p-6 mb-20">
+          <div className="glass-card rounded-3xl p-3 sm:p-4 md:p-6 lg:p-4 mb-20">
             {/* Scenario Description */}
-            <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 mb-4 border-2 border-blue-300">
+            <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-2 sm:p-3 md:p-4 lg:p-3 mb-2 sm:mb-3 md:mb-4 lg:mb-2 border-2 border-blue-300">
               <div className="flex items-center justify-between">
                 <div className="flex-1">
-                  <h3 className="font-bold text-gray-800 mb-2">📍 Szenario:</h3>
-                  <p className="text-gray-700">{scenario.description}</p>
+                  <h3 className="font-bold text-sm sm:text-base lg:text-sm text-gray-800 mb-1 sm:mb-2 lg:mb-1">📍 Szenario:</h3>
+                  <p className="text-xs sm:text-sm md:text-base lg:text-sm text-gray-700">{scenario.description}</p>
                 </div>
                 <button
                   onClick={() => setAutoPlayTTS(!autoPlayTTS)}
@@ -318,14 +318,14 @@ function DialogModule({ user }) {
             </div>
 
             {/* Messages */}
-            <div className="space-y-2 mb-2 sm:mb-3 max-h-56 sm:max-h-64 md:max-h-96 overflow-y-auto">
+            <div className="space-y-2 mb-2 sm:mb-3 lg:mb-2 max-h-48 sm:max-h-56 md:max-h-80 lg:max-h-64 overflow-y-auto">
               {messages.map((msg, index) => (
                 <div
                   key={index}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] sm:max-w-[80%] rounded-2xl p-2 sm:p-3 ${
+                    className={`max-w-[85%] sm:max-w-[80%] lg:max-w-[75%] rounded-2xl p-2 sm:p-3 lg:p-2 ${
                       msg.role === 'user'
                         ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white'
                         : msg.isError
@@ -334,7 +334,7 @@ function DialogModule({ user }) {
                     }`}
                   >
                     <div className="flex items-start gap-1 sm:gap-2">
-                      <p className="whitespace-pre-wrap flex-1 text-sm">{msg.content}</p>
+                      <p className="whitespace-pre-wrap flex-1 text-xs sm:text-sm lg:text-xs">{msg.content}</p>
                       {msg.role === 'assistant' && !msg.isError && (
                         <TTSButton text={msg.content} language="en" className="scale-75" />
                       )}

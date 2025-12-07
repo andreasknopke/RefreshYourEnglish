@@ -143,27 +143,27 @@ function VocabularyTrainer({ user }) {
   return (
     <div className="max-w-4xl mx-auto px-2 sm:px-4">
       {/* Header mit Statistiken */}
-      <div className="mb-4 grid grid-cols-4 gap-2">
-        <div className="glass-card p-2 text-center">
-          <div className="text-xl sm:text-3xl font-bold text-indigo-600">{stats?.total || 0}</div>
-          <div className="text-[10px] sm:text-sm text-gray-600">Gesamt</div>
+      <div className="mb-2 sm:mb-3 lg:mb-2 grid grid-cols-4 gap-2">
+        <div className="glass-card p-1.5 sm:p-2 lg:p-1.5 text-center">
+          <div className="text-xl sm:text-3xl lg:text-2xl font-bold text-indigo-600">{stats?.total || 0}</div>
+          <div className="text-[10px] sm:text-sm lg:text-xs text-gray-600">Gesamt</div>
         </div>
-        <div className="glass-card p-2 text-center">
-          <div className="text-xl sm:text-3xl font-bold text-orange-500">{stats?.due || 0}</div>
-          <div className="text-[10px] sm:text-sm text-gray-600">Fällig</div>
+        <div className="glass-card p-1.5 sm:p-2 lg:p-1.5 text-center">
+          <div className="text-xl sm:text-3xl lg:text-2xl font-bold text-orange-500">{stats?.due || 0}</div>
+          <div className="text-[10px] sm:text-sm lg:text-xs text-gray-600">Fällig</div>
         </div>
-        <div className="glass-card p-2 text-center">
-          <div className="text-xl sm:text-3xl font-bold text-blue-500">{stats?.learning || 0}</div>
-          <div className="text-[10px] sm:text-sm text-gray-600">Lernend</div>
+        <div className="glass-card p-1.5 sm:p-2 lg:p-1.5 text-center">
+          <div className="text-xl sm:text-3xl lg:text-2xl font-bold text-blue-500">{stats?.learning || 0}</div>
+          <div className="text-[10px] sm:text-sm lg:text-xs text-gray-600">Lernend</div>
         </div>
-        <div className="glass-card p-2 text-center">
-          <div className="text-xl sm:text-3xl font-bold text-green-500">{stats?.mastered || 0}</div>
-          <div className="text-[10px] sm:text-sm text-gray-600">Gemeistert</div>
+        <div className="glass-card p-1.5 sm:p-2 lg:p-1.5 text-center">
+          <div className="text-xl sm:text-3xl lg:text-2xl font-bold text-green-500">{stats?.mastered || 0}</div>
+          <div className="text-[10px] sm:text-sm lg:text-xs text-gray-600">Gemeistert</div>
         </div>
       </div>
 
       {/* Auto-Play Toggle */}
-      <div className="mb-3 flex items-center justify-center gap-2">
+      <div className="mb-2 sm:mb-3 lg:mb-2 flex items-center justify-center gap-2">
         <button
           onClick={() => setAutoPlayTTS(!autoPlayTTS)}
           className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
@@ -195,8 +195,8 @@ function VocabularyTrainer({ user }) {
       ) : (
         <>
           {/* Fortschrittsanzeige */}
-          <div className="mb-4 flex items-center justify-between">
-            <div className="text-sm font-semibold text-gray-600">
+          <div className="mb-2 sm:mb-3 lg:mb-2 flex items-center justify-between">
+            <div className="text-xs sm:text-sm lg:text-xs font-semibold text-gray-600">
               Karte {currentIndex + 1} von {flashcards.length}
             </div>
             <div className="flex gap-2">

@@ -515,13 +515,13 @@ function ActionModule({ user }) {
         ) : (
           <div>
             {/* Progress Indicator */}
-            <div className="mb-4 flex justify-between items-center">
+            <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-2 flex justify-between items-center">
               <span className="text-xs font-bold text-gray-600 uppercase">Fortschritt</span>
               <span className="text-sm font-bold text-indigo-600">{roundProgress + 1} / {wordsPerRound}</span>
             </div>
             
             {/* Timer */}
-            <div className="mb-4">
+            <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-2">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">⏱️ Zeit übrig</span>
                 <span className={`text-2xl font-bold text-gray-800 ${timeLeft <= 3 ? 'animate-pulse text-red-600' : ''}`}>
@@ -537,7 +537,7 @@ function ActionModule({ user }) {
             </div>
 
             {/* Flashcard */}
-            <div className="relative h-64 sm:h-80 md:h-96">
+            <div className="relative h-56 sm:h-64 md:h-80 lg:h-64">
               <div 
                 className={`absolute w-full h-full transition-all duration-500 transform-style-3d ${
                   isFlipped ? 'rotate-y-180' : ''
@@ -545,9 +545,9 @@ function ActionModule({ user }) {
               >
                 {/* Vorderseite (Deutsch) */}
                 <div className="absolute w-full h-full backface-hidden">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
-                    <div className="text-xs sm:text-sm text-green-700 font-bold mb-2 sm:mb-4">🇩🇪 Deutsche Vokabel</div>
-                    <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2 sm:mb-4 text-center">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-6 bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 border-2 border-green-200">
+                    <div className="text-xs sm:text-sm md:text-base lg:text-sm text-green-700 font-bold mb-1 sm:mb-2 md:mb-4 lg:mb-2">🇩🇪 Deutsche Vokabel</div>
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-bold text-gray-800 mb-2 sm:mb-4 lg:mb-2 text-center">
                       {currentWord?.de}
                     </div>
                     <div className="mt-2 sm:mt-4 px-2 sm:px-3 py-0.5 sm:py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-sm font-semibold">
@@ -558,12 +558,12 @@ function ActionModule({ user }) {
 
                 {/* Rückseite (Englisch) */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180">
-                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-br from-indigo-50 to-purple-50">
+                  <div className="glass-card h-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-6 bg-gradient-to-br from-indigo-50 to-purple-50">
                     {isFlipped ? (
                       <>
-                        <div className="text-xs sm:text-sm text-indigo-700 font-bold mb-2 sm:mb-4">🇬🇧 Englisch</div>
-                        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-8">
-                          <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-700 text-center animate-slide-in">
+                        <div className="text-xs sm:text-sm md:text-base lg:text-sm text-indigo-700 font-bold mb-1 sm:mb-2 md:mb-4 lg:mb-2">🇬🇧 Englisch</div>
+                        <div className="flex items-center gap-2 sm:gap-3 lg:gap-2 mb-2 sm:mb-4 md:mb-8 lg:mb-4">
+                          <div className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-bold text-indigo-700 text-center animate-slide-in">
                             {currentWord?.en}
                           </div>
                           <TTSButton text={currentWord?.en} language="en" />

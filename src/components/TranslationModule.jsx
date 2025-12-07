@@ -193,11 +193,11 @@ function TranslationModule({ user }) {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in px-2 sm:px-4">
-      <div className="glass-card rounded-2xl shadow-xl p-2 sm:p-3 md:p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+      <div className="glass-card rounded-2xl shadow-xl p-2 sm:p-3 md:p-4 lg:p-3 max-h-[calc(100vh-6rem)] overflow-y-auto">
         {/* Header with Score */}
-        <div className="mb-2 sm:mb-3">
-          <div className="flex justify-between items-center mb-1 sm:mb-2">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text">Übersetzung</h2>
+        <div className="mb-2 sm:mb-3 lg:mb-2">
+          <div className="flex justify-between items-center mb-1 sm:mb-2 lg:mb-1">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-xl font-bold gradient-text">Übersetzung</h2>
             <div className="text-right bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shadow-lg">
               <p className="text-[9px] sm:text-[10px] opacity-90">Punkte</p>
               <p className="text-sm sm:text-lg font-bold">
