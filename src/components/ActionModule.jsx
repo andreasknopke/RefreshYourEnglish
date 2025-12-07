@@ -368,24 +368,24 @@ function ActionModule({ user }) {
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
-      <div className="glass-card rounded-2xl shadow-xl p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
+      <div className="glass-card rounded-2xl shadow-xl p-2 sm:p-3 md:p-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
         {/* Header */}
-        <div className="mb-3">
-          <h2 className="text-xl md:text-2xl font-bold gradient-text mb-2">⚡ Action Modus</h2>
+        <div className="mb-2 sm:mb-3">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text mb-1 sm:mb-2">⚡ Action Modus</h2>
           
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-2 mb-2">
-            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-2 text-center border border-indigo-100">
-              <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Punkte</p>
-              <p className="text-xl md:text-2xl font-bold gradient-text">{score}</p>
+          <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-1 sm:mb-2">
+            <div className="glass-card bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-1 sm:p-2 text-center border border-indigo-100">
+              <p className="text-[9px] sm:text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Punkte</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold gradient-text">{score}</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-2 text-center border border-green-100">
-              <p className="text-[10px] text-green-600 font-bold uppercase tracking-wider">Serie</p>
-              <p className="text-xl md:text-2xl font-bold text-green-600">{streak} 🔥</p>
+            <div className="glass-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-1 sm:p-2 text-center border border-green-100">
+              <p className="text-[9px] sm:text-[10px] text-green-600 font-bold uppercase tracking-wider">Serie</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">{streak} 🔥</p>
             </div>
-            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-2 text-center border border-purple-100">
-              <p className="text-[10px] text-purple-600 font-bold uppercase tracking-wider">%</p>
-              <p className="text-xl md:text-2xl font-bold text-purple-600">
+            <div className="glass-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-1 sm:p-2 text-center border border-purple-100">
+              <p className="text-[9px] sm:text-[10px] text-purple-600 font-bold uppercase tracking-wider">%</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-purple-600">
                 {totalAnswers > 0 ? Math.round((correctAnswers / totalAnswers) * 100) : 0}%
               </p>
             </div>
@@ -416,51 +416,51 @@ function ActionModule({ user }) {
 
         {/* Game Area */}
         {!gameStarted ? (
-          <div className="text-center py-8">
-            <div className="mb-6">
-              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center py-4 sm:py-6 md:py-8">
+            <div className="mb-3 sm:mb-4 md:mb-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-3">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3">
               Bereit für den Action Modus?
             </h3>
-            <p className="text-base text-gray-600 mb-4 max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 max-w-md mx-auto">
               Teste so viele Wörter wie möglich bevor die Zeit abläuft!
             </p>
             
             {isLoadingVocabulary ? (
-              <div className="mb-6">
-                <div className="animate-spin w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto"></div>
-                <p className="mt-3 text-gray-600">Lade Vokabeln...</p>
+              <div className="mb-4 sm:mb-6">
+                <div className="animate-spin w-6 h-6 sm:w-8 sm:h-8 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto"></div>
+                <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-600">Lade Vokabeln...</p>
               </div>
             ) : loadError ? (
-              <div className="mb-6">
-                <p className="text-red-600 font-bold">⚠️ Fehler beim Laden der Vokabeln</p>
-                <p className="text-gray-600 text-sm mt-2">{loadError}</p>
+              <div className="mb-4 sm:mb-6">
+                <p className="text-sm sm:text-base text-red-600 font-bold">⚠️ Fehler beim Laden der Vokabeln</p>
+                <p className="text-xs sm:text-sm text-gray-600 mt-2">{loadError}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600"
+                  className="mt-3 sm:mt-4 px-4 py-2 text-sm bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">
                 >
                   Neu laden
                 </button>
               </div>
             ) : vocabulary.length === 0 ? (
-              <div className="mb-6">
-                <p className="text-red-600 font-bold">⚠️ Keine Vokabeln verfügbar</p>
-                <p className="text-gray-600 text-sm mt-2">Die API hat keine Vokabeln zurückgegeben</p>
+              <div className="mb-4 sm:mb-6">
+                <p className="text-sm sm:text-base text-red-600 font-bold">⚠️ Keine Vokabeln verfügbar</p>
+                <p className="text-xs sm:text-sm text-gray-600 mt-2">Die API hat keine Vokabeln zurückgegeben</p>
               </div>
             ) : (
               <>
-                <p className="text-sm text-gray-500 mb-4">
+                <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
                   {vocabulary.length} Vokabeln geladen
                 </p>
                 
                 {/* Words per round selector */}
-                <div className="mb-6 max-w-xs mx-auto">
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                <div className="mb-3 sm:mb-4 md:mb-6 max-w-xs mx-auto">
+                  <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1 sm:mb-2">
                     Anzahl der Wörter pro Runde:
                   </label>
                   <select
@@ -480,7 +480,7 @@ function ActionModule({ user }) {
                 <button
                   onClick={startGame}
                   disabled={isLoadingVocabulary || vocabulary.length === 0}
-                  className="btn-secondary text-lg py-3 px-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-secondary text-base sm:text-lg py-2 sm:py-3 px-6 sm:px-8 disabled:opacity-50 disabled:cursor-not-allowed">
                 >
                   🚀 Start
                 </button>
