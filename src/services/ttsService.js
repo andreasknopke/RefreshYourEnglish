@@ -73,6 +73,31 @@ class TTSService {
   }
 
   /**
+   * Gibt alle verfügbaren Browser-Stimmen zurück
+   */
+  getAvailableVoices() {
+    if (!this.isBrowserTTSSupported) {
+      return [];
+    }
+    return window.speechSynthesis.getVoices();
+  }
+
+  /**
+   * Setzt die bevorzugte Browser-Stimme
+   * @param {string} voiceName - Name der Stimme
+   */
+  setPreferredVoice(voiceName) {
+    localStorage.setItem('preferred_browser_voice', voiceName);
+  }
+
+  /**
+   * Gibt die bevorzugte Browser-Stimme zurück
+   */
+  getPreferredVoice() {
+    return localStorage.getItem('preferred_browser_voice') || null;
+  }
+
+  /**
    * Generiert Audio für einen Text
    * @param {string} text - Der zu sprechende Text
    * @param {string} language - Sprache ('en' oder 'de')
@@ -152,6 +177,16 @@ class TTSService {
     const voices = window.speechSynthesis.getVoices();
     
     console.log('🎙️ Verfügbare Stimmen:', voices.map(v => v.name));
+    
+    // Priorität 0: Benutzerdefinierte Stimme aus Settings
+    const preferredVoiceName = this.getPreferredVoice();
+    if (preferredVoiceName) {
+      const voice = voices.find(v => v.name === preferredVoiceName);
+      if (voice) {
+        console.log('✅ Using preferred voice:', voice.name);
+        return voice;
+      }
+    }
     
     if (language === 'en') {
       // Priorität 1: Jenny (Natural)

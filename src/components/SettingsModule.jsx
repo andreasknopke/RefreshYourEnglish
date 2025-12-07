@@ -6,12 +6,31 @@ function SettingsModule() {
   const [sttProvider, setSttProvider] = useState('browser');
   const [ttsProvider, setTtsProvider] = useState('elevenlabs');
   const [elevenLabsAvailable, setElevenLabsAvailable] = useState(false);
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [selectedVoice, setSelectedVoice] = useState(null);
 
   useEffect(() => {
     // Load current settings
     setSttProvider(sttService.getProvider());
     setTtsProvider(ttsService.getProvider());
     setElevenLabsAvailable(sttService.isElevenLabsAvailable());
+    
+    // Load available voices
+    const loadVoices = () => {
+      const voices = ttsService.getAvailableVoices();
+      setAvailableVoices(voices);
+      
+      // Load preferred voice
+      const preferred = ttsService.getPreferredVoice();
+      setSelectedVoice(preferred);
+    };
+    
+    loadVoices();
+    
+    // Voices might load asynchronously
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
   }, []);
 
   const handleSttProviderChange = (provider) => {
@@ -39,6 +58,16 @@ function SettingsModule() {
     } catch (error) {
       console.error('Failed to change TTS provider:', error);
       alert('❌ Fehler beim Ändern des Providers: ' + error.message);
+    }
+  };
+
+  const handleVoiceChange = (voiceName) => {
+    try {
+      ttsService.setPreferredVoice(voiceName);
+      setSelectedVoice(voiceName);
+    } catch (error) {
+      console.error('Failed to change voice:', error);
+      alert('❌ Fehler beim Ändern der Stimme: ' + error.message);
     }
   };
 
@@ -318,6 +347,61 @@ function SettingsModule() {
                 </div>
               </div>
             </div>
+
+            {/* Voice Selection for Browser TTS */}
+            {ttsProvider === 'browser' && availableVoices.length > 0 && (
+              <div className="p-4 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border-2 border-indigo-200">
+                <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                  <span>🎙️</span>
+                  Stimme auswählen
+                </h4>
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {availableVoices
+                    .filter(voice => voice.lang.startsWith('en'))
+                    .map((voice) => (
+                      <div
+                        key={voice.name}
+                        onClick={() => handleVoiceChange(voice.name)}
+                        className={`cursor-pointer p-3 rounded-lg border transition-all ${
+                          selectedVoice === voice.name
+                            ? 'border-indigo-500 bg-indigo-100'
+                            : 'border-gray-200 bg-white hover:border-indigo-300'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                            selectedVoice === voice.name
+                              ? 'border-indigo-500 bg-indigo-500'
+                              : 'border-gray-300'
+                          }`}>
+                            {selectedVoice === voice.name && (
+                              <div className="w-2 h-2 bg-white rounded-full"></div>
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-gray-800 text-sm">
+                              {voice.name}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {voice.lang} · {voice.localService ? 'Lokal' : 'Online'}
+                              {voice.name.includes('Natural') && (
+                                <span className="ml-2 px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-bold">
+                                  NATURAL
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+                {availableVoices.filter(v => v.lang.startsWith('en')).length === 0 && (
+                  <p className="text-sm text-gray-500 text-center py-4">
+                    Keine englischen Stimmen verfügbar
+                  </p>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Info Box */}
