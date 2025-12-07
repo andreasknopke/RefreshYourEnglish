@@ -145,6 +145,49 @@ class TTSService {
   }
 
   /**
+   * Wählt die beste verfügbare Stimme aus
+   * @param {string} language - Sprache ('en' oder 'de')
+   */
+  selectBestVoice(language = 'en') {
+    const voices = window.speechSynthesis.getVoices();
+    
+    console.log('🎙️ Verfügbare Stimmen:', voices.map(v => v.name));
+    
+    if (language === 'en') {
+      // Priorität 1: Jenny (Natural)
+      let voice = voices.find(v => 
+        v.name.includes('Jenny') && v.name.includes('Natural')
+      );
+      
+      if (voice) {
+        console.log('✅ Using Jenny (Natural)');
+        return voice;
+      }
+      
+      // Priorität 2: Beliebige Natural-Stimme für Englisch
+      voice = voices.find(v => 
+        v.name.includes('Natural') && v.lang.startsWith('en')
+      );
+      
+      if (voice) {
+        console.log('✅ Using:', voice.name);
+        return voice;
+      }
+      
+      // Priorität 3: Beliebige englische Stimme
+      voice = voices.find(v => v.lang.startsWith('en'));
+      
+      if (voice) {
+        console.log('⚠️ Using fallback:', voice.name);
+        return voice;
+      }
+    }
+    
+    console.log('⚠️ Keine passende Stimme gefunden');
+    return null;
+  }
+
+  /**
    * Spricht Text mit Browser Web Speech API
    * @param {string} text - Der zu sprechende Text
    * @param {string} language - Sprache ('en' oder 'de')
@@ -156,53 +199,48 @@ class TTSService {
         return;
       }
 
-      // Stoppe vorherige Ausgabe
-      window.speechSynthesis.cancel();
+      // Funktion zum Sprechen mit ausgewählter Stimme
+      const speakWithVoice = () => {
+        // Stoppe vorherige Ausgabe
+        window.speechSynthesis.cancel();
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = language === 'de' ? 'de-DE' : 'en-US';
-      utterance.rate = 0.9; // Etwas langsamer für besseres Verständnis
-      utterance.pitch = 1;
-      utterance.volume = 1;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = language === 'de' ? 'de-DE' : 'en-US';
+        utterance.rate = 0.9;
+        utterance.pitch = 1;
+        utterance.volume = 1;
 
-      // Versuche die Microsoft "Jenny (Natural)" Stimme zu verwenden
-      const voices = window.speechSynthesis.getVoices();
-      
-      // Suche nach Jenny (Natural) für Englisch
-      if (language === 'en') {
-        const jennyNatural = voices.find(voice => 
-          voice.name.includes('Jenny') && voice.name.includes('Natural')
-        );
-        
-        if (jennyNatural) {
-          utterance.voice = jennyNatural;
-          console.log('✅ Using Jenny (Natural) voice');
-        } else {
-          // Fallback: Suche nach beliebiger natürlicher Microsoft Stimme
-          const naturalVoice = voices.find(voice => 
-            voice.name.includes('Natural') && voice.lang.startsWith('en')
-          );
-          if (naturalVoice) {
-            utterance.voice = naturalVoice;
-            console.log('✅ Using natural voice:', naturalVoice.name);
-          } else {
-            console.log('⚠️ Jenny (Natural) nicht gefunden, verwende Standard-Stimme');
-          }
+        // Wähle die beste Stimme
+        const selectedVoice = this.selectBestVoice(language);
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
         }
+
+        utterance.onend = () => {
+          this.isBrowserSpeaking = false;
+          resolve();
+        };
+
+        utterance.onerror = (event) => {
+          this.isBrowserSpeaking = false;
+          reject(new Error(`Browser TTS Error: ${event.error}`));
+        };
+
+        this.isBrowserSpeaking = true;
+        window.speechSynthesis.speak(utterance);
+      };
+
+      // Warte auf Stimmen falls noch nicht geladen
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length === 0) {
+        console.log('⏳ Warte auf Stimmen...');
+        window.speechSynthesis.onvoiceschanged = () => {
+          console.log('✅ Stimmen geladen');
+          speakWithVoice();
+        };
+      } else {
+        speakWithVoice();
       }
-
-      utterance.onend = () => {
-        this.isBrowserSpeaking = false;
-        resolve();
-      };
-
-      utterance.onerror = (event) => {
-        this.isBrowserSpeaking = false;
-        reject(new Error(`Browser TTS Error: ${event.error}`));
-      };
-
-      this.isBrowserSpeaking = true;
-      window.speechSynthesis.speak(utterance);
     });
   }
 
