@@ -186,11 +186,25 @@ function getGamificationStats(userId) {
     LIMIT 10
   `).all(userId);
 
+  // Gesamte Lernzeit über alle Tage
+  const totalStats = db.prepare(`
+    SELECT 
+      SUM(seconds_practiced) as total_seconds,
+      COUNT(DISTINCT date) as total_days
+    FROM daily_activity
+    WHERE user_id = ?
+  `).get(userId);
+
+  const totalMinutes = Math.round((totalStats?.total_seconds || 0) / 60);
+
   return {
     todayMinutes: todayMinutes,
     todaySeconds: todayActivity.seconds_practiced || 0,
     todayGoalAchieved: todayActivity.goal_achieved === 1,
     currentStreak,
+    totalMinutes,
+    totalSeconds: totalStats?.total_seconds || 0,
+    totalDays: totalStats?.total_days || 0,
     dailyTrophies,
     weeklyTrophies,
     totalTrophies: dailyTrophies + weeklyTrophies,

@@ -50,11 +50,10 @@ function StatsModule({ user }) {
 
   const { progress, flashcards, actionReviews, gamification } = stats;
 
-  // Berechne Gesamtfortschritt
-  const totalWords = progress?.totalWords || 0;
-  const totalCorrect = progress?.totalCorrect || 0;
-  const totalIncorrect = progress?.totalIncorrect || 0;
-  const totalAttempts = totalCorrect + totalIncorrect;
+  // Berechne Gesamtfortschritt aus progress.overall
+  const totalCorrect = progress?.overall?.total_correct || 0;
+  const totalQuestions = progress?.overall?.total_questions || 0;
+  const totalAttempts = totalQuestions;
   const accuracy = totalAttempts > 0 ? ((totalCorrect / totalAttempts) * 100).toFixed(1) : 0;
 
   // Flashcard Statistiken
@@ -66,20 +65,21 @@ function StatsModule({ user }) {
   // Action Mode Statistiken
   const totalActionReviews = actionReviews?.total || 0;
   const dueActionReviews = actionReviews?.due || 0;
-  const masteredActionReviews = actionReviews?.mastered || 0;
+  // Backend gibt kein mastered zurück, berechne es
+  const masteredActionReviews = Math.max(0, totalActionReviews - dueActionReviews);
 
-  // Gamification Statistiken
-  const streak = gamification?.streak || 0;
+  // Gamification Statistiken (Backend gibt currentStreak zurück)
+  const streak = gamification?.currentStreak || 0;
   const totalMinutes = gamification?.totalMinutes || 0;
-  const totalExercises = gamification?.totalExercises || 0;
-  const level = gamification?.level || 1;
-  const xp = gamification?.xp || 0;
-  const xpForNextLevel = gamification?.xpForNextLevel || 100;
+  const totalExercises = progress?.overall?.total_sessions || 0;
+  const level = 1; // TODO: Level-System implementieren
+  const xp = totalExercises * 10; // Temporär: 10 XP pro Session
+  const xpForNextLevel = 100;
 
-  // Session Statistiken
-  const recentSessions = progress?.recentSessions || [];
-  const totalSessions = progress?.totalSessions || 0;
-  const averageScore = progress?.averageScore || 0;
+  // Session Statistiken (Backend gibt progress.recent zurück)
+  const recentSessions = progress?.recent || [];
+  const totalSessions = progress?.overall?.total_sessions || 0;
+  const averageScore = progress?.overall?.avg_score || 0;
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
@@ -180,8 +180,8 @@ function StatsModule({ user }) {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Gesamte Vokabeln</span>
-              <span className="text-2xl font-bold text-indigo-600">{totalWords}</span>
+              <span className="text-sm font-semibold text-gray-700">Gesamte Sessions</span>
+              <span className="text-2xl font-bold text-indigo-600">{totalSessions}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-gray-700">Genauigkeit</span>
@@ -195,19 +195,19 @@ function StatsModule({ user }) {
               <span className="text-2xl font-bold text-green-600">{totalCorrect}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Falsche Antworten</span>
-              <span className="text-2xl font-bold text-red-600">{totalIncorrect}</span>
+              <span className="text-sm font-semibold text-gray-700">Gesamt Fragen</span>
+              <span className="text-2xl font-bold text-gray-600">{totalQuestions}</span>
             </div>
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Gesamt-Sessions</span>
-              <span className="text-2xl font-bold text-purple-600">{totalSessions}</span>
+              <span className="text-sm font-semibold text-gray-700">Gesamtzeit</span>
+              <span className="text-2xl font-bold text-purple-600">{Math.round((progress?.overall?.total_time_seconds || 0) / 60)} Min</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-gray-700">Durchschn. Score</span>
-              <span className="text-2xl font-bold text-blue-600">{averageScore.toFixed(1)}</span>
+              <span className="text-2xl font-bold text-blue-600">{averageScore ? averageScore.toFixed(1) : 0}%</span>
             </div>
           </div>
         </div>
@@ -352,7 +352,7 @@ function StatsModule({ user }) {
               </thead>
               <tbody>
                 {recentSessions.slice(0, 10).map((session, index) => {
-                  const date = new Date(session.createdAt);
+                  const date = new Date(session.completed_at || session.created_at);
                   const modeNames = {
                     translation: '🌐 Übersetzung',
                     action: '⚡ Action',
@@ -377,16 +377,16 @@ function StatsModule({ user }) {
                           session.score >= 60 ? 'text-yellow-600' :
                           'text-red-600'
                         }`}>
-                          {session.score}%
+                          {Math.round(session.score)}%
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center text-sm text-gray-700">
-                        <span className="font-semibold text-green-600">{session.correctAnswers}</span>
+                        <span className="font-semibold text-green-600">{session.correct_answers}</span>
                         <span className="text-gray-400 mx-1">/</span>
-                        <span className="text-gray-600">{session.totalAnswers}</span>
+                        <span className="text-gray-600">{session.total_answers}</span>
                       </td>
                       <td className="py-3 px-4 text-center text-sm text-gray-600">
-                        {Math.floor(session.durationSeconds / 60)}:{String(session.durationSeconds % 60).padStart(2, '0')}
+                        {Math.floor(session.duration_seconds / 60)}:{String(session.duration_seconds % 60).padStart(2, '0')}
                       </td>
                     </tr>
                   );
