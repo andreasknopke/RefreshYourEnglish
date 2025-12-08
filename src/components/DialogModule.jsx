@@ -134,13 +134,12 @@ function DialogModule({ user }) {
         setEvaluation(evalResult);
         setIsEvaluating(false);
         
-        // Zeitgutschrift bei guter Performance (mindestens 7/10 in correctness oder appropriateness)
-        if (user && (evalResult.correctness >= 7 || evalResult.appropriateness >= 7)) {
+        // Zeitgutschrift bei guter Performance (Gesamtpunktzahl >= 7/10)
+        if (user && evalResult.overallScore >= 7) {
           try {
             const minutesToAdd = 5; // 5 Minuten Zeitgutschrift
             console.log('🎮 Tracking activity (DialogModule):', { 
-              correctness: evalResult.correctness, 
-              appropriateness: evalResult.appropriateness,
+              overallScore: evalResult.overallScore,
               minutesToAdd, 
               user: user.username 
             });
@@ -151,8 +150,7 @@ function DialogModule({ user }) {
           }
         } else if (user) {
           console.log('⏭️ No time credit (score < 7/10):', { 
-            correctness: evalResult.correctness, 
-            appropriateness: evalResult.appropriateness 
+            overallScore: evalResult.overallScore
           });
         }
       } else {
@@ -426,6 +424,31 @@ function DialogModule({ user }) {
                   <p className="font-bold text-gray-800 mb-2 text-sm sm:text-base">📝 Detailliertes Feedback:</p>
                   <p className="text-gray-700 text-sm leading-relaxed">{evaluation.detailedFeedback}</p>
                 </div>
+                
+                {/* Error Analysis */}
+                {evaluation.errors && evaluation.errors.length > 0 && (
+                  <div className="bg-red-50 rounded-xl p-3 sm:p-4 mb-3 border-2 border-red-200">
+                    <p className="font-bold text-gray-800 mb-3 text-sm sm:text-base">❌ Sprachliche Fehler:</p>
+                    <div className="space-y-3">
+                      {evaluation.errors.map((error, index) => (
+                        <div key={index} className="bg-white rounded-lg p-3 border border-red-200">
+                          <div className="mb-2">
+                            <p className="text-xs text-gray-500 font-semibold mb-1">Deine Formulierung:</p>
+                            <p className="text-sm text-red-700 line-through">"{error.original}"</p>
+                          </div>
+                          <div className="mb-2">
+                            <p className="text-xs text-gray-500 font-semibold mb-1">Korrekt wäre:</p>
+                            <p className="text-sm text-green-700 font-semibold">"{error.correction}"</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-gray-500 font-semibold mb-1">Erklärung:</p>
+                            <p className="text-xs text-gray-700">{error.explanation}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 
                 {/* Strengths */}
                 {evaluation.strengths && evaluation.strengths.length > 0 && (

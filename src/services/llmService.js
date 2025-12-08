@@ -643,51 +643,105 @@ export async function evaluateDialogPerformance(scenario, conversationHistory, l
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `You are an English language teacher evaluating a student's performance in a conversation scenario: "${scenario.description}".
+          content: `You are an experienced English language teacher evaluating a student's performance in this challenging conversation scenario: "${scenario.description}".
 
-Evaluate the student's performance based on:
-1. CORRECTNESS (1-10): Grammar, vocabulary, and sentence structure
-2. APPROPRIATENESS (1-10): How well they stayed in the scenario context and responded relevantly to the conversation partner
-3. LANGUAGE LEVEL: Estimate their actual level (A1, A2, B1, B2, C1, C2)
+CRITICAL EVALUATION CRITERIA:
 
-Provide constructive feedback in German and practical tips for improvement.
+1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure
+2. VOCABULARY (1-10): Range and appropriateness of vocabulary, use of advanced expressions, collocations
+3. FLUENCY (1-10): Natural flow, coherence, ability to maintain conversation without awkward pauses or repetition
+4. TASK COMPLETION (1-10): How well did they handle the challenge? Did they defend/persuade/negotiate effectively?
+5. PERSUASIVENESS (1-10): Strength of arguments, rhetorical effectiveness, ability to respond to counterarguments
+
+DETAILED ANALYSIS REQUIRED:
+- Identify SPECIFIC grammatical errors with corrections
+- Highlight excellent phrases or expressions used
+- Provide actionable improvement suggestions
+- Assess overall language level (A1, A2, B1, B2, C1, C2)
+
+ALL FEEDBACK MUST BE IN GERMAN.
 
 Respond in JSON format:
 {
-  "correctness": 1-10,
-  "appropriateness": 1-10,
+  "grammar": 1-10,
+  "vocabulary": 1-10,
+  "fluency": 1-10,
+  "taskCompletion": 1-10,
+  "persuasiveness": 1-10,
+  "overallScore": 1-10,
   "languageLevel": "A1|A2|B1|B2|C1|C2",
-  "feedback": "Detailed feedback in German about their performance",
-  "tips": ["Tip 1 in German", "Tip 2 in German"]
+  "detailedFeedback": "Comprehensive feedback in German (3-4 sentences)",
+  "errors": [
+    {
+      "original": "exact student phrase with error",
+      "correction": "corrected version",
+      "explanation": "explanation in German why this is wrong"
+    }
+  ],
+  "strengths": ["strength 1 in German", "strength 2 in German"],
+  "improvements": ["improvement 1 in German", "improvement 2 in German"],
+  "tips": ["practical tip 1 in German", "practical tip 2 in German"]
 }`
         }, {
           role: 'user',
-          content: `Evaluate this conversation at target level ${level}:\n\n${conversationHistory.map(m => `${m.role === 'user' ? 'STUDENT' : 'PARTNER'}: ${m.content}`).join('\n\n')}`
+          content: `Evaluate this conversation at target level ${level}:\n\nSCENARIO: ${scenario.description}\n\nCONVERSATION:\n${conversationHistory.map(m => `${m.role === 'user' ? 'STUDENT' : 'PARTNER'}: ${m.content}`).join('\n\n')}\n\nProvide detailed error analysis and constructive feedback.`
         }],
         temperature: 0.3,
-        max_tokens: 400
+        max_tokens: 800
       })
     });
     
-    if (!response.ok) throw new Error('API error');
+    if (!response.ok) {
+      const errorData = await response.text();
+      console.error('OpenAI API error:', response.status, errorData);
+      throw new Error(`API error: ${response.status}`);
+    }
     
     const data = await response.json();
-    const evaluation = JSON.parse(data.choices[0].message.content);
+    console.log('OpenAI response:', data);
     
-    return evaluation;
+    const content = data.choices[0].message.content;
+    console.log('Evaluation content:', content);
+    
+    const evaluation = JSON.parse(content);
+    
+    // Ensure all required fields exist
+    return {
+      grammar: evaluation.grammar || 5,
+      vocabulary: evaluation.vocabulary || 5,
+      fluency: evaluation.fluency || 5,
+      taskCompletion: evaluation.taskCompletion || 5,
+      persuasiveness: evaluation.persuasiveness || 5,
+      overallScore: evaluation.overallScore || Math.round((evaluation.grammar + evaluation.vocabulary + evaluation.fluency + evaluation.taskCompletion + evaluation.persuasiveness) / 5),
+      languageLevel: evaluation.languageLevel || level,
+      detailedFeedback: evaluation.detailedFeedback || 'Gute Leistung im Dialog.',
+      errors: evaluation.errors || [],
+      strengths: evaluation.strengths || [],
+      improvements: evaluation.improvements || [],
+      tips: evaluation.tips || []
+    };
   } catch (error) {
     console.error('Dialog evaluation failed, using fallback:', error);
     // Fallback
     const userMessages = conversationHistory.filter(m => m.role === 'user');
     const messageCount = userMessages.length;
-    const avgLength = userMessages.reduce((sum, m) => sum + m.content.length, 0) / messageCount;
+    const avgLength = userMessages.reduce((sum, m) => sum + m.content.length, 0) / (messageCount || 1);
+    
+    const baseScore = Math.min(10, Math.max(5, Math.round(avgLength / 15)));
     
     return {
-      correctness: Math.min(10, Math.max(5, Math.round(avgLength / 10))),
-      appropriateness: Math.min(10, Math.max(5, messageCount)),
+      grammar: baseScore,
+      vocabulary: baseScore,
+      fluency: baseScore,
+      taskCompletion: baseScore,
+      persuasiveness: baseScore - 1,
+      overallScore: baseScore,
       languageLevel: level,
-      feedback: 'Gute Leistung! Du hast aktiv am Gespräch teilgenommen.',
-      tips: ['Versuche vollständige Sätze zu bilden', 'Stelle offene Fragen']
+      detailedFeedback: 'Gute Leistung! Du hast aktiv am Gespräch teilgenommen und die Herausforderung angenommen. Die KI-Bewertung war nicht verfügbar, daher wurde eine Basis-Bewertung erstellt.',
+      errors: [],
+      strengths: ['Aktive Teilnahme am Dialog', 'Bemühung, die Situation zu lösen'],
+      improvements: ['Verwende vollständigere Sätze', 'Versuche, mehr Details einzubauen'],
+      tips: ['Versuche vollständige Sätze zu bilden', 'Nutze Konjunktionen wie "because", "although", "however"']
     };
   }
 }
