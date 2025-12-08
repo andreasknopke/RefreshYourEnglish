@@ -24,6 +24,8 @@ function StatsModule({ user }) {
         apiService.getGamificationStats(),
       ]);
 
+      console.log('📊 Stats loaded:', { progress, flashcards, actionReviews, gamification });
+
       setStats({
         progress,
         flashcards,
