@@ -508,20 +508,30 @@ ${levelInstructions[level]}
 Topic: "${topic}"
 Level: ${level}
 
-REQUIREMENTS:
-- The scenario must present a PROBLEM or CONFLICT that requires active problem-solving
+SCENARIO STRUCTURE REQUIREMENTS:
+- Define WHO the student is (their role: student, customer, employee, citizen, etc.)
+- Define WHO you are (the conversation partner: tutor, manager, neighbor, official, etc.)
+- Present a PROBLEM or CONFLICT that the student must handle
 - The student must DEFEND, NEGOTIATE, EXPLAIN, or PERSUADE
-- Examples: handling complaints, resolving misunderstandings, negotiating deals, defending opinions, explaining complex situations
-- Avoid simple question-answer exchanges or basic small talk
 
-CRITICAL: 
-- "firstMessage" MUST be in English only (the conversation partner's opening statement presenting the challenge)
-- "description" in German (brief explanation of the situation and student's role)
+CRITICAL RULES:
+1. "studentRole" (in German): Clearly state who the student is and what they need to do
+2. "partnerRole" (in German): State who YOU are (the conversation partner)
+3. "firstMessage" (in ENGLISH): Your opening statement as the conversation partner that CHALLENGES the student
+   - You must speak from YOUR role, NOT the student's role
+   - Example: If student is apologizing → You are the tutor saying "I'm disappointed you didn't submit the assignment"
+   - NOT: "I'm sorry professor..." (this would be the student speaking)
 
-Respond in JSON format: {"description": "German description", "firstMessage": "Challenging opening in ENGLISH"}`
+Respond in JSON format: 
+{
+  "studentRole": "Rolle des Studenten auf Deutsch",
+  "partnerRole": "Rolle des Gesprächspartners auf Deutsch", 
+  "description": "Kurze Szenariobeschreibung auf Deutsch",
+  "firstMessage": "Your challenging opening as the conversation partner in ENGLISH"
+}`
         }, {
           role: 'user',
-          content: `Create a challenging conversation scenario at ${level} level about "${topic}". The student should face a difficult situation requiring active language use.`
+          content: `Create a challenging conversation scenario at ${level} level about "${topic}". Make sure the firstMessage comes from the conversation partner's perspective, not the student's.`
         }],
         temperature: 0.9,
         max_tokens: 250
@@ -645,19 +655,25 @@ export async function evaluateDialogPerformance(scenario, conversationHistory, l
           role: 'system',
           content: `You are an experienced English language teacher evaluating a student's performance in this challenging conversation scenario: "${scenario.description}".
 
+STUDENT'S ROLE: ${scenario.studentRole || 'Not specified'}
+PARTNER'S ROLE: ${scenario.partnerRole || 'Your role as conversation partner'}
+
 CRITICAL EVALUATION CRITERIA:
 
-1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure
-2. VOCABULARY (1-10): Range and appropriateness of vocabulary, use of advanced expressions, collocations
-3. FLUENCY (1-10): Natural flow, coherence, ability to maintain conversation without awkward pauses or repetition
-4. TASK COMPLETION (1-10): How well did they handle the challenge? Did they defend/persuade/negotiate effectively?
-5. PERSUASIVENESS (1-10): Strength of arguments, rhetorical effectiveness, ability to respond to counterarguments
+IMPORTANT: Only evaluate the STUDENT's messages. Do NOT evaluate the conversation partner's (assistant's) messages.
+
+1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure in STUDENT's messages
+2. VOCABULARY (1-10): Range and appropriateness of vocabulary, use of advanced expressions, collocations in STUDENT's messages
+3. FLUENCY (1-10): Natural flow, coherence, ability to maintain conversation in STUDENT's messages
+4. TASK COMPLETION (1-10): How well did the STUDENT handle the challenge? Did they defend/persuade/negotiate effectively?
+5. PERSUASIVENESS (1-10): Strength of STUDENT's arguments, rhetorical effectiveness, ability to respond to counterarguments
 
 DETAILED ANALYSIS REQUIRED:
-- Identify SPECIFIC grammatical errors with corrections
-- Highlight excellent phrases or expressions used
-- Provide actionable improvement suggestions
+- Identify SPECIFIC grammatical errors in STUDENT's messages with corrections
+- Highlight excellent phrases or expressions the STUDENT used
+- Provide actionable improvement suggestions for the STUDENT
 - Assess overall language level (A1, A2, B1, B2, C1, C2)
+- Ignore any errors or issues in the PARTNER's messages
 
 ALL FEEDBACK MUST BE IN GERMAN.
 
@@ -684,7 +700,7 @@ Respond in JSON format:
 }`
         }, {
           role: 'user',
-          content: `Evaluate this conversation at target level ${level}:\n\nSCENARIO: ${scenario.description}\n\nCONVERSATION:\n${conversationHistory.map(m => `${m.role === 'user' ? 'STUDENT' : 'PARTNER'}: ${m.content}`).join('\n\n')}\n\nProvide detailed error analysis and constructive feedback.`
+          content: `Evaluate this conversation at target level ${level}:\n\nSCENARIO: ${scenario.description}\nSTUDENT ROLE: ${scenario.studentRole || 'Not specified'}\nPARTNER ROLE: ${scenario.partnerRole || 'Not specified'}\n\nCONVERSATION:\n${conversationHistory.map(m => `${m.role === 'user' ? 'STUDENT' : 'PARTNER'}: ${m.content}`).join('\n\n')}\n\nIMPORTANT: Only evaluate the STUDENT's messages (not the PARTNER's messages). Analyze grammar, vocabulary, and effectiveness of the student's responses.`
         }],
         temperature: 0.3,
         max_tokens: 800
@@ -754,21 +770,29 @@ function getFallbackScenario(level, topic = 'Alltag') {
     'B2': {
       'Politik': [
         {
-          description: "Du bist auf einer Bürgerversammlung. Ein aufgebrachter Anwohner beschuldigt dich, für ein lokales Problem verantwortlich zu sein. Du musst dich verteidigen und die Situation klären.",
+          studentRole: "Du bist Mitglied eines Stadtrats",
+          partnerRole: "Ich bin ein aufgebrachter Anwohner",
+          description: "Ein aufgebrachter Anwohner beschuldigt dich, für ein lokales Parkplatzproblem verantwortlich zu sein. Du musst dich verteidigen und die Situation klären.",
           firstMessage: "Excuse me, I need to talk to you! I've heard that you're part of the committee that approved the new parking regulations. Do you realize how much trouble this has caused for local residents? My elderly mother can't park near her own house anymore! What were you thinking?"
         },
         {
-          description: "Als Stadtratsmitglied musst du einem wütenden Geschäftsinhaber erklären, warum seine Steuererhöhung gerechtfertigt ist.",
+          studentRole: "Du bist Stadtratsmitglied",
+          partnerRole: "Ich bin ein wütender Geschäftsinhaber",
+          description: "Ein wütender Geschäftsinhaber konfrontiert dich mit seiner drastisch gestiegenen Steuerrechnung. Du musst die Steuererhöhung rechtfertigen.",
           firstMessage: "I just received my new tax bill and it's completely outrageous! How can you justify a 30% increase? This will force me to close my business. I demand an explanation!"
         }
       ],
       'Sport': [
         {
-          description: "Du hast dich für einen Marathonlauf angemeldet, aber die Organisation hat deinen Namen vergessen. Überzeuge sie, dich noch teilnehmen zu lassen.",
+          studentRole: "Du bist ein Läufer, der am Marathon teilnehmen möchte",
+          partnerRole: "Ich bin ein Organisator des Marathons",
+          description: "Du hast dich für einen Marathonlauf angemeldet, aber dein Name ist nicht auf der Liste. Überzeuge den Organisator, dich noch teilnehmen zu lassen.",
           firstMessage: "I'm sorry, but your name isn't on our list. The registration closed three weeks ago. I'm afraid we can't let you participate without proper registration."
         },
         {
-          description: "Im Fitnessstudio beschwert sich ein anderes Mitglied, dass du zu laut trainierst. Verteidige dein Training.",
+          studentRole: "Du trainierst im Fitnessstudio",
+          partnerRole: "Ich bin ein anderes Fitnessstudio-Mitglied",
+          description: "Ein anderes Mitglied beschwert sich, dass du zu laut trainierst. Verteidige deine Trainingsweise.",
           firstMessage: "Excuse me, but you're making way too much noise with those weights! Other people are trying to concentrate. Could you please be more considerate?"
         }
       ],

@@ -300,6 +300,23 @@ function DialogModule({ user }) {
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <h3 className="font-bold text-sm sm:text-base lg:text-sm text-gray-800 mb-1 sm:mb-2 lg:mb-1">📍 Szenario:</h3>
+                  
+                  {/* Role Information */}
+                  {scenario.studentRole && scenario.partnerRole && (
+                    <div className="mb-2 bg-white/50 rounded-lg p-2">
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold text-blue-700">👤 Du:</span>
+                          <span className="text-gray-700">{scenario.studentRole}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold text-purple-700">💬 Partner:</span>
+                          <span className="text-gray-700">{scenario.partnerRole}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
                   <p className="text-xs sm:text-sm md:text-base lg:text-sm text-gray-700">{scenario.description}</p>
                 </div>
                 <button
