@@ -197,16 +197,71 @@ router.get('/stats', authenticateToken, (req, res) => {
   const userId = req.user.userId;
 
   try {
-    const overallStats = db.prepare(`
+    // Stats aus training_sessions (wenn vorhanden)
+    const sessionStats = db.prepare(`
       SELECT 
         COUNT(DISTINCT ts.id) as total_sessions,
-        SUM(ts.correct_answers) as total_correct,
-        SUM(ts.total_answers) as total_questions,
+        SUM(ts.correct_answers) as session_correct,
+        SUM(ts.total_answers) as session_questions,
         AVG(ts.score) as avg_score,
         SUM(ts.duration_seconds) as total_time_seconds
       FROM training_sessions ts
       WHERE ts.user_id = ? AND ts.completed_at IS NOT NULL
     `).get(userId);
+
+    // Stats aus user_progress (tatsächliche Vokabel-Nutzung)
+    const vocabStats = db.prepare(`
+      SELECT 
+        COUNT(DISTINCT vocabulary_id) as total_words,
+        SUM(times_correct) as total_correct,
+        SUM(times_incorrect) as total_incorrect,
+        SUM(times_correct + times_incorrect) as total_attempts
+      FROM user_progress
+      WHERE user_id = ?
+    `).get(userId);
+
+    // Stats aus Flashcard Reviews
+    const flashcardReviewStats = db.prepare(`
+      SELECT 
+        COUNT(*) as total_reviews,
+        SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END) as reviewed_cards
+      FROM flashcard_deck
+      WHERE user_id = ?
+    `).get(userId);
+
+    // Stats aus Action Mode Reviews
+    const actionReviewStats = db.prepare(`
+      SELECT 
+        COUNT(*) as total_reviews,
+        SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END) as reviewed_words
+      FROM action_mode_reviews
+      WHERE user_id = ?
+    `).get(userId);
+
+    // Kombiniere die Stats
+    const totalCorrect = (vocabStats?.total_correct || 0) + (sessionStats?.session_correct || 0);
+    const totalIncorrect = vocabStats?.total_incorrect || 0;
+    const totalQuestions = totalCorrect + totalIncorrect;
+    const accuracy = totalQuestions > 0 ? (totalCorrect / totalQuestions * 100) : 0;
+
+    // Berechne Gesamt-"Übungen" aus allen Aktivitäten
+    const totalExercises = 
+      (sessionStats?.total_sessions || 0) + 
+      (flashcardReviewStats?.total_reviews || 0) + 
+      (actionReviewStats?.total_reviews || 0);
+
+    const overallStats = {
+      total_sessions: sessionStats?.total_sessions || 0,
+      total_exercises: totalExercises,
+      total_words: vocabStats?.total_words || 0,
+      total_correct: totalCorrect,
+      total_incorrect: totalIncorrect,
+      total_questions: totalQuestions,
+      avg_score: accuracy,
+      total_time_seconds: sessionStats?.total_time_seconds || 0,
+      flashcard_reviews: flashcardReviewStats?.total_reviews || 0,
+      action_reviews: actionReviewStats?.total_reviews || 0
+    };
 
     const modeStats = db.prepare(`
       SELECT 

@@ -53,10 +53,12 @@ function StatsModule({ user }) {
   const { progress, flashcards, actionReviews, gamification } = stats;
 
   // Berechne Gesamtfortschritt aus progress.overall
+  const totalWords = progress?.overall?.total_words || 0;
   const totalCorrect = progress?.overall?.total_correct || 0;
+  const totalIncorrect = progress?.overall?.total_incorrect || 0;
   const totalQuestions = progress?.overall?.total_questions || 0;
   const totalAttempts = totalQuestions;
-  const accuracy = totalAttempts > 0 ? ((totalCorrect / totalAttempts) * 100).toFixed(1) : 0;
+  const accuracy = progress?.overall?.avg_score || 0;
 
   // Flashcard Statistiken
   const totalFlashcards = flashcards?.total || 0;
@@ -73,7 +75,7 @@ function StatsModule({ user }) {
   // Gamification Statistiken (Backend gibt currentStreak zurück)
   const streak = gamification?.currentStreak || 0;
   const totalMinutes = gamification?.totalMinutes || 0;
-  const totalExercises = progress?.overall?.total_sessions || 0;
+  const totalExercises = progress?.overall?.total_exercises || 0;
   const level = 1; // TODO: Level-System implementieren
   const xp = totalExercises * 10; // Temporär: 10 XP pro Session
   const xpForNextLevel = 100;
@@ -182,12 +184,12 @@ function StatsModule({ user }) {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Gesamte Sessions</span>
-              <span className="text-2xl font-bold text-indigo-600">{totalSessions}</span>
+              <span className="text-sm font-semibold text-gray-700">Gelernte Vokabeln</span>
+              <span className="text-2xl font-bold text-indigo-600">{totalWords}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-gray-700">Genauigkeit</span>
-              <span className="text-2xl font-bold text-green-600">{accuracy}%</span>
+              <span className="text-2xl font-bold text-green-600">{accuracy.toFixed(1)}%</span>
             </div>
           </div>
 
@@ -197,19 +199,19 @@ function StatsModule({ user }) {
               <span className="text-2xl font-bold text-green-600">{totalCorrect}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Gesamt Fragen</span>
-              <span className="text-2xl font-bold text-gray-600">{totalQuestions}</span>
+              <span className="text-sm font-semibold text-gray-700">Falsche Antworten</span>
+              <span className="text-2xl font-bold text-red-600">{totalIncorrect}</span>
             </div>
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Gesamtzeit</span>
-              <span className="text-2xl font-bold text-purple-600">{Math.round((progress?.overall?.total_time_seconds || 0) / 60)} Min</span>
+              <span className="text-sm font-semibold text-gray-700">Gesamt Übungen</span>
+              <span className="text-2xl font-bold text-purple-600">{totalExercises}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-gray-700">Durchschn. Score</span>
-              <span className="text-2xl font-bold text-blue-600">{averageScore ? averageScore.toFixed(1) : 0}%</span>
+              <span className="text-sm font-semibold text-gray-700">Gesamtzeit</span>
+              <span className="text-2xl font-bold text-blue-600">{Math.round((progress?.overall?.total_time_seconds || 0) / 60)} Min</span>
             </div>
           </div>
         </div>
@@ -218,12 +220,12 @@ function StatsModule({ user }) {
         <div className="mt-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-semibold text-gray-700">Erfolgsquote</span>
-            <span className="text-sm font-bold text-indigo-600">{accuracy}%</span>
+            <span className="text-sm font-bold text-indigo-600">{accuracy.toFixed(1)}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-4">
             <div
               className="bg-gradient-to-r from-green-500 to-emerald-600 h-4 rounded-full transition-all duration-500"
-              style={{ width: `${accuracy}%` }}
+              style={{ width: `${Math.min(100, accuracy)}%` }}
             ></div>
           </div>
         </div>
