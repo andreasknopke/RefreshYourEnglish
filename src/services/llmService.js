@@ -653,27 +653,46 @@ export async function evaluateDialogPerformance(scenario, conversationHistory, l
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `You are an experienced English language teacher evaluating a student's performance in this challenging conversation scenario: "${scenario.description}".
+          content: `You are an experienced English language teacher evaluating a student's LANGUAGE SKILLS (not debate skills) in this conversation scenario: "${scenario.description}".
 
 STUDENT'S ROLE: ${scenario.studentRole || 'Not specified'}
 PARTNER'S ROLE: ${scenario.partnerRole || 'Your role as conversation partner'}
 
-CRITICAL EVALUATION CRITERIA:
+CRITICAL: This is a LANGUAGE EXERCISE, not a debate competition!
+
+WHAT TO EVALUATE:
+✅ Grammar, vocabulary, sentence structure
+✅ Linguistic fluency and natural expression
+✅ Appropriate register and politeness for the context
+✅ Whether responses are contextually appropriate for the scenario
+
+WHAT NOT TO EVALUATE:
+❌ Strength of arguments or persuasiveness
+❌ Whether the student "won" the debate
+❌ Quality of reasoning or logic
+❌ Content knowledge
 
 IMPORTANT: Only evaluate the STUDENT's messages. Do NOT evaluate the conversation partner's (assistant's) messages.
 
-1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure in STUDENT's messages
-2. VOCABULARY (1-10): Range and appropriateness of vocabulary, use of advanced expressions, collocations in STUDENT's messages
-3. FLUENCY (1-10): Natural flow, coherence, ability to maintain conversation in STUDENT's messages
-4. TASK COMPLETION (1-10): How well did the STUDENT handle the challenge? Did they defend/persuade/negotiate effectively?
-5. PERSUASIVENESS (1-10): Strength of STUDENT's arguments, rhetorical effectiveness, ability to respond to counterarguments
+EVALUATION CRITERIA:
 
-DETAILED ANALYSIS REQUIRED:
+1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure
+2. VOCABULARY (1-10): Range and appropriateness of vocabulary, idiomatic expressions, word choice
+3. FLUENCY (1-10): Natural flow, coherence, sentence variety, appropriate linking words
+4. APPROPRIATENESS (1-10): Is the language suitable for the context? Correct register (formal/informal)? Polite when needed?
+5. CONTEXT RESPONSE (1-10): Does the student respond relevantly to the situation? Uses language that fits the scenario?
+
+DETAILED ANALYSIS:
 - Identify SPECIFIC grammatical errors in STUDENT's messages with corrections
 - Highlight excellent phrases or expressions the STUDENT used
-- Provide actionable improvement suggestions for the STUDENT
+- Provide actionable LANGUAGE improvement suggestions (NOT argument improvements)
 - Assess overall language level (A1, A2, B1, B2, C1, C2)
-- Ignore any errors or issues in the PARTNER's messages
+
+FEEDBACK EXAMPLES:
+✅ GOOD: "Verwende 'would have done' statt 'would do' für hypothetische Vergangenheit"
+✅ GOOD: "Nutze höflichere Formulierungen wie 'I would appreciate if...' statt 'You must...'"
+❌ BAD: "Deine Argumente waren nicht überzeugend genug"
+❌ BAD: "Du hättest mehr Beweise für deine Position liefern sollen"
 
 ALL FEEDBACK MUST BE IN GERMAN.
 
@@ -682,21 +701,21 @@ Respond in JSON format:
   "grammar": 1-10,
   "vocabulary": 1-10,
   "fluency": 1-10,
-  "taskCompletion": 1-10,
-  "persuasiveness": 1-10,
+  "appropriateness": 1-10,
+  "contextResponse": 1-10,
   "overallScore": 1-10,
   "languageLevel": "A1|A2|B1|B2|C1|C2",
-  "detailedFeedback": "Comprehensive feedback in German (3-4 sentences)",
+  "detailedFeedback": "Comprehensive LANGUAGE feedback in German (3-4 sentences, focus on language skills)",
   "errors": [
     {
       "original": "exact student phrase with error",
       "correction": "corrected version",
-      "explanation": "explanation in German why this is wrong"
+      "explanation": "explanation in German why this is linguistically wrong"
     }
   ],
-  "strengths": ["strength 1 in German", "strength 2 in German"],
-  "improvements": ["improvement 1 in German", "improvement 2 in German"],
-  "tips": ["practical tip 1 in German", "practical tip 2 in German"]
+  "strengths": ["language strength 1 in German", "language strength 2 in German"],
+  "improvements": ["language improvement 1 in German (NOT argument improvement)", "language improvement 2 in German"],
+  "tips": ["practical language tip 1 in German", "practical language tip 2 in German"]
 }`
         }, {
           role: 'user',
@@ -726,11 +745,11 @@ Respond in JSON format:
       grammar: evaluation.grammar || 5,
       vocabulary: evaluation.vocabulary || 5,
       fluency: evaluation.fluency || 5,
-      taskCompletion: evaluation.taskCompletion || 5,
-      persuasiveness: evaluation.persuasiveness || 5,
-      overallScore: evaluation.overallScore || Math.round((evaluation.grammar + evaluation.vocabulary + evaluation.fluency + evaluation.taskCompletion + evaluation.persuasiveness) / 5),
+      appropriateness: evaluation.appropriateness || 5,
+      contextResponse: evaluation.contextResponse || 5,
+      overallScore: evaluation.overallScore || Math.round((evaluation.grammar + evaluation.vocabulary + evaluation.fluency + evaluation.appropriateness + evaluation.contextResponse) / 5),
       languageLevel: evaluation.languageLevel || level,
-      detailedFeedback: evaluation.detailedFeedback || 'Gute Leistung im Dialog.',
+      detailedFeedback: evaluation.detailedFeedback || 'Gute sprachliche Leistung im Dialog.',
       errors: evaluation.errors || [],
       strengths: evaluation.strengths || [],
       improvements: evaluation.improvements || [],
@@ -749,15 +768,15 @@ Respond in JSON format:
       grammar: baseScore,
       vocabulary: baseScore,
       fluency: baseScore,
-      taskCompletion: baseScore,
-      persuasiveness: baseScore - 1,
+      appropriateness: baseScore,
+      contextResponse: baseScore,
       overallScore: baseScore,
       languageLevel: level,
-      detailedFeedback: 'Gute Leistung! Du hast aktiv am Gespräch teilgenommen und die Herausforderung angenommen. Die KI-Bewertung war nicht verfügbar, daher wurde eine Basis-Bewertung erstellt.',
+      detailedFeedback: 'Gute sprachliche Leistung! Du hast aktiv am Gespräch teilgenommen und angemessen auf die Situation reagiert. Die KI-Bewertung war nicht verfügbar, daher wurde eine Basis-Bewertung erstellt.',
       errors: [],
-      strengths: ['Aktive Teilnahme am Dialog', 'Bemühung, die Situation zu lösen'],
-      improvements: ['Verwende vollständigere Sätze', 'Versuche, mehr Details einzubauen'],
-      tips: ['Versuche vollständige Sätze zu bilden', 'Nutze Konjunktionen wie "because", "although", "however"']
+      strengths: ['Aktive Teilnahme am Dialog', 'Angemessene Reaktionen auf die Situation'],
+      improvements: ['Verwende vollständigere Sätze', 'Versuche, mehr Variationen in deinen Formulierungen zu nutzen'],
+      tips: ['Nutze Konjunktionen wie "because", "although", "however"', 'Verwende höfliche Formulierungen mit "would", "could", "may"']
     };
   }
 }

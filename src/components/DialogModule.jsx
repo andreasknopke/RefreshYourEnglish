@@ -426,13 +426,13 @@ function DialogModule({ user }) {
                   </div>
                   
                   <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-orange-200">
-                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Aufgabenlösung</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-orange-600">{evaluation.taskCompletion}/10</p>
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Angemessenheit</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-orange-600">{evaluation.appropriateness}/10</p>
                   </div>
                   
-                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-red-200">
-                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Überzeugungskraft</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-red-600">{evaluation.persuasiveness}/10</p>
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-teal-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Kontext</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-teal-600">{evaluation.contextResponse}/10</p>
                   </div>
                 </div>
                 
