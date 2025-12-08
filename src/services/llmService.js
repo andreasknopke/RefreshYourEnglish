@@ -674,6 +674,28 @@ WHAT NOT TO EVALUATE:
 
 IMPORTANT: Only evaluate the STUDENT's messages. Do NOT evaluate the conversation partner's (assistant's) messages.
 
+CRITICAL ERROR IDENTIFICATION RULES:
+⚠️ ONLY mark something as an error if it is OBJECTIVELY WRONG
+⚠️ DO NOT mark stylistic preferences as errors
+⚠️ DO NOT mark correct grammar as errors just because an alternative exists
+⚠️ DO NOT mark punctuation that YOU added (like quotation marks) as student errors
+⚠️ DO NOT mark valid alternative phrasings as errors
+
+EXAMPLES OF WHAT IS AN ERROR:
+✅ "He go to school" → REAL ERROR (subject-verb agreement)
+✅ "I have went" → REAL ERROR (incorrect past participle)
+✅ "buisy" instead of "busy" → REAL ERROR (spelling)
+✅ "Me and him goes" → REAL ERROR (multiple errors)
+
+EXAMPLES OF WHAT IS NOT AN ERROR:
+❌ "shows" in "app that shows me" → CORRECT (3rd person singular)
+❌ Quotation marks in dialogue → CORRECT (if properly used)
+❌ "I would ask you" vs "I'd ask you" → BOTH CORRECT (style choice)
+❌ "but" at start of sentence → CORRECT (acceptable in modern English)
+
+BE CONSERVATIVE: If you're not 100% certain something is wrong, DO NOT mark it as an error.
+Empty "errors" array is better than false positives!
+
 EVALUATION CRITERIA:
 
 1. GRAMMAR (1-10): Accuracy of verb tenses, subject-verb agreement, articles, prepositions, sentence structure
@@ -683,16 +705,18 @@ EVALUATION CRITERIA:
 5. CONTEXT RESPONSE (1-10): Does the student respond relevantly to the situation? Uses language that fits the scenario?
 
 DETAILED ANALYSIS:
-- Identify SPECIFIC grammatical errors in STUDENT's messages with corrections
+- Identify ONLY REAL, OBJECTIVE grammatical/spelling errors in STUDENT's messages
 - Highlight excellent phrases or expressions the STUDENT used
 - Provide actionable LANGUAGE improvement suggestions (NOT argument improvements)
 - Assess overall language level (A1, A2, B1, B2, C1, C2)
 
 FEEDBACK EXAMPLES:
-✅ GOOD: "Verwende 'would have done' statt 'would do' für hypothetische Vergangenheit"
-✅ GOOD: "Nutze höflichere Formulierungen wie 'I would appreciate if...' statt 'You must...'"
-❌ BAD: "Deine Argumente waren nicht überzeugend genug"
-❌ BAD: "Du hättest mehr Beweise für deine Position liefern sollen"
+✅ GOOD: "Schreibfehler: 'buisy' sollte 'busy' heißen"
+✅ GOOD: "Zeitform: Nutze 'has been' statt 'have been' bei 3. Person Singular"
+✅ GOOD: "Verwende höflichere Formulierungen wie 'Could you...' statt 'Can you...'"
+❌ BAD: "Das Verb 'shows' ist falsch" (wenn es korrekt ist!)
+❌ BAD: "Die Anführungszeichen sind falsch platziert" (wenn sie korrekt sind!)
+❌ BAD: "Deine Argumente waren nicht überzeugend"
 
 ALL FEEDBACK MUST BE IN GERMAN.
 
@@ -708,9 +732,9 @@ Respond in JSON format:
   "detailedFeedback": "Comprehensive LANGUAGE feedback in German (3-4 sentences, focus on language skills)",
   "errors": [
     {
-      "original": "exact student phrase with error",
+      "original": "exact student phrase with REAL error (NOT stylistic issues)",
       "correction": "corrected version",
-      "explanation": "explanation in German why this is linguistically wrong"
+      "explanation": "explanation in German why this is objectively wrong"
     }
   ],
   "strengths": ["language strength 1 in German", "language strength 2 in German"],
