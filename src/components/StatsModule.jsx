@@ -17,20 +17,26 @@ function StatsModule({ user }) {
   const loadAllStats = async () => {
     setLoading(true);
     try {
-      const [progress, flashcards, actionReviews, gamification] = await Promise.all([
+      // Lade Stats einzeln mit Fehlerbehandlung für jeden Endpoint
+      const [progress, flashcards, actionReviews, gamification] = await Promise.allSettled([
         apiService.getStats(),
         apiService.getFlashcardStats(),
         apiService.getActionReviewStats(),
         apiService.getGamificationStats(),
       ]);
 
-      console.log('📊 Stats loaded:', { progress, flashcards, actionReviews, gamification });
+      console.log('📊 Stats loaded:', { 
+        progress: progress.status === 'fulfilled' ? progress.value : null,
+        flashcards: flashcards.status === 'fulfilled' ? flashcards.value : null,
+        actionReviews: actionReviews.status === 'fulfilled' ? actionReviews.value : null,
+        gamification: gamification.status === 'fulfilled' ? gamification.value : null,
+      });
 
       setStats({
-        progress,
-        flashcards,
-        actionReviews,
-        gamification,
+        progress: progress.status === 'fulfilled' ? progress.value : { overall: {}, recent: [] },
+        flashcards: flashcards.status === 'fulfilled' ? flashcards.value : {},
+        actionReviews: actionReviews.status === 'fulfilled' ? actionReviews.value : {},
+        gamification: gamification.status === 'fulfilled' ? gamification.value : {},
       });
     } catch (error) {
       console.error('Failed to load statistics:', error);
@@ -107,6 +113,19 @@ function StatsModule({ user }) {
           </button>
         </div>
       </div>
+
+      {/* Warnung wenn Progress-Daten fehlen */}
+      {totalWords === 0 && totalExercises === 0 && (
+        <div className="glass-card rounded-2xl p-4 bg-yellow-50 border-2 border-yellow-200">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">ℹ️</span>
+            <div>
+              <p className="font-semibold text-gray-800">Noch keine Vokabel-Daten</p>
+              <p className="text-sm text-gray-600">Beginne mit dem Lernen, um hier deine Fortschritte zu sehen!</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Gamification Overview */}
       <div className="grid md:grid-cols-4 gap-4">
