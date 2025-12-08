@@ -479,11 +479,6 @@ function DialogModule({ user }) {
                 )}
               </div>
             )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
             
             {isEvaluating && (
               <div className="glass-card rounded-2xl p-3 sm:p-4 md:p-6 mb-2 sm:mb-3 md:mb-4 text-center">

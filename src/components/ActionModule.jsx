@@ -442,7 +442,7 @@ function ActionModule({ user }) {
                 <p className="text-xs sm:text-sm text-gray-600 mt-2">{loadError}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="mt-3 sm:mt-4 px-4 py-2 text-sm bg-indigo-500 text-white rounded-lg hover:bg-indigo-600">
+                  className="mt-3 sm:mt-4 px-4 py-2 text-sm bg-indigo-500 text-white rounded-lg hover:bg-indigo-600"
                 >
                   Neu laden
                 </button>
@@ -480,7 +480,7 @@ function ActionModule({ user }) {
                 <button
                   onClick={startGame}
                   disabled={isLoadingVocabulary || vocabulary.length === 0}
-                  className="btn-secondary text-base sm:text-lg py-2 sm:py-3 px-6 sm:px-8 disabled:opacity-50 disabled:cursor-not-allowed">
+                  className="btn-secondary text-base sm:text-lg py-2 sm:py-3 px-6 sm:px-8 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   🚀 Start
                 </button>
