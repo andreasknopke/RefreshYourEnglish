@@ -5,6 +5,7 @@ import DialogModule from './components/DialogModule';
 import VocabularyTrainer from './components/VocabularyTrainer';
 import VocabularyLibrary from './components/VocabularyLibrary';
 import SettingsModule from './components/SettingsModule';
+import StatsModule from './components/StatsModule';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import VerifyEmail from './components/VerifyEmail';
@@ -96,6 +97,17 @@ function App() {
       <div className="container mx-auto px-3 py-4 relative z-10">
         {/* User Info / Login Button / Settings */}
         <div className="flex justify-end mb-3 gap-2">
+          {/* Stats Button */}
+          {user && (
+            <button
+              onClick={() => setActiveModule('stats')}
+              className="glass-card px-4 py-3 rounded-2xl font-bold text-gray-700 hover:text-purple-600 hover:scale-105 transition-all"
+              title="Statistiken"
+            >
+              📊
+            </button>
+          )}
+          
           {/* Settings Button */}
           <button
             onClick={() => setActiveModule('settings')}
@@ -134,7 +146,9 @@ function App() {
         {user && <GamificationBanner user={user} />}
 
         {!activeModule ? (
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="max-w-7xl mx-auto">
+            {/* Hauptmodule Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -265,6 +279,40 @@ function App() {
               </button>
             </div>
           </div>
+
+          {/* Statistik Modul - Volle Breite Card */}
+          {user && (
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-600 rounded-xl shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  
+                  <div className="relative z-10">
+                    <h2 className="text-xl font-bold text-gray-800 mb-1">
+                      Statistiken & Fortschritt
+                    </h2>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      Deine ausführlichen Lernstatistiken, Erfolge und Fortschrittsanalyse
+                    </p>
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => setActiveModule('stats')}
+                  className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 text-white font-semibold text-sm py-3 px-8 rounded-lg hover:scale-105 transition-all relative z-10 shadow-lg"
+                >
+                  <span className="relative z-10">Anzeigen →</span>
+                </button>
+              </div>
+            </div>
+          )}
+          </div>
         ) : (
           <div className="animate-fade-in">
             <button
@@ -283,6 +331,7 @@ function App() {
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
+            {activeModule === 'stats' && <StatsModule user={user} />}
           </div>
         )}
 
