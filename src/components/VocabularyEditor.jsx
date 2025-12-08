@@ -46,7 +46,15 @@ function VocabularyEditor({ vocabulary, onUpdate, onDelete, onClose, onAddedToTr
       onUpdate(updated);
       setIsEditing(false);
     } catch (err) {
-      setError(err.message || 'Fehler beim Speichern');
+      console.error('Save vocabulary error:', err);
+      const errorMessage = err.message || 'Fehler beim Speichern';
+      
+      // Check if it's an auth error
+      if (errorMessage.includes('token') || errorMessage.includes('Invalid') || errorMessage.includes('expired')) {
+        setError('Session abgelaufen. Bitte melde dich erneut an.');
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setIsSaving(false);
     }

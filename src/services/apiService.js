@@ -2,11 +2,11 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 class ApiService {
   constructor() {
-    this.token = localStorage.getItem('authToken');
+    // Don't store token in instance, always read from localStorage
+    // This ensures we always have the latest token
   }
 
   setToken(token) {
-    this.token = token;
     if (token) {
       localStorage.setItem('authToken', token);
     } else {
@@ -14,12 +14,17 @@ class ApiService {
     }
   }
 
+  getToken() {
+    return localStorage.getItem('authToken');
+  }
+
   getAuthHeaders() {
     const headers = {
       'Content-Type': 'application/json',
     };
-    if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`;
+    const token = this.getToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
     }
     return headers;
   }
@@ -49,10 +54,10 @@ class ApiService {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
-        // Check if user needs to re-authenticate
-        if (errorData.requiresReauth || response.status === 401) {
-          console.warn('Session invalid, logging out user');
-          this.logout();
+        // Check if user needs to re-authenticate (401 or 403)
+        if (errorData.requiresReauth || response.status === 401 || response.status === 403) {
+          console.warn('Session invalid or expired, logging out user');
+          this.setToken(null);
           window.dispatchEvent(new CustomEvent('auth-required', { detail: errorData }));
         }
         
