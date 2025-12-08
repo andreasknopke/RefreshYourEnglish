@@ -229,14 +229,19 @@ router.get('/stats', authenticateToken, (req, res) => {
       WHERE user_id = ?
     `).get(userId);
 
-    // Stats aus Action Mode Reviews
-    const actionReviewStats = db.prepare(`
-      SELECT 
-        COUNT(*) as total_reviews,
-        COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_words
-      FROM action_mode_reviews
-      WHERE user_id = ?
-    `).get(userId);
+    // Stats aus Action Mode Reviews (mit try-catch falls Tabelle nicht existiert)
+    let actionReviewStats = { total_reviews: 0, reviewed_words: 0 };
+    try {
+      actionReviewStats = db.prepare(`
+        SELECT 
+          COUNT(*) as total_reviews,
+          COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_words
+        FROM action_mode_reviews
+        WHERE user_id = ?
+      `).get(userId) || actionReviewStats;
+    } catch (tableError) {
+      console.log('action_mode_reviews table not found, using defaults');
+    }
 
     // Kombiniere die Stats mit sicheren Defaults
     const totalCorrect = (vocabStats?.total_correct || 0) + (sessionStats?.session_correct || 0);
