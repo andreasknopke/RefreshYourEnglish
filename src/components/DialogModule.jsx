@@ -382,44 +382,90 @@ function DialogModule({ user }) {
             {/* Evaluation Section */}
             {evaluation && (
               <div className="glass-card rounded-2xl p-3 sm:p-4 md:p-6 mb-2 sm:mb-3 md:mb-4 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 md:mb-4 flex items-center gap-2">
-                  📊 Bewertung deiner Performance
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center gap-2">
+                  📊 Ausführliche Bewertung
                 </h3>
                 
-                <div className="grid grid-cols-3 gap-2 mb-2 sm:mb-3 md:mb-4">
-                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-blue-200">
-                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">KORREKTHEIT</p>
-                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">{evaluation.correctness}/10</p>
+                {/* Overall Score - Prominently Displayed */}
+                <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 sm:p-6 mb-4 text-center text-white shadow-xl">
+                  <p className="text-sm sm:text-base font-semibold mb-2">Gesamtwertung</p>
+                  <p className="text-5xl sm:text-6xl md:text-7xl font-bold">{evaluation.overallScore}/10</p>
+                  <p className="text-sm sm:text-base mt-2 opacity-90">Niveau: {evaluation.languageLevel}</p>
+                </div>
+                
+                {/* Detailed Scores Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-4">
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-blue-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Grammatik</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-blue-600">{evaluation.grammar}/10</p>
                   </div>
-                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-purple-200">
-                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">ANGEMESSENHEIT</p>
-                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-purple-600">{evaluation.appropriateness}/10</p>
+                  
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-purple-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Wortschatz</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-purple-600">{evaluation.vocabulary}/10</p>
                   </div>
-                  <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 border-2 border-indigo-200">
-                    <p className="text-[9px] sm:text-xs font-bold text-gray-500 mb-0.5 sm:mb-1">NIVEAU</p>
-                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-indigo-600">{evaluation.languageLevel}</p>
+                  
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-green-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Flüssigkeit</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-green-600">{evaluation.fluency}/10</p>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-orange-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Aufgabenlösung</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-orange-600">{evaluation.taskCompletion}/10</p>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl p-2 sm:p-3 text-center border-2 border-red-200">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-600 mb-1">Überzeugungskraft</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-red-600">{evaluation.persuasiveness}/10</p>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-xl p-2 sm:p-3 md:p-4 mb-2 sm:mb-3 md:mb-4">
-                  <p className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">💬 Feedback:</p>
-                  <p className="text-gray-700 text-sm">{evaluation.feedback}</p>
+                {/* Detailed Feedback */}
+                <div className="bg-blue-50 rounded-xl p-3 sm:p-4 mb-3 border-2 border-blue-200">
+                  <p className="font-bold text-gray-800 mb-2 text-sm sm:text-base">📝 Detailliertes Feedback:</p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{evaluation.detailedFeedback}</p>
                 </div>
                 
+                {/* Strengths */}
+                {evaluation.strengths && evaluation.strengths.length > 0 && (
+                  <div className="bg-green-50 rounded-xl p-3 sm:p-4 mb-3 border-2 border-green-200">
+                    <p className="font-bold text-gray-800 mb-2 text-sm sm:text-base">✅ Stärken:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      {evaluation.strengths.map((strength, index) => (
+                        <li key={index} className="text-gray-700 text-sm">{strength}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* Improvements */}
+                {evaluation.improvements && evaluation.improvements.length > 0 && (
+                  <div className="bg-orange-50 rounded-xl p-3 sm:p-4 mb-3 border-2 border-orange-200">
+                    <p className="font-bold text-gray-800 mb-2 text-sm sm:text-base">📈 Verbesserungspotenzial:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      {evaluation.improvements.map((improvement, index) => (
+                        <li key={index} className="text-gray-700 text-sm">{improvement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* Tips */}
                 {evaluation.tips && evaluation.tips.length > 0 && (
-                  <div className="bg-yellow-50 rounded-xl p-2 sm:p-3 md:p-4 border-2 border-yellow-200">
-                    <p className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">💡 Tipps für das nächste Mal:</p>
-                    <ul className="list-disc list-inside space-y-0.5 sm:space-y-1">
+                  <div className="bg-yellow-50 rounded-xl p-3 sm:p-4 border-2 border-yellow-200">
+                    <p className="font-bold text-gray-800 mb-2 text-sm sm:text-base">💡 Praktische Tipps:</p>
+                    <ul className="list-disc list-inside space-y-1">
                       {evaluation.tips.map((tip, index) => (
-                        <li key={index} className="text-gray-700 text-xs sm:text-sm">{tip}</li>
+                        <li key={index} className="text-gray-700 text-sm">{tip}</li>
                       ))}
                     </ul>
                   </div>
                 )}
                 
                 {/* Zeitgutschrift Anzeige */}
-                {user && (evaluation.correctness >= 7 || evaluation.appropriateness >= 7) && (
-                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-2 sm:p-3 md:p-4 border-2 border-indigo-300 mt-2 sm:mt-3 md:mt-4">
+                {user && evaluation.overallScore >= 7 && (
+                  <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-3 sm:p-4 border-2 border-indigo-300 mt-4">
                     <div className="flex items-center gap-2 sm:gap-3">
                       <span className="text-2xl sm:text-3xl">🎉</span>
                       <div>
@@ -428,6 +474,11 @@ function DialogModule({ user }) {
                           +5 Minuten Zeitgutschrift für deine gute Performance!
                         </p>
                       </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
                     </div>
                   </div>
                 )}

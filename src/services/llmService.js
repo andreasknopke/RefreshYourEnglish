@@ -483,6 +483,13 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
     return getFallbackScenario(level, topic);
   }
   
+  // Level-specific instructions for challenging scenarios
+  const levelInstructions = {
+    B2: 'Create a CHALLENGING situation where the student must handle a conflict, complaint, or difficult request. They should need to negotiate, explain, or defend their position.',
+    C1: 'Create a COMPLEX situation involving nuanced arguments, ethical dilemmas, or professional conflicts. The student must use sophisticated language to persuade, negotiate, or resolve tensions.',
+    C2: 'Create a HIGHLY COMPLEX situation with abstract concepts, philosophical debates, or high-stakes professional scenarios. The student must demonstrate mastery of formal language, rhetoric, and subtle argumentation.'
+  };
+  
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -494,13 +501,30 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `You are an English teacher creating conversation scenarios for German learners. Create a realistic conversation scenario at ${level} level about "${topic}". CRITICAL: The "firstMessage" MUST be in English only, as the student needs to practice English. The "description" should be in German to help them understand the context. Respond in JSON format: {"description": "German description of the scenario", "firstMessage": "First message in ENGLISH to start the conversation"}`
+          content: `You are an English teacher creating CHALLENGING conversation scenarios for German learners.
+
+${levelInstructions[level]}
+
+Topic: "${topic}"
+Level: ${level}
+
+REQUIREMENTS:
+- The scenario must present a PROBLEM or CONFLICT that requires active problem-solving
+- The student must DEFEND, NEGOTIATE, EXPLAIN, or PERSUADE
+- Examples: handling complaints, resolving misunderstandings, negotiating deals, defending opinions, explaining complex situations
+- Avoid simple question-answer exchanges or basic small talk
+
+CRITICAL: 
+- "firstMessage" MUST be in English only (the conversation partner's opening statement presenting the challenge)
+- "description" in German (brief explanation of the situation and student's role)
+
+Respond in JSON format: {"description": "German description", "firstMessage": "Challenging opening in ENGLISH"}`
         }, {
           role: 'user',
-          content: `Create a new conversation scenario at ${level} level about "${topic}". Remember: firstMessage MUST be in English!`
+          content: `Create a challenging conversation scenario at ${level} level about "${topic}". The student should face a difficult situation requiring active language use.`
         }],
-        temperature: 0.8,
-        max_tokens: 200
+        temperature: 0.9,
+        max_tokens: 250
       })
     });
     
@@ -529,17 +553,20 @@ export async function generateDialogResponse(scenario, conversationHistory, leve
     const messages = [
       {
         role: 'system',
-        content: `You are a conversation partner in the following scenario: ${scenario.description}. 
+        content: `You are a conversation partner in a CHALLENGING scenario: ${scenario.description}
 
 CRITICAL RULES:
 1. You MUST respond ONLY in English - never use German or any other language
-2. Stay strictly within the scenario context: ${scenario.description}
-3. Refer to and build upon the user's previous messages
-4. Match the language level: ${level}
-5. Be natural and conversational, but stay in character
-6. If the user goes off-topic, gently guide them back to the scenario
+2. Stay strictly in character and maintain the CONFLICT or CHALLENGE of the scenario
+3. DO NOT make it easy - push back, question, or challenge the student's responses
+4. If they provide weak arguments, point out flaws or inconsistencies
+5. Make them WORK for a resolution - don't accept the first answer
+6. Reference their previous statements to test their consistency
+7. Match the language level: ${level}
+8. Keep responses focused and challenging (2-4 sentences max)
+9. If the user goes off-topic, firmly redirect them to the scenario
 
-Respond naturally in English while staying in the scenario context.`
+Your goal: Make the student demonstrate their language skills by DEFENDING, NEGOTIATING, or PERSUADING.`
       },
       ...conversationHistory.map(msg => ({
         role: msg.role === 'user' ? 'user' : 'assistant',
@@ -556,7 +583,7 @@ Respond naturally in English while staying in the scenario context.`
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
         messages,
-        temperature: 0.7,
+        temperature: 0.8,
         max_tokens: 150
       })
     });
@@ -670,73 +697,144 @@ Respond in JSON format:
  */
 function getFallbackScenario(level, topic = 'Alltag') {
   const scenarios = {
-    'Politik': [
-      {
-        description: "Political discussion at a town hall meeting",
-        firstMessage: "Hello! I'm interested in hearing your thoughts on the upcoming local elections. What issues matter most to you?"
-      },
-      {
-        description: "Debate about environmental policies",
-        firstMessage: "Good afternoon! I'm conducting a survey about environmental policies. Do you have a few minutes to share your opinion?"
-      }
-    ],
-    'Sport': [
-      {
-        description: "At a sports club registration desk",
-        firstMessage: "Welcome to our sports club! Are you interested in joining any particular sport or fitness program?"
-      },
-      {
-        description: "Discussion about a recent sporting event",
-        firstMessage: "Did you watch the big game yesterday? What did you think about the final result?"
-      }
-    ],
-    'Literatur': [
-      {
-        description: "At a bookstore or library",
-        firstMessage: "Hello! I see you're browsing the literature section. Are you looking for anything specific today?"
-      },
-      {
-        description: "Book club discussion",
-        firstMessage: "Welcome to our book club! Have you read this month's selection yet? What are your initial thoughts?"
-      }
-    ],
-    'Film, Musik, Kunst': [
-      {
-        description: "At a museum or art gallery",
-        firstMessage: "Good afternoon! I'm the gallery guide. Would you like to hear about the current exhibition?"
-      },
-      {
-        description: "Discussion about a new movie release",
-        firstMessage: "Hi! I heard you just saw the new movie everyone's talking about. What did you think of it?"
-      }
-    ],
-    'Alltag': [
-      {
-        description: "At a job interview",
-        firstMessage: "Good morning! Thank you for coming in today. Could you start by telling me a bit about yourself and your background?"
-      },
-      {
-        description: "At a restaurant",
-        firstMessage: "Good evening! Welcome to our restaurant. Have you dined with us before, or is this your first visit?"
-      },
-      {
-        description: "At a doctor's office",
-        firstMessage: "Hello, I'm the receptionist. How can I help you today? Do you need to schedule an appointment?"
-      }
-    ],
-    'Persönliche Gespräche': [
-      {
-        description: "Meeting an old friend",
-        firstMessage: "Hey! It's been so long! How have you been? What have you been up to lately?"
-      },
-      {
-        description: "Getting to know a new neighbor",
-        firstMessage: "Hi there! I just moved in next door. I wanted to introduce myself and say hello!"
-      }
-    ]
+    'B2': {
+      'Politik': [
+        {
+          description: "Du bist auf einer Bürgerversammlung. Ein aufgebrachter Anwohner beschuldigt dich, für ein lokales Problem verantwortlich zu sein. Du musst dich verteidigen und die Situation klären.",
+          firstMessage: "Excuse me, I need to talk to you! I've heard that you're part of the committee that approved the new parking regulations. Do you realize how much trouble this has caused for local residents? My elderly mother can't park near her own house anymore! What were you thinking?"
+        },
+        {
+          description: "Als Stadtratsmitglied musst du einem wütenden Geschäftsinhaber erklären, warum seine Steuererhöhung gerechtfertigt ist.",
+          firstMessage: "I just received my new tax bill and it's completely outrageous! How can you justify a 30% increase? This will force me to close my business. I demand an explanation!"
+        }
+      ],
+      'Sport': [
+        {
+          description: "Du hast dich für einen Marathonlauf angemeldet, aber die Organisation hat deinen Namen vergessen. Überzeuge sie, dich noch teilnehmen zu lassen.",
+          firstMessage: "I'm sorry, but your name isn't on our list. The registration closed three weeks ago. I'm afraid we can't let you participate without proper registration."
+        },
+        {
+          description: "Im Fitnessstudio beschwert sich ein anderes Mitglied, dass du zu laut trainierst. Verteidige dein Training.",
+          firstMessage: "Excuse me, but you're making way too much noise with those weights! Other people are trying to concentrate. Could you please be more considerate?"
+        }
+      ],
+      'Literatur': [
+        {
+          description: "In einer Buchhandlung wird dir vorgeworfen, ein Buch beschädigt zu haben, das du gar nicht angefasst hast.",
+          firstMessage: "Sir/Madam, I saw you handling that book earlier, and now there's a torn page. You'll need to pay for the damage."
+        },
+        {
+          description: "In deinem Buchclub kritisiert jemand scharf dein Lieblingsbuch. Verteidige deine Position.",
+          firstMessage: "I honestly can't understand why you like this book so much. The characters are shallow, the plot is predictable, and the writing style is mediocre at best. What could you possibly see in it?"
+        }
+      ],
+      'Film, Musik, Kunst': [
+        {
+          description: "Du hast Konzertkarten online gekauft, aber an der Kasse behauptet man, sie seien gefälscht. Beweise, dass sie echt sind.",
+          firstMessage: "I'm sorry, but these tickets don't scan properly. They appear to be counterfeit. I can't let you enter with these."
+        },
+        {
+          description: "Im Kino sitzt jemand auf deinem reservierten Platz und weigert sich aufzustehen.",
+          firstMessage: "What do you mean this is your seat? I've been sitting here for ten minutes already. Maybe you should check your ticket again."
+        }
+      ],
+      'Alltag': [
+        {
+          description: "Dein Nachbar beschwert sich über den Lärm von deiner Party gestern Abend. Rechtfertige dich und finde eine Lösung.",
+          firstMessage: "I need to talk to you about last night. Your party was incredibly loud until 2 AM! I couldn't sleep at all, and I have important work today. This is completely unacceptable!"
+        },
+        {
+          description: "Im Restaurant behauptet der Kellner, du hättest ein Glas zerbrochen und verlangt Bezahlung.",
+          firstMessage: "Excuse me, one of our servers saw you knock over a wine glass. That will be €15 for the replacement. Would you like to pay cash or card?"
+        }
+      ],
+      'Persönliche Gespräche': [
+        {
+          description: "Ein Freund ist sauer, weil du eine Verabredung vergessen hast. Entschuldige dich und erkläre die Situation.",
+          firstMessage: "I can't believe you just didn't show up yesterday! I waited for an hour at the restaurant. You didn't even call or text. What kind of friend does that?"
+        },
+        {
+          description: "Dein Mitbewohner beschuldigt dich, seine Lebensmittel aus dem Kühlschrank gegessen zu haben.",
+          firstMessage: "Hey, I need to talk to you. My expensive cheese and the leftover pizza I was saving are gone. I'm pretty sure you ate them. Can you explain this?"
+        }
+      ]
+    },
+    'C1': {
+      'Politik': [
+        {
+          description: "In einer Debatte musst du eine umstrittene politische Entscheidung gegen heftige Kritik verteidigen.",
+          firstMessage: "Your proposal to increase funding for renewable energy is economically irresponsible. We're already in debt, and you want to burden taxpayers even more? How can you justify prioritizing environmental concerns over economic stability when families are struggling to make ends meet?"
+        },
+        {
+          description: "Als Berater musst du einem skeptischen Investor erklären, warum er in ein riskantes Sozialprojekt investieren sollte.",
+          firstMessage: "I've reviewed your proposal, and frankly, the ROI projections seem overly optimistic. You're asking me to invest substantial capital in a social housing project with uncertain returns. Why should I risk my money on this when there are safer investment opportunities available?"
+        }
+      ],
+      'Sport': [
+        {
+          description: "Du musst als Teamkapitän einen talentierten, aber problematischen Spieler aus dem Team ausschließen und diese Entscheidung rechtfertigen.",
+          firstMessage: "I've just heard that you're removing our best player from the team before the championship! His statistics are outstanding. How can you possibly justify this decision? Are you trying to sabotage our chances of winning?"
+        }
+      ],
+      'Literatur': [
+        {
+          description: "In einer akademischen Diskussion musst du deine kontroverse These über einen klassischen Autor gegen Literaturprofessoren verteidigen.",
+          firstMessage: "Your interpretation completely contradicts decades of established literary criticism. You're suggesting that the author's intentions were fundamentally different from what scholars have conclusively demonstrated. What evidence could you possibly have to support such a radical reinterpretation?"
+        }
+      ],
+      'Film, Musik, Kunst': [
+        {
+          description: "Als Kurator musst du die Entscheidung verteidigen, ein kontroverses Kunstwerk auszustellen, das viele als anstößig empfinden.",
+          firstMessage: "I'm deeply disturbed that you've chosen to display this piece in our gallery. It's offensive to many members of our community and doesn't align with our institution's values. How can you defend this decision when it clearly prioritizes shock value over artistic merit?"
+        }
+      ],
+      'Alltag': [
+        {
+          description: "Bei einer Gehaltsverhandlung lehnt dein Chef deine Forderung ab und argumentiert, dass du sie nicht verdienst.",
+          firstMessage: "I appreciate your interest in a salary increase, but I have to be frank with you. Your performance this year hasn't met expectations. You've missed several deadlines, and the quality of your work has been inconsistent. Why should I approve a raise when your contributions don't justify it?"
+        },
+        {
+          description: "Du musst einem Vermieter erklären, warum du die Miete diesen Monat nicht zahlen kannst, ohne die Wohnung zu verlieren.",
+          firstMessage: "This is the second time this year you're asking for an extension on rent. I'm running a business, not a charity. I have mortgage payments to make. If you can't meet your obligations, I'll have to consider other tenants who can."
+        }
+      ],
+      'Persönliche Gespräche': [
+        {
+          description: "Ein enger Freund konfrontiert dich mit dem Vorwurf, hinter seinem Rücken über ihn geredet zu haben.",
+          firstMessage: "I need to address something serious. Multiple people have told me that you've been spreading rumors about my personal life. I trusted you with confidential information, and now I find out you've been gossiping about me. How could you betray my trust like this?"
+        }
+      ]
+    },
+    'C2': {
+      'Politik': [
+        {
+          description: "In einer hochrangigen Debatte musst du ein komplexes ethisches Dilemma zur Privatsphäre vs. nationale Sicherheit argumentieren.",
+          firstMessage: "Your argument for unrestricted civil liberties fundamentally ignores the existential security threats we face. In an era of sophisticated terrorism and cyber warfare, your idealistic position could cost lives. How do you reconcile your philosophical principles with the pragmatic reality that surveillance has demonstrably prevented attacks?"
+        }
+      ],
+      'Literatur': [
+        {
+          description: "Du musst eine radikale postmoderne Interpretation eines kanonischen Werkes gegen traditionelle Literaturwissenschaftler verteidigen.",
+          firstMessage: "Your deconstructionist approach fundamentally undermines the authorial intentionality that gives literature its meaning. By reducing the text to an endless play of signifiers, you're essentially arguing that literary criticism is a solipsistic exercise. How can you defend a methodology that renders objective textual analysis impossible?"
+        }
+      ],
+      'Alltag': [
+        {
+          description: "Als Führungskraft musst du eine unpopuläre Umstrukturierung rechtfertigen, die Entlassungen bedeutet.",
+          firstMessage: "Your restructuring plan will destroy the careers of dozens of loyal employees who've given years to this company. You're prioritizing short-term profitability over human welfare. How can you ethically justify these decisions when alternative solutions, though more complex, might preserve jobs?"
+        }
+      ],
+      'Persönliche Gespräche': [
+        {
+          description: "In einem philosophischen Streit musst du deine fundamentale Weltanschauung gegen intensive intellektuelle Kritik verteidigen.",
+          firstMessage: "Your entire moral framework rests on assumptions that you haven't adequately justified. You claim objective ethical principles exist, yet you can't ground them in anything beyond subjective preference. Your position collapses under scrutiny - how do you respond to the fundamental circularity in your reasoning?"
+        }
+      ]
+    }
   };
   
-  const topicScenarios = scenarios[topic] || scenarios['Alltag'];
+  const levelScenarios = scenarios[level] || scenarios['B2'];
+  const topicScenarios = levelScenarios[topic] || levelScenarios['Alltag'];
   return topicScenarios[Math.floor(Math.random() * topicScenarios.length)];
 }
 
