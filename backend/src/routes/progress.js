@@ -201,10 +201,10 @@ router.get('/stats', authenticateToken, (req, res) => {
     const sessionStats = db.prepare(`
       SELECT 
         COUNT(DISTINCT ts.id) as total_sessions,
-        SUM(ts.correct_answers) as session_correct,
-        SUM(ts.total_answers) as session_questions,
-        AVG(ts.score) as avg_score,
-        SUM(ts.duration_seconds) as total_time_seconds
+        COALESCE(SUM(ts.correct_answers), 0) as session_correct,
+        COALESCE(SUM(ts.total_answers), 0) as session_questions,
+        COALESCE(AVG(ts.score), 0) as avg_score,
+        COALESCE(SUM(ts.duration_seconds), 0) as total_time_seconds
       FROM training_sessions ts
       WHERE ts.user_id = ? AND ts.completed_at IS NOT NULL
     `).get(userId);
@@ -213,9 +213,9 @@ router.get('/stats', authenticateToken, (req, res) => {
     const vocabStats = db.prepare(`
       SELECT 
         COUNT(DISTINCT vocabulary_id) as total_words,
-        SUM(times_correct) as total_correct,
-        SUM(times_incorrect) as total_incorrect,
-        SUM(times_correct + times_incorrect) as total_attempts
+        COALESCE(SUM(times_correct), 0) as total_correct,
+        COALESCE(SUM(times_incorrect), 0) as total_incorrect,
+        COALESCE(SUM(times_correct + times_incorrect), 0) as total_attempts
       FROM user_progress
       WHERE user_id = ?
     `).get(userId);
@@ -224,7 +224,7 @@ router.get('/stats', authenticateToken, (req, res) => {
     const flashcardReviewStats = db.prepare(`
       SELECT 
         COUNT(*) as total_reviews,
-        SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END) as reviewed_cards
+        COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_cards
       FROM flashcard_deck
       WHERE user_id = ?
     `).get(userId);
@@ -233,12 +233,12 @@ router.get('/stats', authenticateToken, (req, res) => {
     const actionReviewStats = db.prepare(`
       SELECT 
         COUNT(*) as total_reviews,
-        SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END) as reviewed_words
+        COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_words
       FROM action_mode_reviews
       WHERE user_id = ?
     `).get(userId);
 
-    // Kombiniere die Stats
+    // Kombiniere die Stats mit sicheren Defaults
     const totalCorrect = (vocabStats?.total_correct || 0) + (sessionStats?.session_correct || 0);
     const totalIncorrect = vocabStats?.total_incorrect || 0;
     const totalQuestions = totalCorrect + totalIncorrect;
@@ -289,7 +289,9 @@ router.get('/stats', authenticateToken, (req, res) => {
     });
   } catch (error) {
     console.error('Get stats error:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error details:', error.message);
+    console.error('Stack:', error.stack);
+    res.status(500).json({ error: 'Server error', details: error.message });
   }
 });
 
