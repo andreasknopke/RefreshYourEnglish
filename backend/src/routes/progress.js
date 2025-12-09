@@ -197,37 +197,60 @@ router.get('/stats', authenticateToken, (req, res) => {
   const userId = req.user.userId;
 
   try {
+    console.log('📊 Getting stats for user:', userId);
+
     // Stats aus training_sessions (wenn vorhanden)
-    const sessionStats = db.prepare(`
-      SELECT 
-        COUNT(DISTINCT ts.id) as total_sessions,
-        COALESCE(SUM(ts.correct_answers), 0) as session_correct,
-        COALESCE(SUM(ts.total_answers), 0) as session_questions,
-        COALESCE(AVG(ts.score), 0) as avg_score,
-        COALESCE(SUM(ts.duration_seconds), 0) as total_time_seconds
-      FROM training_sessions ts
-      WHERE ts.user_id = ? AND ts.completed_at IS NOT NULL
-    `).get(userId);
+    let sessionStats = null;
+    try {
+      sessionStats = db.prepare(`
+        SELECT 
+          COUNT(DISTINCT ts.id) as total_sessions,
+          COALESCE(SUM(ts.correct_answers), 0) as session_correct,
+          COALESCE(SUM(ts.total_answers), 0) as session_questions,
+          COALESCE(AVG(ts.score), 0) as avg_score,
+          COALESCE(SUM(ts.duration_seconds), 0) as total_time_seconds
+        FROM training_sessions ts
+        WHERE ts.user_id = ? AND ts.completed_at IS NOT NULL
+      `).get(userId);
+      console.log('✅ sessionStats:', sessionStats);
+    } catch (err) {
+      console.error('❌ Error getting sessionStats:', err.message);
+      sessionStats = { total_sessions: 0, session_correct: 0, session_questions: 0, avg_score: 0, total_time_seconds: 0 };
+    }
 
     // Stats aus user_progress (tatsächliche Vokabel-Nutzung)
-    const vocabStats = db.prepare(`
-      SELECT 
-        COUNT(DISTINCT vocabulary_id) as total_words,
-        COALESCE(SUM(times_correct), 0) as total_correct,
-        COALESCE(SUM(times_incorrect), 0) as total_incorrect,
-        COALESCE(SUM(times_correct + times_incorrect), 0) as total_attempts
-      FROM user_progress
-      WHERE user_id = ?
-    `).get(userId);
+    let vocabStats = null;
+    try {
+      vocabStats = db.prepare(`
+        SELECT 
+          COUNT(DISTINCT vocabulary_id) as total_words,
+          COALESCE(SUM(times_correct), 0) as total_correct,
+          COALESCE(SUM(times_incorrect), 0) as total_incorrect,
+          COALESCE(SUM(times_correct + times_incorrect), 0) as total_attempts
+        FROM user_progress
+        WHERE user_id = ?
+      `).get(userId);
+      console.log('✅ vocabStats:', vocabStats);
+    } catch (err) {
+      console.error('❌ Error getting vocabStats:', err.message);
+      vocabStats = { total_words: 0, total_correct: 0, total_incorrect: 0, total_attempts: 0 };
+    }
 
     // Stats aus Flashcard Reviews
-    const flashcardReviewStats = db.prepare(`
-      SELECT 
-        COUNT(*) as total_reviews,
-        COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_cards
-      FROM flashcard_deck
-      WHERE user_id = ?
-    `).get(userId);
+    let flashcardReviewStats = null;
+    try {
+      flashcardReviewStats = db.prepare(`
+        SELECT 
+          COUNT(*) as total_reviews,
+          COALESCE(SUM(CASE WHEN repetitions > 0 THEN 1 ELSE 0 END), 0) as reviewed_cards
+        FROM flashcard_deck
+        WHERE user_id = ?
+      `).get(userId);
+      console.log('✅ flashcardReviewStats:', flashcardReviewStats);
+    } catch (err) {
+      console.error('❌ Error getting flashcardReviewStats:', err.message);
+      flashcardReviewStats = { total_reviews: 0, reviewed_cards: 0 };
+    }
 
     // Kombiniere die Stats mit sicheren Defaults
     const totalCorrect = (vocabStats?.total_correct || 0) + (sessionStats?.session_correct || 0);
@@ -254,24 +277,40 @@ router.get('/stats', authenticateToken, (req, res) => {
       action_reviews: 0 // Temporär deaktiviert bis Tabelle auf Production existiert
     };
 
-    const modeStats = db.prepare(`
-      SELECT 
-        mode,
-        COUNT(*) as session_count,
-        AVG(score) as avg_score,
-        SUM(correct_answers) as total_correct,
-        SUM(total_answers) as total_questions
-      FROM training_sessions
-      WHERE user_id = ? AND completed_at IS NOT NULL
-      GROUP BY mode
-    `).all(userId);
+    console.log('📊 Overall stats computed:', overallStats);
 
-    const recentSessions = db.prepare(`
-      SELECT * FROM training_sessions
-      WHERE user_id = ? AND completed_at IS NOT NULL
-      ORDER BY completed_at DESC
-      LIMIT 10
-    `).all(userId);
+    let modeStats = [];
+    try {
+      modeStats = db.prepare(`
+        SELECT 
+          mode,
+          COUNT(*) as session_count,
+          AVG(score) as avg_score,
+          SUM(correct_answers) as total_correct,
+          SUM(total_answers) as total_questions
+        FROM training_sessions
+        WHERE user_id = ? AND completed_at IS NOT NULL
+        GROUP BY mode
+      `).all(userId);
+      console.log('✅ modeStats:', modeStats);
+    } catch (err) {
+      console.error('❌ Error getting modeStats:', err.message);
+      modeStats = [];
+    }
+
+    let recentSessions = [];
+    try {
+      recentSessions = db.prepare(`
+        SELECT * FROM training_sessions
+        WHERE user_id = ? AND completed_at IS NOT NULL
+        ORDER BY completed_at DESC
+        LIMIT 10
+      `).all(userId);
+      console.log('✅ recentSessions:', recentSessions.length, 'sessions');
+    } catch (err) {
+      console.error('❌ Error getting recentSessions:', err.message);
+      recentSessions = [];
+    }
 
     res.json({
       overall: overallStats,
