@@ -224,9 +224,9 @@ router.get('/stats', authenticateToken, (req, res) => {
       vocabStats = db.prepare(`
         SELECT 
           COUNT(DISTINCT vocabulary_id) as total_words,
-          COALESCE(SUM(times_correct), 0) as total_correct,
-          COALESCE(SUM(times_incorrect), 0) as total_incorrect,
-          COALESCE(SUM(times_correct + times_incorrect), 0) as total_attempts
+          COALESCE(SUM(correct_count), 0) as total_correct,
+          COALESCE(SUM(incorrect_count), 0) as total_incorrect,
+          COALESCE(SUM(correct_count + incorrect_count), 0) as total_attempts
         FROM user_progress
         WHERE user_id = ?
       `).get(userId);
