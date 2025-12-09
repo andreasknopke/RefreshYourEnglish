@@ -58,6 +58,10 @@ function StatsModule({ user }) {
 
   const { progress, flashcards, actionReviews, gamification } = stats;
 
+  console.log('🔍 Progress data:', progress);
+  console.log('🔍 Progress.overall:', progress?.overall);
+  console.log('🔍 total_words:', progress?.overall?.total_words);
+
   // Berechne Gesamtfortschritt aus progress.overall
   const totalWords = progress?.overall?.total_words || 0;
   const totalCorrect = progress?.overall?.total_correct || 0;
