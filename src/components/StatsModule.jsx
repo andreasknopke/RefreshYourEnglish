@@ -84,11 +84,45 @@ function StatsModule({ user }) {
 
   // Gamification Statistiken (Backend gibt currentStreak zurück)
   const streak = gamification?.currentStreak || 0;
-  const totalMinutes = gamification?.totalMinutes || 0;
+  const gamificationMinutes = gamification?.totalMinutes || 0;
+  const progressSeconds = progress?.overall?.total_time_seconds || 0;
+  const progressMinutes = Math.round(progressSeconds / 60);
+  const totalMinutes = Math.max(gamificationMinutes, progressMinutes); // Nutze den höheren Wert
   const totalExercises = progress?.overall?.total_exercises || 0;
-  const level = 1; // TODO: Level-System implementieren
-  const xp = totalExercises * 10; // Temporär: 10 XP pro Session
-  const xpForNextLevel = 100;
+  
+  // Level-System basierend auf Gesamtübungen
+  // Level 1: 0-99, Level 2: 100-249, Level 3: 250-499, etc.
+  const calculateLevel = (exercises) => {
+    if (exercises < 100) return 1;
+    if (exercises < 250) return 2;
+    if (exercises < 500) return 3;
+    if (exercises < 1000) return 4;
+    if (exercises < 2000) return 5;
+    if (exercises < 3500) return 6;
+    if (exercises < 5500) return 7;
+    if (exercises < 8000) return 8;
+    return Math.floor(8 + (exercises - 8000) / 2000);
+  };
+
+  const calculateXPForLevel = (lvl) => {
+    if (lvl === 1) return 100;
+    if (lvl === 2) return 250;
+    if (lvl === 3) return 500;
+    if (lvl === 4) return 1000;
+    if (lvl === 5) return 2000;
+    if (lvl === 6) return 3500;
+    if (lvl === 7) return 5500;
+    if (lvl === 8) return 8000;
+    return 8000 + (lvl - 8) * 2000;
+  };
+
+  const level = calculateLevel(totalExercises);
+  const xpForCurrentLevel = level > 1 ? calculateXPForLevel(level - 1) : 0;
+  const xpForNextLevel = calculateXPForLevel(level);
+  const xp = totalExercises;
+  const xpProgress = xpForNextLevel > xpForCurrentLevel 
+    ? ((xp - xpForCurrentLevel) / (xpForNextLevel - xpForCurrentLevel)) * 100 
+    : 0;
 
   // Session Statistiken (Backend gibt progress.recent zurück)
   const recentSessions = progress?.recent || [];
@@ -172,10 +206,10 @@ function StatsModule({ user }) {
           <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
             <div
               className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(xp / xpForNextLevel) * 100}%` }}
+              style={{ width: `${Math.min(100, xpProgress)}%` }}
             ></div>
           </div>
-          <p className="text-xs text-gray-500 mt-1">{xp} / {xpForNextLevel} XP</p>
+          <p className="text-xs text-gray-500 mt-1">{xp} / {xpForNextLevel} Übungen</p>
         </div>
 
         <div className="glass-card rounded-2xl p-6 shadow-xl hover:scale-105 transition-transform">
@@ -234,7 +268,7 @@ function StatsModule({ user }) {
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm font-semibold text-gray-700">Gesamtzeit</span>
-              <span className="text-2xl font-bold text-blue-600">{Math.round((progress?.overall?.total_time_seconds || 0) / 60)} Min</span>
+              <span className="text-2xl font-bold text-blue-600">{totalMinutes} Min</span>
             </div>
           </div>
         </div>
