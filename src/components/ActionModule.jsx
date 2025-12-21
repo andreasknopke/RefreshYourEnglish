@@ -34,7 +34,19 @@ function ActionModule({ user }) {
     return saved === 'true';
   });
   const [dueReviewWords, setDueReviewWords] = useState([]);
+  const [currentRoundWords, setCurrentRoundWords] = useState([]); // Vordefinierte Wörter für die Runde
+  const [currentWordIndex, setCurrentWordIndex] = useState(0); // Aktueller Index in der Rundenliste
   const inputRef = useRef(null);
+
+  // Fisher-Yates Shuffle für echte Zufallsauswahl
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
   // Funktion zum Hinzufügen einer Vokabel zum Trainer mit visueller Rückmeldung
   const handleAddToTrainer = async (vocabId) => {
@@ -168,37 +180,85 @@ function ActionModule({ user }) {
     setCorrectAnswers(0);
     setShowFeedback(false);
     setSessionStartTime(Date.now());
-    startRound();
+    
+    // Erstelle eine Liste mit Wörtern für die Runde (keine Duplikate)
+    const roundWords = prepareRoundWords();
+    setCurrentRoundWords(roundWords);
+    setCurrentWordIndex(0);
+    
+    // Starte mit dem ersten Wort
+    if (roundWords.length > 0) {
+      setCurrentWord(roundWords[0]);
+      setTimeLeft(timeLimit);
+      setIsActive(true);
+      setIsFlipped(false);
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  };
+
+  const prepareRoundWords = () => {
+    if (vocabulary.length === 0) {
+      console.error('No vocabulary available');
+      return [];
+    }
+    
+    // Berechne wie viele Review-Wörter wir einstreuen (max 20% der Runde)
+    const maxReviewWords = Math.floor(wordsPerRound * 0.2);
+    const reviewWordsToUse = dueReviewWords.slice(0, maxReviewWords);
+    
+    // Konvertiere Review-Wörter zu unserem Format
+    const formattedReviewWords = reviewWordsToUse.map(review => ({
+      id: review.vocabulary_id,
+      de: review.german,
+      en: review.english,
+      level: review.level,
+      isReview: true
+    }));
+    
+    // Berechne wie viele neue Wörter wir brauchen
+    const newWordsNeeded = wordsPerRound - formattedReviewWords.length;
+    
+    // Wähle zufällig neue Wörter (ohne Duplikate)
+    const availableVocab = [...vocabulary];
+    const shuffledVocab = shuffleArray(availableVocab);
+    
+    // Filtere Review-Wörter aus der Auswahl (keine Duplikate)
+    const reviewIds = new Set(formattedReviewWords.map(w => w.id));
+    const newWords = shuffledVocab
+      .filter(word => !reviewIds.has(word.id))
+      .slice(0, newWordsNeeded);
+    
+    // Kombiniere und mische alle Wörter
+    const allWords = [...formattedReviewWords, ...newWords];
+    const shuffledRound = shuffleArray(allWords);
+    
+    console.log('🎲 Round prepared:', {
+      total: shuffledRound.length,
+      reviewWords: formattedReviewWords.length,
+      newWords: newWords.length,
+      uniqueIds: new Set(shuffledRound.map(w => w.id)).size
+    });
+    
+    return shuffledRound;
   };
 
   const startRound = () => {
-    if (vocabulary.length === 0) {
-      console.error('No vocabulary available');
+    // Nutze die vordefinierte Rundenliste
+    if (currentWordIndex >= currentRoundWords.length) {
+      console.error('No more words in round');
       return;
     }
     
-    // Priorisiere fällige Review-Wörter (20% Chance)
-    let randomWord;
-    if (dueReviewWords.length > 0 && Math.random() < 0.2) {
-      // Wähle ein fälliges Review-Wort
-      const randomReview = dueReviewWords[Math.floor(Math.random() * dueReviewWords.length)];
-      randomWord = {
-        id: randomReview.vocabulary_id,
-        de: randomReview.german,
-        en: randomReview.english,
-        level: randomReview.level,
-        isReview: true // Markiere als Review-Wort
-      };
-      console.log('📚 Using review word:', randomWord.de);
-    } else {
-      // Wähle eine zufällige Vokabel
-      randomWord = vocabulary[Math.floor(Math.random() * vocabulary.length)];
-    }
-    
-    setCurrentWord(randomWord);
+    const nextWord = currentRoundWords[currentWordIndex];
+    setCurrentWord(nextWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
     setIsFlipped(false);
+    
+    if (nextWord.isReview) {
+      console.log('📚 Using review word:', nextWord.de);
+    }
+    
     setTimeout(() => inputRef.current?.focus(), 100);
   };
 
@@ -241,6 +301,7 @@ function ActionModule({ user }) {
       setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
+      setCurrentWordIndex(currentWordIndex + 1);
       setIsFlipped(false);
       startRound();
     }
@@ -299,6 +360,7 @@ function ActionModule({ user }) {
       setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
+      setCurrentWordIndex(currentWordIndex + 1);
       setIsFlipped(false);
       startRound();
     }
@@ -337,6 +399,7 @@ function ActionModule({ user }) {
       setShowFeedback(true);
     } else {
       setRoundProgress(roundProgress + 1);
+      setCurrentWordIndex(currentWordIndex + 1);
       setIsFlipped(false);
       startRound();
     }
