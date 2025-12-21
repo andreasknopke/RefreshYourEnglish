@@ -47,8 +47,8 @@ try {
       const english = parts[0];
       const german = parts[1];
       
-      // Check if already exists
-      const existing = db.prepare('SELECT id FROM vocabulary WHERE english = ? AND german = ?').get(english, german);
+      // Check if already exists (case-insensitive)
+      const existing = db.prepare('SELECT id FROM vocabulary WHERE LOWER(english) = LOWER(?) AND LOWER(german) = LOWER(?)').get(english, german);
       
       if (!existing) {
         db.prepare('INSERT INTO vocabulary (english, german, level) VALUES (?, ?, ?)').run(english, german, 'B2');

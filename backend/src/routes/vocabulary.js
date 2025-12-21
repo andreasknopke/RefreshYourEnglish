@@ -63,6 +63,13 @@ router.post('/',
     const { english, german, level } = req.body;
 
     try {
+      // Prüfe auf Duplikate (case-insensitive)
+      const existing = db.prepare('SELECT id FROM vocabulary WHERE LOWER(english) = LOWER(?) AND LOWER(german) = LOWER(?)').get(english, german);
+      
+      if (existing) {
+        return res.status(409).json({ error: 'Diese Vokabel existiert bereits (Groß-/Kleinschreibung ignoriert)' });
+      }
+
       const result = db.prepare('INSERT INTO vocabulary (english, german, level) VALUES (?, ?, ?)').run(english, german, level || 'B2');
       
       const newVocab = db.prepare('SELECT * FROM vocabulary WHERE id = ?').get(result.lastInsertRowid);
