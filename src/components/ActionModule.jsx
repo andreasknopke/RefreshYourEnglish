@@ -242,14 +242,14 @@ function ActionModule({ user }) {
     return shuffledRound;
   };
 
-  const startRound = () => {
+  const startRound = (wordIndex = currentWordIndex) => {
     // Nutze die vordefinierte Rundenliste
-    if (currentWordIndex >= currentRoundWords.length) {
+    if (wordIndex >= currentRoundWords.length) {
       console.error('No more words in round');
       return;
     }
     
-    const nextWord = currentRoundWords[currentWordIndex];
+    const nextWord = currentRoundWords[wordIndex];
     setCurrentWord(nextWord);
     setTimeLeft(timeLimit);
     setIsActive(true);
@@ -300,10 +300,12 @@ function ActionModule({ user }) {
       setIsActive(false);
       setShowFeedback(true);
     } else {
-      setRoundProgress(roundProgress + 1);
-      setCurrentWordIndex(currentWordIndex + 1);
+      const nextProgress = roundProgress + 1;
+      const nextIndex = currentWordIndex + 1;
+      setRoundProgress(nextProgress);
+      setCurrentWordIndex(nextIndex);
       setIsFlipped(false);
-      startRound();
+      startRound(nextIndex);
     }
   };
 
@@ -359,10 +361,12 @@ function ActionModule({ user }) {
     if (roundProgress + 1 >= wordsPerRound) {
       setShowFeedback(true);
     } else {
-      setRoundProgress(roundProgress + 1);
-      setCurrentWordIndex(currentWordIndex + 1);
+      const nextProgress = roundProgress + 1;
+      const nextIndex = currentWordIndex + 1;
+      setRoundProgress(nextProgress);
+      setCurrentWordIndex(nextIndex);
       setIsFlipped(false);
-      startRound();
+      startRound(nextIndex);
     }
   };
 
@@ -398,10 +402,12 @@ function ActionModule({ user }) {
     if (roundProgress + 1 >= wordsPerRound) {
       setShowFeedback(true);
     } else {
-      setRoundProgress(roundProgress + 1);
-      setCurrentWordIndex(currentWordIndex + 1);
+      const nextProgress = roundProgress + 1;
+      const nextIndex = currentWordIndex + 1;
+      setRoundProgress(nextProgress);
+      setCurrentWordIndex(nextIndex);
       setIsFlipped(false);
-      startRound();
+      startRound(nextIndex);
     }
   };
 
