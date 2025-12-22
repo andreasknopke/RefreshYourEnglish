@@ -171,6 +171,36 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
 
   // Niveau-spezifische Anforderungen
   const levelRequirements = {
+    A1: {
+      complexity: 'sehr einfach',
+      vocabulary: 'grundlegend, sehr häufig',
+      structures: 'einfache Hauptsätze, keine Nebensätze',
+      wordCount: '4-8 Wörter',
+      examples: 'Zahlen, Farben, Familie, einfache Grüße, Tagesablauf',
+      avoid: 'Nebensätze, Konjunktiv, Fachjargon, komplexe Zeitformen',
+      tenses: 'nur Präsens und einfaches Perfekt',
+      instructions: 'Erstelle einen SEHR EINFACHEN, KURZEN Satz. Ein Anfänger sollte jedes Wort verstehen. Nutze NUR die häufigsten Wörter und SIMPLE Satzstrukturen.'
+    },
+    A2: {
+      complexity: 'einfach',
+      vocabulary: 'häufig, alltäglich',
+      structures: 'einfache Hauptsätze mit gelegentlichen Nebensätzen, einfache Konjunktionen (und, aber, weil)',
+      wordCount: '6-12 Wörter',
+      examples: 'alltägliche Situationen, Einkaufen, Reisen, Familie, Hobbys',
+      avoid: 'seltene Wörter, komplexe Satzstrukturen, Konjunktiv, abstrakte Konzepte',
+      tenses: 'Präsens, einfaches Perfekt, gelegentlich Präteritum',
+      instructions: 'Erstelle einen KLAREN, EINFACHEN Satz über alltägliche Themen. Verwende häufiges Vokabular und einfache Satzstrukturen, aber etwas komplexer als A1.'
+    },
+    B1: {
+      complexity: 'mittel-einfach',
+      vocabulary: 'gebräuchlich, mit einigen anspruchsvolleren Wörtern',
+      structures: 'Hauptsätze mit Nebensätzen, verschiedene Konjunktionen',
+      wordCount: '8-15 Wörter',
+      examples: 'Erfahrungen, Meinungen, Reiseerlebnisse, Berufliches',
+      avoid: 'extrem seltene Wörter, sehr komplexe Satzstruktionen, literarische Sprache',
+      tenses: 'Präsens, Perfekt, Präteritum, gelegentlich Futur',
+      instructions: 'Erstelle einen VERSTÄNDLICHEN Satz mit einigen anspruchsvolleren Wörtern. Nutze Nebensätze aber halte es insgesamt klar und verständlich.'
+    },
     B2: {
       complexity: 'mittel',
       vocabulary: 'gebräuchlich und alltäglich',
@@ -203,10 +233,31 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
     }
   };
 
-  const currentLevel = levelRequirements[level];
+  const currentLevel = levelRequirements[level] || levelRequirements['B2'];
 
   // Detaillierte Anweisungen für verschiedene Satztypen und Variationen
   const sentenceTypesByLevel = {
+    A1: [
+      'eine sehr einfache Aussage',
+      'eine einfache Frage',
+      'eine kurze Beschreibung',
+      'eine einfache Aktivität',
+      'ein einfaches Objekt oder eine einfache Person'
+    ],
+    A2: [
+      'eine einfache Aussage über alltägliche Aktivitäten',
+      'eine einfache Frage zu alltäglichen Dingen',
+      'eine kurze Beschreibung eines Ortes oder einer Person',
+      'eine einfache Meinungsäußerung',
+      'eine einfache persönliche Erfahrung'
+    ],
+    B1: [
+      'eine Aussage über persönliche Erfahrungen',
+      'eine Meinungsäußerung zu alltäglichen Themen',
+      'eine Beschreibung eines Ereignisses',
+      'eine Frage mit Begründung',
+      'einen Vergleich zwischen zwei Dingen'
+    ],
     B2: [
       'eine einfache Aussage über alltägliche Aktivitäten',
       'eine direkte Frage zu persönlichen Präferenzen',
@@ -234,7 +285,7 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
     ]
   };
 
-  const sentenceTypes = sentenceTypesByLevel[level];
+  const sentenceTypes = sentenceTypesByLevel[level] || sentenceTypesByLevel['B2'];
   const sentenceType = sentenceTypes[Math.floor(Math.random() * sentenceTypes.length)];
 
   // Spezifische Themenaspekte für mehr Variation
@@ -371,6 +422,84 @@ export function checkVocabularyUsage(userTranslation, targetVocab) {
  */
 function getFallbackSentence(level, topic = 'Alltag', targetVocab = null) {
   const sentences = {
+    A1: {
+      'Politik': [
+        { de: "Der Präsident ist wichtig.", en: "The president is important." },
+        { de: "Wahlen sind in Deutschland.", en: "Elections are in Germany." }
+      ],
+      'Sport': [
+        { de: "Ich spiele Fußball.", en: "I play football." },
+        { de: "Das ist schnell und interessant.", en: "That is fast and interesting." }
+      ],
+      'Literatur': [
+        { de: "Ich lese ein Buch.", en: "I read a book." },
+        { de: "Das Buch ist gut.", en: "The book is good." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Der Film ist sehr schön.", en: "The film is very beautiful." },
+        { de: "Ich sehe gerne Filme.", en: "I like to watch films." }
+      ],
+      'Alltag': [
+        { de: "Ich essen einen Apfel.", en: "I eat an apple." },
+        { de: "Das Wasser ist kalt.", en: "The water is cold." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Hallo, wie geht es dir?", en: "Hello, how are you?" },
+        { de: "Ich heiße Anna.", en: "My name is Anna." }
+      ]
+    },
+    A2: {
+      'Politik': [
+        { de: "Die Regierung hat neue Gesetze gemacht.", en: "The government made new laws." },
+        { de: "In Deutschland gibt es Wahlen alle vier Jahre.", en: "In Germany there are elections every four years." }
+      ],
+      'Sport': [
+        { de: "Ich spiele gerne Fußball mit meinen Freunden.", en: "I like to play football with my friends." },
+        { de: "Der Athlet läuft sehr schnell.", en: "The athlete runs very fast." }
+      ],
+      'Literatur': [
+        { de: "Ich lese gerne Bücher, besonders Krimis.", en: "I like to read books, especially crime novels." },
+        { de: "Die Geschichte ist spannend und lustig.", en: "The story is exciting and funny." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Wir gehen oft ins Kino und sehen Filme.", en: "We often go to the cinema and watch films." },
+        { de: "Die Musik ist laut und modern.", en: "The music is loud and modern." }
+      ],
+      'Alltag': [
+        { de: "Ich frühstücke jeden Morgen mit meiner Familie.", en: "I have breakfast every morning with my family." },
+        { de: "Heute kaufe ich Obst und Gemüse auf dem Markt.", en: "Today I buy fruit and vegetables at the market." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Mein Hobby ist Malen und ich mag das sehr.", en: "My hobby is painting and I really like it." },
+        { de: "Nächste Woche fahre ich in den Urlaub nach Spanien.", en: "Next week I am going on vacation to Spain." }
+      ]
+    },
+    B1: {
+      'Politik': [
+        { de: "Die Regierung diskutiert über neue Maßnahmen zur Umweltschutz.", en: "The government is discussing new environmental protection measures." },
+        { de: "Viele Menschen interessieren sich für Politik, weil sie wichtig ist.", en: "Many people are interested in politics because it is important." }
+      ],
+      'Sport': [
+        { de: "Der Fußballverein hat gestern gegen einen anderen Team gespielt und gewonnen.", en: "The football club played against another team yesterday and won." },
+        { de: "Sport ist gesund und macht mir Spaß.", en: "Sports are healthy and I enjoy them." }
+      ],
+      'Literatur': [
+        { de: "Der Roman behandelt die Geschichte einer Familie während des Krieges.", en: "The novel deals with the story of a family during the war." },
+        { de: "Ich habe das Buch gelesen, weil viele Leute es empfohlen haben.", en: "I read the book because many people recommended it." }
+      ],
+      'Film, Musik, Kunst': [
+        { de: "Die Ausstellung zeigt Werke von modernen Künstlern aus verschiedenen Ländern.", en: "The exhibition shows works by modern artists from different countries." },
+        { de: "Der Film war interessant, obwohl die Geschichte ein bisschen kompliziert war.", en: "The film was interesting, although the story was a bit complicated." }
+      ],
+      'Alltag': [
+        { de: "Ich arbeite in einem Büro, wo ich mit vielen Kollegen zusammenarbeite.", en: "I work in an office where I collaborate with many colleagues." },
+        { de: "In meiner Freizeit mache ich gerne Sport und treffe meine Freunde.", en: "In my free time I like to play sports and meet my friends." }
+      ],
+      'Persönliche Gespräche': [
+        { de: "Meine Familie und ich haben viel gemeinsam, aber wir haben auch unterschiedliche Interessen.", en: "My family and I have a lot in common, but we also have different interests." },
+        { de: "Ich möchte die Welt bereisen und verschiedene Kulturen kennenlernen.", en: "I want to travel the world and get to know different cultures." }
+      ]
+    },
     B2: {
       'Politik': [
         { de: "Die Regierung kündigte neue Maßnahmen zur Bekämpfung des Klimawandels an.", en: "The government announced new measures to combat climate change." },
