@@ -345,7 +345,7 @@ function TranslationModule({ user }) {
               <p className="text-[9px] sm:text-[10px] text-amber-600 font-semibold uppercase tracking-wide flex items-center">
                 🎯 Ziel-Vokabel: 
                 <span className="ml-1 px-2 py-0.5 bg-amber-100 rounded text-amber-800 normal-case font-bold">
-                  {currentSentence.targetVocab.german} → {currentSentence.targetVocab.english}
+                  {currentSentence.targetVocab.german}
                 </span>
                 <span className="ml-2 text-amber-500 text-[8px]">(+15s Bonus bei korrekter Nutzung)</span>
               </p>
