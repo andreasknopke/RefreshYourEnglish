@@ -16,6 +16,9 @@ function VocabularyLibrary({ user }) {
   const [showBulkImport, setShowBulkImport] = useState(false);
   const [bulkImportText, setBulkImportText] = useState('');
   const [importResults, setImportResults] = useState(null);
+  const [bulkImportLevelMode, setBulkImportLevelMode] = useState('manual'); // 'manual' oder 'llm'
+  const [bulkImportFixedLevel, setBulkImportFixedLevel] = useState('B2');
+  const [bulkImportProgress, setBulkImportProgress] = useState(null);
   const [classifyingAll, setClassifyingAll] = useState(false);
   const [classifyProgress, setClassifyProgress] = useState(null);
   const [classifyingSingle, setClassifyingSingle] = useState(new Set());
@@ -172,10 +175,14 @@ function VocabularyLibrary({ user }) {
     let errors = 0;
     const newVocabs = [];
 
-    for (const line of lines) {
+    setBulkImportProgress({ current: 0, total: lines.length });
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
       const parts = line.split(';').map(p => p.trim());
       if (parts.length !== 2 || !parts[0] || !parts[1]) {
         errors++;
+        setBulkImportProgress({ current: i + 1, total: lines.length });
         continue;
       }
 
@@ -184,16 +191,31 @@ function VocabularyLibrary({ user }) {
       // Duplikat-Prüfung
       if (checkDuplicate(english, german)) {
         skipped++;
+        setBulkImportProgress({ current: i + 1, total: lines.length });
         continue;
       }
 
       try {
-        const created = await apiService.createVocabulary(english, german, 'B2');
+        let level = bulkImportFixedLevel;
+        
+        // Wenn LLM-Modus aktiviert ist, klassifiziere jede Vokabel einzeln
+        if (bulkImportLevelMode === 'llm') {
+          try {
+            level = await classifySingleVocabulary(english, german);
+          } catch (err) {
+            console.error('LLM classification failed for:', english, err);
+            level = bulkImportFixedLevel; // Fallback auf manuelles Level
+          }
+        }
+
+        const created = await apiService.createVocabulary(english, german, level);
         newVocabs.push(created);
         imported++;
       } catch (err) {
         errors++;
       }
+
+      setBulkImportProgress({ current: i + 1, total: lines.length });
     }
 
     // Update vocabulary list
@@ -210,6 +232,7 @@ function VocabularyLibrary({ user }) {
     });
 
     setBulkImportText('');
+    setBulkImportProgress(null);
   };
 
   const handleFileUpload = (event) => {
@@ -701,6 +724,62 @@ world;welt
 apple;apfel</pre>
               </div>
 
+              {/* Level Selection */}
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                <p className="text-sm text-gray-700 font-semibold mb-3">🎯 Level-Zuordnung:</p>
+                
+                <div className="space-y-3">
+                  {/* Manual Mode */}
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="levelMode"
+                      value="manual"
+                      checked={bulkImportLevelMode === 'manual'}
+                      onChange={(e) => setBulkImportLevelMode(e.target.value)}
+                      className="mt-1 w-4 h-4 text-purple-600"
+                    />
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-700">Festes Level für alle Vokabeln</div>
+                      <div className="text-xs text-gray-600 mb-2">Schneller Import - alle Vokabeln erhalten das gleiche Level</div>
+                      {bulkImportLevelMode === 'manual' && (
+                        <select
+                          value={bulkImportFixedLevel}
+                          onChange={(e) => setBulkImportFixedLevel(e.target.value)}
+                          className="mt-2 px-3 py-2 border-2 border-purple-300 rounded-lg focus:border-purple-500 focus:outline-none bg-white text-sm"
+                        >
+                          <option value="A1">A1 - Anfänger</option>
+                          <option value="A2">A2 - Grundlagen</option>
+                          <option value="B1">B1 - Mittelstufe</option>
+                          <option value="B2">B2 - Fortgeschritten</option>
+                          <option value="C1">C1 - Experte</option>
+                          <option value="C2">C2 - Muttersprachler</option>
+                        </select>
+                      )}
+                    </div>
+                  </label>
+
+                  {/* LLM Mode */}
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="levelMode"
+                      value="llm"
+                      checked={bulkImportLevelMode === 'llm'}
+                      onChange={(e) => setBulkImportLevelMode(e.target.value)}
+                      className="mt-1 w-4 h-4 text-purple-600"
+                    />
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-700 flex items-center gap-2">
+                        ✨ Automatische KI-Bewertung
+                        <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">KI</span>
+                      </div>
+                      <div className="text-xs text-gray-600">Jede Vokabel wird einzeln nach CEFR-Standard bewertet (langsamer, aber präziser)</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
               {/* File Upload */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -728,6 +807,22 @@ apple;apfel</pre>
                 />
               </div>
 
+              {/* Import Progress */}
+              {bulkImportProgress && (
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                  <p className="text-sm font-semibold text-gray-800 mb-2">⏳ Import läuft...</p>
+                  <div className="text-sm text-gray-700">
+                    <p>Fortschritt: {bulkImportProgress.current} / {bulkImportProgress.total}</p>
+                    <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                      <div 
+                        className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${(bulkImportProgress.current / bulkImportProgress.total) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Import Results */}
               {importResults && (
                 <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
@@ -744,18 +839,22 @@ apple;apfel</pre>
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={handleBulkImport}
-                  disabled={!bulkImportText.trim()}
+                  disabled={!bulkImportText.trim() || bulkImportProgress !== null}
                   className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
-                  📥 Importieren
+                  {bulkImportProgress ? '⏳ Importiere...' : '📥 Importieren'}
                 </button>
                 <button
                   onClick={() => {
                     setShowBulkImport(false);
                     setBulkImportText('');
                     setImportResults(null);
+                    setBulkImportProgress(null);
+                    setBulkImportLevelMode('manual');
+                    setBulkImportFixedLevel('B2');
                   }}
-                  className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors"
+                  disabled={bulkImportProgress !== null}
+                  className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-200 disabled:cursor-not-allowed"
                 >
                   ✕ Schließen
                 </button>
