@@ -166,7 +166,7 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
   
   if (!API_KEY) {
     console.warn('⚠️ No OpenAI API key, using fallback sentences');
-    return getFallbackSentence(level, topic);
+    return getFallbackSentence(level, topic, targetVocab);
   }
 
   // Niveau-spezifische Anforderungen
@@ -440,7 +440,16 @@ function getFallbackSentence(level, topic = 'Alltag', targetVocab = null) {
     }
   };
   
-  const levelSentences = sentences[level]?.[topic] || sentences.B2['Alltag'];
+  // Stelle sicher, dass wir einen gültigen Level haben
+  const validLevel = sentences[level] ? level : 'B2';
+  // Stelle sicher, dass wir ein gültiges Topic haben
+  const levelSentences = sentences[validLevel]?.[topic] || sentences[validLevel]?.['Alltag'] || sentences.B2['Alltag'];
+  
+  if (!levelSentences || levelSentences.length === 0) {
+    console.warn(`⚠️ No sentences found for level ${validLevel} and topic ${topic}, using default`);
+    return { de: "Hier ist ein Beispielsatz.", en: "Here is an example sentence.", targetVocab: targetVocab || null };
+  }
+  
   const random = levelSentences[Math.floor(Math.random() * levelSentences.length)];
   console.log('📚 Using fallback sentence:', random);
   return { ...random, targetVocab: targetVocab || null };
@@ -450,6 +459,12 @@ function getFallbackSentence(level, topic = 'Alltag', targetVocab = null) {
  * Hilfsfunktion zur Berechnung der Ähnlichkeit zwischen zwei Strings
  */
 function calculateSimilarity(str1, str2) {
+  // Stelle sicher, dass beide Strings vorhanden sind
+  if (!str1 || !str2) {
+    console.warn('⚠️ calculateSimilarity received undefined string:', { str1, str2 });
+    return 0;
+  }
+  
   const longer = str1.length > str2.length ? str1 : str2;
   const shorter = str1.length > str2.length ? str2 : str1;
   
@@ -465,6 +480,11 @@ function calculateSimilarity(str1, str2) {
  * Levenshtein-Distanz zur Messung der Ähnlichkeit
  */
 function levenshteinDistance(str1, str2) {
+  // Stelle sicher, dass beide Strings vorhanden sind
+  if (!str1 || !str2) {
+    return Math.max(str1?.length || 0, str2?.length || 0);
+  }
+  
   const matrix = [];
   
   for (let i = 0; i <= str2.length; i++) {
