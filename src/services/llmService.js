@@ -155,12 +155,14 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation)
  * Generiert einen deutschen Satz zum Übersetzen mit Hilfe eines LLM
  * @param {string} level - Sprachniveau (B2, C1, C2)
  * @param {string} topic - Themenbereich (optional)
- * @returns {Promise<{de: string, en: string}>}
+ * @param {object} targetVocab - Ziel-Vokabel die verwendet werden soll (optional)
+ * @returns {Promise<{de: string, en: string, targetVocab?: object}>}
  */
-export async function generateTranslationSentence(level = 'B2', topic = 'Alltag') {
+export async function generateTranslationSentence(level = 'B2', topic = 'Alltag', targetVocab = null) {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   console.log('📝 Generating translation sentence, API Key exists:', !!API_KEY);
+  console.log('🎯 Target vocabulary:', targetVocab);
   
   if (!API_KEY) {
     console.warn('⚠️ No OpenAI API key, using fallback sentences');
@@ -247,6 +249,15 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
 
   const specificTopic = topicVariations[topic]?.[Math.floor(Math.random() * (topicVariations[topic]?.length || 1))] || topic;
 
+  // Vokabel-spezifische Anweisung
+  const vocabInstruction = targetVocab 
+    ? `\n\nWICHTIG - ZIEL-VOKABEL:
+Der Satz MUSS so konstruiert sein, dass der Lerner das englische Wort "${targetVocab.english}" (deutsch: "${targetVocab.german}") in der Übersetzung verwenden MUSS.
+- Das deutsche Wort "${targetVocab.german}" (oder eine Variante davon) MUSS im deutschen Satz vorkommen
+- Die korrekte englische Übersetzung MUSS "${targetVocab.english}" enthalten
+- Der Satz sollte natürlich klingen und die Vokabel sinnvoll einbetten`
+    : '';
+
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -270,7 +281,7 @@ KRITISCH - NIVEAU ${level} ANFORDERUNGEN:
 - Zeitformen: ${currentLevel.tenses}
 
 SPEZIFISCHE ANWEISUNG FÜR ${level}:
-${currentLevel.instructions}
+${currentLevel.instructions}${vocabInstruction}
 
 NIVEAUBEISPIELE ZUR ORIENTIERUNG:
 
@@ -299,7 +310,9 @@ Erstelle ${sentenceType} zum Aspekt "${specificTopic}" STRIKT auf ${level}-Nivea
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`
         }, {
           role: 'user',
-          content: `Generiere einen NEUEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" EXAKT auf ${level}-Niveau (nicht einfacher, nicht schwieriger!). Beachte die Wortanzahl ${currentLevel.wordCount} und die Komplexität "${currentLevel.complexity}".`
+          content: targetVocab 
+            ? `Generiere einen deutschen Satz, der das Wort "${targetVocab.german}" enthält, sodass in der englischen Übersetzung "${targetVocab.english}" verwendet werden muss. Der Satz soll auf ${level}-Niveau sein.`
+            : `Generiere einen NEUEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" EXAKT auf ${level}-Niveau (nicht einfacher, nicht schwieriger!). Beachte die Wortanzahl ${currentLevel.wordCount} und die Komplexität "${currentLevel.complexity}".`
         }],
         temperature: 0.9,
         max_tokens: 200,
@@ -320,21 +333,43 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
       console.log(`✨ Generated ${level} sentence via OpenAI:`, parsed);
       return {
         de: parsed.de || parsed.german || 'Fehler beim Generieren',
-        en: parsed.en || parsed.english || 'Error generating'
+        en: parsed.en || parsed.english || 'Error generating',
+        targetVocab: targetVocab || null
       };
     } catch {
       throw new Error('Failed to parse OpenAI response');
     }
   } catch (error) {
     console.error('OpenAI sentence generation failed, using fallback:', error);
-    return getFallbackSentence(level, topic);
+    return getFallbackSentence(level, topic, targetVocab);
   }
+}
+
+/**
+ * Prüft, ob eine Ziel-Vokabel in der Übersetzung korrekt verwendet wurde
+ * @param {string} userTranslation - Die Übersetzung des Users
+ * @param {object} targetVocab - Die Ziel-Vokabel {english, german}
+ * @returns {boolean}
+ */
+export function checkVocabularyUsage(userTranslation, targetVocab) {
+  if (!targetVocab || !targetVocab.english) return false;
+  
+  const translation = userTranslation.toLowerCase();
+  const targetWord = targetVocab.english.toLowerCase();
+  
+  // Prüfe auf exakte Übereinstimmung oder Wortform-Varianten
+  // Berücksichtige Plural, Konjugation etc.
+  const baseWord = targetWord.replace(/ing$|ed$|s$|es$|ies$/i, '');
+  
+  // Prüfe ob das Wort oder eine Variante vorkommt
+  const wordPattern = new RegExp(`\\b${baseWord}\\w*\\b`, 'i');
+  return wordPattern.test(translation) || translation.includes(targetWord);
 }
 
 /**
  * Fallback-Sätze wenn keine API verfügbar ist
  */
-function getFallbackSentence(level, topic = 'Alltag') {
+function getFallbackSentence(level, topic = 'Alltag', targetVocab = null) {
   const sentences = {
     B2: {
       'Politik': [
@@ -408,7 +443,7 @@ function getFallbackSentence(level, topic = 'Alltag') {
   const levelSentences = sentences[level]?.[topic] || sentences.B2['Alltag'];
   const random = levelSentences[Math.floor(Math.random() * levelSentences.length)];
   console.log('📚 Using fallback sentence:', random);
-  return random;
+  return { ...random, targetVocab: targetVocab || null };
 }
 
 /**
@@ -469,6 +504,213 @@ export const LLM_CONFIG = {
   temperature: 0.7,
   maxTokens: 500
 };
+
+/**
+ * Klassifiziert Vokabeln nach CEFR-Level (A1-C2) mittels LLM
+ * @param {Array<{id: number, english: string, german: string}>} vocabularyList - Liste der Vokabeln
+ * @param {function} onProgress - Callback für Fortschrittsanzeige (optional)
+ * @returns {Promise<Array<{id: number, level: string}>>}
+ */
+export async function classifyVocabularyLevels(vocabularyList, onProgress = null) {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    console.warn('⚠️ No OpenAI API key found, using fallback classification');
+    return fallbackClassification(vocabularyList);
+  }
+
+  const results = [];
+  const batchSize = 20; // Verarbeite 20 Vokabeln pro API-Aufruf für Effizienz
+  
+  for (let i = 0; i < vocabularyList.length; i += batchSize) {
+    const batch = vocabularyList.slice(i, i + batchSize);
+    
+    if (onProgress) {
+      onProgress({
+        current: i,
+        total: vocabularyList.length,
+        message: `Klassifiziere ${Math.min(i + batchSize, vocabularyList.length)} von ${vocabularyList.length}...`
+      });
+    }
+
+    try {
+      const vocabText = batch.map(v => `ID:${v.id} | EN: "${v.english}" | DE: "${v.german}"`).join('\n');
+      
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{
+            role: 'system',
+            content: `Du bist ein Experte für CEFR-Sprachlevel-Klassifizierung (Common European Framework of Reference for Languages).
+
+Klassifiziere jede Vokabel nach ihrem Schwierigkeitsgrad für Englischlerner:
+
+A1 - Anfänger: Grundlegende Alltagswörter (Zahlen, Farben, Familie, einfache Grüße, Körperteile)
+A2 - Grundstufe: Häufige Alltagssituationen (Einkaufen, Reisen, einfache Beschreibungen)
+B1 - Mittelstufe: Erfahrungen, Meinungen, abstrakte Konzepte
+B2 - Gehobene Mittelstufe: Komplexere Themen, Fachvokabular, Redewendungen
+C1 - Fortgeschritten: Idiomatische Ausdrücke, gehobene Sprache, spezialisiertes Vokabular
+C2 - Nahezu muttersprachlich: Sehr seltene Wörter, Nuancen, Fachterminologie
+
+Antworte NUR mit einem JSON-Array: [{"id": <ID>, "level": "<A1|A2|B1|B2|C1|C2>"}]
+Keine zusätzlichen Erklärungen!`
+          }, {
+            role: 'user',
+            content: `Klassifiziere folgende Vokabeln:\n${vocabText}`
+          }],
+          temperature: 0.3,
+          max_tokens: 1000
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const content = data.choices[0].message.content.trim();
+      
+      // Parse JSON response
+      const jsonMatch = content.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        const parsed = JSON.parse(jsonMatch[0]);
+        results.push(...parsed);
+      } else {
+        // Fallback für diesen Batch
+        results.push(...fallbackClassification(batch));
+      }
+    } catch (error) {
+      console.error('LLM classification failed for batch:', error);
+      // Fallback für fehlgeschlagenen Batch
+      results.push(...fallbackClassification(batch));
+    }
+
+    // Kleine Pause zwischen API-Aufrufen
+    if (i + batchSize < vocabularyList.length) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+  }
+
+  if (onProgress) {
+    onProgress({
+      current: vocabularyList.length,
+      total: vocabularyList.length,
+      message: 'Klassifizierung abgeschlossen!'
+    });
+  }
+
+  return results;
+}
+
+/**
+ * Klassifiziert eine einzelne Vokabel nach CEFR-Level
+ * @param {string} english - Englisches Wort
+ * @param {string} german - Deutsches Wort
+ * @returns {Promise<string>} - CEFR-Level (A1-C2)
+ */
+export async function classifySingleVocabulary(english, german) {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  
+  if (!API_KEY) {
+    return fallbackSingleClassification(english);
+  }
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [{
+          role: 'system',
+          content: `Du bist ein Experte für CEFR-Sprachlevel-Klassifizierung.
+
+Klassifiziere die Vokabel nach Schwierigkeitsgrad für Englischlerner:
+A1 - Grundlegend (Zahlen, Farben, Familie, einfache Grüße)
+A2 - Grundstufe (Alltagssituationen)
+B1 - Mittelstufe (abstrakte Konzepte)
+B2 - Gehoben (komplexere Themen, Redewendungen)
+C1 - Fortgeschritten (idiomatische Ausdrücke)
+C2 - Muttersprachlich (sehr selten, Nuancen)
+
+Antworte NUR mit dem Level: A1, A2, B1, B2, C1 oder C2`
+        }, {
+          role: 'user',
+          content: `EN: "${english}" | DE: "${german}"`
+        }],
+        temperature: 0.3,
+        max_tokens: 10
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const level = data.choices[0].message.content.trim().toUpperCase();
+    
+    // Validiere Level
+    if (['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(level)) {
+      return level;
+    }
+    return 'B2'; // Fallback
+  } catch (error) {
+    console.error('Single vocabulary classification failed:', error);
+    return fallbackSingleClassification(english);
+  }
+}
+
+/**
+ * Fallback-Klassifizierung basierend auf Worthäufigkeit und Länge
+ */
+function fallbackClassification(vocabularyList) {
+  return vocabularyList.map(vocab => ({
+    id: vocab.id,
+    level: fallbackSingleClassification(vocab.english)
+  }));
+}
+
+function fallbackSingleClassification(english) {
+  const word = english.toLowerCase();
+  const wordLength = word.split(' ').length;
+  
+  // Sehr einfache Wörter (A1)
+  const a1Words = ['hello', 'hi', 'yes', 'no', 'please', 'thank', 'sorry', 'good', 'bad', 'big', 'small', 
+    'one', 'two', 'three', 'red', 'blue', 'green', 'mother', 'father', 'house', 'car', 'dog', 'cat',
+    'water', 'food', 'name', 'day', 'night', 'morning', 'today', 'here', 'there', 'what', 'where', 'who'];
+  
+  // Grundlegende Wörter (A2)
+  const a2Words = ['buy', 'sell', 'work', 'money', 'shop', 'travel', 'holiday', 'hotel', 'weather',
+    'clothes', 'breakfast', 'lunch', 'dinner', 'restaurant', 'city', 'country', 'hospital', 'school'];
+  
+  // Einfache Phrasen und abstrakte Konzepte (B1)
+  const b1Indicators = ['experience', 'opinion', 'believe', 'understand', 'decision', 'relationship'];
+  
+  // Komplexere Konzepte (C1/C2)
+  const advancedIndicators = ['albeit', 'notwithstanding', 'hitherto', 'aforementioned', 'juxtaposition'];
+  
+  if (a1Words.some(w => word.includes(w))) return 'A1';
+  if (a2Words.some(w => word.includes(w))) return 'A2';
+  if (advancedIndicators.some(w => word.includes(w))) return 'C1';
+  if (b1Indicators.some(w => word.includes(w))) return 'B1';
+  
+  // Nach Wortanzahl schätzen
+  if (wordLength >= 4) return 'B2';
+  if (wordLength >= 2) return 'B1';
+  if (word.length <= 4) return 'A1';
+  if (word.length <= 6) return 'A2';
+  
+  return 'B1'; // Default
+}
 
 /**
  * Generiert ein Dialog-Szenario

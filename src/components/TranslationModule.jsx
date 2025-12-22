@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { evaluateTranslation, generateTranslationSentence } from '../services/llmService';
+import { evaluateTranslation, generateTranslationSentence, checkVocabularyUsage } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
 import STTButton from './STTButton';
@@ -15,6 +15,9 @@ function TranslationModule({ user }) {
   const [topic, setTopic] = useState('Alltag');
   const [isGeneratingSentence, setIsGeneratingSentence] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState(null);
+  const [vocabulary, setVocabulary] = useState([]);
+  const [useVocabMode, setUseVocabMode] = useState(false);
+  const [vocabBonusCount, setVocabBonusCount] = useState(0);
 
   // Themenbereiche
   const topics = [
@@ -37,17 +40,38 @@ function TranslationModule({ user }) {
     prefix: import.meta.env.VITE_OPENAI_API_KEY?.substring(0, 10) || 'none'
   });
 
-  // Session Start initialisieren
+  // Session Start initialisieren und Vokabeln laden
   useEffect(() => {
     setSessionStartTime(Date.now());
+    loadVocabulary();
   }, []);
+
+  // Vokabeln aus der Bibliothek laden
+  const loadVocabulary = async () => {
+    try {
+      const data = await apiService.getVocabulary();
+      const vocabArray = data.vocabulary || data;
+      setVocabulary(vocabArray);
+    } catch (error) {
+      console.error('Failed to load vocabulary:', error);
+    }
+  };
+
+  // Zufällige Vokabel des ausgewählten Levels holen
+  const getRandomVocabForLevel = () => {
+    const levelVocabs = vocabulary.filter(v => v.level === level);
+    if (levelVocabs.length === 0) return null;
+    return levelVocabs[Math.floor(Math.random() * levelVocabs.length)];
+  };
 
   const loadNewSentence = async () => {
     setIsGeneratingSentence(true);
     setUserTranslation('');
     setFeedback(null);
     try {
-      const sentence = await generateTranslationSentence(level, topic);
+      // Wenn Vokabel-Modus aktiv ist, eine zufällige Vokabel des Levels wählen
+      const targetVocab = useVocabMode ? getRandomVocabForLevel() : null;
+      const sentence = await generateTranslationSentence(level, topic, targetVocab);
       setCurrentSentence(sentence);
     } catch (error) {
       console.error('Failed to generate sentence:', error);
@@ -65,7 +89,8 @@ function TranslationModule({ user }) {
       console.log('Evaluating translation:', { 
         german: currentSentence.de, 
         user: userTranslation, 
-        correct: currentSentence.en 
+        correct: currentSentence.en,
+        targetVocab: currentSentence.targetVocab
       });
       
       const result = await evaluateTranslation(
@@ -74,7 +99,18 @@ function TranslationModule({ user }) {
         currentSentence.en
       );
       
-      console.log('Evaluation result:', result);
+      // Prüfe, ob die Ziel-Vokabel korrekt verwendet wurde
+      let vocabUsedCorrectly = false;
+      if (currentSentence.targetVocab && result.score >= 7) {
+        vocabUsedCorrectly = checkVocabularyUsage(userTranslation, currentSentence.targetVocab);
+        if (vocabUsedCorrectly) {
+          result.vocabBonus = true;
+          result.targetVocab = currentSentence.targetVocab;
+          setVocabBonusCount(prev => prev + 1);
+        }
+      }
+      
+      console.log('Evaluation result:', result, 'Vocab used correctly:', vocabUsedCorrectly);
       setFeedback(result);
       setTotalAttempts(totalAttempts + 1);
       if (result.score >= 7) {
@@ -84,9 +120,20 @@ function TranslationModule({ user }) {
       // Track activity für Gamification (nur bei score >= 8/10)
       if (user && result.score >= 8) {
         try {
-          const secondsToAdd = 45 / 60; // 45 Sekunden als Minuten
-          console.log('🎮 Tracking activity (TranslationModule):', { score: result.score, secondsToAdd, user: user.username });
-          const apiResult = await apiService.trackActivity(secondsToAdd);
+          // Basis: 45 Sekunden, plus 15 Sekunden Bonus wenn Vokabel korrekt verwendet wurde
+          const baseSeconds = 45;
+          const vocabBonusSeconds = vocabUsedCorrectly ? 15 : 0;
+          const totalSeconds = baseSeconds + vocabBonusSeconds;
+          const minutesToAdd = totalSeconds / 60;
+          
+          console.log('🎮 Tracking activity (TranslationModule):', { 
+            score: result.score, 
+            baseSeconds,
+            vocabBonusSeconds,
+            totalSeconds,
+            user: user.username 
+          });
+          const apiResult = await apiService.trackActivity(minutesToAdd);
           console.log('✅ Activity tracked:', apiResult);
         } catch (error) {
           console.error('❌ Failed to track activity:', error);
@@ -117,6 +164,16 @@ function TranslationModule({ user }) {
 
   // Startbildschirm wenn noch kein Satz generiert wurde
   if (!currentSentence) {
+    // Zähle Vokabeln pro Level
+    const vocabCountByLevel = {
+      A1: vocabulary.filter(v => v.level === 'A1').length,
+      A2: vocabulary.filter(v => v.level === 'A2').length,
+      B1: vocabulary.filter(v => v.level === 'B1').length,
+      B2: vocabulary.filter(v => v.level === 'B2').length,
+      C1: vocabulary.filter(v => v.level === 'C1').length,
+      C2: vocabulary.filter(v => v.level === 'C2').length,
+    };
+    
     return (
       <div className="max-w-4xl mx-auto animate-fade-in">
         <div className="glass-card rounded-2xl shadow-xl p-6 md:p-8">
@@ -130,20 +187,52 @@ function TranslationModule({ user }) {
               📊 Sprachniveau wählen:
             </label>
             <div className="flex gap-2 flex-wrap">
-              {['B2', 'C1', 'C2'].map((lvl) => (
+              {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((lvl) => (
                 <button
                   key={lvl}
                   onClick={() => setLevel(lvl)}
-                  className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
+                  className={`px-4 py-3 rounded-xl font-bold text-sm transition-all ${
                     level === lvl
                       ? 'bg-indigo-600 text-white shadow-lg scale-105'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                   }`}
                 >
                   {lvl}
+                  {useVocabMode && (
+                    <span className="ml-1 text-xs opacity-75">({vocabCountByLevel[lvl]})</span>
+                  )}
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Vocabulary Mode Toggle */}
+          <div className="mb-6 bg-amber-50 border-2 border-amber-200 rounded-xl p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <label className="block text-sm font-bold text-amber-800 mb-1">
+                  📖 Vokabel-Modus
+                </label>
+                <p className="text-xs text-amber-700">
+                  Sätze basieren auf Vokabeln des gewählten Levels. +15s Bonus bei korrekter Nutzung!
+                </p>
+              </div>
+              <button
+                onClick={() => setUseVocabMode(!useVocabMode)}
+                className={`relative w-14 h-7 rounded-full transition-colors ${
+                  useVocabMode ? 'bg-amber-500' : 'bg-gray-300'
+                }`}
+              >
+                <div className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${
+                  useVocabMode ? 'translate-x-7' : 'translate-x-0.5'
+                }`} />
+              </button>
+            </div>
+            {useVocabMode && vocabCountByLevel[level] === 0 && (
+              <p className="mt-2 text-xs text-red-600 font-semibold">
+                ⚠️ Keine Vokabeln für Level {level} in der Bibliothek!
+              </p>
+            )}
           </div>
 
           {/* Topic Selector */}
@@ -207,12 +296,12 @@ function TranslationModule({ user }) {
           </div>
           
           {/* Level Selector */}
-          <div className="mb-2 flex gap-1">
-            {['B2', 'C1', 'C2'].map((lvl) => (
+          <div className="mb-2 flex gap-1 flex-wrap">
+            {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((lvl) => (
               <button
                 key={lvl}
                 onClick={() => setLevel(lvl)}
-                className={`px-3 py-1 rounded-lg font-semibold text-xs transition-all ${
+                className={`px-2 py-1 rounded-lg font-semibold text-xs transition-all ${
                   level === lvl
                     ? 'bg-indigo-600 text-white shadow-lg'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -251,6 +340,17 @@ function TranslationModule({ user }) {
           <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800 leading-relaxed">
             {currentSentence.de}
           </p>
+          {currentSentence.targetVocab && (
+            <div className="mt-2 pt-2 border-t border-indigo-200">
+              <p className="text-[9px] sm:text-[10px] text-amber-600 font-semibold uppercase tracking-wide flex items-center">
+                🎯 Ziel-Vokabel: 
+                <span className="ml-1 px-2 py-0.5 bg-amber-100 rounded text-amber-800 normal-case font-bold">
+                  {currentSentence.targetVocab.german} → {currentSentence.targetVocab.english}
+                </span>
+                <span className="ml-2 text-amber-500 text-[8px]">(+15s Bonus bei korrekter Nutzung)</span>
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Translation Form */}
@@ -309,11 +409,41 @@ function TranslationModule({ user }) {
                 <span className="mr-1 text-xl">🤖</span>
                 KI-Bewertung
               </h3>
-              <div className="flex items-center bg-white rounded-lg px-3 py-1 shadow-lg">
-                <span className="text-2xl md:text-3xl font-bold gradient-text mr-2">{feedback.score}</span>
-                <span className="text-gray-600 text-lg">/10</span>
+              <div className="flex items-center gap-2">
+                {feedback.vocabBonus && (
+                  <div className="bg-amber-100 text-amber-800 rounded-lg px-2 py-1 text-xs font-bold border border-amber-300 animate-pulse">
+                    +15s Bonus! 🎯
+                  </div>
+                )}
+                <div className="flex items-center bg-white rounded-lg px-3 py-1 shadow-lg">
+                  <span className="text-2xl md:text-3xl font-bold gradient-text mr-2">{feedback.score}</span>
+                  <span className="text-gray-600 text-lg">/10</span>
+                </div>
               </div>
             </div>
+
+            {/* Vocabulary Bonus Feedback */}
+            {feedback.targetVocab && (
+              <div className={`mb-3 rounded-lg p-3 border ${
+                feedback.vocabBonus 
+                  ? 'bg-green-50/70 border-green-200' 
+                  : 'bg-amber-50/70 border-amber-200'
+              }`}>
+                <p className={`text-xs font-bold mb-1 uppercase tracking-wide ${
+                  feedback.vocabBonus ? 'text-green-700' : 'text-amber-700'
+                }`}>
+                  {feedback.vocabBonus ? '✅ Ziel-Vokabel korrekt verwendet!' : '📖 Ziel-Vokabel:'}
+                </p>
+                <p className="text-gray-800 text-sm">
+                  <span className="font-bold">{feedback.targetVocab.german}</span> → <span className="font-bold">{feedback.targetVocab.english}</span>
+                </p>
+                {feedback.vocabBonus && (
+                  <p className="text-green-600 text-xs mt-1 font-semibold">
+                    🎁 Du erhältst 15 Sekunden Bonus für dein Tagesziel!
+                  </p>
+                )}
+              </div>
+            )}
             
             <div className="mb-3 bg-white/70 rounded-lg p-3">
               <p className="text-xs font-bold text-purple-700 mb-1 uppercase tracking-wide">Feedback:</p>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import VocabularyEditor from './VocabularyEditor';
 import apiService from '../services/apiService';
+import { classifyVocabularyLevels, classifySingleVocabulary } from '../services/llmService';
 
 function VocabularyLibrary({ user }) {
   const [vocabulary, setVocabulary] = useState([]);
@@ -15,6 +16,9 @@ function VocabularyLibrary({ user }) {
   const [showBulkImport, setShowBulkImport] = useState(false);
   const [bulkImportText, setBulkImportText] = useState('');
   const [importResults, setImportResults] = useState(null);
+  const [classifyingAll, setClassifyingAll] = useState(false);
+  const [classifyProgress, setClassifyProgress] = useState(null);
+  const [classifyingSingle, setClassifyingSingle] = useState(new Set());
 
   useEffect(() => {
     loadVocabularyData();
@@ -238,6 +242,97 @@ function VocabularyLibrary({ user }) {
     }
   };
 
+  // KI-basierte Level-Klassifizierung für alle gefilterten Vokabeln
+  const handleClassifyAll = async () => {
+    if (!user) {
+      alert('Bitte melde dich an, um Vokabeln zu klassifizieren.');
+      return;
+    }
+
+    const vocabsToClassify = filteredVocabulary;
+    if (vocabsToClassify.length === 0) {
+      alert('Keine Vokabeln zum Klassifizieren gefunden.');
+      return;
+    }
+
+    if (!confirm(`🤖 Möchtest du ${vocabsToClassify.length} Vokabel(n) mit KI nach CEFR-Level (A1-C2) einstufen?\n\nDies kann je nach Anzahl einige Sekunden dauern.`)) {
+      return;
+    }
+
+    setClassifyingAll(true);
+    setClassifyProgress({ current: 0, total: vocabsToClassify.length, message: 'Starte Klassifizierung...' });
+
+    try {
+      const results = await classifyVocabularyLevels(vocabsToClassify, setClassifyProgress);
+      
+      // Update jede Vokabel mit dem neuen Level
+      let successCount = 0;
+      let errorCount = 0;
+
+      for (const result of results) {
+        try {
+          await apiService.updateVocabulary(result.id, { level: result.level });
+          successCount++;
+          
+          // Update lokalen State
+          setVocabulary(prev => prev.map(v => 
+            v.id === result.id ? { ...v, level: result.level } : v
+          ));
+        } catch (err) {
+          console.error(`Failed to update vocabulary ${result.id}:`, err);
+          errorCount++;
+        }
+      }
+
+      alert(`✅ Klassifizierung abgeschlossen!\n\n${successCount} Vokabel(n) aktualisiert${errorCount > 0 ? `\n${errorCount} Fehler` : ''}`);
+    } catch (error) {
+      console.error('Classification failed:', error);
+      alert('❌ Fehler bei der Klassifizierung: ' + error.message);
+    } finally {
+      setClassifyingAll(false);
+      setClassifyProgress(null);
+    }
+  };
+
+  // KI-basierte Level-Klassifizierung für eine einzelne Vokabel
+  const handleClassifySingle = async (vocab) => {
+    if (!user) {
+      alert('Bitte melde dich an, um Vokabeln zu klassifizieren.');
+      return;
+    }
+
+    setClassifyingSingle(prev => new Set([...prev, vocab.id]));
+
+    try {
+      const newLevel = await classifySingleVocabulary(vocab.english, vocab.german);
+      
+      // Update in der Datenbank
+      await apiService.updateVocabulary(vocab.id, { level: newLevel });
+      
+      // Update lokalen State
+      setVocabulary(prev => prev.map(v => 
+        v.id === vocab.id ? { ...v, level: newLevel } : v
+      ));
+
+      // Kurze Bestätigung
+      setTimeout(() => {
+        setClassifyingSingle(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(vocab.id);
+          return newSet;
+        });
+      }, 1500);
+    } catch (error) {
+      console.error('Single classification failed:', error);
+      alert('❌ Fehler bei der Klassifizierung: ' + error.message);
+      setClassifyingSingle(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(vocab.id);
+        return newSet;
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
@@ -327,8 +422,39 @@ function VocabularyLibrary({ user }) {
                 📥 Alle zum Trainer
               </button>
             )}
+            {user && filteredVocabulary.length > 0 && (
+              <button
+                onClick={handleClassifyAll}
+                disabled={classifyingAll}
+                className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Alle Vokabeln mit KI nach CEFR-Level einstufen"
+              >
+                {classifyingAll ? '⏳ Klassifiziere...' : '🤖 Level mit KI setzen'}
+              </button>
+            )}
           </div>
         </div>
+
+        {/* Classification Progress */}
+        {classifyProgress && (
+          <div className="mt-4 bg-amber-50 border-2 border-amber-200 rounded-lg p-4">
+            <div className="flex items-center gap-3">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-amber-600"></div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-amber-800">{classifyProgress.message}</div>
+                <div className="w-full bg-amber-200 rounded-full h-2 mt-2">
+                  <div 
+                    className="bg-amber-600 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${(classifyProgress.current / classifyProgress.total) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+              <div className="text-sm font-bold text-amber-700">
+                {classifyProgress.current}/{classifyProgress.total}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Vocabulary List */}
@@ -373,6 +499,18 @@ function VocabularyLibrary({ user }) {
                   <div className="flex gap-2 flex-shrink-0">
                     {user && (
                       <>
+                        <button
+                          onClick={() => handleClassifySingle(vocab)}
+                          disabled={classifyingSingle.has(vocab.id)}
+                          className={`${
+                            classifyingSingle.has(vocab.id)
+                              ? 'bg-amber-400 text-white'
+                              : 'bg-amber-500 hover:bg-amber-600 text-white'
+                          } font-semibold text-sm px-3 py-2 rounded-lg transition-colors disabled:opacity-70`}
+                          title="Level mit KI bestimmen"
+                        >
+                          {classifyingSingle.has(vocab.id) ? '⏳' : '🤖'}
+                        </button>
                         <button
                           onClick={() => handleAddToTrainer(vocab.id)}
                           disabled={addedToTrainer.has(vocab.id)}
