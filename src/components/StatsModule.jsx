@@ -91,29 +91,15 @@ function StatsModule({ user }) {
   const totalExercises = progress?.overall?.total_exercises || 0;
   
   // Level-System basierend auf Gesamtübungen
-  // Level 1: 0-99, Level 2: 100-249, Level 3: 250-499, etc.
+  // Jedes Level erfordert 1000 Übungen
+  // Level 1: 0-999, Level 2: 1000-1999, ..., Level 10: 9000-9999, Level 11: 10000+
   const calculateLevel = (exercises) => {
-    if (exercises < 100) return 1;
-    if (exercises < 250) return 2;
-    if (exercises < 500) return 3;
-    if (exercises < 1000) return 4;
-    if (exercises < 2000) return 5;
-    if (exercises < 3500) return 6;
-    if (exercises < 5500) return 7;
-    if (exercises < 8000) return 8;
-    return Math.floor(8 + (exercises - 8000) / 2000);
+    return Math.floor(exercises / 1000) + 1;
   };
 
   const calculateXPForLevel = (lvl) => {
-    if (lvl === 1) return 100;
-    if (lvl === 2) return 250;
-    if (lvl === 3) return 500;
-    if (lvl === 4) return 1000;
-    if (lvl === 5) return 2000;
-    if (lvl === 6) return 3500;
-    if (lvl === 7) return 5500;
-    if (lvl === 8) return 8000;
-    return 8000 + (lvl - 8) * 2000;
+    // Level 1 startet bei 0, Level 2 bei 1000, Level 3 bei 2000, etc.
+    return (lvl - 1) * 1000;
   };
 
   const level = calculateLevel(totalExercises);
