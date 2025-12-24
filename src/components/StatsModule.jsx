@@ -98,8 +98,9 @@ function StatsModule({ user }) {
   };
 
   const calculateXPForLevel = (lvl) => {
-    // Level 1 startet bei 0, Level 2 bei 1000, Level 3 bei 2000, etc.
-    return (lvl - 1) * 1000;
+    // Gibt die Anzahl der Übungen zurück, die für dieses Level erreicht werden müssen
+    // Level 1 endet bei 1000, Level 2 bei 2000, etc.
+    return lvl * 1000;
   };
 
   const level = calculateLevel(totalExercises);
