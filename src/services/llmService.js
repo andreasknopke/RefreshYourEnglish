@@ -901,11 +901,11 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
     return getFallbackScenario(level, topic);
   }
   
-  // Level-specific instructions for challenging scenarios
+  // Level-specific instructions for varied scenarios
   const levelInstructions = {
-    B2: 'Create a CHALLENGING situation where the student must handle a conflict, complaint, or difficult request. They should need to negotiate, explain, or defend their position.',
-    C1: 'Create a COMPLEX situation involving nuanced arguments, ethical dilemmas, or professional conflicts. The student must use sophisticated language to persuade, negotiate, or resolve tensions.',
-    C2: 'Create a HIGHLY COMPLEX situation with abstract concepts, philosophical debates, or high-stakes professional scenarios. The student must demonstrate mastery of formal language, rhetoric, and subtle argumentation.'
+    B2: 'Create an engaging conversation scenario. Mix positive situations (making plans, sharing experiences, asking for advice) with occasional challenges. Keep it natural and enjoyable - not every conversation needs conflict.',
+    C1: 'Create an interesting conversation with depth. Include scenarios like discussing ideas, sharing opinions, planning projects, or exploring topics. Make it intellectually stimulating but not necessarily confrontational.',
+    C2: 'Create a sophisticated conversation on complex topics, professional discussions, or nuanced subjects. Focus on depth and complexity rather than conflict.'
   };
   
   try {
@@ -919,37 +919,49 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
         model: 'gpt-3.5-turbo',
         messages: [{
           role: 'system',
-          content: `You are an English teacher creating CHALLENGING conversation scenarios for German learners.
+          content: `You are an English teacher creating VARIED and ENGAGING conversation scenarios for German learners.
 
 ${levelInstructions[level]}
 
 Topic: "${topic}"
 Level: ${level}
 
-SCENARIO STRUCTURE REQUIREMENTS:
-- Define WHO the student is (their role: student, customer, employee, citizen, etc.)
-- Define WHO you are (the conversation partner: tutor, manager, neighbor, official, etc.)
-- Present a PROBLEM or CONFLICT that the student must handle
-- The student must DEFEND, NEGOTIATE, EXPLAIN, or PERSUADE
+SCENARIO VARIETY - Use different types:
+1. POSITIVE: Making plans, getting advice, sharing experiences, discussing interests
+2. COLLABORATIVE: Planning together, brainstorming, problem-solving as a team
+3. INFORMATIVE: Asking about something, getting recommendations, learning about a topic
+4. SOCIAL: Small talk, catching up with someone, making new friends
+5. OCCASIONAL CHALLENGE: Sometimes (not always) include a mild conflict or complaint
+
+SCENARIO STRUCTURE:
+- Define WHO the student is (their role: friend, tourist, colleague, customer, etc.)
+- Define WHO you are (conversation partner: friend, local, colleague, shopkeeper, etc.)
+- Set up an ENGAGING situation (not necessarily a problem)
+- Create a natural conversation opportunity
 
 CRITICAL RULES:
-1. "studentRole" (in German): Clearly state who the student is and what they need to do
+1. "studentRole" (in German): Clearly state who the student is and what the situation is
 2. "partnerRole" (in German): State who YOU are (the conversation partner)
-3. "firstMessage" (in ENGLISH): Your opening statement as the conversation partner that CHALLENGES the student
-   - You must speak from YOUR role, NOT the student's role
-   - Example: If student is apologizing → You are the tutor saying "I'm disappointed you didn't submit the assignment"
-   - NOT: "I'm sorry professor..." (this would be the student speaking)
+3. "firstMessage" (in ENGLISH): Your opening statement as the conversation partner
+   - Speak naturally from YOUR role
+   - Be friendly and engaging (you can be enthusiastic, curious, helpful, etc.)
+   - Don't always start with a problem or complaint
+   - Example positive: "Hey! I heard you're planning a trip to Scotland. That's exciting! Have you decided where to go?"
+   - Example collaborative: "I'm thinking about organizing a team event. Do you have any ideas?"
+   - Example informative: "Welcome to our bookshop! Are you looking for something specific today?"
+
+VARY THE TONE: friendly, enthusiastic, curious, helpful, professional, casual - not always confrontational!
 
 Respond in JSON format: 
 {
   "studentRole": "Rolle des Studenten auf Deutsch",
   "partnerRole": "Rolle des Gesprächspartners auf Deutsch", 
   "description": "Kurze Szenariobeschreibung auf Deutsch",
-  "firstMessage": "Your challenging opening as the conversation partner in ENGLISH"
+  "firstMessage": "Your engaging opening as the conversation partner in ENGLISH"
 }`
         }, {
           role: 'user',
-          content: `Create a challenging conversation scenario at ${level} level about "${topic}". Make sure the firstMessage comes from the conversation partner's perspective, not the student's.`
+          content: `Create an engaging conversation scenario at ${level} level about "${topic}". Make it interesting and varied - it doesn't need to be a conflict or complaint. Positive and collaborative scenarios are encouraged!`
         }],
         temperature: 0.9,
         max_tokens: 250
@@ -981,20 +993,26 @@ export async function generateDialogResponse(scenario, conversationHistory, leve
     const messages = [
       {
         role: 'system',
-        content: `You are a conversation partner in a CHALLENGING scenario: ${scenario.description}
+        content: `You are a conversation partner in this scenario: ${scenario.description}
 
 CRITICAL RULES:
 1. You MUST respond ONLY in English - never use German or any other language
-2. Stay strictly in character and maintain the CONFLICT or CHALLENGE of the scenario
-3. DO NOT make it easy - push back, question, or challenge the student's responses
-4. If they provide weak arguments, point out flaws or inconsistencies
-5. Make them WORK for a resolution - don't accept the first answer
-6. Reference their previous statements to test their consistency
-7. Match the language level: ${level}
-8. Keep responses focused and challenging (2-4 sentences max)
-9. If the user goes off-topic, firmly redirect them to the scenario
+2. Stay in character and respond naturally to what the student says
+3. Be VARIED in your approach:
+   - If the scenario is positive/collaborative: Be helpful, enthusiastic, and encouraging
+   - If the scenario involves a question: Provide helpful information and ask follow-up questions
+   - If the scenario has a conflict: Be reasonable but firm (don't be unnecessarily difficult)
+   - If making plans: Be engaged and contribute ideas
+4. React authentically to the student's responses:
+   - If they make a good point, acknowledge it
+   - If they're being creative or thoughtful, show appreciation
+   - If there's a genuine issue, address it reasonably
+5. Keep the conversation flowing naturally - ask questions, share thoughts, build on their ideas
+6. Match the language level: ${level}
+7. Keep responses conversational and natural (2-4 sentences max)
+8. If the user goes off-topic, gently guide them back
 
-Your goal: Make the student demonstrate their language skills by DEFENDING, NEGOTIATING, or PERSUADING.`
+Your goal: Have a natural, engaging conversation that helps the student practice English in a realistic way - not every conversation needs to be a battle!`
       },
       ...conversationHistory.map(msg => ({
         role: msg.role === 'user' ? 'user' : 'assistant',
@@ -1231,136 +1249,168 @@ function getFallbackScenario(level, topic = 'Alltag') {
     'B2': {
       'Politik': [
         {
-          studentRole: "Du bist Mitglied eines Stadtrats",
-          partnerRole: "Ich bin ein aufgebrachter Anwohner",
-          description: "Ein aufgebrachter Anwohner beschuldigt dich, für ein lokales Parkplatzproblem verantwortlich zu sein. Du musst dich verteidigen und die Situation klären.",
-          firstMessage: "Excuse me, I need to talk to you! I've heard that you're part of the committee that approved the new parking regulations. Do you realize how much trouble this has caused for local residents? My elderly mother can't park near her own house anymore! What were you thinking?"
+          studentRole: "Du bist ein interessierter Bürger",
+          partnerRole: "Ich bin ein Stadtratsmitglied",
+          description: "Du möchtest mehr über ein neues Stadtentwicklungsprojekt erfahren und deine Ideen einbringen.",
+          firstMessage: "Hi! I'm glad you could make it to our community meeting. We're planning a new park in the neighborhood. What are your thoughts? Do you have any suggestions?"
         },
         {
-          studentRole: "Du bist Stadtratsmitglied",
-          partnerRole: "Ich bin ein wütender Geschäftsinhaber",
-          description: "Ein wütender Geschäftsinhaber konfrontiert dich mit seiner drastisch gestiegenen Steuerrechnung. Du musst die Steuererhöhung rechtfertigen.",
-          firstMessage: "I just received my new tax bill and it's completely outrageous! How can you justify a 30% increase? This will force me to close my business. I demand an explanation!"
+          studentRole: "Du bist bei einer politischen Diskussionsrunde",
+          partnerRole: "Ich bin ein anderer Teilnehmer",
+          description: "Ihr diskutiert über umweltfreundliche Stadtentwicklung und tauscht Ideen aus.",
+          firstMessage: "I think bike lanes are great, but we should also consider electric buses. What's your opinion on the best way to make our city more sustainable?"
         }
       ],
       'Sport': [
         {
-          studentRole: "Du bist ein Läufer, der am Marathon teilnehmen möchte",
-          partnerRole: "Ich bin ein Organisator des Marathons",
-          description: "Du hast dich für einen Marathonlauf angemeldet, aber dein Name ist nicht auf der Liste. Überzeuge den Organisator, dich noch teilnehmen zu lassen.",
-          firstMessage: "I'm sorry, but your name isn't on our list. The registration closed three weeks ago. I'm afraid we can't let you participate without proper registration."
+          studentRole: "Du möchtest mit Joggen anfangen",
+          partnerRole: "Ich bin ein erfahrener Läufer",
+          description: "Du triffst einen Läufer im Park und fragst nach Tipps und Ratschlägen für Anfänger.",
+          firstMessage: "Hey! I noticed you running here regularly. I'm just starting out - any tips for a beginner? What's a good distance to begin with?"
         },
         {
-          studentRole: "Du trainierst im Fitnessstudio",
-          partnerRole: "Ich bin ein anderes Fitnessstudio-Mitglied",
-          description: "Ein anderes Mitglied beschwert sich, dass du zu laut trainierst. Verteidige deine Trainingsweise.",
-          firstMessage: "Excuse me, but you're making way too much noise with those weights! Other people are trying to concentrate. Could you please be more considerate?"
+          studentRole: "Du bist im Fitnessstudio",
+          partnerRole: "Ich bin ein freundlicher Trainer",
+          description: "Ein Trainer bietet dir an, einen Trainingsplan zu erstellen und fragt nach deinen Zielen.",
+          firstMessage: "Hi there! I'm one of the trainers here. I see you're working out - what are your fitness goals? I'd be happy to help you create a plan!"
         }
       ],
       'Literatur': [
         {
-          description: "In einer Buchhandlung wird dir vorgeworfen, ein Buch beschädigt zu haben, das du gar nicht angefasst hast.",
-          firstMessage: "Sir/Madam, I saw you handling that book earlier, and now there's a torn page. You'll need to pay for the damage."
+          studentRole: "Du bist in einer Buchhandlung",
+          partnerRole: "Ich bin der Buchhändler",
+          description: "Du suchst ein Geschenk für einen Freund und der Buchhändler hilft dir mit Empfehlungen.",
+          firstMessage: "Welcome! Looking for something special today? I love helping people find the perfect book. What kind of stories does your friend enjoy?"
         },
         {
-          description: "In deinem Buchclub kritisiert jemand scharf dein Lieblingsbuch. Verteidige deine Position.",
-          firstMessage: "I honestly can't understand why you like this book so much. The characters are shallow, the plot is predictable, and the writing style is mediocre at best. What could you possibly see in it?"
+          studentRole: "Du bist in einem Buchclub",
+          partnerRole: "Ich bin ein anderes Mitglied",
+          description: "Ihr tauscht euch begeistert über das aktuelle Buch aus und diskutiert eure Lieblingsszenen.",
+          firstMessage: "Oh my god, that plot twist in chapter 12! What did you think? I couldn't put the book down after that!"
         }
       ],
       'Film, Musik, Kunst': [
         {
-          description: "Du hast Konzertkarten online gekauft, aber an der Kasse behauptet man, sie seien gefälscht. Beweise, dass sie echt sind.",
-          firstMessage: "I'm sorry, but these tickets don't scan properly. They appear to be counterfeit. I can't let you enter with these."
+          studentRole: "Du bist auf einem Festival",
+          partnerRole: "Ich bin ein anderer Festivalbesucher",
+          description: "Ihr kommt ins Gespräch über die Bands und tauscht Empfehlungen aus.",
+          firstMessage: "That last band was amazing! Have you seen any other good performances today? I'm trying to decide what to see next."
         },
         {
-          description: "Im Kino sitzt jemand auf deinem reservierten Platz und weigert sich aufzustehen.",
-          firstMessage: "What do you mean this is your seat? I've been sitting here for ten minutes already. Maybe you should check your ticket again."
+          studentRole: "Du bist in einem Museumsshop",
+          partnerRole: "Ich bin ein Mitarbeiter",
+          description: "Du suchst ein schönes Kunstposter und der Mitarbeiter gibt dir Empfehlungen.",
+          firstMessage: "Hi! These art prints are really popular. Are you looking for something for yourself or as a gift? What style do you prefer?"
         }
       ],
       'Alltag': [
         {
-          description: "Dein Nachbar beschwert sich über den Lärm von deiner Party gestern Abend. Rechtfertige dich und finde eine Lösung.",
-          firstMessage: "I need to talk to you about last night. Your party was incredibly loud until 2 AM! I couldn't sleep at all, and I have important work today. This is completely unacceptable!"
+          studentRole: "Du bist neu in der Nachbarschaft",
+          partnerRole: "Ich bin dein Nachbar",
+          description: "Dein neuer Nachbar begrüßt dich freundlich und gibt dir Tipps für die Umgebung.",
+          firstMessage: "Hey! Welcome to the neighborhood! I'm your neighbor from next door. How are you settling in? Need any recommendations for good restaurants or shops around here?"
         },
         {
-          description: "Im Restaurant behauptet der Kellner, du hättest ein Glas zerbrochen und verlangt Bezahlung.",
-          firstMessage: "Excuse me, one of our servers saw you knock over a wine glass. That will be €15 for the replacement. Would you like to pay cash or card?"
+          studentRole: "Du bist in einem Café",
+          partnerRole: "Ich bin der Barista",
+          description: "Der Barista ist freundlich und hilft dir, das perfekte Getränk zu finden.",
+          firstMessage: "Good morning! First time here? We have some amazing seasonal drinks. What kind of flavors do you usually enjoy?"
+        },
+        {
+          studentRole: "Du planst eine Reise",
+          partnerRole: "Ich bin ein Freund mit Reiseerfahrung",
+          description: "Ein Freund gibt dir begeistert Tipps für deine geplante Reise nach Schottland.",
+          firstMessage: "Scotland! Oh, you're going to love it! I was there last summer. What places are you planning to visit? I have so many recommendations!"
         }
       ],
       'Persönliche Gespräche': [
         {
-          description: "Ein Freund ist sauer, weil du eine Verabredung vergessen hast. Entschuldige dich und erkläre die Situation.",
-          firstMessage: "I can't believe you just didn't show up yesterday! I waited for an hour at the restaurant. You didn't even call or text. What kind of friend does that?"
+          studentRole: "Du triffst einen alten Freund",
+          partnerRole: "Ich bin dein alter Freund",
+          description: "Ihr trefft euch nach langer Zeit wieder und erzählt euch, was ihr so gemacht habt.",
+          firstMessage: "Wow, it's been ages! How have you been? I heard you started a new job - how's that going?"
         },
         {
-          description: "Dein Mitbewohner beschuldigt dich, seine Lebensmittel aus dem Kühlschrank gegessen zu haben.",
-          firstMessage: "Hey, I need to talk to you. My expensive cheese and the leftover pizza I was saving are gone. I'm pretty sure you ate them. Can you explain this?"
+          studentRole: "Du bist mit einem Freund unterwegs",
+          partnerRole: "Ich bin dein Freund",
+          description: "Ihr plant spontan, was ihr am Wochenende zusammen unternehmen könnt.",
+          firstMessage: "Hey, what are you up to this weekend? I was thinking we could do something fun - maybe check out that new escape room that just opened?"
         }
       ]
     },
     'C1': {
       'Politik': [
         {
-          description: "In einer Debatte musst du eine umstrittene politische Entscheidung gegen heftige Kritik verteidigen.",
-          firstMessage: "Your proposal to increase funding for renewable energy is economically irresponsible. We're already in debt, and you want to burden taxpayers even more? How can you justify prioritizing environmental concerns over economic stability when families are struggling to make ends meet?"
-        },
-        {
-          description: "Als Berater musst du einem skeptischen Investor erklären, warum er in ein riskantes Sozialprojekt investieren sollte.",
-          firstMessage: "I've reviewed your proposal, and frankly, the ROI projections seem overly optimistic. You're asking me to invest substantial capital in a social housing project with uncertain returns. Why should I risk my money on this when there are safer investment opportunities available?"
+          studentRole: "Du bist bei einer Think-Tank-Diskussion",
+          partnerRole: "Ich bin ein Politikexperte",
+          description: "Ihr diskutiert verschiedene Ansätze zur Stadtentwicklung und deren langfristige Auswirkungen.",
+          firstMessage: "I've been researching urban development strategies across Europe. What's your perspective on balancing economic growth with sustainable practices? I find the Nordic model particularly interesting."
         }
       ],
       'Sport': [
         {
-          description: "Du musst als Teamkapitän einen talentierten, aber problematischen Spieler aus dem Team ausschließen und diese Entscheidung rechtfertigen.",
-          firstMessage: "I've just heard that you're removing our best player from the team before the championship! His statistics are outstanding. How can you possibly justify this decision? Are you trying to sabotage our chances of winning?"
+          studentRole: "Du nimmst an einer Sportkonferenz teil",
+          partnerRole: "Ich bin ein Sportwissenschaftler",
+          description: "Ihr diskutiert über moderne Trainingsmethoden und den Einsatz von Technologie im Sport.",
+          firstMessage: "Your presentation on data-driven training was fascinating. How do you see AI changing the future of athletic performance? I'd love to hear your thoughts on the ethical implications too."
         }
       ],
       'Literatur': [
         {
-          description: "In einer akademischen Diskussion musst du deine kontroverse These über einen klassischen Autor gegen Literaturprofessoren verteidigen.",
-          firstMessage: "Your interpretation completely contradicts decades of established literary criticism. You're suggesting that the author's intentions were fundamentally different from what scholars have conclusively demonstrated. What evidence could you possibly have to support such a radical reinterpretation?"
+          studentRole: "Du bist bei einer literarischen Diskussion",
+          partnerRole: "Ich bin ein Literaturprofessor",
+          description: "Ihr analysiert gemeinsam moderne narrative Techniken in zeitgenössischer Literatur.",
+          firstMessage: "I really appreciate your analysis of unreliable narrators in modern fiction. Have you noticed how this technique has evolved since the postmodern era? What patterns do you see emerging?"
         }
       ],
       'Film, Musik, Kunst': [
         {
-          description: "Als Kurator musst du die Entscheidung verteidigen, ein kontroverses Kunstwerk auszustellen, das viele als anstößig empfinden.",
-          firstMessage: "I'm deeply disturbed that you've chosen to display this piece in our gallery. It's offensive to many members of our community and doesn't align with our institution's values. How can you defend this decision when it clearly prioritizes shock value over artistic merit?"
+          studentRole: "Du bist auf einer Kunstausstellungseröffnung",
+          partnerRole: "Ich bin ein Kunstkurator",
+          description: "Ihr diskutiert über die Bedeutung von digitaler Kunst in der zeitgenössischen Kunstszene.",
+          firstMessage: "Your thoughts on the intersection of technology and art are intriguing. How do you think NFTs and digital installations are reshaping our understanding of artistic value and ownership?"
         }
       ],
       'Alltag': [
         {
-          description: "Bei einer Gehaltsverhandlung lehnt dein Chef deine Forderung ab und argumentiert, dass du sie nicht verdienst.",
-          firstMessage: "I appreciate your interest in a salary increase, but I have to be frank with you. Your performance this year hasn't met expectations. You've missed several deadlines, and the quality of your work has been inconsistent. Why should I approve a raise when your contributions don't justify it?"
-        },
-        {
-          description: "Du musst einem Vermieter erklären, warum du die Miete diesen Monat nicht zahlen kannst, ohne die Wohnung zu verlieren.",
-          firstMessage: "This is the second time this year you're asking for an extension on rent. I'm running a business, not a charity. I have mortgage payments to make. If you can't meet your obligations, I'll have to consider other tenants who can."
+          studentRole: "Du bist bei einem professionellen Networking-Event",
+          partnerRole: "Ich bin ein Branchenkollege",
+          description: "Ihr tauscht euch über innovative Ansätze in eurer Branche aus und diskutiert zukünftige Trends.",
+          firstMessage: "I really enjoyed your presentation earlier. Your approach to sustainability in business operations is refreshing. How did you convince your stakeholders to invest in such long-term initiatives?"
         }
       ],
       'Persönliche Gespräche': [
         {
-          description: "Ein enger Freund konfrontiert dich mit dem Vorwurf, hinter seinem Rücken über ihn geredet zu haben.",
-          firstMessage: "I need to address something serious. Multiple people have told me that you've been spreading rumors about my personal life. I trusted you with confidential information, and now I find out you've been gossiping about me. How could you betray my trust like this?"
+          studentRole: "Du triffst einen Mentor",
+          partnerRole: "Ich bin dein Mentor",
+          description: "Ihr diskutiert über Karriereentwicklung und persönliche Ziele in einer unterstützenden Atmosphäre.",
+          firstMessage: "It's great to catch up! I've been thinking about your career trajectory. You've made impressive progress. What are your aspirations for the next phase? I'd love to help you navigate that."
         }
       ]
     },
     'C2': {
       'Politik': [
         {
-          description: "In einer hochrangigen Debatte musst du ein komplexes ethisches Dilemma zur Privatsphäre vs. nationale Sicherheit argumentieren.",
-          firstMessage: "Your argument for unrestricted civil liberties fundamentally ignores the existential security threats we face. In an era of sophisticated terrorism and cyber warfare, your idealistic position could cost lives. How do you reconcile your philosophical principles with the pragmatic reality that surveillance has demonstrably prevented attacks?"
+          studentRole: "Du bist bei einer Think-Tank-Diskussion",
+          partnerRole: "Ich bin ein Politikforscher",
+          description: "Ihr analysiert komplexe geopolitische Entwicklungen und deren philosophische Implikationen.",
+          firstMessage: "Your analysis of emerging democratic models in the digital age raises fascinating questions. How do you reconcile traditional notions of sovereignty with the deterritorialized nature of contemporary governance structures?"
         }
       ],
       'Literatur': [
         {
-          description: "Du musst eine radikale postmoderne Interpretation eines kanonischen Werkes gegen traditionelle Literaturwissenschaftler verteidigen.",
-          firstMessage: "Your deconstructionist approach fundamentally undermines the authorial intentionality that gives literature its meaning. By reducing the text to an endless play of signifiers, you're essentially arguing that literary criticism is a solipsistic exercise. How can you defend a methodology that renders objective textual analysis impossible?"
+          studentRole: "Du bist bei einem literarischen Symposium",
+          partnerRole: "Ich bin ein Literaturtheoretiker",
+          description: "Ihr erkundet zusammen neue Perspektiven auf narrative Strukturen und deren kulturelle Bedeutung.",
+          firstMessage: "Your interdisciplinary approach to narrative theory is compelling. How do you see the intersection of cognitive science and literary analysis evolving? The implications for understanding consciousness through fiction are profound."
         }
       ],
       'Alltag': [
         {
-          description: "Als Führungskraft musst du eine unpopuläre Umstrukturierung rechtfertigen, die Entlassungen bedeutet.",
-          firstMessage: "Your restructuring plan will destroy the careers of dozens of loyal employees who've given years to this company. You're prioritizing short-term profitability over human welfare. How can you ethically justify these decisions when alternative solutions, though more complex, might preserve jobs?"
+          studentRole: "Du bist bei einer Führungskräfte-Konferenz",
+          partnerRole: "Ich bin ein CEO",
+          description: "Ihr diskutiert über ethische Führung und die Zukunft der Arbeitswelt in einer sich wandelnden Gesellschaft.",
+          firstMessage: "I'm intrigued by your perspective on stakeholder capitalism. How do you navigate the tension between shareholder expectations and broader social responsibilities? The philosophical dimensions are as challenging as the practical ones."
         }
       ],
       'Persönliche Gespräche': [
