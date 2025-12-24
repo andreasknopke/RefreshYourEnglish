@@ -246,16 +246,22 @@ function VocabularyTrainer({ user }) {
               {/* Rückseite (Englisch) */}
               <div className="absolute w-full h-full backface-hidden rotate-y-180">
                 <div className="glass-card h-full flex flex-col items-center justify-center p-3 sm:p-4 bg-gradient-to-br from-indigo-50 to-purple-50">
-                  <div className="text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">🇬🇧 Englisch</div>
-                  <div className="flex items-center gap-2 mb-2 sm:mb-4">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-700 text-center">
-                      {currentCard.english}
-                    </div>
-                    <TTSButton text={currentCard.english} language="en" />
-                  </div>
-                  <div className="text-[10px] sm:text-xs text-gray-400">
-                    Wie gut kanntest du diese Vokabel?
-                  </div>
+                  {isFlipped ? (
+                    <>
+                      <div className="text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">🇬🇧 Englisch</div>
+                      <div className="flex items-center gap-2 mb-2 sm:mb-4">
+                        <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-700 text-center">
+                          {currentCard.english}
+                        </div>
+                        <TTSButton text={currentCard.english} language="en" />
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-gray-400">
+                        Wie gut kanntest du diese Vokabel?
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-sm text-gray-400">Klicke zum Umdrehen...</div>
+                  )}
                 </div>
               </div>
             </div>
