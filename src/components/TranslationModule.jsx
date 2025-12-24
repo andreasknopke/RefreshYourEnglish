@@ -141,7 +141,8 @@ function TranslationModule({ user }) {
       const result = await evaluateTranslation(
         currentSentence.de,
         userTranslation,
-        currentSentence.en
+        currentSentence.en,
+        currentSentence.targetVocab
       );
       
       // Prüfe, ob die Ziel-Vokabel korrekt verwendet wurde

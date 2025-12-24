@@ -6,9 +6,10 @@
  * @param {string} germanSentence - Der deutsche Satz
  * @param {string} userTranslation - Die Übersetzung des Benutzers
  * @param {string} correctTranslation - Die korrekte Übersetzung (optional)
+ * @param {object} targetVocab - Die Ziel-Vokabel, die verwendet werden sollte (optional)
  * @returns {Promise<{score: number, feedback: string, improvements: string[], correctTranslation: string}>}
  */
-export async function evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
+export async function evaluateTranslation(germanSentence, userTranslation, correctTranslation = '', targetVocab = null) {
   const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
   
   console.log('🔑 OpenAI API Key status:', {
@@ -20,10 +21,19 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
   // Wenn kein API-Key vorhanden ist, verwende Simulation
   if (!API_KEY) {
     console.warn('⚠️ No OpenAI API key found, using simulation mode');
-    return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+    return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
   
   console.log('✨ Using OpenAI API for translation evaluation');
+
+  // Zusätzliche Anweisungen für Ziel-Vokabel
+  const vocabInstruction = targetVocab 
+    ? `\n\nWICHTIG - ZIEL-VOKABEL:
+Der Schüler SOLLTE die englische Vokabel "${targetVocab.english}" (deutsch: "${targetVocab.german}") in der Übersetzung verwenden.
+- Wenn der Schüler diese Vokabel korrekt verwendet hat, erwähne dies POSITIV im Feedback
+- Schlage NICHT vor, diese Vokabel durch andere Wörter zu ersetzen
+- Wenn die Vokabel korrekt verwendet wurde, gib mindestens 8/10 Punkte (bei korrekter Grammatik)`
+    : '';
   
   // Echte OpenAI-Integration (nur wenn API-Key vorhanden)
   try {
@@ -43,7 +53,7 @@ WICHTIGE BEWERTUNGSRICHTLINIEN:
 1. Rechtschreibfehler und Tippfehler: Erwähne sie im Feedback, aber ziehe KEINE Punkte ab
 2. Wenn die Übersetzung den SINN des Satzes korrekt wiedergibt: Mindestens 8/10 Punkte
 3. Grammatikfehler: Nur bei gravierenden Fehlern Punktabzug (max. -2 Punkte)
-4. Wortwahl: Akzeptiere verschiedene gültige Formulierungen
+4. Wortwahl: Akzeptiere verschiedene gültige Formulierungen${vocabInstruction}
 
 BEWERTUNGSSKALA:
 - 10/10: Perfekte Übersetzung (Sinn, Grammatik, Wortwahl)
@@ -80,18 +90,18 @@ Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": s
       };
     } catch {
       // Fallback wenn JSON-Parsing fehlschlägt
-      return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+      return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
     }
   } catch (error) {
     console.error('OpenAI API failed, falling back to simulation:', error);
-    return simulateEvaluation(germanSentence, userTranslation, correctTranslation);
+    return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
 }
 
 /**
  * Simulierte Bewertung (funktioniert ohne API-Key)
  */
-function simulateEvaluation(germanSentence, userTranslation, correctTranslation) {
+function simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab = null) {
   return new Promise((resolve) => {
     setTimeout(() => {
       // Berechne Ähnlichkeit basierend auf verschiedenen Faktoren
@@ -116,12 +126,21 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation)
       let feedback = '';
       let improvements = [];
       let spellingNotes = [];
+
+      // Prüfe ob Ziel-Vokabel verwendet wurde
+      const vocabUsed = targetVocab && userTranslation.toLowerCase().includes(targetVocab.english.toLowerCase());
       
       if (score >= 9) {
-        feedback = 'Ausgezeichnet! Deine Übersetzung ist nahezu perfekt. 🎉';
+        feedback = vocabUsed 
+          ? `Ausgezeichnet! Du hast die Vokabel "${targetVocab.english}" perfekt verwendet! 🎉`
+          : 'Ausgezeichnet! Deine Übersetzung ist nahezu perfekt. 🎉';
       } else if (score >= 8) {
-        feedback = 'Sehr gut! Du hast den Sinn korrekt wiedergegeben. 👍';
-        improvements.push('Versuche, idiomatischere Ausdrücke zu verwenden');
+        feedback = vocabUsed
+          ? `Sehr gut! Die Vokabel "${targetVocab.english}" wurde korrekt verwendet. 👍`
+          : 'Sehr gut! Du hast den Sinn korrekt wiedergegeben. 👍';
+        if (!vocabUsed) {
+          improvements.push('Versuche, idiomatischere Ausdrücke zu verwenden');
+        }
       } else if (score >= 7) {
         feedback = 'Gut! Die grundlegende Bedeutung stimmt.';
         improvements.push('Achte auf die Wortstellung');
@@ -133,6 +152,14 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation)
         feedback = 'Guter Versuch! Lass uns gemeinsam daran arbeiten.';
         improvements.push('Versuche, den Satz Schritt für Schritt zu übersetzen');
         improvements.push('Achte auf die Grundstruktur');
+      }
+
+      // WICHTIG: Schlage nicht vor, die Ziel-Vokabel zu ersetzen
+      if (targetVocab && vocabUsed) {
+        // Filtere Verbesserungsvorschläge, die die Ziel-Vokabel betreffen könnten
+        improvements = improvements.filter(imp => 
+          !imp.toLowerCase().includes(targetVocab.english.toLowerCase())
+        );
       }
       
       // Hinweis: In der Simulation können wir keine echten Rechtschreibfehler erkennen
