@@ -16,7 +16,8 @@ function TranslationModule({ user }) {
   const [isGeneratingSentence, setIsGeneratingSentence] = useState(false);
   const [sessionStartTime, setSessionStartTime] = useState(null);
   const [vocabulary, setVocabulary] = useState([]);
-  const [useVocabMode, setUseVocabMode] = useState(false);
+  const [trainerVocabulary, setTrainerVocabulary] = useState([]);
+  const [vocabMode, setVocabMode] = useState('classic'); // 'classic', 'level', 'trainer'
   const [vocabBonusCount, setVocabBonusCount] = useState(0);
 
   // Themenbereiche
@@ -44,7 +45,13 @@ function TranslationModule({ user }) {
   useEffect(() => {
     setSessionStartTime(Date.now());
     loadVocabulary();
+    loadTrainerVocabulary();
   }, []);
+
+  // Trainer-Vokabeln neu laden wenn User sich ändert
+  useEffect(() => {
+    loadTrainerVocabulary();
+  }, [user]);
 
   // Vokabeln aus der Bibliothek laden
   const loadVocabulary = async () => {
@@ -57,11 +64,36 @@ function TranslationModule({ user }) {
     }
   };
 
-  // Zufällige Vokabel des ausgewählten Levels holen
+  // Vokabeln aus dem Trainer laden
+  const loadTrainerVocabulary = async () => {
+    if (!user) return;
+    try {
+      const data = await apiService.getDueFlashcards();
+      const flashcards = data.flashcards || [];
+      // Konvertiere Flashcards zu Vokabeln-Format
+      const vocabArray = flashcards.map(fc => ({
+        id: fc.vocab_id || fc.id,
+        english: fc.english,
+        german: fc.german,
+        level: fc.level || 'B2'
+      }));
+      setTrainerVocabulary(vocabArray);
+    } catch (error) {
+      console.error('Failed to load trainer vocabulary:', error);
+    }
+  };
+
+  // Zufällige Vokabel des ausgewählten Levels holen (aus Bibliothek)
   const getRandomVocabForLevel = () => {
     const levelVocabs = vocabulary.filter(v => v.level === level);
     if (levelVocabs.length === 0) return null;
     return levelVocabs[Math.floor(Math.random() * levelVocabs.length)];
+  };
+
+  // Zufällige Vokabel aus dem Trainer holen
+  const getRandomVocabFromTrainer = () => {
+    if (trainerVocabulary.length === 0) return null;
+    return trainerVocabulary[Math.floor(Math.random() * trainerVocabulary.length)];
   };
 
   const loadNewSentence = async () => {
@@ -69,9 +101,22 @@ function TranslationModule({ user }) {
     setUserTranslation('');
     setFeedback(null);
     try {
-      // Wenn Vokabel-Modus aktiv ist, eine zufällige Vokabel des Levels wählen
-      const targetVocab = useVocabMode ? getRandomVocabForLevel() : null;
-      const sentence = await generateTranslationSentence(level, topic, targetVocab);
+      let targetVocab = null;
+      let useTopic = topic;
+
+      // Je nach Modus die richtige Vokabel und Topic-Einstellung wählen
+      if (vocabMode === 'level') {
+        // Modus 2: Nur Level-basiert
+        targetVocab = getRandomVocabForLevel();
+        useTopic = null; // Kein spezifisches Thema
+      } else if (vocabMode === 'trainer') {
+        // Modus 3: Trainer-basiert
+        targetVocab = getRandomVocabFromTrainer();
+        useTopic = null; // Kein spezifisches Thema
+      }
+      // Modus 1 (classic): targetVocab bleibt null, useTopic wird verwendet
+
+      const sentence = await generateTranslationSentence(level, useTopic, targetVocab);
       setCurrentSentence(sentence);
     } catch (error) {
       console.error('Failed to generate sentence:', error);
@@ -120,9 +165,10 @@ function TranslationModule({ user }) {
       // Track activity für Gamification (nur bei score >= 8/10)
       if (user && result.score >= 8) {
         try {
-          // Basis: 45 Sekunden, plus 15 Sekunden Bonus wenn Vokabel korrekt verwendet wurde
+          // Basis: 45 Sekunden
           const baseSeconds = 45;
-          const vocabBonusSeconds = vocabUsedCorrectly ? 15 : 0;
+          // Bonus: 30 Sekunden wenn Vokabel korrekt verwendet wurde
+          const vocabBonusSeconds = vocabUsedCorrectly ? 30 : 0;
           const totalSeconds = baseSeconds + vocabBonusSeconds;
           const minutesToAdd = totalSeconds / 60;
           
@@ -131,6 +177,7 @@ function TranslationModule({ user }) {
             baseSeconds,
             vocabBonusSeconds,
             totalSeconds,
+            vocabMode,
             user: user.username 
           });
           const apiResult = await apiService.trackActivity(minutesToAdd);
@@ -173,6 +220,8 @@ function TranslationModule({ user }) {
       C1: vocabulary.filter(v => v.level === 'C1').length,
       C2: vocabulary.filter(v => v.level === 'C2').length,
     };
+
+    const currentLevelVocabCount = vocabCountByLevel[level] || 0;
     
     return (
       <div className="max-w-4xl mx-auto animate-fade-in">
@@ -198,70 +247,177 @@ function TranslationModule({ user }) {
                   }`}
                 >
                   {lvl}
-                  {useVocabMode && (
-                    <span className="ml-1 text-xs opacity-75">({vocabCountByLevel[lvl]})</span>
+                  {vocabMode !== 'classic' && (
+                    <span className="ml-1 text-xs opacity-75">
+                      ({vocabMode === 'trainer' ? trainerVocabulary.length : vocabCountByLevel[lvl]})
+                    </span>
                   )}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Vocabulary Mode Toggle */}
-          <div className="mb-6 bg-amber-50 border-2 border-amber-200 rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <label className="block text-sm font-bold text-amber-800 mb-1">
-                  📖 Vokabel-Modus
-                </label>
-                <p className="text-xs text-amber-700">
-                  Sätze basieren auf Vokabeln des gewählten Levels. +15s Bonus bei korrekter Nutzung!
-                </p>
-              </div>
+          {/* Mode Selection */}
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-3">
+              🎯 Übungsmodus wählen:
+            </label>
+            <div className="grid grid-cols-1 gap-3">
+              {/* Modus 1: Klassisch - Thema + Level */}
               <button
-                onClick={() => setUseVocabMode(!useVocabMode)}
-                className={`relative w-14 h-7 rounded-full transition-colors ${
-                  useVocabMode ? 'bg-amber-500' : 'bg-gray-300'
+                onClick={() => setVocabMode('classic')}
+                className={`p-4 rounded-xl border-2 transition-all text-left ${
+                  vocabMode === 'classic'
+                    ? 'border-purple-500 bg-purple-50 shadow-lg scale-[1.02]'
+                    : 'border-gray-300 bg-white hover:border-purple-300 hover:bg-purple-50/50'
                 }`}
               >
-                <div className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${
-                  useVocabMode ? 'translate-x-7' : 'translate-x-0.5'
-                }`} />
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">📚</span>
+                      <h3 className="font-bold text-gray-800">Klassischer Modus</h3>
+                      {vocabMode === 'classic' && (
+                        <span className="ml-2 px-2 py-0.5 bg-purple-500 text-white text-xs rounded-full">
+                          Aktiv
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Wähle Themenbereich und Sprachniveau. Sätze werden zu deinem gewählten Thema generiert.
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              {/* Modus 2: Level-basiert - Vokabeln des Levels */}
+              <button
+                onClick={() => setVocabMode('level')}
+                className={`p-4 rounded-xl border-2 transition-all text-left ${
+                  vocabMode === 'level'
+                    ? 'border-amber-500 bg-amber-50 shadow-lg scale-[1.02]'
+                    : 'border-gray-300 bg-white hover:border-amber-300 hover:bg-amber-50/50'
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">🎯</span>
+                      <h3 className="font-bold text-gray-800">Level-Vokabeln</h3>
+                      {vocabMode === 'level' && (
+                        <span className="ml-2 px-2 py-0.5 bg-amber-500 text-white text-xs rounded-full">
+                          Aktiv
+                        </span>
+                      )}
+                      <span className="ml-auto px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-bold">
+                        +30s Bonus
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Sätze basieren auf Vokabeln deines gewählten Levels. 
+                      <span className="font-semibold text-amber-700"> Verfügbar: {currentLevelVocabCount} Vokabeln</span>
+                    </p>
+                    {currentLevelVocabCount === 0 && (
+                      <p className="text-xs text-red-600 mt-1 font-semibold">
+                        ⚠️ Keine Vokabeln für Level {level} verfügbar!
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              {/* Modus 3: Trainer-basiert */}
+              <button
+                onClick={() => setVocabMode('trainer')}
+                disabled={!user || trainerVocabulary.length === 0}
+                className={`p-4 rounded-xl border-2 transition-all text-left ${
+                  vocabMode === 'trainer'
+                    ? 'border-blue-500 bg-blue-50 shadow-lg scale-[1.02]'
+                    : trainerVocabulary.length === 0 || !user
+                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed opacity-60'
+                    : 'border-gray-300 bg-white hover:border-blue-300 hover:bg-blue-50/50'
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl">📖</span>
+                      <h3 className="font-bold text-gray-800">Vokabeltrainer-Modus</h3>
+                      {vocabMode === 'trainer' && (
+                        <span className="ml-2 px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full">
+                          Aktiv
+                        </span>
+                      )}
+                      <span className="ml-auto px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-bold">
+                        +30s Bonus
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      Sätze basieren auf Vokabeln aus deinem persönlichen Vokabeltrainer.
+                      <span className="font-semibold text-blue-700"> Verfügbar: {trainerVocabulary.length} Vokabeln</span>
+                    </p>
+                    {!user && (
+                      <p className="text-xs text-orange-600 mt-1 font-semibold">
+                        ⚠️ Login erforderlich
+                      </p>
+                    )}
+                    {user && trainerVocabulary.length === 0 && (
+                      <p className="text-xs text-orange-600 mt-1 font-semibold">
+                        ⚠️ Keine Vokabeln im Trainer! Füge welche hinzu in der Vokabelbibliothek.
+                      </p>
+                    )}
+                  </div>
+                </div>
               </button>
             </div>
-            {useVocabMode && vocabCountByLevel[level] === 0 && (
-              <p className="mt-2 text-xs text-red-600 font-semibold">
-                ⚠️ Keine Vokabeln für Level {level} in der Bibliothek!
-              </p>
-            )}
           </div>
 
-          {/* Topic Selector */}
-          <div className="mb-8">
-            <label className="block text-sm font-bold text-gray-700 mb-3">
-              📚 Themenbereich wählen:
-            </label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-              {topics.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setTopic(t)}
-                  className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
-                    topic === t
-                      ? 'bg-purple-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
+          {/* Topic Selector - nur im klassischen Modus */}
+          {vocabMode === 'classic' && (
+            <div className="mb-8">
+              <label className="block text-sm font-bold text-gray-700 mb-3">
+                📚 Themenbereich wählen:
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                {topics.map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => setTopic(t)}
+                    className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
+                      topic === t
+                        ? 'bg-purple-600 text-white shadow-lg scale-105'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Bonus Info Box */}
+          {vocabMode !== 'classic' && (
+            <div className="mb-6 bg-green-50 border-2 border-green-200 rounded-xl p-4">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">🎁</span>
+                <div>
+                  <p className="text-sm font-bold text-green-800">
+                    Vokabel-Bonus aktiv!
+                  </p>
+                  <p className="text-xs text-green-700">
+                    Bei korrekter Verwendung der Ziel-Vokabel erhältst du 30 Sekunden extra für dein Tagesziel!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Start Button */}
           <button
             onClick={loadNewSentence}
-            disabled={isGeneratingSentence}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isGeneratingSentence || (vocabMode === 'level' && currentLevelVocabCount === 0) || (vocabMode === 'trainer' && trainerVocabulary.length === 0)}
+            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             {isGeneratingSentence ? (
               <span className="flex items-center justify-center">
@@ -347,7 +503,7 @@ function TranslationModule({ user }) {
                 <span className="ml-1 px-2 py-0.5 bg-amber-100 rounded text-amber-800 normal-case font-bold">
                   {currentSentence.targetVocab.german}
                 </span>
-                <span className="ml-2 text-amber-500 text-[8px]">(+15s Bonus bei korrekter Nutzung)</span>
+                <span className="ml-2 text-amber-500 text-[8px]">(+30s Bonus bei korrekter Nutzung)</span>
               </p>
             </div>
           )}
@@ -412,7 +568,7 @@ function TranslationModule({ user }) {
               <div className="flex items-center gap-2">
                 {feedback.vocabBonus && (
                   <div className="bg-amber-100 text-amber-800 rounded-lg px-2 py-1 text-xs font-bold border border-amber-300 animate-pulse">
-                    +15s Bonus! 🎯
+                    +30s Bonus! 🎯
                   </div>
                 )}
                 <div className="flex items-center bg-white rounded-lg px-3 py-1 shadow-lg">
@@ -439,7 +595,7 @@ function TranslationModule({ user }) {
                 </p>
                 {feedback.vocabBonus && (
                   <p className="text-green-600 text-xs mt-1 font-semibold">
-                    🎁 Du erhältst 15 Sekunden Bonus für dein Tagesziel!
+                    🎁 Du erhältst 30 Sekunden Bonus für dein Tagesziel!
                   </p>
                 )}
               </div>
