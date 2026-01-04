@@ -273,11 +273,8 @@ class ApiService {
       method: 'POST',
     });
   }
-}
 
-const apiService = new ApiService();
-
-// LLM endpoints
+  // LLM endpoints
   async getLLMProvider() {
     return this.request('/llm/provider');
   }
@@ -319,6 +316,8 @@ const apiService = new ApiService();
     return result;
   }
 }
+
+const apiService = new ApiService();
 
 // Named exports for convenience
 export const updateVocabulary = (id, updates) => apiService.updateVocabulary(id, updates);
