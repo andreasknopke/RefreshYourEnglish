@@ -146,8 +146,11 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
       throw new Error('Invalid API response structure');
     }
     
-    const content = data.choices[0].message.content;
+    let content = data.choices[0].message.content;
     console.log('📝 [LLM] API Response content (first 200 chars):', content.substring(0, 200));
+    
+    // Remove markdown code blocks if present (```json ... ```)
+    content = content.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
     
     try {
       const parsed = JSON.parse(content);
