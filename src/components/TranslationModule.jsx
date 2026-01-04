@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { evaluateTranslation, generateTranslationSentence, checkVocabularyUsage } from '../services/llmService';
+import { checkVocabularyUsage } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
 import STTButton from './STTButton';
@@ -123,12 +123,13 @@ function TranslationModule({ user }) {
         targetVocab: targetVocab ? `${targetVocab.german}/${targetVocab.english}` : null
       });
 
-      const sentence = await generateTranslationSentence(level, useTopic, targetVocab);
+      const sentence = await apiService.generateTranslationSentence(level, useTopic, targetVocab);
       
       console.log('✅ Sentence received:', {
         german: sentence.de,
         english: sentence.en,
-        isLLMGenerated: !sentence.de.includes('Fehler') // Heuristic check
+        source: sentence.source,
+        message: sentence.message
       });
       
       setCurrentSentence(sentence);
@@ -150,40 +151,50 @@ function TranslationModule({ user }) {
 
     setIsLoading(true);
     try {
-      console.log('Evaluating translation:', { 
+      console.log('📊 Evaluating translation:', { 
         german: currentSentence.de, 
         user: userTranslation, 
         correct: currentSentence.en,
         targetVocab: currentSentence.targetVocab
       });
       
-      const result = await evaluateTranslation(
+      const result = await apiService.evaluateTranslation(
         currentSentence.de,
         userTranslation,
-        currentSentence.en,
-        currentSentence.targetVocab
+        currentSentence.en
       );
+      
+      // Konvertiere Backend-Response zu Frontend-Format
+      const evaluationResult = {
+        score: result.score,
+        feedback: result.feedback,
+        improvements: result.improvements || [],
+        spellingNotes: result.spellingNotes || [],
+        correctTranslation: currentSentence.en,
+        source: result.source,
+        message: result.message
+      };
       
       // Prüfe, ob die Ziel-Vokabel korrekt verwendet wurde
       let vocabUsedCorrectly = false;
-      if (currentSentence.targetVocab && result.score >= 7) {
+      if (currentSentence.targetVocab && evaluationResult.score >= 7) {
         vocabUsedCorrectly = checkVocabularyUsage(userTranslation, currentSentence.targetVocab);
         if (vocabUsedCorrectly) {
-          result.vocabBonus = true;
-          result.targetVocab = currentSentence.targetVocab;
+          evaluationResult.vocabBonus = true;
+          evaluationResult.targetVocab = currentSentence.targetVocab;
           setVocabBonusCount(prev => prev + 1);
         }
       }
       
-      console.log('Evaluation result:', result, 'Vocab used correctly:', vocabUsedCorrectly);
-      setFeedback(result);
+      console.log('📋 Evaluation result:', evaluationResult, 'Vocab used correctly:', vocabUsedCorrectly);
+      setFeedback(evaluationResult);
       setTotalAttempts(totalAttempts + 1);
-      if (result.score >= 7) {
+      if (evaluationResult.score >= 7) {
         setScore(score + 1);
       }
 
       // Track activity für Gamification (nur bei score >= 8/10)
-      if (user && result.score >= 8) {
+      if (user && evaluationResult.score >= 8) {
         try {
           // Basis: 45 Sekunden
           const baseSeconds = 45;
@@ -193,7 +204,7 @@ function TranslationModule({ user }) {
           const minutesToAdd = totalSeconds / 60;
           
           console.log('🎮 Tracking activity (TranslationModule):', { 
-            score: result.score, 
+            score: evaluationResult.score, 
             baseSeconds,
             vocabBonusSeconds,
             totalSeconds,
@@ -206,7 +217,7 @@ function TranslationModule({ user }) {
           console.error('❌ Failed to track activity:', error);
         }
       } else if (user) {
-        console.log('⏭️ No time credit (score < 8):', { score: result.score });
+        console.log('⏭️ No time credit (score < 8):', { score: evaluationResult.score });
       }
     } catch (error) {
       console.error('Translation evaluation error:', error);

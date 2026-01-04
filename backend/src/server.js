@@ -7,6 +7,7 @@ import progressRoutes from './routes/progress.js';
 import flashcardRoutes from './routes/flashcardRoutes.js';
 import gamificationRoutes from './routes/gamification.js';
 import actionModeRoutes from './routes/actionModeRoutes.js';
+import llmRoutes from './routes/llmRoutes.js';
 
 dotenv.config();
 
@@ -39,6 +40,7 @@ app.use('/api/progress', progressRoutes);
 app.use('/api/flashcards', flashcardRoutes);
 app.use('/api/gamification', gamificationRoutes);
 app.use('/api/action-mode', actionModeRoutes);
+app.use('/api/llm', llmRoutes);
 
 // Welcome page
 app.get('/', (req, res) => {

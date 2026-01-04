@@ -277,6 +277,49 @@ class ApiService {
 
 const apiService = new ApiService();
 
+// LLM endpoints
+  async getLLMProvider() {
+    return this.request('/llm/provider');
+  }
+
+  async generateTranslationSentence(level = 'B2', topic = 'Alltag', targetVocab = null) {
+    console.log('📤 [Frontend] Requesting translation sentence from backend:', {
+      level, topic, targetVocab
+    });
+    
+    const result = await this.request('/llm/generate-sentence', {
+      method: 'POST',
+      body: JSON.stringify({ level, topic, targetVocab }),
+    });
+    
+    console.log('📥 [Frontend] Received sentence from backend:', {
+      source: result.source,
+      german: result.de,
+      english: result.en,
+      message: result.message
+    });
+    
+    return result;
+  }
+
+  async evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
+    console.log('📤 [Frontend] Requesting translation evaluation from backend');
+    
+    const result = await this.request('/llm/evaluate-translation', {
+      method: 'POST',
+      body: JSON.stringify({ germanSentence, userTranslation, correctTranslation }),
+    });
+    
+    console.log('📥 [Frontend] Received evaluation from backend:', {
+      source: result.source,
+      score: result.score,
+      message: result.message
+    });
+    
+    return result;
+  }
+}
+
 // Named exports for convenience
 export const updateVocabulary = (id, updates) => apiService.updateVocabulary(id, updates);
 export const deleteVocabulary = (id) => apiService.deleteVocabulary(id);
@@ -289,5 +332,7 @@ export const getAllFlashcards = () => apiService.getAllFlashcards();
 export const reviewFlashcard = (flashcardId, quality) => apiService.reviewFlashcard(flashcardId, quality);
 export const removeFromFlashcardDeck = (flashcardId) => apiService.removeFromFlashcardDeck(flashcardId);
 export const getFlashcardStats = () => apiService.getFlashcardStats();
+export const generateTranslationSentence = (level, topic, targetVocab) => apiService.generateTranslationSentence(level, topic, targetVocab);
+export const evaluateTranslation = (germanSentence, userTranslation, correctTranslation) => apiService.evaluateTranslation(germanSentence, userTranslation, correctTranslation);
 
 export default apiService;
