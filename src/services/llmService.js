@@ -2,6 +2,62 @@
 // Diese Funktionen können mit verschiedenen LLM-APIs verbunden werden (OpenAI, Anthropic, lokale Modelle, etc.)
 
 /**
+ * Konfiguration für LLM-Provider
+ */
+const LLM_PROVIDERS = {
+  openai: {
+    name: 'OpenAI',
+    apiKeyEnv: 'VITE_OPENAI_API_KEY',
+    model: 'gpt-3.5-turbo',
+    endpoint: 'https://api.openai.com/v1/chat/completions',
+    getHeaders: (apiKey) => ({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    })
+  },
+  mistral: {
+    name: 'Mistral Large',
+    apiKeyEnv: 'VITE_MISTRAL_API_KEY',
+    model: 'mistral-large-latest',
+    endpoint: 'https://api.mistral.ai/v1/chat/completions',
+    getHeaders: (apiKey) => ({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    })
+  }
+};
+
+/**
+ * Ruft den aktuellen LLM-Provider ab
+ */
+export function getLLMProvider() {
+  const provider = localStorage.getItem('llm_provider') || 'openai';
+  return provider;
+}
+
+/**
+ * Setzt den LLM-Provider
+ */
+export function setLLMProvider(provider) {
+  if (!LLM_PROVIDERS[provider]) {
+    throw new Error(`Unknown LLM provider: ${provider}`);
+  }
+  localStorage.setItem('llm_provider', provider);
+  console.log(`✨ LLM Provider changed to: ${provider}`);
+}
+
+/**
+ * Gibt alle verfügbaren LLM-Provider zurück
+ */
+export function getAvailableLLMProviders() {
+  return Object.entries(LLM_PROVIDERS).map(([key, config]) => ({
+    id: key,
+    name: config.name,
+    available: !!import.meta.env[config.apiKeyEnv]
+  }));
+}
+
+/**
  * Evaluiert eine Übersetzung mit Hilfe eines LLM
  * @param {string} germanSentence - Der deutsche Satz
  * @param {string} userTranslation - Die Übersetzung des Benutzers
@@ -10,9 +66,12 @@
  * @returns {Promise<{score: number, feedback: string, improvements: string[], correctTranslation: string}>}
  */
 export async function evaluateTranslation(germanSentence, userTranslation, correctTranslation = '', targetVocab = null) {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
-  console.log('🔑 OpenAI API Key status:', {
+console.log('🔑 LLM API Key status:', {
+    provider: currentProvider,
     exists: !!API_KEY,
     length: API_KEY ? API_KEY.length : 0,
     prefix: API_KEY ? API_KEY.substring(0, 7) + '...' : 'none'
@@ -20,11 +79,11 @@ export async function evaluateTranslation(germanSentence, userTranslation, corre
   
   // Wenn kein API-Key vorhanden ist, verwende Simulation
   if (!API_KEY) {
-    console.warn('⚠️ No OpenAI API key found, using simulation mode');
+    console.warn(`⚠️ No ${providerConfig.name} API key found, using simulation mode`);
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
-  
-  console.log('✨ Using OpenAI API for translation evaluation');
+
+  console.log(`✨ Using ${providerConfig.name} API for translation evaluation`);
 
   // Zusätzliche Anweisungen für Ziel-Vokabel
   const vocabInstruction = targetVocab 
@@ -35,16 +94,13 @@ Der Schüler SOLLTE die englische Vokabel "${targetVocab.english}" (deutsch: "${
 - Wenn die Vokabel korrekt verwendet wurde, gib mindestens 8/10 Punkte (bei korrekter Grammatik)`
     : '';
   
-  // Echte OpenAI-Integration (nur wenn API-Key vorhanden)
+  // Echte LLM-Integration (nur wenn API-Key vorhanden)
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages: [{
           role: 'system',
           content: `Du bist ein freundlicher und ermutigender Englischlehrer. 
@@ -73,7 +129,7 @@ Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": s
     });
     
     if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
+      throw new Error(`${providerConfig.name} API error: ${response.status}`);
     }
     
     const data = await response.json();
@@ -93,7 +149,7 @@ Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": s
       return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
     }
   } catch (error) {
-    console.error('OpenAI API failed, falling back to simulation:', error);
+    console.error(`${providerConfig.name} API failed, falling back to simulation:`, error);
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
 }
@@ -186,13 +242,15 @@ function simulateEvaluation(germanSentence, userTranslation, correctTranslation,
  * @returns {Promise<{de: string, en: string, targetVocab?: object}>}
  */
 export async function generateTranslationSentence(level = 'B2', topic = 'Alltag', targetVocab = null) {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
-  console.log('📝 Generating translation sentence, API Key exists:', !!API_KEY);
+  console.log('📝 Generating translation sentence, provider:', currentProvider, 'API Key exists:', !!API_KEY);
   console.log('🎯 Target vocabulary:', targetVocab);
   
   if (!API_KEY) {
-    console.warn('⚠️ No OpenAI API key, using fallback sentences');
+    console.warn(`⚠️ No ${providerConfig.name} API key, using fallback sentences`);
     return getFallbackSentence(level, topic, targetVocab);
   }
 
@@ -337,14 +395,11 @@ Der Satz MUSS so konstruiert sein, dass der Lerner das englische Wort "${targetV
     : '';
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages: [{
           role: 'system',
           content: `Du bist ein erfahrener Englischlehrer, der Übersetzungssätze für VERSCHIEDENE Sprachniveaus erstellt.
@@ -400,7 +455,7 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
     });
     
     if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
+      throw new Error(`${providerConfig.name} API error: ${response.status}`);
     }
     
     const data = await response.json();
@@ -408,17 +463,17 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
     
     try {
       const parsed = JSON.parse(content);
-      console.log(`✨ Generated ${level} sentence via OpenAI:`, parsed);
+      console.log(`✨ Generated ${level} sentence via ${providerConfig.name}:`, parsed);
       return {
         de: parsed.de || parsed.german || 'Fehler beim Generieren',
         en: parsed.en || parsed.english || 'Error generating',
         targetVocab: targetVocab || null
       };
     } catch {
-      throw new Error('Failed to parse OpenAI response');
+      throw new Error('Failed to parse API response');
     }
   } catch (error) {
-    console.error('OpenAI sentence generation failed, using fallback:', error);
+    console.error(`${providerConfig.name} sentence generation failed, using fallback:`, error);
     return getFallbackSentence(level, topic, targetVocab);
   }
 }
@@ -688,7 +743,9 @@ export const LLM_CONFIG = {
  * @returns {Promise<Array<{id: number, level: string}>>}
  */
 export async function classifyVocabularyLevels(vocabularyList, onProgress = null) {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
     console.warn('⚠️ No OpenAI API key found, using fallback classification');
@@ -712,14 +769,11 @@ export async function classifyVocabularyLevels(vocabularyList, onProgress = null
     try {
       const vocabText = batch.map(v => `ID:${v.id} | EN: "${v.english}" | DE: "${v.german}"`).join('\n');
       
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const response = await fetch(providerConfig.endpoint, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`
-        },
+        headers: providerConfig.getHeaders(API_KEY),
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
+          model: providerConfig.model,
           messages: [{
             role: 'system',
             content: `Du bist ein Experte für CEFR-Sprachlevel-Klassifizierung (Common European Framework of Reference for Languages).
@@ -790,21 +844,20 @@ Keine zusätzlichen Erklärungen!`
  * @returns {Promise<string>} - CEFR-Level (A1-C2)
  */
 export async function classifySingleVocabulary(english, german) {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
     return fallbackSingleClassification(english);
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages: [{
           role: 'system',
           content: `Du bist ein Experte für CEFR-Sprachlevel-Klassifizierung.
@@ -895,7 +948,9 @@ function fallbackSingleClassification(english) {
  * @returns {Promise<{situation: string, role: string, context: string, firstMessage: string, description: string}>}
  */
 export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
     return getFallbackScenario(level, topic);
@@ -909,14 +964,11 @@ export async function generateDialogScenario(level = 'B2', topic = 'Alltag') {
   };
   
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages: [{
           role: 'system',
           content: `You are an English teacher creating VARIED and ENGAGING conversation scenarios for German learners.
@@ -983,7 +1035,9 @@ Respond in JSON format:
  * Generiert eine Antwort im Dialog
  */
 export async function generateDialogResponse(scenario, conversationHistory, level = 'B2') {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
     return getFallbackResponse();
@@ -1020,14 +1074,11 @@ Your goal: Have a natural, engaging conversation that helps the student practice
       }))
     ];
     
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages,
         temperature: 0.8,
         max_tokens: 150
@@ -1061,7 +1112,9 @@ export async function generateDialogHint(scenario, conversationHistory) {
  * Bewertet die Dialog-Performance
  */
 export async function evaluateDialogPerformance(scenario, conversationHistory, level) {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const currentProvider = getLLMProvider();
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
     // Fallback evaluation
@@ -1079,14 +1132,11 @@ export async function evaluateDialogPerformance(scenario, conversationHistory, l
   }
   
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
+      headers: providerConfig.getHeaders(API_KEY),
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: providerConfig.model,
         messages: [{
           role: 'system',
           content: `You are an experienced English language teacher evaluating a student's LANGUAGE SKILLS (not debate skills) in this conversation scenario: "${scenario.description}".
@@ -1188,12 +1238,12 @@ Respond in JSON format:
     
     if (!response.ok) {
       const errorData = await response.text();
-      console.error('OpenAI API error:', response.status, errorData);
+      console.error(`${providerConfig.name} API error:`, response.status, errorData);
       throw new Error(`API error: ${response.status}`);
     }
     
     const data = await response.json();
-    console.log('OpenAI response:', data);
+    console.log(`${providerConfig.name} response:`, data);
     
     const content = data.choices[0].message.content;
     console.log('Evaluation content:', content);
@@ -1216,7 +1266,7 @@ Respond in JSON format:
       tips: evaluation.tips || []
     };
   } catch (error) {
-    console.error('Dialog evaluation failed, using fallback:', error);
+    console.error(`${providerConfig.name} evaluation failed, using fallback:`, error);
     // Fallback
     const userMessages = conversationHistory.filter(m => m.role === 'user');
     const messageCount = userMessages.length;

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { generateVocabularyChallenge } from '../services/llmService';
 
 const initialVocabulary = [
   { de: 'Haus', en: 'house' },

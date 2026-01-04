@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { generateVocabularyChallenge } from '../services/llmService';
 import apiService from '../services/apiService';
 import VocabularyEditor from './VocabularyEditor';
 import TTSButton from './TTSButton';

@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react';
 import sttService from '../services/sttService';
 import ttsService from '../services/ttsService';
+import * as llmService from '../services/llmService';
 
 function SettingsModule() {
   const [sttProvider, setSttProvider] = useState('browser');
   const [ttsProvider, setTtsProvider] = useState('elevenlabs');
+  const [llmProvider, setLLMProvider] = useState('openai');
   const [elevenLabsAvailable, setElevenLabsAvailable] = useState(false);
   const [availableVoices, setAvailableVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
+  const [availableLLMs, setAvailableLLMs] = useState([]);
 
   useEffect(() => {
     // Load current settings
     setSttProvider(sttService.getProvider());
     setTtsProvider(ttsService.getProvider());
     setElevenLabsAvailable(sttService.isElevenLabsAvailable());
+    setLLMProvider(llmService.getLLMProvider());
+    setAvailableLLMs(llmService.getAvailableLLMProviders());
     
     // Load available voices
     const loadVoices = () => {
@@ -68,6 +73,20 @@ function SettingsModule() {
     } catch (error) {
       console.error('Failed to change voice:', error);
       alert('❌ Fehler beim Ändern der Stimme: ' + error.message);
+    }
+  };
+
+  const handleLLMProviderChange = (provider) => {
+    try {
+      llmService.setLLMProvider(provider);
+      setLLMProvider(provider);
+      
+      // Show confirmation
+      const providerName = provider === 'mistral' ? 'Mistral Large' : 'OpenAI';
+      alert(`✅ LLM Provider auf ${providerName} geändert`);
+    } catch (error) {
+      console.error('Failed to change LLM provider:', error);
+      alert('❌ Fehler beim Ändern des LLM Providers: ' + error.message);
     }
   };
 
@@ -422,12 +441,140 @@ function SettingsModule() {
         {/* Additional Settings (Placeholder for future) */}
         <div className="glass-card rounded-3xl p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <span className="mr-3">🔧</span>
-            Weitere Einstellungen
+            <span className="mr-3">🧠</span>
+            KI-Modell (LLM) auswählen
           </h2>
-          <p className="text-gray-600 text-center py-8">
-            Weitere Einstellungen werden in zukünftigen Updates hinzugefügt.
-          </p>
+          
+          <div className="space-y-4">
+            {/* OpenAI Option */}
+            <div
+              onClick={() => handleLLMProviderChange('openai')}
+              className={`cursor-pointer p-4 rounded-xl border-2 transition-all ${
+                llmProvider === 'openai'
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-gray-200 hover:border-gray-300 bg-white'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      llmProvider === 'openai'
+                        ? 'border-blue-500 bg-blue-500'
+                        : 'border-gray-300'
+                    }`}>
+                      {llmProvider === 'openai' && (
+                        <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-800">OpenAI (GPT-3.5)</h3>
+                    {availableLLMs.find(l => l.id === 'openai')?.available ? (
+                      <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-bold">
+                        VERFÜGBAR
+                      </span>
+                    ) : (
+                      <span className="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">
+                        NICHT VERFÜGBAR
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2 ml-8">
+                    Hochwertiges KI-Modell für Übersetzungsbewertung und Dialog-Training.
+                  </p>
+                  <div className="ml-8 space-y-1">
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Zuverlässig und ausgereift</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Gute Genauigkeit bei Bewertungen</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Standardmodell</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mistral Large Option */}
+            <div
+              onClick={() => handleLLMProviderChange('mistral')}
+              className={`cursor-pointer p-4 rounded-xl border-2 transition-all ${
+                llmProvider === 'mistral'
+                  ? 'border-purple-500 bg-purple-50'
+                  : 'border-gray-200 hover:border-gray-300 bg-white'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      llmProvider === 'mistral'
+                        ? 'border-purple-500 bg-purple-500'
+                        : 'border-gray-300'
+                    }`}>
+                      {llmProvider === 'mistral' && (
+                        <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-800">Mistral Large</h3>
+                    {availableLLMs.find(l => l.id === 'mistral')?.available ? (
+                      <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-bold">
+                        VERFÜGBAR
+                      </span>
+                    ) : (
+                      <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs font-bold">
+                        NICHT KONFIGURIERT
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2 ml-8">
+                    Fortgeschrittenes europäisches KI-Modell für hochwertige Bewertungen.
+                  </p>
+                  <div className="ml-8 space-y-1">
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Hochleistungs-KI-Modell</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Europäischer Anbieter</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-green-600">✓</span>
+                      <span className="text-gray-700">Kann bessere Ergebnisse liefern</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-orange-600">⚠</span>
+                      <span className="text-gray-700">Benötigt API-Key (noch nicht konfiguriert)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Info Box */}
+          <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">💡</span>
+              <div>
+                <p className="font-bold text-blue-800 mb-1">Hinweis</p>
+                <p className="text-sm text-blue-700 mb-2">
+                  Das ausgewählte KI-Modell wird für folgende Funktionen verwendet:
+                </p>
+                <ul className="text-sm text-blue-700 space-y-1 ml-4">
+                  <li>📝 Generierung von Übersetzungssätzen</li>
+                  <li>⭐ Bewertung von Übersetzungen</li>
+                  <li>🎤 Dialog-Training und Szenario-Generierung</li>
+                  <li>📊 Dialog-Performance-Bewertung</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
