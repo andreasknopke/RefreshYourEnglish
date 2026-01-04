@@ -280,13 +280,16 @@ class ApiService {
   }
 
   async generateTranslationSentence(level = 'B2', topic = 'Alltag', targetVocab = null) {
+    // Get provider from localStorage
+    const provider = localStorage.getItem('llm_provider') || 'openai';
+    
     console.log('📤 [Frontend] Requesting translation sentence from backend:', {
-      level, topic, targetVocab
+      level, topic, targetVocab, provider
     });
     
     const result = await this.request('/llm/generate-sentence', {
       method: 'POST',
-      body: JSON.stringify({ level, topic, targetVocab }),
+      body: JSON.stringify({ level, topic, targetVocab, provider }),
     });
     
     console.log('📥 [Frontend] Received sentence from backend:', {
@@ -300,11 +303,14 @@ class ApiService {
   }
 
   async evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
-    console.log('📤 [Frontend] Requesting translation evaluation from backend');
+    // Get provider from localStorage
+    const provider = localStorage.getItem('llm_provider') || 'openai';
+    
+    console.log('📤 [Frontend] Requesting translation evaluation from backend:', { provider });
     
     const result = await this.request('/llm/evaluate-translation', {
       method: 'POST',
-      body: JSON.stringify({ germanSentence, userTranslation, correctTranslation }),
+      body: JSON.stringify({ germanSentence, userTranslation, correctTranslation, provider }),
     });
     
     console.log('📥 [Frontend] Received evaluation from backend:', {
