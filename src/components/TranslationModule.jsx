@@ -116,10 +116,29 @@ function TranslationModule({ user }) {
       }
       // Modus 1 (classic): targetVocab bleibt null, useTopic wird verwendet
 
+      console.log('📝 Requesting sentence generation:', {
+        level,
+        topic: useTopic,
+        vocabMode,
+        targetVocab: targetVocab ? `${targetVocab.german}/${targetVocab.english}` : null
+      });
+
       const sentence = await generateTranslationSentence(level, useTopic, targetVocab);
+      
+      console.log('✅ Sentence received:', {
+        german: sentence.de,
+        english: sentence.en,
+        isLLMGenerated: !sentence.de.includes('Fehler') // Heuristic check
+      });
+      
       setCurrentSentence(sentence);
     } catch (error) {
-      console.error('Failed to generate sentence:', error);
+      console.error('Failed to generate sentence:', {
+        error: error.message,
+        level,
+        topic,
+        vocabMode
+      });
     } finally {
       setIsGeneratingSentence(false);
     }
