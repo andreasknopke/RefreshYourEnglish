@@ -1219,7 +1219,32 @@ BEWERTUNGSKRITERIEN (1-10):
 WICHTIG: Nur die SCHÜLERNACHRICHTEN bewerten, NICHT die des Partners.
 
 ANTWORT ALS JSON:
-{"grammar": 1-10, "vocabulary": 1-10, "fluency": 1-10, "appropriateness": 1-10, "contextResponse": 1-10, "overallScore": 1-10, "languageLevel": "A1|A2|B1|B2|C1|C2", "detailedFeedback": "Text auf Deutsch", "errors": [], "strengths": [], "improvements": [], "tips": []}`;
+{
+  "grammar": 1-10, 
+  "vocabulary": 1-10, 
+  "fluency": 1-10, 
+  "appropriateness": 1-10, 
+  "contextResponse": 1-10, 
+  "overallScore": 1-10, 
+  "languageLevel": "A1|A2|B1|B2|C1|C2", 
+  "detailedFeedback": "Ausführliches Feedback auf Deutsch über die sprachliche Leistung", 
+  "errors": [
+    {
+      "original": "Der exakte fehlerhafte Satz oder Ausdruck des Schülers", 
+      "correction": "Die korrigierte Version", 
+      "explanation": "Erklärung auf Deutsch, was falsch war"
+    }
+  ], 
+  "strengths": ["Liste positiver Aspekte auf Deutsch"], 
+  "improvements": ["Konkrete Verbesserungsvorschläge auf Deutsch"], 
+  "tips": ["Praktische Tipps für die Zukunft auf Deutsch"]
+}
+
+WICHTIG für errors: 
+- Finde KONKRETE sprachliche Fehler in den Schüler-Nachrichten
+- Zitiere den EXAKTEN fehlerhaften Ausdruck in "original"
+- Gib die KORRIGIERTE Version in "correction"
+- Wenn keine Fehler vorhanden sind, gib ein leeres Array [] zurück`;
 
     const userContent = `Szenario: ${scenario.description}\nZielsprache: ${level}\n\nGespräch:\n${conversationHistory.map(m => `${m.role === 'user' ? 'SCHÜLER' : 'PARTNER'}: ${m.content}`).join('\n')}\n\nBewerte nur die Schüler-Nachrichten auf Sprachkenntnisse.`;
 
