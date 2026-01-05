@@ -200,7 +200,7 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
  */
 router.post('/evaluate-translation', async (req, res) => {
   try {
-    const { germanSentence, userTranslation, correctTranslation = '', provider = null } = req.body;
+    const { germanSentence, userTranslation, correctTranslation = '', targetVocab = null, provider = null } = req.body;
     
     const currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
     const providerConfig = LLM_PROVIDERS[currentProvider];
@@ -210,7 +210,8 @@ router.post('/evaluate-translation', async (req, res) => {
       timestamp: new Date().toISOString(),
       provider: currentProvider,
       hasAPIKey: !!API_KEY,
-      translationLength: userTranslation.length
+      translationLength: userTranslation.length,
+      hasTargetVocab: !!targetVocab
     });
     
     if (!API_KEY) {
@@ -226,6 +227,13 @@ router.post('/evaluate-translation', async (req, res) => {
     
     console.log(`🔄 [LLM] Requesting evaluation from ${providerConfig.name}...`);
     
+    // Erstelle zusätzliche Instruktion wenn Zielwort vorhanden
+    const targetVocabInstruction = targetVocab 
+      ? `\n\nWICHTIG: Der Schüler sollte das Wort "${targetVocab.english}" (${targetVocab.german}) verwenden. 
+Falls der Schüler dieses Wort korrekt verwendet hat, kritisiere es NICHT und schlage KEINE Alternativen vor.
+Die Musterlösung verwendet ebenfalls dieses Wort - das ist beabsichtigt!`
+      : '';
+    
     const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
       headers: providerConfig.getHeaders(API_KEY),
@@ -237,7 +245,7 @@ router.post('/evaluate-translation', async (req, res) => {
             content: `Du bist ein freundlicher Englischlehrer. Bewerte die Übersetzung des SCHÜLERS.
 
 WICHTIG: Bewerte NUR die Übersetzung des Schülers, NICHT die Musterlösung!
-Die Musterlösung dient nur als Vergleich.
+Die Musterlösung dient nur als Vergleich.${targetVocabInstruction}
 
 Antworte im JSON-Format: {"score": 1-10, "feedback": "text", "improvements": []}`
           },
@@ -247,7 +255,7 @@ Antworte im JSON-Format: {"score": 1-10, "feedback": "text", "improvements": []}
 
 ÜBERSETZUNG DES SCHÜLERS (zu bewerten): "${userTranslation}"
 
-Musterlösung (nur als Referenz): "${correctTranslation}"
+Musterlösung (nur als Referenz): "${correctTranslation}"${targetVocab ? `\n\nZiel-Vokabel: ${targetVocab.english} (${targetVocab.german})` : ''}
 
 Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
           }

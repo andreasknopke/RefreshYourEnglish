@@ -302,15 +302,15 @@ class ApiService {
     return result;
   }
 
-  async evaluateTranslation(germanSentence, userTranslation, correctTranslation = '') {
+  async evaluateTranslation(germanSentence, userTranslation, correctTranslation = '', targetVocab = null) {
     // Get provider from localStorage
     const provider = localStorage.getItem('llm_provider') || 'openai';
     
-    console.log('📤 [Frontend] Requesting translation evaluation from backend:', { provider });
+    console.log('📤 [Frontend] Requesting translation evaluation from backend:', { provider, targetVocab });
     
     const result = await this.request('/llm/evaluate-translation', {
       method: 'POST',
-      body: JSON.stringify({ germanSentence, userTranslation, correctTranslation, provider }),
+      body: JSON.stringify({ germanSentence, userTranslation, correctTranslation, targetVocab, provider }),
     });
     
     console.log('📥 [Frontend] Received evaluation from backend:', {
@@ -338,6 +338,6 @@ export const reviewFlashcard = (flashcardId, quality) => apiService.reviewFlashc
 export const removeFromFlashcardDeck = (flashcardId) => apiService.removeFromFlashcardDeck(flashcardId);
 export const getFlashcardStats = () => apiService.getFlashcardStats();
 export const generateTranslationSentence = (level, topic, targetVocab) => apiService.generateTranslationSentence(level, topic, targetVocab);
-export const evaluateTranslation = (germanSentence, userTranslation, correctTranslation) => apiService.evaluateTranslation(germanSentence, userTranslation, correctTranslation);
+export const evaluateTranslation = (germanSentence, userTranslation, correctTranslation, targetVocab) => apiService.evaluateTranslation(germanSentence, userTranslation, correctTranslation, targetVocab);
 
 export default apiService;

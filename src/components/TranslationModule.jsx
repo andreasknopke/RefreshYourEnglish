@@ -161,7 +161,8 @@ function TranslationModule({ user }) {
       const result = await apiService.evaluateTranslation(
         currentSentence.de,
         userTranslation,
-        currentSentence.en
+        currentSentence.en,
+        currentSentence.targetVocab // Übergebe Zielwort an Backend
       );
       
       // Konvertiere Backend-Response zu Frontend-Format
