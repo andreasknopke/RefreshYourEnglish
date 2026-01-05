@@ -150,7 +150,7 @@ function App() {
             {/* Hauptmodule Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
             {/* Modul 1: Übersetzungsübung */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
@@ -162,7 +162,7 @@ function App() {
               <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Übersetzung
               </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
                 Übersetze Sätze mit KI-Feedback
               </p>
               <button
@@ -174,7 +174,7 @@ function App() {
             </div>
 
             {/* Modul 2: Action Modus */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
@@ -186,7 +186,7 @@ function App() {
               <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Action Modus
               </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
                 Vokabeln mit Countdown-Timer
               </p>
               <button
@@ -198,7 +198,7 @@ function App() {
             </div>
 
             {/* Modul 3: Dialog Trainer */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
@@ -210,7 +210,7 @@ function App() {
               <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Dialog
               </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
                 Konversationstraining mit KI
               </p>
               <button
@@ -222,7 +222,7 @@ function App() {
             </div>
 
             {/* Modul 4: Vocabulary Trainer */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               {/* Badge für fällige Karten */}
@@ -243,7 +243,7 @@ function App() {
               <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Flashcards
               </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
                 Spaced Repetition Lernen
               </p>
               <button
@@ -256,7 +256,7 @@ function App() {
             </div>
 
             {/* Modul 5: Vokabelbibliothek */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300">
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
@@ -268,7 +268,7 @@ function App() {
               <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
                 Bibliothek
               </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10">
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
                 Vokabeln verwalten und suchen
               </p>
               <button

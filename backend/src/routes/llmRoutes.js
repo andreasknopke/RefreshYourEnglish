@@ -234,12 +234,22 @@ router.post('/evaluate-translation', async (req, res) => {
         messages: [
           {
             role: 'system',
-            content: `Du bist ein freundlicher Englischlehrer. Bewerte diese Übersetzung.
+            content: `Du bist ein freundlicher Englischlehrer. Bewerte die Übersetzung des SCHÜLERS.
+
+WICHTIG: Bewerte NUR die Übersetzung des Schülers, NICHT die Musterlösung!
+Die Musterlösung dient nur als Vergleich.
+
 Antworte im JSON-Format: {"score": 1-10, "feedback": "text", "improvements": []}`
           },
           {
             role: 'user',
-            content: `Original: "${germanSentence}"\nÜbersetzung: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBewerte die Übersetzung.`
+            content: `Deutscher Satz: "${germanSentence}"
+
+ÜBERSETZUNG DES SCHÜLERS (zu bewerten): "${userTranslation}"
+
+Musterlösung (nur als Referenz): "${correctTranslation}"
+
+Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
           }
         ],
         temperature: 0.7,

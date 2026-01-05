@@ -123,7 +123,13 @@ BEWERTUNGSSKALA:
 Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": string[], "spellingNotes": string[]}`
         }, {
           role: 'user',
-          content: `Deutscher Satz: "${germanSentence}"\nÜbersetzung des Schülers: "${userTranslation}"\nMusterlösung: "${correctTranslation}"\n\nBitte bewerte die Übersetzung nach den Richtlinien.`
+          content: `Deutscher Satz: "${germanSentence}"
+
+ÜBERSETZUNG DES SCHÜLERS (zu bewerten): "${userTranslation}"
+
+Musterlösung (nur als Referenz): "${correctTranslation}"
+
+Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
         }],
         temperature: 0.7,
         max_tokens: 400
