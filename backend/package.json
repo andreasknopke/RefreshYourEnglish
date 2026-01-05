@@ -5,11 +5,13 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js && node src/server.js",
+    "start": "node src/server.js",
+    "start:migrate": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js && node src/server.js",
     "dev": "nodemon src/server.js",
     "db:migrate": "node src/scripts/migrate.js",
     "db:seed": "node src/scripts/seed.js",
-    "db:migrate-postgres": "node src/scripts/migrate-to-postgres.js"
+    "db:migrate-postgres": "node src/scripts/migrate-to-postgres.js",
+    "db:setup": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js"
   },
   "keywords": [
     "vocabulary",
