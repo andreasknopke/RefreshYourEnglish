@@ -1046,30 +1046,48 @@ SCENARIO VARIETY - Use different types:
 5. OCCASIONAL CHALLENGE: Sometimes (not always) include a mild conflict or complaint
 
 SCENARIO STRUCTURE:
-- Define WHO the student is (their role: friend, tourist, colleague, customer, etc.)
-- Define WHO you are (conversation partner: friend, local, colleague, shopkeeper, etc.)
+- Define WHO the STUDENT is (their role: student, tourist, colleague, customer, etc.)
+- Define WHO the CONVERSATION PARTNER is (your role: professor, local, colleague, shopkeeper, etc.)
 - Set up an ENGAGING situation (not necessarily a problem)
 - Create a natural conversation opportunity
 
 CRITICAL RULES:
-1. "studentRole" (in German): Clearly state who the student is and what the situation is
-2. "partnerRole" (in German): State who YOU are (the conversation partner)
-3. "firstMessage" (in ENGLISH): Your opening statement as the conversation partner
-   - Speak naturally from YOUR role
-   - Be friendly and engaging (you can be enthusiastic, curious, helpful, etc.)
-   - Don't always start with a problem or complaint
-   - Example positive: "Hey! I heard you're planning a trip to Scotland. That's exciting! Have you decided where to go?"
-   - Example collaborative: "I'm thinking about organizing a team event. Do you have any ideas?"
-   - Example informative: "Welcome to our bookshop! Are you looking for something specific today?"
+1. "studentRole" (in German): Who the STUDENT/LEARNER is (e.g., "Kunde", "Student", "Tourist", "Mitarbeiter")
+2. "partnerRole" (in German): Who YOU are - the CONVERSATION PARTNER (e.g., "Verkäufer", "Professor", "Einheimischer", "Kollege")
+3. "firstMessage" (in ENGLISH): YOU START the conversation from YOUR role's perspective
+   
+   ROLE CONSISTENCY EXAMPLES:
+   
+   ✅ CORRECT:
+   * YOU = "Verkäufer" / STUDENT = "Kunde"
+     → "Good morning! Welcome to our store. How can I help you today?"
+   
+   * YOU = "Kunde" / STUDENT = "Verkäufer"  
+     → "Hello, I'm looking for a birthday gift for my sister. Can you recommend something?"
+   
+   * YOU = "Professor" / STUDENT = "Politikwissenschaftsstudent"
+     → "Good morning! I wanted to discuss your research proposal. What topics interest you?"
+   
+   * YOU = "Freund" / STUDENT = "Freund"
+     → "Hey! I was thinking we could do something fun this weekend. Any ideas?"
+   
+   ❌ WRONG:
+   * YOU = "Professor" / STUDENT = "Student"
+     → "I've been following political movements..." (This sounds like a STUDENT talking!)
+   
+   * YOU = "Verkäufer" / STUDENT = "Kunde"
+     → "Do you have this in blue?" (This is a CUSTOMER question!)
+   
+   KEY PRINCIPLE: Always speak from YOUR partnerRole perspective, not from the student's!
 
 VARY THE TONE: friendly, enthusiastic, curious, helpful, professional, casual - not always confrontational!
 
 Respond in JSON format: 
 {
-  "studentRole": "Rolle des Studenten auf Deutsch",
-  "partnerRole": "Rolle des Gesprächspartners auf Deutsch", 
+  "studentRole": "Rolle des Studenten auf Deutsch (z.B. 'Politikwissenschaftsstudent')",
+  "partnerRole": "Rolle des Gesprächspartners auf Deutsch (z.B. 'Dozent für Politikwissenschaft')", 
   "description": "Kurze Szenariobeschreibung auf Deutsch",
-  "firstMessage": "Your engaging opening as the conversation partner in ENGLISH"
+  "firstMessage": "Your engaging opening as the CONVERSATION PARTNER in ENGLISH"
 }`
         }, {
           role: 'user',
