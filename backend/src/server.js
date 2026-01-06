@@ -21,6 +21,18 @@ const corsOrigins = process.env.CORS_ORIGIN
 
 console.log('🔗 CORS enabled for:', corsOrigins.join(', '));
 
+// Health check BEFORE CORS - must be accessible from Railway
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    cors: {
+      allowedOrigins: corsOrigins,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH']
+    }
+  });
+});
+
 // CORS Configuration - IMPORTANT: Must be before other middleware
 app.use(cors({
   origin: function (origin, callback) {
@@ -113,18 +125,6 @@ app.get('/', (req, res) => {
         reviewFlashcard: 'POST /api/flashcards/:flashcardId/review',
         removeFlashcard: 'DELETE /api/flashcards/:flashcardId'
       }
-    }
-  });
-});
-
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
-    timestamp: new Date().toISOString(),
-    cors: {
-      allowedOrigins: corsOrigins,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH']
     }
   });
 });
