@@ -21,11 +21,13 @@ const corsOrigins = process.env.CORS_ORIGIN
 
 console.log('🔗 CORS enabled for:', corsOrigins.join(', '));
 
-// Health check BEFORE CORS - must be accessible from Railway
+// Health checks BEFORE any middleware - must be accessible from Railway/monitoring
 app.get('/health', (req, res) => {
+  console.log('💚 Health check from:', req.headers['user-agent'] || req.ip);
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
     cors: {
       allowedOrigins: corsOrigins,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH']
@@ -33,18 +35,38 @@ app.get('/health', (req, res) => {
   });
 });
 
-// CORS Configuration - IMPORTANT: Must be before other middleware
+// Alternative health check endpoints that Railway might use
+app.get('/', (req, res) => {
+  console.log('💚 Root health check from:', req.headers['user-agent'] || req.ip);
+  res.json({ 
+    status: 'ok',
+    name: 'RefreshYourEnglish API',
+    version: '1.0.0',
+    uptime: process.uptime()
+  });
+});
+
+// Parse JSON BEFORE CORS
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// CORS Configuration
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or Postman)
-    if (!origin) return callback(null, true);
+    // Allow requests with no origin (like mobile apps, Postman, or Railway health checks)
+    if (!origin) {
+      console.log('✅ CORS: Request with no origin allowed (likely health check)');
+      return callback(null, true);
+    }
     
     // Check if origin is allowed
     if (corsOrigins.includes(origin) || corsOrigins.includes('*')) {
+      console.log('✅ CORS: Origin allowed:', origin);
       callback(null, true);
     } else {
-      console.warn('⚠️ CORS blocked:', origin, '| Allowed:', corsOrigins.join(', '));
-      callback(new Error('Not allowed by CORS'));
+      console.warn('⚠️ CORS: Origin blocked:', origin, '| Allowed:', corsOrigins.join(', '));
+      // DON'T throw error, just block with false - prevents server crash
+      callback(null, false);
     }
   },
   credentials: true,
@@ -56,9 +78,6 @@ app.use(cors({
 
 // Additional CORS headers for preflight requests
 app.options('*', cors());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // Request logging
 app.use((req, res, next) => {
@@ -92,43 +111,6 @@ app.use('/api/gamification', gamificationRoutes);
 app.use('/api/action-mode', actionModeRoutes);
 app.use('/api/llm', llmRoutes);
 
-// Welcome page
-app.get('/', (req, res) => {
-  res.json({
-    name: 'RefreshYourEnglish API',
-    version: '1.0.0',
-    status: 'running',
-    endpoints: {
-      auth: {
-        register: 'POST /api/auth/register',
-        login: 'POST /api/auth/login'
-      },
-      vocabulary: {
-        getAll: 'GET /api/vocabulary',
-        getOne: 'GET /api/vocabulary/:id',
-        create: 'POST /api/vocabulary',
-        update: 'PUT /api/vocabulary/:id',
-        delete: 'DELETE /api/vocabulary/:id'
-      },
-      progress: {
-        getProgress: 'GET /api/progress',
-        updateProgress: 'POST /api/progress/:vocabularyId',
-        startSession: 'POST /api/progress/session/start',
-        completeSession: 'POST /api/progress/session/:id/complete',
-        getStats: 'GET /api/progress/stats'
-      },
-      flashcards: {
-        addToFlashcardDeck: 'POST /api/flashcards',
-        getDueFlashcards: 'GET /api/flashcards/due',
-        getAllFlashcards: 'GET /api/flashcards',
-        getStats: 'GET /api/flashcards/stats',
-        reviewFlashcard: 'POST /api/flashcards/:flashcardId/review',
-        removeFlashcard: 'DELETE /api/flashcards/:flashcardId'
-      }
-    }
-  });
-});
-
 // 404 handler
 app.use((req, res) => {
   console.log(`⚠️ 404 Not Found: ${req.method} ${req.path}`);
@@ -138,11 +120,11 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error('❌ Error:', err.message);
-  if (err.message === 'Not allowed by CORS') {
-    res.status(403).json({ error: 'CORS policy blocked this request', origin: req.headers.origin });
-  } else {
-    res.status(500).json({ error: 'Internal server error' });
+  // Don't crash on CORS errors
+  if (err.message && err.message.includes('CORS')) {
+    return res.status(403).json({ error: 'CORS policy blocked this request', origin: req.headers.origin });
   }
+  res.status(500).json({ error: 'Internal server error', message: err.message });
 });
 
 // Start server
