@@ -43,13 +43,24 @@ class ApiService {
 
     const requestStartTime = performance.now();
     console.log('API Request:', url, config);
+    console.log('🌐 Full API URL:', url);
+    console.log('🔧 API_URL from env:', import.meta.env.VITE_API_URL);
+    console.log('🔧 Using API_URL:', API_URL);
     
     // Log API Request
     logService.info('API', `API Request: ${options.method || 'GET'} ${endpoint}`, {
       url,
+      fullUrl: url,
+      apiUrlEnv: import.meta.env.VITE_API_URL,
+      apiUrlUsed: API_URL,
       method: options.method || 'GET',
       hasAuth: !!this.getToken(),
-      body: options.body ? JSON.parse(options.body) : undefined
+      body: options.body ? JSON.parse(options.body) : undefined,
+      online: navigator.onLine,
+      connection: navigator.connection ? {
+        effectiveType: navigator.connection.effectiveType,
+        downlink: navigator.connection.downlink
+      } : 'unknown'
     });
 
     try {
@@ -115,16 +126,29 @@ class ApiService {
     } catch (error) {
       console.error('API request failed:', error);
       
+      // Bessere Fehlermeldungen für Network-Errors
+      let userFriendlyMessage = error.message;
+      if (error.message === 'Failed to fetch') {
+        userFriendlyMessage = 'Backend nicht erreichbar. Das Backend könnte gerade neu starten (Railway cold start). Bitte warte 30 Sekunden und versuche es erneut.';
+        console.warn('⚠️ Network Error - Backend möglicherweise down oder Railway cold start');
+      }
+      
       // Log error if not already logged
       if (!error.logged) {
         logService.error('API', 'API Request fehlgeschlagen', {
           endpoint,
-          error: error.message,
-          stack: error.stack
+          error: userFriendlyMessage,
+          originalError: error.message,
+          stack: error.stack,
+          isNetworkError: error.message === 'Failed to fetch'
         });
       }
       
-      throw error;
+      // Create new error with friendly message
+      const friendlyError = new Error(userFriendlyMessage);
+      friendlyError.originalError = error;
+      friendlyError.logged = true;
+      throw friendlyError;
     }
   }
 

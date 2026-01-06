@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import sttService from '../services/sttService';
 import ttsService from '../services/ttsService';
 import * as llmService from '../services/llmService';
+import DiagnosticsPanel from './DiagnosticsPanel';
 
 function SettingsModule() {
   const [sttProvider, setSttProvider] = useState('browser');
@@ -606,6 +607,9 @@ function SettingsModule() {
             </div>
           </div>
         </div>
+
+        {/* Diagnostics Panel */}
+        <DiagnosticsPanel />
       </div>
     </div>
   );

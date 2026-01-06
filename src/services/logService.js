@@ -284,6 +284,16 @@ class LogService {
    * Sammelt System-Informationen
    */
   getSystemInfo() {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+    const hasServiceWorker = 'serviceWorker' in navigator;
+    let serviceWorkerStatus = 'N/A';
+    
+    if (hasServiceWorker) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        serviceWorkerStatus = registrations.length > 0 ? 'Active' : 'None';
+      });
+    }
+    
     return {
       userAgent: navigator.userAgent,
       platform: navigator.platform,
@@ -296,6 +306,15 @@ class LogService {
       cookiesEnabled: navigator.cookieEnabled,
       timestamp: new Date().toISOString(),
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      apiUrl: apiUrl,
+      apiUrlSource: import.meta.env.VITE_API_URL ? 'env' : 'default',
+      serviceWorker: serviceWorkerStatus,
+      connection: navigator.connection ? {
+        effectiveType: navigator.connection.effectiveType,
+        downlink: navigator.connection.downlink,
+        rtt: navigator.connection.rtt,
+        saveData: navigator.connection.saveData
+      } : 'N/A',
       memory: performance.memory ? {
         used: `${(performance.memory.usedJSHeapSize / 1048576).toFixed(2)} MB`,
         total: `${(performance.memory.totalJSHeapSize / 1048576).toFixed(2)} MB`,

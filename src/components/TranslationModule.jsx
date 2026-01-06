@@ -139,12 +139,36 @@ function TranslationModule({ user }) {
       
       setCurrentSentence(sentence);
     } catch (error) {
-      console.error('Failed to generate sentence:', {
-        error: error.message,
-        level,
-        topic,
-        vocabMode
-      });
+      console.error('❌ Backend sentence generation failed:', error);
+      console.log('🔄 Attempting direct frontend generation as fallback...');
+      
+      // Fallback: Versuche direkte Frontend-Generierung
+      try {
+        let targetVocab = null;
+        if (vocabMode === 'level') {
+          targetVocab = getRandomVocabForLevel();
+        } else if (vocabMode === 'trainer') {
+          targetVocab = getRandomVocabFromTrainer();
+        }
+        
+        const { generateTranslationSentence } = await import('../services/llmService');
+        const fallbackSentence = await generateTranslationSentence(
+          level,
+          vocabMode === 'classic' ? topic : null,
+          targetVocab
+        );
+        
+        console.log('✅ Frontend fallback generation successful:', fallbackSentence);
+        setCurrentSentence({
+          ...fallbackSentence,
+          source: 'frontend-fallback',
+          message: '⚠️ Backend nicht erreichbar - Lokale Satzgenerierung verwendet'
+        });
+      } catch (fallbackError) {
+        console.error('❌ Frontend fallback also failed:', fallbackError);
+        // Zeige Fehlermeldung an
+        alert(`⚠️ Backend nicht erreichbar.\n\nDas Backend könnte gerade neu starten (Railway cold start).\n\nBitte warte 30 Sekunden und versuche es erneut.\n\nFehler: ${error.message}`);
+      }
     } finally {
       setIsGeneratingSentence(false);
     }
@@ -252,13 +276,43 @@ function TranslationModule({ user }) {
         console.log('⏭️ No time credit (score < 8):', { score: evaluationResult.score });
       }
     } catch (error) {
-      console.error('Translation evaluation error:', error);
-      setFeedback({
-        score: 0,
-        feedback: `Fehler bei der Bewertung: ${error.message}. Die Simulation sollte trotzdem funktionieren.`,
-        improvements: ['Überprüfe die Browser-Konsole für weitere Details'],
-        correctTranslation: currentSentence.en
-      });
+      console.error('❌ Backend evaluation failed:', error);
+      console.log('🔄 Attempting direct frontend evaluation as fallback...');
+      
+      // Fallback: Versuche direkte Frontend-Evaluation
+      try {
+        const { evaluateTranslation } = await import('../services/llmService');
+        const fallbackResult = await evaluateTranslation(
+          currentSentence.de,
+          userTranslation,
+          currentSentence.en,
+          currentSentence.targetVocab
+        );
+        
+        console.log('✅ Frontend fallback evaluation successful:', fallbackResult);
+        setFeedback({
+          ...fallbackResult,
+          source: 'frontend-fallback',
+          message: '⚠️ Backend nicht erreichbar - Lokale Bewertung verwendet'
+        });
+        
+        setTotalAttempts(totalAttempts + 1);
+        if (fallbackResult.score >= 7) {
+          setScore(score + 1);
+        }
+      } catch (fallbackError) {
+        console.error('❌ Frontend fallback also failed:', fallbackError);
+        setFeedback({
+          score: 0,
+          feedback: `⚠️ Backend nicht erreichbar. Bitte prüfe deine Internetverbindung.\n\nFehlerdetails: ${error.message}`,
+          improvements: [
+            'Prüfe deine Internetverbindung',
+            'Das Backend könnte gerade neu starten (Railway cold start)',
+            'Versuche es in 30 Sekunden erneut'
+          ],
+          correctTranslation: currentSentence.en
+        });
+      }
     } finally {
       setIsLoading(false);
     }

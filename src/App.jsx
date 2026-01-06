@@ -21,6 +21,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [dueFlashcardsCount, setDueFlashcardsCount] = useState(0);
   const [showLogViewer, setShowLogViewer] = useState(false);
+  const [backendStatus, setBackendStatus] = useState('checking'); // 'checking', 'online', 'offline'
 
   useEffect(() => {
     // Log App Start
@@ -28,6 +29,9 @@ function App() {
       timestamp: new Date().toISOString(),
       userAgent: navigator.userAgent
     });
+    
+    // Check Backend Status
+    checkBackendStatus();
     
     // Check for special routes
     const params = new URLSearchParams(window.location.search);
@@ -75,8 +79,26 @@ function App() {
     try {
       const data = await apiService.getDueFlashcards();
       setDueFlashcardsCount(data.flashcards?.length || 0);
+      setBackendStatus('online');
     } catch (error) {
       console.error('Failed to load due flashcards count:', error);
+      if (error.message.includes('Backend nicht erreichbar')) {
+        setBackendStatus('offline');
+      }
+    }
+  };
+
+  const checkBackendStatus = async () => {
+    try {
+      // Einfacher Health-Check
+      await apiService.request('/health').catch(() => {
+        throw new Error('Backend offline');
+      });
+      setBackendStatus('online');
+      logService.info('APP', 'Backend Status: Online');
+    } catch (error) {
+      setBackendStatus('offline');
+      logService.warn('APP', 'Backend Status: Offline', { error: error.message });
     }
   };
 
@@ -104,6 +126,34 @@ function App() {
       </div>
 
       <div className="container mx-auto px-3 py-4 relative z-10">
+        {/* Backend Status Warning */}
+        {backendStatus === 'offline' && (
+          <div className="mb-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded shadow-lg animate-fade-in">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-semibold">
+                  ⚠️ Backend nicht erreichbar
+                </p>
+                <p className="text-xs mt-1">
+                  Das Backend startet möglicherweise gerade neu (Railway cold start). Bitte warte 30 Sekunden.
+                  Die App funktioniert weiterhin mit lokaler KI-Bewertung.
+                </p>
+                <button 
+                  onClick={checkBackendStatus}
+                  className="mt-2 text-xs font-bold underline hover:no-underline"
+                >
+                  Status erneut prüfen
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* User Info / Login Button / Settings */}
         <div className="flex justify-end mb-3 gap-2">
           {/* Stats Button */}
