@@ -370,7 +370,20 @@ export const updateFlashcardByVocabulary = (req, res) => {
 
     const today = new Date();
     const nextReviewDate = new Date(today);
-    nextReviewDate.setDate(nextReviewDate.getDate() + interval);
+    
+    // WICHTIG: Bei falscher Antwort (quality < 3) wird interval=0 gesetzt.
+    // Damit die Karte trotzdem als "heute bearbeitet" gilt und nicht mehr fällig ist,
+    // setzen wir das next_review_date mindestens auf morgen.
+    const minimumInterval = (quality < 3) ? 1 : interval;
+    nextReviewDate.setDate(nextReviewDate.getDate() + minimumInterval);
+
+    console.log('📚 [Flashcard] Review calculated:', {
+      quality,
+      usedCorrectly,
+      calculatedInterval: interval,
+      appliedInterval: minimumInterval,
+      nextReviewDate: nextReviewDate.toISOString().split('T')[0]
+    });
 
     // Update Flashcard
     const stmt = db.prepare(`
@@ -385,7 +398,7 @@ export const updateFlashcardByVocabulary = (req, res) => {
 
     stmt.run(
       easeFactor,
-      interval,
+      minimumInterval,  // Verwende minimumInterval statt interval
       repetitions,
       nextReviewDate.toISOString().split('T')[0],
       today.toISOString().split('T')[0],
@@ -395,7 +408,7 @@ export const updateFlashcardByVocabulary = (req, res) => {
     console.log('✅ [Flashcard] Updated successfully:', {
       flashcardId: flashcard.id,
       newRepetitions: repetitions,
-      newInterval: interval,
+      newInterval: minimumInterval,  // Zeige den tatsächlich verwendeten Interval
       nextReviewDate: nextReviewDate.toISOString().split('T')[0]
     });
 
@@ -405,7 +418,7 @@ export const updateFlashcardByVocabulary = (req, res) => {
       usedCorrectly,
       nextReview: {
         date: nextReviewDate.toISOString().split('T')[0],
-        intervalDays: interval,
+        intervalDays: minimumInterval,  // Verwende minimumInterval
         easeFactor: easeFactor.toFixed(2),
         repetitions
       }

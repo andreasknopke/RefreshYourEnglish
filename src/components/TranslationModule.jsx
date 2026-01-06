@@ -72,11 +72,16 @@ function TranslationModule({ user }) {
       const flashcards = data.flashcards || [];
       // Konvertiere Flashcards zu Vokabeln-Format
       const vocabArray = flashcards.map(fc => ({
-        id: fc.vocab_id || fc.id,
+        id: fc.vocabulary_id,  // Korrekt: vocabulary_id vom Backend
+        flashcardId: fc.flashcard_id,  // Für spätere Referenz
         english: fc.english,
         german: fc.german,
         level: fc.level || 'B2'
       }));
+      console.log('📚 [Vocab Trainer] Loaded due flashcards:', {
+        count: vocabArray.length,
+        sample: vocabArray[0] ? `${vocabArray[0].german} (id: ${vocabArray[0].id})` : 'none'
+      });
       setTrainerVocabulary(vocabArray);
     } catch (error) {
       console.error('Failed to load trainer vocabulary:', error);

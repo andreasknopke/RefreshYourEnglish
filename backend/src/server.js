@@ -29,7 +29,24 @@ app.use(express.urlencoded({ extended: true }));
 
 // Request logging
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  const logData = {
+    timestamp: new Date().toISOString(),
+    method: req.method,
+    path: req.path,
+    ip: req.ip || req.connection.remoteAddress
+  };
+  
+  // Extra logging für LLM-Requests
+  if (req.path.includes('/llm')) {
+    console.log('🔵 [SERVER] LLM Request incoming:', {
+      ...logData,
+      body: req.body ? Object.keys(req.body) : 'no body',
+      contentType: req.headers['content-type']
+    });
+  } else {
+    console.log(`${logData.timestamp} - ${logData.method} ${logData.path}`);
+  }
+  
   next();
 });
 

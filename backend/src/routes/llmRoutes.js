@@ -199,8 +199,19 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
  * Evaluates a translation using the configured LLM
  */
 router.post('/evaluate-translation', async (req, res) => {
+  // Erste Log-Zeile - sollte IMMER erscheinen
+  console.log('🔵 [LLM EVALUATE] === REQUEST RECEIVED ===', new Date().toISOString());
+  
   try {
     const { germanSentence, userTranslation, correctTranslation = '', targetVocab = null, provider = null } = req.body;
+    
+    console.log('🔵 [LLM EVALUATE] Request body parsed:', {
+      hasGerman: !!germanSentence,
+      hasUser: !!userTranslation,
+      hasCorrect: !!correctTranslation,
+      hasTargetVocab: !!targetVocab,
+      provider: provider || 'not specified'
+    });
     
     const currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
     const providerConfig = LLM_PROVIDERS[currentProvider];
@@ -209,9 +220,14 @@ router.post('/evaluate-translation', async (req, res) => {
     console.log('📊 [LLM] Evaluating translation', {
       timestamp: new Date().toISOString(),
       provider: currentProvider,
+      model: providerConfig.model,
       hasAPIKey: !!API_KEY,
+      apiKeyPrefix: API_KEY ? API_KEY.substring(0, 7) + '...' : 'none',
+      germanSentence: germanSentence.substring(0, 50) + '...',
       translationLength: userTranslation.length,
-      hasTargetVocab: !!targetVocab
+      correctTranslationLength: correctTranslation?.length || 0,
+      hasTargetVocab: !!targetVocab,
+      targetVocabInfo: targetVocab ? `${targetVocab.german} → ${targetVocab.english}` : 'none'
     });
     
     if (!API_KEY) {
@@ -220,6 +236,7 @@ router.post('/evaluate-translation', async (req, res) => {
         envVarName: providerConfig.apiKeyEnv,
         envVarsAvailable: Object.keys(process.env).filter(k => k.includes('API_KEY')).length
       });
+      console.log('🔵 [LLM EVALUATE] Returning fallback response');
       return res.json({
         source: 'fallback',
         score: 7,
@@ -229,7 +246,7 @@ router.post('/evaluate-translation', async (req, res) => {
       });
     }
     
-    console.log(`🔄 [LLM] Requesting evaluation from ${providerConfig.name}...`);
+    console.log(`🔄 [LLM] Requesting evaluation from ${providerConfig.name} API...`);
     
     // Erstelle zusätzliche Instruktion wenn Zielwort vorhanden
     const targetVocabInstruction = targetVocab 
@@ -294,9 +311,17 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
     const data = await response.json();
     const content = data.choices[0].message.content;
     
-    console.log(`✨ [LLM] Evaluation completed via ${providerConfig.name}`);
+    console.log(`✨ [LLM] Evaluation completed via ${providerConfig.name}`, {
+      contentLength: content.length,
+      contentPreview: content.substring(0, 100)
+    });
     
     const parsed = JSON.parse(content);
+    console.log('🔵 [LLM EVALUATE] Sending successful response to frontend:', {
+      score: parsed.score,
+      feedbackLength: parsed.feedback?.length
+    });
+    
     return res.json({
       source: 'llm',
       ...parsed,
@@ -313,6 +338,8 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       hasApiKey: !!API_KEY,
       timestamp: new Date().toISOString()
     });
+    
+    console.log('🔵 [LLM EVALUATE] Sending fallback error response');
     
     res.json({
       source: 'fallback',
