@@ -5,7 +5,8 @@ import {
   getAllFlashcards,
   reviewFlashcard,
   removeFromFlashcardDeck,
-  getFlashcardStats
+  getFlashcardStats,
+  updateFlashcardByVocabulary
 } from '../controllers/flashcardController.js';
 import { authenticateToken, optionalAuth } from '../middleware/auth.js';
 
@@ -19,6 +20,7 @@ router.get('/', optionalAuth, getAllFlashcards);
 // POST/DELETE routes benötigen Authentication
 router.post('/', authenticateToken, addToFlashcardDeck);
 router.post('/:flashcardId/review', authenticateToken, reviewFlashcard);
+router.post('/update-by-vocabulary', authenticateToken, updateFlashcardByVocabulary);
 router.delete('/:flashcardId', authenticateToken, removeFromFlashcardDeck);
 
 export default router;

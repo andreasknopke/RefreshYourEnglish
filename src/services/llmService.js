@@ -79,7 +79,11 @@ console.log('🔑 LLM API Key status:', {
   
   // Wenn kein API-Key vorhanden ist, verwende Simulation
   if (!API_KEY) {
-    console.warn(`⚠️ No ${providerConfig.name} API key found, using simulation mode`);
+    console.warn(`⚠️ [LLM Evaluation] No ${providerConfig.name} API key found, using simulation mode`, {
+      provider: currentProvider,
+      envVarName: providerConfig.apiKeyEnv,
+      hasTargetVocab: !!targetVocab
+    });
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
 
@@ -96,7 +100,14 @@ Der Schüler SOLLTE die englische Vokabel "${targetVocab.english}" (deutsch: "${
   
   // Echte LLM-Integration (nur wenn API-Key vorhanden)
   try {
-    console.log(`🔍 Requesting translation evaluation from ${providerConfig.name}...`);
+    console.log(`🔍 [LLM Evaluation] Requesting from ${providerConfig.name}...`, {
+      provider: currentProvider,
+      endpoint: providerConfig.endpoint,
+      model: providerConfig.model,
+      hasTargetVocab: !!targetVocab,
+      germanLength: germanSentence.length,
+      userTranslationLength: userTranslation.length
+    });
     
     const response = await fetch(providerConfig.endpoint, {
       method: 'POST',
@@ -138,12 +149,22 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
     
     if (!response.ok) {
       const errorData = await response.text();
-      console.error(`❌ ${providerConfig.name} API error: ${response.status}`, errorData.substring(0, 300));
+      console.error(`❌ [LLM Evaluation] ${providerConfig.name} API error:`, {
+        status: response.status,
+        statusText: response.statusText,
+        errorPreview: errorData.substring(0, 300),
+        provider: currentProvider,
+        endpoint: providerConfig.endpoint
+      });
       throw new Error(`${providerConfig.name} API error: ${response.status}`);
     }
     
     const data = await response.json();
-    console.log(`✅ ${providerConfig.name} response received`);
+    console.log(`✅ [LLM Evaluation] ${providerConfig.name} response received:`, {
+      hasChoices: !!data.choices,
+      choicesLength: data.choices?.length,
+      usage: data.usage
+    });
     
     const content = data.choices[0].message.content;
     
@@ -166,11 +187,14 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
     }
   } catch (error) {
-    console.error(`❌ ${providerConfig.name} API failed:`, {
+    console.error(`❌ [LLM Evaluation] ${providerConfig.name} API failed:`, {
       error: error.message,
-      provider: currentProvider
+      errorStack: error.stack,
+      provider: currentProvider,
+      endpoint: providerConfig.endpoint,
+      hasApiKey: !!API_KEY
     });
-    console.warn(`⚠️ Falling back to local evaluation...`);
+    console.warn(`⚠️ [LLM Evaluation] Falling back to local evaluation due to: ${error.message}`);
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
 }

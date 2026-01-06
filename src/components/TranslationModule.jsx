@@ -186,6 +186,32 @@ function TranslationModule({ user }) {
           setVocabBonusCount(prev => prev + 1);
         }
       }
+
+      // Update Flashcard Status wenn im Vokabeltrainer-Modus
+      if (user && vocabMode === 'trainer' && currentSentence.targetVocab) {
+        try {
+          const vocabularyId = currentSentence.targetVocab.id;
+          console.log('🎯 [Flashcard Update] Updating flashcard from vocab trainer:', {
+            vocabularyId,
+            vocabUsedCorrectly,
+            score: evaluationResult.score,
+            vocab: `${currentSentence.targetVocab.german} → ${currentSentence.targetVocab.english}`
+          });
+
+          const updateResult = await apiService.updateFlashcardByVocabulary(
+            vocabularyId,
+            vocabUsedCorrectly
+          );
+
+          if (updateResult.updated) {
+            console.log('✅ [Flashcard Update] Successfully updated:', updateResult.nextReview);
+          } else {
+            console.log('ℹ️ [Flashcard Update] No flashcard found for this vocabulary');
+          }
+        } catch (error) {
+          console.error('❌ [Flashcard Update] Failed to update flashcard:', error);
+        }
+      }
       
       console.log('📋 Evaluation result:', evaluationResult, 'Vocab used correctly:', vocabUsedCorrectly);
       setFeedback(evaluationResult);

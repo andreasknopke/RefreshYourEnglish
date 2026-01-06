@@ -317,3 +317,101 @@ export const getFlashcardStats = (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+// Update Flashcard-Status basierend auf Vokabeltrainer-Nutzung
+export const updateFlashcardByVocabulary = (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+    
+    const { vocabularyId, usedCorrectly } = req.body;
+    const userId = req.user.userId;
+
+    console.log('📚 [Flashcard] Update from vocab trainer:', {
+      userId,
+      vocabularyId,
+      usedCorrectly,
+      timestamp: new Date().toISOString()
+    });
+
+    // Finde die Flashcard für diese Vokabel
+    const flashcard = db.prepare(`
+      SELECT * FROM flashcard_deck 
+      WHERE user_id = ? AND vocabulary_id = ?
+    `).get(userId, vocabularyId);
+
+    if (!flashcard) {
+      console.log('📚 [Flashcard] No flashcard found for vocabulary, skipping update');
+      return res.json({ 
+        message: 'No flashcard found for this vocabulary',
+        updated: false 
+      });
+    }
+
+    // Qualität basierend auf korrekter Nutzung
+    // usedCorrectly=true -> quality=5 (gut), usedCorrectly=false -> quality=2 (schwierig)
+    const quality = usedCorrectly ? 5 : 2;
+
+    console.log('📚 [Flashcard] Calculating next review:', {
+      flashcardId: flashcard.id,
+      currentRepetitions: flashcard.repetitions,
+      currentInterval: flashcard.interval_days,
+      quality
+    });
+
+    // Berechne nächstes Review mit SM-2 Algorithm
+    const { easeFactor, interval, repetitions } = calculateNextReview(
+      quality,
+      flashcard.ease_factor,
+      flashcard.interval_days,
+      flashcard.repetitions
+    );
+
+    const today = new Date();
+    const nextReviewDate = new Date(today);
+    nextReviewDate.setDate(nextReviewDate.getDate() + interval);
+
+    // Update Flashcard
+    const stmt = db.prepare(`
+      UPDATE flashcard_deck 
+      SET ease_factor = ?,
+          interval_days = ?,
+          repetitions = ?,
+          next_review_date = ?,
+          last_reviewed_date = ?
+      WHERE id = ?
+    `);
+
+    stmt.run(
+      easeFactor,
+      interval,
+      repetitions,
+      nextReviewDate.toISOString().split('T')[0],
+      today.toISOString().split('T')[0],
+      flashcard.id
+    );
+
+    console.log('✅ [Flashcard] Updated successfully:', {
+      flashcardId: flashcard.id,
+      newRepetitions: repetitions,
+      newInterval: interval,
+      nextReviewDate: nextReviewDate.toISOString().split('T')[0]
+    });
+
+    res.json({
+      message: 'Flashcard updated successfully',
+      updated: true,
+      usedCorrectly,
+      nextReview: {
+        date: nextReviewDate.toISOString().split('T')[0],
+        intervalDays: interval,
+        easeFactor: easeFactor.toFixed(2),
+        repetitions
+      }
+    });
+  } catch (error) {
+    console.error('❌ [Flashcard] Error updating from vocab trainer:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};

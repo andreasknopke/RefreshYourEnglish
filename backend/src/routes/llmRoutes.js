@@ -215,7 +215,11 @@ router.post('/evaluate-translation', async (req, res) => {
     });
     
     if (!API_KEY) {
-      console.warn(`⚠️ [LLM] No API key for ${providerConfig.name}, using fallback evaluation`);
+      console.warn(`⚠️ [LLM] No API key for ${providerConfig.name}, using fallback evaluation`, {
+        provider: currentProvider,
+        envVarName: providerConfig.apiKeyEnv,
+        envVarsAvailable: Object.keys(process.env).filter(k => k.includes('API_KEY')).length
+      });
       return res.json({
         source: 'fallback',
         score: 7,
@@ -269,7 +273,14 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
     
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`❌ [LLM] Evaluation failed with status ${response.status}:`, errorText.substring(0, 300));
+      console.error(`❌ [LLM] Evaluation failed with status ${response.status}:`, {
+        status: response.status,
+        statusText: response.statusText,
+        provider: currentProvider,
+        endpoint: providerConfig.endpoint,
+        errorPreview: errorText.substring(0, 300),
+        fullError: errorText
+      });
       
       return res.json({
         source: 'fallback',
@@ -296,6 +307,10 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
   } catch (error) {
     console.error(`❌ [LLM] Evaluation error:`, {
       error: error.message,
+      errorStack: error.stack,
+      provider: currentProvider,
+      endpoint: providerConfig.endpoint,
+      hasApiKey: !!API_KEY,
       timestamp: new Date().toISOString()
     });
     

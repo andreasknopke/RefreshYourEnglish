@@ -233,6 +233,13 @@ class ApiService {
     return this.request('/flashcards/stats');
   }
 
+  async updateFlashcardByVocabulary(vocabularyId, usedCorrectly) {
+    return this.request('/flashcards/update-by-vocabulary', {
+      method: 'POST',
+      body: JSON.stringify({ vocabularyId, usedCorrectly }),
+    });
+  }
+
   // Action Mode Spaced Repetition
   async addToActionReviews(vocabularyId) {
     return this.request('/action-mode/reviews', {
