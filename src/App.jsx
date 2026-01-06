@@ -90,15 +90,17 @@ function App() {
 
   const checkBackendStatus = async () => {
     try {
-      // Einfacher Health-Check
-      await apiService.request('/health').catch(() => {
-        throw new Error('Backend offline');
-      });
+      // Verwende einen existierenden Endpoint statt /health
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+      await apiService.request('/vocabulary');
       setBackendStatus('online');
-      logService.info('APP', 'Backend Status: Online');
+      logService.info('APP', 'Backend Status: Online', { apiUrl });
     } catch (error) {
       setBackendStatus('offline');
-      logService.warn('APP', 'Backend Status: Offline', { error: error.message });
+      logService.warn('APP', 'Backend Status: Offline', { 
+        error: error.message,
+        apiUrl: import.meta.env.VITE_API_URL 
+      });
     }
   };
 
