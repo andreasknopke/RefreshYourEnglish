@@ -58,21 +58,21 @@ export default function DiagnosticsPanel() {
 
     // Test 3: Backend Erreichbarkeit
     try {
-      // Verwende einen existierenden Endpoint statt /health
-      const response = await fetch(`${apiUrl.replace('/api', '')}/api/vocabulary`, {
+      const response = await fetch(`${apiUrl.replace('/api', '')}/health`, {
         method: 'GET',
         headers: { 'Accept': 'application/json' }
       });
+      const data = response.ok ? await response.json() : null;
       results.tests.push({
-        name: 'Backend Erreichbarkeit',
+        name: 'Backend Health',
         status: response.ok ? 'PASS' : 'FAIL',
         value: response.ok ? `OK (${response.status})` : `Error ${response.status}`,
         icon: response.ok ? '✅' : '❌',
-        details: response.ok ? 'Backend ist erreichbar' : `Status: ${response.status}`
+        details: data ? `Status: ${data.status}, CORS Origins: ${data.cors?.allowedOrigins?.join(', ') || 'none'}` : 'Backend nicht erreichbar'
       });
     } catch (error) {
       results.tests.push({
-        name: 'Backend Erreichbarkeit',
+        name: 'Backend Health',
         status: 'FAIL',
         value: error.message,
         icon: '❌',

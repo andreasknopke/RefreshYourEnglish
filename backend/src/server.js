@@ -19,11 +19,32 @@ const corsOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
   : ['http://localhost:5173'];
 
-// Middleware
+console.log('🔗 CORS enabled for:', corsOrigins.join(', '));
+
+// CORS Configuration - IMPORTANT: Must be before other middleware
 app.use(cors({
-  origin: corsOrigins,
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or Postman)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is allowed
+    if (corsOrigins.includes(origin) || corsOrigins.includes('*')) {
+      callback(null, true);
+    } else {
+      console.warn('⚠️ CORS blocked:', origin, '| Allowed:', corsOrigins.join(', '));
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Content-Length', 'X-Request-Id'],
+  maxAge: 86400 // 24 hours
 }));
+
+// Additional CORS headers for preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -98,25 +119,41 @@ app.get('/', (req, res) => {
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    cors: {
+      allowedOrigins: corsOrigins,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH']
+    }
+  });
 });
 
 // 404 handler
 app.use((req, res) => {
+  console.log(`⚠️ 404 Not Found: ${req.method} ${req.path}`);
   res.status(404).json({ error: 'Route not found' });
 });
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  res.status(500).json({ error: 'Internal server error' });
+  console.error('❌ Error:', err.message);
+  if (err.message === 'Not allowed by CORS') {
+    res.status(403).json({ error: 'CORS policy blocked this request', origin: req.headers.origin });
+  } else {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Server running on http://0.0.0.0:${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🔗 CORS enabled for: ${corsOrigins.join(', ')}\n`);
+  console.log(`🔗 CORS Configuration:`);
+  console.log(`   - Allowed Origins: ${corsOrigins.join(', ')}`);
+  console.log(`   - Methods: GET, POST, PUT, DELETE, OPTIONS, PATCH`);
+  console.log(`   - Credentials: enabled`);
+  console.log(`   - Max Age: 24 hours\n`);
 });
 
 export default app;

@@ -90,11 +90,15 @@ function App() {
 
   const checkBackendStatus = async () => {
     try {
-      // Verwende einen existierenden Endpoint statt /health
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
-      await apiService.request('/vocabulary');
-      setBackendStatus('online');
-      logService.info('APP', 'Backend Status: Online', { apiUrl });
+      const baseUrl = apiUrl.replace('/api', '');
+      const response = await fetch(`${baseUrl}/health`);
+      if (response.ok) {
+        setBackendStatus('online');
+        logService.info('APP', 'Backend Status: Online', { apiUrl, baseUrl });
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
     } catch (error) {
       setBackendStatus('offline');
       logService.warn('APP', 'Backend Status: Offline', { 
