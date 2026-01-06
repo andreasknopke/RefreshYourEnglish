@@ -575,6 +575,36 @@ function SettingsModule() {
               </div>
             </div>
           </div>
+
+          {/* LLM Diagnostic Info */}
+          <div className="mt-6 bg-purple-50 border-2 border-purple-300 rounded-xl p-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">🔍</span>
+              <div className="flex-1">
+                <p className="font-bold text-purple-800 mb-2">Diagnose-Information (für Entwickler)</p>
+                <div className="text-sm space-y-1">
+                  <p className="text-purple-700">
+                    <span className="font-semibold">Aktueller LLM Provider (localStorage):</span>{' '}
+                    <code className="bg-purple-100 px-2 py-1 rounded">{llmProvider}</code>
+                  </p>
+                  <p className="text-purple-700">
+                    <span className="font-semibold">Verfügbare Provider:</span>{' '}
+                    {availableLLMs.map(llm => (
+                      <span key={llm.id} className="inline-flex items-center gap-1">
+                        <code className="bg-purple-100 px-2 py-1 rounded">{llm.id}</code>
+                        {llm.available ? <span className="text-green-600">✓</span> : <span className="text-red-600">✗</span>}
+                        {' '}
+                      </span>
+                    ))}
+                  </p>
+                  <p className="text-xs text-purple-600 mt-2">
+                    ℹ️ Wenn die KI-Bewertung nicht funktioniert, prüfe ob der ausgewählte Provider verfügbar ist (grünes ✓).
+                    Das Backend nutzt automatisch einen verfügbaren Provider, wenn der ausgewählte keinen API-Key hat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

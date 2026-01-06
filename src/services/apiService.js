@@ -313,7 +313,24 @@ class ApiService {
     // Get provider from localStorage
     const provider = localStorage.getItem('llm_provider') || 'openai';
     
-    console.log('📤 [Frontend] Requesting translation evaluation from backend:', { provider, targetVocab });
+    // Sammle Browser/Device-Informationen
+    const userAgent = navigator.userAgent;
+    const deviceInfo = {
+      platform: navigator.platform,
+      userAgent: userAgent,
+      isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent),
+      browser: userAgent.includes('Chrome') ? 'Chrome' : 
+               userAgent.includes('Safari') ? 'Safari' : 
+               userAgent.includes('Firefox') ? 'Firefox' : 'Unknown'
+    };
+    
+    console.log('📤 [Frontend] Requesting translation evaluation from backend:', { 
+      provider, 
+      targetVocab,
+      localStorageProvider: localStorage.getItem('llm_provider'),
+      defaultProvider: 'openai',
+      deviceInfo
+    });
     
     const result = await this.request('/llm/evaluate-translation', {
       method: 'POST',

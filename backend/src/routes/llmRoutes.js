@@ -24,7 +24,8 @@ const LLM_PROVIDERS = {
     endpoint: 'https://api.mistral.ai/v1/chat/completions',
     getHeaders: (apiKey) => ({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/json'
     })
   }
 };
@@ -213,9 +214,26 @@ router.post('/evaluate-translation', async (req, res) => {
       provider: provider || 'not specified'
     });
     
-    const currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
-    const providerConfig = LLM_PROVIDERS[currentProvider];
-    const API_KEY = process.env[providerConfig.apiKeyEnv];
+    let currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
+    let providerConfig = LLM_PROVIDERS[currentProvider];
+    let API_KEY = process.env[providerConfig.apiKeyEnv];
+    
+    // Automatischer Fallback: Wenn der gewählte Provider keinen API-Key hat, versuche andere
+    if (!API_KEY) {
+      console.warn(`⚠️ [LLM] No API key for requested provider '${currentProvider}', checking alternatives...`);
+      
+      // Versuche alle Provider
+      for (const [providerKey, config] of Object.entries(LLM_PROVIDERS)) {
+        const alternativeKey = process.env[config.apiKeyEnv];
+        if (alternativeKey) {
+          console.log(`✅ [LLM] Found API key for alternative provider '${providerKey}', using it instead`);
+          currentProvider = providerKey;
+          providerConfig = config;
+          API_KEY = alternativeKey;
+          break;
+        }
+      }
+    }
     
     console.log('📊 [LLM] Evaluating translation', {
       timestamp: new Date().toISOString(),
@@ -231,22 +249,28 @@ router.post('/evaluate-translation', async (req, res) => {
     });
     
     if (!API_KEY) {
-      console.warn(`⚠️ [LLM] No API key for ${providerConfig.name}, using fallback evaluation`, {
-        provider: currentProvider,
+      const availableProviders = Object.entries(LLM_PROVIDERS)
+        .filter(([_, config]) => !!process.env[config.apiKeyEnv])
+        .map(([key, _]) => key);
+      
+      console.warn(`⚠️ [LLM] No API key available for any provider`, {
+        requestedProvider: provider || 'not specified',
+        attemptedProvider: currentProvider,
         envVarName: providerConfig.apiKeyEnv,
-        envVarsAvailable: Object.keys(process.env).filter(k => k.includes('API_KEY')).length
+        availableProviders: availableProviders.length > 0 ? availableProviders : 'none',
+        allEnvAPIKeys: Object.keys(process.env).filter(k => k.includes('API_KEY'))
       });
-      console.log('🔵 [LLM EVALUATE] Returning fallback response');
+      console.log('🔵 [LLM EVALUATE] Returning fallback response - no API keys available');
       return res.json({
         source: 'fallback',
         score: 7,
-        feedback: 'Gute Übersetzung! (Fallback-Bewertung)',
+        feedback: 'Gute Übersetzung! (Fallback-Bewertung - kein API-Key verfügbar)',
         improvements: [],
-        message: `No ${providerConfig.name} API key - using fallback`
+        message: `No API keys available. Requested: ${provider || 'default'}, Checked: ${Object.keys(LLM_PROVIDERS).join(', ')}`
       });
     }
     
-    console.log(`🔄 [LLM] Requesting evaluation from ${providerConfig.name} API...`);
+    console.log(`🔄 [LLM] Requesting evaluation from ${providerConfig.name} API (final provider: ${currentProvider})...`);
     
     // Erstelle zusätzliche Instruktion wenn Zielwort vorhanden
     const targetVocabInstruction = targetVocab 
@@ -255,60 +279,111 @@ Falls der Schüler dieses Wort korrekt verwendet hat, kritisiere es NICHT und sc
 Die Musterlösung verwendet ebenfalls dieses Wort - das ist beabsichtigt!`
       : '';
     
-    const response = await fetch(providerConfig.endpoint, {
-      method: 'POST',
-      headers: providerConfig.getHeaders(API_KEY),
-      body: JSON.stringify({
-        model: providerConfig.model,
-        messages: [
-          {
-            role: 'system',
-            content: `Du bist ein freundlicher Englischlehrer. Bewerte die Übersetzung des SCHÜLERS.
+    // Bereite Request-Body vor
+    const requestBody = {
+      model: providerConfig.model,
+      messages: [
+        {
+          role: 'system',
+          content: `Du bist ein freundlicher Englischlehrer. Bewerte die Übersetzung des SCHÜLERS.
 
 WICHTIG: Bewerte NUR die Übersetzung des Schülers, NICHT die Musterlösung!
 Die Musterlösung dient nur als Vergleich.${targetVocabInstruction}
 
 Antworte im JSON-Format: {"score": 1-10, "feedback": "text", "improvements": []}`
-          },
-          {
-            role: 'user',
-            content: `Deutscher Satz: "${germanSentence}"
+        },
+        {
+          role: 'user',
+          content: `Deutscher Satz: "${germanSentence}"
 
 ÜBERSETZUNG DES SCHÜLERS (zu bewerten): "${userTranslation}"
 
 Musterlösung (nur als Referenz): "${correctTranslation}"${targetVocab ? `\n\nZiel-Vokabel: ${targetVocab.english} (${targetVocab.german})` : ''}
 
 Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 300
-      })
-    });
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 300
+    };
+
+    const requestHeaders = providerConfig.getHeaders(API_KEY);
     
-    console.log(`📊 [LLM] Evaluation response status: ${response.status}`);
+    console.log(`📤 [LLM] Sending request to ${currentProvider}:`, {
+      endpoint: providerConfig.endpoint,
+      model: providerConfig.model,
+      headers: Object.keys(requestHeaders),
+      bodySize: JSON.stringify(requestBody).length,
+      messagesCount: requestBody.messages.length
+    });
+
+    let response;
+    try {
+      response = await fetch(providerConfig.endpoint, {
+        method: 'POST',
+        headers: requestHeaders,
+        body: JSON.stringify(requestBody)
+      });
+    } catch (fetchError) {
+      console.error(`❌ [LLM] Fetch error for ${currentProvider}:`, {
+        error: fetchError.message,
+        errorType: fetchError.constructor.name,
+        endpoint: providerConfig.endpoint
+      });
+      throw fetchError;
+    }
+    
+    console.log(`📊 [LLM] Response received from ${currentProvider}:`, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: {
+        contentType: response.headers.get('content-type'),
+        contentLength: response.headers.get('content-length')
+      },
+      ok: response.ok
+    });
     
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`❌ [LLM] Evaluation failed with status ${response.status}:`, {
+      console.error(`❌ [LLM] ${currentProvider} API returned error:`, {
         status: response.status,
         statusText: response.statusText,
         provider: currentProvider,
+        model: providerConfig.model,
         endpoint: providerConfig.endpoint,
         errorPreview: errorText.substring(0, 300),
-        fullError: errorText
+        fullError: errorText,
+        headers: Object.fromEntries([...response.headers.entries()])
       });
       
       return res.json({
         source: 'fallback',
         score: 7,
-        feedback: 'Gute Übersetzung! (Fallback-Bewertung)',
+        feedback: `Gute Übersetzung! (Fallback - ${currentProvider} API Fehler ${response.status})`,
         improvements: [],
-        message: `Evaluation API error (${response.status})`
+        message: `${currentProvider} API error (${response.status}): ${errorText.substring(0, 100)}`
       });
     }
     
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonError) {
+      const responseText = await response.text();
+      console.error(`❌ [LLM] Failed to parse JSON from ${currentProvider}:`, {
+        error: jsonError.message,
+        responsePreview: responseText.substring(0, 500)
+      });
+      throw new Error(`JSON parse error from ${currentProvider}: ${jsonError.message}`);
+    }
+    
+    console.log(`📥 [LLM] Parsed response from ${currentProvider}:`, {
+      hasChoices: !!data.choices,
+      choicesLength: data.choices?.length,
+      hasMessage: !!data.choices?.[0]?.message,
+      contentLength: data.choices?.[0]?.message?.content?.length
+    });
+    
     const content = data.choices[0].message.content;
     
     console.log(`✨ [LLM] Evaluation completed via ${providerConfig.name}`, {
@@ -316,8 +391,19 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       contentPreview: content.substring(0, 100)
     });
     
-    const parsed = JSON.parse(content);
+    let parsed;
+    try {
+      parsed = JSON.parse(content);
+    } catch (parseError) {
+      console.error(`❌ [LLM] Failed to parse content as JSON from ${currentProvider}:`, {
+        error: parseError.message,
+        content: content.substring(0, 500)
+      });
+      throw new Error(`Content JSON parse error from ${currentProvider}: ${parseError.message}`);
+    }
+    
     console.log('🔵 [LLM EVALUATE] Sending successful response to frontend:', {
+      provider: currentProvider,
       score: parsed.score,
       feedbackLength: parsed.feedback?.length
     });
