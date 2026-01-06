@@ -89,11 +89,17 @@ Niveau: ${level}
 Thema: ${topic}
 ${targetVocab ? `Ziel-Vokabel: "${targetVocab.german}" → "${targetVocab.english}"` : ''}
 
+WICHTIG - NUR DEUTSCHE WÖRTER:
+Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten. NIEMALS englische Wörter im deutschen Satz verwenden! Auch keine englischen Lehnwörter oder Anglizismen, es sei denn sie sind vollständig eingedeutscht (wie "Computer" oder "Email").
+
+${targetVocab ? `WICHTIG - MEHRERE BEDEUTUNGEN:
+Wenn "${targetVocab.german}" mehrere Bedeutungen hat (z.B. "wohl / streitbar"), dann wähle NUR EINE dieser Bedeutungen für den Satz. Verwende NICHT beide Bedeutungen im selben Satz!` : ''}
+
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`;
 
     const userPrompt = targetVocab
-      ? `Erstelle einen Satz auf ${level}-Niveau, der "${targetVocab.german}" enthält.`
-      : `Erstelle einen Satz auf ${level}-Niveau zum Thema "${topic}".`;
+      ? `Erstelle einen Satz auf ${level}-Niveau, der "${targetVocab.german}" enthält. Wähle nur EINE Bedeutung des Wortes, falls es mehrere hat. Der Satz muss zu 100% auf DEUTSCH sein!`
+      : `Erstelle einen Satz auf ${level}-Niveau zum Thema "${topic}". Der Satz muss zu 100% auf DEUTSCH sein!`;
 
     console.log(`🔄 [LLM] Sending request to ${providerConfig.name} API...`);
     

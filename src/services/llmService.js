@@ -563,8 +563,21 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
         }, {
           role: 'user',
           content: targetVocab 
-            ? `Generiere einen deutschen Satz, der das Wort "${targetVocab.german}" enthält, sodass in der englischen Übersetzung "${targetVocab.english}" verwendet werden muss. Der Satz soll auf ${level}-Niveau sein.`
-            : `Generiere einen NEUEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" EXAKT auf ${level}-Niveau (nicht einfacher, nicht schwieriger!). Beachte die Wortanzahl ${currentLevel.wordCount} und die Komplexität "${currentLevel.complexity}".`
+            ? `Generiere einen deutschen Satz mit dem Wort "${targetVocab.german}", sodass in der englischen Übersetzung "${targetVocab.english}" verwendet werden muss.
+
+WICHTIG - MEHRERE BEDEUTUNGEN:
+Wenn "${targetVocab.german}" mehrere Bedeutungen hat (z.B. "wohl / streitbar"), dann wähle NUR EINE dieser Bedeutungen für den Satz. Verwende NICHT beide Bedeutungen im selben Satz!
+
+WICHTIG - NUR DEUTSCHE WÖRTER:
+Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten. NIEMALS englische Wörter im deutschen Satz verwenden! Auch keine englischen Lehnwörter oder Anglizismen, es sei denn sie sind vollständig eingedeutscht (wie "Computer" oder "Email").
+
+Beispiel RICHTIG: "Trotz ihrer großen Erfolge blieb sie stets demütig."
+Beispiel FALSCH: "Trotz ihrer großen Erfolge blieb sie stets humble." ❌
+
+Der Satz soll auf ${level}-Niveau sein.`
+            : `Generiere einen NEUEN deutschen Satz (${sentenceType}) zum Aspekt "${specificTopic}" EXAKT auf ${level}-Niveau (nicht einfacher, nicht schwieriger!). Beachte die Wortanzahl ${currentLevel.wordCount} und die Komplexität "${currentLevel.complexity}".
+
+WICHTIG: Der Satz muss zu 100% auf DEUTSCH sein, keine englischen Wörter!`
         }],
         temperature: 0.9,
         max_tokens: 200,
