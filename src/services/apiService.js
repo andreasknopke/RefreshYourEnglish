@@ -1,3 +1,5 @@
+import logService from './logService';
+
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 class ApiService {
@@ -39,10 +41,20 @@ class ApiService {
       },
     };
 
+    const requestStartTime = performance.now();
     console.log('API Request:', url, config);
+    
+    // Log API Request
+    logService.info('API', `API Request: ${options.method || 'GET'} ${endpoint}`, {
+      url,
+      method: options.method || 'GET',
+      hasAuth: !!this.getToken(),
+      body: options.body ? JSON.parse(options.body) : undefined
+    });
 
     try {
       const response = await fetch(url, config);
+      const requestDuration = Math.round(performance.now() - requestStartTime);
       
       // Prüfe ob Response OK ist
       if (!response.ok) {
@@ -57,9 +69,20 @@ class ApiService {
         // Check if user needs to re-authenticate (401 or 403)
         if (errorData.requiresReauth || response.status === 401 || response.status === 403) {
           console.warn('Session invalid or expired, logging out user');
+          logService.warn('API', 'Session ungültig - Re-Authentication erforderlich', {
+            status: response.status,
+            endpoint
+          });
           this.setToken(null);
           window.dispatchEvent(new CustomEvent('auth-required', { detail: errorData }));
         }
+        
+        logService.error('API', `API Error: ${response.status}`, {
+          endpoint,
+          status: response.status,
+          error: errorData,
+          duration: `${requestDuration}ms`
+        });
         
         throw new Error(errorData.error || errorData.message || 'Request failed');
       }
@@ -69,15 +92,38 @@ class ApiService {
       if (!contentType || !contentType.includes('application/json')) {
         const text = await response.text();
         console.error('Non-JSON response:', text);
+        logService.error('API', 'Nicht-JSON Response erhalten', {
+          endpoint,
+          contentType,
+          preview: text.substring(0, 200)
+        });
         throw new Error('Server returned non-JSON response. Check API_URL configuration.');
       }
 
       const data = await response.json();
       console.log('API Response:', response.status, data);
+      
+      // Log successful response
+      logService.info('API', `API Response: ${response.status}`, {
+        endpoint,
+        status: response.status,
+        duration: `${requestDuration}ms`,
+        dataKeys: Object.keys(data)
+      });
 
       return data;
     } catch (error) {
       console.error('API request failed:', error);
+      
+      // Log error if not already logged
+      if (!error.logged) {
+        logService.error('API', 'API Request fehlgeschlagen', {
+          endpoint,
+          error: error.message,
+          stack: error.stack
+        });
+      }
+      
       throw error;
     }
   }

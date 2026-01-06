@@ -1,6 +1,8 @@
 // LLM Service für KI-basierte Bewertung und Generierung
 // Diese Funktionen können mit verschiedenen LLM-APIs verbunden werden (OpenAI, Anthropic, lokale Modelle, etc.)
 
+import logService from './logService';
+
 /**
  * Konfiguration für LLM-Provider
  */
@@ -77,6 +79,13 @@ console.log('🔑 LLM API Key status:', {
     prefix: API_KEY ? API_KEY.substring(0, 7) + '...' : 'none'
   });
   
+  // Log API Key status
+  logService.info('LLM', 'API Key Check', {
+    provider: currentProvider,
+    exists: !!API_KEY,
+    length: API_KEY ? API_KEY.length : 0
+  });
+  
   // Wenn kein API-Key vorhanden ist, verwende Simulation
   if (!API_KEY) {
     console.warn(`⚠️ [LLM Evaluation] No ${providerConfig.name} API key found, using simulation mode`, {
@@ -84,10 +93,15 @@ console.log('🔑 LLM API Key status:', {
       envVarName: providerConfig.apiKeyEnv,
       hasTargetVocab: !!targetVocab
     });
+    logService.warn('LLM', 'Keine API Key - Simulation verwendet', {
+      provider: currentProvider,
+      envVarName: providerConfig.apiKeyEnv
+    });
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
 
   console.log(`✨ Using ${providerConfig.name} API for translation evaluation`);
+  logService.info('LLM', 'Verwende API für Evaluation', { provider: currentProvider });
 
   // Zusätzliche Anweisungen für Ziel-Vokabel
   const vocabInstruction = targetVocab 
@@ -100,6 +114,8 @@ Der Schüler SOLLTE die englische Vokabel "${targetVocab.english}" (deutsch: "${
   
   // Echte LLM-Integration (nur wenn API-Key vorhanden)
   try {
+    const requestStartTime = performance.now();
+    
     console.log(`🔍 [LLM Evaluation] Requesting from ${providerConfig.name}...`, {
       provider: currentProvider,
       endpoint: providerConfig.endpoint,
@@ -109,14 +125,11 @@ Der Schüler SOLLTE die englische Vokabel "${targetVocab.english}" (deutsch: "${
       userTranslationLength: userTranslation.length
     });
     
-    const response = await fetch(providerConfig.endpoint, {
-      method: 'POST',
-      headers: providerConfig.getHeaders(API_KEY),
-      body: JSON.stringify({
-        model: providerConfig.model,
-        messages: [{
-          role: 'system',
-          content: `Du bist ein freundlicher und ermutigender Englischlehrer. 
+    const requestBody = {
+      model: providerConfig.model,
+      messages: [{
+        role: 'system',
+        content: `Du bist ein freundlicher und ermutigender Englischlehrer. 
 
 WICHTIGE BEWERTUNGSRICHTLINIEN:
 1. Rechtschreibfehler und Tippfehler: Erwähne sie im Feedback, aber ziehe KEINE Punkte ab
@@ -141,11 +154,21 @@ Antworte im JSON-Format: {"score": number, "feedback": string, "improvements": s
 Musterlösung (nur als Referenz): "${correctTranslation}"
 
 Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
-        }],
-        temperature: 0.7,
-        max_tokens: 400
-      })
+      }],
+      temperature: 0.7,
+      max_tokens: 400
+    };
+    
+    // Log LLM Request
+    logService.logLLMRequest(currentProvider, providerConfig.endpoint, requestBody);
+    
+    const response = await fetch(providerConfig.endpoint, {
+      method: 'POST',
+      headers: providerConfig.getHeaders(API_KEY),
+      body: JSON.stringify(requestBody)
     });
+    
+    const requestDuration = Math.round(performance.now() - requestStartTime);
     
     if (!response.ok) {
       const errorData = await response.text();
@@ -156,6 +179,10 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
         provider: currentProvider,
         endpoint: providerConfig.endpoint
       });
+      
+      // Log Error
+      logService.logLLMError(currentProvider, new Error(`API error: ${response.status} - ${errorData.substring(0, 200)}`), requestBody);
+      
       throw new Error(`${providerConfig.name} API error: ${response.status}`);
     }
     
@@ -166,6 +193,9 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       usage: data.usage
     });
     
+    // Log LLM Response
+    logService.logLLMResponse(currentProvider, data, requestDuration);
+    
     const content = data.choices[0].message.content;
     
     try {
@@ -175,15 +205,32 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
         hasVocabTarget: !!targetVocab
       });
       
+      // Log success
+      logService.llm('Evaluation erfolgreich', {
+        provider: currentProvider,
+        score: parsed.score,
+        duration: `${requestDuration}ms`,
+        germanSentence,
+        userTranslation,
+        feedback: parsed.feedback
+      });
+      
       return {
-        score: parsed.score || 8,
-        feedback: parsed.feedback || 'Gute Übersetzung!',
+        score: parsed.score,
+        feedback: parsed.feedback,
         improvements: parsed.improvements || [],
         spellingNotes: parsed.spellingNotes || [],
         correctTranslation
       };
     } catch (parseError) {
-      console.warn(`⚠️ JSON parsing failed for ${providerConfig.name}, falling back to simulation:`, parseError);
+      console.error('❌ [LLM Evaluation] Failed to parse LLM response:', parseError);
+      console.log('Raw response:', content);
+      
+      logService.warn('LLM', 'JSON Parsing fehlgeschlagen', {
+        provider: currentProvider,
+        error: parseError.message,
+        content: content?.substring(0, 500)
+      });
       return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
     }
   } catch (error) {
@@ -194,6 +241,13 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       endpoint: providerConfig.endpoint,
       hasApiKey: !!API_KEY
     });
+    
+    logService.logLLMError(currentProvider, error, {
+      germanSentence,
+      userTranslation,
+      correctTranslation
+    });
+    
     console.warn(`⚠️ [LLM Evaluation] Falling back to local evaluation due to: ${error.message}`);
     return simulateEvaluation(germanSentence, userTranslation, correctTranslation, targetVocab);
   }
@@ -300,8 +354,21 @@ export async function generateTranslationSentence(level = 'B2', topic = 'Alltag'
     targetVocab: targetVocab ? `${targetVocab.german}/${targetVocab.english}` : 'none'
   });
   
+  logService.info('LLM', 'Generiere Übersetzungssatz', {
+    provider: currentProvider,
+    level,
+    topic,
+    hasAPIKey: !!API_KEY,
+    targetVocab: targetVocab ? `${targetVocab.german}/${targetVocab.english}` : 'none'
+  });
+  
   if (!API_KEY) {
     console.warn(`⚠️ No ${providerConfig.name} API key found, using fallback sentences for ${level}/${topic}`);
+    logService.warn('LLM', 'Fallback-Satz verwendet (kein API Key)', {
+      provider: currentProvider,
+      level,
+      topic
+    });
     const fallback = getFallbackSentence(level, topic, targetVocab);
     console.log('📚 Fallback sentence returned:', fallback);
     return fallback;
@@ -448,14 +515,13 @@ Der Satz MUSS so konstruiert sein, dass der Lerner das englische Wort "${targetV
     : '';
 
   try {
-    const response = await fetch(providerConfig.endpoint, {
-      method: 'POST',
-      headers: providerConfig.getHeaders(API_KEY),
-      body: JSON.stringify({
-        model: providerConfig.model,
-        messages: [{
-          role: 'system',
-          content: `Du bist ein erfahrener Englischlehrer, der Übersetzungssätze für VERSCHIEDENE Sprachniveaus erstellt.
+    const requestStartTime = performance.now();
+    
+    const requestBody = {
+      model: providerConfig.model,
+      messages: [{
+        role: 'system',
+        content: `Du bist ein erfahrener Englischlehrer, der Übersetzungssätze für VERSCHIEDENE Sprachniveaus erstellt.
 
 KRITISCH - NIVEAU ${level} ANFORDERUNGEN:
 - Komplexität: ${currentLevel.complexity}
@@ -504,10 +570,20 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
         max_tokens: 200,
         presence_penalty: 0.6,
         frequency_penalty: 0.6
-      })
+      };
+    
+    // Log LLM Request
+    logService.logLLMRequest(currentProvider, providerConfig.endpoint, requestBody);
+    
+    const response = await fetch(providerConfig.endpoint, {
+      method: 'POST',
+      headers: providerConfig.getHeaders(API_KEY),
+      body: JSON.stringify(requestBody)
     });
     
     console.log(`🔄 Sent request to ${providerConfig.name} API for translation sentence generation (${level}/${topic})`);
+    
+    const requestDuration = Math.round(performance.now() - requestStartTime);
     
     if (!response.ok) {
       const errorText = await response.text();
@@ -519,11 +595,18 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
         topic,
         provider: currentProvider
       });
+      
+      // Log Error
+      logService.logLLMError(currentProvider, new Error(`${errorMsg} - ${errorText.substring(0, 200)}`), requestBody);
+      
       throw new Error(errorMsg);
     }
     
     const data = await response.json();
     console.log(`✅ ${providerConfig.name} response received for translation sentence`);
+    
+    // Log LLM Response
+    logService.logLLMResponse(currentProvider, data, requestDuration);
     
     const content = data.choices[0].message.content;
     console.log('📝 API Response content:', content.substring(0, 200) + '...');
@@ -535,6 +618,16 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
         english: parsed.en,
         hasVocab: !!targetVocab
       });
+      
+      logService.llm('Satz erfolgreich generiert', {
+        provider: currentProvider,
+        level,
+        topic,
+        duration: `${requestDuration}ms`,
+        germanSentence: parsed.de,
+        englishTranslation: parsed.en
+      });
+      
       return {
         de: parsed.de || parsed.german || 'Fehler beim Generieren',
         en: parsed.en || parsed.english || 'Error generating',
@@ -545,20 +638,29 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
         error: parseError.message,
         content: content.substring(0, 300)
       });
-      throw parseError;
+      
+      logService.error('LLM', 'JSON Parsing fehlgeschlagen bei Satzgenerierung', {
+        provider: currentProvider,
+        error: parseError.message,
+        content: content?.substring(0, 300)
+      });
+      
+      // Fallback
+      const fallback = getFallbackSentence(level, topic, targetVocab);
+      console.log('📚 Using fallback sentence due to parsing error');
+      return fallback;
     }
   } catch (error) {
-    console.error(`❌ ${providerConfig.name} sentence generation failed:`, {
+    console.error(`❌ ${providerConfig.name} API failed for sentence generation:`, {
       error: error.message,
-      provider: currentProvider,
       level,
-      topic,
-      stack: error.stack
+      topic
     });
-    console.warn(`⚠️ Falling back to local sentences...`);
-    const fallback = getFallbackSentence(level, topic, targetVocab);
-    console.log('📚 Using fallback sentence:', fallback);
-    return fallback;
+    
+    logService.logLLMError(currentProvider, error, { level, topic, targetVocab });
+    
+    console.log('📚 Using fallback sentence due to API error');
+    return getFallbackSentence(level, topic, targetVocab);
   }
 }
 

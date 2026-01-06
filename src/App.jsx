@@ -11,15 +11,24 @@ import PWAInstallPrompt from './components/PWAInstallPrompt';
 import VerifyEmail from './components/VerifyEmail';
 import ResetPassword from './components/ResetPassword';
 import GamificationBanner from './components/GamificationBanner';
+import LogViewer from './components/LogViewer';
 import apiService from './services/apiService';
+import logService from './services/logService';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
   const [dueFlashcardsCount, setDueFlashcardsCount] = useState(0);
+  const [showLogViewer, setShowLogViewer] = useState(false);
 
   useEffect(() => {
+    // Log App Start
+    logService.info('APP', 'Anwendung gestartet', {
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent
+    });
+    
     // Check for special routes
     const params = new URLSearchParams(window.location.search);
     if (params.get('token')) {
@@ -107,6 +116,15 @@ function App() {
               📊
             </button>
           )}
+          
+          {/* Debug Log Button */}
+          <button
+            onClick={() => setShowLogViewer(true)}
+            className="glass-card px-4 py-3 rounded-2xl font-bold text-gray-700 hover:text-red-600 hover:scale-105 transition-all"
+            title="Debug Logs"
+          >
+            🐛
+          </button>
           
           {/* Settings Button */}
           <button
@@ -340,6 +358,11 @@ function App() {
             onClose={() => setShowAuthModal(false)}
             onLogin={(newUser) => setUser(newUser)}
           />
+        )}
+
+        {/* Log Viewer */}
+        {showLogViewer && (
+          <LogViewer onClose={() => setShowLogViewer(false)} />
         )}
 
         {/* PWA Install Prompt */}
