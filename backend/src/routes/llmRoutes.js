@@ -409,13 +409,18 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       contentPreview: content.substring(0, 100)
     });
     
+    // Remove markdown code blocks if present (```json ... ```)
+    // Mistral fügt oft Code-Blocks hinzu
+    const cleanedContent = content.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+    
     let parsed;
     try {
-      parsed = JSON.parse(content);
+      parsed = JSON.parse(cleanedContent);
     } catch (parseError) {
       console.error(`❌ [LLM] Failed to parse content as JSON from ${currentProvider}:`, {
         error: parseError.message,
-        content: content.substring(0, 500)
+        rawContent: content.substring(0, 500),
+        cleanedContent: cleanedContent.substring(0, 500)
       });
       throw new Error(`Content JSON parse error from ${currentProvider}: ${parseError.message}`);
     }
