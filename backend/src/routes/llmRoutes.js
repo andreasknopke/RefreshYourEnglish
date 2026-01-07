@@ -89,28 +89,28 @@ Niveau: ${level}
 Thema: ${topic}
 ${targetVocab ? `
 ZIEL-VOKABEL:
-- Deutsches Wort: "${targetVocab.german}"
-- Englisches Wort: "${targetVocab.english}"
+- Deutsches Wort: '${targetVocab.german}'
+- Englisches Wort: '${targetVocab.english}'
 ` : ''}
 
 KRITISCH - NUR DEUTSCHE WÖRTER IM DEUTSCHEN SATZ:
 Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten!
-NIEMALS englische Wörter wie "${targetVocab?.english || 'sedulous, demur, etc.'}" im deutschen Satz verwenden!
-${targetVocab ? `Der deutsche Satz MUSS das DEUTSCHE Wort "${targetVocab.german}" enthalten, NICHT das englische Wort "${targetVocab.english}"!` : ''}
+NIEMALS englische Wörter wie '${targetVocab?.english || 'sedulous, demur, etc.'}' im deutschen Satz verwenden!
+${targetVocab ? `Der deutsche Satz MUSS das DEUTSCHE Wort '${targetVocab.german}' enthalten, NICHT das englische Wort '${targetVocab.english}'!` : ''}
 
 ${targetVocab ? `EXAKTE DEUTSCHE WÖRTER VERWENDEN:
-Wenn "${targetVocab.german}" mehrere Bedeutungen enthält (z.B. "zurückhaltend, bescheiden, respektvoll"), dann:
+Wenn '${targetVocab.german}' mehrere Bedeutungen enthält (z.B. 'zurückhaltend, bescheiden, respektvoll'), dann:
 1. Wähle EXAKT EINES dieser deutschen Wörter für den deutschen Satz
 2. Verwende KEINE Synonyme oder ähnlichen Wörter
-3. Der deutsche Satz = deutsches Wort, die englische Übersetzung = englisches Wort "${targetVocab.english}"
+3. Der deutsche Satz = deutsches Wort, die englische Übersetzung = englisches Wort '${targetVocab.english}'
 
-FALSCH: "Sie war stets sedulous" (englisches Wort im deutschen Satz!)
-RICHTIG: "Sie war stets fleißig" (deutsches Wort im deutschen Satz!)` : ''}
+FALSCH: 'Sie war stets sedulous' (englisches Wort im deutschen Satz!)
+RICHTIG: 'Sie war stets fleißig' (deutsches Wort im deutschen Satz!)` : ''}
 
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`;
 
     const userPrompt = targetVocab
-      ? `Erstelle einen deutschen Satz auf ${level}-Niveau mit dem DEUTSCHEN Wort "${targetVocab.german}" (NICHT mit dem englischen Wort "${targetVocab.english}")! Die englische Übersetzung soll dann "${targetVocab.english}" enthalten. Der deutsche Satz muss zu 100% auf DEUTSCH sein!`
+      ? `Erstelle einen deutschen Satz auf ${level}-Niveau mit dem DEUTSCHEN Wort '${targetVocab.german}' (NICHT mit dem englischen Wort '${targetVocab.english}')! Die englische Übersetzung soll dann '${targetVocab.english}' enthalten. Der deutsche Satz muss zu 100% auf DEUTSCH sein!`
       : `Erstelle einen Satz auf ${level}-Niveau zum Thema "${topic}". Der Satz muss zu 100% auf DEUTSCH sein!`;
 
     console.log(`🔄 [LLM] Sending request to ${providerConfig.name} API...`);
