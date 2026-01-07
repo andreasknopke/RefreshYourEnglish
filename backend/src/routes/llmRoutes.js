@@ -84,24 +84,33 @@ router.post('/generate-sentence', async (req, res) => {
     }
     
     // Build system prompt
-    const systemPrompt = `Du bist ein erfahrener Englischlehrer. Generiere einen einzelnen deutschen Satz zum Übersetzen.
+    const systemPrompt = `Du bist ein erfahrener Englischlehrer. Generiere einen deutschen Satz zum Übersetzen ins Englische.
 Niveau: ${level}
 Thema: ${topic}
-${targetVocab ? `Ziel-Vokabel: "${targetVocab.german}" → "${targetVocab.english}"` : ''}
+${targetVocab ? `
+ZIEL-VOKABEL:
+- Deutsches Wort: "${targetVocab.german}"
+- Englisches Wort: "${targetVocab.english}"
+` : ''}
 
-WICHTIG - NUR DEUTSCHE WÖRTER:
-Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten. NIEMALS englische Wörter im deutschen Satz verwenden! Auch keine englischen Lehnwörter oder Anglizismen, es sei denn sie sind vollständig eingedeutscht (wie "Computer" oder "Email").
+KRITISCH - NUR DEUTSCHE WÖRTER IM DEUTSCHEN SATZ:
+Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten!
+NIEMALS englische Wörter wie "${targetVocab?.english || 'sedulous, demur, etc.'}" im deutschen Satz verwenden!
+${targetVocab ? `Der deutsche Satz MUSS das DEUTSCHE Wort "${targetVocab.german}" enthalten, NICHT das englische Wort "${targetVocab.english}"!` : ''}
 
-${targetVocab ? `KRITISCH - EXAKTE DEUTSCHE ÜBERSETZUNG VERWENDEN:
-Der deutsche Satz MUSS ZWINGEND eines der deutschen Wörter aus "${targetVocab.german}" enthalten!
-Wenn "${targetVocab.german}" mehrere Bedeutungen hat (z.B. "zurückhaltend, bescheiden, respektvoll"), dann wähle EXAKT EINES dieser Wörter.
-Verwende NICHT Synonyme oder ähnliche Wörter! NUR die exakten deutschen Wörter aus der Vokabeldatenbank!
-Beispiel: Wenn "zurückhaltend, bescheiden" steht, verwende NICHT "demütig" oder andere Wörter!` : ''}
+${targetVocab ? `EXAKTE DEUTSCHE WÖRTER VERWENDEN:
+Wenn "${targetVocab.german}" mehrere Bedeutungen enthält (z.B. "zurückhaltend, bescheiden, respektvoll"), dann:
+1. Wähle EXAKT EINES dieser deutschen Wörter für den deutschen Satz
+2. Verwende KEINE Synonyme oder ähnlichen Wörter
+3. Der deutsche Satz = deutsches Wort, die englische Übersetzung = englisches Wort "${targetVocab.english}"
+
+FALSCH: "Sie war stets sedulous" (englisches Wort im deutschen Satz!)
+RICHTIG: "Sie war stets fleißig" (deutsches Wort im deutschen Satz!)` : ''}
 
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`;
 
     const userPrompt = targetVocab
-      ? `Erstelle einen Satz auf ${level}-Niveau, der EXAKT eines der deutschen Wörter aus "${targetVocab.german}" enthält. Verwende NUR diese exakten deutschen Wörter, KEINE Synonyme! Der Satz muss zu 100% auf DEUTSCH sein!`
+      ? `Erstelle einen deutschen Satz auf ${level}-Niveau mit dem DEUTSCHEN Wort "${targetVocab.german}" (NICHT mit dem englischen Wort "${targetVocab.english}")! Die englische Übersetzung soll dann "${targetVocab.english}" enthalten. Der deutsche Satz muss zu 100% auf DEUTSCH sein!`
       : `Erstelle einen Satz auf ${level}-Niveau zum Thema "${topic}". Der Satz muss zu 100% auf DEUTSCH sein!`;
 
     console.log(`🔄 [LLM] Sending request to ${providerConfig.name} API...`);
