@@ -409,8 +409,8 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       contentPreview: content.substring(0, 100)
     });
     
-    // Remove markdown code blocks if present (```json ... ```)
-    // Mistral fügt oft Code-Blocks hinzu
+    // Remove markdown code blocks if present (e.g. ```json ... ```)
+    // Mistral adds code blocks around JSON responses
     const cleanedContent = content.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
     
     let parsed;
