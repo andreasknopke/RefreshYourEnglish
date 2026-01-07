@@ -92,13 +92,16 @@ ${targetVocab ? `Ziel-Vokabel: "${targetVocab.german}" → "${targetVocab.englis
 WICHTIG - NUR DEUTSCHE WÖRTER:
 Der deutsche Satz darf AUSSCHLIESSLICH deutsche Wörter enthalten. NIEMALS englische Wörter im deutschen Satz verwenden! Auch keine englischen Lehnwörter oder Anglizismen, es sei denn sie sind vollständig eingedeutscht (wie "Computer" oder "Email").
 
-${targetVocab ? `WICHTIG - MEHRERE BEDEUTUNGEN:
-Wenn "${targetVocab.german}" mehrere Bedeutungen hat (z.B. "wohl / streitbar"), dann wähle NUR EINE dieser Bedeutungen für den Satz. Verwende NICHT beide Bedeutungen im selben Satz!` : ''}
+${targetVocab ? `KRITISCH - EXAKTE DEUTSCHE ÜBERSETZUNG VERWENDEN:
+Der deutsche Satz MUSS ZWINGEND eines der deutschen Wörter aus "${targetVocab.german}" enthalten!
+Wenn "${targetVocab.german}" mehrere Bedeutungen hat (z.B. "zurückhaltend, bescheiden, respektvoll"), dann wähle EXAKT EINES dieser Wörter.
+Verwende NICHT Synonyme oder ähnliche Wörter! NUR die exakten deutschen Wörter aus der Vokabeldatenbank!
+Beispiel: Wenn "zurückhaltend, bescheiden" steht, verwende NICHT "demütig" oder andere Wörter!` : ''}
 
 Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"}`;
 
     const userPrompt = targetVocab
-      ? `Erstelle einen Satz auf ${level}-Niveau, der "${targetVocab.german}" enthält. Wähle nur EINE Bedeutung des Wortes, falls es mehrere hat. Der Satz muss zu 100% auf DEUTSCH sein!`
+      ? `Erstelle einen Satz auf ${level}-Niveau, der EXAKT eines der deutschen Wörter aus "${targetVocab.german}" enthält. Verwende NUR diese exakten deutschen Wörter, KEINE Synonyme! Der Satz muss zu 100% auf DEUTSCH sein!`
       : `Erstelle einen Satz auf ${level}-Niveau zum Thema "${topic}". Der Satz muss zu 100% auf DEUTSCH sein!`;
 
     console.log(`🔄 [LLM] Sending request to ${providerConfig.name} API...`);

@@ -217,14 +217,16 @@ function TranslationModule({ user }) {
       }
 
       // Update Flashcard Status wenn im Vokabeltrainer-Modus
+      // WICHTIG: Die Flashcard wird IMMER als geübt markiert (egal ob richtig oder falsch)
       if (user && vocabMode === 'trainer' && currentSentence.targetVocab) {
         try {
           const vocabularyId = currentSentence.targetVocab.id;
-          console.log('🎯 [Flashcard Update] Updating flashcard from vocab trainer:', {
+          console.log('🎯 [Flashcard Update] Updating flashcard from vocab trainer (ALWAYS marked as practiced):', {
             vocabularyId,
             vocabUsedCorrectly,
             score: evaluationResult.score,
-            vocab: `${currentSentence.targetVocab.german} → ${currentSentence.targetVocab.english}`
+            vocab: `${currentSentence.targetVocab.german} → ${currentSentence.targetVocab.english}`,
+            note: 'Flashcard wird als geübt markiert, unabhängig vom Ergebnis'
           });
 
           const updateResult = await apiService.updateFlashcardByVocabulary(
@@ -255,7 +257,7 @@ function TranslationModule({ user }) {
           // Basis: 45 Sekunden
           const baseSeconds = 45;
           // Bonus: 30 Sekunden wenn Vokabel korrekt verwendet wurde
-          const vocabBonusSeconds = vocabUsedCorrectly ? 30 : 0;
+          const vocabBonusSeconds = (vocabMode === 'trainer' || vocabMode === 'level') && vocabUsedCorrectly ? 30 : 0;
           const totalSeconds = baseSeconds + vocabBonusSeconds;
           const minutesToAdd = totalSeconds / 60;
           
