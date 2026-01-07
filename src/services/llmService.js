@@ -687,7 +687,10 @@ export function checkVocabularyUsage(userTranslation, targetVocab) {
   if (!targetVocab || !targetVocab.english) return false;
   
   const translation = userTranslation.toLowerCase();
-  const targetWord = targetVocab.english.toLowerCase();
+  let targetWord = targetVocab.english.toLowerCase();
+  
+  // Entferne "to " am Anfang (z.B. "to zap" → "zap")
+  targetWord = targetWord.replace(/^to\s+/, '');
   
   // Prüfe auf exakte Übereinstimmung oder Wortform-Varianten
   // Berücksichtige Plural, Konjugation etc.
