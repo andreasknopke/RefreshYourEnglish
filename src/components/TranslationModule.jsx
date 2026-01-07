@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { checkVocabularyUsage } from '../services/llmService';
 import apiService from '../services/apiService';
+import logService from '../services/logService';
 import TTSButton from './TTSButton';
 import STTButton from './STTButton';
 
@@ -207,9 +208,32 @@ function TranslationModule({ user }) {
       
       // Prüfe, ob die Ziel-Vokabel korrekt verwendet wurde
       let vocabUsedCorrectly = false;
-      if (currentSentence.targetVocab && evaluationResult.score >= 7) {
+      if (currentSentence.targetVocab) {
         vocabUsedCorrectly = checkVocabularyUsage(userTranslation, currentSentence.targetVocab);
-        if (vocabUsedCorrectly) {
+        
+        // Debug-Log für Log Viewer
+        const logData = {
+          targetVocab: `${currentSentence.targetVocab.german} → ${currentSentence.targetVocab.english}`,
+          userTranslation: userTranslation.substring(0, 100),
+          vocabUsedCorrectly,
+          score: evaluationResult.score,
+          willGetBonus: vocabUsedCorrectly && evaluationResult.score >= 7,
+          provider: result.provider || 'unknown',
+          vocabMode
+        };
+        
+        if (vocabUsedCorrectly && evaluationResult.score >= 7) {
+          logService.info('VOCAB_CHECK', '✅ Vokabel korrekt verwendet - Bonus gewährt', logData);
+        } else if (vocabUsedCorrectly && evaluationResult.score < 7) {
+          logService.warn('VOCAB_CHECK', '⚠️ Vokabel korrekt, aber Score < 7 - Kein Bonus', logData);
+        } else if (!vocabUsedCorrectly) {
+          logService.warn('VOCAB_CHECK', '❌ Vokabel NICHT erkannt in User-Übersetzung', logData);
+        }
+        
+        console.log('🎯 [Vocab Check]:', logData);
+        
+        // Bonus nur wenn Score >= 7 UND Vokabel korrekt verwendet
+        if (vocabUsedCorrectly && evaluationResult.score >= 7) {
           evaluationResult.vocabBonus = true;
           evaluationResult.targetVocab = currentSentence.targetVocab;
           setVocabBonusCount(prev => prev + 1);
