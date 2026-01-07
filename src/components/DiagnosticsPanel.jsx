@@ -60,7 +60,12 @@ export default function DiagnosticsPanel() {
     try {
       const response = await fetch(`${apiUrl.replace('/api', '')}/health`, {
         method: 'GET',
-        headers: { 'Accept': 'application/json' }
+        mode: 'cors',
+        credentials: 'omit',
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
       const data = response.ok ? await response.json() : null;
       results.tests.push({
@@ -76,7 +81,7 @@ export default function DiagnosticsPanel() {
         status: 'FAIL',
         value: error.message,
         icon: '❌',
-        details: 'Backend nicht erreichbar oder CORS-Fehler'
+        details: `Backend nicht erreichbar oder CORS-Fehler: ${error.message}`
       });
     }
 
@@ -140,11 +145,13 @@ export default function DiagnosticsPanel() {
     // Test 7: CORS Preflight
     try {
       const corsTestUrl = apiUrl.replace('/api', '');
-      const response = await fetch(`${corsTestUrl}/api/vocabulary`, { 
-        method: 'OPTIONS',
+      const response = await fetch(`${corsTestUrl}/health`, { 
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'omit',
         headers: {
-          'Origin': window.location.origin,
-          'Access-Control-Request-Method': 'GET'
+          'Accept': 'application/json',
+          'Origin': window.location.origin
         }
       });
       const corsHeaders = response.headers.get('access-control-allow-origin');
@@ -162,7 +169,7 @@ export default function DiagnosticsPanel() {
         status: 'FAIL',
         value: error.message,
         icon: '❌',
-        details: 'CORS Preflight fehlgeschlagen'
+        details: `CORS Preflight fehlgeschlagen: ${error.message}`
       });
     }
 
