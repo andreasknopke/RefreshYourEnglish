@@ -687,18 +687,55 @@ export function checkVocabularyUsage(userTranslation, targetVocab) {
   if (!targetVocab || !targetVocab.english) return false;
   
   const translation = userTranslation.toLowerCase();
-  let targetWord = targetVocab.english.toLowerCase();
   
-  // Entferne "to " am Anfang (z.B. "to zap" → "zap")
-  targetWord = targetWord.replace(/^to\s+/, '');
+  // Unterstütze Synonyme: "extol, praise, tout" → prüfe jedes einzeln
+  const synonyms = targetVocab.english.split(',').map(s => s.trim().toLowerCase());
   
-  // Prüfe auf exakte Übereinstimmung oder Wortform-Varianten
-  // Berücksichtige Plural, Konjugation etc.
-  const baseWord = targetWord.replace(/ing$|ed$|s$|es$|ies$/i, '');
+  console.log('🔍 [Vocab Check] Checking vocabulary usage:', {
+    targetVocab: targetVocab.english,
+    synonyms,
+    translationPreview: translation.substring(0, 100)
+  });
   
-  // Prüfe ob das Wort oder eine Variante vorkommt
-  const wordPattern = new RegExp(`\\b${baseWord}\\w*\\b`, 'i');
-  return wordPattern.test(translation) || translation.includes(targetWord);
+  // Prüfe jedes Synonym
+  for (let targetWord of synonyms) {
+    // Entferne "to " am Anfang (z.B. "to zap" → "zap")
+    targetWord = targetWord.replace(/^to\s+/, '');
+    
+    // Erweiterte Wortstamm-Erkennung:
+    // Entferne häufige Endungen für bessere Wortstamm-Erkennung
+    let baseWord = targetWord;
+    
+    // Entferne Endungen: -ing, -ed, -s, -es, -ies, -er, -est, -ly, -ness, -tion, -ment
+    baseWord = baseWord.replace(/(?:ing|ed|es|ies|er|est|ly|ness|tion|ment)$/i, '');
+    // Entferne einfaches -s am Ende (für Plural)
+    baseWord = baseWord.replace(/s$/i, '');
+    
+    // Erstelle mehrere Patterns für verschiedene Wortformen
+    const patterns = [
+      new RegExp(`\\b${targetWord}\\b`, 'i'),           // Exakte Form
+      new RegExp(`\\b${targetWord}s\\b`, 'i'),          // Plural
+      new RegExp(`\\b${targetWord}es\\b`, 'i'),         // Plural -es
+      new RegExp(`\\b${targetWord}ed\\b`, 'i'),         // Past tense
+      new RegExp(`\\b${targetWord}ing\\b`, 'i'),        // Present participle
+      new RegExp(`\\b${baseWord}\\w*\\b`, 'i')          // Wortstamm + beliebige Endung
+    ];
+    
+    // Prüfe alle Patterns
+    for (const pattern of patterns) {
+      if (pattern.test(translation)) {
+        console.log('✅ [Vocab Check] Found matching vocabulary:', {
+          targetWord,
+          matchedPattern: pattern.toString(),
+          foundInTranslation: true
+        });
+        return true;
+      }
+    }
+  }
+  
+  console.log('❌ [Vocab Check] No matching vocabulary found');
+  return false;
 }
 
 /**
