@@ -60,10 +60,10 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.openai\.com\/.*/i,
+            urlPattern: /^https:\/\/api\.mistral\.ai\/.*/i,
             handler: 'NetworkOnly',
             options: {
-              cacheName: 'openai-api'
+              cacheName: 'mistral-api'
             }
           },
           {

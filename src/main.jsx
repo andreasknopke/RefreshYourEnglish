@@ -8,9 +8,8 @@ import { registerSW } from 'virtual:pwa-register'
 
 const updateSW = registerSW({
   onNeedRefresh() {
-    if (confirm('Neue Version verfügbar! Jetzt aktualisieren?')) {
-      updateSW(true)
-    }
+    console.log('Neue Version erkannt, Service Worker wird sofort aktualisiert.')
+    updateSW(true)
   },
   onOfflineReady() {
     console.log('App ist offline-bereit!')

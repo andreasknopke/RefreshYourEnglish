@@ -5,6 +5,48 @@ import logService from '../services/logService';
 import TTSButton from './TTSButton';
 import STTButton from './STTButton';
 
+function normalizeDisplayText(value) {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  if (value == null) {
+    return '';
+  }
+
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+
+  if (typeof value === 'object') {
+    const parts = [value.suggestion, value.example, value.note, value.text]
+      .filter((part) => typeof part === 'string' && part.trim());
+
+    if (parts.length > 0) {
+      return parts.join(' - ');
+    }
+
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return '';
+    }
+  }
+
+  return '';
+}
+
+function normalizeDisplayList(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map(normalizeDisplayText)
+      .filter((item) => item.trim());
+  }
+
+  const normalized = normalizeDisplayText(value);
+  return normalized.trim() ? [normalized] : [];
+}
+
 function TranslationModule({ user }) {
   const [currentSentence, setCurrentSentence] = useState(null);
   const [userTranslation, setUserTranslation] = useState('');
@@ -195,25 +237,18 @@ function TranslationModule({ user }) {
         currentSentence.targetVocab // Übergebe Zielwort an Backend
       );
 
-      const normalizedImprovements = Array.isArray(result.improvements)
-        ? result.improvements
-        : (typeof result.improvements === 'string' && result.improvements.trim()
-            ? [result.improvements]
-            : []);
-
-      const normalizedSpellingNotes = Array.isArray(result.spellingNotes)
-        ? result.spellingNotes
-        : (typeof result.spellingNotes === 'string' && result.spellingNotes.trim()
-            ? [result.spellingNotes]
-            : []);
+      const normalizedImprovements = normalizeDisplayList(result.improvements);
+      const normalizedSpellingNotes = normalizeDisplayList(result.spellingNotes);
+      const normalizedFeedback = normalizeDisplayText(result.feedback) || 'Gute Übersetzung!';
+      const normalizedCorrectTranslation = normalizeDisplayText(currentSentence.en);
       
       // Konvertiere Backend-Response zu Frontend-Format
       const evaluationResult = {
         score: result.score,
-        feedback: result.feedback,
+        feedback: normalizedFeedback,
         improvements: normalizedImprovements,
         spellingNotes: normalizedSpellingNotes,
-        correctTranslation: currentSentence.en,
+        correctTranslation: normalizedCorrectTranslation,
         source: result.source,
         message: result.message
       };
@@ -330,6 +365,10 @@ function TranslationModule({ user }) {
         console.log('✅ Frontend fallback evaluation successful:', fallbackResult);
         setFeedback({
           ...fallbackResult,
+          feedback: normalizeDisplayText(fallbackResult.feedback) || 'Gute Übersetzung!',
+          improvements: normalizeDisplayList(fallbackResult.improvements),
+          spellingNotes: normalizeDisplayList(fallbackResult.spellingNotes),
+          correctTranslation: normalizeDisplayText(fallbackResult.correctTranslation || currentSentence.en),
           source: 'frontend-fallback',
           message: '⚠️ Backend nicht erreichbar - Lokale Bewertung verwendet'
         });

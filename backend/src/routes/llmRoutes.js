@@ -26,6 +26,62 @@ function resolveProvider(requestedProvider) {
   return LLM_PROVIDERS[requestedProvider] ? requestedProvider : DEFAULT_PROVIDER;
 }
 
+function normalizeTextValue(value) {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  if (value == null) {
+    return '';
+  }
+
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+
+  if (typeof value === 'object') {
+    const parts = [value.suggestion, value.example, value.note, value.text]
+      .filter((part) => typeof part === 'string' && part.trim());
+
+    if (parts.length > 0) {
+      return parts.join(' - ');
+    }
+
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return '';
+    }
+  }
+
+  return '';
+}
+
+function normalizeListValue(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map(normalizeTextValue)
+      .filter((item) => item.trim());
+  }
+
+  const normalized = normalizeTextValue(value);
+  return normalized.trim() ? [normalized] : [];
+}
+
+function normalizeEvaluationResult(parsed) {
+  const rawScore = Number(parsed?.score);
+  const boundedScore = Number.isFinite(rawScore)
+    ? Math.min(10, Math.max(1, Math.round(rawScore)))
+    : 7;
+
+  return {
+    score: boundedScore,
+    feedback: normalizeTextValue(parsed?.feedback) || 'Gute Übersetzung!',
+    improvements: normalizeListValue(parsed?.improvements),
+    spellingNotes: normalizeListValue(parsed?.spellingNotes)
+  };
+}
+
 /**
  * GET /api/llm/provider
  * Returns the current LLM provider
@@ -509,15 +565,17 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
       throw new Error(`Content JSON parse error from ${currentProvider}: ${parseError.message}`);
     }
     
+    const normalizedEvaluation = normalizeEvaluationResult(parsed);
+
     console.log('🔵 [LLM EVALUATE] Sending successful response to frontend:', {
       provider: currentProvider,
-      score: parsed.score,
-      feedbackLength: parsed.feedback?.length
+      score: normalizedEvaluation.score,
+      feedbackLength: normalizedEvaluation.feedback?.length
     });
     
     return res.json({
       source: 'llm',
-      ...parsed,
+      ...normalizedEvaluation,
       provider: currentProvider,
       message: `Evaluated by ${providerConfig.name}`
     });

@@ -21,8 +21,23 @@ const corsOrigins = process.env.CORS_ORIGIN
 
 console.log('🔗 CORS enabled for:', corsOrigins.join(', '));
 
+const applyHealthCorsHeaders = (req, res) => {
+  const requestOrigin = req.headers.origin;
+
+  if (!requestOrigin) {
+    return;
+  }
+
+  if (corsOrigins.includes('*') || corsOrigins.includes(requestOrigin)) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Vary', 'Origin');
+  }
+};
+
 // Health checks BEFORE any middleware - must be accessible from Railway/monitoring
 app.get('/health', (req, res) => {
+  applyHealthCorsHeaders(req, res);
   console.log('💚 Health check from:', req.headers['user-agent'] || req.ip);
   res.json({ 
     status: 'ok', 
@@ -37,6 +52,7 @@ app.get('/health', (req, res) => {
 
 // Alternative health check endpoints that Railway might use
 app.get('/', (req, res) => {
+  applyHealthCorsHeaders(req, res);
   console.log('💚 Root health check from:', req.headers['user-agent'] || req.ip);
   res.json({ 
     status: 'ok',
