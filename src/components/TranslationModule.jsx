@@ -33,13 +33,13 @@ function TranslationModule({ user }) {
 
   // Debug: Prüfe API-Key beim Laden
   console.log('🎯 TranslationModule loaded');
-  console.log('🔑 API Key exists:', !!import.meta.env.VITE_OPENAI_API_KEY);
-  console.log('🔑 API Key length:', import.meta.env.VITE_OPENAI_API_KEY?.length || 0);
-  console.log('🔑 All OPENAI env vars:', Object.keys(import.meta.env).filter(k => k.includes('OPENAI')));
+  console.log('🔑 API Key exists:', !!import.meta.env.VITE_MISTRAL_API_KEY);
+  console.log('🔑 API Key length:', import.meta.env.VITE_MISTRAL_API_KEY?.length || 0);
+  console.log('🔑 All MISTRAL env vars:', Object.keys(import.meta.env).filter(k => k.includes('MISTRAL')));
   console.log('🔑 Full check:', {
-    exists: !!import.meta.env.VITE_OPENAI_API_KEY,
-    length: import.meta.env.VITE_OPENAI_API_KEY?.length || 0,
-    prefix: import.meta.env.VITE_OPENAI_API_KEY?.substring(0, 10) || 'none'
+    exists: !!import.meta.env.VITE_MISTRAL_API_KEY,
+    length: import.meta.env.VITE_MISTRAL_API_KEY?.length || 0,
+    prefix: import.meta.env.VITE_MISTRAL_API_KEY?.substring(0, 10) || 'none'
   });
 
   // Session Start initialisieren und Vokabeln laden
@@ -194,13 +194,25 @@ function TranslationModule({ user }) {
         currentSentence.en,
         currentSentence.targetVocab // Übergebe Zielwort an Backend
       );
+
+      const normalizedImprovements = Array.isArray(result.improvements)
+        ? result.improvements
+        : (typeof result.improvements === 'string' && result.improvements.trim()
+            ? [result.improvements]
+            : []);
+
+      const normalizedSpellingNotes = Array.isArray(result.spellingNotes)
+        ? result.spellingNotes
+        : (typeof result.spellingNotes === 'string' && result.spellingNotes.trim()
+            ? [result.spellingNotes]
+            : []);
       
       // Konvertiere Backend-Response zu Frontend-Format
       const evaluationResult = {
         score: result.score,
         feedback: result.feedback,
-        improvements: result.improvements || [],
-        spellingNotes: result.spellingNotes || [],
+        improvements: normalizedImprovements,
+        spellingNotes: normalizedSpellingNotes,
         correctTranslation: currentSentence.en,
         source: result.source,
         message: result.message

@@ -7,16 +7,6 @@ const router = express.Router();
 
 // LLM Provider Configuration
 const LLM_PROVIDERS = {
-  openai: {
-    name: 'OpenAI',
-    apiKeyEnv: 'OPENAI_API_KEY',
-    model: 'gpt-3.5-turbo',
-    endpoint: 'https://api.openai.com/v1/chat/completions',
-    getHeaders: (apiKey) => ({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    })
-  },
   mistral: {
     name: 'Mistral Large',
     apiKeyEnv: 'MISTRAL_API_KEY',
@@ -30,12 +20,18 @@ const LLM_PROVIDERS = {
   }
 };
 
+const DEFAULT_PROVIDER = 'mistral';
+
+function resolveProvider(requestedProvider) {
+  return LLM_PROVIDERS[requestedProvider] ? requestedProvider : DEFAULT_PROVIDER;
+}
+
 /**
  * GET /api/llm/provider
  * Returns the current LLM provider
  */
 router.get('/provider', (req, res) => {
-  const provider = process.env.LLM_PROVIDER || 'openai';
+  const provider = resolveProvider(process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
   const providerConfig = LLM_PROVIDERS[provider];
   const hasApiKey = !!process.env[providerConfig.apiKeyEnv];
   
@@ -58,7 +54,7 @@ router.post('/generate-sentence', async (req, res) => {
     const { level = 'B2', topic = 'Alltag', targetVocab = null, provider = null } = req.body;
     
     // Use specified provider or fall back to env variable
-    const currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
+    const currentProvider = resolveProvider(provider || process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
     const providerConfig = LLM_PROVIDERS[currentProvider];
     const API_KEY = process.env[providerConfig.apiKeyEnv];
     
@@ -304,6 +300,10 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
 router.post('/evaluate-translation', async (req, res) => {
   // Erste Log-Zeile - sollte IMMER erscheinen
   console.log('🔵 [LLM EVALUATE] === REQUEST RECEIVED ===', new Date().toISOString());
+
+  let currentProvider = DEFAULT_PROVIDER;
+  let providerConfig = LLM_PROVIDERS[DEFAULT_PROVIDER];
+  let API_KEY = process.env[providerConfig.apiKeyEnv];
   
   try {
     const { germanSentence, userTranslation, correctTranslation = '', targetVocab = null, provider = null } = req.body;
@@ -316,25 +316,12 @@ router.post('/evaluate-translation', async (req, res) => {
       provider: provider || 'not specified'
     });
     
-    let currentProvider = provider || process.env.LLM_PROVIDER || 'openai';
-    let providerConfig = LLM_PROVIDERS[currentProvider];
-    let API_KEY = process.env[providerConfig.apiKeyEnv];
+    currentProvider = resolveProvider(provider || process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
+    providerConfig = LLM_PROVIDERS[currentProvider];
+    API_KEY = process.env[providerConfig.apiKeyEnv];
     
-    // Automatischer Fallback: Wenn der gewählte Provider keinen API-Key hat, versuche andere
     if (!API_KEY) {
-      console.warn(`⚠️ [LLM] No API key for requested provider '${currentProvider}', checking alternatives...`);
-      
-      // Versuche alle Provider
-      for (const [providerKey, config] of Object.entries(LLM_PROVIDERS)) {
-        const alternativeKey = process.env[config.apiKeyEnv];
-        if (alternativeKey) {
-          console.log(`✅ [LLM] Found API key for alternative provider '${providerKey}', using it instead`);
-          currentProvider = providerKey;
-          providerConfig = config;
-          API_KEY = alternativeKey;
-          break;
-        }
-      }
+      console.warn(`⚠️ [LLM] No API key for provider '${currentProvider}'`);
     }
     
     console.log('📊 [LLM] Evaluating translation', {
@@ -368,7 +355,7 @@ router.post('/evaluate-translation', async (req, res) => {
         score: 7,
         feedback: 'Gute Übersetzung! (Fallback-Bewertung - kein API-Key verfügbar)',
         improvements: [],
-        message: `No API keys available. Requested: ${provider || 'default'}, Checked: ${Object.keys(LLM_PROVIDERS).join(', ')}`
+        message: `No API key available for provider: ${currentProvider}`
       });
     }
     

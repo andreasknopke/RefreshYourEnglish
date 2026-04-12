@@ -1,5 +1,5 @@
 // LLM Service für KI-basierte Bewertung und Generierung
-// Diese Funktionen können mit verschiedenen LLM-APIs verbunden werden (OpenAI, Anthropic, lokale Modelle, etc.)
+// Diese Funktionen sind auf Mistral als Cloud-Provider ausgelegt.
 
 import logService from './logService';
 
@@ -7,16 +7,6 @@ import logService from './logService';
  * Konfiguration für LLM-Provider
  */
 const LLM_PROVIDERS = {
-  openai: {
-    name: 'OpenAI',
-    apiKeyEnv: 'VITE_OPENAI_API_KEY',
-    model: 'gpt-3.5-turbo',
-    endpoint: 'https://api.openai.com/v1/chat/completions',
-    getHeaders: (apiKey) => ({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    })
-  },
   mistral: {
     name: 'Mistral Large',
     apiKeyEnv: 'VITE_MISTRAL_API_KEY',
@@ -33,8 +23,13 @@ const LLM_PROVIDERS = {
  * Ruft den aktuellen LLM-Provider ab
  */
 export function getLLMProvider() {
-  const provider = localStorage.getItem('llm_provider') || 'openai';
-  return provider;
+  const storedProvider = localStorage.getItem('llm_provider');
+  if (storedProvider && LLM_PROVIDERS[storedProvider]) {
+    return storedProvider;
+  }
+
+  localStorage.setItem('llm_provider', 'mistral');
+  return 'mistral';
 }
 
 /**
@@ -965,12 +960,11 @@ function levenshteinDistance(str1, str2) {
 /**
  * Konfiguration für LLM-API (Beispiel)
  * Erstelle eine .env Datei mit deinen API-Keys:
- * VITE_OPENAI_API_KEY=your_key_here
- * VITE_ANTHROPIC_API_KEY=your_key_here
+ * VITE_MISTRAL_API_KEY=your_key_here
  */
 export const LLM_CONFIG = {
-  provider: 'openai', // 'openai', 'anthropic', 'local', etc.
-  model: 'gpt-4',
+  provider: 'mistral',
+  model: 'mistral-large-latest',
   temperature: 0.7,
   maxTokens: 500
 };
@@ -987,7 +981,7 @@ export async function classifyVocabularyLevels(vocabularyList, onProgress = null
   const API_KEY = import.meta.env[providerConfig.apiKeyEnv];
   
   if (!API_KEY) {
-    console.warn('⚠️ No OpenAI API key found, using fallback classification');
+    console.warn(`⚠️ No ${providerConfig.name} API key found, using fallback classification`);
     return fallbackClassification(vocabularyList);
   }
 
@@ -1038,7 +1032,7 @@ Keine zusätzlichen Erklärungen!`
       });
 
       if (!response.ok) {
-        throw new Error(`OpenAI API error: ${response.status}`);
+        throw new Error(`${providerConfig.name} API error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -1120,7 +1114,7 @@ Antworte NUR mit dem Level: A1, A2, B1, B2, C1 oder C2`
     });
 
     if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
+      throw new Error(`${providerConfig.name} API error: ${response.status}`);
     }
 
     const data = await response.json();

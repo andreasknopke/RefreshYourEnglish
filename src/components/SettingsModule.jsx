@@ -7,7 +7,7 @@ import DiagnosticsPanel from './DiagnosticsPanel';
 function SettingsModule() {
   const [sttProvider, setSttProvider] = useState('browser');
   const [ttsProvider, setTtsProvider] = useState('elevenlabs');
-  const [llmProvider, setLLMProvider] = useState('openai');
+  const [llmProvider, setLLMProvider] = useState('mistral');
   const [elevenLabsAvailable, setElevenLabsAvailable] = useState(false);
   const [availableVoices, setAvailableVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
@@ -83,7 +83,7 @@ function SettingsModule() {
       setLLMProvider(provider);
       
       // Show confirmation
-      const providerName = provider === 'mistral' ? 'Mistral Large' : 'OpenAI';
+      const providerName = 'Mistral Large';
       alert(`✅ LLM Provider auf ${providerName} geändert`);
     } catch (error) {
       console.error('Failed to change LLM provider:', error);
@@ -443,63 +443,10 @@ function SettingsModule() {
         <div className="glass-card rounded-3xl p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
             <span className="mr-3">🧠</span>
-            KI-Modell (LLM) auswählen
+            KI-Modell (LLM)
           </h2>
           
           <div className="space-y-4">
-            {/* OpenAI Option */}
-            <div
-              onClick={() => handleLLMProviderChange('openai')}
-              className={`cursor-pointer p-4 rounded-xl border-2 transition-all ${
-                llmProvider === 'openai'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-gray-300 bg-white'
-              }`}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      llmProvider === 'openai'
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
-                    }`}>
-                      {llmProvider === 'openai' && (
-                        <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
-                      )}
-                    </div>
-                    <h3 className="font-bold text-lg text-gray-800">OpenAI (GPT-3.5)</h3>
-                    {availableLLMs.find(l => l.id === 'openai')?.available ? (
-                      <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-bold">
-                        VERFÜGBAR
-                      </span>
-                    ) : (
-                      <span className="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">
-                        NICHT VERFÜGBAR
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-gray-600 mb-2 ml-8">
-                    Hochwertiges KI-Modell für Übersetzungsbewertung und Dialog-Training.
-                  </p>
-                  <div className="ml-8 space-y-1">
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-green-600">✓</span>
-                      <span className="text-gray-700">Zuverlässig und ausgereift</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-green-600">✓</span>
-                      <span className="text-gray-700">Gute Genauigkeit bei Bewertungen</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-green-600">✓</span>
-                      <span className="text-gray-700">Standardmodell</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             {/* Mistral Large Option */}
             <div
               onClick={() => handleLLMProviderChange('mistral')}

@@ -358,7 +358,7 @@ class ApiService {
 
   async generateTranslationSentence(level = 'B2', topic = 'Alltag', targetVocab = null) {
     // Get provider from localStorage
-    const provider = localStorage.getItem('llm_provider') || 'openai';
+    const provider = localStorage.getItem('llm_provider') || 'mistral';
     
     console.log('📤 [Frontend] Requesting translation sentence from backend:', {
       level, topic, targetVocab, provider
@@ -381,7 +381,7 @@ class ApiService {
 
   async evaluateTranslation(germanSentence, userTranslation, correctTranslation = '', targetVocab = null) {
     // Get provider from localStorage
-    const provider = localStorage.getItem('llm_provider') || 'openai';
+    const provider = localStorage.getItem('llm_provider') || 'mistral';
     
     // Sammle Browser/Device-Informationen
     const userAgent = navigator.userAgent;
@@ -398,7 +398,7 @@ class ApiService {
       provider, 
       targetVocab,
       localStorageProvider: localStorage.getItem('llm_provider'),
-      defaultProvider: 'openai',
+      defaultProvider: 'mistral',
       deviceInfo
     });
     
