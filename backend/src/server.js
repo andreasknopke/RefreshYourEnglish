@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
 import vocabularyRoutes from './routes/vocabulary.js';
 import progressRoutes from './routes/progress.js';
@@ -126,6 +129,27 @@ app.use('/api/flashcards', flashcardRoutes);
 app.use('/api/gamification', gamificationRoutes);
 app.use('/api/action-mode', actionModeRoutes);
 app.use('/api/llm', llmRoutes);
+
+// Serve built frontend (static) if available
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const frontendDist = process.env.FRONTEND_DIST
+  ? path.resolve(process.env.FRONTEND_DIST)
+  : path.join(__dirname, '../../dist');
+
+if (fs.existsSync(frontendDist)) {
+  console.log(`📦 Serving frontend from: ${frontendDist}`);
+  app.use(express.static(frontendDist));
+
+  // SPA fallback: serve index.html for non-API GET routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path === '/health') {
+      return next();
+    }
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
 
 // 404 handler
 app.use((req, res) => {

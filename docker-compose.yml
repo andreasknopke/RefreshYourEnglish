@@ -1,0 +1,37 @@
+# Alternative: docker-compose (z. B. für lokale Tests oder Coolify "Docker Compose")
+# Für das Single-Container-Deployment in Coolify reicht der Dockerfile-Ansatz.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Relative API-URL, da Frontend & API im selben Container/Origin laufen
+        VITE_API_URL: /api
+    image: refresh-your-english:latest
+    container_name: refresh-your-english
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      # WICHTIG: durch ein sicheres, zufälliges Secret ersetzen (mind. 32 Zeichen)
+      JWT_SECRET: ${JWT_SECRET:-please-change-me-to-a-long-random-secret}
+      # Optional: PostgreSQL statt SQLite verwenden.
+      # Wenn gesetzt, wird PostgreSQL genutzt, sonst SQLite unter /app/backend/data.
+      # DATABASE_URL: postgres://user:pass@host:5432/dbname
+      # CORS nur nötig, falls Frontend von einer anderen Origin geladen wird
+      # CORS_ORIGIN: https://deine-domain.de
+    volumes:
+      # SQLite-Daten persistieren
+      - app-data:/app/backend/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3001/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  app-data:
