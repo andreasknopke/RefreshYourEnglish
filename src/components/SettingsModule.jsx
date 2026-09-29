@@ -9,8 +9,11 @@ function SettingsModule() {
   const [llmInfo, setLLMInfo] = useState(null);
 
   useEffect(() => {
-    // LLM-Konfiguration (OpenAI-kompatible Schnittstelle) kommt aus den ENV-Variablen
-    setLLMInfo(llmService.getLLMInfo());
+    // LLM-Konfiguration kommt aus dem Backend (LLM_BASE_URL / LLM_API_KEY / LLM_MODEL)
+    let cancelled = false;
+    llmService.getLLMInfo().then((info) => {
+      if (!cancelled) setLLMInfo(info);
+    });
 
     // Load available voices
     const loadVoices = () => {
@@ -28,6 +31,10 @@ function SettingsModule() {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.onvoiceschanged = loadVoices;
     }
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleVoiceChange = (voiceName) => {

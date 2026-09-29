@@ -102,18 +102,22 @@ function normalizeEvaluationResult(parsed) {
 
 /**
  * GET /api/llm/provider
- * Returns the current LLM provider
+ * Returns the current LLM configuration (from backend environment).
+ * Die Einstellungen im Frontend fragen hier die tatsächlich aktive
+ * Backend-Konfiguration ab (LLM_BASE_URL / LLM_API_KEY / LLM_MODEL).
  */
 router.get('/provider', (req, res) => {
   const provider = resolveProvider(process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
   const providerConfig = LLM_PROVIDERS[provider];
   const hasApiKey = !!process.env[providerConfig.apiKeyEnv];
-  
+
   console.log(`📋 LLM Provider Info: ${provider} (API Key: ${hasApiKey ? '✅' : '❌'})`);
-  
+
   res.json({
     provider,
     name: providerConfig.name,
+    baseUrl: normalizeBaseUrl(process.env.LLM_BASE_URL),
+    model: providerConfig.model,
     hasApiKey,
     availableProviders: Object.keys(LLM_PROVIDERS)
   });

@@ -52,16 +52,36 @@ export function getLLMProvider() {
 }
 
 /**
- * Gibt die aktive LLM-Konfiguration für die Anzeige in den Einstellungen zurück
+ * Gibt die aktive LLM-Konfiguration für die Anzeige in den Einstellungen zurück.
+ *
+ * Die maßgebliche Konfiguration liegt im Backend (LLM_BASE_URL / LLM_API_KEY /
+ * LLM_MODEL) und wird dort über GET /api/llm/provider abgefragt. Nur wenn das
+ * Backend nicht erreichbar ist, wird auf die Frontend-Build-Variablen
+ * (VITE_LLM_*) zurückgegriffen.
  */
-export function getLLMInfo() {
-  const providerConfig = LLM_PROVIDERS[getLLMProvider()];
-  return {
-    provider: getLLMProvider(),
-    baseUrl: normalizeBaseUrl(import.meta.env.VITE_LLM_BASE_URL),
-    model: providerConfig.model,
-    hasApiKey: !!import.meta.env[providerConfig.apiKeyEnv]
-  };
+export async function getLLMInfo() {
+  try {
+    // Dynamischer Import vermeidet einen Zirkel-Import mit apiService
+    const { default: apiService } = await import('./apiService');
+    const info = await apiService.getLLMProvider();
+    return {
+      provider: info.provider || getLLMProvider(),
+      baseUrl: info.baseUrl || normalizeBaseUrl(import.meta.env.VITE_LLM_BASE_URL),
+      model: info.model || info.name || import.meta.env.VITE_LLM_MODEL || DEFAULT_MODEL,
+      hasApiKey: !!info.hasApiKey,
+      source: 'backend'
+    };
+  } catch (error) {
+    console.warn('⚠️ LLM-Info vom Backend nicht erreichbar, nutze Build-ENV:', error.message);
+    const providerConfig = LLM_PROVIDERS[getLLMProvider()];
+    return {
+      provider: getLLMProvider(),
+      baseUrl: normalizeBaseUrl(import.meta.env.VITE_LLM_BASE_URL),
+      model: providerConfig.model,
+      hasApiKey: !!import.meta.env[providerConfig.apiKeyEnv],
+      source: 'frontend'
+    };
+  }
 }
 
 /**
