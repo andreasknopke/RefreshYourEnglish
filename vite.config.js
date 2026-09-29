@@ -57,13 +57,37 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        // index.html wird bewusst NICHT precached – sonst liefert der
+        // Service-Worker nach einem Deploy die alte App aus.
+        globPatterns: ['**/*.{js,css,ico,png,svg,woff2}'],
+        navigateFallback: null,
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.mistral\.ai\/.*/i,
-            handler: 'NetworkOnly',
+            // Hashed Build-Assets: sicher cache-first (Dateiname ändert sich pro Build)
+            urlPattern: ({ url }) =>
+              url.origin === self.location.origin && url.pathname.startsWith('/assets/'),
+            handler: 'CacheFirst',
             options: {
-              cacheName: 'mistral-api'
+              cacheName: 'app-assets',
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          },
+          {
+            // HTML/Navigation: immer zuerst Netzwerk, damit ein Deploy sofort sichtbar ist
+            urlPattern: ({ url }) =>
+              url.origin === self.location.origin &&
+              (url.pathname === '/' || url.pathname.endsWith('.html')),
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'html',
+              networkTimeoutSeconds: 5,
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60
+              }
             }
           },
           {

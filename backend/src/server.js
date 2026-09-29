@@ -170,13 +170,34 @@ app.use('/api/llm', llmRoutes);
 // Serve built frontend (static) if available
 if (hasFrontend) {
   console.log(`📦 Serving frontend from: ${frontendDist}`);
-  app.use(express.static(frontendDist));
+  app.use(
+    express.static(frontendDist, {
+      setHeaders: (res, filePath) => {
+        // Hashed Assets (/assets/*-HASH.js) dürfen langfristig gecacht werden,
+        // index.html, Service Worker und Manifest NICHT – sonst zeigt der Browser
+        // nach einem Deploy die alte App (PWA-Cache).
+        if (/\.[0-9a-z]{8}\.(js|css|png|svg|woff2)$/i.test(filePath)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (
+          filePath.endsWith('index.html') ||
+          filePath.endsWith('sw.js') ||
+          filePath.endsWith('registerSW.js') ||
+          filePath.endsWith('manifest.webmanifest')
+        ) {
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+          res.setHeader('Pragma', 'no-cache');
+          res.setHeader('Expires', '0');
+        }
+      }
+    })
+  );
 
   // SPA fallback: serve index.html for non-API GET routes
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path === '/health') {
       return next();
     }
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.sendFile(path.join(frontendDist, 'index.html'));
   });
 }
