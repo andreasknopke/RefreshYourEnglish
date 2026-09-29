@@ -17,6 +17,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Pfad zum gebauten Frontend (dist/) – früh ermittelt, damit die Root-Route
+// index.html ausliefern kann statt der JSON-API-Info.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const frontendDist = process.env.FRONTEND_DIST
+  ? path.resolve(process.env.FRONTEND_DIST)
+  : path.join(__dirname, '../../dist');
+const hasFrontend = fs.existsSync(frontendDist);
+
 // Parse CORS origins (support comma-separated list)
 const corsOrigins = process.env.CORS_ORIGIN 
   ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
@@ -53,8 +62,13 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Alternative health check endpoints that Railway might use
-app.get('/', (req, res) => {
+// Alternative health check endpoints that Railway might use.
+// Wenn ein Frontend-Build existiert, liefert "/" die App aus (index.html);
+// sonst antwortet die JSON-Health-Info (z. B. für reines Backend-Deployment).
+app.get('/', (req, res, next) => {
+  if (hasFrontend) {
+    return next(); // fällt auf express.static / SPA-Fallback zurück
+  }
   applyHealthCorsHeaders(req, res);
   console.log('💚 Root health check from:', req.headers['user-agent'] || req.ip);
   res.json({ 
@@ -131,14 +145,7 @@ app.use('/api/action-mode', actionModeRoutes);
 app.use('/api/llm', llmRoutes);
 
 // Serve built frontend (static) if available
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const frontendDist = process.env.FRONTEND_DIST
-  ? path.resolve(process.env.FRONTEND_DIST)
-  : path.join(__dirname, '../../dist');
-
-if (fs.existsSync(frontendDist)) {
+if (hasFrontend) {
   console.log(`📦 Serving frontend from: ${frontendDist}`);
   app.use(express.static(frontendDist));
 
