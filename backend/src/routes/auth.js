@@ -63,6 +63,17 @@ router.post('/register',
       });
     } catch (error) {
       console.error('Registration error:', error);
+      // Bei einem Fehler (z. B. E-Mail/Verschlüsselung) die halb angelegte
+      // User-Zeile entfernen, damit die Registrierung erneut versucht werden kann.
+      try {
+        const partial = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
+        if (partial) {
+          db.prepare('DELETE FROM users WHERE id = ?').run(partial.id);
+          console.log('↩️ Rolled back partial user registration for:', email);
+        }
+      } catch (rollbackError) {
+        console.error('Rollback failed:', rollbackError);
+      }
       res.status(500).json({ error: 'Server error' });
     }
   }

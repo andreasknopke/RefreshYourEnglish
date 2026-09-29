@@ -17,6 +17,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Pflicht-Env: ohne JWT_SECRET schlagen Login/Register mit kryptischen
+// jsonwebtoken-Fehlern fehl → hier sofort und eindeutig abbrechen.
+if (!process.env.JWT_SECRET) {
+  console.error('\n❌❌❌ JWT_SECRET ist nicht gesetzt! ❌❌❌');
+  console.error('   Setze die Umgebungsvariable JWT_SECRET (z. B. in Coolify),');
+  console.error('   z. B. erzeugt mit: openssl rand -hex 32\n');
+  if (process.env.NODE_ENV === 'production') {
+    console.error('   Abbruch: NODE_ENV=production erfordert JWT_SECRET.');
+    process.exit(1);
+  }
+}
+
 // Pfad zum gebauten Frontend (dist/) – früh ermittelt, damit die Root-Route
 // index.html ausliefern kann statt der JSON-API-Info.
 const __filename = fileURLToPath(import.meta.url);
@@ -91,7 +103,18 @@ app.use(cors({
       console.log('✅ CORS: Request with no origin allowed (likely health check)');
       return callback(null, true);
     }
-    
+
+    // Same-Origin-Requests erlauben: Origin entspricht dem Host des Servers.
+    // (Beim Single-Origin-Deployment sendet der Browser bei POSTs seinen
+    // eigenen Origin mit – der muss immer durchgelassen werden.)
+    try {
+      if (new URL(origin).host === req.headers.host) {
+        return callback(null, true);
+      }
+    } catch {
+      // ungültige Origin → weiter zur Whitelist-Prüfung
+    }
+
     // Check if origin is allowed
     if (corsOrigins.includes(origin) || corsOrigins.includes('*')) {
       console.log('✅ CORS: Origin allowed:', origin);
