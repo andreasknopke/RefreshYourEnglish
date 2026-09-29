@@ -19,14 +19,7 @@ function STTButton({ onTranscript, language = 'en', disabled = false }) {
     try {
       setError(null);
       setInterimText('');
-      
-      // ElevenLabs provider
-      if (sttService.getProvider() === 'elevenlabs') {
-        sttService.start();
-        setIsRecording(true);
-        return;
-      }
-      
+
       // Browser Web Speech API
       sttService.initRecognition(
         language,
@@ -61,16 +54,6 @@ function STTButton({ onTranscript, language = 'en', disabled = false }) {
 
   const handleStopRecording = async () => {
     try {
-      // ElevenLabs provider
-      if (sttService.getProvider() === 'elevenlabs') {
-        setIsRecording(false);
-        const text = await sttService.stop(language);
-        if (text && onTranscript) {
-          onTranscript(text);
-        }
-        return;
-      }
-      
       // Browser Web Speech API
       sttService.stop();
       setIsRecording(false);

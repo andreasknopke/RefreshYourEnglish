@@ -55,11 +55,18 @@ Browser ──► https://deine-domain.de ──► Container (Port 3001)
 | `DATABASE_URL` | – | Optional. Setzen → PostgreSQL, leer → SQLite |
 | `CORS_ORIGIN` | – | Nur nötig, falls das Frontend von einer **anderen** Origin geladen wird |
 | `VITE_API_URL` | – | Build-Arg. Standard `/api` (relativ, gleiche Origin) |
+| `APP_URL` | – | Öffentliche URL der App (für E-Mail-Links), z. B. `https://refreshyourenglish.opnwork.de` |
+| `LLM_BASE_URL` | – | OpenAI-kompatible Base URL, z. B. `https://api.mistral.ai/v1`, `https://api.openai.com/v1`, `http://localhost:11434/v1` (Ollama) |
+| `LLM_API_KEY` | – | API-Key des LLM-Anbieters (bei lokalen Modellen oft beliebig) |
+| `LLM_MODEL` | – | Modellname, z. B. `mistral-large-latest`, `gpt-4o-mini`, `llama3.1` |
 
-> **Hinweis:** `VITE_*`-Variablen (z. B. `VITE_OPENAI_API_KEY`, `VITE_ELEVENLABS_API_KEY`)
-> werden **zur Build-Zeit** in das Frontend-Bundle eingebacken.
-> Wenn du sie nutzen möchtest, musst du sie als **Build-Args** übergeben und das Image neu bauen.
-> Für die reine App-Funktionalität (Vokabeln, Fortschritt, Auth) sind sie nicht erforderlich.
+> **LLM:** Die KI-Funktionen (Satzgenerierung, Bewertung, Dialog) laufen über eine
+> **frei konfigurierbare OpenAI-kompatible Schnittstelle** – Base URL, API-Key und
+> Modellname reichen, um Mistral, OpenAI oder ein lokales Modell zu nutzen.
+> Ohne `LLM_API_KEY` nutzt die App automatisch Fallback-Bewertungen.
+
+> **Sprachfunktionen:** Speech-to-Text und Text-to-Speech laufen ausschließlich über
+> die **Browser Web Speech API** und benötigen keinerlei API-Key oder Konfiguration.
 
 ---
 

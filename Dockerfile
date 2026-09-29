@@ -12,6 +12,15 @@ WORKDIR /app
 ARG VITE_API_URL=/api
 ENV VITE_API_URL=$VITE_API_URL
 
+# LLM (OpenAI-kompatible Schnittstelle): Base URL, API-Key, Modell.
+# Erlaubt Mistral, OpenAI oder lokale Modelle (Ollama/vLLM/LM Studio).
+ARG VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+ARG VITE_LLM_API_KEY=
+ARG VITE_LLM_MODEL=mistral-large-latest
+ENV VITE_LLM_BASE_URL=$VITE_LLM_BASE_URL \
+    VITE_LLM_API_KEY=$VITE_LLM_API_KEY \
+    VITE_LLM_MODEL=$VITE_LLM_MODEL
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
@@ -46,6 +55,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV NODE_ENV=production \
     PORT=3001 \
     FRONTEND_DIST=/app/dist
+
+# LLM-Standardwerte (OpenAI-kompatible Schnittstelle). In Coolify per
+# Umgebungsvariable überschreiben: LLM_BASE_URL, LLM_API_KEY, LLM_MODEL
+ENV LLM_BASE_URL=https://api.mistral.ai/v1 \
+    LLM_MODEL=mistral-large-latest
 
 # Frontend-Build aus Stage 1
 COPY --from=frontend-build /app/dist ./dist

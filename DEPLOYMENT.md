@@ -30,7 +30,9 @@ DB_PATH=/app/data/vocabulary.db
 
 ```bash
 VITE_API_URL=https://dein-backend-url.railway.app/api
-VITE_OPENAI_API_KEY=dein-openai-api-key
+VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+VITE_LLM_API_KEY=dein-api-key
+VITE_LLM_MODEL=mistral-large-latest
 ```
 
 5. Deploy starten!
@@ -62,7 +64,9 @@ DB_PATH=/app/data/vocabulary.db
 ### Frontend (.env)
 ```env
 VITE_API_URL=https://your-backend.railway.app/api
-VITE_OPENAI_API_KEY=sk-proj-...
+VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+VITE_LLM_API_KEY=dein-api-key
+VITE_LLM_MODEL=mistral-large-latest
 ```
 
 ---

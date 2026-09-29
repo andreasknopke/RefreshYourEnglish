@@ -1,10 +1,7 @@
 /**
  * Speech-to-Text Service
- * Unterstützt Web Speech API (Browser) und ElevenLabs API
+ * Nutzt die Web Speech API des Browsers
  */
-
-const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
-const ELEVENLABS_API_URL = 'https://api.elevenlabs.io/v1';
 
 class STTService {
   constructor() {
@@ -13,21 +10,9 @@ class STTService {
     this.isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
     this.mediaRecorder = null;
     this.audioChunks = [];
-    
-    // Load STT provider preference from localStorage
-    this.provider = localStorage.getItem('stt_provider') || 'browser';
-  }
 
-  /**
-   * Setzt den STT-Provider
-   * @param {string} provider - 'browser' oder 'elevenlabs'
-   */
-  setProvider(provider) {
-    if (provider !== 'browser' && provider !== 'elevenlabs') {
-      throw new Error('Invalid provider. Use "browser" or "elevenlabs"');
-    }
-    this.provider = provider;
-    localStorage.setItem('stt_provider', provider);
+    // Spracherkennung läuft ausschließlich im Browser
+    this.provider = 'browser';
   }
 
   /**
@@ -35,13 +20,6 @@ class STTService {
    */
   getProvider() {
     return this.provider;
-  }
-
-  /**
-   * Prüft ob ElevenLabs verfügbar ist
-   */
-  isElevenLabsAvailable() {
-    return !!ELEVENLABS_API_KEY;
   }
 
   /**
@@ -120,102 +98,9 @@ class STTService {
   }
 
   /**
-   * Startet die Audioaufnahme (für ElevenLabs)
-   */
-  async startElevenLabsRecording() {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.audioChunks = [];
-      
-      const options = { mimeType: 'audio/webm' };
-      this.mediaRecorder = new MediaRecorder(stream, options);
-      
-      this.mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          this.audioChunks.push(event.data);
-        }
-      };
-      
-      this.mediaRecorder.start();
-      this.isRecording = true;
-      
-      return this.mediaRecorder;
-    } catch (error) {
-      console.error('Failed to start recording:', error);
-      throw new Error('Mikrofon-Zugriff verweigert');
-    }
-  }
-
-  /**
-   * Stoppt die Audioaufnahme und transkribiert mit ElevenLabs
-   */
-  async stopElevenLabsRecording(language = 'en') {
-    if (!this.mediaRecorder || !this.isRecording) {
-      throw new Error('Keine aktive Aufnahme');
-    }
-
-    return new Promise((resolve, reject) => {
-      this.mediaRecorder.onstop = async () => {
-        try {
-          this.mediaRecorder.stream.getTracks().forEach(track => track.stop());
-          
-          const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
-          this.isRecording = false;
-          
-          const text = await this.transcribeWithElevenLabs(audioBlob, language);
-          resolve(text);
-        } catch (error) {
-          reject(error);
-        }
-      };
-      
-      this.mediaRecorder.stop();
-    });
-  }
-
-  /**
-   * Transkribiert Audio mit ElevenLabs API
-   */
-  async transcribeWithElevenLabs(audioBlob, language = 'en') {
-    if (!ELEVENLABS_API_KEY) {
-      throw new Error('ElevenLabs API Key nicht konfiguriert');
-    }
-
-    try {
-      const formData = new FormData();
-      formData.append('audio', audioBlob, 'recording.webm');
-      formData.append('model_id', 'eleven_multilingual_v2');
-
-      const response = await fetch(`${ELEVENLABS_API_URL}/speech-to-text`, {
-        method: 'POST',
-        headers: {
-          'xi-api-key': ELEVENLABS_API_KEY,
-        },
-        body: formData
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('ElevenLabs STT Error:', errorText);
-        throw new Error(`ElevenLabs API Fehler: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.text || '';
-    } catch (error) {
-      console.error('ElevenLabs transcription error:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * Startet die Spracherkennung (automatisch Browser oder ElevenLabs)
+   * Startet die Spracherkennung (Browser Web Speech API)
    */
   start() {
-    if (this.provider === 'elevenlabs') {
-      return this.startElevenLabsRecording();
-    }
-    
     // Browser Web Speech API
     if (!this.recognition) {
       throw new Error('Spracherkennung nicht initialisiert');
@@ -236,13 +121,9 @@ class STTService {
   }
 
   /**
-   * Stoppt die Spracherkennung (automatisch Browser oder ElevenLabs)
+   * Stoppt die Spracherkennung (Browser Web Speech API)
    */
-  async stop(language = 'en') {
-    if (this.provider === 'elevenlabs') {
-      return await this.stopElevenLabsRecording(language);
-    }
-    
+  async stop() {
     // Browser Web Speech API
     if (this.recognition && this.isRecording) {
       this.recognition.stop();
@@ -254,14 +135,6 @@ class STTService {
    * Bricht die Spracherkennung ab
    */
   abort() {
-    if (this.provider === 'elevenlabs' && this.mediaRecorder && this.isRecording) {
-      this.mediaRecorder.stop();
-      this.mediaRecorder.stream.getTracks().forEach(track => track.stop());
-      this.isRecording = false;
-      this.audioChunks = [];
-      return;
-    }
-    
     if (this.recognition && this.isRecording) {
       this.recognition.abort();
       this.isRecording = false;
@@ -273,9 +146,6 @@ class STTService {
    * @returns {boolean}
    */
   checkSupport() {
-    if (this.provider === 'elevenlabs') {
-      return this.isElevenLabsAvailable();
-    }
     return this.isSupported;
   }
 }

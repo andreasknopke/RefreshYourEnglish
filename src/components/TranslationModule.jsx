@@ -75,13 +75,14 @@ function TranslationModule({ user }) {
 
   // Debug: Prüfe API-Key beim Laden
   console.log('🎯 TranslationModule loaded');
-  console.log('🔑 API Key exists:', !!import.meta.env.VITE_MISTRAL_API_KEY);
-  console.log('🔑 API Key length:', import.meta.env.VITE_MISTRAL_API_KEY?.length || 0);
-  console.log('🔑 All MISTRAL env vars:', Object.keys(import.meta.env).filter(k => k.includes('MISTRAL')));
-  console.log('🔑 Full check:', {
-    exists: !!import.meta.env.VITE_MISTRAL_API_KEY,
-    length: import.meta.env.VITE_MISTRAL_API_KEY?.length || 0,
-    prefix: import.meta.env.VITE_MISTRAL_API_KEY?.substring(0, 10) || 'none'
+  console.log('🔑 API Key exists:', !!import.meta.env.VITE_LLM_API_KEY);
+  console.log('🔑 API Key length:', import.meta.env.VITE_LLM_API_KEY?.length || 0);
+  console.log('🔑 LLM config:', {
+    baseUrl: import.meta.env.VITE_LLM_BASE_URL || '(Standard)',
+    model: import.meta.env.VITE_LLM_MODEL || '(Standard)',
+    exists: !!import.meta.env.VITE_LLM_API_KEY,
+    length: import.meta.env.VITE_LLM_API_KEY?.length || 0,
+    prefix: import.meta.env.VITE_LLM_API_KEY?.substring(0, 10) || 'none'
   });
 
   // Session Start initialisieren und Vokabeln laden

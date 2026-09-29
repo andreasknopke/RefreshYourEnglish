@@ -6,9 +6,8 @@ import ttsService from '../services/ttsService';
  * @param {string} text - Der zu sprechende Text
  * @param {string} language - Sprache ('en' oder 'de')
  * @param {string} className - Zusätzliche CSS-Klassen
- * @param {Object} ttsOptions - ElevenLabs TTS-Optionen
  */
-function TTSButton({ text, language = 'en', className = '', ttsOptions = {} }) {
+function TTSButton({ text, language = 'en', className = '' }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -31,17 +30,11 @@ function TTSButton({ text, language = 'en', className = '', ttsOptions = {} }) {
         ttsService.stop();
         setIsPlaying(false);
       } else {
-        // Starte neues Audio
+        // Starte neues Audio – speak() resolved, wenn die Ausgabe beendet ist
         setIsLoading(true);
-        await ttsService.speak(text, language, ttsOptions);
         setIsPlaying(true);
-        
-        // Warte auf Ende des Audios
-        if (ttsService.currentAudio) {
-          ttsService.currentAudio.onended = () => {
-            setIsPlaying(false);
-          };
-        }
+        await ttsService.speak(text, language);
+        setIsPlaying(false);
       }
     } catch (err) {
       console.error('TTS Error:', err);

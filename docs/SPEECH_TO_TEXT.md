@@ -96,7 +96,7 @@ import STTButton from './STTButton';
   - Deutsch: `de-DE`
 - **Interim Results**: `true` (zeigt Zwischenergebnisse)
 
-## Vorteile gegenüber ElevenLabs
+## Vorteile
 
 1. **Kostenlos**: Keine API-Gebühren
 2. **Schneller**: Keine Server-Round-Trips

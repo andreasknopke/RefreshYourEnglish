@@ -67,7 +67,9 @@ DB_PATH=/app/data/vocabulary.db
 ### Environment Variables:
 ```
 VITE_API_URL=https://DEINE-BACKEND-URL.railway.app/api
-VITE_OPENAI_API_KEY=sk-proj-dein-openai-key
+VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+VITE_LLM_API_KEY=dein-api-key
+VITE_LLM_MODEL=mistral-large-latest
 ```
 
 ⚠️ **WICHTIG**: 

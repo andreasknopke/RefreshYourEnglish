@@ -1,23 +1,42 @@
 // LLM Service für KI-basierte Bewertung und Generierung
-// Diese Funktionen sind auf Mistral als Cloud-Provider ausgelegt.
+// Nutzt eine frei konfigurierbare OpenAI-kompatible Schnittstelle
+// (Base URL + API-Key + Modellname), z. B. Mistral, OpenAI oder ein lokales Modell.
+//
+// Umgebungsvariablen (Build-Zeit):
+//   VITE_LLM_BASE_URL  z. B. https://api.mistral.ai/v1, https://api.openai.com/v1,
+//                      http://localhost:11434/v1 (Ollama), http://localhost:8000/v1 (vLLM)
+//   VITE_LLM_API_KEY   API-Key des Anbieters (bei lokalen Modellen oft beliebig)
+//   VITE_LLM_MODEL     Modellname, z. B. mistral-large-latest, gpt-4o-mini, llama3.1
 
 import logService from './logService';
 
+const DEFAULT_BASE_URL = 'https://api.mistral.ai/v1';
+const DEFAULT_MODEL = 'mistral-large-latest';
+
+function normalizeBaseUrl(baseUrl) {
+  const url = (baseUrl || DEFAULT_BASE_URL).trim().replace(/\/+$/, '');
+  // Toleriert, wenn der komplette Endpoint (inkl. /chat/completions) angegeben wurde.
+  return url.replace(/\/chat\/completions$/i, '');
+}
+
 /**
- * Konfiguration für LLM-Provider
+ * Konfiguration für den LLM-Provider (OpenAI-kompatible Schnittstelle)
  */
 const LLM_PROVIDERS = {
-  mistral: {
-    name: 'Mistral Large',
-    apiKeyEnv: 'VITE_MISTRAL_API_KEY',
-    model: 'mistral-large-latest',
-    endpoint: 'https://api.mistral.ai/v1/chat/completions',
+  openai: {
+    name: import.meta.env.VITE_LLM_MODEL || DEFAULT_MODEL,
+    apiKeyEnv: 'VITE_LLM_API_KEY',
+    model: import.meta.env.VITE_LLM_MODEL || DEFAULT_MODEL,
+    endpoint: `${normalizeBaseUrl(import.meta.env.VITE_LLM_BASE_URL)}/chat/completions`,
     getHeaders: (apiKey) => ({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      Accept: 'application/json',
+      Authorization: `Bearer ${apiKey}`
     })
   }
 };
+
+const DEFAULT_PROVIDER = 'openai';
 
 /**
  * Ruft den aktuellen LLM-Provider ab
@@ -28,30 +47,21 @@ export function getLLMProvider() {
     return storedProvider;
   }
 
-  localStorage.setItem('llm_provider', 'mistral');
-  return 'mistral';
+  localStorage.setItem('llm_provider', DEFAULT_PROVIDER);
+  return DEFAULT_PROVIDER;
 }
 
 /**
- * Setzt den LLM-Provider
+ * Gibt die aktive LLM-Konfiguration für die Anzeige in den Einstellungen zurück
  */
-export function setLLMProvider(provider) {
-  if (!LLM_PROVIDERS[provider]) {
-    throw new Error(`Unknown LLM provider: ${provider}`);
-  }
-  localStorage.setItem('llm_provider', provider);
-  console.log(`✨ LLM Provider changed to: ${provider}`);
-}
-
-/**
- * Gibt alle verfügbaren LLM-Provider zurück
- */
-export function getAvailableLLMProviders() {
-  return Object.entries(LLM_PROVIDERS).map(([key, config]) => ({
-    id: key,
-    name: config.name,
-    available: !!import.meta.env[config.apiKeyEnv]
-  }));
+export function getLLMInfo() {
+  const providerConfig = LLM_PROVIDERS[getLLMProvider()];
+  return {
+    provider: getLLMProvider(),
+    baseUrl: normalizeBaseUrl(import.meta.env.VITE_LLM_BASE_URL),
+    model: providerConfig.model,
+    hasApiKey: !!import.meta.env[providerConfig.apiKeyEnv]
+  };
 }
 
 /**
@@ -958,13 +968,15 @@ function levenshteinDistance(str1, str2) {
 }
 
 /**
- * Konfiguration für LLM-API (Beispiel)
- * Erstelle eine .env Datei mit deinen API-Keys:
- * VITE_MISTRAL_API_KEY=your_key_here
+ * Konfiguration für LLM-API
+ * Erstelle eine .env Datei mit deiner OpenAI-kompatiblen Konfiguration:
+ * VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+ * VITE_LLM_API_KEY=your_key_here
+ * VITE_LLM_MODEL=mistral-large-latest
  */
 export const LLM_CONFIG = {
-  provider: 'mistral',
-  model: 'mistral-large-latest',
+  provider: DEFAULT_PROVIDER,
+  model: import.meta.env.VITE_LLM_MODEL || DEFAULT_MODEL,
   temperature: 0.7,
   maxTokens: 500
 };

@@ -23,7 +23,7 @@ Eine moderne Vokabel-Trainings-App mit React und Tailwind CSS, die LLM-basierte 
 - **React** - UI-Framework
 - **Tailwind CSS** - Styling
 - **Vite** - Build-Tool
-- **LLM-Integration** - KI-basierte Bewertung (konfigurierbar für OpenAI, Anthropic, etc.)
+- **LLM-Integration** - KI-basierte Bewertung über eine frei konfigurierbare OpenAI-kompatible Schnittstelle
 
 ## 📦 Installation
 
@@ -40,21 +40,27 @@ npm run build
 
 ## 🔧 LLM-Integration
 
-Die App ist vorbereitet für echte LLM-APIs. Um eine echte KI-Integration zu nutzen:
+Die KI-Funktionen laufen über eine **frei konfigurierbare OpenAI-kompatible Schnittstelle**
+(Base URL + API-Key + Modellname). Damit lassen sich Mistral, OpenAI oder lokale Modelle nutzen.
 
 1. Erstelle eine `.env` Datei im Root-Verzeichnis:
 ```env
-VITE_OPENAI_API_KEY=your_openai_api_key
-VITE_ANTHROPIC_API_KEY=your_anthropic_api_key
+VITE_LLM_BASE_URL=https://api.mistral.ai/v1
+VITE_LLM_API_KEY=your_api_key
+VITE_LLM_MODEL=mistral-large-latest
 ```
 
-2. Aktiviere die API-Calls in `src/services/llmService.js` (derzeit simuliert für Demo-Zwecke)
+Das Backend nutzt dieselbe Konfiguration über `LLM_BASE_URL`, `LLM_API_KEY` und `LLM_MODEL`.
 
-### Unterstützte LLM-Provider
-- OpenAI (GPT-4, GPT-3.5)
-- Anthropic (Claude)
-- Lokale Modelle (Ollama, LM Studio)
-- Weitere APIs können einfach integriert werden
+### Unterstützte LLM-Anbieter
+- Mistral (`https://api.mistral.ai/v1`)
+- OpenAI (`https://api.openai.com/v1`)
+- Lokale Modelle (Ollama `http://localhost:11434/v1`, LM Studio, vLLM)
+- Jede andere OpenAI-kompatible API
+
+### Sprachfunktionen
+Speech-to-Text und Text-to-Speech laufen ausschließlich über die **Browser Web Speech API**
+und benötigen keine Konfiguration.
 
 ## 🎯 Verwendung
 

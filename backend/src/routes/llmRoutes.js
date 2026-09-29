@@ -6,21 +6,39 @@ dotenv.config();
 const router = express.Router();
 
 // LLM Provider Configuration
+// Frei konfigurierbare OpenAI-kompatible Schnittstelle (Base URL + API-Key + Modell),
+// z. B. Mistral, OpenAI oder ein lokales Modell (Ollama, vLLM, LM Studio).
+//
+// Umgebungsvariablen:
+//   LLM_BASE_URL  z. B. https://api.mistral.ai/v1, https://api.openai.com/v1,
+//                 http://localhost:11434/v1 (Ollama), http://localhost:8000/v1 (vLLM)
+//   LLM_API_KEY   API-Key des Anbieters (bei lokalen Modellen oft beliebig)
+//   LLM_MODEL     Modellname, z. B. mistral-large-latest, gpt-4o-mini, llama3.1
+
+const DEFAULT_BASE_URL = 'https://api.mistral.ai/v1';
+const DEFAULT_MODEL = 'mistral-large-latest';
+
+function normalizeBaseUrl(baseUrl) {
+  const url = (baseUrl || DEFAULT_BASE_URL).trim().replace(/\/+$/, '');
+  // Toleriert, wenn der komplette Endpoint (inkl. /chat/completions) angegeben wurde.
+  return url.replace(/\/chat\/completions$/i, '');
+}
+
 const LLM_PROVIDERS = {
-  mistral: {
-    name: 'Mistral Large',
-    apiKeyEnv: 'MISTRAL_API_KEY',
-    model: 'mistral-large-latest',
-    endpoint: 'https://api.mistral.ai/v1/chat/completions',
+  openai: {
+    name: process.env.LLM_MODEL || DEFAULT_MODEL,
+    apiKeyEnv: 'LLM_API_KEY',
+    model: process.env.LLM_MODEL || DEFAULT_MODEL,
+    endpoint: `${normalizeBaseUrl(process.env.LLM_BASE_URL)}/chat/completions`,
     getHeaders: (apiKey) => ({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
     })
   }
 };
 
-const DEFAULT_PROVIDER = 'mistral';
+const DEFAULT_PROVIDER = 'openai';
 
 function resolveProvider(requestedProvider) {
   return LLM_PROVIDERS[requestedProvider] ? requestedProvider : DEFAULT_PROVIDER;

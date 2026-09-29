@@ -8,6 +8,10 @@ services:
       args:
         # Relative API-URL, da Frontend & API im selben Container/Origin laufen
         VITE_API_URL: /api
+        # LLM (OpenAI-kompatible Schnittstelle) für direkte Browser-Aufrufe
+        VITE_LLM_BASE_URL: ${LLM_BASE_URL:-https://api.mistral.ai/v1}
+        VITE_LLM_API_KEY: ${LLM_API_KEY:-}
+        VITE_LLM_MODEL: ${LLM_MODEL:-mistral-large-latest}
     image: refresh-your-english:latest
     container_name: refresh-your-english
     restart: unless-stopped
@@ -21,6 +25,11 @@ services:
       # Optional: PostgreSQL statt SQLite verwenden.
       # Wenn gesetzt, wird PostgreSQL genutzt, sonst SQLite unter /app/backend/data.
       # DATABASE_URL: postgres://user:pass@host:5432/dbname
+      # LLM: frei konfigurierbare OpenAI-kompatible Schnittstelle
+      # (Mistral, OpenAI, lokales Modell via Ollama/vLLM)
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.mistral.ai/v1}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-mistral-large-latest}
       # CORS nur nötig, falls Frontend von einer anderen Origin geladen wird
       # CORS_ORIGIN: https://deine-domain.de
     volumes:
