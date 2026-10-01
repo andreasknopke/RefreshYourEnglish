@@ -657,4 +657,390 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
   }
 });
 
+/**
+ * Hilfstexte für Fallbacks (Dialog), wenn kein API-Key verfügbar ist.
+ */
+function dialogFallbackScenario(level = 'B2', topic = 'Alltag') {
+  return {
+    studentRole: 'Du bist mit einem Freund unterwegs',
+    partnerRole: 'Ich bin dein Freund',
+    description: `Ihr unterhaltet euch über "${topic}".`,
+    firstMessage: 'Hey! Nice to see you. How have you been lately?'
+  };
+}
+
+function dialogFallbackResponse() {
+  const responses = [
+    "That's interesting. Could you tell me more about that?",
+    'I see. What do you think about this?',
+    'Thank you for sharing. How does that make you feel?',
+    'Interesting perspective. What else can you tell me?'
+  ];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
+function stripCodeFences(text) {
+  return String(text || '')
+    .replace(/```json\s*/g, '')
+    .replace(/```\s*/g, '')
+    .trim();
+}
+
+/**
+ * POST /api/llm/dialog/scenario
+ * Generiert ein Dialog-Szenario mit dem konfigurierten LLM.
+ */
+router.post('/dialog/scenario', async (req, res) => {
+  const { level = 'B2', topic = 'Alltag', provider = null } = req.body;
+
+  const currentProvider = resolveProvider(provider || process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = process.env[providerConfig.apiKeyEnv];
+
+  console.log('🗣️ [LLM DIALOG] Generating scenario', { provider: currentProvider, level, topic, hasAPIKey: !!API_KEY });
+
+  if (!API_KEY) {
+    return res.json({
+      source: 'fallback',
+      ...dialogFallbackScenario(level, topic),
+      message: `No API key available - using fallback scenario`
+    });
+  }
+
+  const levelInstructions = {
+    B2: 'Create an engaging conversation scenario. Mix positive situations (making plans, sharing experiences, asking for advice) with occasional challenges. Keep it natural and enjoyable - not every conversation needs conflict.',
+    C1: 'Create an interesting conversation with depth. Include scenarios like discussing ideas, sharing opinions, planning projects, or exploring topics. Make it intellectually stimulating but not necessarily confrontational.',
+    C2: 'Create a sophisticated conversation on complex topics, professional discussions, or nuanced subjects. Focus on depth and complexity rather than conflict.'
+  };
+
+  const systemPrompt = `You are an English teacher creating VARIED and ENGAGING conversation scenarios for German learners.
+
+${levelInstructions[level] || levelInstructions.B2}
+
+Topic: "${topic}"
+Level: ${level}
+
+SCENARIO VARIETY - Use different types:
+1. POSITIVE: Making plans, getting advice, sharing experiences, discussing interests
+2. COLLABORATIVE: Planning together, brainstorming, problem-solving as a team
+3. INFORMATIVE: Asking about something, getting recommendations, learning about a topic
+4. SOCIAL: Small talk, catching up with someone, making new friends
+5. OCCASIONAL CHALLENGE: Sometimes (not always) include a mild conflict or complaint
+
+SCENARIO STRUCTURE:
+- Define WHO the STUDENT is (their role: student, tourist, colleague, customer, etc.)
+- Define WHO the CONVERSATION PARTNER is (your role: professor, local, colleague, shopkeeper, etc.)
+- Set up an ENGAGING situation (not necessarily a problem)
+- Create a natural conversation opportunity
+
+CRITICAL RULES:
+1. "studentRole" (in German): Who the STUDENT/LEARNER is (e.g., "Kunde", "Student", "Tourist", "Mitarbeiter")
+2. "partnerRole" (in German): Who YOU are - the CONVERSATION PARTNER (e.g., "Verkäufer", "Professor", "Einheimischer", "Kollege")
+3. "firstMessage" (in ENGLISH): YOU START the conversation from YOUR role's perspective
+
+KEY PRINCIPLE: Always speak from YOUR partnerRole perspective, not from the student's!
+
+VARY THE TONE: friendly, enthusiastic, curious, helpful, professional, casual - not always confrontational!
+
+Respond in JSON format:
+{
+  "studentRole": "Rolle des Studenten auf Deutsch",
+  "partnerRole": "Rolle des Gesprächspartners auf Deutsch",
+  "description": "Kurze Szenariobeschreibung auf Deutsch",
+  "firstMessage": "Your engaging opening as the CONVERSATION PARTNER in ENGLISH"
+}`;
+
+  try {
+    const response = await fetch(providerConfig.endpoint, {
+      method: 'POST',
+      headers: providerConfig.getHeaders(API_KEY),
+      body: JSON.stringify({
+        model: providerConfig.model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          {
+            role: 'user',
+            content: `Create an engaging conversation scenario at ${level} level about "${topic}". Make it interesting and varied - it doesn't need to be a conflict or complaint. Positive and collaborative scenarios are encouraged!`
+          }
+        ],
+        temperature: 0.9,
+        max_tokens: 250,
+        ...noThinkingParams()
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ [LLM DIALOG] Scenario API error ${response.status}:`, errorText.substring(0, 300));
+      return res.json({
+        source: 'fallback',
+        ...dialogFallbackScenario(level, topic),
+        message: `API error (${response.status}) - using fallback scenario`
+      });
+    }
+
+    const data = await response.json();
+    const content = stripCodeFences(data.choices?.[0]?.message?.content);
+    const parsed = JSON.parse(content);
+
+    return res.json({
+      source: 'llm',
+      studentRole: parsed.studentRole || parsed.role || '',
+      partnerRole: parsed.partnerRole || '',
+      description: parsed.description || '',
+      firstMessage: parsed.firstMessage || parsed.situation || '',
+      provider: currentProvider,
+      message: `Generated by ${providerConfig.name}`
+    });
+  } catch (error) {
+    console.error('❌ [LLM DIALOG] Scenario generation failed:', error.message);
+    return res.json({
+      source: 'fallback',
+      ...dialogFallbackScenario(level, topic),
+      message: `Error generating scenario: ${error.message}`
+    });
+  }
+});
+
+/**
+ * POST /api/llm/dialog/response
+ * Generiert eine Dialog-Antwort auf Basis der Gesprächshistorie.
+ */
+router.post('/dialog/response', async (req, res) => {
+  const { scenario = {}, conversationHistory = [], level = 'B2', provider = null } = req.body;
+
+  const currentProvider = resolveProvider(provider || process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = process.env[providerConfig.apiKeyEnv];
+
+  console.log('🗣️ [LLM DIALOG] Generating response', {
+    provider: currentProvider,
+    level,
+    hasAPIKey: !!API_KEY,
+    conversationLength: conversationHistory.length
+  });
+
+  if (!API_KEY) {
+    return res.json({
+      source: 'fallback',
+      response: dialogFallbackResponse(),
+      message: 'No API key available - using fallback response'
+    });
+  }
+
+  const systemPrompt = `You are a conversation partner in this scenario: ${scenario.description || ''}
+
+CRITICAL RULES:
+1. You MUST respond ONLY in English - never use German or any other language
+2. Stay in character and respond naturally to what the student says
+3. Be VARIED in your approach:
+   - If the scenario is positive/collaborative: Be helpful, enthusiastic, and encouraging
+   - If the scenario involves a question: Provide helpful information and ask follow-up questions
+   - If the scenario has a conflict: Be reasonable but firm (don't be unnecessarily difficult)
+   - If making plans: Be engaged and contribute ideas
+4. React authentically to the student's responses:
+   - If they make a good point, acknowledge it
+   - If they're being creative or thoughtful, show appreciation
+   - If there's a genuine issue, address it reasonably
+5. Keep the conversation flowing naturally - ask questions, share thoughts, build on their ideas
+6. Match the language level: ${level}
+7. Keep responses conversational and natural (2-4 sentences max)
+8. If the user goes off-topic, gently guide them back
+
+Your goal: Have a natural, engaging conversation that helps the student practice English in a realistic way - not every conversation needs to be a battle!`;
+
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    ...conversationHistory.map((msg) => ({
+      role: msg.role === 'user' ? 'user' : 'assistant',
+      content: msg.content
+    }))
+  ];
+
+  try {
+    const response = await fetch(providerConfig.endpoint, {
+      method: 'POST',
+      headers: providerConfig.getHeaders(API_KEY),
+      body: JSON.stringify({
+        model: providerConfig.model,
+        messages,
+        temperature: 0.8,
+        max_tokens: 150,
+        ...noThinkingParams()
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ [LLM DIALOG] Response API error ${response.status}:`, errorText.substring(0, 300));
+      return res.json({
+        source: 'fallback',
+        response: dialogFallbackResponse(),
+        message: `API error (${response.status}) - using fallback response`
+      });
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content;
+
+    if (!content) {
+      return res.json({
+        source: 'fallback',
+        response: dialogFallbackResponse(),
+        message: 'Empty API response - using fallback response'
+      });
+    }
+
+    return res.json({
+      source: 'llm',
+      response: content,
+      provider: currentProvider,
+      message: `Generated by ${providerConfig.name}`
+    });
+  } catch (error) {
+    console.error('❌ [LLM DIALOG] Response generation failed:', error.message);
+    return res.json({
+      source: 'fallback',
+      response: dialogFallbackResponse(),
+      message: `Error generating response: ${error.message}`
+    });
+  }
+});
+
+/**
+ * POST /api/llm/dialog/evaluate
+ * Bewertet die Dialog-Performance des Schülers.
+ */
+router.post('/dialog/evaluate', async (req, res) => {
+  const { scenario = {}, conversationHistory = [], level = 'B2', provider = null } = req.body;
+
+  const currentProvider = resolveProvider(provider || process.env.LLM_PROVIDER || DEFAULT_PROVIDER);
+  const providerConfig = LLM_PROVIDERS[currentProvider];
+  const API_KEY = process.env[providerConfig.apiKeyEnv];
+
+  console.log('🗣️ [LLM DIALOG] Evaluating performance', {
+    provider: currentProvider,
+    level,
+    hasAPIKey: !!API_KEY,
+    conversationLength: conversationHistory.length
+  });
+
+  const fallbackEvaluation = () => {
+    const userMessages = conversationHistory.filter((m) => m.role === 'user');
+    const messageCount = userMessages.length;
+    const avgLength =
+      userMessages.reduce((sum, m) => sum + (m.content?.length || 0), 0) / (messageCount || 1);
+    const lengthScore = Math.min(10, Math.max(5, Math.round(avgLength / 15)));
+    const participationScore = Math.min(10, Math.max(5, messageCount));
+    const baseScore = Math.round((lengthScore + participationScore) / 2);
+    return {
+      grammar: baseScore,
+      vocabulary: baseScore,
+      fluency: baseScore,
+      appropriateness: baseScore,
+      contextResponse: baseScore,
+      overallScore: baseScore,
+      languageLevel: level,
+      detailedFeedback: 'Gute sprachliche Leistung im Dialog.',
+      errors: [],
+      strengths: ['Aktive Teilnahme am Dialog', 'Angemessene Reaktionen auf die Situation'],
+      improvements: ['Verwende vollständigere Sätze', 'Nutze mehr Variationen in deinen Formulierungen'],
+      tips: ['Stelle offene Fragen', "Nutze Phrasen wie 'Could you...' oder 'Would you mind...'"]
+    };
+  };
+
+  if (!API_KEY) {
+    return res.json({ source: 'fallback', ...fallbackEvaluation(), message: 'No API key available' });
+  }
+
+  const systemPrompt = `Du bist ein erfahrener Englischlehrer. Bewerte die SPRACHLICHEN FÄHIGKEITEN des Schülers (nicht die Argumentationskraft).
+
+BEWERTUNGSKRITERIEN (1-10):
+1. GRAMMATIK: Zeitformen, Satzstruktur, Artikel, Präpositionen
+2. VOKABULAR: Wortschatz und Wahl, idiomatische Ausdrücke
+3. FLÜSSIGKEIT: Natürlicher Fluss, Kohärenz, Satzvariation
+4. ANGEMESSENHEIT: Register, Höflichkeit für den Kontext
+5. KONTEXTREAKTION: Relevante Antworten auf die Situation
+
+WICHTIG: Nur die SCHÜLERNACHRICHTEN bewerten, NICHT die des Partners.
+
+ANTWORT ALS JSON:
+{
+  "grammar": 1-10,
+  "vocabulary": 1-10,
+  "fluency": 1-10,
+  "appropriateness": 1-10,
+  "contextResponse": 1-10,
+  "overallScore": 1-10,
+  "languageLevel": "A1|A2|B1|B2|C1|C2",
+  "detailedFeedback": "Ausführliches Feedback auf Deutsch über die sprachliche Leistung",
+  "errors": [
+    { "original": "...", "correction": "...", "explanation": "..." }
+  ],
+  "strengths": ["..."],
+  "improvements": ["..."],
+  "tips": ["..."]
+}`;
+
+  const userContent = `Szenario: ${scenario.description}\nZielsprache: ${level}\n\nGespräch:\n${conversationHistory
+    .map((m) => `${m.role === 'user' ? 'SCHÜLER' : 'PARTNER'}: ${m.content}`)
+    .join('\n')}\n\nBewerte nur die Schüler-Nachrichten auf Sprachkenntnisse.`;
+
+  try {
+    const response = await fetch(providerConfig.endpoint, {
+      method: 'POST',
+      headers: providerConfig.getHeaders(API_KEY),
+      body: JSON.stringify({
+        model: providerConfig.model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userContent }
+        ],
+        temperature: 0.3,
+        max_tokens: 500,
+        ...noThinkingParams()
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ [LLM DIALOG] Evaluate API error ${response.status}:`, errorText.substring(0, 300));
+      return res.json({ source: 'fallback', ...fallbackEvaluation(), message: `API error (${response.status})` });
+    }
+
+    const data = await response.json();
+    const content = stripCodeFences(data.choices?.[0]?.message?.content);
+    const evaluation = JSON.parse(content);
+
+    const result = {
+      grammar: evaluation.grammar || 5,
+      vocabulary: evaluation.vocabulary || 5,
+      fluency: evaluation.fluency || 5,
+      appropriateness: evaluation.appropriateness || 5,
+      contextResponse: evaluation.contextResponse || 5,
+      overallScore:
+        evaluation.overallScore ||
+        Math.round(
+          (evaluation.grammar +
+            evaluation.vocabulary +
+            evaluation.fluency +
+            evaluation.appropriateness +
+            evaluation.contextResponse) /
+            5
+        ),
+      languageLevel: evaluation.languageLevel || level,
+      detailedFeedback: evaluation.detailedFeedback || 'Gute sprachliche Leistung im Dialog.',
+      errors: evaluation.errors || [],
+      strengths: evaluation.strengths || [],
+      improvements: evaluation.improvements || [],
+      tips: evaluation.tips || []
+    };
+
+    return res.json({ source: 'llm', ...result, provider: currentProvider, message: `Evaluated by ${providerConfig.name}` });
+  } catch (error) {
+    console.error('❌ [LLM DIALOG] Evaluation failed:', error.message);
+    return res.json({ source: 'fallback', ...fallbackEvaluation(), message: `Error evaluating dialog: ${error.message}` });
+  }
+});
+
 export default router;

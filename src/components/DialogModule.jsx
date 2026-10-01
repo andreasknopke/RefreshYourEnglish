@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { generateDialogScenario, generateDialogResponse, generateDialogHint, evaluateDialogPerformance } from '../services/llmService';
+import { generateDialogHint } from '../services/llmService';
 import apiService from '../services/apiService';
 import TTSButton from './TTSButton';
 import STTButton from './STTButton';
@@ -67,7 +67,7 @@ function DialogModule({ user }) {
     setEvaluation(null);
     
     try {
-      const newScenario = await generateDialogScenario(level, topic);
+      const newScenario = await apiService.generateDialogScenario(level, topic);
       setScenario(newScenario);
       
       // Füge die erste Nachricht der LLM hinzu
@@ -116,7 +116,8 @@ function DialogModule({ user }) {
       // Prüfe ob das Gespräch nach dieser Nachricht beendet werden soll
       if (newUserMessageCount >= 5) {
         // Letzte Antwort der LLM, dann Bewertung
-        const response = await generateDialogResponse(scenario, conversationHistory, level);
+        const responseResult = await apiService.generateDialogResponse(scenario, conversationHistory, level);
+        const response = responseResult.response;
         
         setMessages(prev => [...prev, {
           role: 'assistant',
@@ -126,7 +127,7 @@ function DialogModule({ user }) {
         
         // Starte Bewertung
         setIsEvaluating(true);
-        const evalResult = await evaluateDialogPerformance(
+        const evalResult = await apiService.evaluateDialogPerformance(
           scenario,
           conversationHistory.concat([{ role: 'assistant', content: response }]),
           level
@@ -154,7 +155,8 @@ function DialogModule({ user }) {
           });
         }
       } else {
-        const response = await generateDialogResponse(scenario, conversationHistory, level);
+        const responseResult = await apiService.generateDialogResponse(scenario, conversationHistory, level);
+        const response = responseResult.response;
         
         setMessages(prev => [...prev, {
           role: 'assistant',

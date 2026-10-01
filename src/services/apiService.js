@@ -415,6 +415,42 @@ class ApiService {
     
     return result;
   }
+
+  // Dialog-Endpunkte (laufen über das Backend, damit der Backend-LLM-Key genutzt wird)
+  async generateDialogScenario(level = 'B2', topic = 'Alltag') {
+    const provider = localStorage.getItem('llm_provider') || 'openai';
+    console.log('📤 [Frontend] Requesting dialog scenario from backend:', { level, topic, provider });
+    return this.request('/llm/dialog/scenario', {
+      method: 'POST',
+      body: JSON.stringify({ level, topic, provider }),
+    });
+  }
+
+  async generateDialogResponse(scenario, conversationHistory, level = 'B2') {
+    const provider = localStorage.getItem('llm_provider') || 'openai';
+    console.log('📤 [Frontend] Requesting dialog response from backend:', {
+      level,
+      conversationLength: conversationHistory?.length,
+      provider
+    });
+    return this.request('/llm/dialog/response', {
+      method: 'POST',
+      body: JSON.stringify({ scenario, conversationHistory, level, provider }),
+    });
+  }
+
+  async evaluateDialogPerformance(scenario, conversationHistory, level = 'B2') {
+    const provider = localStorage.getItem('llm_provider') || 'openai';
+    console.log('📤 [Frontend] Requesting dialog evaluation from backend:', {
+      level,
+      conversationLength: conversationHistory?.length,
+      provider
+    });
+    return this.request('/llm/dialog/evaluate', {
+      method: 'POST',
+      body: JSON.stringify({ scenario, conversationHistory, level, provider }),
+    });
+  }
 }
 
 const apiService = new ApiService();
