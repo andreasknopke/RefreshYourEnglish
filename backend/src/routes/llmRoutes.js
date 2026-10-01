@@ -14,6 +14,9 @@ const router = express.Router();
 //                 http://localhost:11434/v1 (Ollama), http://localhost:8000/v1 (vLLM)
 //   LLM_API_KEY   API-Key des Anbieters (bei lokalen Modellen oft beliebig)
 //   LLM_MODEL     Modellname, z. B. mistral-large-latest, gpt-4o-mini, llama3.1
+//   LLM_DISABLE_THINKING  Thinking/Reasoning abschalten (Default: true).
+//                 Wichtig bei vLLM + Reasoning-Modellen (z. B. Qwen3), die sonst
+//                 ihren Default-Reasoning-Level nutzen. Mit 'false' wieder aktivieren.
 
 const DEFAULT_BASE_URL = 'https://api.mistral.ai/v1';
 const DEFAULT_MODEL = 'mistral-large-latest';
@@ -39,6 +42,33 @@ const LLM_PROVIDERS = {
 };
 
 const DEFAULT_PROVIDER = 'openai';
+
+/**
+ * Schaltet Thinking/Reasoning bei OpenAI-kompatiblen Servern (z. B. vLLM mit Qwen) ab.
+ *
+ * Ohne diese Parameter nutzen Reasoning-Modelle (Qwen3 u. a.) ihren
+ * Default-Reasoning-Level, was Antworten deutlich verlangsamt und die
+ * JSON-Antworten zerstören kann. Es werden beide Schalter gesendet:
+ *   - chat_template_kwargs: { enable_thinking: false, thinking: false }
+ *       -> von vLLM an den Chat-Template-Renderer durchgereicht; Variablen, die das
+ *          Template nicht kennt, werden von vLLM harmlos gefiltert.
+ *   - reasoning_effort: 'none'
+ *       -> OpenAI-kompatibler Standardwert; vLLM übersetzt ihn zusätzlich in
+ *          enable_thinking = false.
+ *
+ * Abschaltbar per ENV: LLM_DISABLE_THINKING=false
+ */
+const DISABLE_THINKING = String(process.env.LLM_DISABLE_THINKING ?? 'true').toLowerCase() !== 'false';
+
+function noThinkingParams() {
+  if (!DISABLE_THINKING) {
+    return {};
+  }
+  return {
+    chat_template_kwargs: { enable_thinking: false, thinking: false },
+    reasoning_effort: 'none'
+  };
+}
 
 function resolveProvider(requestedProvider) {
   return LLM_PROVIDERS[requestedProvider] ? requestedProvider : DEFAULT_PROVIDER;
@@ -205,7 +235,8 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
           }
         ],
         temperature: 0.8,
-        max_tokens: 150
+        max_tokens: 150,
+        ...noThinkingParams()
       })
     });
     
@@ -297,7 +328,8 @@ Antworte im JSON-Format: {"de": "deutscher Satz", "en": "englische Übersetzung"
                   }
                 ],
                 temperature: 0.8,
-                max_tokens: 150
+                max_tokens: 150,
+                ...noThinkingParams()
               })
             });
             
@@ -484,7 +516,8 @@ Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Verg
         }
       ],
       temperature: 0.7,
-      max_tokens: 300
+      max_tokens: 300,
+      ...noThinkingParams()
     };
 
     const requestHeaders = providerConfig.getHeaders(API_KEY);

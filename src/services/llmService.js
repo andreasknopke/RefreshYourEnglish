@@ -7,6 +7,9 @@
 //                      http://localhost:11434/v1 (Ollama), http://localhost:8000/v1 (vLLM)
 //   VITE_LLM_API_KEY   API-Key des Anbieters (bei lokalen Modellen oft beliebig)
 //   VITE_LLM_MODEL     Modellname, z. B. mistral-large-latest, gpt-4o-mini, llama3.1
+//   VITE_LLM_DISABLE_THINKING  Thinking/Reasoning abschalten (Default: true).
+//                      Wichtig bei vLLM + Reasoning-Modellen (z. B. Qwen3), die sonst
+//                      ihren Default-Reasoning-Level nutzen. Mit 'false' wieder aktivieren.
 
 import logService from './logService';
 
@@ -37,6 +40,34 @@ const LLM_PROVIDERS = {
 };
 
 const DEFAULT_PROVIDER = 'openai';
+
+/**
+ * Schaltet Thinking/Reasoning bei OpenAI-kompatiblen Servern (z. B. vLLM mit Qwen) ab.
+ *
+ * Ohne diese Parameter nutzen Reasoning-Modelle (Qwen3 u. a.) ihren
+ * Default-Reasoning-Level, was Antworten deutlich verlangsamt und die
+ * JSON-Antworten zerstören kann. Es werden beide Schalter gesendet:
+ *   - chat_template_kwargs: { enable_thinking: false, thinking: false }
+ *       -> von vLLM an den Chat-Template-Renderer durchgereicht; Variablen, die das
+ *          Template nicht kennt, werden von vLLM harmlos gefiltert.
+ *   - reasoning_effort: 'none'
+ *       -> OpenAI-kompatibler Standardwert; vLLM übersetzt ihn zusätzlich in
+ *          enable_thinking = false.
+ *
+ * Abschaltbar per Build-ENV: VITE_LLM_DISABLE_THINKING=false
+ */
+const DISABLE_THINKING =
+  String(import.meta.env.VITE_LLM_DISABLE_THINKING ?? 'true').toLowerCase() !== 'false';
+
+function noThinkingParams() {
+  if (!DISABLE_THINKING) {
+    return {};
+  }
+  return {
+    chat_template_kwargs: { enable_thinking: false, thinking: false },
+    reasoning_effort: 'none'
+  };
+}
 
 /**
  * Ruft den aktuellen LLM-Provider ab
@@ -181,7 +212,8 @@ Musterlösung (nur als Referenz): "${correctTranslation}"
 Bitte bewerte NUR die ÜBERSETZUNG DES SCHÜLERS (nicht die Musterlösung). Vergleiche sie mit der Musterlösung und dem deutschen Original.`
       }],
       temperature: 0.7,
-      max_tokens: 400
+      max_tokens: 400,
+      ...noThinkingParams()
     };
     
     // Log LLM Request
@@ -607,7 +639,8 @@ WICHTIG: Der Satz muss zu 100% auf DEUTSCH sein, keine englischen Wörter!`
         temperature: 0.9,
         max_tokens: 200,
         presence_penalty: 0.6,
-        frequency_penalty: 0.6
+        frequency_penalty: 0.6,
+        ...noThinkingParams()
       };
     
     // Log LLM Request
@@ -1059,7 +1092,8 @@ Keine zusätzlichen Erklärungen!`
             content: `Klassifiziere folgende Vokabeln:\n${vocabText}`
           }],
           temperature: 0.3,
-          max_tokens: 1000
+          max_tokens: 1000,
+          ...noThinkingParams()
         })
       });
 
@@ -1141,7 +1175,8 @@ Antworte NUR mit dem Level: A1, A2, B1, B2, C1 oder C2`
           content: `EN: "${english}" | DE: "${german}"`
         }],
         temperature: 0.3,
-        max_tokens: 10
+        max_tokens: 10,
+        ...noThinkingParams()
       })
     });
 
@@ -1299,7 +1334,8 @@ Respond in JSON format:
           content: `Create an engaging conversation scenario at ${level} level about "${topic}". Make it interesting and varied - it doesn't need to be a conflict or complaint. Positive and collaborative scenarios are encouraged!`
         }],
         temperature: 0.9,
-        max_tokens: 250
+        max_tokens: 250,
+        ...noThinkingParams()
       })
     });
     
@@ -1364,7 +1400,8 @@ Your goal: Have a natural, engaging conversation that helps the student practice
         model: providerConfig.model,
         messages,
         temperature: 0.8,
-        max_tokens: 150
+        max_tokens: 150,
+        ...noThinkingParams()
       })
     });
     
@@ -1471,7 +1508,8 @@ WICHTIG für errors:
           }
         ],
         temperature: 0.3,
-        max_tokens: 500
+        max_tokens: 500,
+        ...noThinkingParams()
       })
     });
     
