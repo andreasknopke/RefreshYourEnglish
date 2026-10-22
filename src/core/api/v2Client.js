@@ -82,7 +82,18 @@ export const v2Client = {
       body: JSON.stringify(payload)
     }),
   getVocabStats: (userLanguageId) =>
-    request(`/v2/me/languages/${userLanguageId}/stats`)
+    request(`/v2/me/languages/${userLanguageId}/stats`),
+
+  // Reader & Listening
+  getTexts: (userLanguageId, level) =>
+    request(`/v2/me/languages/${userLanguageId}/texts${level ? `?level=${level}` : ''}`),
+  getText: (userLanguageId, textId) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}`),
+  mineWord: (userLanguageId, textId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}/mine`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
 };
 
 export default v2Client;

@@ -1,0 +1,48 @@
+{
+  "lang": "it",
+  "version": "1.0.0",
+  "texts": [
+    {
+      "title": "Al bar",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Buongiorno! Un caffè, per favore. Il caffè è buono. Prendo anche un pane. Quanto costa? Grazie mille. Buona giornata!"
+    },
+    {
+      "title": "La mia famiglia",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "La mia famiglia è grande. Mio padre è alto. Mia madre è bella. Ho un amico e un'amica. Siamo una famiglia felice."
+    },
+    {
+      "title": "A casa",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Vado a casa. Casa mia è piccola ma bella. Bevo un'acqua. Mangio il pane. Oggi sono stanco. Buona notte!"
+    },
+    {
+      "title": "Il mio amico Marco",
+      "level": "A1",
+      "topic": "freunde",
+      "est_minutes": 2,
+      "body": "Marco è il mio amico. Lui è giovane e simpatico. Marco parla italiano e inglese. Mangiamo insieme il pane e beviamo il vino. Parliamo molto. Marco è sempre di buon umore."
+    },
+    {
+      "title": "Un viaggio in Italia",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 2,
+      "body": "Domani faccio un viaggio in Italia. Prendo il treno alle otto. Il treno è veloce. Vado a Roma con la mia famiglia. Roma è una grande città. Voglio vedere il Colosseo. Il viaggio dura tre ore. Sono molto contento."
+    },
+    {
+      "title": "Al ristorante",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 2,
+      "body": "Stasera vado al ristorante con gli amici. Il cibo è molto buono. Ordino la pasta e bevo un vino rosso. Il cameriere è gentile. Chiedo il conto. Pagiamo e usciamo. È stata una bella serata."
+    }
+  ]
+}
