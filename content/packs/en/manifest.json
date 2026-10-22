@@ -1,0 +1,22 @@
+{
+  "code": "en",
+  "name": "Englisch",
+  "nativeName": "English",
+  "version": "1.0.0",
+  "direction": "ltr",
+  "script": "latin",
+  "ttsLocale": "en-US",
+  "sttLocale": "en-US",
+  "tokenizer": "whitespace",
+  "levels": ["A1", "A2", "B1", "B2", "C1", "C2"],
+  "capabilities": {
+    "grammaticalGender": false,
+    "conjugation": true,
+    "pronunciationScoring": false,
+    "tokenization": "whitespace"
+  },
+  "frequencyList": "freq/en_top_5000.csv",
+  "grammarSyllabus": "grammar/en_cefr.json",
+  "curriculum": "curriculum/en_a1_b2.json",
+  "pronunciation": "pron/en_rules.json"
+}

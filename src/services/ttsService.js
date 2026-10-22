@@ -108,6 +108,17 @@ class TTSService {
   }
 
   /**
+   * Wandelt einen Sprachcode ('en','de','it',...) oder ein volles Locale
+   * ('it-IT') in ein BCP-47-Locale für die Web Speech API um.
+   */
+  resolveLocale(language = 'en') {
+    const map = { en: 'en-US', de: 'de-DE', it: 'it-IT', fr: 'fr-FR', es: 'es-ES' };
+    if (map[language]) return map[language];
+    // Bereits ein volles Locale (enthält '-') oder unbekannt -> direkt durchreichen
+    return language;
+  }
+
+  /**
    * Spricht Text mit Browser Web Speech API
    * @param {string} text - Der zu sprechende Text
    * @param {string} language - Sprache ('en' oder 'de')
@@ -125,7 +136,7 @@ class TTSService {
         window.speechSynthesis.cancel();
 
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = language === 'de' ? 'de-DE' : 'en-US';
+        utterance.lang = this.resolveLocale(language);
         utterance.rate = 0.9;
         utterance.pitch = 1;
         utterance.volume = 1;

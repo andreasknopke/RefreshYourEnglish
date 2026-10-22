@@ -11,7 +11,11 @@
     "db:migrate": "node src/scripts/migrate.js",
     "db:seed": "node src/scripts/seed.js",
     "db:migrate-postgres": "node src/scripts/migrate-to-postgres.js",
-    "db:setup": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js"
+    "db:setup": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js",
+    "db:migrate-v2": "node src/scripts/migrate-v2.js",
+    "db:backfill-languages": "node src/scripts/backfill-user-languages.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "vocabulary",
@@ -32,6 +36,7 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "vitest": "^5.0.5"
   }
 }

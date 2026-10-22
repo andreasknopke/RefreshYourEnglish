@@ -23,6 +23,16 @@ class STTService {
   }
 
   /**
+   * Wandelt einen Sprachcode ('en','de','it',...) oder ein volles Locale
+   * ('it-IT') in ein BCP-47-Locale für die Web Speech API um.
+   */
+  resolveLocale(language = 'en') {
+    const map = { en: 'en-US', de: 'de-DE', it: 'it-IT', fr: 'fr-FR', es: 'es-ES' };
+    if (map[language]) return map[language];
+    return language;
+  }
+
+  /**
    * Initialisiert die Spracherkennung
    * @param {string} language - Zielsprache ('en' oder 'de')
    * @param {Function} onResult - Callback für Zwischenergebnisse
@@ -40,7 +50,7 @@ class STTService {
     // Konfiguration
     this.recognition.continuous = false; // Stoppt nach einer Phrase
     this.recognition.interimResults = true; // Zeige Zwischenergebnisse
-    this.recognition.lang = language === 'de' ? 'de-DE' : 'en-US';
+    this.recognition.lang = this.resolveLocale(language);
     this.recognition.maxAlternatives = 1;
 
     // Event Handlers

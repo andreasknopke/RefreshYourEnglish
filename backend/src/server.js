@@ -11,6 +11,9 @@ import flashcardRoutes from './routes/flashcardRoutes.js';
 import gamificationRoutes from './routes/gamification.js';
 import actionModeRoutes from './routes/actionModeRoutes.js';
 import llmRoutes from './routes/llmRoutes.js';
+import v2LanguagesRoutes from './routes/v2/languages.js';
+import v2UserLanguagesRoutes from './routes/v2/userLanguages.js';
+import v2PlacementRoutes from './routes/v2/placement.js';
 
 dotenv.config();
 
@@ -166,6 +169,15 @@ app.use('/api/flashcards', flashcardRoutes);
 app.use('/api/gamification', gamificationRoutes);
 app.use('/api/action-mode', actionModeRoutes);
 app.use('/api/llm', llmRoutes);
+
+// API v2 (sprachneutrale Lern-Engine) hinter Feature-Flag.
+// MULTILANG_ENGINE=1 aktiviert die neuen /api/v2- Routen, ohne v1 zu verändern.
+if (String(process.env.MULTILANG_ENGINE ?? '').match(/^(1|true|yes)$/i)) {
+  app.use('/api/v2/languages', v2LanguagesRoutes);
+  app.use('/api/v2/me/languages', v2UserLanguagesRoutes);
+  app.use('/api/v2/placement', v2PlacementRoutes);
+  console.log('🧩 MULTILANG_ENGINE aktiv: /api/v2 (languages, me/languages, placement) verfügbar');
+}
 
 // Serve built frontend (static) if available
 if (hasFrontend) {

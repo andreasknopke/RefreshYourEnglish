@@ -14,6 +14,9 @@ import GamificationBanner from './components/GamificationBanner';
 import LogViewer from './components/LogViewer';
 import apiService from './services/apiService';
 import logService from './services/logService';
+import { useLanguage } from './core/language/LanguageContext';
+import OnboardingWizard from './features/onboarding/OnboardingWizard';
+import PlacementTest from './features/placement/PlacementTest';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
@@ -22,6 +25,17 @@ function App() {
   const [dueFlashcardsCount, setDueFlashcardsCount] = useState(0);
   const [showLogViewer, setShowLogViewer] = useState(false);
   const [backendStatus, setBackendStatus] = useState('checking'); // 'checking', 'online', 'offline'
+
+  // Mehrsprachige Engine (Phase 1): Onboarding / Placement-Steuerung
+  const {
+    packs,
+    userLanguages,
+    activeUserLanguage,
+    loading: langLoading,
+    refreshUserLanguages,
+    switchLanguage
+  } = useLanguage();
+  const [flow, setFlow] = useState(null); // 'onboarding' | 'placement' | null
 
   useEffect(() => {
     // Log App Start
@@ -74,6 +88,23 @@ function App() {
       return () => clearInterval(interval);
     }
   }, [user]);
+
+  // Lade Zielsprachen des Nutzers; steuere Onboarding/Placement
+  useEffect(() => {
+    if (!user) {
+      setFlow(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const langs = await refreshUserLanguages(user.id);
+      if (cancelled) return;
+      if (langs.length === 0) setFlow('onboarding');
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user, refreshUserLanguages]);
 
   const loadDueFlashcardsCount = async () => {
     try {
@@ -162,6 +193,36 @@ function App() {
 
         {/* User Info / Login Button / Settings */}
         <div className="flex justify-end mb-3 gap-2">
+          {/* Sprachumschalter (mehrere Zielsprachen) */}
+          {user && userLanguages.length > 0 && (
+            <div className="glass-card px-3 py-3 rounded-2xl flex items-center gap-1">
+              {userLanguages.map((l) => (
+                <button
+                  key={l.id}
+                  className={`px-2 py-0.5 rounded-lg text-sm font-bold transition-all ${
+                    l.active ? 'bg-indigo-500 text-white' : 'text-gray-500 hover:bg-gray-100'
+                  }`}
+                  title={l.targetLang}
+                  onClick={async () => {
+                    if (!l.active) {
+                      await switchLanguage(l.id);
+                      setActiveModule(null);
+                    }
+                  }}
+                >
+                  {l.targetLang.toUpperCase()}
+                </button>
+              ))}
+              <button
+                onClick={() => setFlow('onboarding')}
+                className="px-2 py-0.5 rounded-lg text-sm font-bold text-gray-400 hover:bg-gray-100"
+                title="Weitere Sprache hinzufügen"
+              >
+                +
+              </button>
+            </div>
+          )}
+
           {/* Stats Button */}
           {user && (
             <button
@@ -219,6 +280,32 @@ function App() {
         {/* Gamification Banner */}
         {user && <GamificationBanner user={user} />}
 
+        {/* Onboarding / Placement (nur wenn eingeloggt und noch keine Zielsprache) */}
+        {user && !langLoading && flow === 'onboarding' && (
+          <div className="py-6">
+            <OnboardingWizard
+              onComplete={({ wantsPlacement }) =>
+                setFlow(wantsPlacement ? 'placement' : null)
+              }
+              onCancel={() => setFlow(null)}
+            />
+          </div>
+        )}
+
+        {user && flow === 'placement' && activeUserLanguage && (
+          <div className="py-6">
+            <PlacementTest
+              userLanguage={activeUserLanguage}
+              lang={activeUserLanguage.targetLang}
+              onComplete={() => setFlow(null)}
+              onSkip={() => setFlow(null)}
+            />
+          </div>
+        )}
+
+        {/* Haupt-Content: nur wenn keine Onboarding/Placement-View aktiv ist */}
+        {!(user && (flow === 'onboarding' || flow === 'placement')) && (
+        <>
         {!activeModule ? (
           <div className="max-w-7xl mx-auto">
             {/* Hauptmodule Grid */}
@@ -407,6 +494,8 @@ function App() {
             {activeModule === 'settings' && <SettingsModule />}
             {activeModule === 'stats' && <StatsModule user={user} />}
           </div>
+        )}
+        </>
         )}
 
         {showAuthModal && (
