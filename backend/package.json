@@ -14,6 +14,8 @@
     "db:setup": "node src/scripts/migrate-to-postgres.js && node src/scripts/migrate.js && node src/scripts/seed.js",
     "db:migrate-v2": "node src/scripts/migrate-v2.js",
     "db:backfill-languages": "node src/scripts/backfill-user-languages.js",
+    "db:seed-vocab": "node src/scripts/seed-vocab.js",
+    "db:backfill-vocab": "node src/scripts/backfill-vocab.js",
     "test": "vitest run",
     "test:watch": "vitest"
   },

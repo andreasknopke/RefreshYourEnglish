@@ -66,7 +66,23 @@ export const v2Client = {
     request('/v2/placement/answer', {
       method: 'POST',
       body: JSON.stringify({ sessionId, userLanguageId, itemId, response })
-    })
+    }),
+
+  // Vocab / Review (SRS)
+  getReviewQueue: (userLanguageId, limit = 20) =>
+    request(`/v2/me/languages/${userLanguageId}/review?limit=${limit}`),
+  submitReview: (userLanguageId, userVocabId, rating, elapsedMs) =>
+    request(`/v2/me/languages/${userLanguageId}/review`, {
+      method: 'POST',
+      body: JSON.stringify({ userVocabId, rating, elapsedMs })
+    }),
+  addCard: (userLanguageId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/cards`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }),
+  getVocabStats: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/stats`)
 };
 
 export default v2Client;

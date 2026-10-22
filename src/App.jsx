@@ -17,6 +17,7 @@ import logService from './services/logService';
 import { useLanguage } from './core/language/LanguageContext';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import PlacementTest from './features/placement/PlacementTest';
+import ReviewModule from './features/review/ReviewModule';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
@@ -28,7 +29,6 @@ function App() {
 
   // Mehrsprachige Engine (Phase 1): Onboarding / Placement-Steuerung
   const {
-    packs,
     userLanguages,
     activeUserLanguage,
     loading: langLoading,
@@ -310,6 +310,30 @@ function App() {
           <div className="max-w-7xl mx-auto">
             {/* Hauptmodule Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
+            {/* Modul 0: SRS-Review (Mehrsprachige Engine) */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Vokabel-Trainer
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
+                Spaced Repetition (FSRS) für deine Sprache
+              </p>
+              <button
+                onClick={() => setActiveModule('review')}
+                className="w-full btn-primary relative z-10 text-sm py-2"
+              >
+                <span className="relative z-10">Lernen →</span>
+              </button>
+            </div>
+
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -490,6 +514,7 @@ function App() {
             {activeModule === 'action' && <ActionModule user={user} />}
             {activeModule === 'dialog' && <DialogModule user={user} />}
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
+            {activeModule === 'review' && <ReviewModule />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
             {activeModule === 'stats' && <StatsModule user={user} />}
