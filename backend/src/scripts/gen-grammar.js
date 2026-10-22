@@ -1,0 +1,353 @@
+// Erstellt content/packs/it/grammar/it_cefr.json aus kompakten Definitionen.
+// 20 Grammatikpunkte (A1–B1), je 8 Übungen (mc/fill) mit errorTag.
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const OUT = path.resolve(__dirname, '../../../content/packs/it/grammar/it_cefr.json');
+
+// mc: { s: satz mit ___ , o: [optionen], a: index der richtigen, tag, why? }
+// fill: { s: satz mit ___, ans: [akzeptierte antworten], tag, why? }
+const points = [
+  {
+    id: 'it-art-determinativi', level: 'A1', title: 'Artikel bestimmt (il, lo, la, i, gli, le)',
+    concept: 'gender', errorTag: 'gender',
+    explanation: 'Der bestimmte Artikel richtet sich nach Genus und dem Anfangsbuchstaben des Nomens: il (m, Konsonant), lo (m, s+Konsonant/z/gn/ps/y/x), la (f, Konsonant), i (m-Pl), gli (m-Pl von lo), le (f-Pl).',
+    examples: ['il libro – das Buch', 'lo studente – der Student', 'la casa – das Haus', 'gli amici – die Freunde'],
+    exercises: [
+      { type: 'mc', s: '___ libro è interessante.', o: ['Il', 'Lo', 'La', "L'"], a: 0, tag: 'gender' },
+      { type: 'mc', s: '___ studente studia molto.', o: ['Il', 'Lo', 'La', 'I'], a: 1, tag: 'gender' },
+      { type: 'mc', s: '___ casa è grande.', o: ['Il', 'Lo', 'La', 'Le'], a: 2, tag: 'gender' },
+      { type: 'mc', s: '___ amici sono simpatici.', o: ['I', 'Gli', 'Le', 'Lo'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: '___ amiche sono simpatiche.', o: ['I', 'Gli', 'Le', 'La'], a: 2, tag: 'agreement' },
+      { type: 'mc', s: '___ zaino è nuovo.', o: ['Il', 'Lo', 'La', 'I'], a: 1, tag: 'gender' },
+      { type: 'fill', s: '___ occhio (m, Singular) → ___ occhio', ans: ["L'"], tag: 'gender', why: "Vokal → l'" },
+      { type: 'fill', s: 'Plural von "lo studente" ist ___ studenti.', ans: ['gli'], tag: 'agreement' }
+    ]
+  },
+  {
+    id: 'it-art-indeterminativi', level: 'A1', title: 'Artikel unbestimmt (un, uno, una, un’)',
+    concept: 'gender', errorTag: 'gender',
+    explanation: 'un (m, Konsonant), uno (m, s+Konsonant/z/gn/ps), una (f, Konsonant), un’ (f, Vokal). Der Plural fehlt; stattdessen „dei/delle“.',
+    examples: ['un cane', 'uno studente', 'una donna', "un'amica"],
+    exercises: [
+      { type: 'mc', s: 'Ho ___ cane.', o: ['un', 'uno', 'una', "un'"], a: 0, tag: 'gender' },
+      { type: 'mc', s: 'È ___ professore.', o: ['un', 'uno', 'una', 'gli'], a: 0, tag: 'gender' },
+      { type: 'mc', s: 'È ___ studente.', o: ['un', 'uno', 'una', 'lo'], a: 1, tag: 'gender' },
+      { type: 'mc', s: 'È ___ amica.', o: ['un', 'uno', 'una', "un'"], a: 3, tag: 'gender' },
+      { type: 'mc', s: 'È ___ donna.', o: ['un', 'uno', 'una', "un'"], a: 2, tag: 'gender' },
+      { type: 'fill', s: '___ zaino (m)', ans: ['uno'], tag: 'gender' },
+      { type: 'fill', s: '___ amica (f, Vokal)', ans: ["un'"], tag: 'gender' },
+      { type: 'mc', s: 'Cerco ___ università (f).', o: ['un', 'uno', 'una', "un'"], a: 3, tag: 'gender' }
+    ]
+  },
+  {
+    id: 'it-concordanza-agg', level: 'A1', title: 'Angleichung Adjektiv–Nomen',
+    concept: 'agreement', errorTag: 'agreement',
+    explanation: 'Adjektive richten sich in Genus und Numerus nach dem Nomen: -o (m.Sg), -a (f.Sg), -i (m.Pl), -e (f.Pl).',
+    examples: ['il ragazzo alto', 'la ragazza alta', 'i ragazzi alti', 'le ragazze alte'],
+    exercises: [
+      { type: 'mc', s: 'La macchina è ___ (veloce).', o: ['veloce', 'veloci', 'veloca', 'veloca'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: 'I bambini sono ___ (alto).', o: ['alto', 'alta', 'alti', 'alte'], a: 2, tag: 'agreement' },
+      { type: 'mc', s: 'Le case sono ___ (bello).', o: ['bello', 'bella', 'belli', 'belle'], a: 3, tag: 'agreement' },
+      { type: 'mc', s: 'Il vino è ___ (buono).', o: ['buono', 'buona', 'buoni', 'buone'], a: 0, tag: 'agreement' },
+      { type: 'fill', s: 'La pizza è ___ (buono)', ans: ['buona'], tag: 'agreement' },
+      { type: 'fill', s: 'Gli amici sono ___ (simpatico)', ans: ['simpatici'], tag: 'agreement' },
+      { type: 'fill', s: 'Le ragazze sono ___ (bravo)', ans: ['brave'], tag: 'agreement' },
+      { type: 'mc', s: 'Un uomo ___ (onesto).', o: ['onesto', 'onesta', 'onesti', 'oneste'], a: 0, tag: 'agreement' }
+    ]
+  },
+  {
+    id: 'it-essere', level: 'A1', title: 'sein – essere (Präsens)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'io sono, tu sei, lui/lei è, noi siamo, voi siete, loro sono.',
+    examples: ['Io sono italiano.', 'Loro sono studenti.'],
+    exercises: [
+      { type: 'mc', s: 'Io ___ Marco.', o: ['sono', 'sei', 'è', 'siamo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Tu ___ alto.', o: ['sono', 'sei', 'è', 'siete'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Lei ___ dottoressa.', o: ['sono', 'sei', 'è', 'sono'], a: 2, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ amici.', o: ['siamo', 'siete', 'sono', 'è'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Voi ___ pronti?', o: ['siamo', 'siete', 'sono', 'sei'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ stanchi.', ans: ['sono'], tag: 'tense' },
+      { type: 'fill', s: 'Tu ___ mia sorella?', ans: ['sei'], tag: 'tense' },
+      { type: 'fill', s: 'Noi ___ a casa.', ans: ['siamo'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-avere', level: 'A1', title: 'haben – avere (Präsens)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'io ho, tu hai, lui/lei ha, noi abbiamo, voi avete, loro hanno.',
+    examples: ['Ho un cane.', 'Hanno fame.'],
+    exercises: [
+      { type: 'mc', s: 'Io ___ un gatto.', o: ['ho', 'hai', 'ha', 'abbiamo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Tu ___ ragione.', o: ['ho', 'hai', 'ha', 'avete'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Lui ___ fame.', o: ['ho', 'hai', 'ha', 'hanno'], a: 2, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ sete.', o: ['abbiamo', 'avete', 'hanno', 'ha'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Voi ___ tempo?', o: ['abbiamo', 'avete', 'hanno', 'hai'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ sonno.', ans: ['hanno'], tag: 'tense' },
+      { type: 'fill', s: 'Io ___ vent’anni.', ans: ['ho'], tag: 'tense' },
+      { type: 'fill', s: 'Lei ___ un’idea.', ans: ['ha'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-plurale-nomi', level: 'A1', title: 'Plural der Nomen',
+    concept: 'agreement', errorTag: 'agreement',
+    explanation: 'Maskulin auf -o → -i (libro→libri). Feminin auf -a → -e (casa→case). Maskulin auf -a (Fremdwörter) → -i (cinema→cinema). Adjektive passen sich an.',
+    examples: ['libro → libri', 'casa → case', 'amico → amici'],
+    exercises: [
+      { type: 'mc', s: 'Plural von „libro“:', o: ['libri', 'libre', 'libro', 'libera'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: 'Plural von „casa“:', o: ['casi', 'case', 'case', 'caso'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Plural von „amico“:', o: ['amici', 'amiche', 'amigo', 'amice'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: 'Plural von „amica“:', o: ['amici', 'amiche', 'amicas', 'amine'], a: 1, tag: 'agreement' },
+      { type: 'fill', s: 'ragazzo → ___', ans: ['ragazzi'], tag: 'agreement' },
+      { type: 'fill', s: 'donna → ___', ans: ['donne'], tag: 'agreement' },
+      { type: 'fill', s: 'professore → ___', ans: ['professori'], tag: 'agreement' },
+      { type: 'mc', s: 'Le ___ (ragazza) ridono.', o: ['ragazza', 'ragazze', 'ragazzi', 'ragazzo'], a: 1, tag: 'agreement' }
+    ]
+  },
+  {
+    id: 'it-verbi-are', level: 'A1', title: 'Regelmäßige Verben auf -are',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Stamm + -o, -i, -a, -iamo, -ate, -ano. Beispiel parlare: parlo, parli, parla, parliamo, parlate, parlano.',
+    examples: ['parlo italiano', 'mangiamo la pasta'],
+    exercises: [
+      { type: 'mc', s: 'Io ___ (parlare) italiano.', o: ['parlo', 'parli', 'parla', 'parliamo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Tu ___ (mangiare) la pizza.', o: ['mangio', 'mangi', 'mangia', 'mangiate'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Lui ___ (abitare) a Roma.', o: ['abito', 'abiti', 'abita', 'abitano'], a: 2, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ (cantare) bene.', o: ['cantiamo', 'cantate', 'cantano', 'canto'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Voi ___ (parlare) troppo.', o: ['cantiamo', 'parlate', 'parlano', 'parli'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ (mangiare) il gelato.', ans: ['mangiano'], tag: 'tense' },
+      { type: 'fill', s: 'Tu ___ (parlare) inglese?', ans: ['parli'], tag: 'tense' },
+      { type: 'fill', s: 'Io ___ (abitare) a Milano.', ans: ['abito'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-verbi-ere-ire', level: 'A1', title: 'Regelmäßige Verben auf -ere / -ire',
+    concept: 'tense', errorTag: 'tense',
+    explanation: '-ere: -o,-i,-e,-iamo,-ete,-ono (vendo). -ire: -o,-i,-e,-iamo,-ite,-ono (parto); manche mit -isc- (capisco).',
+    examples: ['vendo una casa', 'capisco la lezione'],
+    exercises: [
+      { type: 'mc', s: 'Io ___ (vendere) l’auto.', o: ['vendo', 'vendi', 'vende', 'vendiamo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Tu ___ (scrivere) una lettera.', o: ['scrivo', 'scrivi', 'scrive', 'scrivete'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Lei ___ (leggere) il giornale.', o: ['leggo', 'leggi', 'legge', 'leggono'], a: 2, tag: 'tense' },
+      { type: 'mc', s: 'Io ___ (capire) tutto.', o: ['capo', 'capi', 'capisce', 'capisco'], a: 3, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ (partire) domani.', o: ['partiamo', 'partite', 'partono', 'parto'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ (scrivere) libri.', ans: ['scrivono'], tag: 'tense' },
+      { type: 'fill', s: 'Tu ___ (capire)?', ans: ['capisci'], tag: 'tense' },
+      { type: 'fill', s: 'Voi ___ (vendere) casa?', ans: ['vendete'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-preposizioni-semplici', level: 'A1', title: 'Einfache Präpositionen',
+    concept: 'preposition', errorTag: 'preposition',
+    explanation: 'a (Ort/Ziel), di (Besitz/herkunft), da (von/zu Person), in (in Ländern/Städten), con (mit), su (auf), per (für).',
+    examples: ['vado a Roma', 'il libro di Anna', 'vengo da Milano'],
+    exercises: [
+      { type: 'mc', s: 'Vado ___ Roma.', o: ['a', 'in', 'di', 'da'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Il libro ___ Anna.', o: ['a', 'di', 'da', 'per'], a: 1, tag: 'preposition' },
+      { type: 'mc', s: 'Vengo ___ Milano.', o: ['a', 'di', 'da', 'in'], a: 2, tag: 'preposition' },
+      { type: 'mc', s: 'Abito ___ Italia.', o: ['a', 'di', 'da', 'in'], a: 3, tag: 'preposition' },
+      { type: 'mc', s: 'Parlo ___ Marco.', o: ['a', 'con', 'di', 'su'], a: 1, tag: 'preposition' },
+      { type: 'fill', s: 'Questo regalo è ___ te (für).', ans: ['per'], tag: 'preposition' },
+      { type: 'fill', s: 'Il gatto è ___ tavolo (auf).', ans: ['sul', 'su'], tag: 'preposition' },
+      { type: 'mc', s: 'Vado ___ cinema (Ort).', o: ['a', 'in', 'di', 'con'], a: 0, tag: 'preposition' }
+    ]
+  },
+  {
+    id: 'it-preposizioni-articolate', level: 'A1', title: 'Verschmelzte Präpositionen',
+    concept: 'preposition', errorTag: 'preposition',
+    explanation: 'Präposition + Artikel verschmelzen: a+il=al, di+il=del, da+il=dal, in+il=nel, su+il=sul; a+la=alla, in+la=nella usw.',
+    examples: ['vado al bar', 'il colore del cielo', 'sono nella stanza'],
+    exercises: [
+      { type: 'mc', s: 'Vado ___ bar (a+il).', o: ['al', 'a il', 'del', 'nel'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Il colore ___ cielo (di+il).', o: ['al', 'del', 'dal', 'nel'], a: 1, tag: 'preposition' },
+      { type: 'mc', s: 'Vengo ___ mercato (da+il).', o: ['al', 'del', 'dal', 'nel'], a: 2, tag: 'preposition' },
+      { type: 'mc', s: 'Il gatto è ___ giardino (in+il).', o: ['al', 'del', 'dal', 'nel'], a: 3, tag: 'preposition' },
+      { type: 'mc', s: 'Parlo ___ professoressa (a+la).', o: ['alla', 'alla', 'della', 'nella'], a: 0, tag: 'preposition' },
+      { type: 'fill', s: 'Sono ___ stanza (in+la).', ans: ['nella'], tag: 'preposition' },
+      { type: 'fill', s: 'Il libro ___ studente (di+lo).', ans: ['dello'], tag: 'preposition' },
+      { type: 'mc', s: 'Torno ___ scuola (da+la).', o: ['alla', 'dalla', 'nella', 'sulla'], a: 1, tag: 'preposition' }
+    ]
+  },
+  {
+    id: 'it-possessivi', level: 'A1', title: 'Possessivadjektive',
+    concept: 'agreement', errorTag: 'agreement',
+    explanation: 'mio/tuo/suo/nostr/vostro/loro richten sich nach dem Besitz (Genus+Numerus), nicht nach dem Besitzer. Mit Artikel: il mio libro, la mia casa.',
+    examples: ['il mio libro', 'la sua casa (seine/ihre)', 'i nostri amici'],
+    exercises: [
+      { type: 'mc', s: 'Questa è ___ casa (meine).', o: ['mio', 'mia', 'miei', 'mie'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Dov’è ___ fratello (dein)?', o: ['tuo', 'tua', 'tuoi', 'tue'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: 'Sono ___ amici (unsere).', o: ['nostro', 'nostra', 'nostri', 'nostre'], a: 2, tag: 'agreement' },
+      { type: 'mc', s: 'È ___ sorella (seine).', o: ['suo', 'sua', 'suoi', 'sue'], a: 1, tag: 'agreement' },
+      { type: 'fill', s: 'Le ___ borse (eure, f.Pl).', ans: ['vostre'], tag: 'agreement' },
+      { type: 'fill', s: 'Il ___ cane (ihr, Pl-Besitzer „loro“).', ans: ['loro'], tag: 'agreement' },
+      { type: 'mc', s: 'I ___ libri (meine).', o: ['mio', 'mia', 'miei', 'mie'], a: 2, tag: 'agreement' },
+      { type: 'fill', s: 'La ___ idea (deine, f).', ans: ['tua'], tag: 'agreement' }
+    ]
+  },
+  {
+    id: 'it-passato-avere', level: 'A2', title: 'Passato prossimo mit avere',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'avere (Präs.) + Partizip Perfekt. Regelmäßig: -ato (parlare→parlato), -uto (vendere→venduto), -ito (partire→partito). Partizip bleibt unverändert.',
+    examples: ['Ho mangiato una mela.', 'Hai visto il film?'],
+    exercises: [
+      { type: 'mc', s: 'Io ___ mangiato (mangiare).', o: ['ho', 'hai', 'sono', 'ha'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Tu ___ visto il film?', o: ['hai', 'ho', 'sei', 'ha'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Lui ___ parlato con Anna.', o: ['ha', 'ho', 'è', 'hai'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ finito i compiti.', o: ['abbiamo', 'siamo', 'avete', 'hanno'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Partizip von „vendere“: ___', ans: ['venduto'], tag: 'tense' },
+      { type: 'fill', s: 'Partizip von „scrivere“: ___', ans: ['scritto'], tag: 'spelling' },
+      { type: 'fill', s: 'Loro ___ preso il treno.', ans: ['hanno'], tag: 'tense' },
+      { type: 'mc', s: 'Voi ___ letto il libro?', o: ['avete', 'abbiamo', 'siete', 'hanno'], a: 0, tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-passato-essere', level: 'A2', title: 'Passato prossimo mit essere (+ Angleichung)',
+    concept: 'agreement', errorTag: 'agreement',
+    explanation: 'Bei Bewegungsverben/Zustandsverben (andare, venire, arrivare, nascere, cadere...) steht essere. Das Partizip gleicht sich dem Subjekt an: Maria è arrivata.',
+    examples: ['Sono andato/a a casa.', 'Maria è arrivata.', 'Loro sono partiti.'],
+    exercises: [
+      { type: 'mc', s: 'Maria ___ arrivata (arrivare).', o: ['ha', 'è', 'sono', 'hai'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Io ___ andato a Roma (m).', o: ['ho', 'sono', 'hai', 'sei'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Le ragazze ___ uscite.', o: ['hanno', 'sono', 'è', 'avete'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Lui ___ nato a Napoli.', o: ['ha', 'è', 'sono', 'hai'], a: 1, tag: 'agreement' },
+      { type: 'fill', s: 'Noi ___ partiti (partire).', ans: ['siamo'], tag: 'agreement' },
+      { type: 'fill', s: 'Anna è ___ (uscire, f).', ans: ['uscita'], tag: 'agreement' },
+      { type: 'fill', s: 'I bambini ___ caduti (cadere).', ans: ['sono'], tag: 'agreement' },
+      { type: 'mc', s: 'Tu ___ venuta? (f)', o: ['hai', 'sei', 'hai', 'sei'], a: 1, tag: 'agreement' }
+    ]
+  },
+  {
+    id: 'it-imperfetto', level: 'A2', title: 'Imperfetto (Vergangenheit, andauernd)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Für Gewohnheiten/Hintergrund in der Vergangenheit. -are: -avo,-avi,-ava,-avamo,-avate,-avano. -ere: -evo..., -ire: -ivo...',
+    examples: ['Da bambino giocavo in giardino.', 'Leggevo ogni sera.'],
+    exercises: [
+      { type: 'mc', s: 'Da piccolo ___ (giocare) molto.', o: ['giocavo', 'giocai', 'gioco', 'giocavo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ (mangiare) sempre la pasta.', o: ['mangiavamo', 'mangiammo', 'mangiamo', 'mangeremo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Lei ___ (leggere) ogni sera.', o: ['leggeva', 'lesse', 'legge', 'leggerà'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Voi ___ (dormire) troppo.', o: ['dormivate', 'dormiste', 'dormite', 'dormirete'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Io ___ (essere) bambino.', ans: ['ero'], tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ (fare) i compiti.', ans: ['facevano'], tag: 'tense' },
+      { type: 'fill', s: 'Tu ___ (bere) il caffè.', ans: ['bevevi'], tag: 'tense' },
+      { type: 'mc', s: 'Ieri ___ (avere) fame.', o: ['avevo', 'ebbi', 'ho', 'avrò'], a: 0, tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-passato-vs-imperfetto', level: 'A2', title: 'Passato prossimo vs. Imperfetto',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Passato prossimo = abgeschlossene Einzelhandlung; Imperfetto = Hintergrund/Gewohnheit. „Mentre leggevo (Imp), è arrivato (PP) Marco.“',
+    examples: ['Ieri ho mangiato la pizza.', 'Mentre dormivo, ha telefonato.'],
+    exercises: [
+      { type: 'mc', s: 'Ieri ___ (andare) al cinema.', o: ['sono andato', 'andavo', 'andavo', 'vado'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Da ragazzo ___ (correre) ogni giorno.', o: ['ho corso', 'correvo', 'corro', 'corrò'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Mentre ___ (leggere), ha chiamato.', o: ['ho letto', 'leggevo', 'leggo', 'leggerò'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Alle 8 ___ (svegliarsi).', o: ['mi sono svegliato', 'mi svegliavo', 'mi sveglio', 'mi sveglierò'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Un giorno ___ (trovare) un portafoglio.', ans: ['ho trovato'], tag: 'tense' },
+      { type: 'fill', s: 'Sempre ___ (bere) tè a colazione.', ans: ['bevevo'], tag: 'tense' },
+      { type: 'mc', s: 'Quando ___ (essere) giovane, abitavo qui.', o: ['ero', 'sono stato', 'sarò', 'sono'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Ieri ___ (finire) il lavoro alle 6.', ans: ['ho finito'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-pronomi-diretti', level: 'A2', title: 'Direkte Objektpronomen',
+    concept: 'word_order', errorTag: 'word_order',
+    explanation: 'mi, ti, lo/la, ci, vi, li/le stehen vor dem konjugierten Verb. lo/la vor Vokal → l’. Partizip gleicht sich an (l’ho vista).',
+    examples: ['La vedo ogni giorno.', 'Li ho comprati ieri.'],
+    exercises: [
+      { type: 'mc', s: '___ vedo ogni giorno (Maria).', o: ['La', 'Lo', 'Le', 'Li'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: '___ compro al mercato (i libri).', o: ['Li', 'Le', 'Lo', 'La'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: 'Anna? ___ chiamo stasera.', o: ['la', 'lo', 'le', 'li'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: 'Il libro? ___ ho letto (l’).', o: ['lo', 'l’', 'la', 'li'], a: 1, tag: 'word_order' },
+      { type: 'fill', s: 'Le amiche? ___ invito (le).', ans: ['le'], tag: 'word_order' },
+      { type: 'fill', s: 'Marco? ___ aspetto (lo).', ans: ['lo'], tag: 'word_order' },
+      { type: 'mc', s: 'La torta ___ ho mangiata (sie).', o: ['l’', 'la', 'lo', 'le'], a: 0, tag: 'word_order' },
+      { type: 'fill', s: 'I bambini ___ porto al parco (li).', ans: ['li'], tag: 'word_order' }
+    ]
+  },
+  {
+    id: 'it-pronomi-indiretti', level: 'A2', title: 'Indirekte Objektpronomen',
+    concept: 'word_order', errorTag: 'word_order',
+    explanation: 'mi, ti, gli/le, ci, vi, gli (ihnen) vor dem Verb. „Do il libro a Marco“ → „Gli do il libro.“',
+    examples: ['Mi piace il caffè.', 'Le scrivo una mail.'],
+    exercises: [
+      { type: 'mc', s: '___ do il libro (a Marco).', o: ['Gli', 'Le', 'Lo', 'La'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: '___ scrivo a Maria (ihr).', o: ['Gli', 'Le', 'La', 'Li'], a: 1, tag: 'word_order' },
+      { type: 'mc', s: '___ piace la musica (mir).', o: ['Mi', 'Ti', 'Ci', 'Vi'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: '___ telefoniamo stasera (uns).', o: ['Ci', 'Vi', 'Mi', 'Ti'], a: 0, tag: 'word_order' },
+      { type: 'fill', s: '___ dici la verità (dir).', ans: ['Mi'], tag: 'word_order' },
+      { type: 'fill', s: '___ mandate i saluti (euch).', ans: ['Vi'], tag: 'word_order' },
+      { type: 'mc', s: 'Ai bambini ___ compro un regalo (ihnen).', o: ['gli', 'le', 'li', 'lo'], a: 0, tag: 'word_order' },
+      { type: 'fill', s: 'A te ___ piace? (dir)', ans: ['ti'], tag: 'word_order' }
+    ]
+  },
+  {
+    id: 'it-ci-ne', level: 'A2', title: 'Pronomen „ci“ und „ne“',
+    concept: 'lexis', errorTag: 'lexis',
+    explanation: 'ci = Ort (dort) oder „ci+Verb“ (ci penso). ne = Menge/„davon“ (Ne ho tre). ne steht vor dem Verb, Partizip gleicht sich an der Menge an.',
+    examples: ['Vado a Roma e ci resto due giorni.', 'Quante mele? Ne ho tre.'],
+    exercises: [
+      { type: 'mc', s: 'Vado a Roma e ___ resto due giorni.', o: ['ci', 'ne', 'la', 'vi'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'Quante mele hai? ___ ho tre.', o: ['ci', 'ne', 'le', 'li'], a: 1, tag: 'lexis' },
+      { type: 'mc', s: '___ penso sempre (ci penso).', o: ['ci', 'ne', 'lo', 'mi'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'Vuoi del caffè? Sì, ___ voglio.', o: ['ci', 'ne', 'lo', 'mi'], a: 1, tag: 'lexis' },
+      { type: 'fill', s: 'Quante mele hai? ___ ho tre.', ans: ['ne', 'Ne'], tag: 'lexis' },
+      { type: 'mc', s: 'Delle domande? ___ ho molte.', o: ['ci', 'ne', 'le', 'le'], a: 1, tag: 'lexis' },
+      { type: 'mc', s: 'Non ___ capisco niente (es).', o: ['ne', 'ci', 'lo', 'la'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'A Roma? Ci ___ vado spesso (bleiben/stare).', ans: ['vado', 'resto', 'stò'], tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-condizionale', level: 'A2', title: 'Condizionale presente',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Für Höflichkeit/Wünsche. -are/-ere: Infinitivstamm + -ei/-esti/-ebbe/-emmo/-este/-ebbero. irreg. vorrei, vorrei, potrebbe.',
+    examples: ['Vorrei un caffè.', 'Potresti aiutarmi?'],
+    exercises: [
+      { type: 'mc', s: '___ un caffè, per favore (volere).', o: ['Vorrei', 'Voglio', 'Volevo', 'Vorrò'], a: 0, tag: 'tense' },
+      { type: 'mc', s: '___ aiutarmi? (potere)', o: ['Puoi', 'Potresti', 'Potevi', 'Potrai'], a: 1, tag: 'tense' },
+      { type: 'mc', s: '___ la bistecca (volere).', o: ['Voglio', 'Vorrei', 'Volevo', 'Vorrò'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Noi ___ venire (potere).', o: ['possiamo', 'potremmo', 'potevamo', 'potremo'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Io ___ abitare a Roma (volere).', ans: ['vorrei'], tag: 'tense' },
+      { type: 'fill', s: 'Che cosa ___ tu? (fare)', ans: ['faresti'], tag: 'tense' },
+      { type: 'mc', s: '___ sapere la risposta (sapere).', o: ['So', 'Saprei', 'Sapevo', 'Saprò'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Loro ___ volentieri (venire).', ans: ['verrebbero'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-congiuntivo', level: 'B1', title: 'Congiuntivo presente',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Nach Meinungen/Wünschen/„che“: penso che sia, spero che venga, è importante che tu studi. Regelmäßig: -i,-i,-i,-iamo,-iate,-ino.',
+    examples: ['Penso che sia giusto.', 'Spero che tu stia bene.'],
+    exercises: [
+      { type: 'mc', s: 'Penso che lui ___ (essere) onesto.', o: ['è', 'sia', 'sarà', 'fosse'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'Spero che tu ___ (stare) bene.', o: ['stai', 'stia', 'starai', 'stavi'], a: 1, tag: 'tense' },
+      { type: 'mc', s: 'È importante che voi ___ (studiare).', o: ['studiate', 'studiate', 'studierete', 'studiavate'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Credo che loro ___ (avere) ragione.', o: ['hanno', 'abbiano', 'avevano', 'avranno'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Voglio che Maria ___ (venire).', ans: ['venga'], tag: 'tense' },
+      { type: 'fill', s: 'Benché ___ (fare) freddo, esco.', ans: ['faccia'], tag: 'tense' },
+      { type: 'mc', s: 'Penso che ___ (sapere) la verità.', o: ['sa', 'sappia', 'sapeva', 'saprà'], a: 1, tag: 'tense' },
+      { type: 'fill', s: 'Spero che voi ___ (potere) venire.', ans: ['possiate'], tag: 'tense' }
+    ]
+  }
+];
+
+// Konsistenzprüfung
+for (const p of points) {
+  if (p.exercises.length !== 8) throw new Error(`${p.id}: ${p.exercises.length} Übungen (erwartet 8)`);
+  for (const e of p.exercises) {
+    if (e.type === 'mc' && (e.a < 0 || e.a >= e.o.length)) throw new Error(`${p.id}: mc-Antwort außerhalb Optionen`);
+    if (e.type === 'fill' && (!Array.isArray(e.ans) || e.ans.length === 0)) throw new Error(`${p.id}: fill ohne Antwort`);
+  }
+}
+
+const doc = {
+  lang: 'it',
+  version: '1.0.0',
+  source: 'CEFR Can-do + Lehrplan A1–B1',
+  points
+};
+
+fs.mkdirSync(path.dirname(OUT), { recursive: true });
+fs.writeFileSync(OUT, JSON.stringify(doc, null, 2) + '\n', 'utf-8');
+console.log(`✅ ${points.length} Punkte, ${points.reduce((n, p) => n + p.exercises.length, 0)} Übungen → ${OUT}`);

@@ -93,7 +93,31 @@ export const v2Client = {
     request(`/v2/me/languages/${userLanguageId}/texts/${textId}/mine`, {
       method: 'POST',
       body: JSON.stringify(payload)
-    })
+    }),
+
+  // Grammatik (Fokus)
+  getGrammarPoints: (userLanguageId, level) =>
+    request(`/v2/me/languages/${userLanguageId}/grammar${level ? `?level=${level}` : ''}`),
+  getGrammarPoint: (userLanguageId, pointId) =>
+    request(`/v2/me/languages/${userLanguageId}/grammar/${pointId}`),
+  answerGrammar: (userLanguageId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/grammar/answer`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }),
+  getGrammarStats: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/grammar/stats`),
+
+  // Schreiben / Übersetzen
+  getWritingTask: (userLanguageId, topic) =>
+    request(`/v2/me/languages/${userLanguageId}/writing/task${topic ? `?topic=${encodeURIComponent(topic)}` : ''}`),
+  evaluateWriting: (userLanguageId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/writing/evaluate`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }),
+  getWritingStats: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/writing/stats`)
 };
 
 export default v2Client;

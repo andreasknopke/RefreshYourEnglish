@@ -19,6 +19,8 @@ import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import PlacementTest from './features/placement/PlacementTest';
 import ReviewModule from './features/review/ReviewModule';
 import ReaderModule from './features/reader/ReaderModule';
+import GrammarModule from './features/grammar/GrammarModule';
+import WritingModule from './features/writing/WritingModule';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
@@ -359,6 +361,54 @@ function App() {
               </button>
             </div>
 
+            {/* Modul 0c: Grammatik (Mehrsprachige Engine) */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Grammatik
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
+                Fokus-Übungen mit Fehlerprofil
+              </p>
+              <button
+                onClick={() => setActiveModule('grammar')}
+                className="w-full btn-secondary relative z-10 text-sm py-2"
+              >
+                <span className="relative z-10">Üben →</span>
+              </button>
+            </div>
+
+            {/* Modul 0d: Schreiben (Mehrsprachige Engine) */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300 flex flex-col">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Schreiben
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
+                Übersetzen mit KI-Feedback
+              </p>
+              <button
+                onClick={() => setActiveModule('writing')}
+                className="w-full btn-secondary relative z-10 text-sm py-2"
+              >
+                <span className="relative z-10">Schreiben →</span>
+              </button>
+            </div>
+
             {/* Modul 1: Übersetzungsübung */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -541,6 +591,8 @@ function App() {
             {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
             {activeModule === 'review' && <ReviewModule />}
             {activeModule === 'reader' && <ReaderModule />}
+            {activeModule === 'grammar' && <GrammarModule />}
+            {activeModule === 'writing' && <WritingModule />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
             {activeModule === 'stats' && <StatsModule user={user} />}
