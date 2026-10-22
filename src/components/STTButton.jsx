@@ -5,7 +5,7 @@ import sttService from '../services/sttService';
  * Speech-to-Text Button Component
  * Mikrofon-Button für Spracheingabe mittels Web Speech API
  */
-function STTButton({ onTranscript, language = 'en', disabled = false }) {
+function STTButton({ onTranscript, onStart, language = 'en', disabled = false }) {
   const [isRecording, setIsRecording] = useState(false);
   const [interimText, setInterimText] = useState('');
   const [error, setError] = useState(null);
@@ -45,6 +45,7 @@ function STTButton({ onTranscript, language = 'en', disabled = false }) {
       
       sttService.start();
       setIsRecording(true);
+      if (onStart) onStart();
     } catch (err) {
       console.error('Failed to start recording:', err);
       setError(err.message);

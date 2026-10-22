@@ -85,8 +85,51 @@ Respond ONLY with JSON: {"native": "<${native} sentence>", "target": "<${target}
 });
 
 // ---------------------------------------------------------------------------
-// Task: evaluate_writing – bewertet eine Produktion des Lernenden.
+// Task: dialog_reply – Dialogpartner antwortet in der Zielsprache und gibt
+// Feedback zum letzten Beitrag des Lernenden (in der Muttersprache).
 // ---------------------------------------------------------------------------
+registerPrompt('dialog_reply', 'v1', {
+  description: 'Dialogpartner antwortet in der Zielsprache + Feedback zum Lernenden-Beitrag',
+  contract: 'dialog_reply',
+  build({ targetLang, nativeLang, level, scenario, learnerRole, partnerRole, history = [], lastLearnerTurn }) {
+    const target = langName(targetLang);
+    const native = langName(nativeLang);
+
+    const transcript = history
+      .map((t) => `${t.role === 'learner' ? learnerRole : partnerRole}: ${t.text}`)
+      .join('\n');
+
+    const system = `You are a friendly conversation partner helping a learner practice ${target}.
+Level: ${level}. Stay at this level: short, natural ${target} sentences.
+You play the role "${partnerRole}". The learner plays "${learnerRole}".
+Scenario: ${scenario}
+
+Do two things:
+1. "reply": your next line, ALWAYS in ${target} (never in ${native}). Keep it short and move the conversation forward. When the conversation has reached a natural end, set "reply_done" to true.
+2. "feedback" about the learner's LAST turn only, written in ${native}:
+   - "score": integer 1-10 for how well that turn was understood/correct
+   - "errors": list of { "span", "type" (agreement|tense|preposition|gender|spelling|word_order|lexis), "explanation" (in ${native}), "suggestion" (better ${target}) }
+   - "hint": one short ${native} tip for the next turn
+Respond ONLY with JSON:
+{
+  "reply": "<${target} line>",
+  "reply_done": <true|false>,
+  "feedback": { "score": <1-10>, "errors": [ ... ], "hint": "<${native}>" }
+}`;
+
+    const user = `Conversation so far:\n${transcript || '(no turns yet)'}\n\nLearner's last turn:\n"""${lastLearnerTurn}"""\n\nNow produce your JSON reply.`;
+
+    return {
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user }
+      ],
+      temperature: 0.7,
+      maxTokens: 700
+    };
+  }
+});
+
 registerPrompt('evaluate_writing', 'v1', {
   description: 'Bewertet einen Schreib-/Übersetzungsbeitrag mit Fehlerkategorien',
   contract: 'evaluate_writing',

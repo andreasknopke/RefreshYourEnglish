@@ -1,0 +1,199 @@
+{
+  "lang": "it",
+  "version": "1.0.0",
+  "description": "Dialog-Szenarien und Shadowing-Sätze für Italienisch A1–B1. Sprachneutral vom Engine-Modul geladen (Dialog + Shadowing).",
+  "scenarios": [
+    {
+      "id": "bar-kafe",
+      "level": "A1",
+      "title": "Im Café bestellen",
+      "goal": "Getränke und Speisen höflich bestellen und bezahlen",
+      "roles": { "learner": "Gast", "partner": "Barista" },
+      "situation": "Du bist in einem italienischen Café und bestellst einen Kaffee und ein Cornetto.",
+      "opening": "Buongiorno! Cosa desidera?",
+      "redemittel": ["Vorrei un caffè, per favore.", "Un cornetto, grazie.", "Il conto, per favore.", "Quanto devo?"],
+      "targetVocab": ["caffè", "cornetto", "conto"],
+      "shadowing": [
+        "Vorrei un caffè, per favore.",
+        "Un cornetto e un cappuccino, grazie.",
+        "Il conto, per favore. Quanto devo?"
+      ]
+    },
+    {
+      "id": "presentarsi",
+      "level": "A1",
+      "title": "Sich vorstellen",
+      "goal": "Name, Herkunft und Beruf nennen",
+      "roles": { "learner": "Neue Bekanntschaft", "partner": "Neuer Kontakt" },
+      "situation": "Du triffst jemanden auf einer Party und stellt dich vor.",
+      "opening": "Ciao! Come ti chiami?",
+      "redemittel": ["Mi chiamo ...", "Sono tedesco/a.", "Vengo dalla Germania.", "Piacere!"],
+      "targetVocab": ["chiamare", "tedesco", "piacere"],
+      "shadowing": [
+        "Ciao, mi chiamo Andrea e vengo dalla Germania.",
+        "Piacere di conoscerti!",
+        "Di dove sei?"
+      ]
+    },
+    {
+      "id": "direzione-strada",
+      "level": "A1",
+      "title": "Nach dem Weg fragen",
+      "goal": "Einen Weg erfragen und Richtungen verstehen",
+      "roles": { "learner": "Tourist", "partner": "Einheimischer" },
+      "situation": "Du suchst den Dom und fragst eine Person auf der Straße.",
+      "opening": "Scusi, può aiutarmi? Sto cercando il Duomo.",
+      "redemittel": ["Dov'è ...?", "Vada sempre dritto.", "Giri a destra/sinistra.", "Grazie mille!"],
+      "targetVocab": ["dove", "destra", "sinistra"],
+      "shadowing": [
+        "Scusi, dov'è la stazione?",
+        "Vada sempre dritto e poi giri a sinistra.",
+        "Grazie mille, è molto gentile."
+      ]
+    },
+    {
+      "id": "fare-spesa",
+      "level": "A1",
+      "title": "Einkauf beim Markt",
+      "goal": "Obst und Gemüse mit Mengenangaben kaufen",
+      "roles": { "learner": "Kunde", "partner": "Verkäufer" },
+      "situation": "Du kaufst auf dem Markt Obst und Gemüse ein.",
+      "opening": "Buongiorno! Desidera?",
+      "redemittel": ["Un chilo di ...", "Un etto di ...", "Quant'è in tutto?", "Nient'altro, grazie."],
+      "targetVocab": ["chilo", "pomodoro", "mela"],
+      "shadowing": [
+        "Un chilo di pomodori, per favore.",
+        "Quant'è in tutto?",
+        "Sono tre euro e cinquanta."
+      ]
+    },
+    {
+      "id": "hotel-checkin",
+      "level": "A2",
+      "title": "Hotel-Check-in",
+      "goal": "Ein Zimmer beziehen und Wünsche äußern",
+      "roles": { "learner": "Gast", "partner": "Rezeptionist" },
+      "situation": "Du kommst im Hotel an und checkst ein.",
+      "opening": "Buonasera, benvenuto! Ha una prenotazione?",
+      "redemittel": ["Ho una prenotazione a nome ...", "Una camera singola/doppia", "A che ora è la colazione?", "C'è il Wi-Fi?"],
+      "targetVocab": ["prenotazione", "camera", "colazione"],
+      "shadowing": [
+        "Ho una prenotazione a nome Müller.",
+        "A che ora è servita la colazione?",
+        "La camera ha il Wi-Fi?"
+      ]
+    },
+    {
+      "id": "ristorante-prenotare",
+      "level": "A2",
+      "title": "Im Restaurant",
+      "goal": "Einen Tisch reservieren und ein Menü bestellen",
+      "roles": { "learner": "Gast", "partner": "Kellner" },
+      "situation": "Du reservierst einen Tisch und bestellst ein Abendessen.",
+      "opening": "Buonasera, un tavolo per due?",
+      "redemittel": ["Un tavolo per due, per favore.", "Cosa mi consiglia?", "Vorrei la pasta al ragù.", "Da bere, un'acqua naturale."],
+      "targetVocab": ["tavolo", "consigliare", "ordinare"],
+      "shadowing": [
+        "Un tavolo per due, per favore.",
+        "Cosa mi consiglia di buono?",
+        "Vorrei la pasta al ragù e un'acqua naturale."
+      ]
+    },
+    {
+      "id": "medico",
+      "level": "A2",
+      "title": "Beim Arzt",
+      "goal": "Beschwerden beschreiben und Ratschläge verstehen",
+      "roles": { "learner": "Patient", "partner": "Arzt" },
+      "situation": "Du gehst zum Arzt, weil du dich seit Tagen nicht gut fühlst.",
+      "opening": "Buongiorno, mi dica: cosa non va?",
+      "redemittel": ["Ho mal di testa.", "Mi sento male.", "Da quanto tempo?", "Prenda questa medicina."],
+      "targetVocab": ["testa", "medicina", "stato"],
+      "shadowing": [
+        "Ho mal di testa da tre giorni.",
+        "Mi sento un po' debole.",
+        "Prenda questa medicina due volte al giorno."
+      ]
+    },
+    {
+      "id": "hobby-tempo-libero",
+      "level": "A2",
+      "title": "Über Hobbys sprechen",
+      "goal": "Vorlieben und Freizeitaktivitäten beschreiben",
+      "roles": { "learner": "Freund", "partner": "Freundin" },
+      "situation": "Du unterhältst dich mit einer Freundin über die Freizeit.",
+      "opening": "Ciao! Cosa fai nel tempo libero?",
+      "redemittel": ["Mi piace ...", "Preferisco ...", "Nel fine settimana ...", "Ti va di ...?"],
+      "targetVocab": ["piacere", "weekend", "film"],
+      "shadowing": [
+        "Nel tempo libero mi piace leggere.",
+        "Nel fine settimana vado al cinema.",
+        "Ti va di prendere un caffè domani?"
+      ]
+    },
+    {
+      "id": "viaggio-treno",
+      "level": "B1",
+      "title": "Bahnhof: Ticket kaufen",
+      "goal": "Zugverbindungen erfragen und ein Ticket kaufen",
+      "roles": { "learner": "Reisender", "partner": "Fahrkartenverkäufer" },
+      "situation": "Du möchtest nach Florenz fahren und kaufst ein Ticket.",
+      "opening": "Buongiorno, dove vuole andare?",
+      "redemittel": ["Un biglietto per ...", "Andata e ritorno", "A che ora parte il prossimo treno?", "Binario ..."],
+      "targetVocab": ["biglietto", "treno", "binario"],
+      "shadowing": [
+        "Un biglietto di andata e ritorno per Firenze.",
+        "A che ora parte il prossimo treno?",
+        "Il treno parte dal binario quattro."
+      ]
+    },
+    {
+      "id": "lavoro-colloquio",
+      "level": "B1",
+      "title": "Vorstellungsgespräch",
+      "goal": "Über Erfahrung und Stärken sprechen",
+      "roles": { "learner": "Bewerber", "partner": "Personaler" },
+      "situation": "Du hast ein Vorstellungsgespräch für eine Stelle.",
+      "opening": "Grazie per essere venuto. Mi parli di lei.",
+      "redemittel": ["Ho esperienza in ...", "Lavoro come ...", "Le mie qualità sono ...", "Quando potrei iniziare?"],
+      "targetVocab": ["esperienza", "lavoro", "qualità"],
+      "shadowing": [
+        "Ho cinque anni di esperienza nel marketing.",
+        "Le mie qualità sono la precisione e la creatività.",
+        "Potrei iniziare il mese prossimo."
+      ]
+    },
+    {
+      "id": "opinione-dibattito",
+      "level": "B1",
+      "title": "Die eigene Meinung äußern",
+      "goal": "Meinung begründen und auf andere eingehen",
+      "roles": { "learner": "Diskutant", "partner": "Gesprächspartner" },
+      "situation": "Ihr diskutiert über soziale Medien.",
+      "opening": "Secondo te, i social media sono utili o dannosi?",
+      "redemittel": ["Secondo me ...", "Sono d'accordo perché ...", "Non sono d'accordo.", "Dipende da ..."],
+      "targetVocab": ["opinione", "dipendere", "utile"],
+      "shadowing": [
+        "Secondo me i social sono utili ma anche pericolosi.",
+        "Sono d'accordo con te fino a un certo punto.",
+        "Dipende da come li usiamo."
+      ]
+    },
+    {
+      "id": "pianificare-festa",
+      "level": "B1",
+      "title": "Eine Feier planen",
+      "goal": "Vorschläge machen und Absprachen treffen",
+      "roles": { "learner": "Gastgeber", "partner": "Freund" },
+      "situation": "Du planst mit einem Freund eine Geburtstagsfeier.",
+      "opening": "Allora, organizziamo la festa di Marco?",
+      "redemittel": ["Perché non ...?", "Potremmo ...", "Mi occupo io di ...", "Va bene se ...?"],
+      "targetVocab": ["festa", "organizzare", "invitare"],
+      "shadowing": [
+        "Perché non facciamo la festa sabato sera?",
+        "Potremmo invitare anche i colleghi.",
+        "Mi occupo io della musica, va bene?"
+      ]
+    }
+  ]
+}

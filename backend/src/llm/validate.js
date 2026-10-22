@@ -49,6 +49,42 @@ export const contracts = {
     return { ok: true, data: { native, target } };
   },
 
+  dialog_reply(parsed) {
+    if (!parsed || typeof parsed !== 'object') {
+      return { ok: false, error: 'dialog_reply: keine Objendantwort' };
+    }
+
+    const reply = asString(parsed.reply);
+    if (!reply) {
+      return { ok: false, error: 'dialog_reply: reply fehlt' };
+    }
+
+    const fb = parsed.feedback && typeof parsed.feedback === 'object' ? parsed.feedback : {};
+    const errors = Array.isArray(fb.errors)
+      ? fb.errors
+          .filter((e) => e && typeof e === 'object')
+          .map((e) => ({
+            span: asString(e.span),
+            type: ERROR_TYPES.includes(e.type) ? e.type : 'lexis',
+            explanation: asString(e.explanation),
+            suggestion: asString(e.suggestion)
+          }))
+      : [];
+
+    return {
+      ok: true,
+      data: {
+        reply,
+        reply_done: parsed.reply_done === true,
+        feedback: {
+          score: clampScore(fb.score),
+          errors,
+          hint: asString(fb.hint)
+        }
+      }
+    };
+  },
+
   evaluate_writing(parsed) {
     if (!parsed || typeof parsed !== 'object') {
       return { ok: false, error: 'evaluate_writing: keine Objendantwort' };

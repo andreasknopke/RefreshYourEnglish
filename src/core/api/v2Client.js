@@ -117,7 +117,27 @@ export const v2Client = {
       body: JSON.stringify(payload)
     }),
   getWritingStats: (userLanguageId) =>
-    request(`/v2/me/languages/${userLanguageId}/writing/stats`)
+    request(`/v2/me/languages/${userLanguageId}/writing/stats`),
+
+  // Speaking (Dialog + Shadowing)
+  getSpeakingScenarios: (userLanguageId, level) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/scenarios${level ? `?level=${level}` : ''}`),
+  getSpeakingScenario: (userLanguageId, scenarioId) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/scenarios/${encodeURIComponent(scenarioId)}`),
+  sendSpeakingTurn: (userLanguageId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/turn`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }),
+  getShadowing: (userLanguageId, level) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/shadowing${level ? `?level=${level}` : ''}`),
+  scoreSpeaking: (userLanguageId, payload) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/score`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }),
+  getSpeakingStats: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/speaking/stats`)
 };
 
 export default v2Client;
