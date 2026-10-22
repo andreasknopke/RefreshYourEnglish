@@ -15,10 +15,10 @@ describe('Grammar Service', () => {
     ctx = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de' });
   });
 
-  it('listet 20 Grammatikpunkte für Italienisch', () => {
+  it('listet Grammatikpunkte für Italienisch (mindestens 50)', () => {
     const res = listGrammarPoints(ctx.userLanguageId, ctx.userId);
     expect(res.error).toBeUndefined();
-    expect(res.points.length).toBe(20);
+    expect(res.points.length).toBeGreaterThanOrEqual(50);
     expect(res.points[0]).toHaveProperty('id');
     expect(res.points[0]).toHaveProperty('exerciseCount');
   });
