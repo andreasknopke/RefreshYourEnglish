@@ -912,6 +912,184 @@ const points = [
       { type: 'fill', s: 'sowohl … als auch (2. Teil) = sia il caffè ___ il tè', ans: ['che', 'e'], tag: 'word_order' }
     ]
   },
+
+  // ---- B2 ----
+  {
+    id: 'it-congiuntivo-trapassato', level: 'B2', title: 'Congiuntivo trapassato',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Congiuntivo imperfetto von essere/avere + participio passato. Drückt Vorzeitigkeit im Konjunktiv der Vergangenheit aus (3. Typ Konditional, indirekte Rede).',
+    examples: ['Se avessi studiato, avrei superato.', 'Pensavo che fosse già partito.'],
+    exercises: [
+      { type: 'mc', s: 'Wenn ich studiert hätte: Se ___ studiato, …', o: ['avessi', 'ho', 'avevo', 'ebbi'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ich dachte, er sei schon gegangen: Pensavo che ___ già partito.', o: ['fosse', 'è', 'era', 'sarà'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Wenn sie (Pl.) gekommen wären: se loro ___ venuti', ans: ['fossero'], tag: 'tense' },
+      { type: 'mc', s: 'Bildung:', o: ['cong. imperfetto essere/avere + part.', 'cong. presente + part.', 'imperfetto + part.', 'futuro + part.'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Wenn du es gewusst hättest: se tu lo ___ saputo', ans: ['avessi'], tag: 'tense' },
+      { type: 'mc', s: 'Er glaubte, sie hätten es gesagt: credeva che lo ___ detto.', o: ['avessero', 'hanno', 'avevano', 'ebbero'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Konditional 3. Typ Wenn-Satz nutzt', o: ['cong. trapassato', 'cong. presente', 'indicativo', 'futuro'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Wenn ich dort gewesen wäre: se io ___ stato lì', ans: ['fossi'], tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-periodo-ipotetico-misto', level: 'B2', title: 'Konditionalsätze gemischt (periodo misto)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Gemischte Typen kombinieren Vergangenheit und Gegenwart: Se avessi studiato (damals), ora sarei dottore (heute). Zeitbezug der beiden Satzteile unabhängig.',
+    examples: ['Se avessi studiato, ora lavorerei.', 'Se fossi ricco, ieri avrei comprato la casa.'],
+    exercises: [
+      { type: 'mc', s: 'Wenn ich damals studiert hätte, wäre ich jetzt Arzt: Se ___ studiato, ora sarei medico.', o: ['avessi', 'ho', 'avrei', 'avevo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: '… ora ___ medico.', o: ['sarei', 'sono', 'ero', 'sarò'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Wenn ich reich wäre, hätte ich gestern gekauft: Se fossi ricco, ieri ___ la casa.', o: ['avrei comprato', 'compro', 'comprerei', 'comprai'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Gemischter Typ: Wenn-Satz Vergangenheit, Hauptsatz ___', ans: ['presente', 'oggi'], tag: 'tense' },
+      { type: 'mc', s: 'Se ___ (sapere) ieri, ora sarei tranquillo.', o: ['avessi saputo', 'so', 'sapevo', 'saprei'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Bei gemischten Typen sind die Zeiten', o: ['unabhängig', 'immer gleich', 'immer Futur', 'immer Konjunktiv'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Wenn er käme (jetzt), hätte er gestern angerufen: Se venisse, ieri ___ telefonato', ans: ['avrebbe'], tag: 'tense' },
+      { type: 'mc', s: '„ora“ signalisiert im Hauptsatz', o: ['Gegenwart', 'Vergangenheit', 'Zukunft', 'Bedingung'], a: 0, tag: 'word_order' }
+    ]
+  },
+  {
+    id: 'it-nominalizzazione', level: 'B2', title: 'Nominalisierung / Nominalstil',
+    concept: 'lexis', errorTag: 'lexis',
+    explanation: 'Verben/Adjektive zu Substantiven: decidere → la decisione, possibile → la possibilità, sviluppare → lo sviluppo. Typisch für formelle/schriftliche Texte.',
+    examples: ['La decisione è presa.', 'In caso di pioggia.', 'Lo sviluppo economico.'],
+    exercises: [
+      { type: 'fill', s: 'decidere → la ___', ans: ['decisione'], tag: 'lexis' },
+      { type: 'fill', s: 'possibile → la ___', ans: ['possibilità'], tag: 'lexis' },
+      { type: 'fill', s: 'sviluppare → lo ___', ans: ['sviluppo'], tag: 'lexis' },
+      { type: 'mc', s: 'Nominalstil ist typisch für', o: ['formelle Schriftsprache', 'Umgangssprache', 'Dialog', 'Lieder'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'in ___ di pioggia (im Falle von)', ans: ['caso'], tag: 'lexis' },
+      { type: 'mc', s: '„la costruzione“ kommt von', o: ['costruire', 'costrutto', 'costante', 'costituire'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'libero → la ___', ans: ['libertà'], tag: 'lexis' },
+      { type: 'mc', s: 'Nominalisierung ersetzt oft', o: ['einen Nebensatz', 'ein Subjekt', 'einen Artikel', 'ein Pronomen'], a: 0, tag: 'word_order' }
+    ]
+  },
+  {
+    id: 'it-locuzioni-idiomatiche', level: 'B2', title: 'Redewendungen (modi di dire)',
+    concept: 'lexis', errorTag: 'lexis',
+    explanation: 'Feste Wendungen: in bocca al lupo (Viel Glück), costare un occhio della testa (teuer sein), non piovere (es regnet nicht / alles gut), prendere in giro (veräppeln).',
+    examples: ['In bocca al lupo per l’esame!', 'Mi ha preso in giro.', 'Costa un occhio della testa.'],
+    exercises: [
+      { type: 'mc', s: '„In bocca al lupo!“ bedeutet', o: ['Viel Glück', 'Gute Nacht', 'Auf Wiedersehen', 'Guten Appetit'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: '„prendere in giro“ heißt', o: ['veräppeln', 'umarmen', 'erinnern', 'verzeihen'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: '„costare un occhio della testa“ =', o: ['sehr teuer', 'billig', 'schmerzhaft', 'kostenlos'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'Antwort auf „in bocca al lupo“: „Crepi il ___!“', ans: ['lupo'], tag: 'lexis' },
+      { type: 'mc', s: '„non piove“ (umgangssprachlich) heißt', o: ['alles ist gut', 'es regnet', 'schlechtes Wetter', 'niemand da'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: '„avere le gambe a fagiolo“ =', o: ['müde Beine', 'gutes Gleichgewicht', 'Hunger', 'Schlaf'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'etwas auf die lange Bank schieben: rimandare a ___ (domani)', ans: ['domani'], tag: 'lexis' },
+      { type: 'mc', s: 'Redewendungen sind', o: ['idiomatisch (nicht wörtlich)', 'wörtlich', 'veraltet', 'dialektal'], a: 0, tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-modali-epistemici', level: 'B2', title: 'Modalverben epistemisch (Vermutung)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Condizionale für Vermutung: Sarà le otto (es wird wohl 8 sein). „deve essere“ (Vermutung), „potrebbe“ (Möglichkeit), „non può essere“ (Ausschluss).',
+    examples: ['Saranno le otto.', 'Deve essere stanco.', 'Non può essere vero.'],
+    exercises: [
+      { type: 'mc', s: 'Es wird wohl 8 sein: ___ le otto.', o: ['Saranno', 'Sono', 'Erano', 'Saranno state'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Er muss müde sein (Vermutung): ___ essere stanco.', o: ['Deve', 'Devi', 'Dobbiamo', 'Devono'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Es könnte wahr sein: ___ essere vero.', o: ['Potrebbe', 'Può', 'Potrà', 'Poteva'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Das kann nicht wahr sein (Ausschluss): Non ___ essere vero.', o: ['può', 'deve', 'vuole', 'sa'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Vermutung über Vergangenheit: sarà ___ (partire)', ans: ['partito'], tag: 'tense' },
+      { type: 'mc', s: '„deve essere“ drückt hier', o: ['Vermutung', 'Pflicht', 'Erlaubnis', 'Wunsch'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'Sie dürfte gekommen sein: sarà ___ (venire)', ans: ['venuta', 'venuto'], tag: 'tense' },
+      { type: 'mc', s: 'Epistemisches „futuro“ drückt', o: ['Vermutung', 'Zukunft', 'Befehl', 'Wunsch'], a: 0, tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-futuro-nel-passato', level: 'B2', title: 'Futur in der Vergangenheit',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Condizionale presente als „Futur II der Vergangenheit“ nach Vergangenheits-Verb: Ha detto che sarebbe venuto (Er sagte, er werde kommen).',
+    examples: ['Ha detto che sarebbe venuto.', 'Sapevo che avremmo vinto.'],
+    exercises: [
+      { type: 'mc', s: 'Er sagte, er werde kommen: Ha detto che ___ (venire).', o: ['sarebbe venuto', 'verrà', 'viene', 'venne'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ich wusste, wir würden gewinnen: Sapevo che ___ (vincere).', o: ['avremmo vinto', 'vinceremo', 'vinciamo', 'vinse'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Sie meinte, sie käme später: Diceva che ___ (venire) dopo', ans: ['sarebbe venuta', 'sarebbe venuto'], tag: 'tense' },
+      { type: 'mc', s: 'Futur in der Vergangenheit =', o: ['condizionale passato', 'futuro semplice', 'imperfetto', 'cong. imperfetto'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ha promesso che ___ (aiutare).', o: ['avrebbe aiutato', 'aiuterà', 'aiuta', 'aiutò'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'nach Verb der Vergangenheit: „che io ___ (partire)“', ans: ['sarei partito', 'sarei partita'], tag: 'tense' },
+      { type: 'mc', s: 'Ausgangssatz steht im', o: ['Präteritum/Perfekt', 'Präsens', 'Futur', 'Konjunktiv'], a: 0, tag: 'tense' },
+      { type: 'mc', s: '„sarebbe venuto“ entspricht dt.', o: ['er würde kommen / er werde kommen', 'er kam', 'er käme', 'er wäre gekommen (Bedingung)'], a: 0, tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-connettivi-testuali', level: 'B2', title: 'Textkonnektoren (zwar…aber, inoltre, tuttavia)',
+    concept: 'lexis', errorTag: 'lexis',
+    explanation: 'Textverknüpfung: inoltre/inoltre (außerdem), tuttavia/però/invece (aber/jedoch), dunque/quindi (also), in realtà (eigentlich), d’altra parte (andererseits).',
+    examples: ['Inoltre, fa freddo.', 'È caro, tuttavia lo compro.', 'Dunque, ricapitoliamo.'],
+    exercises: [
+      { type: 'mc', s: 'außerdem =', o: ['inoltre', 'tuttavia', 'dunque', 'però'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'jedoch/trotzdem =', o: ['tuttavia', 'inoltre', 'quindi', 'infatti'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'also/folglich =', o: ['dunque', 'però', 'invece', 'eppure'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'andererseits = d’___ parte', ans: ['altra'], tag: 'lexis' },
+      { type: 'mc', s: 'im Gegenteil/hingegen =', o: ['invece', 'inoltre', 'quindi', 'anche'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'eigentlich/wirklich =', o: ['in realtà', 'inoltre', 'dunque', 'perciò'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'tatsächlich/deshalb = ___ (deshalb)', ans: ['perciò', 'quindi'], tag: 'lexis' },
+      { type: 'mc', s: 'Textkonnektoren dienen der', o: ['Kohärenz', 'Aussprache', 'Konjugation', 'Wortbildung'], a: 0, tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-discorso-indiretto-comandi', level: 'B2', title: 'Indirekte Rede: Befehle & Fragen',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Befehle: „Ha detto di + Infinitiv“ (Er sagte, er solle…). Verneint: „di non + Infinitiv“. Fragen: „ha chiesto se / dove / quando…“ mit angepasstem Tempus.',
+    examples: ['Ha detto di venire.', 'Mi ha chiesto se fossi libero.', 'Ha ordinato di uscire.'],
+    exercises: [
+      { type: 'mc', s: 'Er sagte, zu kommen: Ha detto ___ venire.', o: ['di', 'a', 'che', 'per'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Er sagte, nicht zu gehen: Ha detto ___ non andare.', o: ['di', 'a', 'che', 'per'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Er fragte, ob ich frei sei: Ha chiesto se ___ (essere) libero.', o: ['fossi', 'sono', 'ero', 'sarò'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'Befehl indirekt: Ha ordinato ___ (di) uscire', ans: ['di'], tag: 'preposition' },
+      { type: 'mc', s: 'Indirekte Ja/Nein-Frage beginnt mit', o: ['se', 'che', 'di', 'perché'], a: 0, tag: 'word_order' },
+      { type: 'fill', s: 'Sie bat mich zu warten: Mi ha pregato ___ aspettare', ans: ['di'], tag: 'preposition' },
+      { type: 'mc', s: 'Nach „ha chiesto“ folgt oft', o: ['Konjunktiv', 'Futur', 'Imperativ', 'Infinitiv'], a: 0, tag: 'tense' },
+      { type: 'mc', s: '„Ha detto di venire“ = Er sagte,', o: ['(jemand) solle kommen', 'er kam', 'er kommt', 'er käme'], a: 0, tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-concordanza-temporale', level: 'B2', title: 'Zeitliche Konsekutivsätze (tanto…che, così…che)',
+    concept: 'word_order', errorTag: 'word_order',
+    explanation: 'Folge/Konsekutiv: „tanto/così + Adj. + che + Indikativ/Konjunktiv“, „tale…che“, „al punto che“. Drückt eine Folge aus.',
+    examples: ['Era così stanco che si addormentò.', 'Parla tanto velocemente che non capisco.'],
+    exercises: [
+      { type: 'mc', s: 'Er war so müde, dass…: Era ___ stanco che si addormentò.', o: ['così', 'tanto', 'tale', 'quanto'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: 'Folge-Konnektor:', o: ['che', 'se', 'affinché', 'benché'], a: 0, tag: 'word_order' },
+      { type: 'fill', s: 'so viel, dass… = ___ tanto che…', ans: ['parla', 'mangia'], tag: 'word_order' },
+      { type: 'mc', s: '„tale … che“ bedeutet', o: ['solcher/solche, dass', 'obwohl', 'damit', 'wenn'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: '„al punto che“ =', o: ['sodass', 'obwohl', 'damit', 'falls'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'so schön, dass… = ___ bella che…', ans: ['così'], tag: 'word_order' },
+      { type: 'mc', s: 'Konsekutivsätze drücken', o: ['eine Folge', 'einen Grund', 'einen Zweck', 'eine Bedingung'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'Nach „così … che“ steht meist', o: ['Indikativ', 'Konjunktiv', 'Futur', 'Imperativ'], a: 0, tag: 'tense' }
+    ]
+  },
+  {
+    id: 'it-avverbi-valutativi', level: 'B2', title: 'Bewertungs-/Gradpartikel (addirittura, perfino)',
+    concept: 'lexis', errorTag: 'lexis',
+    explanation: 'Steigerung/Überraschung: addirittura, perfino, persino (sogar), appena (kaum), neppure/nemmeno (nicht einmal), almeno (zumindest).',
+    examples: ['Parla tre lingue, perfino il cinese.', 'Non ho nemmeno fame.', 'Almeno prova!'],
+    exercises: [
+      { type: 'mc', s: 'sogar =', o: ['perfino', 'appena', 'almeno', 'neppure'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'nicht einmal =', o: ['nemmeno', 'perfino', 'addirittura', 'appena'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'kaum =', o: ['appena', 'perfino', 'almeno', 'persino'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'zumindest = ___', ans: ['almeno'], tag: 'lexis' },
+      { type: 'mc', s: 'sogar/überraschend (verstärkend) =', o: ['addirittura', 'appena', 'almeno', 'neanche'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'auch nicht = ___ (nicht einmal)', ans: ['neanche', 'neppure'], tag: 'lexis' },
+      { type: 'mc', s: '„perfino“ entspricht dt.', o: ['sogar', 'kaum', 'zumindest', 'nie'], a: 0, tag: 'lexis' },
+      { type: 'mc', s: 'Gradpartikel betonen', o: ['Überraschung/Steigerung', 'Zeit', 'Ort', 'Frage'], a: 0, tag: 'lexis' }
+    ]
+  },
+  {
+    id: 'it-stile-formale-scritto', level: 'B2', title: 'Formeller Schreibstil (congiuntivo esortativo)',
+    concept: 'tense', errorTag: 'tense',
+    explanation: 'Formelle Bitten/Aufforderungen: „Si prega di…“, „La invitiamo a…“, „Si prega che…“, „Si richiede che + Congiuntivo“. Passiv und unpersönliche Formen dominieren.',
+    examples: ['Si prega di firmare.', 'Si richiede che sia presente.', 'La invitiamo a partecipare.'],
+    exercises: [
+      { type: 'mc', s: 'Bitte unterschreiben (formell): Si prega ___ firmare.', o: ['di', 'a', 'che', 'per'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Es wird verlangt, dass er anwesend sei: Si richiede che ___ (essere) presente.', o: ['sia', 'è', 'sarà', 'era'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Wir laden Sie ein: La ___ a partecipare.', o: ['invitiamo', 'inviti', 'inviti a', 'invito'], a: 0, tag: 'tense' },
+      { type: 'fill', s: 'formell „Sie“ (Akk.) = ___ (La invito)', ans: ['La'], tag: 'lexis' },
+      { type: 'mc', s: 'Formeller Stil nutzt oft', o: ['unpersönliche Formen', 'Slang', 'Ausrufe', 'Diminutive'], a: 0, tag: 'lexis' },
+      { type: 'fill', s: 'Es wird gebeten: Si ___ di attendere (bitten)', ans: ['prega'], tag: 'lexis' },
+      { type: 'mc', s: '„Si richiede che“ verlangt', o: ['Konjunktiv', 'Indikativ', 'Futur', 'Infinitiv'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Formelle Schreiben nutzen', o: ['Passiv/„si“, Konjunktiv', 'nur Aktiv', 'nur Imperativ', 'nur Futur'], a: 0, tag: 'word_order' }
+    ]
+  },
   {
     id: 'it-verbi-pronominali', level: 'B1', title: 'Pronominale Verben (farcela, andarsene)',
     concept: 'lexis', errorTag: 'lexis',

@@ -23,12 +23,9 @@ import {
   levelRank
 } from './curriculumRepository.js';
 import { listTexts } from './textRepository.js';
-import { getPoint, listPoints } from './grammarRepository.js';
+import { getPoint, listPoints, getErrorProfile, getSkills } from './grammarRepository.js';
 import { getScenario, listScenarios } from './dialogRepository.js';
 import { getPromptById, listPrompts } from './outputRepository.js';
-
-// Gewichtung der Stufen für die Minutenverteilung
-const STAGE_MINUTES = { input: 12, fokus: 8, output: 10, check: 4 };
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -42,7 +39,7 @@ function todayStr() {
  * Löst Lesetexte auf: zuerst über Titel, sonst level-passende Texte.
  * Hörtexte (metadata.kind === 'listening') werden ausgeschlossen.
  */
-function resolveReading(lang, level, titles = []) {
+function resolveReading(lang, level, titles = [], maxCount = 2) {
   const all = listTexts(lang, level).filter((t) => !isListening(t));
   const byTitle = new Map(all.map((t) => [t.title.toLowerCase(), t]));
   const picked = [];
@@ -52,16 +49,16 @@ function resolveReading(lang, level, titles = []) {
   }
   // Fallback: level-passende Texte auffüllen
   for (const t of all) {
-    if (picked.length >= 2) break;
+    if (picked.length >= maxCount) break;
     if (!picked.some((p) => p.id === t.id)) picked.push({ id: t.id, title: t.title, level: t.level });
   }
-  return picked.slice(0, 2);
+  return picked.slice(0, maxCount);
 }
 
 /**
  * Löst Hörtexte auf (metadata.kind === 'listening').
  */
-function resolveListening(lang, level, titles = []) {
+function resolveListening(lang, level, titles = [], maxCount = 1) {
   const all = listTexts(lang, level).filter((t) => isListening(t));
   const byTitle = new Map(all.map((t) => [t.title.toLowerCase(), t]));
   const picked = [];
@@ -70,10 +67,10 @@ function resolveListening(lang, level, titles = []) {
     if (hit) picked.push({ id: hit.id, title: hit.title, level: hit.level });
   }
   for (const t of all) {
-    if (picked.length >= 1) break;
+    if (picked.length >= maxCount) break;
     if (!picked.some((p) => p.id === t.id)) picked.push({ id: t.id, title: t.title, level: t.level });
   }
-  return picked.slice(0, 1);
+  return picked.slice(0, maxCount);
 }
 
 function isListening(text) {
@@ -84,25 +81,6 @@ function isListening(text) {
   } catch {
     return false;
   }
-}
-
-/**
- * Löst Grammatikpunkte auf: referenzierte IDs, sonst level-passende Punkte.
- */
-function resolveGrammar(lang, level, pointIds = []) {
-  const picked = [];
-  for (const pid of pointIds) {
-    const p = getPoint(lang, pid);
-    if (p) picked.push({ id: p.id, title: p.title, level: p.level, errorTag: p.errorTag });
-  }
-  if (picked.length === 0) {
-    // Fallback: beliebige level-passende Punkte aus dem Syllabus
-    for (const p of listPoints(lang, level)) {
-      if (picked.length >= 2) break;
-      picked.push({ id: p.id, title: p.title, level: p.level, errorTag: p.errorTag });
-    }
-  }
-  return picked.slice(0, 2);
 }
 
 /**
@@ -140,6 +118,127 @@ function resolveSpeaking(lang, level, scenarioIds = []) {
     }
   }
   return picked.slice(0, 1);
+}
+
+// ---------------------------------------------------------------------------
+// Adaptivität (Skill- und Fehlerprofil-gesteuert)
+// ---------------------------------------------------------------------------
+
+// Basis-Gewichtung der Stufen für die Minutenverteilung
+const STAGE_MINUTES = { input: 12, fokus: 8, output: 10, check: 4 };
+
+// Welche Skills eine Stufe trainiert (für die Schwächengewichtung).
+const STAGE_SKILLS = {
+  input: ['reading', 'listening'],
+  fokus: ['grammar', 'vocabulary'],
+  output: ['writing', 'speaking'],
+  check: []
+};
+
+// Wenn keine Skill-Daten vorliegen: neutraler Schwäche-Wert.
+const NEUTRAL_WEAKNESS = 0.5;
+
+/**
+ * Berechnet aus Skill-Scores und Fehlerprofil eine adaptive Gewichtung.
+ *
+ * - Schwache Skills (niedriger Score) erhalten mehr Minuten ihrer Stufe.
+ * - Dominierende Fehlerkategorien (errorTag) verschieben den Grammatik-Fokus
+ *   auf Punkte mit passendem errorTag.
+ *
+ * @returns {{ weights: Record<string, number>, focusTags: string[] }}
+ *   weights: Minuten-Gewicht je Stufen-Key (relativ, wird normalisiert).
+ *   focusTags: Fehlerkategorien mit erhöhter Priorität (absteigend).
+ */
+export function computeAdaptivity(userLanguageId) {
+  const skills = getSkills(userLanguageId) || {};
+  const errorProfile = getErrorProfile(userLanguageId) || [];
+
+  // Schwäche je Skill: 1 = sehr schwach, 0 = stark. Fehlend => neutral.
+  const weaknessOf = (skill) => {
+    const s = skills[skill];
+    if (!s || typeof s.score !== 'number') return NEUTRAL_WEAKNESS;
+    return Math.max(0, Math.min(1, (100 - s.score) / 100));
+  };
+
+  // Stufen-Gewicht: Basis-Minuten * (0,7 … 1,4) je mittlerer Schwäche.
+  const weights = {};
+  for (const [stage, skillsForStage] of Object.entries(STAGE_SKILLS)) {
+    const base = STAGE_MINUTES[stage];
+    if (skillsForStage.length === 0) {
+      weights[stage] = base;
+      continue;
+    }
+    const avgWeak =
+      skillsForStage.reduce((a, s) => a + weaknessOf(s), 0) / skillsForStage.length;
+    // Faktor 0.7 (stark) … 1.4 (sehr schwach)
+    const factor = 0.7 + avgWeak * 0.7;
+    weights[stage] = base * factor;
+  }
+
+  // Dominierende Fehlerkategorien: nur relevante, wiederkehrende Tags.
+  const focusTags = errorProfile
+    .filter((e) => e.count >= 2)
+    .slice(0, 3)
+    .map((e) => e.category);
+
+  return { weights, focusTags };
+}
+
+/**
+ * Normalisiert Stufen-Gewichte so, dass die Gesamtminuten nahe am Basiswert
+ * bleiben (≈ Summe der STAGE_MINUTES) und jede Stufe >= 2 Minuten erhält.
+ */
+function normalizeMinutes(weights, targetTotal) {
+  const keys = Object.keys(weights);
+  const sum = keys.reduce((a, k) => a + weights[k], 0) || 1;
+  const scaled = {};
+  for (const k of keys) scaled[k] = (weights[k] / sum) * targetTotal;
+  // Mindestabstand von 2 Minuten, Überschuss von der größten Stufe abziehen.
+  for (const k of keys) {
+    if (scaled[k] < 2) {
+      const deficit = 2 - scaled[k];
+      scaled[k] = 2;
+      const donor = keys
+        .filter((d) => d !== k)
+        .sort((a, b) => scaled[b] - scaled[a])[0];
+      if (donor) scaled[donor] = Math.max(2, scaled[donor] - deficit);
+    }
+  }
+  for (const k of keys) scaled[k] = Math.round(scaled[k]);
+  return scaled;
+}
+
+/**
+ * Wählt Grammatikpunkte mit Fokus auf dominante Fehlerkategorien: erst
+ * referenzierte Punkte, dann Punkte, deren errorTag zu focusTags passt.
+ */
+function resolveGrammarAdaptive(lang, level, pointIds = [], focusTags = [], maxCount = 2) {
+  const picked = [];
+  const seen = new Set();
+  const push = (p) => {
+    if (p && !seen.has(p.id)) {
+      seen.add(p.id);
+      picked.push({ id: p.id, title: p.title, level: p.level, errorTag: p.errorTag });
+    }
+  };
+  // 1) explizit referenzierte Punkte
+  for (const pid of pointIds) push(getPoint(lang, pid));
+  // 2) Punkte, die dominante Fehler adressieren
+  if (picked.length < maxCount && focusTags.length > 0) {
+    const tagSet = new Set(focusTags);
+    for (const p of listPoints(lang, level)) {
+      if (picked.length >= maxCount) break;
+      if (tagSet.has(p.errorTag)) push(p);
+    }
+  }
+  // 3) Fallback: beliebige level-passende Punkte
+  if (picked.length === 0) {
+    for (const p of listPoints(lang, level)) {
+      if (picked.length >= maxCount) break;
+      push(p);
+    }
+  }
+  return picked.slice(0, maxCount);
 }
 
 // ---------------------------------------------------------------------------
@@ -215,7 +314,8 @@ export function getTodaySession(userLanguageId, userId) {
   if (!unit) return { error: 'Kein Curriculum verfügbar' };
 
   const level = unit.level;
-  const stages = buildStages(lang, unit);
+  const adaptivity = computeAdaptivity(userLanguageId);
+  const stages = buildStages(lang, unit, adaptivity);
   const minutes = stages.reduce((a, s) => a + (s.minutes || 0), 0);
 
   const plan = {
@@ -226,18 +326,38 @@ export function getTodaySession(userLanguageId, userId) {
     theme: unit.theme,
     goal: unit.goal,
     stages,
-    minutes
+    minutes,
+    adaptive: adaptivity.focusTags.length > 0 ? { focusTags: adaptivity.focusTags } : null
   };
 
   saveSession(userLanguageId, date, plan);
-  return { ok: true, date, unit, stages, minutes, cached: false };
+  return {
+    ok: true,
+    date,
+    unit,
+    stages,
+    minutes,
+    cached: false,
+    adaptive: plan.adaptive
+  };
 }
 
-function buildStages(lang, unit) {
+function buildStages(lang, unit, adaptivity) {
   const level = unit.level;
-  const reading = resolveReading(lang, level, unit.input?.reading || []);
-  const listening = resolveListening(lang, level, unit.input?.listening || []);
-  const grammar = resolveGrammar(lang, level, unit.fokus?.grammar || []);
+  const { weights = STAGE_MINUTES, focusTags = [] } = adaptivity || {};
+  const minutes = normalizeMinutes(
+    { input: weights.input, fokus: weights.fokus, output: weights.output, check: weights.check },
+    Object.values(STAGE_MINUTES).reduce((a, b) => a + b, 0)
+  );
+
+  // Item-Anzahl adaptiv: schwache Stufen bekommen mehr Items.
+  const readingCount = weights.input > STAGE_MINUTES.input ? 2 : 1;
+  const listeningCount = 1;
+  const grammarCount = weights.fokus > STAGE_MINUTES.fokus ? 3 : 2;
+
+  const reading = resolveReading(lang, level, unit.input?.reading || [], readingCount);
+  const listening = resolveListening(lang, level, unit.input?.listening || [], listeningCount);
+  const grammar = resolveGrammarAdaptive(lang, level, unit.fokus?.grammar || [], focusTags, grammarCount);
   const writing = resolveWriting(lang, level, unit.output?.writing || []);
   const speaking = resolveSpeaking(lang, level, unit.output?.speaking || []);
 
@@ -248,7 +368,7 @@ function buildStages(lang, unit) {
     key: 'input',
     type: 'input',
     title: 'Verstehender Input',
-    minutes: STAGE_MINUTES.input,
+    minutes: minutes.input,
     items: [
       ...reading.map((r) => ({ kind: 'reading', ...r })),
       ...listening.map((l) => ({ kind: 'listening', ...l }))
@@ -260,7 +380,7 @@ function buildStages(lang, unit) {
     key: 'fokus',
     type: 'fokus',
     title: 'Grammatik-Fokus',
-    minutes: STAGE_MINUTES.fokus,
+    minutes: minutes.fokus,
     items: grammar.map((g) => ({ kind: 'grammar', ...g }))
   });
 
@@ -269,7 +389,7 @@ function buildStages(lang, unit) {
     key: 'output',
     type: 'output',
     title: 'Produktion',
-    minutes: STAGE_MINUTES.output,
+    minutes: minutes.output,
     items: [
       ...writing.map((w) => ({ kind: 'writing', ...w })),
       ...speaking.map((s) => ({ kind: 'speaking', ...s }))
@@ -281,7 +401,7 @@ function buildStages(lang, unit) {
     key: 'check',
     type: 'check',
     title: 'Can-do-Check',
-    minutes: STAGE_MINUTES.check,
+    minutes: minutes.check,
     items: (unit.check?.cando || []).map((c, i) => ({ kind: 'cando', id: `cando-${i}`, text: c }))
   });
 

@@ -1106,6 +1106,306 @@
           "Kann an Diskussionen teilnehmen"
         ]
       }
+    },
+    {
+      "id": "it-b2-u01",
+      "level": "B2",
+      "order": 1,
+      "theme": "Argumentieren & Debattieren",
+      "goal": "Eine Position strukturiert vertreten und widerlegen",
+      "input": {
+        "reading": [
+          "Dibattito: lavoro da remoto"
+        ],
+        "listening": [
+          "Dibattito in studio"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-periodo-ipotetico",
+          "it-connettivi-concessivi"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-argomentare"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann eine Meinung strukturiert begründen",
+          "Kann Gegenargumente entkräften",
+          "Kann Konzessivsätze bilden"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u02",
+      "level": "B2",
+      "order": 2,
+      "theme": "Gesellschaft & aktuelle Themen",
+      "goal": "Über ein aktuelles Thema referieren",
+      "input": {
+        "reading": [
+          "Attualità: ambiente"
+        ],
+        "listening": [
+          "Notiziario"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-congiuntivo-imperfetto",
+          "it-connettivi-causali"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-attualita"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über ein Gesellschaftsthema sprechen",
+          "Kann Ursachen und Folgen darstellen",
+          "Kann Konjunktiv imperfetto nutzen"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u03",
+      "level": "B2",
+      "order": 3,
+      "theme": "Register & Höflichkeit",
+      "goal": "Formell und informell angemessen kommunizieren",
+      "input": {
+        "reading": [
+          "Email formale"
+        ],
+        "listening": [
+          "Colloquio di lavoro"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-register",
+          "it-espressioni-impersonali"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-email-formale"
+        ],
+        "speaking": [
+          "colloquio-lavoro"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann eine formelle E-Mail schreiben",
+          "Kann im Vorstellungsgespräch antworten",
+          "Kann Register wechseln"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u04",
+      "level": "B2",
+      "order": 4,
+      "theme": "Nuancen & Idiomatik",
+      "goal": "Redewendungen und Feinbedeutungen verstehen",
+      "input": {
+        "reading": [
+          "Modi di dire"
+        ],
+        "listening": [
+          "Conversazione autentica"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-verbi-pronominali",
+          "it-avverbi-modi"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-idiomi"
+        ],
+        "speaking": [
+          "conversazione-libera"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann gängige Redewendungen verstehen",
+          "Kann idiomatisch reagieren",
+          "Kann Feinbedeutungen unterscheiden"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u05",
+      "level": "B2",
+      "order": 5,
+      "theme": "Narration & Bericht",
+      "goal": "Ein Ereignis differenziert nacherzählen",
+      "input": {
+        "reading": [
+          "Racconto di viaggio"
+        ],
+        "listening": [
+          "Testimonianza"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-trapassato-prossimo",
+          "it-futuro-anteriore",
+          "it-discorso-indiretto"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-racconto"
+        ],
+        "speaking": [
+          "raccontare-episodio"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein Ereignis strukturiert erzählen",
+          "Kann Vorzeitigkeit ausdrücken",
+          "Kann indirekte Rede bilden"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u06",
+      "level": "B2",
+      "order": 6,
+      "theme": "Abstrakt schreiben",
+      "goal": "Einen argumentativen Essay verfassen",
+      "input": {
+        "reading": [
+          "Editoriale"
+        ],
+        "listening": [
+          "Podcast: cultura"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-congiuntivo-passato",
+          "it-connettivi-finali",
+          "it-correlativi"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-saggio"
+        ],
+        "speaking": [
+          "presentazione"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann einen kurzen Essay schreiben",
+          "Kann These und Argumente gliedern",
+          "Kann finale Konnektoren nutzen"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u07",
+      "level": "B2",
+      "order": 7,
+      "theme": "Passiv & Nominalstil",
+      "goal": "Formelle und unpersönliche Texte verstehen",
+      "input": {
+        "reading": [
+          "Testo istituzionale"
+        ],
+        "listening": [
+          "Annuncio ufficiale"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passivo",
+          "it-si-passivante",
+          "it-perifrasi-verbali"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-istituzionale"
+        ],
+        "speaking": [
+          "presentazione"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Passiv und si passivante erkennen",
+          "Kann nominal formulieren",
+          "Kann formelle Texte verstehen"
+        ]
+      }
+    },
+    {
+      "id": "it-b2-u08",
+      "level": "B2",
+      "order": 8,
+      "theme": "B2-Wiederholung",
+      "goal": "Produktivität und Nuancen festigen",
+      "input": {
+        "reading": [
+          "Sintesi B2"
+        ],
+        "listening": [
+          "Riepilogo B2"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-periodo-ipotetico",
+          "it-congiuntivo-imperfetto",
+          "it-register"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-riepilogo"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann frei und nuanciert sprechen",
+          "Kann Konjunktiv sicher anwenden",
+          "Kann Register bewusst wählen"
+        ]
+      }
     }
   ]
 }

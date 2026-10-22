@@ -31,6 +31,13 @@ const WRITING = {
     'Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über {t}.',
     'Beschreibe, wie sich {t} in den letzten Jahren verändert hat, und begründe.',
     'Schreibe einen formellen Brief/Betreff zum Thema {t}.'
+  ],
+  B2: [
+    'Verfasse ein argumentatives Essay (8–10 Sätze) über {t} mit These, Argumenten und Gegenargument.',
+    'Erörtere {t} differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).',
+    'Schreibe einen formellen Text (z. B. Leserbrief) zum Thema {t} im passenden Register.',
+    'Analysiere Ursachen und Folgen von {t} und schlage Maßnahmen vor (congiuntivo nach „è necessario che“).',
+    'Fasse eine Position zu {t} zusammen und widerlege eine Gegenposition (periodo ipotetico).'
   ]
 };
 
@@ -55,6 +62,13 @@ const SPEAKING = {
     'Argumentiere laut für eine Position zu {t}.',
     'Beschreibe laut ein Problem mit {t} und schlage eine Lösung vor.',
     'Fasse laut die wichtigsten Punkte zu {t} zusammen.'
+  ],
+  B2: [
+    'Halte ein 2-Minuten-Plädoyer über {t} mit These, Argumenten und Schlussfolgerung.',
+    'Debattiere laut über {t}: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).',
+    'Präsentiere {t} formell, wie in einem Vortrag, mit angemessenem Register.',
+    'Erzähle laut ein Ereignis zu {t} differenziert (trapassato, indirekte Rede).',
+    'Diskutiere laut Nuancen von {t} und verwende mindestens zwei Redewendungen.'
   ]
 };
 
@@ -87,7 +101,7 @@ function add(level, kind, topicKey, topicLabel, template) {
 }
 
 // Ausgewogene Verteilung: pro Level & Art alle Themen x mehrere Muster
-for (const level of ['A1', 'A2', 'B1']) {
+for (const level of ['A1', 'A2', 'B1', 'B2']) {
   for (const topic of TOPICS) {
     // Schreiben: 3 Muster pro Thema/Level -> 3*10*3 = 90
     const wTemplates = WRITING[level];

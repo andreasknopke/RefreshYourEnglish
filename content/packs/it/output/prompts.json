@@ -1201,6 +1201,406 @@
       "topic": "bildung",
       "prompt_de": "Spiele eine Diskussion über Lernen und Schule nach (stimme zu / widersprich).",
       "target": null
+    },
+    {
+      "id": "b2-writing-151-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über deinen Alltag mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-152-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Erörtere deinen Alltag differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-153-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema deinen Alltag im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-154-alltag",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über deinen Alltag mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-155-alltag",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Debattiere laut über deinen Alltag: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-156-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über deine Familie mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-157-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Erörtere deine Familie differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-158-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema deine Familie im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-159-familie",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über deine Familie mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-160-familie",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Debattiere laut über deine Familie: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-161-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über eine Reise mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-162-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Erörtere eine Reise differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-163-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema eine Reise im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-164-reisen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über eine Reise mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-165-reisen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Debattiere laut über eine Reise: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-166-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über italienisches Essen mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-167-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Erörtere italienisches Essen differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-168-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema italienisches Essen im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-169-essen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über italienisches Essen mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-170-essen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Debattiere laut über italienisches Essen: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-171-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über deine Arbeit mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-172-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Erörtere deine Arbeit differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-173-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema deine Arbeit im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-174-arbeit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über deine Arbeit mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-175-arbeit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Debattiere laut über deine Arbeit: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-176-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über deine Hobbys mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-177-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Erörtere deine Hobbys differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-178-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema deine Hobbys im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-179-hobby",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über deine Hobbys mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-180-hobby",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Debattiere laut über deine Hobbys: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-181-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über deine Stadt mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-182-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Erörtere deine Stadt differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-183-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema deine Stadt im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-184-stadt",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über deine Stadt mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-185-stadt",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Debattiere laut über deine Stadt: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-186-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über das Wetter mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-187-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Erörtere das Wetter differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-188-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema das Wetter im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-189-wetter",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über das Wetter mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-190-wetter",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Debattiere laut über das Wetter: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-191-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über Gesundheit und Fitness mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-192-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Erörtere Gesundheit und Fitness differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-193-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema Gesundheit und Fitness im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-194-gesundheit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über Gesundheit und Fitness mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-195-gesundheit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Debattiere laut über Gesundheit und Fitness: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-196-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Verfasse ein argumentatives Essay (8–10 Sätze) über Lernen und Schule mit These, Argumenten und Gegenargument.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-197-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Erörtere Lernen und Schule differenziert. Benutze Konjunktiv, Konditional und Textkonnektoren (tuttavia, inoltre, dunque).",
+      "target": null
+    },
+    {
+      "id": "b2-writing-198-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe einen formellen Text (z. B. Leserbrief) zum Thema Lernen und Schule im passenden Register.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-199-bildung",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Halte ein 2-Minuten-Plädoyer über Lernen und Schule mit These, Argumenten und Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-200-bildung",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Debattiere laut über Lernen und Schule: verteidige eine Position und entkräfte ein Gegenargument (congiuntivo).",
+      "target": null
     }
   ]
 }

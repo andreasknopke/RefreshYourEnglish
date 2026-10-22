@@ -23,6 +23,7 @@ import GrammarModule from './features/grammar/GrammarModule';
 import WritingModule from './features/writing/WritingModule';
 import SpeakingModule from './features/speaking/SpeakingModule';
 import DailySession from './features/session/DailySession';
+import ProgressDashboard from './features/progress/ProgressDashboard';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
@@ -339,6 +340,30 @@ function App() {
               </button>
             </div>
 
+            {/* Modul: Fortschritt (Progress Dashboard, Mehrsprachige Engine) */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300 flex flex-col ring-2 ring-emerald-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl mb-3 shadow-lg relative z-10">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 13.5l4-4 4 4 6-6M3 21h18" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Fortschritt
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
+                Skills, Fehlerprofil, Can-do-Report und Export
+              </p>
+              <button
+                onClick={() => setActiveModule('progress')}
+                className="w-full btn-primary relative z-10 text-sm py-2"
+              >
+                <span className="relative z-10">Dashboard ansehen →</span>
+              </button>
+            </div>
+
             {/* Modul 0: SRS-Review (Mehrsprachige Engine) */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -645,6 +670,7 @@ function App() {
             {activeModule === 'writing' && <WritingModule />}
             {activeModule === 'speaking' && <SpeakingModule />}
             {activeModule === 'session' && <DailySession onOpenModule={(m) => m && setActiveModule(m)} />}
+            {activeModule === 'progress' && <ProgressDashboard />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
             {activeModule === 'stats' && <StatsModule user={user} />}

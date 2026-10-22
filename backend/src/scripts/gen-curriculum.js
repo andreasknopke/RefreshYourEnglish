@@ -208,7 +208,56 @@ const units = [
     { reading: ['Attualità'], listening: ['Riepilogo B1'] },
     { grammar: ['it-congiuntivo', 'it-condizionale', 'it-passato-vs-imperfetto'], vocabLevel: 'B1' },
     { writing: ['b1-riepilogo'], speaking: ['opinione-dibattito'] },
-    { cando: ['Kann zusammenhängend argumentieren', 'Kann Konjunktiv und Konditional anwenden', 'Kann an Diskussionen teilnehmen'] })
+    { cando: ['Kann zusammenhängend argumentieren', 'Kann Konjunktiv und Konditional anwenden', 'Kann an Diskussionen teilnehmen'] }),
+
+  // ---------------- B2 ----------------
+  u('B2', 1, 'Argumentieren & Debattieren', 'Eine Position strukturiert vertreten und widerlegen',
+    { reading: ['Dibattito: lavoro da remoto'], listening: ['Dibattito in studio'] },
+    { grammar: ['it-periodo-ipotetico', 'it-connettivi-concessivi'], vocabLevel: 'B2' },
+    { writing: ['b2-argomentare'], speaking: ['opinione-dibattito'] },
+    { cando: ['Kann eine Meinung strukturiert begründen', 'Kann Gegenargumente entkräften', 'Kann Konzessivsätze bilden'] }),
+
+  u('B2', 2, 'Gesellschaft & aktuelle Themen', 'Über ein aktuelles Thema referieren',
+    { reading: ['Attualità: ambiente'], listening: ['Notiziario'] },
+    { grammar: ['it-congiuntivo-imperfetto', 'it-connettivi-causali'], vocabLevel: 'B2' },
+    { writing: ['b2-attualita'], speaking: ['opinione-dibattito'] },
+    { cando: ['Kann über ein Gesellschaftsthema sprechen', 'Kann Ursachen und Folgen darstellen', 'Kann Konjunktiv imperfetto nutzen'] }),
+
+  u('B2', 3, 'Register & Höflichkeit', 'Formell und informell angemessen kommunizieren',
+    { reading: ['Email formale'], listening: ['Colloquio di lavoro'] },
+    { grammar: ['it-register', 'it-espressioni-impersonali'], vocabLevel: 'B2' },
+    { writing: ['b2-email-formale'], speaking: ['colloquio-lavoro'] },
+    { cando: ['Kann eine formelle E-Mail schreiben', 'Kann im Vorstellungsgespräch antworten', 'Kann Register wechseln'] }),
+
+  u('B2', 4, 'Nuancen & Idiomatik', 'Redewendungen und Feinbedeutungen verstehen',
+    { reading: ['Modi di dire'], listening: ['Conversazione autentica'] },
+    { grammar: ['it-verbi-pronominali', 'it-avverbi-modi'], vocabLevel: 'B2' },
+    { writing: ['b2-idiomi'], speaking: ['conversazione-libera'] },
+    { cando: ['Kann gängige Redewendungen verstehen', 'Kann idiomatisch reagieren', 'Kann Feinbedeutungen unterscheiden'] }),
+
+  u('B2', 5, 'Narration & Bericht', 'Ein Ereignis differenziert nacherzählen',
+    { reading: ['Racconto di viaggio'], listening: ['Testimonianza'] },
+    { grammar: ['it-trapassato-prossimo', 'it-futuro-anteriore', 'it-discorso-indiretto'], vocabLevel: 'B2' },
+    { writing: ['b2-racconto'], speaking: ['raccontare-episodio'] },
+    { cando: ['Kann ein Ereignis strukturiert erzählen', 'Kann Vorzeitigkeit ausdrücken', 'Kann indirekte Rede bilden'] }),
+
+  u('B2', 6, 'Abstrakt schreiben', 'Einen argumentativen Essay verfassen',
+    { reading: ['Editoriale'], listening: ['Podcast: cultura'] },
+    { grammar: ['it-congiuntivo-passato', 'it-connettivi-finali', 'it-correlativi'], vocabLevel: 'B2' },
+    { writing: ['b2-saggio'], speaking: ['presentazione'] },
+    { cando: ['Kann einen kurzen Essay schreiben', 'Kann These und Argumente gliedern', 'Kann finale Konnektoren nutzen'] }),
+
+  u('B2', 7, 'Passiv & Nominalstil', 'Formelle und unpersönliche Texte verstehen',
+    { reading: ['Testo istituzionale'], listening: ['Annuncio ufficiale'] },
+    { grammar: ['it-passivo', 'it-si-passivante', 'it-perifrasi-verbali'], vocabLevel: 'B2' },
+    { writing: ['b2-istituzionale'], speaking: ['presentazione'] },
+    { cando: ['Kann Passiv und si passivante erkennen', 'Kann nominal formulieren', 'Kann formelle Texte verstehen'] }),
+
+  u('B2', 8, 'B2-Wiederholung', 'Produktivität und Nuancen festigen',
+    { reading: ['Sintesi B2'], listening: ['Riepilogo B2'] },
+    { grammar: ['it-periodo-ipotetico', 'it-congiuntivo-imperfetto', 'it-register'], vocabLevel: 'B2' },
+    { writing: ['b2-riepilogo'], speaking: ['opinione-dibattito'] },
+    { cando: ['Kann frei und nuanciert sprechen', 'Kann Konjunktiv sicher anwenden', 'Kann Register bewusst wählen'] })
 ];
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });

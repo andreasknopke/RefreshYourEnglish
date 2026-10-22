@@ -4,7 +4,8 @@
  * Führt drei offene italienische Wortlisten (Grund-/Ausbau-/Spezialwortschatz,
  * Quelle: giniedp/media_education, latin-1 CSVs, Format `lemma;bedeutung`) mit
  * den kuratierten Kern-Wörtern zusammen, die bereits Beispiele/POS/Level
- * tragen. Ergebnis: ~2500 Lemmata für den SRS-Vokabeltrainer.
+ * tragen, sowie mit B2/C1-Wörtern aus Awesome-Italian. Ergebnis: ~3000 Lemmata
+ * für den SRS-Vokabeltrainer (B2 braucht laut Plan 3500–4000 Wörter).
  *
  * Sprachneutral im Sinne der Engine: nur Lemma + Übersetzung sind Pflicht;
  * POS/Level/Beispiel sind optional und werden nach Möglichkeit angereichert.
@@ -24,10 +25,12 @@ const SRC = path.join(PACK, 'sources');
 const OUT = path.join(PACK, 'seed.json');
 
 // Reihenfolge = Priorität (frühe Listen bekommen niedrigere Frequenz-Ränge).
+// Optional 3. Spalte = Level-Override (z. B. awesome_it_b2_c1.csv).
 const SOURCES = [
   { file: 'grundwortschatz.csv', level: 'A1' },
   { file: 'ausbauwortschatz.csv', level: 'A2' },
-  { file: 'spezialwortschatz.csv', level: 'B1' }
+  { file: 'spezialwortschatz.csv', level: 'B1' },
+  { file: 'awesome_it_b2_c1.csv', level: 'B2' }
 ];
 
 function readCsv(file) {
@@ -37,9 +40,12 @@ function readCsv(file) {
     .map((l) => l.trim())
     .filter(Boolean)
     .map((l) => {
-      const idx = l.indexOf(';');
-      if (idx === -1) return { lemma: l, translation: '' };
-      return { lemma: l.slice(0, idx).trim(), translation: l.slice(idx + 1).trim() };
+      const parts = l.split(';');
+      return {
+        lemma: (parts[0] || '').trim(),
+        translation: (parts[1] || '').trim(),
+        level: (parts[2] || '').trim() || null
+      };
     });
 }
 
@@ -58,7 +64,7 @@ function inferPos(lemma) {
 
 function main() {
   const limitArg = process.argv.indexOf('--limit');
-  const LIMIT = limitArg !== -1 ? Number(process.argv[limitArg + 1]) : 2500;
+  const LIMIT = limitArg !== -1 ? Number(process.argv[limitArg + 1]) : 3600;
 
   // Kuratierte Kern-Wörter (Beispiele/POS/Level) laden und nach Primärschlüssel indexieren.
   const curatedFile = path.join(PACK, 'curated.json');
@@ -109,7 +115,7 @@ function main() {
         pos: (cur && cur.pos) || inferPos(row.lemma) || null,
         translation: row.translation,
         example: (cur && cur.example) || null,
-        level: (cur && cur.level) || src.level,
+        level: (cur && cur.level) || row.level || src.level,
         frequency_rank: rank
       });
       if (words.length >= LIMIT) break;
@@ -121,7 +127,7 @@ function main() {
     lang: 'it',
     version: '2.0.0',
     source:
-      'Kuratiert + giniedp/media_education (Grund-/Ausbau-/Spezialwortschatz, CC)',
+      'Kuratiert + giniedp/media_education (Grund-/Ausbau-/Spezialwortschatz, CC) + Awesome-Italian (B2/C1)',
     words
   };
 

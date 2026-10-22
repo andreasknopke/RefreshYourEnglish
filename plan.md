@@ -522,11 +522,12 @@ Annahmen: 1 Entwickler + KI-Unterstützung, Teilzeit ~20–25 h/Woche. Aufwände
 - Curriculum A1–B1, Session Composer v1.
 - **Fertig, wenn:** ein neuer Italienisch-Nutzer von A0 durch A1/A2 geführt wird, ohne manuell Module zu wählen; alle Units haben Input, Fokus, Output und Check.
 
-### Phase 7 – B2, Adaptivität, Politur (20–30 PT)
-- B2-Content, längere Texte, Argumentieren, Register.
-- Skill-basierte Adaptivität (Schwächen bekommen mehr Zeit, Stärken weniger).
-- Progress-Dashboard, Can-do-Report, Export.
-- **Fertig, wenn:** B1→B2-Pfad existiert; Dashboard zeigt Skills + Fehlerprofil; Session Composer reagiert auf Fehler.
+### Phase 7 – B2, Adaptivität, Politur (20–30 PT) ✅ umgesetzt
+- B2-Content, längere Texte, Argumentieren, Register. → 8 B2-Units, 11 B2-Grammatikpunkte (gesamt 70 Punkte / 560 Übungen), 8 B2-Lesetexte, 7 B2-Hörtexte, 50 B2-Output-Prompts (gesamt 200).
+- Skill-basierte Adaptivität (Schwächen bekommen mehr Zeit, Stärken weniger). → `computeAdaptivity()` verschiebt Stufen-Minuten und Item-Anzahl anhand der Skill-Scores; dominante Fehlerkategorien (`error_profile`) priorisieren Grammatikpunkte mit passendem `errorTag`.
+- Progress-Dashboard, Can-do-Report, Export. → `progressService.js` + `GET /:id/progress` + `GET /:id/progress/export`; `ProgressDashboard.jsx` (Skill-Balken, Fehlerprofil, Can-do, Curriculum-Fortschritt, JSON-Export).
+- Wortschatz auf 3.549 Lemmata erweitert (A1:1071, A2:852, B1:1041, B2:393, C1:192), inkl. B2/C1-Liste aus Awesome-Italian.
+- **Fertig, wenn:** B1→B2-Pfad existiert; Dashboard zeigt Skills + Fehlerprofil; Session Composer reagiert auf Fehler. ✅ (verifiziert: 149 Tests, Build, E2E)
 
 ### Phase 8 – Cut-over & Aufräumen (8–12 PT)
 - v1 entfernen, Alt-Tabellen löschen, doppelte LLM-Logik löschen.

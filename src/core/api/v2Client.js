@@ -148,7 +148,27 @@ export const v2Client = {
       body: JSON.stringify({ stageKey })
     }),
   getSessionProgress: (userLanguageId) =>
-    request(`/v2/me/languages/${userLanguageId}/session/progress`)
+    request(`/v2/me/languages/${userLanguageId}/session/progress`),
+
+  // Progress Dashboard
+  getProgress: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/progress`),
+  exportProgress: async (userLanguageId) => {
+    const url = `${API_URL}/v2/me/languages/${userLanguageId}/progress/export`;
+    const response = await fetch(url, { headers: headers() });
+    if (!response.ok) throw new Error(`Export fehlgeschlagen (${response.status})`);
+    const data = await response.json();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const dlUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = dlUrl;
+    a.download = `progress-${data?.data?.targetLang || 'export'}-${userLanguageId}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(dlUrl);
+    return data;
+  }
 };
 
 export default v2Client;

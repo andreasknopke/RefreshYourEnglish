@@ -1,7 +1,7 @@
 {
   "lang": "it",
   "version": "2.0.0",
-  "source": "Kuratiert + giniedp/media_education (Grund-/Ausbau-/Spezialwortschatz, CC)",
+  "source": "Kuratiert + giniedp/media_education (Grund-/Ausbau-/Spezialwortschatz, CC) + Awesome-Italian (B2/C1)",
   "words": [
     {
       "lemma": "ciao",
@@ -20002,6 +20002,8398 @@
       "example": null,
       "level": "B1",
       "frequency_rank": 2500
+    },
+    {
+      "lemma": "versare",
+      "pos": "verb",
+      "translation": "gießen, schütten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2501
+    },
+    {
+      "lemma": "pista ciclabile",
+      "pos": null,
+      "translation": "Radweg",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2502
+    },
+    {
+      "lemma": "giusto, giustamente",
+      "pos": null,
+      "translation": "bündig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2503
+    },
+    {
+      "lemma": "tettoia",
+      "pos": null,
+      "translation": "Vordach/ Markise",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2504
+    },
+    {
+      "lemma": "respirazione",
+      "pos": null,
+      "translation": "Atmen, Atmung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2505
+    },
+    {
+      "lemma": "Nabucodonosor",
+      "pos": null,
+      "translation": "Nebukadnezer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2506
+    },
+    {
+      "lemma": "soffocare",
+      "pos": "verb",
+      "translation": "erdrosseln, ersticken, erwürgen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2507
+    },
+    {
+      "lemma": "friggere",
+      "pos": "verb",
+      "translation": "backen, braten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2508
+    },
+    {
+      "lemma": "arsenale",
+      "pos": null,
+      "translation": "Arsenal, Zeughaus",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2509
+    },
+    {
+      "lemma": "caserma",
+      "pos": null,
+      "translation": "Kaserne",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2510
+    },
+    {
+      "lemma": "vaso da fiori",
+      "pos": null,
+      "translation": "Blumentopf",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2511
+    },
+    {
+      "lemma": "Andorra",
+      "pos": null,
+      "translation": "Andorra",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2512
+    },
+    {
+      "lemma": "Apocalisse",
+      "pos": null,
+      "translation": "Apokalypse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2513
+    },
+    {
+      "lemma": "elegante",
+      "pos": null,
+      "translation": "elegant, geschmackvoll",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2514
+    },
+    {
+      "lemma": "asciugamano di spugna",
+      "pos": null,
+      "translation": "Badetuch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2515
+    },
+    {
+      "lemma": "abrogazione, abolizione",
+      "pos": null,
+      "translation": "Abschaffung, Aufhebung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2516
+    },
+    {
+      "lemma": "condotto",
+      "pos": null,
+      "translation": "Rohr, Röhre, Schlauch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2517
+    },
+    {
+      "lemma": "cecita",
+      "pos": null,
+      "translation": "Blindheit",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2518
+    },
+    {
+      "lemma": "Zurigo",
+      "pos": null,
+      "translation": "Zürich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2519
+    },
+    {
+      "lemma": "fiammifero",
+      "pos": null,
+      "translation": "Streichholz, Zündholz",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2520
+    },
+    {
+      "lemma": "esportatore",
+      "pos": null,
+      "translation": "Exporteur",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2521
+    },
+    {
+      "lemma": "fiaccola, torcia",
+      "pos": null,
+      "translation": "Fackel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2522
+    },
+    {
+      "lemma": "vomitare",
+      "pos": "verb",
+      "translation": "sich erbrechen, sich übergeben",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2523
+    },
+    {
+      "lemma": "apicultore, apicoltore",
+      "pos": null,
+      "translation": "Imker, Bienenzüchter",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2524
+    },
+    {
+      "lemma": "cerchio",
+      "pos": null,
+      "translation": "Zirkel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2525
+    },
+    {
+      "lemma": "regolare",
+      "pos": "verb",
+      "translation": "reguläre (Matrix), regulär, regelmäßig, reguläre (Distribution), regelmäßiges (Vielflach), regelmäßiges (Vieleck)",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2526
+    },
+    {
+      "lemma": "frangia",
+      "pos": null,
+      "translation": "Franse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2527
+    },
+    {
+      "lemma": "cravatta",
+      "pos": null,
+      "translation": "Halsbinde, Krawatte, Schlips",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2528
+    },
+    {
+      "lemma": "automa",
+      "pos": null,
+      "translation": "Automat",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2529
+    },
+    {
+      "lemma": "ammuffito",
+      "pos": null,
+      "translation": "moderig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2530
+    },
+    {
+      "lemma": "Libano",
+      "pos": null,
+      "translation": "Libanon",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2531
+    },
+    {
+      "lemma": "Vienna",
+      "pos": null,
+      "translation": "Wien",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2532
+    },
+    {
+      "lemma": "Birmania",
+      "pos": null,
+      "translation": "Birma",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2533
+    },
+    {
+      "lemma": "antologia",
+      "pos": null,
+      "translation": "Anthologie, Auswahl",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2534
+    },
+    {
+      "lemma": "Mecca",
+      "pos": null,
+      "translation": "Mekka",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2535
+    },
+    {
+      "lemma": "anemone",
+      "pos": null,
+      "translation": "Anemone, Windröschen, Küchenschelle",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2536
+    },
+    {
+      "lemma": "batterio",
+      "pos": null,
+      "translation": "Bakterie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2537
+    },
+    {
+      "lemma": "peso",
+      "pos": null,
+      "translation": "Gewicht, Wucht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2538
+    },
+    {
+      "lemma": "bile",
+      "pos": null,
+      "translation": "Galle",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2539
+    },
+    {
+      "lemma": "folla",
+      "pos": null,
+      "translation": "Haufen, Menge, Stapel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2540
+    },
+    {
+      "lemma": "bassa marea",
+      "pos": null,
+      "translation": "Ebbe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2541
+    },
+    {
+      "lemma": "Mar Egeo",
+      "pos": null,
+      "translation": "Ägäische Meer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2542
+    },
+    {
+      "lemma": "danno",
+      "pos": null,
+      "translation": "Schaden, Sachschaden",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2543
+    },
+    {
+      "lemma": "biliardo",
+      "pos": null,
+      "translation": "Billard",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2544
+    },
+    {
+      "lemma": "fraterno",
+      "pos": null,
+      "translation": "brüderlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2545
+    },
+    {
+      "lemma": "Alsazia-Lorena",
+      "pos": null,
+      "translation": "Elsass-Lothringen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2546
+    },
+    {
+      "lemma": "passare",
+      "pos": "verb",
+      "translation": "herreichen, verbringen, zubringen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2547
+    },
+    {
+      "lemma": "amministrare, dirigere",
+      "pos": "verb",
+      "translation": "verwalten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2548
+    },
+    {
+      "lemma": "scomunica",
+      "pos": null,
+      "translation": "Bann, Exkommunikation",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2549
+    },
+    {
+      "lemma": "ardesia",
+      "pos": null,
+      "translation": "Schiefer, Schiefergestein",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2550
+    },
+    {
+      "lemma": "contante",
+      "pos": null,
+      "translation": "bar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2551
+    },
+    {
+      "lemma": "licenzioso, dissoluto",
+      "pos": null,
+      "translation": "unbändig, zügellos",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2552
+    },
+    {
+      "lemma": "chiacchierare",
+      "pos": "verb",
+      "translation": "plaudern, schwatzen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2553
+    },
+    {
+      "lemma": "trattare",
+      "pos": "verb",
+      "translation": "behandeln, traktieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2554
+    },
+    {
+      "lemma": "scoiattolo",
+      "pos": null,
+      "translation": "Eichhörnchen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2555
+    },
+    {
+      "lemma": "bastione, baluardo",
+      "pos": null,
+      "translation": "Bastei, Bastion, Bollwerk",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2556
+    },
+    {
+      "lemma": "alcova",
+      "pos": null,
+      "translation": "Alkoven",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2557
+    },
+    {
+      "lemma": "Cipro",
+      "pos": null,
+      "translation": "Zypern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2558
+    },
+    {
+      "lemma": "discendere",
+      "pos": "verb",
+      "translation": "entspringen, entstehen, herkommen, stammen, abstammen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2559
+    },
+    {
+      "lemma": "alimentare",
+      "pos": "verb",
+      "translation": "nähren, ernähren, beköstigen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2560
+    },
+    {
+      "lemma": "ricevuta",
+      "pos": null,
+      "translation": "Quittung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2561
+    },
+    {
+      "lemma": "torace",
+      "pos": null,
+      "translation": "Thorax, Brustkorb",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2562
+    },
+    {
+      "lemma": "spegnere, spengere",
+      "pos": "verb",
+      "translation": "auslöschen, dämpfen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2563
+    },
+    {
+      "lemma": "gufo",
+      "pos": null,
+      "translation": "Eule",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2564
+    },
+    {
+      "lemma": "smercio",
+      "pos": null,
+      "translation": "Absatz, Debit, Vertrieb",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2565
+    },
+    {
+      "lemma": "accomodamento",
+      "pos": null,
+      "translation": "Einrichtung, Zusammenstellung/ Einverständnis, Übereinkunft",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2566
+    },
+    {
+      "lemma": "nobiltà",
+      "pos": null,
+      "translation": "Adel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2567
+    },
+    {
+      "lemma": "droghiere",
+      "pos": "verb",
+      "translation": "Drogist",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2568
+    },
+    {
+      "lemma": "appoggiare, poggiare",
+      "pos": "verb",
+      "translation": "stemmen, unterhalten, unterstützen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2569
+    },
+    {
+      "lemma": "infedele",
+      "pos": null,
+      "translation": "treulos",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2570
+    },
+    {
+      "lemma": "saldare",
+      "pos": "verb",
+      "translation": "saldieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2571
+    },
+    {
+      "lemma": "salcio, salice",
+      "pos": null,
+      "translation": "Weide",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2572
+    },
+    {
+      "lemma": "maldicenza",
+      "pos": null,
+      "translation": "Verleumdung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2573
+    },
+    {
+      "lemma": "fortuna",
+      "pos": null,
+      "translation": "Fortuna, Gunst des Schicksals, Glück",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2574
+    },
+    {
+      "lemma": "Achille",
+      "pos": null,
+      "translation": "Achilles",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2575
+    },
+    {
+      "lemma": "pompa",
+      "pos": null,
+      "translation": "Pumpe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2576
+    },
+    {
+      "lemma": "calvo",
+      "pos": null,
+      "translation": "kahl",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2577
+    },
+    {
+      "lemma": "ananas, ananasso",
+      "pos": null,
+      "translation": "Ananas",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2578
+    },
+    {
+      "lemma": "Islanda",
+      "pos": null,
+      "translation": "Island",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2579
+    },
+    {
+      "lemma": "fare il pugilato",
+      "pos": null,
+      "translation": "boxen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2580
+    },
+    {
+      "lemma": "pescecane",
+      "pos": null,
+      "translation": "Hai, Haifisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2581
+    },
+    {
+      "lemma": "rude, brusco",
+      "pos": null,
+      "translation": "brummig, unwirsch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2582
+    },
+    {
+      "lemma": "denti, dentatura",
+      "pos": null,
+      "translation": "Gebiss",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2583
+    },
+    {
+      "lemma": "affigere",
+      "pos": "verb",
+      "translation": "anlegen, beifügen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2584
+    },
+    {
+      "lemma": "coscia",
+      "pos": null,
+      "translation": "Schenkel, Oberschenkel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2585
+    },
+    {
+      "lemma": "diarrea",
+      "pos": null,
+      "translation": "Diarrhö, Durchfall",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2586
+    },
+    {
+      "lemma": "fragola",
+      "pos": null,
+      "translation": "Erdbeere",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2587
+    },
+    {
+      "lemma": "brezza",
+      "pos": null,
+      "translation": "Brise",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2588
+    },
+    {
+      "lemma": "di nascosto",
+      "pos": null,
+      "translation": "insgeheim, verstohlen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2589
+    },
+    {
+      "lemma": "pompare",
+      "pos": "verb",
+      "translation": "pumpen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2590
+    },
+    {
+      "lemma": "poema",
+      "pos": null,
+      "translation": "Gedicht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2591
+    },
+    {
+      "lemma": "menta",
+      "pos": null,
+      "translation": "Minze",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2592
+    },
+    {
+      "lemma": "chiglia",
+      "pos": null,
+      "translation": "Kiel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2593
+    },
+    {
+      "lemma": "cima",
+      "pos": null,
+      "translation": "First, Gipfel, Wipfel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2594
+    },
+    {
+      "lemma": "punta",
+      "pos": null,
+      "translation": "Spitze, Stift, Zacke, Zinke, Zipfel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2595
+    },
+    {
+      "lemma": "parafango",
+      "pos": null,
+      "translation": "Kotflügel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2596
+    },
+    {
+      "lemma": "augurio",
+      "pos": null,
+      "translation": "Anzeichen, Vorzeichen/ Wahrsagung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2597
+    },
+    {
+      "lemma": "garofano",
+      "pos": null,
+      "translation": "Nelke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2598
+    },
+    {
+      "lemma": "antartico",
+      "pos": null,
+      "translation": "antarktisch, südpolar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2599
+    },
+    {
+      "lemma": "terminare, finire",
+      "pos": "verb",
+      "translation": "beschließen, enden, beenden, endigen, beendigen, erledigen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2600
+    },
+    {
+      "lemma": "firmare",
+      "pos": "verb",
+      "translation": "subskribieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2601
+    },
+    {
+      "lemma": "chiedere",
+      "pos": "verb",
+      "translation": "bitten, ersuchen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2602
+    },
+    {
+      "lemma": "angolano",
+      "pos": null,
+      "translation": "angolanisch/ Angolaner",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2603
+    },
+    {
+      "lemma": "abortire",
+      "pos": "verb",
+      "translation": "eine Fehlgeburt haben",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2604
+    },
+    {
+      "lemma": "ingaggiare, arruolare",
+      "pos": "verb",
+      "translation": "werben, anwerben",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2605
+    },
+    {
+      "lemma": "prova",
+      "pos": null,
+      "translation": "Ausweis, Beweis, Beleg",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2606
+    },
+    {
+      "lemma": "amianto",
+      "pos": null,
+      "translation": "Asbest",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2607
+    },
+    {
+      "lemma": "arciduca",
+      "pos": null,
+      "translation": "Erzherzog/ Großherzog",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2608
+    },
+    {
+      "lemma": "mite",
+      "pos": null,
+      "translation": "mild",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2609
+    },
+    {
+      "lemma": "cipresso",
+      "pos": null,
+      "translation": "Zypresse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2610
+    },
+    {
+      "lemma": "assorbire",
+      "pos": "verb",
+      "translation": "absorbieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2611
+    },
+    {
+      "lemma": "diabolico",
+      "pos": null,
+      "translation": "teuflisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2612
+    },
+    {
+      "lemma": "imboccatura",
+      "pos": null,
+      "translation": "Mund, Mündung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2613
+    },
+    {
+      "lemma": "cameriera",
+      "pos": null,
+      "translation": "Zimmermädchen, Zofe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2614
+    },
+    {
+      "lemma": "anatema",
+      "pos": null,
+      "translation": "Bann, Fluch, Bannfluch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2615
+    },
+    {
+      "lemma": "argilla",
+      "pos": null,
+      "translation": "Lehm, Ton, Tonerde",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2616
+    },
+    {
+      "lemma": "commissario",
+      "pos": null,
+      "translation": "Kommissar/ Zahlmeister",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2617
+    },
+    {
+      "lemma": "merluzzo",
+      "pos": null,
+      "translation": "Dorsch, Kabeljau",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2618
+    },
+    {
+      "lemma": "sbadiglio",
+      "pos": null,
+      "translation": "Gähnen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2619
+    },
+    {
+      "lemma": "ateniese",
+      "pos": null,
+      "translation": "athenisch/ Athener",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2620
+    },
+    {
+      "lemma": "Puglia",
+      "pos": null,
+      "translation": "Apulien",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2621
+    },
+    {
+      "lemma": "rospo",
+      "pos": null,
+      "translation": "Kröte",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2622
+    },
+    {
+      "lemma": "rifiutare",
+      "pos": "verb",
+      "translation": "ausmerzen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2623
+    },
+    {
+      "lemma": "birreria",
+      "pos": null,
+      "translation": "Brauerei",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2624
+    },
+    {
+      "lemma": "medio",
+      "pos": null,
+      "translation": "mittlerer, mittlere, mittleres/ Mittel-",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2625
+    },
+    {
+      "lemma": "corno",
+      "pos": null,
+      "translation": "Hupe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2626
+    },
+    {
+      "lemma": "andorrano",
+      "pos": null,
+      "translation": "andorranisch/ Andorraner",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2627
+    },
+    {
+      "lemma": "tirare",
+      "pos": "verb",
+      "translation": "ziehen, verziehen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2628
+    },
+    {
+      "lemma": "petizione",
+      "pos": null,
+      "translation": "Bittschrift",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2629
+    },
+    {
+      "lemma": "zodiaco",
+      "pos": null,
+      "translation": "Tierkreis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2630
+    },
+    {
+      "lemma": "imitare",
+      "pos": "verb",
+      "translation": "imitieren, nachahmen, nachbilden",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2631
+    },
+    {
+      "lemma": "covare",
+      "pos": "verb",
+      "translation": "brüten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2632
+    },
+    {
+      "lemma": "macelleria",
+      "pos": null,
+      "translation": "Schlachtfeld, Schlachthof",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2633
+    },
+    {
+      "lemma": "mangiabile, commestibile",
+      "pos": null,
+      "translation": "essbar, genießbar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2634
+    },
+    {
+      "lemma": "ribes",
+      "pos": null,
+      "translation": "Stachelbeere/ Johannisbeere",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2635
+    },
+    {
+      "lemma": "ontano",
+      "pos": null,
+      "translation": "Erle",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2636
+    },
+    {
+      "lemma": "ciclomotore",
+      "pos": null,
+      "translation": "Moped",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2637
+    },
+    {
+      "lemma": "amo",
+      "pos": null,
+      "translation": "Angelhaken",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2638
+    },
+    {
+      "lemma": "acciuga, alice",
+      "pos": null,
+      "translation": "Anchovis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2639
+    },
+    {
+      "lemma": "palato",
+      "pos": null,
+      "translation": "Gaumen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2640
+    },
+    {
+      "lemma": "miserabile, misero",
+      "pos": null,
+      "translation": "elend, erbärmlich, jämmerlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2641
+    },
+    {
+      "lemma": "per mezzo di, mediante",
+      "pos": null,
+      "translation": "durch, mit, vermittels",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2642
+    },
+    {
+      "lemma": "Lapponia",
+      "pos": null,
+      "translation": "Lappland",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2643
+    },
+    {
+      "lemma": "congresso",
+      "pos": null,
+      "translation": "Kongress",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2644
+    },
+    {
+      "lemma": "Ardenne",
+      "pos": null,
+      "translation": "Ardennen, Ardennerwald",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2645
+    },
+    {
+      "lemma": "osservazione",
+      "pos": null,
+      "translation": "Bemerkung, Beobachtung, Vermerk",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2646
+    },
+    {
+      "lemma": "impaurire, spaventare",
+      "pos": "verb",
+      "translation": "zurückschrecken",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2647
+    },
+    {
+      "lemma": "Ognissanti",
+      "pos": null,
+      "translation": "Allerheiligen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2648
+    },
+    {
+      "lemma": "Messia",
+      "pos": null,
+      "translation": "Messias",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2649
+    },
+    {
+      "lemma": "poppa",
+      "pos": null,
+      "translation": "Heck",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2650
+    },
+    {
+      "lemma": "retroguardia",
+      "pos": null,
+      "translation": "Nachhut",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2651
+    },
+    {
+      "lemma": "scozzese",
+      "pos": null,
+      "translation": "Schotte",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2652
+    },
+    {
+      "lemma": "monologo",
+      "pos": null,
+      "translation": "Monolog",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2653
+    },
+    {
+      "lemma": "affaticare, stancare, spossare",
+      "pos": "verb",
+      "translation": "strapazieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2654
+    },
+    {
+      "lemma": "arrendersi",
+      "pos": "verb",
+      "translation": "sich ergeben, kapitulieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2655
+    },
+    {
+      "lemma": "allattare",
+      "pos": "verb",
+      "translation": "säugen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2656
+    },
+    {
+      "lemma": "garanzia",
+      "pos": null,
+      "translation": "Garantie, Gewähr",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2657
+    },
+    {
+      "lemma": "bilancio",
+      "pos": null,
+      "translation": "Bilanz, Schlussrechnung/ Etat, Haushalt, Haushaltsplan, Budget",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2658
+    },
+    {
+      "lemma": "barbaforte",
+      "pos": null,
+      "translation": "Meerrettich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2659
+    },
+    {
+      "lemma": "fanatico",
+      "pos": null,
+      "translation": "fanatisch, leidenschaftlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2660
+    },
+    {
+      "lemma": "dattero",
+      "pos": null,
+      "translation": "Daktylus, Dattel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2661
+    },
+    {
+      "lemma": "succhiare",
+      "pos": "verb",
+      "translation": "lutschen, saugen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2662
+    },
+    {
+      "lemma": "contabile",
+      "pos": null,
+      "translation": "Buchhalter",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2663
+    },
+    {
+      "lemma": "arco",
+      "pos": null,
+      "translation": "Bogen, Bügel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2664
+    },
+    {
+      "lemma": "bacillo",
+      "pos": null,
+      "translation": "Bazillus",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2665
+    },
+    {
+      "lemma": "piegare",
+      "pos": "verb",
+      "translation": "falten, zusammenlegen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2666
+    },
+    {
+      "lemma": "segale",
+      "pos": null,
+      "translation": "Roggen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2667
+    },
+    {
+      "lemma": "decente",
+      "pos": null,
+      "translation": "gehörig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2668
+    },
+    {
+      "lemma": "sala d'aspetto",
+      "pos": null,
+      "translation": "Warteraum, Wartesaal",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2669
+    },
+    {
+      "lemma": "battesimo",
+      "pos": null,
+      "translation": "Taufe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2670
+    },
+    {
+      "lemma": "successo",
+      "pos": null,
+      "translation": "Erfolg, Gelingen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2671
+    },
+    {
+      "lemma": "baracca",
+      "pos": null,
+      "translation": "Baracke, Lagerhütte",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2672
+    },
+    {
+      "lemma": "pianta",
+      "pos": null,
+      "translation": "Gewächs/ Fußsohle, Sohle/ Anlage, Pflanzen, Anpflanzen, Pflanzung, Anpflanzung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2673
+    },
+    {
+      "lemma": "molla",
+      "pos": null,
+      "translation": "Feder, Triebfeder",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2674
+    },
+    {
+      "lemma": "argentino",
+      "pos": null,
+      "translation": "Argentinier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2675
+    },
+    {
+      "lemma": "osso di balena",
+      "pos": null,
+      "translation": "Fischbein/ Barte",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2676
+    },
+    {
+      "lemma": "bramoso, avido",
+      "pos": null,
+      "translation": "begierig, habgierig, lüstern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2677
+    },
+    {
+      "lemma": "lupo",
+      "pos": null,
+      "translation": "Wolf",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2678
+    },
+    {
+      "lemma": "barometro",
+      "pos": null,
+      "translation": "Barometer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2679
+    },
+    {
+      "lemma": "Venere",
+      "pos": "verb",
+      "translation": "Venus",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2680
+    },
+    {
+      "lemma": "rione popolare, quartiere popolare",
+      "pos": "verb",
+      "translation": "Armenviertel, Hinterviertel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2681
+    },
+    {
+      "lemma": "cibreo",
+      "pos": null,
+      "translation": "Ragout",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2682
+    },
+    {
+      "lemma": "piattaforma",
+      "pos": null,
+      "translation": "Kai",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2683
+    },
+    {
+      "lemma": "ragazzo",
+      "pos": null,
+      "translation": "Junge, Knabe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2684
+    },
+    {
+      "lemma": "denunciare",
+      "pos": "verb",
+      "translation": "angeben, anzeigen, denunzieren, hinterbringen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2685
+    },
+    {
+      "lemma": "covata",
+      "pos": null,
+      "translation": "Brut",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2686
+    },
+    {
+      "lemma": "Assiria",
+      "pos": null,
+      "translation": "Assyrien",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2687
+    },
+    {
+      "lemma": "valigia",
+      "pos": null,
+      "translation": "Handkoffer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2688
+    },
+    {
+      "lemma": "gambero",
+      "pos": null,
+      "translation": "Krebs",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2689
+    },
+    {
+      "lemma": "apparecchio",
+      "pos": null,
+      "translation": "Apparat, Vorrichtung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2690
+    },
+    {
+      "lemma": "accumulazione",
+      "pos": null,
+      "translation": "Ansammlung/ Anhäufung/ Versammlung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2691
+    },
+    {
+      "lemma": "domestico",
+      "pos": null,
+      "translation": "Hausdiener",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2692
+    },
+    {
+      "lemma": "afgano",
+      "pos": null,
+      "translation": "afghanisch/ Afghane",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2693
+    },
+    {
+      "lemma": "Lettonia",
+      "pos": null,
+      "translation": "Lettland",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2694
+    },
+    {
+      "lemma": "mulo",
+      "pos": null,
+      "translation": "Maulesel, Maultier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2695
+    },
+    {
+      "lemma": "Ande",
+      "pos": null,
+      "translation": "Anden",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2696
+    },
+    {
+      "lemma": "ribes nero",
+      "pos": null,
+      "translation": "Aalbeere",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2697
+    },
+    {
+      "lemma": "cornamusa",
+      "pos": null,
+      "translation": "Dudelsack",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2698
+    },
+    {
+      "lemma": "danese",
+      "pos": null,
+      "translation": "Däne",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2699
+    },
+    {
+      "lemma": "misurato",
+      "pos": null,
+      "translation": "gemessen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2700
+    },
+    {
+      "lemma": "cittadella",
+      "pos": null,
+      "translation": "Zitadelle",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2701
+    },
+    {
+      "lemma": "progetto",
+      "pos": null,
+      "translation": "Entwurf, Plan, Grundriss/ Projekt/ Skizze",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2702
+    },
+    {
+      "lemma": "granaio",
+      "pos": null,
+      "translation": "Baracke, Bude, Hütte, Scheune",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2703
+    },
+    {
+      "lemma": "cedola",
+      "pos": null,
+      "translation": "Coupon, Zinsabschnitt",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2704
+    },
+    {
+      "lemma": "Algeri",
+      "pos": null,
+      "translation": "Algier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2705
+    },
+    {
+      "lemma": "Arcadia",
+      "pos": null,
+      "translation": "Arkadien",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2706
+    },
+    {
+      "lemma": "bancarotta",
+      "pos": null,
+      "translation": "bankrott, zahlungsunfähig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2707
+    },
+    {
+      "lemma": "chirurgo",
+      "pos": null,
+      "translation": "Chirurg/ Wundarzt",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2708
+    },
+    {
+      "lemma": "compiere, eseguire",
+      "pos": "verb",
+      "translation": "ausführen, bestellen, erfüllen, leisten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2709
+    },
+    {
+      "lemma": "artiglieria",
+      "pos": null,
+      "translation": "Artillerie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2710
+    },
+    {
+      "lemma": "cassa sa morto",
+      "pos": null,
+      "translation": "Sarg",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2711
+    },
+    {
+      "lemma": "di quando in quando, ogni tanto",
+      "pos": null,
+      "translation": "dann und wann, von Zeit zu Zeit, zeitweilig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2712
+    },
+    {
+      "lemma": "visita",
+      "pos": null,
+      "translation": "Besuch, Visite",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2713
+    },
+    {
+      "lemma": "facchino",
+      "pos": null,
+      "translation": "Dienstmann, Gepäckträger, Träger",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2714
+    },
+    {
+      "lemma": "perdere l'abitunide di",
+      "pos": null,
+      "translation": "abgewöhnen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2715
+    },
+    {
+      "lemma": "aristocratico",
+      "pos": null,
+      "translation": "aristokratisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2716
+    },
+    {
+      "lemma": "intendere",
+      "pos": "verb",
+      "translation": "beabsichtigen, die Absicht haben, vorhaben",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2717
+    },
+    {
+      "lemma": "consolare",
+      "pos": "verb",
+      "translation": "trösten, Trost spenden",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2718
+    },
+    {
+      "lemma": "andaluso",
+      "pos": null,
+      "translation": "andalusisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2719
+    },
+    {
+      "lemma": "errore, sbaglio",
+      "pos": null,
+      "translation": "Fehler, Irrtum, Versehen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2720
+    },
+    {
+      "lemma": "efficace",
+      "pos": null,
+      "translation": "drastisch, zweckdienlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2721
+    },
+    {
+      "lemma": "balletto",
+      "pos": null,
+      "translation": "Ballett",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2722
+    },
+    {
+      "lemma": "pettegolezzo",
+      "pos": null,
+      "translation": "Geplauder",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2723
+    },
+    {
+      "lemma": "ambasciatore",
+      "pos": null,
+      "translation": "Botschafter, Gesandter",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2724
+    },
+    {
+      "lemma": "Cartagine",
+      "pos": null,
+      "translation": "Karthago",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2725
+    },
+    {
+      "lemma": "faro",
+      "pos": null,
+      "translation": "Leuchtturm",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2726
+    },
+    {
+      "lemma": "amministrare gli ultimi sacramenti",
+      "pos": null,
+      "translation": "salben",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2727
+    },
+    {
+      "lemma": "cognata",
+      "pos": null,
+      "translation": "Schwägerin",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2728
+    },
+    {
+      "lemma": "appetitoso",
+      "pos": null,
+      "translation": "appetitlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2729
+    },
+    {
+      "lemma": "poltrona",
+      "pos": null,
+      "translation": "Lehnstuhl",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2730
+    },
+    {
+      "lemma": "adottivo",
+      "pos": null,
+      "translation": "Adoptiv...",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2731
+    },
+    {
+      "lemma": "carnagione",
+      "pos": null,
+      "translation": "Gesichtsfarbe, Teint",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2732
+    },
+    {
+      "lemma": "dinamite",
+      "pos": null,
+      "translation": "Dynamit",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2733
+    },
+    {
+      "lemma": "baionetta",
+      "pos": null,
+      "translation": "Bajonett",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2734
+    },
+    {
+      "lemma": "bisnonno",
+      "pos": null,
+      "translation": "Urahn, Urgroßvater",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2735
+    },
+    {
+      "lemma": "conveniente",
+      "pos": null,
+      "translation": "angemessen, geeignet, zeitgemäß",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2736
+    },
+    {
+      "lemma": "circo",
+      "pos": null,
+      "translation": "Zirkus",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2737
+    },
+    {
+      "lemma": "serio",
+      "pos": null,
+      "translation": "ernst, ernsthaft, gesetzt",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2738
+    },
+    {
+      "lemma": "trebbiare",
+      "pos": "verb",
+      "translation": "dreschen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2739
+    },
+    {
+      "lemma": "spinaci",
+      "pos": null,
+      "translation": "Spinat",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2740
+    },
+    {
+      "lemma": "bussola",
+      "pos": null,
+      "translation": "Kompass",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2741
+    },
+    {
+      "lemma": "riccio",
+      "pos": null,
+      "translation": "Igel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2742
+    },
+    {
+      "lemma": "pazzo",
+      "pos": null,
+      "translation": "Irre",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2743
+    },
+    {
+      "lemma": "nodo",
+      "pos": null,
+      "translation": "Knoten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2744
+    },
+    {
+      "lemma": "asiatico",
+      "pos": null,
+      "translation": "asiatisch/ Asiat",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2745
+    },
+    {
+      "lemma": "portiera",
+      "pos": null,
+      "translation": "Wagentür",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2746
+    },
+    {
+      "lemma": "sedano",
+      "pos": null,
+      "translation": "Sellerie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2747
+    },
+    {
+      "lemma": "durata",
+      "pos": null,
+      "translation": "Dauer, Weile",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2748
+    },
+    {
+      "lemma": "scorrere, fluire",
+      "pos": "verb",
+      "translation": "fließen, rinnen, strömen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2749
+    },
+    {
+      "lemma": "treno rapido",
+      "pos": null,
+      "translation": "Eilzug",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2750
+    },
+    {
+      "lemma": "durare",
+      "pos": "verb",
+      "translation": "dauern, währen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2751
+    },
+    {
+      "lemma": "conservatorio",
+      "pos": null,
+      "translation": "Konservatorium",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2752
+    },
+    {
+      "lemma": "urto, spinta",
+      "pos": null,
+      "translation": "Stoß, Trieb",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2753
+    },
+    {
+      "lemma": "multa",
+      "pos": null,
+      "translation": "Geldstrafe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2754
+    },
+    {
+      "lemma": "pero",
+      "pos": null,
+      "translation": "Birnbaum",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2755
+    },
+    {
+      "lemma": "cetriolino",
+      "pos": null,
+      "translation": "Gewürzgurke, saure Gurke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2756
+    },
+    {
+      "lemma": "affascinante",
+      "pos": null,
+      "translation": "allerliebst, anmutig, hold, lieblich, reizend",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2757
+    },
+    {
+      "lemma": "melanzana",
+      "pos": null,
+      "translation": "Eierpflanze, Aubergine, Eierfrucht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2758
+    },
+    {
+      "lemma": "umile",
+      "pos": null,
+      "translation": "demütig, kleinlaut, unterwürfig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2759
+    },
+    {
+      "lemma": "si capisce",
+      "pos": null,
+      "translation": "zweifelsohne",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2760
+    },
+    {
+      "lemma": "ventre",
+      "pos": null,
+      "translation": "Bauch, Unterleib",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2761
+    },
+    {
+      "lemma": "Stoccolma",
+      "pos": null,
+      "translation": "Stockholm",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2762
+    },
+    {
+      "lemma": "cosciente",
+      "pos": null,
+      "translation": "wissentlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2763
+    },
+    {
+      "lemma": "fattura",
+      "pos": null,
+      "translation": "Faktura, Rechnung, Warenrechnung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2764
+    },
+    {
+      "lemma": "origliare",
+      "pos": "verb",
+      "translation": "belauschen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2765
+    },
+    {
+      "lemma": "agonia",
+      "pos": null,
+      "translation": "Agonie, Todeskampf",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2766
+    },
+    {
+      "lemma": "stoviglie",
+      "pos": null,
+      "translation": "Steingut, Keramik",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2767
+    },
+    {
+      "lemma": "cognac",
+      "pos": null,
+      "translation": "Kognak",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2768
+    },
+    {
+      "lemma": "mercanteggiare",
+      "pos": "verb",
+      "translation": "feilschen, dingen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2769
+    },
+    {
+      "lemma": "bagassa",
+      "pos": null,
+      "translation": "Bagasse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2770
+    },
+    {
+      "lemma": "arrugginito",
+      "pos": null,
+      "translation": "rostig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2771
+    },
+    {
+      "lemma": "sufficiente",
+      "pos": null,
+      "translation": "auskömmlich, genügend, ziemlich, zulänglich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2772
+    },
+    {
+      "lemma": "rinoceronte",
+      "pos": null,
+      "translation": "Nashorn",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2773
+    },
+    {
+      "lemma": "toccare",
+      "pos": "verb",
+      "translation": "rühren, anrühren, berühren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2774
+    },
+    {
+      "lemma": "modista",
+      "pos": null,
+      "translation": "Modistin",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2775
+    },
+    {
+      "lemma": "poesia",
+      "pos": null,
+      "translation": "Dichtkunst, Dichtung, Poesie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2776
+    },
+    {
+      "lemma": "staccare",
+      "pos": "verb",
+      "translation": "abreißen, losreißen, pflücken, abpflügen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2777
+    },
+    {
+      "lemma": "discreto",
+      "pos": null,
+      "translation": "diskret, verschwiegen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2778
+    },
+    {
+      "lemma": "Alessandro",
+      "pos": null,
+      "translation": "Alexander",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2779
+    },
+    {
+      "lemma": "bagaglio",
+      "pos": null,
+      "translation": "Gepäck, Verpackung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2780
+    },
+    {
+      "lemma": "contare",
+      "pos": "verb",
+      "translation": "zählen, aufzählen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2781
+    },
+    {
+      "lemma": "fascino, incanto",
+      "pos": null,
+      "translation": "Anmut",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2782
+    },
+    {
+      "lemma": "eleggere, scegliere",
+      "pos": "verb",
+      "translation": "auslesen, wählen, auswählen, erwählen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2783
+    },
+    {
+      "lemma": "artiglio",
+      "pos": null,
+      "translation": "Klaue, Kralle",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2784
+    },
+    {
+      "lemma": "abilità",
+      "pos": null,
+      "translation": "Kapazität/ Geschicklichkeit, Gewandtheit",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2785
+    },
+    {
+      "lemma": "tiglio",
+      "pos": null,
+      "translation": "Linde, Lindenbaum",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2786
+    },
+    {
+      "lemma": "nuocere",
+      "pos": "verb",
+      "translation": "beeinträchtigen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2787
+    },
+    {
+      "lemma": "sportello",
+      "pos": null,
+      "translation": "Schalter, Schiebefenster",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2788
+    },
+    {
+      "lemma": "ravanello",
+      "pos": null,
+      "translation": "Radieschen/ Rettich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2789
+    },
+    {
+      "lemma": "argentare",
+      "pos": "verb",
+      "translation": "versilbern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2790
+    },
+    {
+      "lemma": "australiano",
+      "pos": null,
+      "translation": "australisch/ Australier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2791
+    },
+    {
+      "lemma": "bruco",
+      "pos": null,
+      "translation": "Raupe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2792
+    },
+    {
+      "lemma": "dare",
+      "pos": "verb",
+      "translation": "erteilen, geben, herreichen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2793
+    },
+    {
+      "lemma": "abissino",
+      "pos": null,
+      "translation": "abessynisch/ Abessinier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2794
+    },
+    {
+      "lemma": "sprezzo",
+      "pos": null,
+      "translation": "Verachtung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2795
+    },
+    {
+      "lemma": "ippopotamo",
+      "pos": null,
+      "translation": "Flusspferd",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2796
+    },
+    {
+      "lemma": "udienza",
+      "pos": null,
+      "translation": "Audienz",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2797
+    },
+    {
+      "lemma": "costruzione",
+      "pos": null,
+      "translation": "Erbauung, Bau",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2798
+    },
+    {
+      "lemma": "passo",
+      "pos": null,
+      "translation": "Schritt, Tritt",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2799
+    },
+    {
+      "lemma": "lenticchia",
+      "pos": null,
+      "translation": "Linse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2800
+    },
+    {
+      "lemma": "mostro",
+      "pos": null,
+      "translation": "Ungeheuer, Ungetüm, Unhold",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2801
+    },
+    {
+      "lemma": "alba",
+      "pos": null,
+      "translation": "Tagesanbruch/ Morgenröte, Polarlicht, Reiz des Neuen, Zauber, Morgenrot",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2802
+    },
+    {
+      "lemma": "senza fondo",
+      "pos": null,
+      "translation": "grundlos",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2803
+    },
+    {
+      "lemma": "spada",
+      "pos": null,
+      "translation": "Degen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2804
+    },
+    {
+      "lemma": "disposto",
+      "pos": null,
+      "translation": "geneigt zu",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2805
+    },
+    {
+      "lemma": "aiutante",
+      "pos": null,
+      "translation": "Adjutant, Hilfsoffizier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2806
+    },
+    {
+      "lemma": "sidro",
+      "pos": null,
+      "translation": "Apfelwein, Obstwein, Zider",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2807
+    },
+    {
+      "lemma": "onorevole, rispettabile",
+      "pos": null,
+      "translation": "achtbar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2808
+    },
+    {
+      "lemma": "monumento",
+      "pos": null,
+      "translation": "Denkmal, Monument",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2809
+    },
+    {
+      "lemma": "circondare",
+      "pos": "verb",
+      "translation": "umringen, umzingeln",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2810
+    },
+    {
+      "lemma": "bronzo",
+      "pos": null,
+      "translation": "Bronze, Erz",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2811
+    },
+    {
+      "lemma": "brigante, bandito",
+      "pos": null,
+      "translation": "Bandit, Räuber",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2812
+    },
+    {
+      "lemma": "melo",
+      "pos": null,
+      "translation": "Apfelbaum",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2813
+    },
+    {
+      "lemma": "confessione",
+      "pos": null,
+      "translation": "Bekenntnis, Beichte, Eingeständnis, Geständnis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2814
+    },
+    {
+      "lemma": "diritto",
+      "pos": null,
+      "translation": "Befugnis, Recht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2815
+    },
+    {
+      "lemma": "asparago",
+      "pos": null,
+      "translation": "Spargel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2816
+    },
+    {
+      "lemma": "comico",
+      "pos": null,
+      "translation": "drollig, komisch, spaßhaft",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2817
+    },
+    {
+      "lemma": "aggressivo",
+      "pos": null,
+      "translation": "angriffslustig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2818
+    },
+    {
+      "lemma": "confessare",
+      "pos": "verb",
+      "translation": "anerkennen, beichten, gestehen, eingestehen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2819
+    },
+    {
+      "lemma": "quercia",
+      "pos": null,
+      "translation": "Eiche",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2820
+    },
+    {
+      "lemma": "Cairo",
+      "pos": null,
+      "translation": "Kairo",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2821
+    },
+    {
+      "lemma": "mondano",
+      "pos": null,
+      "translation": "weltlich",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2822
+    },
+    {
+      "lemma": "disporre",
+      "pos": null,
+      "translation": "disponieren, verfügen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2823
+    },
+    {
+      "lemma": "Archimede",
+      "pos": null,
+      "translation": "Archimedes",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2824
+    },
+    {
+      "lemma": "cantoniere, casellante",
+      "pos": "verb",
+      "translation": "Streckenwärter",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2825
+    },
+    {
+      "lemma": "balena",
+      "pos": null,
+      "translation": "Walfisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2826
+    },
+    {
+      "lemma": "ballata",
+      "pos": null,
+      "translation": "Ballade",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2827
+    },
+    {
+      "lemma": "curvo",
+      "pos": null,
+      "translation": "gebogen, krumm",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2828
+    },
+    {
+      "lemma": "barriera",
+      "pos": null,
+      "translation": "Barriere, Schranke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2829
+    },
+    {
+      "lemma": "questura",
+      "pos": null,
+      "translation": "Polizeiamt, Polizeiwache",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2830
+    },
+    {
+      "lemma": "Vietnam",
+      "pos": null,
+      "translation": "Vietnam",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2831
+    },
+    {
+      "lemma": "distribuire",
+      "pos": "verb",
+      "translation": "austeilen, verallgemeinern, verteilen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2832
+    },
+    {
+      "lemma": "Gerico",
+      "pos": null,
+      "translation": "Jericho",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2833
+    },
+    {
+      "lemma": "vipera",
+      "pos": null,
+      "translation": "Natter, Kreuzotter, Viper",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2834
+    },
+    {
+      "lemma": "stampare",
+      "pos": "verb",
+      "translation": "drucken, prägen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2835
+    },
+    {
+      "lemma": "Borgogna",
+      "pos": null,
+      "translation": "Burgund",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2836
+    },
+    {
+      "lemma": "confermare",
+      "pos": "verb",
+      "translation": "bekräftigen, bestätigen, konfirmieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2837
+    },
+    {
+      "lemma": "Asia Minore",
+      "pos": null,
+      "translation": "Kleinasien",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2838
+    },
+    {
+      "lemma": "sgradevole, spiacevole",
+      "pos": null,
+      "translation": "widerwärtig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2839
+    },
+    {
+      "lemma": "capotreno",
+      "pos": null,
+      "translation": "Aufseher, Führer, Schaffner",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2840
+    },
+    {
+      "lemma": "patto",
+      "pos": null,
+      "translation": "Einverständnis, Übereinkunft",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2841
+    },
+    {
+      "lemma": "chiatta",
+      "pos": null,
+      "translation": "Fähre, Lastkahn",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2842
+    },
+    {
+      "lemma": "liberare",
+      "pos": "verb",
+      "translation": "befreien, entledigen, erledigen, freilassen, frei machen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2843
+    },
+    {
+      "lemma": "contravvenzione",
+      "pos": null,
+      "translation": "Geldstrafe/ Protokoll",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2844
+    },
+    {
+      "lemma": "destra",
+      "pos": null,
+      "translation": "Steuerbord",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2845
+    },
+    {
+      "lemma": "Caino",
+      "pos": null,
+      "translation": "Kain",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2846
+    },
+    {
+      "lemma": "cascata",
+      "pos": null,
+      "translation": "Wasserfall",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2847
+    },
+    {
+      "lemma": "arbusto",
+      "pos": null,
+      "translation": "Gebüsch, Staude, Strauch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2848
+    },
+    {
+      "lemma": "tassare",
+      "pos": "verb",
+      "translation": "besteuern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2849
+    },
+    {
+      "lemma": "bibliotecario",
+      "pos": null,
+      "translation": "Bibliothekar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2850
+    },
+    {
+      "lemma": "birraio",
+      "pos": null,
+      "translation": "Brauer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2851
+    },
+    {
+      "lemma": "ragione",
+      "pos": null,
+      "translation": "Rationalität",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2852
+    },
+    {
+      "lemma": "noce",
+      "pos": null,
+      "translation": "Nussbaum/ Nuss",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2853
+    },
+    {
+      "lemma": "fissare",
+      "pos": "verb",
+      "translation": "befestigen, festsetzen, fixieren/ starren, anstarren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2854
+    },
+    {
+      "lemma": "sferico",
+      "pos": null,
+      "translation": "sphärisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2855
+    },
+    {
+      "lemma": "Balcani",
+      "pos": null,
+      "translation": "Balkan",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2856
+    },
+    {
+      "lemma": "indulgenza",
+      "pos": null,
+      "translation": "Ablass",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2857
+    },
+    {
+      "lemma": "antenna",
+      "pos": null,
+      "translation": "Rahe, Fühler, Antenne",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2858
+    },
+    {
+      "lemma": "ardere",
+      "pos": "verb",
+      "translation": "brennen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2859
+    },
+    {
+      "lemma": "accappatoio",
+      "pos": null,
+      "translation": "Bademantel",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2860
+    },
+    {
+      "lemma": "gelarsi, congelarsi",
+      "pos": "verb",
+      "translation": "erfrieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2861
+    },
+    {
+      "lemma": "chiacchierona",
+      "pos": null,
+      "translation": "Schwätzerin, Quasselstrippe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2862
+    },
+    {
+      "lemma": "tonno",
+      "pos": null,
+      "translation": "Thunfisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2863
+    },
+    {
+      "lemma": "sopracciglio",
+      "pos": null,
+      "translation": "Augenbraue",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2864
+    },
+    {
+      "lemma": "esilio",
+      "pos": null,
+      "translation": "Exil, Verbannung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2865
+    },
+    {
+      "lemma": "sputare",
+      "pos": "verb",
+      "translation": "speien, spucken",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2866
+    },
+    {
+      "lemma": "muto",
+      "pos": null,
+      "translation": "sprachlos, stumm",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2867
+    },
+    {
+      "lemma": "album",
+      "pos": null,
+      "translation": "Album",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2868
+    },
+    {
+      "lemma": "rompere",
+      "pos": "verb",
+      "translation": "abreißen, losreißen, pflücken, abpflügen/ brechen, abbrechen, aufbrechen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2869
+    },
+    {
+      "lemma": "Torino",
+      "pos": null,
+      "translation": "Turin",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2870
+    },
+    {
+      "lemma": "ciliegio",
+      "pos": null,
+      "translation": "Kirschbaum",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2871
+    },
+    {
+      "lemma": "granturco",
+      "pos": null,
+      "translation": "Mais",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2872
+    },
+    {
+      "lemma": "ostinato",
+      "pos": null,
+      "translation": "eigensinnig, halsstarrig, hartnäckig, starrköpfig, trotzig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2873
+    },
+    {
+      "lemma": "passeggiata",
+      "pos": null,
+      "translation": "Foyer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2874
+    },
+    {
+      "lemma": "prua",
+      "pos": null,
+      "translation": "Bug",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2875
+    },
+    {
+      "lemma": "plenilunio",
+      "pos": null,
+      "translation": "Vollmond",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2876
+    },
+    {
+      "lemma": "entusiasmo",
+      "pos": null,
+      "translation": "Begeisterung, Enthusiasmus",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2877
+    },
+    {
+      "lemma": "Azerbaigian",
+      "pos": null,
+      "translation": "Aserbaidschan",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2878
+    },
+    {
+      "lemma": "sostegno",
+      "pos": null,
+      "translation": "Stütze",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2879
+    },
+    {
+      "lemma": "aggredire, assalire",
+      "pos": "verb",
+      "translation": "ein Attentat ausführen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2880
+    },
+    {
+      "lemma": "lenza",
+      "pos": null,
+      "translation": "Angelleine",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2881
+    },
+    {
+      "lemma": "carciofo",
+      "pos": null,
+      "translation": "Artischocke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2882
+    },
+    {
+      "lemma": "pernice",
+      "pos": null,
+      "translation": "Rebhuhn",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2883
+    },
+    {
+      "lemma": "faggio",
+      "pos": null,
+      "translation": "Buche",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2884
+    },
+    {
+      "lemma": "favorire",
+      "pos": "verb",
+      "translation": "begünstigen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2885
+    },
+    {
+      "lemma": "superstizioso",
+      "pos": null,
+      "translation": "abergläubisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2886
+    },
+    {
+      "lemma": "barbiere",
+      "pos": "verb",
+      "translation": "Barbier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2887
+    },
+    {
+      "lemma": "mistura",
+      "pos": null,
+      "translation": "Gemisch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2888
+    },
+    {
+      "lemma": "soffitto",
+      "pos": null,
+      "translation": "Decke, Zimmerdecke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2889
+    },
+    {
+      "lemma": "estorcere",
+      "pos": "verb",
+      "translation": "erzwingen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2890
+    },
+    {
+      "lemma": "bacca di mirtillo",
+      "pos": null,
+      "translation": "Blaubeere, Heidelbeere",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2891
+    },
+    {
+      "lemma": "assalitore, aggressore",
+      "pos": null,
+      "translation": "Angreifer, Aggressor",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2892
+    },
+    {
+      "lemma": "dose",
+      "pos": null,
+      "translation": "Dosis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2893
+    },
+    {
+      "lemma": "ambasciata",
+      "pos": null,
+      "translation": "Gesandtschaft/ Botschaft",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2894
+    },
+    {
+      "lemma": "arcivescovo",
+      "pos": null,
+      "translation": "Erzbischof",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2895
+    },
+    {
+      "lemma": "Aquisgrana",
+      "pos": null,
+      "translation": "Aachen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2896
+    },
+    {
+      "lemma": "calunniare",
+      "pos": "verb",
+      "translation": "anschwärzen, fälschlich beschuldigen, verleumden",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2897
+    },
+    {
+      "lemma": "canna",
+      "pos": null,
+      "translation": "Angelrute",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2898
+    },
+    {
+      "lemma": "energia atomica",
+      "pos": null,
+      "translation": "Atomenergie, Atomkraft, Kernenergie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2899
+    },
+    {
+      "lemma": "decreto",
+      "pos": null,
+      "translation": "Dekret",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2900
+    },
+    {
+      "lemma": "batteria",
+      "pos": null,
+      "translation": "Batterie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2901
+    },
+    {
+      "lemma": "Milano",
+      "pos": null,
+      "translation": "Mailand",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2902
+    },
+    {
+      "lemma": "erpice",
+      "pos": null,
+      "translation": "Egge",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2903
+    },
+    {
+      "lemma": "aurora",
+      "pos": null,
+      "translation": "Morgenröte, Polarlicht, Reiz des Neuen, Zauber, Morgenrot",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2904
+    },
+    {
+      "lemma": "bibita, bevanda",
+      "pos": null,
+      "translation": "Getränk, Trank",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2905
+    },
+    {
+      "lemma": "labirinto",
+      "pos": null,
+      "translation": "Labyrinth",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2906
+    },
+    {
+      "lemma": "continuare",
+      "pos": "verb",
+      "translation": "fortfahren, fortführen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2907
+    },
+    {
+      "lemma": "riservare",
+      "pos": "verb",
+      "translation": "reservieren, vorbehalten, zurückbehalten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2908
+    },
+    {
+      "lemma": "giurare",
+      "pos": "verb",
+      "translation": "beeidigen, schwören, beschwören",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2909
+    },
+    {
+      "lemma": "sbadato, negligente, noncurante",
+      "pos": null,
+      "translation": "achtlos, fahrlässig",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2910
+    },
+    {
+      "lemma": "zoppicare",
+      "pos": "verb",
+      "translation": "hinken, humpeln",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2911
+    },
+    {
+      "lemma": "Giosuè",
+      "pos": null,
+      "translation": "Josua",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2912
+    },
+    {
+      "lemma": "promozione",
+      "pos": null,
+      "translation": "Promotion",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2913
+    },
+    {
+      "lemma": "betulla",
+      "pos": null,
+      "translation": "Birke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2914
+    },
+    {
+      "lemma": "cavolfiore",
+      "pos": null,
+      "translation": "Blumenkohl",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2915
+    },
+    {
+      "lemma": "rifiutarsi",
+      "pos": "verb",
+      "translation": "ablehnen, abschlagen, ausschlagen, versagen, weigern, verweigern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2916
+    },
+    {
+      "lemma": "incitare, spronare",
+      "pos": "verb",
+      "translation": "anreizen, aufhetzen, reizen, aufreizen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2917
+    },
+    {
+      "lemma": "Adone",
+      "pos": null,
+      "translation": "Adonis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2918
+    },
+    {
+      "lemma": "sogliola",
+      "pos": null,
+      "translation": "Seezunge",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2919
+    },
+    {
+      "lemma": "impiegare, usare",
+      "pos": "verb",
+      "translation": "anwenden, benutzen, brauchen, gebrauchen, verwenden, verwerten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2920
+    },
+    {
+      "lemma": "tristezza",
+      "pos": null,
+      "translation": "Betrübnis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2921
+    },
+    {
+      "lemma": "lardo",
+      "pos": null,
+      "translation": "Speck",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2922
+    },
+    {
+      "lemma": "Anversa",
+      "pos": null,
+      "translation": "Antwerpen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2923
+    },
+    {
+      "lemma": "pisello",
+      "pos": null,
+      "translation": "Erbse",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2924
+    },
+    {
+      "lemma": "virgolette",
+      "pos": null,
+      "translation": "Anführungsstriche, Gänsefüßchen, Anführungszeichen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2925
+    },
+    {
+      "lemma": "Groenlandia",
+      "pos": null,
+      "translation": "Grönland",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2926
+    },
+    {
+      "lemma": "baia",
+      "pos": null,
+      "translation": "Bucht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2927
+    },
+    {
+      "lemma": "esca",
+      "pos": null,
+      "translation": "Köder",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2928
+    },
+    {
+      "lemma": "aia",
+      "pos": null,
+      "translation": "Dreschtenne, Tenne",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2929
+    },
+    {
+      "lemma": "fata",
+      "pos": null,
+      "translation": "Fee",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2930
+    },
+    {
+      "lemma": "console",
+      "pos": null,
+      "translation": "Konsul",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2931
+    },
+    {
+      "lemma": "Artico",
+      "pos": null,
+      "translation": "Arktis",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2932
+    },
+    {
+      "lemma": "indiano, indiano americano",
+      "pos": null,
+      "translation": "Indianer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2933
+    },
+    {
+      "lemma": "fraternità",
+      "pos": null,
+      "translation": "Brüderlichkeit",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2934
+    },
+    {
+      "lemma": "babordo",
+      "pos": null,
+      "translation": "Backbord",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2935
+    },
+    {
+      "lemma": "carta assorbente, carta asciugante",
+      "pos": null,
+      "translation": "Löschpapier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2936
+    },
+    {
+      "lemma": "dogana",
+      "pos": null,
+      "translation": "Zollamt",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2937
+    },
+    {
+      "lemma": "concimare",
+      "pos": "verb",
+      "translation": "düngen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2938
+    },
+    {
+      "lemma": "brasiliano",
+      "pos": null,
+      "translation": "Brasilianer",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2939
+    },
+    {
+      "lemma": "infettare",
+      "pos": "verb",
+      "translation": "anstecken, infizieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2940
+    },
+    {
+      "lemma": "tremare",
+      "pos": "verb",
+      "translation": "beben, zittern, zucken",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2941
+    },
+    {
+      "lemma": "bloccare",
+      "pos": "verb",
+      "translation": "blockieren",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2942
+    },
+    {
+      "lemma": "esortazione, ammonimento",
+      "pos": null,
+      "translation": "Ermahnung, Zuspruch",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2943
+    },
+    {
+      "lemma": "scheletro",
+      "pos": null,
+      "translation": "Gebein, Gerippe, Knochengerüst, Skelett",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2944
+    },
+    {
+      "lemma": "Nembrod",
+      "pos": null,
+      "translation": "Nimrod",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2945
+    },
+    {
+      "lemma": "anarchia",
+      "pos": null,
+      "translation": "Anarchie",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2946
+    },
+    {
+      "lemma": "causa",
+      "pos": null,
+      "translation": "Anlass, Grund, Ursache, Veranlassung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2947
+    },
+    {
+      "lemma": "alveare, arnia",
+      "pos": "verb",
+      "translation": "Bienenstock/ Bienenkorb",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2948
+    },
+    {
+      "lemma": "frizione",
+      "pos": null,
+      "translation": "Kupplung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2949
+    },
+    {
+      "lemma": "parapetto",
+      "pos": null,
+      "translation": "Balustrade, Geländer, Schranke",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2950
+    },
+    {
+      "lemma": "collega",
+      "pos": null,
+      "translation": "College",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2951
+    },
+    {
+      "lemma": "apicoltura, apicultura",
+      "pos": null,
+      "translation": "Bienenzucht",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2952
+    },
+    {
+      "lemma": "polso",
+      "pos": null,
+      "translation": "Handgelenk/ Puls",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2953
+    },
+    {
+      "lemma": "algerino",
+      "pos": null,
+      "translation": "algerisch/ Algerier",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2954
+    },
+    {
+      "lemma": "ungherese",
+      "pos": null,
+      "translation": "Ungar",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2955
+    },
+    {
+      "lemma": "scalpello",
+      "pos": null,
+      "translation": "Meißel, Stemmeisen",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2956
+    },
+    {
+      "lemma": "apprestare",
+      "pos": "verb",
+      "translation": "zurichten",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2957
+    },
+    {
+      "lemma": "fallimento",
+      "pos": null,
+      "translation": "bankrott, zahlungsunfähig/ Bankrott, Konkurs, Pleite",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2958
+    },
+    {
+      "lemma": "Annunciazone",
+      "pos": null,
+      "translation": "Mariä Verkündigung",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2959
+    },
+    {
+      "lemma": "trattato",
+      "pos": null,
+      "translation": "Abhandlung, Traktat",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2960
+    },
+    {
+      "lemma": "genitori adottivi",
+      "pos": null,
+      "translation": "Pflegeeltern",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2961
+    },
+    {
+      "lemma": "fieno",
+      "pos": null,
+      "translation": "Heu",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2962
+    },
+    {
+      "lemma": "tempia",
+      "pos": null,
+      "translation": "Schläfe",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2963
+    },
+    {
+      "lemma": "infame",
+      "pos": null,
+      "translation": "ehrlos",
+      "example": null,
+      "level": "B1",
+      "frequency_rank": 2964
+    },
+    {
+      "lemma": "la notizia",
+      "pos": null,
+      "translation": "news item",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2965
+    },
+    {
+      "lemma": "il quotidiano",
+      "pos": null,
+      "translation": "daily newspaper",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2966
+    },
+    {
+      "lemma": "l'articolo",
+      "pos": null,
+      "translation": "article",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2967
+    },
+    {
+      "lemma": "il telegiornale",
+      "pos": null,
+      "translation": "TV news",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2968
+    },
+    {
+      "lemma": "l'intervista",
+      "pos": null,
+      "translation": "interview",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2969
+    },
+    {
+      "lemma": "la politica",
+      "pos": null,
+      "translation": "politics",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2970
+    },
+    {
+      "lemma": "l'economia",
+      "pos": null,
+      "translation": "economy",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2971
+    },
+    {
+      "lemma": "la disoccupazione",
+      "pos": null,
+      "translation": "unemployment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2972
+    },
+    {
+      "lemma": "il governo",
+      "pos": null,
+      "translation": "government",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2973
+    },
+    {
+      "lemma": "l'opinione pubblica",
+      "pos": null,
+      "translation": "public opinion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2974
+    },
+    {
+      "lemma": "Credo che lui abbia ragione.",
+      "pos": null,
+      "translation": "I believe he is right.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2975
+    },
+    {
+      "lemma": "È importante che tutti partecipino.",
+      "pos": null,
+      "translation": "It's important that everyone participates.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2976
+    },
+    {
+      "lemma": "Sembra che piova domani.",
+      "pos": null,
+      "translation": "It seems like it will rain tomorrow.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2977
+    },
+    {
+      "lemma": "La legge è stata approvata.",
+      "pos": null,
+      "translation": "The law was approved.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2978
+    },
+    {
+      "lemma": "I giornali vengono letti da milioni di persone.",
+      "pos": null,
+      "translation": "Newspapers are read by millions of people.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2979
+    },
+    {
+      "lemma": "il colloquio",
+      "pos": null,
+      "translation": "job interview",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2980
+    },
+    {
+      "lemma": "il curriculum",
+      "pos": null,
+      "translation": "CV / resume",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2981
+    },
+    {
+      "lemma": "l'azienda",
+      "pos": null,
+      "translation": "company",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2982
+    },
+    {
+      "lemma": "lo stipendio",
+      "pos": null,
+      "translation": "salary",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2983
+    },
+    {
+      "lemma": "la riunione",
+      "pos": null,
+      "translation": "meeting",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2984
+    },
+    {
+      "lemma": "il/la collega",
+      "pos": null,
+      "translation": "colleague",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2985
+    },
+    {
+      "lemma": "la promozione",
+      "pos": null,
+      "translation": "promotion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2986
+    },
+    {
+      "lemma": "le competenze",
+      "pos": null,
+      "translation": "skills",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2987
+    },
+    {
+      "lemma": "il capo",
+      "pos": null,
+      "translation": "boss",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2988
+    },
+    {
+      "lemma": "licenziarsi",
+      "pos": "verb",
+      "translation": "to resign",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2989
+    },
+    {
+      "lemma": "Avrei voluto studiare medicina.",
+      "pos": null,
+      "translation": "I would have liked to study medicine.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2990
+    },
+    {
+      "lemma": "Sarebbe stata una buona opportunità.",
+      "pos": null,
+      "translation": "It would have been a good opportunity.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2991
+    },
+    {
+      "lemma": "Lavorando sodo, ha ottenuto la promozione.",
+      "pos": null,
+      "translation": "By working hard, he got the promotion.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2992
+    },
+    {
+      "lemma": "Avendo finito il progetto, sono andato a casa.",
+      "pos": null,
+      "translation": "Having finished the project, I went home.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2993
+    },
+    {
+      "lemma": "il capolavoro",
+      "pos": null,
+      "translation": "masterpiece",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2994
+    },
+    {
+      "lemma": "il romanzo",
+      "pos": null,
+      "translation": "novel",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2995
+    },
+    {
+      "lemma": "il regista",
+      "pos": null,
+      "translation": "director",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2996
+    },
+    {
+      "lemma": "la mostra",
+      "pos": null,
+      "translation": "exhibition",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2997
+    },
+    {
+      "lemma": "il dipinto",
+      "pos": null,
+      "translation": "painting",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2998
+    },
+    {
+      "lemma": "lo scrittore",
+      "pos": null,
+      "translation": "writer",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 2999
+    },
+    {
+      "lemma": "la poesia",
+      "pos": null,
+      "translation": "poetry",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3000
+    },
+    {
+      "lemma": "la scena",
+      "pos": null,
+      "translation": "scene",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3001
+    },
+    {
+      "lemma": "il Rinascimento",
+      "pos": null,
+      "translation": "the Renaissance",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3002
+    },
+    {
+      "lemma": "l'opera",
+      "pos": null,
+      "translation": "opera",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3003
+    },
+    {
+      "lemma": "Se avessi più tempo, leggerei di più.",
+      "pos": null,
+      "translation": "If I had more time, I would read more.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3004
+    },
+    {
+      "lemma": "Vorrei che tu venissi alla mostra.",
+      "pos": null,
+      "translation": "I wish you would come to the exhibition.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3005
+    },
+    {
+      "lemma": "l'ambiente",
+      "pos": null,
+      "translation": "environment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3006
+    },
+    {
+      "lemma": "il cambiamento climatico",
+      "pos": null,
+      "translation": "climate change",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3007
+    },
+    {
+      "lemma": "l'inquinamento",
+      "pos": null,
+      "translation": "pollution",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3008
+    },
+    {
+      "lemma": "riciclare",
+      "pos": "verb",
+      "translation": "to recycle",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3009
+    },
+    {
+      "lemma": "l'energia rinnovabile",
+      "pos": null,
+      "translation": "renewable energy",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3010
+    },
+    {
+      "lemma": "la ricerca",
+      "pos": null,
+      "translation": "research",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3011
+    },
+    {
+      "lemma": "lo sviluppo sostenibile",
+      "pos": null,
+      "translation": "sustainable development",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3012
+    },
+    {
+      "lemma": "la specie",
+      "pos": null,
+      "translation": "species",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3013
+    },
+    {
+      "lemma": "il riscaldamento globale",
+      "pos": null,
+      "translation": "global warming",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3014
+    },
+    {
+      "lemma": "la scoperta",
+      "pos": null,
+      "translation": "discovery",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3015
+    },
+    {
+      "lemma": "Se avessimo agito prima, avremmo salvato più foreste.",
+      "pos": null,
+      "translation": "If we had acted earlier, we would have saved more forests.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3016
+    },
+    {
+      "lemma": "l'ansia",
+      "pos": null,
+      "translation": "anxiety",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3017
+    },
+    {
+      "lemma": "la depressione",
+      "pos": null,
+      "translation": "depression",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3018
+    },
+    {
+      "lemma": "l'autostima",
+      "pos": null,
+      "translation": "self-esteem",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3019
+    },
+    {
+      "lemma": "il comportamento",
+      "pos": null,
+      "translation": "behavior",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3020
+    },
+    {
+      "lemma": "la consapevolezza",
+      "pos": null,
+      "translation": "awareness",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3021
+    },
+    {
+      "lemma": "il benessere mentale",
+      "pos": null,
+      "translation": "mental wellbeing",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3022
+    },
+    {
+      "lemma": "lo stress",
+      "pos": null,
+      "translation": "stress",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3023
+    },
+    {
+      "lemma": "la resilienza",
+      "pos": null,
+      "translation": "resilience",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3024
+    },
+    {
+      "lemma": "il pregiudizio",
+      "pos": null,
+      "translation": "prejudice",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3025
+    },
+    {
+      "lemma": "empatizzare",
+      "pos": "verb",
+      "translation": "to empathize",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3026
+    },
+    {
+      "lemma": "Non ce la faccio più!",
+      "pos": null,
+      "translation": "I can't take it anymore!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3027
+    },
+    {
+      "lemma": "Me ne vado.",
+      "pos": null,
+      "translation": "I'm leaving.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3028
+    },
+    {
+      "lemma": "Se la cava bene in italiano.",
+      "pos": null,
+      "translation": "He manages well in Italian.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3029
+    },
+    {
+      "lemma": "il tartufo",
+      "pos": null,
+      "translation": "truffle",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3030
+    },
+    {
+      "lemma": "la vendemmia",
+      "pos": null,
+      "translation": "grape harvest",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3031
+    },
+    {
+      "lemma": "il sommelier",
+      "pos": null,
+      "translation": "sommelier",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3032
+    },
+    {
+      "lemma": "la degustazione",
+      "pos": null,
+      "translation": "tasting",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3033
+    },
+    {
+      "lemma": "il piatto tipico",
+      "pos": null,
+      "translation": "typical dish",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3034
+    },
+    {
+      "lemma": "la ricetta",
+      "pos": null,
+      "translation": "recipe",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3035
+    },
+    {
+      "lemma": "l'abbinamento",
+      "pos": null,
+      "translation": "pairing",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3036
+    },
+    {
+      "lemma": "il disciplinare",
+      "pos": "verb",
+      "translation": "production regulations",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3037
+    },
+    {
+      "lemma": "la stagionatura",
+      "pos": null,
+      "translation": "aging / maturing",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3038
+    },
+    {
+      "lemma": "il vitigno",
+      "pos": null,
+      "translation": "grape variety",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3039
+    },
+    {
+      "lemma": "Questo vino è migliore di quello.",
+      "pos": null,
+      "translation": "This wine is better than that one.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3040
+    },
+    {
+      "lemma": "È il peggiore ristorante della città.",
+      "pos": null,
+      "translation": "It's the worst restaurant in the city.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3041
+    },
+    {
+      "lemma": "l'istruzione",
+      "pos": null,
+      "translation": "education",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3042
+    },
+    {
+      "lemma": "la laurea",
+      "pos": null,
+      "translation": "degree",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3043
+    },
+    {
+      "lemma": "la borsa di studio",
+      "pos": null,
+      "translation": "scholarship",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3044
+    },
+    {
+      "lemma": "il programma di studi",
+      "pos": null,
+      "translation": "curriculum / syllabus",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3045
+    },
+    {
+      "lemma": "la tesi",
+      "pos": null,
+      "translation": "thesis",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3046
+    },
+    {
+      "lemma": "il docente",
+      "pos": null,
+      "translation": "lecturer / professor",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3047
+    },
+    {
+      "lemma": "l'apprendimento",
+      "pos": null,
+      "translation": "learning",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3048
+    },
+    {
+      "lemma": "la formazione",
+      "pos": null,
+      "translation": "training",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3049
+    },
+    {
+      "lemma": "il tirocinio",
+      "pos": null,
+      "translation": "internship",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3050
+    },
+    {
+      "lemma": "la didattica",
+      "pos": null,
+      "translation": "teaching methodology",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3051
+    },
+    {
+      "lemma": "Dopo aver studiato, sono uscito.",
+      "pos": null,
+      "translation": "After having studied, I went out.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3052
+    },
+    {
+      "lemma": "Prima di essere partiti, abbiamo salutato tutti.",
+      "pos": null,
+      "translation": "Before leaving, we said goodbye to everyone.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3053
+    },
+    {
+      "lemma": "la partita",
+      "pos": null,
+      "translation": "match / game",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3054
+    },
+    {
+      "lemma": "l'allenamento",
+      "pos": null,
+      "translation": "training",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3055
+    },
+    {
+      "lemma": "il campionato",
+      "pos": null,
+      "translation": "championship",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3056
+    },
+    {
+      "lemma": "la squadra",
+      "pos": null,
+      "translation": "team",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3057
+    },
+    {
+      "lemma": "l'arbitro",
+      "pos": null,
+      "translation": "referee",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3058
+    },
+    {
+      "lemma": "il tifoso",
+      "pos": null,
+      "translation": "fan / supporter",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3059
+    },
+    {
+      "lemma": "la sconfitta",
+      "pos": null,
+      "translation": "defeat",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3060
+    },
+    {
+      "lemma": "la vittoria",
+      "pos": null,
+      "translation": "victory",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3061
+    },
+    {
+      "lemma": "il record",
+      "pos": null,
+      "translation": "record",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3062
+    },
+    {
+      "lemma": "la classifica",
+      "pos": null,
+      "translation": "standings / rankings",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3063
+    },
+    {
+      "lemma": "Sto guardando la partita.",
+      "pos": null,
+      "translation": "I'm watching the match.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3064
+    },
+    {
+      "lemma": "Stavano perdendo, poi hanno rimontato.",
+      "pos": null,
+      "translation": "They were losing, then they came back.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3065
+    },
+    {
+      "lemma": "l'itinerario",
+      "pos": null,
+      "translation": "itinerary",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3066
+    },
+    {
+      "lemma": "la meta",
+      "pos": null,
+      "translation": "destination",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3067
+    },
+    {
+      "lemma": "il soggiorno",
+      "pos": null,
+      "translation": "stay",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3068
+    },
+    {
+      "lemma": "la crociera",
+      "pos": null,
+      "translation": "cruise",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3069
+    },
+    {
+      "lemma": "il bagaglio smarrito",
+      "pos": null,
+      "translation": "lost luggage",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3070
+    },
+    {
+      "lemma": "l'assicurazione di viaggio",
+      "pos": null,
+      "translation": "travel insurance",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3071
+    },
+    {
+      "lemma": "la guida turistica",
+      "pos": null,
+      "translation": "tour guide / guidebook",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3072
+    },
+    {
+      "lemma": "il paesaggio mozzafiato",
+      "pos": null,
+      "translation": "breathtaking landscape",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3073
+    },
+    {
+      "lemma": "l'escursione",
+      "pos": null,
+      "translation": "excursion / hike",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3074
+    },
+    {
+      "lemma": "il volo in ritardo",
+      "pos": null,
+      "translation": "delayed flight",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3075
+    },
+    {
+      "lemma": "Ho fatto riparare la valigia.",
+      "pos": null,
+      "translation": "I had the suitcase repaired.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3076
+    },
+    {
+      "lemma": "Mi ha fatto visitare tutta la città.",
+      "pos": null,
+      "translation": "He had me visit the whole city.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3077
+    },
+    {
+      "lemma": "l'intelligenza artificiale",
+      "pos": null,
+      "translation": "artificial intelligence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3078
+    },
+    {
+      "lemma": "l'algoritmo",
+      "pos": null,
+      "translation": "algorithm",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3079
+    },
+    {
+      "lemma": "la startup",
+      "pos": null,
+      "translation": "startup",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3080
+    },
+    {
+      "lemma": "i dati",
+      "pos": null,
+      "translation": "data",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3081
+    },
+    {
+      "lemma": "la privacy",
+      "pos": null,
+      "translation": "privacy",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3082
+    },
+    {
+      "lemma": "l'innovazione",
+      "pos": null,
+      "translation": "innovation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3083
+    },
+    {
+      "lemma": "il software",
+      "pos": "verb",
+      "translation": "software",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3084
+    },
+    {
+      "lemma": "la rete",
+      "pos": null,
+      "translation": "network / internet",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3085
+    },
+    {
+      "lemma": "digitalizzare",
+      "pos": "verb",
+      "translation": "to digitize",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3086
+    },
+    {
+      "lemma": "la cybersicurezza",
+      "pos": null,
+      "translation": "cybersecurity",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3087
+    },
+    {
+      "lemma": "Entro domani, avrò finito il progetto.",
+      "pos": null,
+      "translation": "By tomorrow, I will have finished the project.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3088
+    },
+    {
+      "lemma": "Quando arriverai, sarò già partito.",
+      "pos": null,
+      "translation": "When you arrive, I'll have already left.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3089
+    },
+    {
+      "lemma": "l'immigrazione",
+      "pos": null,
+      "translation": "immigration",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3090
+    },
+    {
+      "lemma": "l'uguaglianza",
+      "pos": null,
+      "translation": "equality",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3091
+    },
+    {
+      "lemma": "la discriminazione",
+      "pos": null,
+      "translation": "discrimination",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3092
+    },
+    {
+      "lemma": "il volontariato",
+      "pos": null,
+      "translation": "volunteering",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3093
+    },
+    {
+      "lemma": "la povertà",
+      "pos": null,
+      "translation": "poverty",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3094
+    },
+    {
+      "lemma": "l'integrazione",
+      "pos": null,
+      "translation": "integration",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3095
+    },
+    {
+      "lemma": "i diritti umani",
+      "pos": null,
+      "translation": "human rights",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3096
+    },
+    {
+      "lemma": "la solidarietà",
+      "pos": null,
+      "translation": "solidarity",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3097
+    },
+    {
+      "lemma": "la giustizia sociale",
+      "pos": null,
+      "translation": "social justice",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3098
+    },
+    {
+      "lemma": "il razzismo",
+      "pos": null,
+      "translation": "racism",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3099
+    },
+    {
+      "lemma": "Nonostante sia difficile, non ci arrendiamo.",
+      "pos": null,
+      "translation": "Although it's difficult, we don't give up.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3100
+    },
+    {
+      "lemma": "Pur essendo straniero, si è integrato bene.",
+      "pos": null,
+      "translation": "Despite being a foreigner, he integrated well.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3101
+    },
+    {
+      "lemma": "l'architettura",
+      "pos": null,
+      "translation": "architecture",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3102
+    },
+    {
+      "lemma": "il design",
+      "pos": null,
+      "translation": "design",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3103
+    },
+    {
+      "lemma": "la facciata",
+      "pos": null,
+      "translation": "facade",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3104
+    },
+    {
+      "lemma": "lo stile",
+      "pos": null,
+      "translation": "style",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3105
+    },
+    {
+      "lemma": "il restauro",
+      "pos": null,
+      "translation": "restoration",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3106
+    },
+    {
+      "lemma": "l'arredamento",
+      "pos": null,
+      "translation": "furnishing / interior design",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3107
+    },
+    {
+      "lemma": "la volta",
+      "pos": null,
+      "translation": "vault / dome",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3108
+    },
+    {
+      "lemma": "il grattacielo",
+      "pos": null,
+      "translation": "skyscraper",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3109
+    },
+    {
+      "lemma": "la sfilata",
+      "pos": null,
+      "translation": "fashion show",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3110
+    },
+    {
+      "lemma": "la moda",
+      "pos": null,
+      "translation": "fashion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3111
+    },
+    {
+      "lemma": "L'architetto il quale ha progettato il palazzo è famoso.",
+      "pos": null,
+      "translation": "The architect who designed the building is famous.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3112
+    },
+    {
+      "lemma": "La città in cui vivo è bellissima.",
+      "pos": null,
+      "translation": "The city where I live is beautiful.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3113
+    },
+    {
+      "lemma": "il concerto",
+      "pos": null,
+      "translation": "concert",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3114
+    },
+    {
+      "lemma": "il cantautore",
+      "pos": null,
+      "translation": "singer-songwriter",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3115
+    },
+    {
+      "lemma": "il palcoscenico",
+      "pos": null,
+      "translation": "stage",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3116
+    },
+    {
+      "lemma": "la melodia",
+      "pos": null,
+      "translation": "melody",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3117
+    },
+    {
+      "lemma": "il testo",
+      "pos": null,
+      "translation": "lyrics",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3118
+    },
+    {
+      "lemma": "il brano",
+      "pos": null,
+      "translation": "track / piece",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3119
+    },
+    {
+      "lemma": "la tournée",
+      "pos": null,
+      "translation": "tour",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3120
+    },
+    {
+      "lemma": "lo spettacolo",
+      "pos": null,
+      "translation": "show / performance",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3121
+    },
+    {
+      "lemma": "il teatro",
+      "pos": null,
+      "translation": "theater",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3122
+    },
+    {
+      "lemma": "il pubblico",
+      "pos": null,
+      "translation": "audience",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3123
+    },
+    {
+      "lemma": "Che spettacolo incredibile!",
+      "pos": null,
+      "translation": "What an incredible show!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3124
+    },
+    {
+      "lemma": "Magari potessi cantare così!",
+      "pos": null,
+      "translation": "I wish I could sing like that!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3125
+    },
+    {
+      "lemma": "Meno male che siamo arrivati in tempo!",
+      "pos": null,
+      "translation": "Thank goodness we arrived on time!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3126
+    },
+    {
+      "lemma": "la regione",
+      "pos": null,
+      "translation": "region",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3127
+    },
+    {
+      "lemma": "il capoluogo",
+      "pos": null,
+      "translation": "regional capital",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3128
+    },
+    {
+      "lemma": "la costiera",
+      "pos": null,
+      "translation": "coast / coastline",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3129
+    },
+    {
+      "lemma": "l'entroterra",
+      "pos": null,
+      "translation": "hinterland / inland area",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3130
+    },
+    {
+      "lemma": "il borgo medievale",
+      "pos": null,
+      "translation": "medieval village",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3131
+    },
+    {
+      "lemma": "le Dolomiti",
+      "pos": null,
+      "translation": "the Dolomites",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3132
+    },
+    {
+      "lemma": "la pianura padana",
+      "pos": null,
+      "translation": "the Po Valley",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3133
+    },
+    {
+      "lemma": "l'isola",
+      "pos": null,
+      "translation": "island",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3134
+    },
+    {
+      "lemma": "il vulcano",
+      "pos": null,
+      "translation": "volcano",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3135
+    },
+    {
+      "lemma": "la tradizione locale",
+      "pos": null,
+      "translation": "local tradition",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3136
+    },
+    {
+      "lemma": "Hai visitato la Toscana? — Sì, ne ho visitato molte città.",
+      "pos": null,
+      "translation": "Have you visited Tuscany? — Yes, I've visited many cities of it.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3137
+    },
+    {
+      "lemma": "Sei stato a Roma? — Sì, ci sono stato l'anno scorso.",
+      "pos": null,
+      "translation": "Have you been to Rome? — Yes, I've been there last year.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3138
+    },
+    {
+      "lemma": "il conto corrente",
+      "pos": null,
+      "translation": "checking account",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3139
+    },
+    {
+      "lemma": "il mutuo",
+      "pos": null,
+      "translation": "mortgage",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3140
+    },
+    {
+      "lemma": "l'investimento",
+      "pos": null,
+      "translation": "investment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3141
+    },
+    {
+      "lemma": "il fatturato",
+      "pos": null,
+      "translation": "turnover / revenue",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3142
+    },
+    {
+      "lemma": "le tasse",
+      "pos": null,
+      "translation": "taxes",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3143
+    },
+    {
+      "lemma": "la fattura",
+      "pos": null,
+      "translation": "invoice",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3144
+    },
+    {
+      "lemma": "il bilancio",
+      "pos": null,
+      "translation": "balance sheet / budget",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3145
+    },
+    {
+      "lemma": "l'imprenditore",
+      "pos": null,
+      "translation": "entrepreneur",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3146
+    },
+    {
+      "lemma": "il risparmio",
+      "pos": null,
+      "translation": "savings",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3147
+    },
+    {
+      "lemma": "la borsa",
+      "pos": null,
+      "translation": "stock market",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3148
+    },
+    {
+      "lemma": "L'investimento è rischioso  pertanto, dobbiamo essere cauti.",
+      "pos": null,
+      "translation": "The investment is risky  therefore, we must be cautious.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3149
+    },
+    {
+      "lemma": "Accettiamo a condizione che i termini siano chiari.",
+      "pos": null,
+      "translation": "We accept provided that the terms are clear.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3150
+    },
+    {
+      "lemma": "il pronto soccorso",
+      "pos": null,
+      "translation": "emergency room",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3151
+    },
+    {
+      "lemma": "lo specialista",
+      "pos": null,
+      "translation": "specialist",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3152
+    },
+    {
+      "lemma": "la diagnosi",
+      "pos": null,
+      "translation": "diagnosis",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3153
+    },
+    {
+      "lemma": "la cura",
+      "pos": null,
+      "translation": "treatment / cure",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3154
+    },
+    {
+      "lemma": "l'intervento chirurgico",
+      "pos": null,
+      "translation": "surgery",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3155
+    },
+    {
+      "lemma": "la ricetta medica",
+      "pos": null,
+      "translation": "prescription",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3156
+    },
+    {
+      "lemma": "il sistema sanitario",
+      "pos": null,
+      "translation": "healthcare system",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3157
+    },
+    {
+      "lemma": "la prevenzione",
+      "pos": null,
+      "translation": "prevention",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3158
+    },
+    {
+      "lemma": "il vaccino",
+      "pos": null,
+      "translation": "vaccine",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3159
+    },
+    {
+      "lemma": "la guarigione",
+      "pos": null,
+      "translation": "recovery / healing",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3160
+    },
+    {
+      "lemma": "In Italia si va dal medico di base prima.",
+      "pos": null,
+      "translation": "In Italy, one goes to the GP first.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3161
+    },
+    {
+      "lemma": "Si prescrivono antibiotici solo quando necessario.",
+      "pos": null,
+      "translation": "Antibiotics are prescribed only when necessary.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3162
+    },
+    {
+      "lemma": "argomentare",
+      "pos": "verb",
+      "translation": "to argue / make a case",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3163
+    },
+    {
+      "lemma": "d'altra parte",
+      "pos": null,
+      "translation": "on the other hand",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3164
+    },
+    {
+      "lemma": "in conclusione",
+      "pos": null,
+      "translation": "in conclusion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3165
+    },
+    {
+      "lemma": "a mio avviso",
+      "pos": null,
+      "translation": "in my opinion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3166
+    },
+    {
+      "lemma": "per quanto riguarda",
+      "pos": null,
+      "translation": "as for / regarding",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3167
+    },
+    {
+      "lemma": "prendere posizione",
+      "pos": null,
+      "translation": "to take a stand",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3168
+    },
+    {
+      "lemma": "la sfida",
+      "pos": null,
+      "translation": "challenge",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3169
+    },
+    {
+      "lemma": "il compromesso",
+      "pos": null,
+      "translation": "compromise",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3170
+    },
+    {
+      "lemma": "il traguardo",
+      "pos": null,
+      "translation": "goal / milestone",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3171
+    },
+    {
+      "lemma": "Se avessi studiato di più, avrei ottenuto risultati migliori.",
+      "pos": null,
+      "translation": "If I had studied more, I would have gotten better results.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3172
+    },
+    {
+      "lemma": "Nonostante le difficoltà, sostengo che il progetto vada avanti.",
+      "pos": null,
+      "translation": "Despite the difficulties, I maintain the project should go forward.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3173
+    },
+    {
+      "lemma": "la retorica",
+      "pos": null,
+      "translation": "rhetoric",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3174
+    },
+    {
+      "lemma": "l'argomentazione",
+      "pos": null,
+      "translation": "argumentation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3175
+    },
+    {
+      "lemma": "la metafora",
+      "pos": null,
+      "translation": "metaphor",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3176
+    },
+    {
+      "lemma": "l'ironia",
+      "pos": null,
+      "translation": "irony",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3177
+    },
+    {
+      "lemma": "il paradosso",
+      "pos": null,
+      "translation": "paradox",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3178
+    },
+    {
+      "lemma": "persuadere",
+      "pos": "verb",
+      "translation": "to persuade",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3179
+    },
+    {
+      "lemma": "confutare",
+      "pos": "verb",
+      "translation": "to refute",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3180
+    },
+    {
+      "lemma": "la sfumatura",
+      "pos": null,
+      "translation": "nuance",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3181
+    },
+    {
+      "lemma": "l'ambiguità",
+      "pos": null,
+      "translation": "ambiguity",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3182
+    },
+    {
+      "lemma": "sottintendere",
+      "pos": "verb",
+      "translation": "to imply",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3183
+    },
+    {
+      "lemma": "Per quanto ne sappia, nessuno ha mai dimostrato il contrario.",
+      "pos": null,
+      "translation": "As far as I know, no one has ever demonstrated the opposite.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3184
+    },
+    {
+      "lemma": "l'allegoria",
+      "pos": null,
+      "translation": "allegory",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3185
+    },
+    {
+      "lemma": "il narratore",
+      "pos": null,
+      "translation": "narrator",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3186
+    },
+    {
+      "lemma": "la trama",
+      "pos": null,
+      "translation": "plot",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3187
+    },
+    {
+      "lemma": "il verso",
+      "pos": null,
+      "translation": "verse",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3188
+    },
+    {
+      "lemma": "la prosa",
+      "pos": null,
+      "translation": "prose",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3189
+    },
+    {
+      "lemma": "il simbolismo",
+      "pos": null,
+      "translation": "symbolism",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3190
+    },
+    {
+      "lemma": "il personaggio",
+      "pos": null,
+      "translation": "character",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3191
+    },
+    {
+      "lemma": "la rima",
+      "pos": null,
+      "translation": "rhyme",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3192
+    },
+    {
+      "lemma": "il contesto storico",
+      "pos": null,
+      "translation": "historical context",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3193
+    },
+    {
+      "lemma": "l'interpretazione",
+      "pos": null,
+      "translation": "interpretation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3194
+    },
+    {
+      "lemma": "L'autore si avvale di un linguaggio evocativo.",
+      "pos": null,
+      "translation": "The author employs evocative language.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3195
+    },
+    {
+      "lemma": "il dialetto",
+      "pos": null,
+      "translation": "dialect",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3196
+    },
+    {
+      "lemma": "il campanilismo",
+      "pos": null,
+      "translation": "local pride",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3197
+    },
+    {
+      "lemma": "la sagra",
+      "pos": null,
+      "translation": "local festival",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3198
+    },
+    {
+      "lemma": "il borgo",
+      "pos": null,
+      "translation": "medieval village",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3199
+    },
+    {
+      "lemma": "il paesaggio",
+      "pos": null,
+      "translation": "landscape",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3200
+    },
+    {
+      "lemma": "la tradizione",
+      "pos": null,
+      "translation": "tradition",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3201
+    },
+    {
+      "lemma": "la gastronomia",
+      "pos": null,
+      "translation": "gastronomy",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3202
+    },
+    {
+      "lemma": "il terroir",
+      "pos": null,
+      "translation": "terroir",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3203
+    },
+    {
+      "lemma": "l'identità regionale",
+      "pos": null,
+      "translation": "regional identity",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3204
+    },
+    {
+      "lemma": "la parlata",
+      "pos": null,
+      "translation": "way of speaking",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3205
+    },
+    {
+      "lemma": "Napoletano: 'Uè, comme staje?' = Come stai?",
+      "pos": null,
+      "translation": "Neapolitan: 'Hey, how are you?'",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3206
+    },
+    {
+      "lemma": "la coesione",
+      "pos": null,
+      "translation": "cohesion",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3207
+    },
+    {
+      "lemma": "la coerenza",
+      "pos": null,
+      "translation": "coherence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3208
+    },
+    {
+      "lemma": "il registro",
+      "pos": null,
+      "translation": "register",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3209
+    },
+    {
+      "lemma": "la sintesi",
+      "pos": null,
+      "translation": "synthesis",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3210
+    },
+    {
+      "lemma": "l'eloquenza",
+      "pos": null,
+      "translation": "eloquence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3211
+    },
+    {
+      "lemma": "la perifrasi",
+      "pos": null,
+      "translation": "periphrasis",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3212
+    },
+    {
+      "lemma": "il lessico",
+      "pos": null,
+      "translation": "lexicon",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3213
+    },
+    {
+      "lemma": "la punteggiatura",
+      "pos": null,
+      "translation": "punctuation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3214
+    },
+    {
+      "lemma": "il capoverso",
+      "pos": null,
+      "translation": "paragraph",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3215
+    },
+    {
+      "lemma": "raffinato",
+      "pos": null,
+      "translation": "refined",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3216
+    },
+    {
+      "lemma": "Ciononostante, non si può negare l'importanza.",
+      "pos": null,
+      "translation": "Nevertheless, one cannot deny the importance.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3217
+    },
+    {
+      "lemma": "l'aria",
+      "pos": null,
+      "translation": "aria",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3218
+    },
+    {
+      "lemma": "il libretto",
+      "pos": null,
+      "translation": "libretto",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3219
+    },
+    {
+      "lemma": "il soprano",
+      "pos": null,
+      "translation": "soprano",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3220
+    },
+    {
+      "lemma": "il tenore",
+      "pos": null,
+      "translation": "tenor",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3221
+    },
+    {
+      "lemma": "la sinfonia",
+      "pos": null,
+      "translation": "symphony",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3222
+    },
+    {
+      "lemma": "il compositore",
+      "pos": null,
+      "translation": "composer",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3223
+    },
+    {
+      "lemma": "il direttore d'orchestra",
+      "pos": null,
+      "translation": "conductor",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3224
+    },
+    {
+      "lemma": "il bel canto",
+      "pos": null,
+      "translation": "bel canto",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3225
+    },
+    {
+      "lemma": "la prima",
+      "pos": null,
+      "translation": "premiere",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3226
+    },
+    {
+      "lemma": "il palco",
+      "pos": null,
+      "translation": "box (theater)",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3227
+    },
+    {
+      "lemma": "Il crescendo finale è emozionante.",
+      "pos": null,
+      "translation": "The final crescendo is moving.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3228
+    },
+    {
+      "lemma": "la semantica",
+      "pos": null,
+      "translation": "semantics",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3229
+    },
+    {
+      "lemma": "la semiotica",
+      "pos": null,
+      "translation": "semiotics",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3230
+    },
+    {
+      "lemma": "il significante",
+      "pos": null,
+      "translation": "signifier",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3231
+    },
+    {
+      "lemma": "il significato",
+      "pos": null,
+      "translation": "signified",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3232
+    },
+    {
+      "lemma": "la pragmatica",
+      "pos": null,
+      "translation": "pragmatics",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3233
+    },
+    {
+      "lemma": "l'atto linguistico",
+      "pos": null,
+      "translation": "speech act",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3234
+    },
+    {
+      "lemma": "il referente",
+      "pos": null,
+      "translation": "referent",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3235
+    },
+    {
+      "lemma": "la denotazione",
+      "pos": null,
+      "translation": "denotation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3236
+    },
+    {
+      "lemma": "la connotazione",
+      "pos": null,
+      "translation": "connotation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3237
+    },
+    {
+      "lemma": "il contesto",
+      "pos": null,
+      "translation": "context",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3238
+    },
+    {
+      "lemma": "Il lessema 'gatto' ha il morfema plurale '-i'.",
+      "pos": null,
+      "translation": "The lexeme 'cat' has the plural morpheme '-i'.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3239
+    },
+    {
+      "lemma": "fare orecchie da mercante",
+      "pos": null,
+      "translation": "to turn a deaf ear",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3240
+    },
+    {
+      "lemma": "avere la coda di paglia",
+      "pos": null,
+      "translation": "to have a guilty conscience",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3241
+    },
+    {
+      "lemma": "menare il can per l'aia",
+      "pos": null,
+      "translation": "to beat around the bush",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3242
+    },
+    {
+      "lemma": "prendere lucciole per lanterne",
+      "pos": null,
+      "translation": "to mistake one thing for another",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3243
+    },
+    {
+      "lemma": "andare a rotoli",
+      "pos": null,
+      "translation": "to go downhill",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3244
+    },
+    {
+      "lemma": "fare un buco nell'acqua",
+      "pos": null,
+      "translation": "to fail completely",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3245
+    },
+    {
+      "lemma": "cascare dalle nuvole",
+      "pos": null,
+      "translation": "to be shocked/surprised",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3246
+    },
+    {
+      "lemma": "scoprire l'acqua calda",
+      "pos": null,
+      "translation": "to state the obvious",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3247
+    },
+    {
+      "lemma": "avere le mani bucate",
+      "pos": null,
+      "translation": "to spend money freely",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3248
+    },
+    {
+      "lemma": "rompere le scatole",
+      "pos": null,
+      "translation": "to annoy",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3249
+    },
+    {
+      "lemma": "Colloquiale: Che palle! vs Formale: Che seccatura.",
+      "pos": null,
+      "translation": "Colloquial: What a drag! vs Formal: What a nuisance.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3250
+    },
+    {
+      "lemma": "la traduzione",
+      "pos": null,
+      "translation": "translation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3251
+    },
+    {
+      "lemma": "l'interpretariato",
+      "pos": null,
+      "translation": "interpreting",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3252
+    },
+    {
+      "lemma": "il traduttore",
+      "pos": null,
+      "translation": "translator",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3253
+    },
+    {
+      "lemma": "l'interprete",
+      "pos": null,
+      "translation": "interpreter",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3254
+    },
+    {
+      "lemma": "la lingua di partenza",
+      "pos": null,
+      "translation": "source language",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3255
+    },
+    {
+      "lemma": "la lingua di arrivo",
+      "pos": null,
+      "translation": "target language",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3256
+    },
+    {
+      "lemma": "la resa",
+      "pos": null,
+      "translation": "rendering",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3257
+    },
+    {
+      "lemma": "il calco",
+      "pos": null,
+      "translation": "calque",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3258
+    },
+    {
+      "lemma": "la localizzazione",
+      "pos": null,
+      "translation": "localization",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3259
+    },
+    {
+      "lemma": "il sottotitolaggio",
+      "pos": null,
+      "translation": "subtitling",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3260
+    },
+    {
+      "lemma": "L'equivalenza: 'It's raining cats and dogs' = 'Piove a catinelle'",
+      "pos": null,
+      "translation": "Equivalence finds expressions with the same effect.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3261
+    },
+    {
+      "lemma": "la Costituzione",
+      "pos": null,
+      "translation": "Constitution",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3262
+    },
+    {
+      "lemma": "i principi fondamentali",
+      "pos": null,
+      "translation": "fundamental principles",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3263
+    },
+    {
+      "lemma": "la sovranità popolare",
+      "pos": "verb",
+      "translation": "popular sovereignty",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3264
+    },
+    {
+      "lemma": "i diritti inviolabili",
+      "pos": null,
+      "translation": "inviolable rights",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3265
+    },
+    {
+      "lemma": "la Corte Costituzionale",
+      "pos": null,
+      "translation": "Constitutional Court",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3266
+    },
+    {
+      "lemma": "il decreto legge",
+      "pos": null,
+      "translation": "decree law",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3267
+    },
+    {
+      "lemma": "la giurisprudenza",
+      "pos": null,
+      "translation": "jurisprudence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3268
+    },
+    {
+      "lemma": "l'emendamento",
+      "pos": null,
+      "translation": "amendment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3269
+    },
+    {
+      "lemma": "il ricorso",
+      "pos": null,
+      "translation": "appeal",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3270
+    },
+    {
+      "lemma": "la sentenza",
+      "pos": null,
+      "translation": "ruling / judgment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3271
+    },
+    {
+      "lemma": "Ai sensi dell'articolo 3, tutti i cittadini sono uguali.",
+      "pos": null,
+      "translation": "Pursuant to Article 3, all citizens are equal.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3272
+    },
+    {
+      "lemma": "il calo demografico",
+      "pos": null,
+      "translation": "demographic decline",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3273
+    },
+    {
+      "lemma": "l'invecchiamento",
+      "pos": null,
+      "translation": "aging",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3274
+    },
+    {
+      "lemma": "la fuga dei cervelli",
+      "pos": null,
+      "translation": "brain drain",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3275
+    },
+    {
+      "lemma": "il precariato",
+      "pos": null,
+      "translation": "precarious employment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3276
+    },
+    {
+      "lemma": "il welfare",
+      "pos": "verb",
+      "translation": "welfare",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3277
+    },
+    {
+      "lemma": "la mobilità sociale",
+      "pos": null,
+      "translation": "social mobility",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3278
+    },
+    {
+      "lemma": "il divario Nord-Sud",
+      "pos": null,
+      "translation": "North-South divide",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3279
+    },
+    {
+      "lemma": "la gentrificazione",
+      "pos": null,
+      "translation": "gentrification",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3280
+    },
+    {
+      "lemma": "il pendolarismo",
+      "pos": null,
+      "translation": "commuting",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3281
+    },
+    {
+      "lemma": "il telelavoro",
+      "pos": null,
+      "translation": "remote work",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3282
+    },
+    {
+      "lemma": "Si assiste a un calo demografico preoccupante.",
+      "pos": null,
+      "translation": "We are witnessing a worrying demographic decline.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3283
+    },
+    {
+      "lemma": "le relazioni internazionali",
+      "pos": null,
+      "translation": "international relations",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3284
+    },
+    {
+      "lemma": "il trattato",
+      "pos": null,
+      "translation": "treaty",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3285
+    },
+    {
+      "lemma": "l'ambasciatore",
+      "pos": null,
+      "translation": "ambassador",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3286
+    },
+    {
+      "lemma": "la delegazione",
+      "pos": null,
+      "translation": "delegation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3287
+    },
+    {
+      "lemma": "il negoziato",
+      "pos": null,
+      "translation": "negotiation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3288
+    },
+    {
+      "lemma": "la sanzione",
+      "pos": null,
+      "translation": "sanction",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3289
+    },
+    {
+      "lemma": "l'accordo bilaterale",
+      "pos": null,
+      "translation": "bilateral agreement",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3290
+    },
+    {
+      "lemma": "la sovranità nazionale",
+      "pos": null,
+      "translation": "national sovereignty",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3291
+    },
+    {
+      "lemma": "il vertice",
+      "pos": null,
+      "translation": "summit",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3292
+    },
+    {
+      "lemma": "la risoluzione ONU",
+      "pos": null,
+      "translation": "UN resolution",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3293
+    },
+    {
+      "lemma": "Il governo esprime profonda preoccupazione per la situazione.",
+      "pos": null,
+      "translation": "The government expresses deep concern about the situation.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3294
+    },
+    {
+      "lemma": "la satira",
+      "pos": null,
+      "translation": "satire",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3295
+    },
+    {
+      "lemma": "la battuta",
+      "pos": null,
+      "translation": "joke / quip",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3296
+    },
+    {
+      "lemma": "il doppio senso",
+      "pos": null,
+      "translation": "double meaning",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3297
+    },
+    {
+      "lemma": "l'ironia tagliente",
+      "pos": null,
+      "translation": "biting irony",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3298
+    },
+    {
+      "lemma": "la commedia dell'arte",
+      "pos": null,
+      "translation": "commedia dell'arte",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3299
+    },
+    {
+      "lemma": "il cabaret",
+      "pos": null,
+      "translation": "cabaret",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3300
+    },
+    {
+      "lemma": "prendere in giro",
+      "pos": null,
+      "translation": "to mock",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3301
+    },
+    {
+      "lemma": "l'autoironia",
+      "pos": null,
+      "translation": "self-deprecating humor",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3302
+    },
+    {
+      "lemma": "il sarcasmo",
+      "pos": null,
+      "translation": "sarcasm",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3303
+    },
+    {
+      "lemma": "la barzelletta",
+      "pos": null,
+      "translation": "joke (story)",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3304
+    },
+    {
+      "lemma": "Sai qual è il colmo per un elettricista? Non avere corrente!",
+      "pos": null,
+      "translation": "Know what's ironic for an electrician? Having no current!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3305
+    },
+    {
+      "lemma": "la trattativa",
+      "pos": null,
+      "translation": "negotiation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3306
+    },
+    {
+      "lemma": "l'accordo",
+      "pos": null,
+      "translation": "agreement",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3307
+    },
+    {
+      "lemma": "la sede centrale",
+      "pos": null,
+      "translation": "headquarters",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3308
+    },
+    {
+      "lemma": "il consiglio di amministrazione",
+      "pos": null,
+      "translation": "board of directors",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3309
+    },
+    {
+      "lemma": "l'amministratore delegato",
+      "pos": null,
+      "translation": "CEO",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3310
+    },
+    {
+      "lemma": "la fusione",
+      "pos": null,
+      "translation": "merger",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3311
+    },
+    {
+      "lemma": "l'acquisizione",
+      "pos": null,
+      "translation": "acquisition",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3312
+    },
+    {
+      "lemma": "la quotazione in borsa",
+      "pos": null,
+      "translation": "IPO / listing",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3313
+    },
+    {
+      "lemma": "l'utile netto",
+      "pos": null,
+      "translation": "net profit",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3314
+    },
+    {
+      "lemma": "Sottopongo alla Vostra cortese attenzione la nostra proposta.",
+      "pos": null,
+      "translation": "I submit our proposal to your kind attention.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3315
+    },
+    {
+      "lemma": "la variabile",
+      "pos": null,
+      "translation": "variable",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3316
+    },
+    {
+      "lemma": "il campione",
+      "pos": null,
+      "translation": "sample",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3317
+    },
+    {
+      "lemma": "la correlazione",
+      "pos": null,
+      "translation": "correlation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3318
+    },
+    {
+      "lemma": "la deviazione standard",
+      "pos": null,
+      "translation": "standard deviation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3319
+    },
+    {
+      "lemma": "il gruppo di controllo",
+      "pos": null,
+      "translation": "control group",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3320
+    },
+    {
+      "lemma": "l'esperimento in doppio cieco",
+      "pos": null,
+      "translation": "double-blind experiment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3321
+    },
+    {
+      "lemma": "la replicabilità",
+      "pos": null,
+      "translation": "replicability",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3322
+    },
+    {
+      "lemma": "il protocollo",
+      "pos": null,
+      "translation": "protocol",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3323
+    },
+    {
+      "lemma": "l'abstract",
+      "pos": null,
+      "translation": "abstract",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3324
+    },
+    {
+      "lemma": "la revisione paritaria",
+      "pos": null,
+      "translation": "peer review",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3325
+    },
+    {
+      "lemma": "I risultati suggeriscono una correlazione significativa.",
+      "pos": null,
+      "translation": "The results suggest a significant correlation.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3326
+    },
+    {
+      "lemma": "l'endecasillabo",
+      "pos": null,
+      "translation": "hendecasyllable",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3327
+    },
+    {
+      "lemma": "la terzina",
+      "pos": null,
+      "translation": "tercet",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3328
+    },
+    {
+      "lemma": "il sonetto",
+      "pos": null,
+      "translation": "sonnet",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3329
+    },
+    {
+      "lemma": "l'enjambement",
+      "pos": null,
+      "translation": "enjambment",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3330
+    },
+    {
+      "lemma": "la cesura",
+      "pos": null,
+      "translation": "caesura",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3331
+    },
+    {
+      "lemma": "l'allitterazione",
+      "pos": null,
+      "translation": "alliteration",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3332
+    },
+    {
+      "lemma": "l'assonanza",
+      "pos": null,
+      "translation": "assonance",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3333
+    },
+    {
+      "lemma": "l'ossimoro",
+      "pos": null,
+      "translation": "oxymoron",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3334
+    },
+    {
+      "lemma": "la sinestesia",
+      "pos": null,
+      "translation": "synesthesia",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3335
+    },
+    {
+      "lemma": "l'anafora",
+      "pos": null,
+      "translation": "anaphora",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3336
+    },
+    {
+      "lemma": "Nel / mez / zo / del / cam / min / di / no / stra / vi / ta = 11 sillabe",
+      "pos": null,
+      "translation": "Counting syllables in Dante's opening line.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3337
+    },
+    {
+      "lemma": "la scioltezza",
+      "pos": null,
+      "translation": "fluency / ease",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3338
+    },
+    {
+      "lemma": "la proprietà di linguaggio",
+      "pos": null,
+      "translation": "propriety of language",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3339
+    },
+    {
+      "lemma": "l'intercalare",
+      "pos": "verb",
+      "translation": "filler word",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3340
+    },
+    {
+      "lemma": "la collocazione",
+      "pos": null,
+      "translation": "collocation",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3341
+    },
+    {
+      "lemma": "la naturalezza",
+      "pos": null,
+      "translation": "naturalness",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3342
+    },
+    {
+      "lemma": "l'intuizione linguistica",
+      "pos": null,
+      "translation": "linguistic intuition",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3343
+    },
+    {
+      "lemma": "la competenza pragmatica",
+      "pos": null,
+      "translation": "pragmatic competence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3344
+    },
+    {
+      "lemma": "il madrelingua",
+      "pos": null,
+      "translation": "native speaker",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3345
+    },
+    {
+      "lemma": "la padronanza assoluta",
+      "pos": null,
+      "translation": "complete mastery",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3346
+    },
+    {
+      "lemma": "Il 'ma' romano vs il 'però' settentrionale hanno sfumature diverse.",
+      "pos": null,
+      "translation": "Roman 'ma' vs northern 'però' have different nuances.",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3347
+    },
+    {
+      "lemma": "la realizzazione",
+      "pos": null,
+      "translation": "achievement",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3348
+    },
+    {
+      "lemma": "il perfezionamento",
+      "pos": null,
+      "translation": "perfecting / refinement",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3349
+    },
+    {
+      "lemma": "l'apprendimento permanente",
+      "pos": null,
+      "translation": "lifelong learning",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3350
+    },
+    {
+      "lemma": "la competenza interculturale",
+      "pos": null,
+      "translation": "intercultural competence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3351
+    },
+    {
+      "lemma": "il bilinguismo",
+      "pos": null,
+      "translation": "bilingualism",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3352
+    },
+    {
+      "lemma": "l'eredità culturale",
+      "pos": null,
+      "translation": "cultural heritage",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3353
+    },
+    {
+      "lemma": "la gratitudine",
+      "pos": null,
+      "translation": "gratitude",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3354
+    },
+    {
+      "lemma": "l'eccellenza",
+      "pos": null,
+      "translation": "excellence",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3355
+    },
+    {
+      "lemma": "il futuro",
+      "pos": null,
+      "translation": "the future",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3356
+    },
+    {
+      "lemma": "Hai padroneggiato: tutti i modi verbali, il discorso indiretto, i periodi ipotetici, il linguaggio formale e informale, l'umorismo, le espressioni idiomatiche, e molto altro!",
+      "pos": null,
+      "translation": "You've mastered everything!",
+      "example": null,
+      "level": "B2",
+      "frequency_rank": 3357
+    },
+    {
+      "lemma": "il concetto",
+      "pos": null,
+      "translation": "concept",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3358
+    },
+    {
+      "lemma": "la coscienza",
+      "pos": null,
+      "translation": "consciousness",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3359
+    },
+    {
+      "lemma": "l'etica",
+      "pos": null,
+      "translation": "ethics",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3360
+    },
+    {
+      "lemma": "il ragionamento",
+      "pos": null,
+      "translation": "reasoning",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3361
+    },
+    {
+      "lemma": "la contraddizione",
+      "pos": null,
+      "translation": "contradiction",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3362
+    },
+    {
+      "lemma": "l'ipotesi",
+      "pos": null,
+      "translation": "hypothesis",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3363
+    },
+    {
+      "lemma": "il dubbio",
+      "pos": null,
+      "translation": "doubt",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3364
+    },
+    {
+      "lemma": "la verità",
+      "pos": null,
+      "translation": "truth",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3365
+    },
+    {
+      "lemma": "il libero arbitrio",
+      "pos": null,
+      "translation": "free will",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3366
+    },
+    {
+      "lemma": "Ha detto che era stanco.",
+      "pos": null,
+      "translation": "He said he was tired.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3367
+    },
+    {
+      "lemma": "Ha promesso che sarebbe venuto.",
+      "pos": null,
+      "translation": "He promised he would come.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3368
+    },
+    {
+      "lemma": "Se avessi studiato filosofia, avrei capito meglio.",
+      "pos": null,
+      "translation": "If I had studied philosophy, I would have understood better.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3369
+    },
+    {
+      "lemma": "Magari fossi stato lì!",
+      "pos": null,
+      "translation": "I wish I had been there!",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3370
+    },
+    {
+      "lemma": "il contratto",
+      "pos": null,
+      "translation": "contract",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3371
+    },
+    {
+      "lemma": "la legge",
+      "pos": null,
+      "translation": "law",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3372
+    },
+    {
+      "lemma": "il diritto",
+      "pos": null,
+      "translation": "right / law field",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3373
+    },
+    {
+      "lemma": "il tribunale",
+      "pos": null,
+      "translation": "court",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3374
+    },
+    {
+      "lemma": "il permesso di soggiorno",
+      "pos": null,
+      "translation": "residence permit",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3375
+    },
+    {
+      "lemma": "la multa",
+      "pos": null,
+      "translation": "fine / ticket",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3376
+    },
+    {
+      "lemma": "il modulo",
+      "pos": null,
+      "translation": "form",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3377
+    },
+    {
+      "lemma": "la scadenza",
+      "pos": null,
+      "translation": "deadline / expiry",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3378
+    },
+    {
+      "lemma": "il cittadino",
+      "pos": null,
+      "translation": "citizen",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3379
+    },
+    {
+      "lemma": "la denuncia",
+      "pos": null,
+      "translation": "report / complaint",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3380
+    },
+    {
+      "lemma": "Si prega di compilare il modulo allegato.",
+      "pos": null,
+      "translation": "Please fill out the attached form.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3381
+    },
+    {
+      "lemma": "Con la presente si comunica che...",
+      "pos": null,
+      "translation": "With this letter we inform you that...",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3382
+    },
+    {
+      "lemma": "avere le mani in pasta",
+      "pos": null,
+      "translation": "to have a finger in every pie",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3383
+    },
+    {
+      "lemma": "non vedere l'ora",
+      "pos": null,
+      "translation": "can't wait",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3384
+    },
+    {
+      "lemma": "fare il furbo",
+      "pos": null,
+      "translation": "to try to be clever",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3385
+    },
+    {
+      "lemma": "dare una mano",
+      "pos": null,
+      "translation": "to give a hand",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3386
+    },
+    {
+      "lemma": "in bocca al lupo",
+      "pos": null,
+      "translation": "good luck",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3387
+    },
+    {
+      "lemma": "acqua in bocca",
+      "pos": null,
+      "translation": "keep it secret",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3388
+    },
+    {
+      "lemma": "essere al verde",
+      "pos": null,
+      "translation": "to be broke",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3389
+    },
+    {
+      "lemma": "avere un chiodo fisso",
+      "pos": null,
+      "translation": "to be obsessed",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3390
+    },
+    {
+      "lemma": "mettere le carte in tavola",
+      "pos": null,
+      "translation": "to lay cards on the table",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3391
+    },
+    {
+      "lemma": "Chi dorme non piglia pesci.",
+      "pos": null,
+      "translation": "The early bird catches the worm.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3392
+    },
+    {
+      "lemma": "Tra il dire e il fare c'è di mezzo il mare.",
+      "pos": null,
+      "translation": "Easier said than done.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3393
+    },
+    {
+      "lemma": "Non tutte le ciambelle riescono col buco.",
+      "pos": null,
+      "translation": "Things don't always go as planned.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3394
+    },
+    {
+      "lemma": "l'Impero Romano",
+      "pos": null,
+      "translation": "the Roman Empire",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3395
+    },
+    {
+      "lemma": "l'Unità d'Italia",
+      "pos": null,
+      "translation": "Italian Unification",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3396
+    },
+    {
+      "lemma": "la Resistenza",
+      "pos": null,
+      "translation": "the Resistance",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3397
+    },
+    {
+      "lemma": "il Risorgimento",
+      "pos": null,
+      "translation": "the Risorgimento",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3398
+    },
+    {
+      "lemma": "la Repubblica",
+      "pos": null,
+      "translation": "the Republic",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3399
+    },
+    {
+      "lemma": "il patrimonio",
+      "pos": null,
+      "translation": "heritage",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3400
+    },
+    {
+      "lemma": "il Medioevo",
+      "pos": null,
+      "translation": "the Middle Ages",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3401
+    },
+    {
+      "lemma": "la monarchia",
+      "pos": null,
+      "translation": "monarchy",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3402
+    },
+    {
+      "lemma": "il dopoguerra",
+      "pos": null,
+      "translation": "post-war period",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3403
+    },
+    {
+      "lemma": "Roma fu fondata nel 753 a.C.",
+      "pos": null,
+      "translation": "Rome was founded in 753 BC.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3404
+    },
+    {
+      "lemma": "Garibaldi partì con i Mille nel 1860.",
+      "pos": null,
+      "translation": "Garibaldi departed with the Thousand in 1860.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3405
+    },
+    {
+      "lemma": "i media",
+      "pos": null,
+      "translation": "the media",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3406
+    },
+    {
+      "lemma": "la propaganda",
+      "pos": null,
+      "translation": "propaganda",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3407
+    },
+    {
+      "lemma": "la censura",
+      "pos": null,
+      "translation": "censorship",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3408
+    },
+    {
+      "lemma": "la fake news",
+      "pos": null,
+      "translation": "fake news",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3409
+    },
+    {
+      "lemma": "il giornalismo investigativo",
+      "pos": null,
+      "translation": "investigative journalism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3410
+    },
+    {
+      "lemma": "la libertà di stampa",
+      "pos": null,
+      "translation": "freedom of the press",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3411
+    },
+    {
+      "lemma": "la disinformazione",
+      "pos": null,
+      "translation": "disinformation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3412
+    },
+    {
+      "lemma": "la fonte",
+      "pos": null,
+      "translation": "source",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3413
+    },
+    {
+      "lemma": "l'influencer",
+      "pos": null,
+      "translation": "influencer",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3414
+    },
+    {
+      "lemma": "l'alfabetizzazione mediatica",
+      "pos": null,
+      "translation": "media literacy",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3415
+    },
+    {
+      "lemma": "Il sapere è potere.",
+      "pos": null,
+      "translation": "Knowledge is power.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3416
+    },
+    {
+      "lemma": "Il poter comunicare liberamente è un diritto.",
+      "pos": null,
+      "translation": "Being able to communicate freely is a right.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3417
+    },
+    {
+      "lemma": "la Divina Commedia",
+      "pos": null,
+      "translation": "the Divine Comedy",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3418
+    },
+    {
+      "lemma": "il narratore inaffidabile",
+      "pos": null,
+      "translation": "unreliable narrator",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3419
+    },
+    {
+      "lemma": "il flusso di coscienza",
+      "pos": null,
+      "translation": "stream of consciousness",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3420
+    },
+    {
+      "lemma": "il neorealismo",
+      "pos": null,
+      "translation": "neorealism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3421
+    },
+    {
+      "lemma": "l'ermetismo",
+      "pos": null,
+      "translation": "Hermeticism (literary movement)",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3422
+    },
+    {
+      "lemma": "il protagonista",
+      "pos": null,
+      "translation": "protagonist",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3423
+    },
+    {
+      "lemma": "il conflitto interiore",
+      "pos": null,
+      "translation": "inner conflict",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3424
+    },
+    {
+      "lemma": "L'autore si avvale di un linguaggio simbolico.",
+      "pos": null,
+      "translation": "The author employs symbolic language.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3425
+    },
+    {
+      "lemma": "Il sottotesto rivela una critica alla società.",
+      "pos": null,
+      "translation": "The subtext reveals a critique of society.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3426
+    },
+    {
+      "lemma": "la globalizzazione",
+      "pos": null,
+      "translation": "globalization",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3427
+    },
+    {
+      "lemma": "il mercato globale",
+      "pos": null,
+      "translation": "global market",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3428
+    },
+    {
+      "lemma": "la crisi economica",
+      "pos": null,
+      "translation": "economic crisis",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3429
+    },
+    {
+      "lemma": "il PIL",
+      "pos": null,
+      "translation": "GDP",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3430
+    },
+    {
+      "lemma": "l'inflazione",
+      "pos": null,
+      "translation": "inflation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3431
+    },
+    {
+      "lemma": "la delocalizzazione",
+      "pos": null,
+      "translation": "outsourcing / offshoring",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3432
+    },
+    {
+      "lemma": "il debito pubblico",
+      "pos": null,
+      "translation": "public debt",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3433
+    },
+    {
+      "lemma": "la competitività",
+      "pos": null,
+      "translation": "competitiveness",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3434
+    },
+    {
+      "lemma": "il commercio estero",
+      "pos": null,
+      "translation": "foreign trade",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3435
+    },
+    {
+      "lemma": "l'austerità",
+      "pos": null,
+      "translation": "austerity",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3436
+    },
+    {
+      "lemma": "L'aumento dell'inflazione preoccupa gli economisti.",
+      "pos": null,
+      "translation": "The rise of inflation worries economists.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3437
+    },
+    {
+      "lemma": "Il calo della produzione industriale è preoccupante.",
+      "pos": null,
+      "translation": "The decline in industrial production is worrying.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3438
+    },
+    {
+      "lemma": "l'esperimento",
+      "pos": null,
+      "translation": "experiment",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3439
+    },
+    {
+      "lemma": "il laboratorio",
+      "pos": null,
+      "translation": "laboratory",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3440
+    },
+    {
+      "lemma": "il metodo scientifico",
+      "pos": null,
+      "translation": "scientific method",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3441
+    },
+    {
+      "lemma": "la pubblicazione",
+      "pos": null,
+      "translation": "publication",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3442
+    },
+    {
+      "lemma": "i dati empirici",
+      "pos": null,
+      "translation": "empirical data",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3443
+    },
+    {
+      "lemma": "la revisione tra pari",
+      "pos": null,
+      "translation": "peer review",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3444
+    },
+    {
+      "lemma": "il brevetto",
+      "pos": null,
+      "translation": "patent",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3445
+    },
+    {
+      "lemma": "la neuroscienza",
+      "pos": null,
+      "translation": "neuroscience",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3446
+    },
+    {
+      "lemma": "L'esperimento è stato ripetuto poiché i risultati erano incoerenti.",
+      "pos": null,
+      "translation": "The experiment was repeated since the results were inconsistent.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3447
+    },
+    {
+      "lemma": "Pubblichiamo i dati affinché la comunità scientifica possa valutarli.",
+      "pos": null,
+      "translation": "We publish the data so that the scientific community can evaluate them.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3448
+    },
+    {
+      "lemma": "l'identità culturale",
+      "pos": null,
+      "translation": "cultural identity",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3449
+    },
+    {
+      "lemma": "il multiculturalismo",
+      "pos": null,
+      "translation": "multiculturalism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3450
+    },
+    {
+      "lemma": "la diversità",
+      "pos": null,
+      "translation": "diversity",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3451
+    },
+    {
+      "lemma": "lo stereotipo",
+      "pos": null,
+      "translation": "stereotype",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3452
+    },
+    {
+      "lemma": "la minoranza",
+      "pos": null,
+      "translation": "minority",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3453
+    },
+    {
+      "lemma": "la seconda generazione",
+      "pos": null,
+      "translation": "second generation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3454
+    },
+    {
+      "lemma": "il dialogo interculturale",
+      "pos": null,
+      "translation": "intercultural dialogue",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3455
+    },
+    {
+      "lemma": "l'assimilazione",
+      "pos": null,
+      "translation": "assimilation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3456
+    },
+    {
+      "lemma": "la coesione sociale",
+      "pos": null,
+      "translation": "social cohesion",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3457
+    },
+    {
+      "lemma": "Per quanto sia difficile, il dialogo interculturale è fondamentale.",
+      "pos": null,
+      "translation": "However difficult it may be, intercultural dialogue is fundamental.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3458
+    },
+    {
+      "lemma": "Malgrado ciò, la coesione sociale è migliorata.",
+      "pos": null,
+      "translation": "Despite this, social cohesion has improved.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3459
+    },
+    {
+      "lemma": "la nominalizzazione",
+      "pos": null,
+      "translation": "nominalization",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3460
+    },
+    {
+      "lemma": "la frase scissa",
+      "pos": null,
+      "translation": "cleft sentence",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3461
+    },
+    {
+      "lemma": "il costrutto",
+      "pos": null,
+      "translation": "construction",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3462
+    },
+    {
+      "lemma": "la subordinata",
+      "pos": null,
+      "translation": "subordinate clause",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3463
+    },
+    {
+      "lemma": "la principale",
+      "pos": null,
+      "translation": "main clause",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3464
+    },
+    {
+      "lemma": "l'apposizione",
+      "pos": null,
+      "translation": "apposition",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3465
+    },
+    {
+      "lemma": "la proposizione relativa",
+      "pos": null,
+      "translation": "relative clause",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3466
+    },
+    {
+      "lemma": "l'inciso",
+      "pos": null,
+      "translation": "parenthetical clause",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3467
+    },
+    {
+      "lemma": "il periodo ipotetico misto",
+      "pos": null,
+      "translation": "mixed conditional",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3468
+    },
+    {
+      "lemma": "il modo verbale",
+      "pos": null,
+      "translation": "verb mood",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3469
+    },
+    {
+      "lemma": "È l'istruzione che fa la differenza.",
+      "pos": null,
+      "translation": "It's education that makes the difference.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3470
+    },
+    {
+      "lemma": "Quello che non capisco è la sua logica.",
+      "pos": null,
+      "translation": "What I don't understand is his logic.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3471
+    },
+    {
+      "lemma": "È per questo che abbiamo scelto questa strada.",
+      "pos": null,
+      "translation": "It's for this reason that we chose this path.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3472
+    },
+    {
+      "lemma": "Se avessi studiato medicina, ora sarei medico.",
+      "pos": null,
+      "translation": "If I had studied medicine, I would now be a doctor.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3473
+    },
+    {
+      "lemma": "la democrazia",
+      "pos": null,
+      "translation": "democracy",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3474
+    },
+    {
+      "lemma": "il parlamento",
+      "pos": null,
+      "translation": "parliament",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3475
+    },
+    {
+      "lemma": "le elezioni",
+      "pos": null,
+      "translation": "elections",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3476
+    },
+    {
+      "lemma": "il suffragio universale",
+      "pos": null,
+      "translation": "universal suffrage",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3477
+    },
+    {
+      "lemma": "la coalizione",
+      "pos": null,
+      "translation": "coalition",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3478
+    },
+    {
+      "lemma": "il referendum",
+      "pos": null,
+      "translation": "referendum",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3479
+    },
+    {
+      "lemma": "la magistratura",
+      "pos": null,
+      "translation": "the judiciary",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3480
+    },
+    {
+      "lemma": "la separazione dei poteri",
+      "pos": null,
+      "translation": "separation of powers",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3481
+    },
+    {
+      "lemma": "il populismo",
+      "pos": null,
+      "translation": "populism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3482
+    },
+    {
+      "lemma": "lo stato di diritto",
+      "pos": null,
+      "translation": "rule of law",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3483
+    },
+    {
+      "lemma": "È doveroso sottolineare il ruolo della magistratura.",
+      "pos": null,
+      "translation": "It is essential to underline the role of the judiciary.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3484
+    },
+    {
+      "lemma": "Non si può fare a meno di considerare il voto popolare.",
+      "pos": null,
+      "translation": "One cannot avoid considering the popular vote.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3485
+    },
+    {
+      "lemma": "l'accento",
+      "pos": null,
+      "translation": "accent",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3486
+    },
+    {
+      "lemma": "la dizione",
+      "pos": null,
+      "translation": "diction",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3487
+    },
+    {
+      "lemma": "la cadenza",
+      "pos": null,
+      "translation": "cadence / rhythm",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3488
+    },
+    {
+      "lemma": "la consonante doppia",
+      "pos": null,
+      "translation": "double consonant",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3489
+    },
+    {
+      "lemma": "l'intonazione",
+      "pos": null,
+      "translation": "intonation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3490
+    },
+    {
+      "lemma": "la vocale aperta",
+      "pos": null,
+      "translation": "open vowel",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3491
+    },
+    {
+      "lemma": "il parlato veloce",
+      "pos": null,
+      "translation": "fast speech",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3492
+    },
+    {
+      "lemma": "la pausa",
+      "pos": null,
+      "translation": "pause",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3493
+    },
+    {
+      "lemma": "il tono",
+      "pos": null,
+      "translation": "tone",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3494
+    },
+    {
+      "lemma": "l'elisione",
+      "pos": null,
+      "translation": "elision",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3495
+    },
+    {
+      "lemma": "nonno (grandfather) vs. nono (ninth) — doppia n fa differenza!",
+      "pos": null,
+      "translation": "Nonno vs. nono — the double n makes a difference!",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3496
+    },
+    {
+      "lemma": "penne (pasta) vs. pene (penalty) — attenzione alla doppia!",
+      "pos": null,
+      "translation": "Penne vs. pene — mind the double consonant!",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3497
+    },
+    {
+      "lemma": "la bioetica",
+      "pos": null,
+      "translation": "bioethics",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3498
+    },
+    {
+      "lemma": "il dilemma morale",
+      "pos": null,
+      "translation": "moral dilemma",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3499
+    },
+    {
+      "lemma": "la responsabilità",
+      "pos": null,
+      "translation": "responsibility",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3500
+    },
+    {
+      "lemma": "il consenso",
+      "pos": null,
+      "translation": "consent",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3501
+    },
+    {
+      "lemma": "l'obiezione di coscienza",
+      "pos": null,
+      "translation": "conscientious objection",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3502
+    },
+    {
+      "lemma": "la dignità umana",
+      "pos": null,
+      "translation": "human dignity",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3503
+    },
+    {
+      "lemma": "l'eutanasia",
+      "pos": null,
+      "translation": "euthanasia",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3504
+    },
+    {
+      "lemma": "il clonaggio",
+      "pos": null,
+      "translation": "cloning",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3505
+    },
+    {
+      "lemma": "il fine vita",
+      "pos": null,
+      "translation": "end of life",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3506
+    },
+    {
+      "lemma": "la giustizia distributiva",
+      "pos": null,
+      "translation": "distributive justice",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3507
+    },
+    {
+      "lemma": "Da un lato la libertà, dall'altro la responsabilità collettiva.",
+      "pos": null,
+      "translation": "On one hand freedom, on the other collective responsibility.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3508
+    },
+    {
+      "lemma": "Si pone il problema di dove tracciare il confine.",
+      "pos": null,
+      "translation": "The problem arises of where to draw the line.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3509
+    },
+    {
+      "lemma": "il neorealismo cinematografico",
+      "pos": null,
+      "translation": "cinematic neorealism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3510
+    },
+    {
+      "lemma": "la Dolce Vita",
+      "pos": null,
+      "translation": "the sweet life (Fellini film)",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3511
+    },
+    {
+      "lemma": "il premio Oscar",
+      "pos": null,
+      "translation": "the Oscar award",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3512
+    },
+    {
+      "lemma": "la serie televisiva",
+      "pos": null,
+      "translation": "TV series",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3513
+    },
+    {
+      "lemma": "il doppiaggio",
+      "pos": null,
+      "translation": "dubbing",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3514
+    },
+    {
+      "lemma": "la critica cinematografica",
+      "pos": null,
+      "translation": "film criticism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3515
+    },
+    {
+      "lemma": "il documentario",
+      "pos": null,
+      "translation": "documentary",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3516
+    },
+    {
+      "lemma": "la sceneggiatura",
+      "pos": null,
+      "translation": "screenplay",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3517
+    },
+    {
+      "lemma": "il festival del cinema",
+      "pos": null,
+      "translation": "film festival",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3518
+    },
+    {
+      "lemma": "il regista autore",
+      "pos": null,
+      "translation": "auteur director",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3519
+    },
+    {
+      "lemma": "Il montaggio riflette lo stato mentale del personaggio.",
+      "pos": null,
+      "translation": "The editing reflects the character's mental state.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3520
+    },
+    {
+      "lemma": "La colonna sonora amplifica le emozioni della scena.",
+      "pos": null,
+      "translation": "The soundtrack amplifies the emotions of the scene.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3521
+    },
+    {
+      "lemma": "il latino volgare",
+      "pos": "verb",
+      "translation": "Vulgar Latin",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3522
+    },
+    {
+      "lemma": "il volgare illustre",
+      "pos": null,
+      "translation": "illustrious vernacular",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3523
+    },
+    {
+      "lemma": "l'etimologia",
+      "pos": null,
+      "translation": "etymology",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3524
+    },
+    {
+      "lemma": "il prestito linguistico",
+      "pos": null,
+      "translation": "loanword",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3525
+    },
+    {
+      "lemma": "l'arcaismo",
+      "pos": null,
+      "translation": "archaism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3526
+    },
+    {
+      "lemma": "il neologismo",
+      "pos": null,
+      "translation": "neologism",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3527
+    },
+    {
+      "lemma": "la questione della lingua",
+      "pos": null,
+      "translation": "the language question",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3528
+    },
+    {
+      "lemma": "la standardizzazione",
+      "pos": null,
+      "translation": "standardization",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3529
+    },
+    {
+      "lemma": "la variazione diacronica",
+      "pos": null,
+      "translation": "diachronic variation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3530
+    },
+    {
+      "lemma": "la tesi di laurea",
+      "pos": null,
+      "translation": "thesis / dissertation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3531
+    },
+    {
+      "lemma": "la bibliografia",
+      "pos": null,
+      "translation": "bibliography",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3532
+    },
+    {
+      "lemma": "la citazione",
+      "pos": null,
+      "translation": "quotation / citation",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3533
+    },
+    {
+      "lemma": "il saggio",
+      "pos": null,
+      "translation": "essay",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3534
+    },
+    {
+      "lemma": "la metodologia",
+      "pos": null,
+      "translation": "methodology",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3535
+    },
+    {
+      "lemma": "il contributo originale",
+      "pos": null,
+      "translation": "original contribution",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3536
+    },
+    {
+      "lemma": "la nota a piè di pagina",
+      "pos": null,
+      "translation": "footnote",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3537
+    },
+    {
+      "lemma": "la revisione",
+      "pos": null,
+      "translation": "revision",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3538
+    },
+    {
+      "lemma": "Come si evince dall'analisi, il fenomeno è complesso.",
+      "pos": null,
+      "translation": "As can be inferred from the analysis, the phenomenon is complex.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3539
+    },
+    {
+      "lemma": "Alla luce dei dati raccolti, si può concludere che...",
+      "pos": null,
+      "translation": "In light of the collected data, it can be concluded that...",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3540
+    },
+    {
+      "lemma": "la competenza linguistica",
+      "pos": null,
+      "translation": "linguistic competence",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3541
+    },
+    {
+      "lemma": "la fluenza",
+      "pos": null,
+      "translation": "fluency",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3542
+    },
+    {
+      "lemma": "la padronanza",
+      "pos": null,
+      "translation": "mastery / command",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3543
+    },
+    {
+      "lemma": "l'accuratezza",
+      "pos": null,
+      "translation": "accuracy",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3544
+    },
+    {
+      "lemma": "la coerenza testuale",
+      "pos": null,
+      "translation": "textual coherence",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3545
+    },
+    {
+      "lemma": "il registro formale",
+      "pos": null,
+      "translation": "formal register",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3546
+    },
+    {
+      "lemma": "il sottotesto",
+      "pos": null,
+      "translation": "subtext",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3547
+    },
+    {
+      "lemma": "la ricchezza lessicale",
+      "pos": null,
+      "translation": "lexical richness",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3548
+    },
+    {
+      "lemma": "È doveroso riconoscere che ogni livello ha richiesto impegno.",
+      "pos": null,
+      "translation": "It is essential to recognize that every level required dedication.",
+      "example": null,
+      "level": "C1",
+      "frequency_rank": 3549
     }
   ]
 }
