@@ -5,12 +5,6 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
-import vocabularyRoutes from './routes/vocabulary.js';
-import progressRoutes from './routes/progress.js';
-import flashcardRoutes from './routes/flashcardRoutes.js';
-import gamificationRoutes from './routes/gamification.js';
-import actionModeRoutes from './routes/actionModeRoutes.js';
-import llmRoutes from './routes/llmRoutes.js';
 import v2LanguagesRoutes from './routes/v2/languages.js';
 import v2UserLanguagesRoutes from './routes/v2/userLanguages.js';
 import v2PlacementRoutes from './routes/v2/placement.js';
@@ -21,6 +15,7 @@ import v2WritingRoutes from './routes/v2/writing.js';
 import v2SpeakingRoutes from './routes/v2/speaking.js';
 import v2SessionRoutes from './routes/v2/session.js';
 import v2ProgressRoutes from './routes/v2/progress.js';
+import v2LlmRoutes from './routes/v2/llm.js';
 
 dotenv.config();
 
@@ -170,28 +165,21 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/vocabulary', vocabularyRoutes);
-app.use('/api/progress', progressRoutes);
-app.use('/api/flashcards', flashcardRoutes);
-app.use('/api/gamification', gamificationRoutes);
-app.use('/api/action-mode', actionModeRoutes);
-app.use('/api/llm', llmRoutes);
 
-// API v2 (sprachneutrale Lern-Engine) hinter Feature-Flag.
-// MULTILANG_ENGINE=1 aktiviert die neuen /api/v2- Routen, ohne v1 zu verändern.
-if (String(process.env.MULTILANG_ENGINE ?? '').match(/^(1|true|yes)$/i)) {
-  app.use('/api/v2/languages', v2LanguagesRoutes);
-  app.use('/api/v2/me/languages', v2UserLanguagesRoutes);
-  app.use('/api/v2/me/languages', v2VocabRoutes);
-  app.use('/api/v2/me/languages', v2ReaderRoutes);
-  app.use('/api/v2/me/languages', v2GrammarRoutes);
-  app.use('/api/v2/me/languages', v2WritingRoutes);
-  app.use('/api/v2/me/languages', v2SpeakingRoutes);
-  app.use('/api/v2/me/languages', v2SessionRoutes);
-  app.use('/api/v2/me/languages', v2ProgressRoutes);
-  app.use('/api/v2/placement', v2PlacementRoutes);
-  console.log('🧩 MULTILANG_ENGINE aktiv: /api/v2 (languages, me/languages, placement, vocab, reader, grammar, writing, speaking, session, progress) verfügbar');
-}
+// API v2 (sprachneutrale Lern-Engine). v1 (/api/vocabulary, /api/progress,
+// /api/flashcards, /api/gamification, /api/action-mode, /api/llm) wurde mit
+// dem Cut-over auf die Mehrsprachige Engine entfernt.
+app.use('/api/v2/languages', v2LanguagesRoutes);
+app.use('/api/v2/me/languages', v2UserLanguagesRoutes);
+app.use('/api/v2/me/languages', v2VocabRoutes);
+app.use('/api/v2/me/languages', v2ReaderRoutes);
+app.use('/api/v2/me/languages', v2GrammarRoutes);
+app.use('/api/v2/me/languages', v2WritingRoutes);
+app.use('/api/v2/me/languages', v2SpeakingRoutes);
+app.use('/api/v2/me/languages', v2SessionRoutes);
+app.use('/api/v2/me/languages', v2ProgressRoutes);
+app.use('/api/v2/placement', v2PlacementRoutes);
+app.use('/api/v2/llm', v2LlmRoutes);
 
 // Serve built frontend (static) if available
 if (hasFrontend) {

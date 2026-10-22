@@ -1,0 +1,1606 @@
+{
+  "lang": "en",
+  "version": "1.0.0",
+  "prompts": [
+    {
+      "id": "a1-writing-001-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Beschreibe deinen Alltag in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-002-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe 4 einfache Sätze über deine Arbeit. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-003-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Was gehört alles zu Schule und Lernen? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-004-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Beschreibe Essen und Kochen in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-005-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe 4 einfache Sätze über deine Familie. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-006-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Was gehört alles zu Gesundheit und Fitness? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-007-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Beschreibe dein Hobby in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-008-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe 4 einfache Sätze über eine interessante Reise. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-009-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Was gehört alles zu deiner Stadt? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-010-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Beschreibe das Wetter in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-011-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe 4 einfache Sätze über deinen Alltag. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-012-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Was gehört alles zu deiner Arbeit? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-013-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Beschreibe Schule und Lernen in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-014-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe 4 einfache Sätze über Essen und Kochen. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-015-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Was gehört alles zu deiner Familie? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-016-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Beschreibe Gesundheit und Fitness in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-017-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe 4 einfache Sätze über dein Hobby. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-018-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Was gehört alles zu einer interessanten Reise? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-019-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Beschreibe deine Stadt in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-020-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe 4 einfache Sätze über das Wetter. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-021-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Was gehört alles zu deinem Alltag? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-022-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Beschreibe deine Arbeit in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-023-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe 4 einfache Sätze über Schule und Lernen. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-024-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Was gehört alles zu Essen und Kochen? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-025-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Beschreibe deine Familie in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-026-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe 4 einfache Sätze über Gesundheit und Fitness. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-027-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Was gehört alles zu deinem Hobby? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-028-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Beschreibe eine interessante Reise in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-029-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe 4 einfache Sätze über deine Stadt. Benutze „am/is/are“ oder einfache Verben im Präsens.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-030-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Was gehört alles zu dem Wetter? Schreibe 3–4 einfache Sätze auf Englisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-001-alltag",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über deinen Alltag.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-002-arbeit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Sprich 3–4 Sätze über deine Arbeit. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-003-bildung",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von Schule und Lernen (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-004-essen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über Essen und Kochen.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-005-familie",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Sprich 3–4 Sätze über deine Familie. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-006-gesundheit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von Gesundheit und Fitness (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-007-hobby",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über dein Hobby.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-008-reisen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Sprich 3–4 Sätze über eine interessante Reise. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-009-stadt",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von deiner Stadt (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-010-wetter",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über das Wetter.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-011-alltag",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Sprich 3–4 Sätze über deinen Alltag. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-012-arbeit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von deiner Arbeit (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-013-bildung",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über Schule und Lernen.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-014-essen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Sprich 3–4 Sätze über Essen und Kochen. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-015-familie",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von deiner Familie (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-016-gesundheit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über Gesundheit und Fitness.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-017-hobby",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Sprich 3–4 Sätze über dein Hobby. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-018-reisen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele nach: Erzähle einem Freund von einer interessanten Reise (3–4 einfache Sätze).",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-019-stadt",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele nach: Sprich 3–4 einfache Sätze über deine Stadt.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-020-wetter",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Sprich 3–4 Sätze über das Wetter. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-001-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über deinen Alltag. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-002-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Beschreibe ein Erlebnis mit deiner Arbeit in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-003-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe 4–5 Sätze über Schule und Lernen. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-004-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über Essen und Kochen. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-005-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Beschreibe ein Erlebnis mit deiner Familie in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-006-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe 4–5 Sätze über Gesundheit und Fitness. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-007-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über dein Hobby. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-008-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Beschreibe ein Erlebnis mit einer interessanten Reise in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-009-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe 4–5 Sätze über deine Stadt. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-010-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über das Wetter. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-011-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Beschreibe ein Erlebnis mit deinem Alltag in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-012-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe 4–5 Sätze über deine Arbeit. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-013-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über Schule und Lernen. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-014-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Beschreibe ein Erlebnis mit Essen und Kochen in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-015-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe 4–5 Sätze über deine Familie. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-016-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über Gesundheit und Fitness. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-017-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Beschreibe ein Erlebnis mit deinem Hobby in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-018-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe 4–5 Sätze über eine interessante Reise. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-019-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über deine Stadt. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-020-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Beschreibe ein Erlebnis mit dem Wetter in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-021-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe 4–5 Sätze über deinen Alltag. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-022-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über deine Arbeit. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-023-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Beschreibe ein Erlebnis mit Schule und Lernen in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-024-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe 4–5 Sätze über Essen und Kochen. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-025-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über deine Familie. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-026-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Beschreibe ein Erlebnis mit Gesundheit und Fitness in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-027-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe 4–5 Sätze über dein Hobby. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-writing-028-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Erzähle in 4–5 Sätzen in der Vergangenheit über eine interessante Reise. Benutze das Past Simple.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-029-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Beschreibe ein Erlebnis mit deiner Stadt in 4–5 Sätzen. Benutze „because“ oder „so“.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-030-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe 4–5 Sätze über das Wetter. Benutze mindestens ein Wort aus: although, because, so, last …",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-001-alltag",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über deinen Alltag.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-002-arbeit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Sprich 4–5 Sätze über deine Arbeit. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-003-bildung",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele nach: Berichte einem Freund von Schule und Lernen (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-004-essen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über Essen und Kochen.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-005-familie",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Sprich 4–5 Sätze über deine Familie. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-006-gesundheit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele nach: Berichte einem Freund von Gesundheit und Fitness (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-007-hobby",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über dein Hobby.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-008-reisen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Sprich 4–5 Sätze über eine interessante Reise. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-009-stadt",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele nach: Berichte einem Freund von deiner Stadt (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-010-wetter",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über das Wetter.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-011-alltag",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Sprich 4–5 Sätze über deinen Alltag. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-012-arbeit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele nach: Berichte einem Freund von deiner Arbeit (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-013-bildung",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über Schule und Lernen.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-014-essen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Sprich 4–5 Sätze über Essen und Kochen. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-015-familie",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele nach: Berichte einem Freund von deiner Familie (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-016-gesundheit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über Gesundheit und Fitness.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-017-hobby",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Sprich 4–5 Sätze über dein Hobby. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-018-reisen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele nach: Berichte einem Freund von einer interessanten Reise (4–5 Sätze, Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-019-stadt",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele nach: Erzähle 4–5 Sätze in der Vergangenheit über deine Stadt.",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-020-wetter",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Sprich 4–5 Sätze über das Wetter. Benutze das Past Simple und „because“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-001-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe 5–6 Sätze über deinen Alltag. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-002-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Was meinst du zu deiner Arbeit? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-003-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Diskutiere Schule und Lernen in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-004-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe 5–6 Sätze über Essen und Kochen. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-005-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Was meinst du zu deiner Familie? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-006-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Diskutiere Gesundheit und Fitness in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-007-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe 5–6 Sätze über dein Hobby. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-008-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Was meinst du zu einer interessanten Reise? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-009-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Diskutiere deine Stadt in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-010-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe 5–6 Sätze über das Wetter. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-011-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Was meinst du zu deinem Alltag? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-012-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Diskutiere deine Arbeit in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-013-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe 5–6 Sätze über Schule und Lernen. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-014-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Was meinst du zu Essen und Kochen? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-015-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Diskutiere deine Familie in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-016-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe 5–6 Sätze über Gesundheit und Fitness. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-017-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Was meinst du zu deinem Hobby? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-018-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Diskutiere eine interessante Reise in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-019-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Stadt. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-020-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Was meinst du zu dem Wetter? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-021-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Diskutiere deinen Alltag in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-022-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Arbeit. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-023-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Was meinst du zu Schule und Lernen? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-024-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Diskutiere Essen und Kochen in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-025-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Familie. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-026-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Was meinst du zu Gesundheit und Fitness? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-027-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Diskutiere dein Hobby in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-028-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe 5–6 Sätze über eine interessante Reise. Nenne deine Meinung und begründe sie (I think …, because …).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-029-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Was meinst du zu deiner Stadt? Schreibe 5–6 Sätze mit Meinung und Begründung. Benutze einen if-Satz (Conditional 1).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-030-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Diskutiere das Wetter in 5–6 Sätzen: Meinung, Begründung und ein konkretes Beispiel.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-001-alltag",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Sprich 4–5 Sätze über deinen Alltag. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-002-arbeit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über deine Arbeit. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-003-bildung",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Sprich 4–5 Sätze über Schule und Lernen und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-004-essen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Sprich 4–5 Sätze über Essen und Kochen. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-005-familie",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über deine Familie. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-006-gesundheit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Sprich 4–5 Sätze über Gesundheit und Fitness und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-007-hobby",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Sprich 4–5 Sätze über dein Hobby. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-008-reisen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über eine interessante Reise. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-009-stadt",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Sprich 4–5 Sätze über deine Stadt und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-010-wetter",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Sprich 4–5 Sätze über das Wetter. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-011-alltag",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über deinen Alltag. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-012-arbeit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Sprich 4–5 Sätze über deine Arbeit und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-013-bildung",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Sprich 4–5 Sätze über Schule und Lernen. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-014-essen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über Essen und Kochen. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-015-familie",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Sprich 4–5 Sätze über deine Familie und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-016-gesundheit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Sprich 4–5 Sätze über Gesundheit und Fitness. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-017-hobby",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über dein Hobby. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-018-reisen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Sprich 4–5 Sätze über eine interessante Reise und benutze mindestens einen Phrasal Verb.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-019-stadt",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Sprich 4–5 Sätze über deine Stadt. Sage deine Meinung und begründe sie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-020-wetter",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele nach: Diskutiere mit einem Kollegen über das Wetter. Nenne Meinung und Begründung.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-001-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu deinem Alltag. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-002-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über deine Arbeit. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-003-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit Schule und Lernen auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-004-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu Essen und Kochen. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-005-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über deine Familie. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-006-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit Gesundheit und Fitness auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-007-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu deinem Hobby. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-008-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über eine interessante Reise. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-009-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit deiner Stadt auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-010-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu dem Wetter. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-011-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über deinen Alltag. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-012-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit deiner Arbeit auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-013-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu Schule und Lernen. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-014-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über Essen und Kochen. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-015-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit deiner Familie auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-016-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu Gesundheit und Fitness. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-017-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über dein Hobby. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-018-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit einer interessanten Reise auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-019-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu deiner Stadt. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-020-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über das Wetter. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-021-alltag",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit deinem Alltag auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-022-arbeit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu deiner Arbeit. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-023-bildung",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über Schule und Lernen. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-024-essen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit Essen und Kochen auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-025-familie",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu deiner Familie. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-026-gesundheit",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über Gesundheit und Fitness. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-027-hobby",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit deinem Hobby auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-028-reisen",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Argumentiere in 6–8 Sätzen zu einer interessanten Reise. Nenne Vor- und Nachteile und formuliere ein Fazit.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-029-stadt",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe einen kurzen Essay (6–8 Sätze) über deine Stadt. Benutze Konnektoren wie however, although, therefore.",
+      "target": null
+    },
+    {
+      "id": "b2-writing-030-wetter",
+      "level": "B2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Setze dich in 6–8 Sätzen mit dem Wetter auseinander: These, Argumente, Gegenargument, Schluss.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-001-alltag",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Sprich 5–6 Sätze zu deinem Alltag: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-002-arbeit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über deine Arbeit. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-003-bildung",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Sprich 5–6 Sätze über Schule und Lernen und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-004-essen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Sprich 5–6 Sätze zu Essen und Kochen: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-005-familie",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über deine Familie. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-006-gesundheit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Sprich 5–6 Sätze über Gesundheit und Fitness und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-007-hobby",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Sprich 5–6 Sätze zu deinem Hobby: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-008-reisen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über eine interessante Reise. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-009-stadt",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Sprich 5–6 Sätze über deine Stadt und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-010-wetter",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Sprich 5–6 Sätze zu dem Wetter: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-011-alltag",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über deinen Alltag. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-012-arbeit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Sprich 5–6 Sätze über deine Arbeit und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-013-bildung",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Sprich 5–6 Sätze zu Schule und Lernen: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-014-essen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über Essen und Kochen. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-015-familie",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Sprich 5–6 Sätze über deine Familie und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-016-gesundheit",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Sprich 5–6 Sätze zu Gesundheit und Fitness: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-017-hobby",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über dein Hobby. Benutze gehobene Ausdrücke.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-018-reisen",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Sprich 5–6 Sätze über eine interessante Reise und wäge Vor- und Nachteile ab.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-019-stadt",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Sprich 5–6 Sätze zu deiner Stadt: Position, zwei Argumente, Schlussfolgerung.",
+      "target": null
+    },
+    {
+      "id": "b2-speaking-020-wetter",
+      "level": "B2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele nach: Halte ein kurzes Plädoyer (5–6 Sätze) über das Wetter. Benutze gehobene Ausdrücke.",
+      "target": null
+    }
+  ]
+}

@@ -1,0 +1,846 @@
+{
+  "lang": "en",
+  "version": "1.0.0",
+  "texts": [
+    {
+      "title": "A Morning in the Kitchen",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "My name is Emma. I get up at seven o'clock every day. I go to the kitchen and make breakfast. I eat bread and drink orange juice. My brother Tom drinks coffee. We talk about our day. Then I take my bag and walk to the bus stop. The bus is often late, but I am never angry. I listen to music and wait."
+    },
+    {
+      "title": "My Week at the Office",
+      "level": "A1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Anna works in a small office in the city. She starts at nine in the morning. She answers emails and makes coffee for the team. Her boss is kind. Anna likes her job because her colleagues are friendly. At one o'clock she eats lunch in the park. She finishes at five and goes home. In the evening she rests and reads."
+    },
+    {
+      "title": "English Class",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Our English class is on Monday and Wednesday. The teacher is from Canada. Her name is Kate. She speaks slowly and we understand her well. We read short texts and write new words in our notebooks. I practice with my phone every evening. English is not easy, but it is fun. I want to travel and talk to people."
+    },
+    {
+      "title": "Pizza Night",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "On Friday we make pizza at home. My father opens the box of tomatoes. My mother puts cheese on the dough. I wash the vegetables. My little sister eats the cheese and does nothing! We put the pizza in the oven and wait ten minutes. It smells great. We sit at the table and eat together. The pizza is hot and delicious."
+    },
+    {
+      "title": "My Family",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "I live with my family in a small house. My father is a driver. My mother works in a shop. I have one brother and one sister. My brother is tall and funny. My sister is young. She is only six. Our grandmother lives with us too. She cooks very well and tells us old stories. I love my family."
+    },
+    {
+      "title": "At the Doctor",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "I am not well today. I have a headache and a cough. I call the doctor and make an appointment. The waiting room is warm and quiet. The doctor is a calm man with glasses. He looks at my throat and says, \"You have a cold. Rest and drink water.\" I go to the pharmacy and buy medicine. Now I sleep."
+    },
+    {
+      "title": "My Free Time",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "I like my free time. On Saturday I ride my bike in the forest. The air is fresh and the birds sing. In the afternoon I play football with my friends. We are not very good, but we laugh a lot. On Sunday I stay at home and draw pictures. I also like films. My favourite films are comedies. They make me happy."
+    },
+    {
+      "title": "A Day at the Beach",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Today is sunny, so we go to the beach. The water is blue and clean. My father puts the bag under a big umbrella. I swim and build a sandcastle with my friend Mia. We eat apples and drink cold lemonade. In the evening we are tired but happy. The sun goes down and the sky is orange. It is a perfect day."
+    },
+    {
+      "title": "My Street",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "I live in a quiet street. There is a bakery, a small shop, and a pharmacy. The baker is old but very strong. His bread is famous in our area. There is a big tree in front of my house. Birds sit in the tree every morning. My neighbours are nice. We say hello every day and sometimes we drink tea together."
+    },
+    {
+      "title": "Rainy Days",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Today it rains. The sky is grey and the streets are wet. I take my black umbrella and my warm jacket. I walk to school with my friend Sam. We step in small pools of water and laugh. Inside, the school is warm. We drink hot chocolate at break. I do not mind the rain. I like to sit by the window and listen to the drops."
+    },
+    {
+      "title": "My Best Friend",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "My best friend is called Leo. He is thirteen years old. He has short black hair and big brown eyes. Leo is very kind. He helps me with my homework and I help him with football. We live near each other. After school we play games in his garden or walk to the library. On Saturdays we ride our bikes to the lake."
+    },
+    {
+      "title": "In the Supermarket",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "On Saturday morning I go to the supermarket with my mother. We take a basket and a list. We buy milk, eggs, bread, and fruit. I want chocolate, but my mother says no. She puts apples in the basket instead. At the till we wait in a long line. Then we carry the heavy bags home. I get a small cookie. That is my reward."
+    },
+    {
+      "title": "My Grandmother's Garden",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "My grandmother has a beautiful garden. There are red roses, yellow sunflowers, and small tomatoes. She works in the garden every morning. I help her and water the plants. The soil is soft and warm. A cat sleeps under the table. After one hour we drink lemonade on the terrace. My grandmother gives me a flower for my room. I am happy in her garden."
+    },
+    {
+      "title": "The New Student",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Today we have a new student. His name is Ravi. He comes from India. He is shy and quiet. Our teacher says, \"Please be nice to Ravi.\" I sit next to him and say hello. I show him our classroom and his desk. At break we play table football together. Ravi is good at it! Now he smiles and talks a lot. I am glad he is here."
+    },
+    {
+      "title": "Late for Work",
+      "level": "A1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "This morning my alarm does not ring. I wake up at eight. Oh no! I am late for work. I take a quick shower and put on my clothes. I run to the bus stop, but the bus goes. I wait for the next one. At the office my boss looks at his watch. \"Nine thirty,\" he says. \"Sorry,\" I say. \"It will not happen again.\""
+    },
+    {
+      "title": "A Cold Winter",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Winter is here. It is very cold and the lake is frozen. Snow covers the roofs and the streets. Children make snowmen and throw snowballs. I wear a hat, gloves, and a thick scarf. My nose is cold, but my hands are warm in my pockets. At home we drink hot tea with honey. The fire is bright and the house is cosy. I love snow days."
+    },
+    {
+      "title": "Sunday Breakfast",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "On Sunday we do not get up early. We sleep late and then make a big breakfast. My father fries eggs. My mother makes pancakes with bananas. I set the table and pour the juice. We eat slowly and talk about the week. My sister puts too much sugar in her tea and we all laugh. Sunday breakfast is my favourite meal of the week."
+    },
+    {
+      "title": "The Library",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "There is a big library near my school. It is quiet and cool inside. I go there on Thursday afternoons. I sit at a table by the window and read. The librarian, Mrs Green, helps me find books. She knows every shelf. I like adventure stories and books about animals. I can borrow three books for two weeks. Reading is my favourite thing to do."
+    },
+    {
+      "title": "My Bike",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "I have a blue bike. Its name is Speedy. I ride it to school and to my friends' houses. Every week I clean it and check the brakes. The seat is soft and the bell is loud. One day I get a flat tyre. My father helps me fix it. Now I always carry a small pump. Riding my bike makes me feel free."
+    },
+    {
+      "title": "At the Market",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "On Saturday the square becomes a market. There are tables with fruit, vegetables, and flowers. The sellers call, \"Fresh strawberries! Sweet apples!\" I buy tomatoes and a big bunch of flowers for my mother. A man sells warm bread. It smells wonderful. My friend and I eat ice cream on a bench and watch the people. The market is noisy but full of life."
+    },
+    {
+      "title": "Feeling Better",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Last week I feel sick, but today I am better. I sleep a lot and drink warm tea with lemon. My mother brings me soup. The medicine tastes bad, but it helps. Now I can go outside again. The sun shines and I walk slowly in the garden. My doctor says, \"Exercise is good for you.\" So I ride my bike for ten minutes. I feel strong again."
+    },
+    {
+      "title": "My Trip to the Zoo",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Today my class goes to the zoo. We take the train and arrive at nine. We see lions, monkeys, and tall giraffes. The monkeys jump and make people laugh. At lunch we sit on the grass and eat our sandwiches. In the afternoon we watch the dolphins. They jump high out of the water. Everyone claps. I take many photos. I am tired but very happy when we go home."
+    },
+    {
+      "title": "The Cat Next Door",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "There is a grey cat next door. Its name is Miso. It comes to our garden every afternoon. It sits on the wall and watches the birds. I give it a little food and it says \"meow\" to me. My mother says the cat belongs to the old man in the blue house. Now Miso waits for me at my window every day. I think the cat likes me best."
+    },
+    {
+      "title": "My Uncle's Restaurant",
+      "level": "A1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "My uncle has a small restaurant. It is near the station. The food is simple and good: pasta, soup, and salads. My uncle cooks and his wife serves the tables. On Saturday I help in the restaurant. I carry plates and clean the tables. The customers say thank you. At the end of the day my uncle gives me a free pizza. I want a restaurant one day too."
+    },
+    {
+      "title": "My Birthday",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Today is my birthday. I wake up and there are presents next to my bed! My parents make a big breakfast. My friends come in the afternoon. We play games in the garden and eat a chocolate cake with candles. My grandmother gives me a new book. I make a wish and blow out the candles. Everyone claps. It is the best day of the year."
+    },
+    {
+      "title": "The Bus Driver",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "I take the number 12 bus to school every day. The driver is a woman called Rosa. She has a big smile and a warm voice. She says hello to everyone. Old people sit down slowly and she waits. Children show her their school bags. One day she helps me find my lost glove. The bus is never boring with Rosa. She is famous in our town."
+    },
+    {
+      "title": "Exercise Every Day",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "My doctor says, \"Move every day.\" So I walk to school instead of taking the bus. It takes twenty minutes. I also play with my dog in the park. He runs and I run after him. In the evening I do small exercises in my room. My legs are strong now and I sleep well. Fruit and water are good for me too. A healthy body makes a happy mind."
+    },
+    {
+      "title": "The Small Café",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "There is a small café at the end of my street. It has red chairs and big windows. The coffee is strong and the cakes are sweet. I go there on Sunday with my father. He reads the newspaper and I eat a warm cookie. The owner knows us and always says, \"The usual?\" Music plays quietly. Time goes slowly in this café. It is my favourite place in town."
+    },
+    {
+      "title": "Camping by the Lake",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "In summer we camp by the lake. We put up two tents near the trees. My father makes a small fire and we cook soup. At night it is quiet and cold. I sleep in my warm sleeping bag and listen to the water. In the morning the sun comes up over the lake. We swim and eat bread with jam. No phone, no noise. Just nature and family."
+    },
+    {
+      "title": "My School Day",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "School starts at eight. First we have maths, then English. I answer questions and write in my book. At ten we have a break. I eat an apple and play with my friends. After lunch we have science and art. Art is my favourite because I can draw. School ends at three. I walk home with my friend Nina and we talk about the day."
+    },
+    {
+      "title": "The Farmer's Market",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Every Sunday my mother and I visit the farmer's market. Farmer Joe sells eggs from his chickens. His tomatoes are red and sweet. We buy potatoes, carrots, and a big loaf of bread. The cheese lady cuts a piece for me to try. I say yes, please! My mother laughs. We pay and put everything in our cloth bags. Food from the market always tastes better."
+    },
+    {
+      "title": "Hot Summer Days",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Today it is very hot. The sun shines and there are no clouds. The temperature is thirty-five degrees. People wear T-shirts, shorts, and hats. Children eat ice cream and play with water. I fill a bucket and splash my friends. We sit under a tree and drink cold water. My dog lies in the shade and pants. In the evening we eat dinner outside. Summer nights are the best."
+    },
+    {
+      "title": "My Little Sister",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "My little sister is five years old. She has curly hair and a loud laugh. She follows me everywhere. She wears my old hats and my big shoes. It is funny but sometimes annoying. She likes pink dresses and sings all day. Her favourite song is about a yellow submarine. When I am sad, she brings me her teddy bear. Then I am not sad anymore."
+    },
+    {
+      "title": "Learning to Swim",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "I take swimming lessons on Tuesday. The pool is big and the water is blue. My teacher is Mr Baker. He is patient and kind. First we learn to float on our backs. Then we kick with our legs and move our arms. Today I swim five metres without stopping! My teacher claps and I feel proud. Next week we learn to dive. I am scared, but also excited."
+    },
+    {
+      "title": "A Letter to My Pen Friend",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "I have a pen friend called Jack. He lives in Australia. I write to him every month. I tell him about my school, my family, and my football games. He writes about kangaroos, the beach, and his dog. His English is different from ours. He says \"arvo\" instead of \"afternoon\"! I keep all his letters in a box under my bed. One day I want to visit him."
+    },
+    {
+      "title": "The Day We Moved House",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Last month we moved to a new flat because my father got a new job. Although the old flat was small, we were sad to leave it. My friends helped us carry the boxes, so the work finished quickly. I painted my bedroom blue because blue is my favourite colour. On the first night the bed felt strange and I could not sleep. But the next morning the sun came through the big window, and I thought, \"This is home now.\" The neighbourhood is quiet and there is a nice park nearby."
+    },
+    {
+      "title": "My First Day at Work",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "I will never forget my first day at the marketing company. I arrived early because I was nervous and wanted to make a good impression. Although my manager was busy, she showed me around and introduced me to the team. Someone forgot my name twice, so I felt a little embarrassed. They gave me a computer and a small task, and I worked on it all morning. At lunch two colleagues invited me to join them, so I relaxed. Although the day was long and tiring, I went home happy because I knew I belonged there."
+    },
+    {
+      "title": "The School Trip to Oxford",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Last year our class went to Oxford on a school trip. We travelled by coach because the weather was perfect and we could watch the countryside. Although our teacher asked us to be quiet, nobody listened for long! We visited two old colleges and a famous museum, so my feet hurt by the evening. I bought a small key ring for my mother because she collects them. In the evening we played cards in the hotel. Although I was exhausted, I stayed awake late because it was so much fun with my friends."
+    },
+    {
+      "title": "Cooking for My Parents",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Last Saturday my parents went out, so I decided to cook dinner for my younger brother. I chose pasta with tomato sauce because it is easy and everybody likes it. Although I read the recipe twice, I added too much salt. My brother made a face, but he ate it anyway because he is polite. Then I burned the garlic bread, so we ordered a pizza as well. When my parents came home, the kitchen was a mess. They laughed and said the pasta was still delicious. Now I cook every second Saturday."
+    },
+    {
+      "title": "Our Grandmother's Birthday",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Last week my grandmother turned seventy, so the whole family came to celebrate. We decorated the living room with balloons because she loves colours. My cousin baked a huge cake, although he had never baked one before. It leaned to one side, but nobody minded because it tasted wonderful. We gave her presents and a big card with photos inside. Although the party finished late, nobody wanted to go home. Grandma said it was the best birthday she had ever had, which made us all feel warm inside."
+    },
+    {
+      "title": "A Visit to the Clinic",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Two weeks ago I hurt my ankle while playing football, so my mother took me to the clinic. We waited for an hour because the waiting room was full. Although the nurse was kind, I was frightened. They took an X-ray and said the bone was fine, only a bad twist. The doctor gave me crutches and told me to rest for three weeks. I could not play football, so I helped my team by keeping score instead. Now the ankle is much better, and I can walk normally again."
+    },
+    {
+      "title": "Joining the Chess Club",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "At the beginning of the year I joined the chess club because I wanted to try something new. Although I had played at home with my grandfather, the other members were much stronger. I lost my first five games, so I felt a bit silly. The club teacher said losing was part of learning, so I kept practising every evening. Two months later I won my first tournament game! I was so proud that I told everyone at school. Now chess teaches me patience, and patience helps me in my studies too."
+    },
+    {
+      "title": "Our Weekend in the Mountains",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Last autumn we drove to the mountains because my parents wanted to hike. Although it rained on Saturday morning, we put on our jackets and walked anyway. The rain stopped, and the clouds opened over the valley. We reached a small lake and ate our sandwiches beside it. On Sunday we visited a village with old wooden houses and bought honey from a farmer. Although we were tired, we stayed up late playing cards. The drive home was quiet because everybody fell asleep. We are already planning the next trip."
+    },
+    {
+      "title": "Lost in the City",
+      "level": "A2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Last summer I got lost in a big city for the first time. My phone battery died, so I could not use the map. Although I felt embarrassed, I asked a shopkeeper for directions. She did not speak much English, but she drew a simple map on a piece of paper. I followed her map and found my hotel after forty minutes. The manager laughed when he heard the story and gave me a free bottle of water. Since then I always carry a paper map and a power bank."
+    },
+    {
+      "title": "The Storm Last Night",
+      "level": "A2",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Last night there was a terrible storm, so we could not sleep well. The wind blew hard and the rain hit the windows like small stones. Although I am not usually afraid of thunder, I stayed in the living room with my parents. Suddenly the lights went off, so my father lit candles and we played board games at the kitchen table. It was actually quite cosy. In the morning the streets were full of branches, and the neighbours helped each other clean up. The sun came out, and everything looked fresh and new."
+    },
+    {
+      "title": "The School Play",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "In June our school performed a play, and I got a small part because I am shy on stage. We rehearsed for weeks, so we knew our lines well. Although my character only said three sentences, I practised them every night. On the evening of the play, the hall was full, and my hands were shaking. Then the music started, and I forgot the audience completely. After the show everybody clapped loudly, and my parents took photos. Although I had a tiny role, I felt like a real actor that night."
+    },
+    {
+      "title": "My First Marathon",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Last month I ran my first marathon because I wanted to prove something to myself. I trained for four months, so I felt ready. Although the first half was easy, my legs hurt badly after thirty kilometres. I wanted to stop, but my friends waited at the finish line, so I kept going. The last two kilometres were the hardest of my life. When I finally crossed the line, someone put a medal around my neck. I cried a little, although I told nobody. Now the medal hangs above my desk."
+    },
+    {
+      "title": "The Birthday Surprise",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Last month we planned a surprise party for my dad because he never asks for anything. We hid in his house while my mum invited him out. Although we were careful, my little brother almost shouted \"Surprise!\" too early. We decorated the garden with lights and baked his favourite apple pie. When he walked in, everybody jumped out and shouted together. He dropped his keys! Although he pretended to be annoyed, he smiled the whole evening. He said it was the nicest thing anyone had ever done for him."
+    },
+    {
+      "title": "The New Colleague",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "A new colleague joined our team last month. Her name is Ines and she moved from another country for the job. Although she spoke good English, she was nervous on her first day. My manager asked me to show her around, so I explained where everything was. At lunch she told us funny stories about her hometown, and everybody laughed. Now she brings homemade cakes on Fridays, so we all look forward to the morning. Although she started recently, she already feels like part of the team."
+    },
+    {
+      "title": "Learning to Sail",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Last summer I learned to sail because my uncle owns a small boat. The first lesson was difficult because the wind kept pushing the boat in strange directions. Although I fell into the water twice, I did not want to quit. My uncle was patient and explained everything slowly. By the end of the week I could sail alone across the bay, which felt amazing. The salt dried on my skin and my arms were tired, but I was happy. Now I spend every free weekend at the harbour, and I want my own boat one day."
+    },
+    {
+      "title": "The Train Journey",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Last winter I took a night train to visit my cousin because flights were expensive. Although I booked a seat weeks before, the train was crowded. An old man shared his sandwiches with me, so dinner was better than expected. I watched the dark fields pass by and listened to the rhythm of the wheels. Although I was excited, I slept for a few hours. In the morning the mountains appeared outside my window, and everybody in the carriage said \"Wow.\" My cousin was waiting at the station with hot chocolate. It was worth every hour of the journey."
+    },
+    {
+      "title": "The Market Mystery",
+      "level": "A2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Last weekend my wallet disappeared at the market, so I searched every pocket and every bag. Although I was sure I had it, it was gone. I felt sick because it had my photos inside. A fruit seller saw me searching and asked what happened. Although he was busy, he called the market office on his phone. Ten minutes later they had found my wallet under a table! The owner had handed it in. I thanked everybody and bought apples from three stalls. Kind strangers make my city feel like home."
+    },
+    {
+      "title": "The Heatwave",
+      "level": "A2",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Last July there was a heatwave, so school closed for two days. It was the hottest week of the year, and even the birds stayed in the shade. Although we wanted to go to the mountains, the roads were too busy. Instead, my family and I filled the garden pool and played water games all afternoon. My grandmother came for dinner and brought cold soup, which was perfect for the weather. At night the whole street sat outside and talked. Although I was sunburned, it was one of the most fun weeks I remember."
+    },
+    {
+      "title": "My Part-Time Job",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Since September I have worked in a bookshop on Saturdays because I want my own money. At first I was shy, so I hid behind the shelves. My manager taught me how to use the till and where everything was. Although the work is standing for hours, the customers are usually friendly. One man bought twelve books and thanked me for finding them. Last month I bought my first video game with my own money, and it tasted even better than usual. Now I save for a new bicycle."
+    },
+    {
+      "title": "The School Concert",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Last month our school held a concert, so the hall was full of parents and friends. My band played second, which meant we watched everyone else first. Although we had practised for weeks, my guitar string broke during the sound check. We fixed it quickly, but my hands were cold when we started. Then the audience sang along to our song, and I forgot my nervousness completely. Although we made one small mistake, nobody noticed. After the concert three students asked to join our band, so now we need a bigger practice room."
+    },
+    {
+      "title": "A New Start",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Our family moved to a new town last spring, so I had to change schools. Although my old friends wrote to me every day, I felt lonely at first. The other students seemed to know each other for years. Then a boy called Omar sat next to me and asked about my football shirt, so we started talking. He invited me to play after school, and I scored two goals. Although the first weeks were hard, I am glad we moved. I have learned that making friends is possible anywhere if you are brave."
+    },
+    {
+      "title": "The Cooking Competition",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Last month I entered a cooking competition at school because my teacher said my lasagna was excellent. Although I was confident, my hands shook when the judges arrived. I burned the garlic, so I started the sauce again with only ten minutes left. My partner Lena chopped vegetables faster than I had ever seen. Although we were exhausted, we finished on time. The judges tasted everything and wrote their scores. We did not win first place, but we got third, and the judges praised our courage. I have already signed up for next year."
+    },
+    {
+      "title": "My Cousin's Wedding",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Last August my cousin got married, so the whole family travelled to the coast. Although it was hot, everybody wore smart clothes and nobody complained. The ceremony was in a small church by the sea, and my cousin cried when he saw his bride. We ate a huge dinner and danced until midnight. Although my shoes hurt, I danced every song. My uncle gave a funny speech, so my aunt threw a napkin at him. On the way home we all agreed it was the happiest day of the year."
+    },
+    {
+      "title": "The Fitness Challenge",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "In January my friends and I started a fitness challenge because we all wanted more energy. We agreed to walk ten thousand steps every day, so we walked to school together. Although the first week was hard, especially on rainy days, we did not give up. We made a chart on the fridge and marked each day with a star. After two months I slept better and felt stronger. My doctor was surprised when she saw me. Although the challenge is finished now, we still walk together every morning."
+    },
+    {
+      "title": "The Photography Club",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "This year I joined the photography club because I love taking pictures of animals. Our teacher took us to a nature reserve, although it meant getting up at five in the morning. The fog was still over the lake when we arrived. I waited quietly near the water for an hour, so my legs were cold, but then a heron landed close to me. I took twenty photos without moving. My teacher chose my best picture for the school exhibition, so now it hangs in the hallway. Everybody asks who took it."
+    },
+    {
+      "title": "The Ferry to the Island",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Last summer my family took a ferry to a small island because my parents wanted a quiet holiday. Although the crossing only took an hour, I spent it watching the waves and the seagulls. The island had no cars, only bicycles and donkeys! We rented bikes and rode to a lighthouse on the hill. Although the climb was steep, the view from the top was worth it. We swam in clear water and ate fish in a tiny harbour restaurant. Although the holiday was short, I still dream about that island."
+    },
+    {
+      "title": "The Night Market",
+      "level": "A2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Last month my host family took me to the night market because it only happens once a month. Although we arrived early, the streets were already full of people and smoke from the grills. Every stall sold something different: noodles, dumplings, sweets on sticks. My host mother taught me to bargain, so I bought a scarf for half the price. A street musician played guitar near the fountain, and people danced around him. Although my feet ached, we stayed until eleven. I left with full hands, a sore throat from laughing, and a big appetite."
+    },
+    {
+      "title": "Snow Day",
+      "level": "A2",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Last winter we woke up to a white world because a big snowstorm had passed during the night. Although school was closed, my mother made us get up anyway. We built a huge snowman in the garden and gave it my father's hat. Then we had a snowball fight, and my little brother hit me in the ear. In the afternoon the whole family drank hot chocolate and watched old films. Although the roads were dangerous, my neighbour brought us cookies. That evening the streets were silent and everything sparkled under the streetlights."
+    },
+    {
+      "title": "The Science Fair",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Last month our school held a science fair, so my partner and I built a small volcano. Although the model looked simple, we tested the eruption eight times at my house. My kitchen table was a mess, so my mother made us work outside. On the fair day, hundreds of students walked past our table. A judge asked us difficult questions, but we knew the science well, so we answered everything correctly. We won a book voucher, which we spent on books about space. Although we were exhausted, we were proud of our bubbling volcano."
+    },
+    {
+      "title": "The Old Bicycle",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Last month my grandfather gave me his old bicycle because he does not ride it anymore. Although it was dusty and the seat was torn, I saw its potential. My friend and I cleaned every part, oiled the chain, and painted the frame green. We worked all weekend, so my hands were black with grease. When I rode it to school on Monday, everybody turned to look. Although it is thirty years old, it runs like new. My grandfather smiled when he saw it, and now we ride together on Sundays."
+    },
+    {
+      "title": "The Job Interview",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Last week I had my first job interview because I wanted a summer job at the library. Although I prepared answers the night before, my mind went blank when I sat down. The manager asked why I wanted the job, so I told her the truth: I love books and I am organised. She smiled and asked me to shelve some returned books. I did it slowly and carefully. Two days later she called and offered me the job, so now I spend my Saturdays among the novels. My first pay cheque arrives next week."
+    },
+    {
+      "title": "The Long Walk Home",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Last Friday my bus left without me because I was buying a snack, so I had to walk home. The distance was eight kilometres, which sounded impossible. Although I started slowly, I kept walking and listened to a podcast about space. I passed a farm, a river, and a small wood. A kind driver offered me a lift, but I said no because I wanted to finish. Although my legs hurt at the end, I arrived home in two hours. My mother was shocked. I was just proud, and I slept very well that night."
+    },
+    {
+      "title": "Thanksgiving at Aunt Rosa's",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Last November we celebrated Thanksgiving at my aunt's house because she always hosts for the whole family. Although my uncle started cooking on Friday, the kitchen was chaos by Saturday morning. I helped make the pumpkin pie, although I have two left hands with pastry. The table was full: turkey, potatoes, green beans, and three kinds of sauce. Although everybody was full after dinner, we still ate pie. My cousins and I played cards while the adults talked and laughed. Next year it is our turn to host, which is both exciting and frightening."
+    },
+    {
+      "title": "The School Newspaper",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "This year I write for the school newspaper because our teacher said I tell good stories. My first article was about the new cafeteria, so I interviewed ten students and the cook. Although I was nervous to quote people, they all loved being in the paper. My article about the football team was read by half the school, which felt strange but great. Last month the editor asked me to cover the head teacher's speech, although I nearly fell asleep during it. Writing taught me to listen carefully, and my essays have improved too."
+    },
+    {
+      "title": "The Camping Disaster",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Last summer our camping trip went wrong, although everything had seemed perfect. We arrived at the site late, so we had to take the last pitch, which was on a slope. At midnight it rained heavily, and water flowed into our tent. Although we laughed at first, sleeping on chairs was less funny. In the morning our neighbour, an experienced camper, showed us how to dig a small drain. The rest of the week was sunny and wonderful. We swam, hiked, and roasted food on the fire. The disaster became our funniest family story."
+    },
+    {
+      "title": "Should We Ban Homework?",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Last term our school cut homework in half, and the whole staff room broke into an argument. I think it was the right decision. In my opinion, hours of exercises after school only burn students out, especially when they already sit at desks all day. If teachers set less work but better work, students would actually finish it and understand it. Of course, some parents worry that their children would fall behind, and I take that concern seriously. However, research generally shows that after a certain age, extra homework adds little to results. What matters is whether students read for pleasure and think about what they learn. If we want children to enjoy learning, we should give them room to breathe. I would go further: schools should encourage projects instead, because building something teaches more than copying notes. That said, a little practice at home can't hurt."
+    },
+    {
+      "title": "The Commute That Changed My Mind",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "For years I complained about my commute, until the day my car broke down and I had to take the train. I grumbled the whole way, but something unexpected happened: I started reading. Over six months I got through twelve books, which I could never have managed before because evenings were always taken up with chores. If I had kept driving, I would still be listening to the same radio stations. I also noticed that walking to the station woke me up better than coffee. Some colleagues say public transport wastes time, but I disagree. Time only feels wasted when you have nothing to do with it. Now I work through emails on the train and arrive at the office prepared. Would I have believed that a year ago? Definitely not."
+    },
+    {
+      "title": "Why I Quit Scrolling",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Three months ago I deleted two social media apps from my phone, and honestly, I feel like a different person. I didn't do it because I think phones are evil; I did it because I kept picking up my phone and losing forty minutes. If you asked me what I had seen, I couldn't tell you. That's what bothered me most. Some friends said I would miss important news, but it turns out news finds you anyway. I've taken up running, and I've caught up with two old friends face to face, which beats any comment section. I'm not saying everyone should delete their accounts. Moderation would be enough for most people. But if an app makes you feel worse every time you open it, why keep it? Sometimes you have to cut something out to see what was missing."
+    },
+    {
+      "title": "The Flatmate Test",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "When my best friend and I decided to share a flat, everyone warned us that friendship and housemates don't mix. I think that advice is lazy. The trick, in my view, is to talk about boring things before you move in. We sat down and worked out a rota, agreed who would deal with the bills, and even discussed how late is too late on a weekday. Did it feel unromantic? Absolutely. But when her sister stayed for a week, we already had a rule about guests, so it never turned into a row. If we had left everything to chance, small resentments would have built up. People say living together tests a friendship, and maybe it does. But a test you prepare for is just a formality. Our friendship survived, and the flat has houseplants now."
+    },
+    {
+      "title": "The Manager Who Listened",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "My first boss taught me more about leadership than any book. He never raised his voice, but he asked difficult questions. When our team messed up a project deadline, he didn't look for someone to blame; he asked what had gone wrong and what we would change. That made us own our mistakes instead of hiding them. If he had shouted, we would have learned to cover things up. I disagree with people who say a good manager must be feared. Respect works better than fear, although it takes longer to build. He also gave us real responsibility early, which was scary but motivating. When I left, he told me to keep in touch, and he meant it. Years later we still meet for coffee. That's the kind of boss I hope to be one day."
+    },
+    {
+      "title": "Second Chances at School",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "My cousin failed his final exams twice, and everyone wrote him off. Then a teacher took him aside and asked what he actually wanted from life. It turned out he hated being examined but loved building things. He switched to a technical course, and today he designs solar installations and earns more than most of his old classmates. I mention him because schools still treat one kind of intelligence as the only kind. If a student can't write an essay but can repair an engine, we call the first one smart and the second one a problem. That's backwards. In my opinion, schools should offer more routes and stop pretending every child is cut from the same cloth. Of course, basics matter, and I'm not against exams. But a system that only rewards memorising leaves too many talented people feeling like failures."
+    },
+    {
+      "title": "The Diet I Never Started",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Every January my social media fills with people giving up sugar, carbs, or joy itself. I've decided to opt out of diet culture, and I feel calmer for it. Instead of cutting out entire food groups, I added things: more vegetables, more water, more sleep, and a daily walk that I actually enjoy. If someone had told me ten years ago that walking would do more for my mood than any smoothie, I would have laughed. I'm not saying habits don't matter; they matter enormously. But most strict diets fail because they feel like punishment, and nobody keeps punishing themselves forever. What works, in my experience, is changing one thing at a time and keeping it until it stops feeling like a change. My grandmother, who is eighty-six, eats cake every Sunday and walks everywhere. Maybe she understood all along."
+    },
+    {
+      "title": "The Gym Membership Experiment",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "I bought a gym membership in January, used it eleven times, and let it expire in April, which cost me more per visit than a personal trainer would have. This year I tried something different: I found a running club that meets three times a week, and the difference is astonishing. The reason isn't discipline; it's other people. If training is between you and an alarm clock, you lose most mornings. If it's between you and twelve people who expect you, you show up. I've kept it up for five months, my knee pain has eased off, and I've made friends outside work, which I didn't expect. Some people thrive on solo workouts, and good for them. But if you've quit a gym before, the problem probably wasn't you. It was doing something human alone that was meant to be done together."
+    },
+    {
+      "title": "Board Games Beat the Screen",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Our family used to spend evenings in separate rooms, each glowing with our own screen. Then my dad brought home a board game on a rainy Saturday, mostly to stop us arguing about the television. Three years later, game night is the one tradition nobody cancels. We've laughed until we cried over a cardboard hotel, cheated outrageously at cards, and learned that my mother is a ruthless strategist. If you had told me teenagers would choose dice over phones, I'd have called you mad. The secret, I think, is that good games give you a reason to talk and something to tease each other about. Screens aren't the enemy, but they're easy defaults. A game is a deliberate choice, and that's why it feels special. If your family has drifted apart, start small: one game, one evening, phones in a basket."
+    },
+    {
+      "title": "The Choir Nobody Wanted to Join",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "When the workplace choir announced its first rehearsal, I made excuses. I can't sing, I told colleagues, which was true and also beside the point. A friend dragged me along anyway, and I've attended every rehearsal since. Here's what surprised me: nobody listens to your voice, they listen to the blend. If fifty people sing together, your shaky note disappears into the chord. What matters is breathing with other humans and paying attention. My manager says we're louder at meetings now, which may be a complaint. Singing also helped me get over the fear of looking silly, which had held me back more than I realised. If you've ever wanted to try something but worried about being bad at it, try it badly. Everyone in the choir was a beginner once, including the tenor who now solos."
+    },
+    {
+      "title": "Two Weeks Without a Car",
+      "level": "B1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "When our train to the coast got cancelled, we had to rethink the whole holiday, and it turned out to be the best trip we've had. Without a car, we couldn't rush between sights, so we stayed longer in each town. In one place we were meant to pass through, we ended up spending two days: a market, a boat trip, a fish restaurant recommended by a stranger. If we had driven, we would have done what tourists usually do, which is photograph everything and remember nothing. Travelling slowly forces you to talk to people, and people are where the good stuff is. Yes, it's harder with luggage and children, and I won't pretend trains are always reliable. But holidays aren't about covering distance. They're about noticing things, and you can't notice at a hundred kilometres an hour."
+    },
+    {
+      "title": "The Hostel Rule",
+      "level": "B1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "My first solo trip was a disaster, and I recommend it to everyone. I booked the cheapest hostel I could find, arrived at midnight, and discovered my reservation had gone wrong. Although I was exhausted and a little frightened, I knocked on the manager's door, and he found me a bed and apologised twice. Over breakfast he told me he'd been in the same situation in his twenties. That trip taught me more about problem-solving than any course. If everything had gone smoothly, I would have come home with photos but no confidence. Instead I came home knowing I could handle things going wrong, which is worth more. I still travel alone every year. I book better hostels now, but I keep one rule: when something goes wrong, ask a local for help. They almost always do."
+    },
+    {
+      "title": "The Neighbourhood Library Fight",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "When the council announced it would close our branch library, I thought protests were pointless. Libraries close everywhere, people said, and it's just budget arithmetic. Then I went to the meeting, and it wasn't arithmetic at all. A father described how his children learned to read there. A jobseeker said the free internet had helped him find work. An elderly woman said it was the only place she spoke to anyone all week. Suddenly the numbers had faces. The library stayed open, at least for now, after the campaign raised enough to fund it for three more years. If we had accepted the decision quietly, nothing would have changed. My point isn't that libraries are free to run; they aren't. My point is that councils cut services because nobody fights for them. Show up to one meeting. It matters more than sharing a post."
+    },
+    {
+      "title": "The Market That Moved",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Our open-air market was moved from the square to a side street last year, and shopkeepers predicted it would die. Six months later it's busier than ever, which proves something about how cities work. The old square was grand but windswept, and people hurried through it. The new street is narrow, lined with cafés, so shoppers linger with their bags and buy coffee. If the council had simply rebuilt the square, nothing would have changed. Someone asked the traders what they needed, and they said, \"Shade, seating, and room to unload.\" That's the whole secret. Cities don't fail because of bad taste; they fail because decisions are made without the people who use them. I still miss the old square on Sundays, but I'll take a living market over a beautiful empty one. The cheese seller now sells out by noon."
+    },
+    {
+      "title": "The Forecast Was Wrong",
+      "level": "B1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "The weather app promised sunshine, so we planned the wedding outdoors, and at four o'clock the sky turned the colour of a bruise. If the caterers hadn't been so quick-thinking, it would have been a catastrophe. They herded two hundred guests into the barn, and someone found a guitar. The photographs from that evening are the best of the album: wet hair, mud on expensive shoes, everyone laughing under one enormous umbrella. I've thought about why the disaster turned out better than the plan. Everything scheduled was replaced by people improvising, and you can see in the photos that nobody was bored. Perfect weather would have given us a nice wedding; the storm gave us a story we'll tell for decades. Now when friends plan outdoor parties, I tell them to invite the rain in advance. Have a barn, have a plan B, and trust your guests."
+    },
+    {
+      "title": "The Heat and the City",
+      "level": "B1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Our city planted two hundred trees last winter after summers became unbearable, and I think it's the most sensible money the council has spent. Concrete cities are heat traps: at night the roads give back everything they absorbed during the day, and people who can't afford air conditioning suffer most. Trees are cheaper than cooling centres and better than nothing. If you've ever walked a tree-lined street in July, you know the difference is enormous, several degrees in the shade alone. Some shopkeepers complained that the trees would hide their signs, which sounds like trading your lungs for a billboard. The young trees need watering for a few years, and volunteers have organised a rota, which I joined. Cities used to plant trees for beauty. Now we plant them for survival. I'd rather have both reasons."
+    },
+    {
+      "title": "The Language Exchange",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "I've been doing a language exchange for a year, and it has taught me things classrooms never could. Every Thursday I help a Spanish student with her English, and she helps me with her language over coffee. At first I felt foolish making mistakes after years of studying, but she laughed with me, not at me, and told me her English teacher never let anyone speak anyway. If you want to learn a language, you have to survive sounding like a child, and a patient partner makes that survivable. We've argued about films, corrected each other's slang, and once spent an hour finding the word for the thing that holds a curtain up. My listening improved faster than anything else, probably because real people don't speak in coursebook audio. Find someone, meet weekly, and agree to be silly. Fluency is just confidence with practice."
+    },
+    {
+      "title": "The Internship Offer",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "When a company offered me an unpaid internship, I said no, and I've never regretted it. My parents supported the decision, although our finances weren't comfortable, because we agreed that free work only benefits the employer. If the role had offered real training and a mentor, I might have reconsidered, but the advert listed photocopying and coffee. Unpaid internships quietly filter out anyone who can't afford to work for free, which is most people. Some friends said experience matters more than money, and they're half right: experience matters, but so does being valued. I found a paid job in a small firm instead, where I was trusted with real tasks from week two. My tutor told me the small company would look better on my CV than a famous name with nothing behind it. She was right. Say no to free work, and say yes to being useful."
+    },
+    {
+      "title": "The Five O'Clock Rule",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Last year I made myself a promise: after five o'clock, work stays at work. I'd been answering emails in bed and checking messages at dinner, and nobody had asked me to. That's the trap of modern jobs; nobody sets the boundary for you. The first week was uncomfortable. I kept imagining disasters. Would the building burn down if a reply waited until morning? It didn't. In fact, my morning emails got better because I'd actually rested. I'm not naive; some weeks demand more, and I've helped colleagues in genuine emergencies. But emergencies are rare, and habit pretends to be one. If your job pays for your phone but takes your evenings, the price is wrong. My productivity hasn't dropped, my family has noticed, and my sleep improved within a month. Boundaries feel selfish until you see what they protect."
+    },
+    {
+      "title": "The Recipe Inheritance",
+      "level": "B1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "My grandmother's recipe card for lemon cake is stained, folded, and written in measurements that make no sense: \"a cup of something, an egg or two.\" When she died, I decided to recreate the cake from memory and failure. It took eleven attempts. The kitchen looked like a flour explosion, and my flatmate moved out for a week. But somewhere around attempt nine, I understood what she'd meant by \"an egg or two,\" and the texture finally matched. Food like that isn't really about ingredients; it's about standing where someone stood and doing what they did. If I had simply bought a lemon cake, no one would have tasted her. Now I bake it every October, and my younger cousins lick the bowl exactly as she taught me. Recipes survive when someone keeps failing at them. I've started writing mine down properly, measurements and all, including the disasters."
+    },
+    {
+      "title": "The Supper Club",
+      "level": "B1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "A friend started a supper club in his flat last spring, and it has become the highlight of my month. The rule is simple: everyone brings one dish, nobody talks about work, and the host chooses a theme. We've eaten our way through dumplings, curries, and one ambitious Georgian night that required three trips to a speciality shop. If you think cooking for strangers sounds awkward, I understood the fear, but food solves introductions better than small talk. Within minutes people are comparing grandmothers' recipes. I've learned that my chilli needs vinegar, that pastry is a discipline, and that the quietest person at the table often tells the best stories. The club has outgrown the flat, so we've moved to a community hall, which my friend considers a promotion. If you want to meet people as an adult, cook something. Nobody says no to free food."
+    },
+    {
+      "title": "The Family Group Chat",
+      "level": "B1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "My mother created a family group chat two years ago, and after an adjustment period, it has quietly changed how we relate. My aunt shares garden photos at dawn, my cousin posts his terrible puns, and my grandmother sends exactly one birthday message per person, always misspelling one name. It sounds trivial, but consider what replaced it: silence, and then emergency phone calls. Now we know about each other's small days, not just the big crises. When my uncle was hospitalised, the chat organised meals, lifts, and visits within an hour. If someone had had to coordinate that by telephone, half of it wouldn't have happened. There are costs, of course. My mother forwards rumours, and I've learned to mute the puns. But family isn't a place you should only call when something is wrong. A little daily noise, in my opinion, is what love looks like when it's healthy."
+    },
+    {
+      "title": "Teaching My Father to Video Call",
+      "level": "B1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "It took my father four attempts to make his first video call, and now he calls his grandchildren every Sunday without fail. The first attempt ended with us staring at his ceiling. The second, with us hearing him but not seeing him. I confess I lost patience, which he noticed, and his voice went quiet in a way I still feel guilty about. On the fourth try he got it, and something shifted: he wasn't learning an app, he was getting to see his granddaughter's first steps. If I had thought about that before attempt one, I would have been kinder. Older relatives don't need lectures; they need repetition, large buttons, and someone who remembers what it felt like not to know. Now he sends voice messages at dawn. The technology didn't bring our family closer. Patience did, with technology as the excuse."
+    },
+    {
+      "title": "The Doctor's Waiting Room",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "I spent four hours in an emergency waiting room last month with a sprained wrist, and I've had time to think about what went wrong. The hospital wasn't careless; it was overwhelmed, and the triage system worked as designed, putting the sickest first. What frustrated me wasn't the wait but the silence. Nobody told us what to expect, so every hour felt like neglect. If a nurse had simply said, \"It's a four-hour wait,\" I would have brought a book and stayed calm. Waiting rooms are where patients learn whether a system respects them, and information costs nothing. I've since read that some hospitals now display live wait times, and patients report being far happier with the same delays. The lesson isn't that hospitals are broken; it's that uncertainty is harder than waiting. If you run any service where people queue, tell them the truth about time. It's the cheapest medicine available."
+    },
+    {
+      "title": "Sleep Is Not Lazy",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "For years I wore sleep deprivation like a medal. Sleeping six hours meant I was hardworking; sleeping eight meant I was soft. Then a doctor explained what was actually happening: my memory, mood, and immune system were all quietly suffering, and my \"productivity\" was just anxious busyness. The research is blunt. If you consistently sleep too little, you perform like someone who is drunk and can't tell. I've spent a year rebuilding the habit, and the changes were boringly simple: no screens after eleven, a cooler room, and no coffee after two. The hardest part was social; my friends text late, and saying goodnight felt like failing. Now I'm the first to bed and the last to regret it. Hustle culture sells sleep as weakness, which is a strange way to market exhaustion. Rest isn't the reward for finishing work. It's the reason the work is any good."
+    },
+    {
+      "title": "The Second-Hand Shop",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "I've developed a habit that costs almost nothing and never disappoints: Saturday mornings in second-hand shops. You never know what you'll find. Last month it was a box of vinyl records for two pounds, including a jazz album I'd searched for years. The week before, a chess set with the original pieces, missing only one knight, which I replaced with a 3D-printed copy. Thrifting has changed how I shop entirely. If I want something, I ask first whether it could exist already, worn by someone else. Most of the time it can. There's a thrill in rescuing objects, and an education in how much perfectly good stuff gets thrown away. Some people sneer at other people's cast-offs, but I've learned that quality outlives fashion. My favourite possession is a forty-year-old lamp I paid five pounds for. It has survived three owners and will survive me."
+    },
+    {
+      "title": "The Community Garden",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Our empty lot became a community garden two years ago, and I helped dig the first bed. The council called it a pilot project, which is politician for \"we hope you forget about it.\" We didn't. Now there are thirty plots, an orchard of four young trees, and a shed built from reclaimed wood. I grow tomatoes badly and herbs well, but the vegetables were never the point. Retired engineers teach teenagers to build compost bins; a Ukrainian grandmother grows courgettes the size of her arm and gives them away. If your city has a dead space, organise something in it. Land waits for permission, but permission waits for people. The council has now made the garden permanent and asked us to advise on two more sites. The tomatoes are still terrible. The neighbourhood has never been better."
+    },
+    {
+      "title": "The Long-Distance Friendship",
+      "level": "B1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "My oldest friend moved to another country five years ago, and everyone predicted the friendship would fade. It didn't, but it did change, and I think that's the part nobody explains. We no longer share daily details, so we had to learn to ask better questions. Our monthly calls are longer and more honest than the old hanging-out sessions, where silence was easy. When her mother was ill, I was two hours away by plane and felt useless, so I sent books and scheduled calls at odd hours. Distance punishes laziness; if you stop making effort, the friendship thins out. But effort was always the real thing, wasn't it? Proximity was just the excuse. Some friends drift, and that's natural. Mine didn't, because we decided not to. If you have a friend far away, call them tonight. Don't wait for the anniversary of something."
+    },
+    {
+      "title": "The Museum Late Night",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "My city started offering free late-night museum openings on Fridays, and I've made it a ritual. There's something different about galleries after dark. The school groups have gone, the tour groups have eaten dinner, and the rooms feel personal again. I've stood in front of the same painting three Fridays in a row and noticed something new each time, which I couldn't have done under daytime pressure. The cafés are full afterwards, and strangers talk to strangers about what they just saw. If you think museums are for tourists, go on a Friday and watch the locals. The curators even run short talks, and one of them remembered my face, which made my week. Culture shouldn't be a special occasion with tickets and schedules. It should be part of a normal week, like a market or a park. The city understood this, and the museums have never been busier. I'm bringing my sceptical brother next week."
+    },
+    {
+      "title": "The Storm Chaser's Warning",
+      "level": "B1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "My uncle has chased storms for twenty years, and he has ruined my ability to take weather lightly. Before every trip he checks three forecasts, and he taught me the difference between what an app shows and what the sky is doing. Last month his warning saved our picnic: he looked at the horizon, said \"hail,\" and we were back in the car before the first stone hit the roof. Most people treat weather as background noise until it interrupts them. He treats it as a conversation. What he's really taught me is preparation without paranoia. You don't fear storms; you respect them and plan around them. We keep a kit in the car now: blankets, water, a torch, a power bank. It's never been used for anything dramatic, just a broken-down coach once. If you live somewhere with wild seasons, learn to read the sky. It's a free skill that occasionally saves your day."
+    },
+    {
+      "title": "The Case Against the Four-Day Week",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "The four-day week has been heralded as the future of work, and after the pilot programmes were published, the evidence seemed overwhelming: productivity held, burnout fell, and staff quit less. Nevertheless, I believe the enthusiasm deserves scrutiny. Most trials were conducted in knowledge-economy firms, where output is measured in results rather than hours. In manufacturing, hospitality, or care, coverage cannot simply be compressed; either more staff must be hired, which is costly, or the same burden is squeezed into fewer days. Consequently, the policy risks becoming a privilege for the comfortable. Furthermore, trust was the hidden variable in every successful trial. Where managers had micromanaged, extra freedom changed little. What the evidence really shows, in my view, is that autonomy drives performance, and the four-day week is merely its most visible symbol. If governments legislate the calendar without addressing management culture, the gains will be uneven at best. The wiser path is to make flexibility a right that workers can request, and to measure output honestly. The week itself is not sacred; the assumptions behind it are the ones worth challenging."
+    },
+    {
+      "title": "Who Owns the City?",
+      "level": "B2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "When a neighbourhood is \"regenerated,\" someone is always regenerated out of it. Rents rise, the bakery becomes a cocktail bar, and the families who gave the area its character are relocated to the periphery, where the bus comes twice an hour. This process has been documented so often that it has a name, yet it is still described as if it were weather: something that happens to cities rather than something that is done to them. It doesn't have to be this way. Land values created by public investment in transport and schools could be recaptured through better taxation, and community land trusts have proved that affordable housing can survive speculation when ownership itself is protected. What is required is political will, which is precisely what is lacking. Developers argue that without profit, nothing gets built; but nothing was built for decades either, and the shortage was not caused by excessive generosity. Ultimately, the question is not whether cities should change, but who is allowed to afford them. A city that only belongs to investors is a museum with a skyline, and museums are no place to live."
+    },
+    {
+      "title": "The Attention Economy and Its Discontents",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 2,
+      "body": "It is often said that if you are not paying for the product, you are the product. The reality, however, is subtler and more troubling: you are not the product, you are the mine. Behavioural data is extracted from attention the way coal was once extracted from the earth, and the extraction is designed to be as frictionless as possible. Every notification, autoplay, and infinite scroll is the outcome of thousands of experiments whose success metric is the inability to stop. The consequences have been catalogued at length, yet the framing remains mistaken. We speak of screen time as a personal discipline problem, as though willpower were a fair opponent for a supercomputer optimised against it. Regulation is therefore not censorship but rebalancing, much as food labelling corrected an asymmetry between consumer and manufacturer. That said, I resist the moral panic. Books were once blamed for idleness, radios for ignorance, and the young have always been said to be ruined by whatever their elders never had. The difference now is scale and intent. Attention is not merely distracted; it is harvested. Reclaiming it is less about deleting apps than about refusing the premise that an unexamined minute is a wasted one."
+    },
+    {
+      "title": "Universities in the Age of Search",
+      "level": "B2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "For centuries, universities monopolised the storage and transmission of knowledge, and their authority derived from that monopoly. When information became free, the justification had to shift from what they held to what they did, and not every institution has managed the transition. Lectures that were once the delivery mechanism of knowledge are now, frankly, a poor one; a motivated student can access better explanations online at two in the morning, in their own language, at their own pace. This is not an argument for abolishing universities. It is an argument for remembering what they are for. The irreplaceable functions are selection, mentorship, and the production of new knowledge, none of which scale infinitely and all of which depend on human judgement. Where universities have retreated into credential-mongering, they have invited disruption; where they have doubled down on apprenticeship, debate, and research culture, they remain indispensable. The danger lies in the middle: half-hearted digitisation that charges premium prices for content available free elsewhere. If tuition is to be justified, it must buy transformation rather than information. A degree should certify that someone has learned to think, which no search engine has ever done for anybody."
+    },
+    {
+      "title": "The Myth of the Self-Made",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Biographies of the successful are written backwards, as though each triumph were inevitable and self-generated. The entrepreneur is depicted as tireless and visionary; the fact that she grew up in a country with free universities, reliable roads, and parents who could absorb her failures is relegated to a footnote. This narrative is not merely inaccurate, it is politically convenient. If success is purely individual, then failure is likewise deserved, and the architecture that distributes opportunity disappears from view. Consider how differently the same traits are treated depending on context. Persistence becomes grit when rewarded and stubbornness when it fails, which suggests that we are not measuring character but outcomes, then attributing them to character after the fact. None of this denies agency. Effort matters, timing matters, and choices compound. But the metaphor of climbing a ladder only works if we acknowledge that ladders were installed, some doors were unlocked in advance, and others were removed entirely. A mature society celebrates achievement while examining the conditions that made it possible. The self-made person is a useful story and a poor description of reality, and policy built on the latter tends to be cruel."
+    },
+    {
+      "title": "When Algorithms Judge",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 2,
+      "body": "Hiring software now screens most applications at large firms, and its defenders make a reasonable case: humans are inconsistent, biased, and slow, whereas a model applies the same criteria to everyone. The difficulty is that sameness is not fairness. A system trained on a decade of past decisions learns not only what made candidates successful but what made them hireable, which are different things, and the second is soaked in history's prejudices. When such patterns are automated, discrimination acquires the appearance of mathematics. It is then harder to challenge, because the decision is distributed across data, code, and vendors, and no manager need ever own it. Transparency is the minimum remedy, yet commercial secrecy is invoked precisely where scrutiny is needed. Some argue that audits suffice; but an audit conducted by the vendor resembles a fox reporting on the henhouse. What is required is accountability with teeth: the right to know when a decision was automated, access to the criteria, and a human empowered to overturn the outcome. Efficiency gains are real, and I have no nostalgia for committee-driven hiring. But when a system decides who works, \"trust the model\" is not a policy. It is a resignation."
+    },
+    {
+      "title": "The Privacy Paradox, Reconsidered",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "We are frequently scolded for a supposed contradiction: people claim to value privacy yet surrender it for convenience. The framing flatters the platforms. Consider what the choice actually resembles. On one side sits an app your colleagues use, a map that works, a free service your children's school relies upon. On the other sits a legal document no human reads, whose acceptance is a precondition of modern life. Declining is not a comparable option; it is social and professional exile. To call this a paradox is to mistake coercion for preference. Moreover, the exchange is neither equal nor transparent. The value extracted from aggregated behaviour dwarfs the value returned to the user, and the terms can be rewritten unilaterally overnight. Privacy advocates are dismissed as Luddites until a breach makes the front page, after which the same commentators demand protection from the very architecture they defended. What follows is not that technology should be banned but that consent, to mean anything, requires alternatives, clarity, and reversibility. A society that routes every citizen through private infrastructure and calls the toll voluntary has not solved a paradox. It has renamed one."
+    },
+    {
+      "title": "The Death and Life of the High Street",
+      "level": "B2",
+      "topic": "stadt",
+      "est_minutes": 2,
+      "body": "The decline of the high street is routinely attributed to online shopping, as though economics were a simple substitution of one till for another. The truth is more uncomfortable, because the causes are fiscal as much as technological. Business rates have risen fastest in precisely the towns least able to absorb them; meanwhile, the logistics warehouses that serve online retail receive generous treatment, and the civic value that shops provided, supervision of streets, chance encounters, employment for the young, appears nowhere in the balance sheet. Blaming convenience also lets planners off the hook. Streets designed for cars, parking charges that punish lingering, and licensing that favours pubs over shops all did their share of the damage. Revival, where it has occurred, has not come from nostalgia. It has come from mixed use: homes above shops, markets that adapt, libraries and clinics that guarantee footfall, and councils willing to buy empty units rather than watch them rot. The high street was never saved by sentiment; it was kept alive by usefulness. If we want it back, we should stop treating it as a museum of commerce and start treating it as infrastructure, which is what it always was."
+    },
+    {
+      "title": "On Borrowed Time: The Culture of Overwork",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Productivity per hour has risen for decades, yet working hours have barely fallen, and the surplus, it seems, has been converted into anxiety rather than leisure. This is the paradox at the heart of overwork culture: the means to finish earlier exist, but the incentive to do so has been removed. When everyone answers at eleven, answering at six becomes a statement, and statements are risky. Game theory explains the trap; culture sustains it. Presenteeism is rewarded because visibility is easier to measure than contribution, and managers, themselves overworked, supervise what they can see. The consequences are quietly catastrophic. Creativity requires slack; judgement requires rest; institutions require people who stay, and burnout is the leading reason they leave. The counterargument, that hard work built every great enterprise, confuses correlation with cause and survives because it flatters the successful. Some industries genuinely demand long hours in bursts, and I have pulled my own all-nighters. But bursts are not a strategy. A society that measures devotion by exhaustion has confused the thermometer with the fever, and no productivity statistic has ever captured what the extra hours cost."
+    },
+    {
+      "title": "The Truth About Free Speech on Campus",
+      "level": "B2",
+      "topic": "bildung",
+      "est_minutes": 2,
+      "body": "Campus speech controversies are usually narrated as a battle between courage and cowardice, and both sides cast themselves as the heroes. A clearer account begins with a distinction. Universities exist to pursue truth, which requires both the freedom to speak and the discipline of evidence. The first has never been more legally protected in most democracies; the second is what has eroded, and its decline is not the fault of students alone. Administrators, eager to avoid scandal, have replaced adjudication with management, treating ideas as hazards to be contained rather than claims to be examined. The result is theatre: provocateurs invite outrage for attention, outrage generates headlines, and everyone performs a principle while the actual work, the slow, unglamorous business of argument, is abandoned. I have watched a genuinely bad argument be defeated in a seminar in twenty minutes, which is faster than any petition and far more durable. Free speech is not the absence of consequences; it is the presence of standards. Defend the right to speak, insist on the duty to justify, and refuse to outsource either to the mob or the marketing department. The institution that does both will outlast the news cycle, as it always has."
+    },
+    {
+      "title": "The Green Premium and Who Pays",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Every transition has a bill, and the debate that matters is not whether to pay it but who signs it. Consider the household purchasing an electric car or heat pump: the savings accrue over years, while the premium is immediate, which means the green transition, left to the market, becomes a subscription for the affluent. That is not an argument against the transition; it is an argument about its design. When solar subsidies were funded by levies on bills, the poorest households, who could least afford panels, financed the discounts of the homeowners. Predictably, resentment followed, and it was aimed at the wrong target. People do not reject climate policy because they dislike the science; they reject it when they smell unfairness, and they are usually right to. The alternative is well understood: progressive financing, insulation first for those who waste the most energy, and community ownership so that returns stay local. A transition experienced as a tax on the many and a subsidy for the few will be reversed at the first inconvenience. One experienced as shared will endure. Justice is not an add-on to climate policy. It is the engineering constraint."
+    },
+    {
+      "title": "Why Boredom Deserves a Defence",
+      "level": "B2",
+      "topic": "hobby",
+      "est_minutes": 2,
+      "body": "Boredom has been made obsolete, and I am not sure we should celebrate. Every queue, lift, and waiting room is now filled by a screen, and the experience of having nothing to do, once a daily fact of life, has become exotic. We should mourn it more, because boredom, unpleasant as it is, performs functions we have not replaced. It is the incubation period of attention. Ideas that survive a restless afternoon tend to be worth keeping; ideas that survive only a scroll were never competing with anything. Psychologists have found that mind-wandering supports planning and creativity, and children appear to need unstructured emptiness to learn self-direction. Removing boredom is therefore not an efficiency gain but a transplant: we have traded long, difficult attention for short, effortless stimulation, and the exchange rate is poor. I anticipate the objection that boredom was often the companion of deprivation, and it was; no one should romanticise under-stimulation any more than under-nutrition. But the answer to dullness was never endless entertainment, it was better things to do. The adults who cannot sit alone with a thought did not acquire that inability overnight. It was trained out of them, one notification at a time, and it can be trained back."
+    },
+    {
+      "title": "The Placebo Society",
+      "level": "B2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Modern medicine's greatest triumphs are also its best-kept secrets, and one of the best-kept is how much healing is context rather than chemistry. The placebo effect is not fakery; it is the measurable contribution of expectation, ritual, and trust. When patients believe in a treatment and feel cared for, outcomes improve, and the effect has been documented across pain, fatigue, and mood. This should humble us, because it implies that a portion of every prescription is theatre, and that the theatre has been quietly defunded. Consultations are shortened, waiting times lengthened, and reassurance, which once came free with the doctor's manner, has been squeezed out by efficiency targets. Meanwhile, the most profitable interventions are those that medicalise normal experience and sell certainty that no evidence supports. I am not arguing against pharmaceuticals; antibiotics and anaesthesia are not metaphors. But a health system that measures throughput and ignores trust is spending money on molecules while starving the mechanism that multiplies them. The remedy is unfashionable and cheap: longer appointments, continuity of care, and practitioners permitted to say \"I don't know, but we'll find out together.\" Humility, it turns out, is a clinical tool."
+    },
+    {
+      "title": "The Longevity Divide",
+      "level": "B2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Life expectancy has stalled in the poorest districts of several wealthy countries while rising in the richest, and the gap is now measured in years, not decimals. This is the longevity divide, and it is the least newsworthy scandal in public health, precisely because it is slow. A factory closure does not kill anyone on Tuesday; it raises blood pressure, thickens waistlines, and thins savings, and the bill arrives two decades later, payable in hearts and lungs. Medicine treats the symptoms of this arithmetic while politics manufactures them. We celebrate medical breakthroughs that add months to the lives of the affluent while the determinants that add decades, housing, income security, early childhood, remain beyond the reach of the people who need them most. Prevention is chronically underfunded not because its economics are weak, they are overwhelming, but because its returns are invisible and belong to the next election. Longevity, like wealth, is increasingly inherited, and the language of lifestyle choices obscures this: nobody chooses their postcode's life expectancy. If medicine is the repair shop of inequality, the honest conclusion is that we are spending fortunes repairing products we should never have built this way."
+    },
+    {
+      "title": "The Tourism Backlash",
+      "level": "B2",
+      "topic": "reisen",
+      "est_minutes": 2,
+      "body": "When residents of famous cities began protesting against tourists, the response from the industry was predictably wounded: tourism feeds families, we were told, and visitors are simply enjoying what everyone built. Both halves are true, which is why the argument goes nowhere. The issue was never visitors as people but tourism as an economic logic. When a historic centre's shops become souvenir stalls, its apartments become short-let offices, and its wages depend on seasonality, the city has been converted from a place that lives into a place that performs. The residents have not been evicted by tourists; they have been outbid by a market in which their homes are assets in someone else's portfolio. Cities that have responded sensibly did not close their gates. They licensed short lets, taxed overnight stays into housing funds, invested the revenue in the infrastructure visitors strain, and redistributed tourism into the shoulder seasons and surrounding regions. Barcelona, Bruges, and Kyoto each show that the variable is not visitor numbers but governance. Hospitality is a virtue, and so is honesty: a destination that cannot say how many guests it can carry will eventually be told by its own citizens. A city that exists only to be seen stops being worth seeing."
+    },
+    {
+      "title": "Slow Travel and the Carbon Question",
+      "level": "B2",
+      "topic": "reisen",
+      "est_minutes": 2,
+      "body": "The environmental cost of travel has been individualised to the point of absurdity: we are advised to feel guilty about a holiday while freight, military, and data infrastructure go unexamined. This misdirection serves the industry well, so let us grant the industry its due and then look properly. Aviation emissions are real, offsetting is largely theatre, and the honest options are fewer flights, closer destinations, and slower journeys. Slow travel is not merely a moral compromise; it is a better product. A week by train in a region you can reach without an airport produces more encounters, more language, and more memory per tonne of carbon than a weekend city break, which is essentially a queue with a landmark. The counterargument, that travel broadens the mind and the mind needs broadening, is genuine, and I have no wish to ration curiosity along income lines. That is precisely why the answer must be structural: rail investment, frequent flyer levies, and honest pricing that puts carbon on the ticket rather than in a voluntary checkbox. Until then, the rational individual flies, and the planet pays for the market's politeness. Choose fewer, longer, nearer. Then agitate for the system that made the choice so hard."
+    },
+    {
+      "title": "The Credential Society",
+      "level": "B2",
+      "topic": "bildung",
+      "est_minutes": 2,
+      "body": "We have been educated into believing that credentials are the currency of competence, and like all currencies, this one has been debased. Degrees that once signalled three years of formation now signal that the holder survived three years of formation, which is a weaker claim, and employers know it. Hence the strange rituals of modern hiring: degrees required for jobs that did not require them a generation ago, not because the work changed but because the credential is a cheap filter in a flooded market. The cost of this arms race is enormous. Young people accumulate debt for signalling, employers pay for it indirectly, and capable people without paper are screened out before anyone reads what they can do. Employer-led assessment, portfolios, and apprenticeships are not utopian; they function where they have been tried, and they shift selection from pedigree to demonstration. The obstacle is institutional inertia and the reputational economy of universities, which benefit from the status quo. I remain convinced that education transforms lives; I am increasingly doubtful that credentialing does. The test of a system should be whether it finds talent it did not expect. By that measure, we are running a sorting machine and calling it a ladder."
+    },
+    {
+      "title": "News You Can Trust, Trust You Can Verify",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 2,
+      "body": "Trust in journalism has fallen for two decades, and the causes are frequently misattributed. Audiences did not abandon the press because they became stupid; they abandoned it because the business model did. When coverage is optimised for clicks, outrage outperforms nuance, and readers learn that the front page is a mood, not a map. Meanwhile, the platforms that captured the advertising revenue bear no responsibility for the product they displaced, which is the oldest story in the history of rent-seeking. Rebuilding trust will not come from media literacy campaigns alone, useful as they are, nor from fact-checking, which preaches to the already convinced. Trust follows verification made visible: corrections that are as prominent as errors, funding sources disclosed, reporters who can be questioned. Local news demonstrates the principle daily, because accountability is concrete when the councillor lives down the road. Subscription models help where audiences can afford them, which is to say unevenly, so public funding structured at arm's length, as in broadcasting, deserves serious consideration. A democracy cannot audit power if it cannot afford to watch it. The question is not whether citizens deserve trustworthy news, but whether institutions can be built that make trustworthiness pay."
+    },
+    {
+      "title": "The Subjunctive of Power",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 2,
+      "body": "Language does not merely describe reality; it negotiates it, and nowhere is this clearer than in the grammar of power. Compare two sentences: \"Mistakes were made\" and \"We made a mistake.\" The first, the passive without an agent, is the preferred voice of institutions, precisely because it removes someone to hold responsible. The subjunctive performs a similar service: \"It has been suggested that\" floats a claim free of any believer. Politicians, executives, and press officers are fluent in this second grammar, the subjunctive of power, in which possibilities are floated, commitments are hedged, and accountability is conjugated into the distant future. Citizens who do not notice the conjugation are governed twice: once by the decision, once by the phrasing that hides it. This is not a matter of pedantry. Research on framing shows that agentless language measurably reduces blame attribution, which is exactly why it is chosen. The remedy is a public habit of asking the elementary questions the grammar evades: who decided, who benefits, who pays. Style guides cannot legislate honesty, but readers can refuse the euphemism. Every sentence that hides an actor is a small constitutional amendment, and every question that restores one is a small revolution. Grammar, in the end, is just politics conducted at lower volume."
+    },
+    {
+      "title": "The Last Libraries",
+      "level": "B2",
+      "topic": "stadt",
+      "est_minutes": 2,
+      "body": "Libraries are the only public institution that asks nothing of you: no purchase, no subscription, no data, no reason to exist. It is precisely this unconditional character that makes their closure the quietest ideological project of our era. No one proposes abolishing them; budgets simply do it slowly, and the language of the minutes is efficiency, digitalisation, and usage statistics, as though a building's purpose were footfall. Yet usage tells you what a library has been, not what it is for. It is the last room in the city where a person may exist without consuming, where a jobseeker prints a CV, where a child discovers that books were written for them, where the recently bereaved are not asked to justify their presence. These functions are invisible to spreadsheets because they belong to no market. The evidence of harm is likewise slow, and slow harm is politically invisible. Places that have defended libraries did so by making them loud: co-located services, community ownership, and defenders who spoke about neighbours rather than buildings. I would ask sceptics to conduct a simple test: name another institution where you are welcome at no cost and under no obligation. If the list is empty, you have not proven libraries are redundant. You have proven how much has already been lost."
+    }
+  ]
+}

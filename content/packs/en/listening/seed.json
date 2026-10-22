@@ -1,0 +1,1142 @@
+{
+  "lang": "en",
+  "version": "1.0.0",
+  "texts": [
+    {
+      "title": "Meeting at the Bus Stop",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Good morning! Is this the bus to the city centre? Yes, it is. I am Anna. Nice to meet you, Anna. I am Peter. I work near the market. Me too! The bus is late again. Don't worry. We have time for a coffee.",
+      "segments": [
+        "Good morning! Is this the bus to the city centre?",
+        "Yes, it is. I am Anna.",
+        "Nice to meet you, Anna. I am Peter.",
+        "I work near the market.",
+        "Me too! The bus is late again.",
+        "Don't worry. We have time for a coffee."
+      ]
+    },
+    {
+      "title": "Ordering Lunch",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Hello! Can I help you? Yes, please. I would like a chicken soup. Good choice. And to drink? A glass of water, please. Would you like some bread with that? Yes, thank you. Is the soup hot? Very hot! It comes out of the pot right now. Perfect. I am very hungry.",
+      "segments": [
+        "Hello! Can I help you?",
+        "Yes, please. I would like a chicken soup.",
+        "Good choice. And to drink?",
+        "A glass of water, please.",
+        "Would you like some bread with that?",
+        "Yes, thank you. Is the soup hot?",
+        "Very hot! It comes out of the pot right now.",
+        "Perfect. I am very hungry."
+      ]
+    },
+    {
+      "title": "At the Doctor's",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Good afternoon. What is the problem today? I have a bad headache, doctor. Since when? Since Monday morning. OK. Open your mouth and say ah. Ah. You have a small cold. Go home, rest, and drink a lot of water. Thank you, doctor!",
+      "segments": [
+        "Good afternoon. What is the problem today?",
+        "I have a bad headache, doctor.",
+        "Since when?",
+        "Since Monday morning.",
+        "OK. Open your mouth and say ah.",
+        "Ah. You have a small cold.",
+        "Go home, rest, and drink a lot of water.",
+        "Thank you, doctor!"
+      ]
+    },
+    {
+      "title": "Phone Call with Mum",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Hello? Hi, Mum! Hi, love! Where are you? I am at the library with Sara. What are you doing tomorrow? I have English class in the morning. Can I come to your house in the evening? Yes, please! Come at six. Great. See you tomorrow, Mum!",
+      "segments": [
+        "Hello? Hi, Mum!",
+        "Hi, love! Where are you?",
+        "I am at the library with Sara.",
+        "What are you doing tomorrow?",
+        "I have English class in the morning.",
+        "Can I come to your house in the evening?",
+        "Yes, please! Come at six.",
+        "Great. See you tomorrow, Mum!"
+      ]
+    },
+    {
+      "title": "Welcome to the Office",
+      "level": "A1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Hi, you must be the new girl in the office. Yes! I am Maria. I start today. Welcome, Maria. I am Tom. Thank you! Where is the coffee machine? Second floor, next to the toilets. And when do we have lunch? At one o'clock, with the team. The boss is very friendly, so don't worry.",
+      "segments": [
+        "Hi, you must be the new girl in the office.",
+        "Yes! I am Maria. I start today.",
+        "Welcome, Maria. I am Tom.",
+        "Thank you! Where is the coffee machine?",
+        "Second floor, next to the toilets.",
+        "And when do we have lunch?",
+        "At one o'clock, with the team.",
+        "The boss is very friendly, so don't worry."
+      ]
+    },
+    {
+      "title": "Weather Talk",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Look at the sky! It is very dark. Yes, I think it will rain soon. Do you have an umbrella? No, I forgot it at home. You can share mine. Really? Thank you so much! No problem. We walk together. Rain is good for the garden, anyway.",
+      "segments": [
+        "Look at the sky! It is very dark.",
+        "Yes, I think it will rain soon.",
+        "Do you have an umbrella?",
+        "No, I forgot it at home.",
+        "You can share mine.",
+        "Really? Thank you so much!",
+        "No problem. We walk together.",
+        "Rain is good for the garden, anyway."
+      ]
+    },
+    {
+      "title": "Weekend Plans",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "What do you do on Saturdays, Ben? I play football in the park. With my friends from school. Can I come with you? Yes! Do you like football? A little, but I am not very good. That is OK. We are not good either! Come at ten and bring water.",
+      "segments": [
+        "What do you do on Saturdays, Ben?",
+        "I play football in the park.",
+        "With my friends from school.",
+        "Can I come with you?",
+        "Yes! Do you like football?",
+        "A little, but I am not very good.",
+        "That is OK. We are not good either!",
+        "Come at ten and bring water."
+      ]
+    },
+    {
+      "title": "Buying Fruit",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Good morning! What can I get you? Two kilos of apples, please. Red or green ones? Red, please. They are sweeter. How about some bananas? Yes, a small bunch, too. That is four fifty, please. Thank you! Have a nice day.",
+      "segments": [
+        "Good morning! What can I get you?",
+        "Two kilos of apples, please.",
+        "Red or green ones?",
+        "Red, please. They are sweeter.",
+        "How about some bananas?",
+        "Yes, a small bunch, too.",
+        "That is four fifty, please.",
+        "Thank you! Have a nice day."
+      ]
+    },
+    {
+      "title": "Asking for Directions",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Excuse me, is there a pharmacy near here? Yes, go straight and turn left. How far is it? Five minutes, on foot. Is it open now? Yes, it closes at six. Thank you! And where is the train station? Take the bus, number five, from the big square.",
+      "segments": [
+        "Excuse me, is there a pharmacy near here?",
+        "Yes, go straight and turn left.",
+        "How far is it?",
+        "Five minutes, on foot.",
+        "Is it open now?",
+        "Yes, it closes at six.",
+        "Thank you! And where is the train station?",
+        "Take the bus, number five, from the big square."
+      ]
+    },
+    {
+      "title": "In the Classroom",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Good morning, class! Sit down, please. Today we learn new words about the home. I say, you repeat. Ready? Bedroom. Bedroom! Kitchen. Kitchen! Very good. Who can name five rooms? Kitchen, bedroom, bathroom, living room, garden! Excellent! Open your books at page twelve.",
+      "segments": [
+        "Good morning, class! Sit down, please.",
+        "Today we learn new words about the home.",
+        "I say, you repeat. Ready?",
+        "Bedroom. Bedroom!",
+        "Kitchen. Kitchen!",
+        "Very good. Who can name five rooms?",
+        "Kitchen, bedroom, bathroom, living room, garden!",
+        "Excellent! Open your books at page twelve."
+      ]
+    },
+    {
+      "title": "At the Hotel",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Good evening. Welcome to the Park Hotel. Good evening. I have a reservation for one room. What is the name, please? Anna Green. Two nights, from Monday to Wednesday. Here is your key. Room two oh four. Is breakfast included? Yes, from seven to ten in the restaurant. Perfect. Enjoy your stay!",
+      "segments": [
+        "Good evening. Welcome to the Park Hotel.",
+        "Good evening. I have a reservation for one room.",
+        "What is the name, please?",
+        "Anna Green. Two nights, from Monday to Wednesday.",
+        "Here is your key. Room two oh four.",
+        "Is breakfast included?",
+        "Yes, from seven to ten in the restaurant.",
+        "Perfect. Enjoy your stay!"
+      ]
+    },
+    {
+      "title": "The Lost Cat",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Hello! Is this your cat? The grey one? Oh yes! That is Miso! Where did you find him? He sat in front of my shop all morning. He was hungry, I think. Sorry for the trouble. No problem. He loves fish, you know. Really? Then he found the right shop! Here, take some cat food. It is a gift. That is very kind. Thank you!",
+      "segments": [
+        "Hello! Is this your cat? The grey one?",
+        "Oh yes! That is Miso! Where did you find him?",
+        "He sat in front of my shop all morning.",
+        "He was hungry, I think. Sorry for the trouble.",
+        "No problem. He loves fish, you know.",
+        "Really? Then he found the right shop!",
+        "Here, take some cat food. It is a gift.",
+        "That is very kind. Thank you!"
+      ]
+    },
+    {
+      "title": "Gym Chat",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Hi! Is this machine free? Yes, go ahead. I finish now. Thanks. Do you come here often? Three times a week, after work. I am new. Today is my first day. Start slowly, and the trainer can help you. Thanks! What is your name? I am Sam. See you next time!",
+      "segments": [
+        "Hi! Is this machine free?",
+        "Yes, go ahead. I finish now.",
+        "Thanks. Do you come here often?",
+        "Three times a week, after work.",
+        "I am new. Today is my first day.",
+        "Start slowly, and the trainer can help you.",
+        "Thanks! What is your name?",
+        "I am Sam. See you next time!"
+      ]
+    },
+    {
+      "title": "Family Dinner",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Kids, dinner is ready! Come to the table! What is it, Mum? Fish and potatoes. I do not like fish, but I will try. Hmm, it is not bad! It is my special recipe. Dad, pass the salt, please. And after dinner, ice cream!",
+      "segments": [
+        "Kids, dinner is ready! Come to the table!",
+        "What is it, Mum?",
+        "Fish and potatoes.",
+        "I do not like fish, but I will try.",
+        "Hmm, it is not bad!",
+        "It is my special recipe.",
+        "Dad, pass the salt, please.",
+        "And after dinner, ice cream!"
+      ]
+    },
+    {
+      "title": "The Birthday Present",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "What should we buy for Dad's birthday? He likes cooking and football. Let's buy a new cooking book! Good idea. And we write a card together. I draw, you write? Deal. How much money do we have? Fifteen euros. The book costs twelve. Perfect. Do not tell Dad, it is a surprise!",
+      "segments": [
+        "What should we buy for Dad's birthday?",
+        "He likes cooking and football.",
+        "Let's buy a new cooking book!",
+        "Good idea. And we write a card together.",
+        "I draw, you write?",
+        "Deal. How much money do we have?",
+        "Fifteen euros. The book costs twelve.",
+        "Perfect. Do not tell Dad, it is a surprise!"
+      ]
+    },
+    {
+      "title": "Waiting for the Train",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Attention, please. The train to Bristol is at platform three. Oh good, that is ours. Did you hear? It is ten minutes late. No problem. We can buy a tea first. Look, two seats by the window! You take the window, I take the aisle. Deal. Oh, the train is moving! I hope we get to Bristol on time.",
+      "segments": [
+        "Attention, please. The train to Bristol is at platform three.",
+        "Oh good, that is ours.",
+        "Did you hear? It is ten minutes late.",
+        "No problem. We can buy a tea first.",
+        "Look, two seats by the window!",
+        "You take the window, I take the aisle.",
+        "Deal. Oh, the train is moving!",
+        "I hope we get to Bristol on time."
+      ]
+    },
+    {
+      "title": "Market Day",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Wake up! It is market day, remember? Oh no, I forgot! What time does it start? At eight, but the best stalls sell out early. Then let's go now! Take the big bag. Are we making soup tonight? Yes, with carrots, potatoes, and onions. And bread from the corner shop? Yes, his bread is the best in town.",
+      "segments": [
+        "Wake up! It is market day, remember?",
+        "Oh no, I forgot! What time does it start?",
+        "At eight, but the best stalls sell out early.",
+        "Then let's go now! Take the big bag.",
+        "Are we making soup tonight?",
+        "Yes, with carrots, potatoes, and onions.",
+        "And bread from the corner shop?",
+        "Yes, his bread is the best in town."
+      ]
+    },
+    {
+      "title": "The Sleepover",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Can Lily sleep over tonight, Mum? Did you finish your homework? Yes, it is finished! Really! And you clean your room first. I will do it now, I promise! Does her mum know? Yes, she called an hour ago. Then she is welcome. We have popcorn and films!",
+      "segments": [
+        "Can Lily sleep over tonight, Mum?",
+        "Did you finish your homework?",
+        "Yes, it is finished! Really!",
+        "And you clean your room first.",
+        "I will do it now, I promise!",
+        "Does her mum know?",
+        "Yes, she called an hour ago.",
+        "Then she is welcome. We have popcorn and films!"
+      ]
+    },
+    {
+      "title": "At the Pet Shop",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Welcome! Can I help you find something? We want a present for my son's birthday. How old is he? He is eight, and he loves animals. Does he have a pet already? A goldfish, but he wants a dog! Dogs need gardens and long walks. We have a garden! Can I look at the rabbits?",
+      "segments": [
+        "Welcome! Can I help you find something?",
+        "We want a present for my son's birthday.",
+        "How old is he?",
+        "He is eight, and he loves animals.",
+        "Does he have a pet already?",
+        "A goldfish, but he wants a dog!",
+        "Dogs need gardens and long walks.",
+        "We have a garden! Can I look at the rabbits?"
+      ]
+    },
+    {
+      "title": "Getting Ready for School",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Tom! It is seven o'clock. Get up! Five more minutes, Mum... No! Breakfast is ready. Where are my blue socks? In the washing basket, where else? I cannot find my maths book either! Check your bag, under the table. Found it! It was in the fridge. Off I go!",
+      "segments": [
+        "Tom! It is seven o'clock. Get up!",
+        "Five more minutes, Mum...",
+        "No! Breakfast is ready.",
+        "Where are my blue socks?",
+        "In the washing basket, where else?",
+        "I cannot find my maths book either!",
+        "Check your bag, under the table.",
+        "Found it! It was in the fridge. Off I go!"
+      ]
+    },
+    {
+      "title": "Voicemail from Sara",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Hi, it's Sara. Sorry I missed your call earlier. About tomorrow: can we meet at four instead of three? My English lesson finishes late, so three is impossible now. If that doesn't work for you, just text me. Oh, and bring the history notes you promised, please. I'll be at the café near the station, the one with the red chairs. If I'm not there at five, order something without me! Call me when you get this. Bye!",
+      "segments": [
+        "Hi, it's Sara. Sorry I missed your call earlier.",
+        "About tomorrow: can we meet at four instead of three? My English lesson finishes late, so three is impossible now.",
+        "If that doesn't work for you, just text me.",
+        "Oh, and bring the history notes you promised, please.",
+        "I'll be at the café near the station, the one with the red chairs.",
+        "If I'm not there at five, order something without me!",
+        "Call me when you get this. Bye!"
+      ]
+    },
+    {
+      "title": "The Interview at the Bookshop",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Good morning, please take a seat. How was your journey? Fine, thank you, although the bus was crowded. I see you worked in a shop for two years. Why did you leave? The shop closed, so I started a course in office skills instead. Are you comfortable with computers? I use email and documents every day, although I'm still learning spreadsheets. Good. When could you start? Next Monday, if that suits you. We'll call you by Friday.",
+      "segments": [
+        "Good morning, please take a seat. How was your journey?",
+        "Fine, thank you, although the bus was crowded.",
+        "I see you worked in a shop for two years. Why did you leave?",
+        "The shop closed, so I started a course in office skills instead.",
+        "Are you comfortable with computers?",
+        "I use email and documents every day, although I'm still learning spreadsheets.",
+        "Good. When could you start?",
+        "Next Monday, if that suits you. We'll call you by Friday."
+      ]
+    },
+    {
+      "title": "A Bad Hotel Review",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "So how was your weekend in Brighton? Terrible, honestly. Why? I thought the hotel looked nice online. The photos were beautiful, but the room smelled damp. Although we complained, they only gave us a fan, not another room. Was the breakfast at least good? The eggs were cold, so I just had toast and coffee. But the beach was lovely, and we found a fantastic fish restaurant by chance. Still, I won't return to that hotel, even if the location is perfect.",
+      "segments": [
+        "So how was your weekend in Brighton? Terrible, honestly.",
+        "Why? I thought the hotel looked nice online.",
+        "The photos were beautiful, but the room smelled damp.",
+        "Although we complained, they only gave us a fan, not another room.",
+        "Was the breakfast at least good?",
+        "The eggs were cold, so I just had toast and coffee.",
+        "But the beach was lovely, and we found a fantastic fish restaurant by chance.",
+        "Still, I won't return to that hotel, even if the location is perfect."
+      ]
+    },
+    {
+      "title": "The Doctor's Advice",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Your blood tests came back, and most results are fine. That's a relief. Was there anything wrong? Your vitamin D is low, which explains why you feel tired. Take these tablets every morning, and try to walk twenty minutes daily. Even when it's cloudy? Especially then, since our sun is weak in winter. How long until I feel better? Usually four to six weeks, so be patient and take care.",
+      "segments": [
+        "Your blood tests came back, and most results are fine.",
+        "That's a relief. Was there anything wrong?",
+        "Your vitamin D is low, which explains why you feel tired.",
+        "Take these tablets every morning, and try to walk twenty minutes daily.",
+        "Even when it's cloudy?",
+        "Especially then, since our sun is weak in winter.",
+        "How long until I feel better?",
+        "Usually four to six weeks, so be patient and take care."
+      ]
+    },
+    {
+      "title": "Planning the Wedding",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "We need to decide about the wedding cake before Friday. What did the baker say about the tasting? We loved the chocolate one, although my mother prefers vanilla. How many people will there be? About eighty, although the list might still grow. The baker quoted three hundred, which is less than we feared. Who's choosing the flowers? My cousin offered, because she's a florist, so we should let her choose them.",
+      "segments": [
+        "We need to decide about the wedding cake before Friday.",
+        "What did the baker say about the tasting?",
+        "We loved the chocolate one, although my mother prefers vanilla.",
+        "How many people will there be?",
+        "About eighty, although the list might still grow.",
+        "The baker quoted three hundred, which is less than we feared.",
+        "Who's choosing the flowers?",
+        "My cousin offered, because she's a florist, so we should let her choose them."
+      ]
+    },
+    {
+      "title": "The Long Commute",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "You look exhausted. What happened this morning? My usual train was cancelled, so I had to find another way. I tried to drive, but the road was blocked because of an accident. So I caught a bus, then a tram, then walked the last kilometre. How long did that take? Two and a half hours, although it normally takes forty minutes. Did you at least make the meeting? Yes, although I arrived with my shirt untucked and my hair a mess.",
+      "segments": [
+        "You look exhausted. What happened this morning?",
+        "My usual train was cancelled, so I had to find another way.",
+        "I tried to drive, but the road was blocked because of an accident.",
+        "So I caught a bus, then a tram, then walked the last kilometre.",
+        "How long did that take?",
+        "Two and a half hours, although it normally takes forty minutes.",
+        "Did you at least make the meeting?",
+        "Yes, although I arrived with my shirt untucked and my hair a mess."
+      ]
+    },
+    {
+      "title": "Learning to Drive",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "How are the driving lessons going? Honestly, they're harder than they look. I practised parking today, although I hit the kerb twice. Did your instructor get angry? No, he just sighed, which was somehow worse. What's the most difficult part? Reversing while checking everything around you, because there's so much to watch. Are you nervous about the test? Very, although my instructor says I'm ready to try the exam next month.",
+      "segments": [
+        "How are the driving lessons going? Honestly, they're harder than they look.",
+        "I practised parking today, although I hit the kerb twice.",
+        "Did your instructor get angry?",
+        "No, he just sighed, which was somehow worse.",
+        "What's the most difficult part?",
+        "Reversing while checking everything around you, because there's so much to watch.",
+        "Are you nervous about the test?",
+        "Very, although my instructor says I'm ready to try the exam next month."
+      ]
+    },
+    {
+      "title": "The Fitness App",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "You've been running every morning. What changed? I downloaded that fitness app my sister recommended. It sets small goals, so you run a bit more each week. And that actually motivates you? It tells me my streak, so I don't want to break it. Mine says I've run eleven days in a row. I sleep better too, although I was sceptical about that claim. It's free, actually, although they want you to buy the fancy version.",
+      "segments": [
+        "You've been running every morning. What changed?",
+        "I downloaded that fitness app my sister recommended.",
+        "It sets small goals, so you run a bit more each week.",
+        "And that actually motivates you?",
+        "It tells me my streak, so I don't want to break it.",
+        "Mine says I've run eleven days in a row.",
+        "I sleep better too, although I was sceptical about that claim.",
+        "It's free, actually, although they want you to buy the fancy version."
+      ]
+    },
+    {
+      "title": "The Parents' Meeting",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Good evening everyone, thanks for coming to the parents' meeting. The exam results were better than last year, although maths improved most. Next, the school trip. We're going to York in March. The trip costs sixty pounds, which includes entry to the museum. Is lunch included? No, although there's a café, or children can bring a packed lunch. One more thing: we need volunteers to chaperone. I could come, although I'd need to leave work early. Wonderful, thank you!",
+      "segments": [
+        "Good evening everyone, thanks for coming to the parents' meeting.",
+        "The exam results were better than last year, although maths improved most.",
+        "Next, the school trip. We're going to York in March.",
+        "The trip costs sixty pounds, which includes entry to the museum.",
+        "Is lunch included?",
+        "No, although there's a café, or children can bring a packed lunch.",
+        "One more thing: we need volunteers to chaperone.",
+        "I could come, although I'd need to leave work early. Wonderful, thank you!"
+      ]
+    },
+    {
+      "title": "The Broken Heater",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Hello, is that the repairs office? My heater isn't working. I'm sorry to hear that. When did the problem start? Yesterday evening, although it worked fine in the morning. Is the pilot light on? I can't see it, because the knob feels loose. OK, I'll send someone. Does tomorrow between nine and twelve suit? Tomorrow is difficult, although Thursday all day would be perfect. Thursday it is. The engineer will call thirty minutes before.",
+      "segments": [
+        "Hello, is that the repairs office? My heater isn't working.",
+        "I'm sorry to hear that. When did the problem start?",
+        "Yesterday evening, although it worked fine in the morning.",
+        "Is the pilot light on?",
+        "I can't see it, because the knob feels loose.",
+        "OK, I'll send someone. Does tomorrow between nine and twelve suit?",
+        "Tomorrow is difficult, although Thursday all day would be perfect.",
+        "Thursday it is. The engineer will call thirty minutes before."
+      ]
+    },
+    {
+      "title": "Camping in the Rain",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "So tell me about your camping trip. Did you enjoy it? It rained the whole first day, so we nearly gave up. What did you do in the tent all day? We played cards, ate biscuits, and argued about whether the roof leaked. Did the tent actually leak? A little, although our neighbour gave us a spare cover, which saved us. And after the rain stopped? The forest smelled amazing, and we found a waterfall nobody mentioned online.",
+      "segments": [
+        "So tell me about your camping trip. Did you enjoy it?",
+        "It rained the whole first day, so we nearly gave up.",
+        "What did you do in the tent all day?",
+        "We played cards, ate biscuits, and argued about whether the roof leaked.",
+        "Did the tent actually leak?",
+        "A little, although our neighbour gave us a spare cover, which saved us.",
+        "And after the rain stopped?",
+        "The forest smelled amazing, and we found a waterfall nobody mentioned online."
+      ]
+    },
+    {
+      "title": "Meeting a Spanish Partner",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Hi, are you here for the language exchange too? Yes! I'm here to practise English, although my friend dragged me along. I'm here for Spanish, so maybe we could help each other. I'd love that, although my Spanish is really basic. We talk for fifteen minutes in each language, so both get practice. What should we talk about? Anything, although I find films easier than politics. Agreed. Let's start with films, and please correct my mistakes.",
+      "segments": [
+        "Hi, are you here for the language exchange too?",
+        "Yes! I'm here to practise English, although my friend dragged me along.",
+        "I'm here for Spanish, so maybe we could help each other.",
+        "I'd love that, although my Spanish is really basic.",
+        "We talk for fifteen minutes in each language, so both get practice.",
+        "What should we talk about?",
+        "Anything, although I find films easier than politics.",
+        "Agreed. Let's start with films, and please correct my mistakes."
+      ]
+    },
+    {
+      "title": "The Birthday Surprise Plan",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Shh, this call is about Dad's birthday, so don't let him hear you. Don't worry, he's out walking the dog in the park. Here's the plan: we decorate the garden at four o'clock. What time does he usually come back home? Around six, although he might stop for the newspaper on the way. Who's bringing the cake? I am, although it's homemade, so please don't laugh. Homemade is his favourite! And your mum's making her famous paella.",
+      "segments": [
+        "Shh, this call is about Dad's birthday, so don't let him hear you.",
+        "Don't worry, he's out walking the dog in the park.",
+        "Here's the plan: we decorate the garden at four o'clock.",
+        "What time does he usually come back home?",
+        "Around six, although he might stop for the newspaper on the way.",
+        "Who's bringing the cake?",
+        "I am, although it's homemade, so please don't laugh.",
+        "Homemade is his favourite! And your mum's making her famous paella."
+      ]
+    },
+    {
+      "title": "The Museum Audio Guide",
+      "level": "A2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Welcome to the City Museum. This is the first room, which shows the city's Roman origins. Although little remains above ground, the floor tiles here are original. Please look at the case on your left, which contains Roman coins. The largest coin dates from the second century, although it was found in a field. Turn right now to see models of the Roman walls. The walls stood for over a thousand years, although most were removed in the 1700s. Photography is allowed, although flash is not. Thank you for visiting, and enjoy the rest of your afternoon.",
+      "segments": [
+        "Welcome to the City Museum. This is the first room, which shows the city's Roman origins.",
+        "Although little remains above ground, the floor tiles here are original.",
+        "Please look at the case on your left, which contains Roman coins.",
+        "The largest coin dates from the second century, although it was found in a field.",
+        "Turn right now to see models of the Roman walls.",
+        "The walls stood for over a thousand years, although most were removed in the 1700s.",
+        "Photography is allowed, although flash is not.",
+        "Thank you for visiting, and enjoy the rest of your afternoon."
+      ]
+    },
+    {
+      "title": "The Concert Plan",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Did you get tickets for the concert next month? Yes, although they sold out in ten minutes, so I nearly missed out. Where are they? I hope we can still see the stage. Row twelve, which is a bit far, but the sound should be good. How much did they cost? Forty-five each, although that includes the booking fee. Should we bring earplugs? My ears are sensitive. Definitely. Let's meet at the entrance at six forty-five.",
+      "segments": [
+        "Did you get tickets for the concert next month?",
+        "Yes, although they sold out in ten minutes, so I nearly missed out.",
+        "Where are they? I hope we can still see the stage.",
+        "Row twelve, which is a bit far, but the sound should be good.",
+        "How much did they cost?",
+        "Forty-five each, although that includes the booking fee.",
+        "Should we bring earplugs? My ears are sensitive.",
+        "Definitely. Let's meet at the entrance at six forty-five."
+      ]
+    },
+    {
+      "title": "The Flat Viewing",
+      "level": "A2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "So this is the living room, which gets afternoon sun. It's bright, although the kitchen looks a bit small. The kitchen is compact, but it has a dishwasher and a new oven. How big is the bedroom? Big enough for a double bed, although the wardrobe is built-in. How much is the rent? Eight hundred a month, although that excludes bills. When could you move in? At the start of next month, please.",
+      "segments": [
+        "So this is the living room, which gets afternoon sun.",
+        "It's bright, although the kitchen looks a bit small.",
+        "The kitchen is compact, but it has a dishwasher and a new oven.",
+        "How big is the bedroom?",
+        "Big enough for a double bed, although the wardrobe is built-in.",
+        "How much is the rent?",
+        "Eight hundred a month, although that excludes bills.",
+        "When could you move in? At the start of next month, please."
+      ]
+    },
+    {
+      "title": "The Marathon Training Plan",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "You're running a marathon in November? When did you decide that? Last month, although I've never run more than ten kilometres. So how's the training going? The plan says four runs a week, which feels like a lot. Are you keeping up with it? Mostly, although I skipped Wednesday because my calf hurt. Smart. Pain means rest, not pushing through. My coach says the long run is the key session, so I never miss it.",
+      "segments": [
+        "You're running a marathon in November? When did you decide that?",
+        "Last month, although I've never run more than ten kilometres.",
+        "So how's the training going?",
+        "The plan says four runs a week, which feels like a lot.",
+        "Are you keeping up with it?",
+        "Mostly, although I skipped Wednesday because my calf hurt.",
+        "Smart. Pain means rest, not pushing through.",
+        "My coach says the long run is the key session, so I never miss it."
+      ]
+    },
+    {
+      "title": "The Job Presentation",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Morning everyone. Today I'll present the results from the spring campaign. Although we started late, we reached our target two weeks early. The best channel was email, which brought half of our new customers. Social media did well too, although it cost more per customer. What about the website? Traffic grew, although fewer people bought than we hoped. So what should we change next time? Improve the checkout page, although the design team needs the data first.",
+      "segments": [
+        "Morning everyone. Today I'll present the results from the spring campaign.",
+        "Although we started late, we reached our target two weeks early.",
+        "The best channel was email, which brought half of our new customers.",
+        "Social media did well too, although it cost more per customer.",
+        "What about the website?",
+        "Traffic grew, although fewer people bought than we hoped.",
+        "So what should we change next time?",
+        "Improve the checkout page, although the design team needs the data first."
+      ]
+    },
+    {
+      "title": "The Cooking Class",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Welcome everyone! Tonight we're making three dishes in ninety minutes. Although it sounds ambitious, the recipes are simple. First we'll make the tomato sauce, which needs the longest. While the sauce cooks, we'll shape the dough. Knead it for ten minutes, although it will feel sticky at first. Is it ready when it springs back? Exactly! The fish is next, although we'll do that last, since it's quick. Smells amazing! Can we taste the sauce now?",
+      "segments": [
+        "Welcome everyone! Tonight we're making three dishes in ninety minutes.",
+        "Although it sounds ambitious, the recipes are simple.",
+        "First we'll make the tomato sauce, which needs the longest.",
+        "While the sauce cooks, we'll shape the dough.",
+        "Knead it for ten minutes, although it will feel sticky at first.",
+        "Is it ready when it springs back?",
+        "Exactly! The fish is next, although we'll do that last, since it's quick.",
+        "Smells amazing! Can we taste the sauce now?"
+      ]
+    },
+    {
+      "title": "The Garden Project",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "You said you'd finish the garden by Saturday! I did most of it, although the shed door still sticks when you close it. What did you plant? Tomatoes, herbs, and strawberries, although the slugs already found the strawberries. Did you put up the fence? Yes, although the last panel still needs one more screw. The neighbours helped, didn't they? Mr Patel carried all the soil, although his back complained about it the next day.",
+      "segments": [
+        "You said you'd finish the garden by Saturday!",
+        "I did most of it, although the shed door still sticks when you close it.",
+        "What did you plant?",
+        "Tomatoes, herbs, and strawberries, although the slugs already found the strawberries.",
+        "Did you put up the fence?",
+        "Yes, although the last panel still needs one more screw.",
+        "The neighbours helped, didn't they?",
+        "Mr Patel carried all the soil, although his back complained about it the next day."
+      ]
+    },
+    {
+      "title": "The Podcast Recommendation",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Have you listened to that history podcast I sent you last week? I started it, although I got distracted halfway through the first episode. Honestly, same. The host keeps going off on tangents. That's what I like, though! You learn random things you never even asked about. Would you, though? Be honest. You haven't finished a single book since March, and we both know why. Fair point. The podcast feels achievable, like it's doing half the work for me while I do the other half. Maybe I'll give it another go this weekend. Do it on a long walk, it goes down much better when your legs are busy. Fine, episode three, because you said it hooks you. But if I fall asleep, I'm blaming you entirely. Deal. Although if you end up loving it, you're buying me coffee to celebrate about it.",
+      "segments": [
+        "Have you listened to that history podcast I sent you last week? I started it, although I got distracted halfway through the first episode. Honestly, same. The host keeps going off on tangents. That's what I like, though! You learn random things you never even asked about.",
+        "Would you, though? Be honest. You haven't finished a single book since March, and we both know why. Fair point. The podcast feels achievable, like it's doing half the work for me while I do the other half.",
+        "Maybe I'll give it another go this weekend. Do it on a long walk, it goes down much better when your legs are busy. Fine, episode three, because you said it hooks you. But if I fall asleep, I'm blaming you entirely.",
+        "Deal. Although if you end up loving it, you're buying me coffee to celebrate about it."
+      ]
+    },
+    {
+      "title": "The Career Change Conversation",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "I've been thinking about leaving the firm, and I wanted your honest opinion before I do anything rash. How honest are we talking? The brutal kind, or the kind you actually want to hear? Brutal, please. That's exactly why I came to you instead of asking my mother. OK, here it is: are you running toward something, or are you just running away from your boss? It won't, although a pay rise will make you tolerate it a little longer, which is somehow worse. Talk to someone who already does the job before you hand in your notice. That's my advice. My cousin does corporate training. I'll call her this week and pick her brain properly. Do that. And whatever you decide, don't let fear dress itself up and call itself caution.",
+      "segments": [
+        "I've been thinking about leaving the firm, and I wanted your honest opinion before I do anything rash. How honest are we talking? The brutal kind, or the kind you actually want to hear?",
+        "Brutal, please. That's exactly why I came to you instead of asking my mother. OK, here it is: are you running toward something, or are you just running away from your boss?",
+        "It won't, although a pay rise will make you tolerate it a little longer, which is somehow worse. Talk to someone who already does the job before you hand in your notice. That's my advice.",
+        "My cousin does corporate training. I'll call her this week and pick her brain properly. Do that. And whatever you decide, don't let fear dress itself up and call itself caution."
+      ]
+    },
+    {
+      "title": "The Flat Renovation",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "How's the renovation going? Honestly, you look like you've been fighting a war and losing. We knocked through the wall last weekend, which was supposed to be a simple two-day job. And now? Now the electrician says the wiring is from the seventies, so absolutely nothing is simple anymore. Did you at least find anything exciting behind the wall? Treasure? Old maps? Newspapers from 1974 and a crisp packet, which we have framed and hung in the kitchen like art. How long do they say it'll take now? Two weeks, although that's their optimistic number, so I've already told my mother it's three. Are you actually living there through all of this? We are, although we're sleeping in the kitchen, which is cold, dusty, and has no door. You should have stayed at your sister's like I suggested. You're turning into a professional renovator. Next project is the bathroom, and I'm already dreading the tiles.",
+      "segments": [
+        "How's the renovation going? Honestly, you look like you've been fighting a war and losing. We knocked through the wall last weekend, which was supposed to be a simple two-day job.",
+        "And now? Now the electrician says the wiring is from the seventies, so absolutely nothing is simple anymore. Did you at least find anything exciting behind the wall? Treasure? Old maps?",
+        "Newspapers from 1974 and a crisp packet, which we have framed and hung in the kitchen like art. How long do they say it'll take now?",
+        "Two weeks, although that's their optimistic number, so I've already told my mother it's three. Are you actually living there through all of this?",
+        "We are, although we're sleeping in the kitchen, which is cold, dusty, and has no door. You should have stayed at your sister's like I suggested.",
+        "You're turning into a professional renovator. Next project is the bathroom, and I'm already dreading the tiles."
+      ]
+    },
+    {
+      "title": "The Marathon Debrief",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "So you actually finished the marathon! Congratulations. How are the legs today? They're fine, although there's a reason I'm walking like a cowboy this morning. Classic marathon mistake. Did you hit the wall? Properly. At thirty-five kilometres I found myself negotiating with a lamppost, and the lamppost won the argument. But you still finished, which is the only thing that matters! I did, although the last five kilometres were mostly walking, swearing, and questioning every choice I ever made. How was the crowd? Did they keep you going? Incredible, although by kilometre thirty-eight I couldn't read the signs because my eyes were completely blurry. Worth it in the end? Completely, although I've promised myself a full month off running, which I'll definitely break by Thursday. And the medal? Where's it going? It's already on the fridge, although the dog has chewed the ribbon, which I've decided is a feature, not a flaw.",
+      "segments": [
+        "So you actually finished the marathon! Congratulations. How are the legs today? They're fine, although there's a reason I'm walking like a cowboy this morning.",
+        "Classic marathon mistake. Did you hit the wall? Properly. At thirty-five kilometres I found myself negotiating with a lamppost, and the lamppost won the argument.",
+        "But you still finished, which is the only thing that matters! I did, although the last five kilometres were mostly walking, swearing, and questioning every choice I ever made.",
+        "How was the crowd? Did they keep you going? Incredible, although by kilometre thirty-eight I couldn't read the signs because my eyes were completely blurry.",
+        "Worth it in the end? Completely, although I've promised myself a full month off running, which I'll definitely break by Thursday.",
+        "And the medal? Where's it going? It's already on the fridge, although the dog has chewed the ribbon, which I've decided is a feature, not a flaw."
+      ]
+    },
+    {
+      "title": "The Language Exchange Meetup",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "So how's the Spanish going? You've been going to those exchange meetups every week, right? Better, although I still completely freeze whenever a native speaker talks to me properly. And then? Could you understand everything? Then I understood everything perfectly and still couldn't reply, which turned out to be a completely different problem. Progress is weird like that. Are you still using the vocabulary app? Only for new words, although I turned off the daily streak feature because it was stressing me out more than helping. Good call. Apps are a supplement, not the whole diet. Anyway, I'm signing up for the conversation table on Thursday, and you're coming with me. Easy for you to say. You once ordered cat food in front of an entire café without noticing. That never happened, and if anyone tells you otherwise, I was in another country entirely.",
+      "segments": [
+        "So how's the Spanish going? You've been going to those exchange meetups every week, right? Better, although I still completely freeze whenever a native speaker talks to me properly.",
+        "And then? Could you understand everything? Then I understood everything perfectly and still couldn't reply, which turned out to be a completely different problem.",
+        "Progress is weird like that. Are you still using the vocabulary app? Only for new words, although I turned off the daily streak feature because it was stressing me out more than helping.",
+        "Good call. Apps are a supplement, not the whole diet. Anyway, I'm signing up for the conversation table on Thursday, and you're coming with me.",
+        "Easy for you to say. You once ordered cat food in front of an entire café without noticing. That never happened, and if anyone tells you otherwise, I was in another country entirely."
+      ]
+    },
+    {
+      "title": "The Housewarming Party",
+      "level": "B1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Thanks so much for coming to the housewarming! Please, make yourselves completely at home. This place is amazing. How long did it take you to sort the whole thing out? We did all the painting ourselves, which was genuinely fun for about a day and a half. And then the fun wore off, I'm guessing? Then we hired a professional, which was without question the best money we spent all year. Where's the kitchen? I need a drink after all this small talk. Yes, although you have to stand on your very toes to see the fountain. Did your parents approve of the neighbourhood when you told them? They did, although my dad spent a full twenty minutes inspecting the boiler like a building inspector. Classic dad behaviour. And the verdict? Did it pass? The lady next door brought us a cake, although she also handed us a typed list of house rules.",
+      "segments": [
+        "Thanks so much for coming to the housewarming! Please, make yourselves completely at home. This place is amazing. How long did it take you to sort the whole thing out?",
+        "We did all the painting ourselves, which was genuinely fun for about a day and a half. And then the fun wore off, I'm guessing?",
+        "Then we hired a professional, which was without question the best money we spent all year. Where's the kitchen? I need a drink after all this small talk.",
+        "Yes, although you have to stand on your very toes to see the fountain. Did your parents approve of the neighbourhood when you told them?",
+        "They did, although my dad spent a full twenty minutes inspecting the boiler like a building inspector. Classic dad behaviour. And the verdict? Did it pass?",
+        "The lady next door brought us a cake, although she also handed us a typed list of house rules."
+      ]
+    },
+    {
+      "title": "The Doctor's Follow-Up",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Good to see you again. How have you been feeling since your last appointment? Better, honestly, although I still get quite tired in the late afternoons. Small things matter, and so does consistency. How's the sleep been? Much better than before, although I still wake up around four every morning without fail. Good decision. Any pain still bothering you? Only when it rains heavily, which is a weather forecast I could honestly do without. Let's do the blood test today, and then we'll review everything together in four weeks. Do I need to change anything before then? Keep up the walks, although add some light strength work twice a week, like squats and wall push-ups. And if the tiredness gets noticeably worse before then? Call us the same day, although I very much doubt it will. You're doing all the right things.",
+      "segments": [
+        "Good to see you again. How have you been feeling since your last appointment? Better, honestly, although I still get quite tired in the late afternoons.",
+        "Small things matter, and so does consistency. How's the sleep been? Much better than before, although I still wake up around four every morning without fail.",
+        "Good decision. Any pain still bothering you? Only when it rains heavily, which is a weather forecast I could honestly do without.",
+        "Let's do the blood test today, and then we'll review everything together in four weeks. Do I need to change anything before then?",
+        "Keep up the walks, although add some light strength work twice a week, like squats and wall push-ups. And if the tiredness gets noticeably worse before then?",
+        "Call us the same day, although I very much doubt it will. You're doing all the right things."
+      ]
+    },
+    {
+      "title": "The Job Reference Call",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Good afternoon, this is Daniel from Brightpath Recruitment. Am I catching you at a convenient moment? Yes, although I was honestly expecting your call about an hour ago. Sorry about that. The previous candidate's reference call ran much longer than planned. I see. So you're calling about Priya, I assume? How would you describe her main strengths? She's the person who notices problems long before they become fires, which is a genuinely rare quality. That's honest and helpful. Would you rehire her if you could? In a heartbeat, although I'd need to pay her considerably more than you're probably offering. Noted. Any final concerns we should be aware of before the interview? Only that she'll eventually leave you for an even better role, but that's your problem, not hers. That's the best reference I've received all week, thank you. They're all like that. It's the ones who hesitate before answering that you should really worry about.",
+      "segments": [
+        "Good afternoon, this is Daniel from Brightpath Recruitment. Am I catching you at a convenient moment? Yes, although I was honestly expecting your call about an hour ago.",
+        "Sorry about that. The previous candidate's reference call ran much longer than planned. I see. So you're calling about Priya, I assume?",
+        "How would you describe her main strengths? She's the person who notices problems long before they become fires, which is a genuinely rare quality.",
+        "That's honest and helpful. Would you rehire her if you could? In a heartbeat, although I'd need to pay her considerably more than you're probably offering.",
+        "Noted. Any final concerns we should be aware of before the interview? Only that she'll eventually leave you for an even better role, but that's your problem, not hers.",
+        "That's the best reference I've received all week, thank you. They're all like that. It's the ones who hesitate before answering that you should really worry about."
+      ]
+    },
+    {
+      "title": "The Neighbourhood Meeting",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Thanks for coming out tonight, everyone. The main item on the agenda is the proposed cycle lane. The council claims it'll cut traffic through our streets, although I remain completely unconvinced. Actually, the shops near the existing cycle lanes reported more footfall after the lanes were built, not less. Who carried out that survey? That's my real question. Narrowing the pavement is exactly what we don't want, especially with all the prams and wheelchairs. Nobody wants narrow pavements. That's precisely why we're formally requesting a redesign of the junction. So what happens now, practically speaking? We submit our written comments by the end of the month, and I'll need everyone's signatures. I'll draft something this week, although I'll need the parking numbers from the survey included. Perfect. Same time next month, and please bring any neighbours who couldn't make it tonight.",
+      "segments": [
+        "Thanks for coming out tonight, everyone. The main item on the agenda is the proposed cycle lane. The council claims it'll cut traffic through our streets, although I remain completely unconvinced.",
+        "Actually, the shops near the existing cycle lanes reported more footfall after the lanes were built, not less. Who carried out that survey? That's my real question.",
+        "Narrowing the pavement is exactly what we don't want, especially with all the prams and wheelchairs. Nobody wants narrow pavements. That's precisely why we're formally requesting a redesign of the junction.",
+        "So what happens now, practically speaking? We submit our written comments by the end of the month, and I'll need everyone's signatures.",
+        "I'll draft something this week, although I'll need the parking numbers from the survey included. Perfect. Same time next month, and please bring any neighbours who couldn't make it tonight."
+      ]
+    },
+    {
+      "title": "The Wedding Speech Rehearsal",
+      "level": "B1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "OK, rehearse the best man speech for me, and please be absolutely brutal. Right, let's hear it. Start whenever you're ready, and I'll stop you if it's terrible. Fine, I'll cut the van. What about the story at the very end? Cut that one entirely as well. Harsh, but fair enough. What should I add instead? Something genuine about his partner. Not just that she's nice, everyone knows she's nice. Like what? Give me an example. How she makes him a better person, although without insulting who he used to be. I always rush when I'm nervous in front of crowds. Then practise it three times tonight, although not in front of a mirror, because you'll start performing. Why not the mirror? Isn't that what everyone does? Because you'll rehearse your face instead of your feelings, and the audience always notices the difference.",
+      "segments": [
+        "OK, rehearse the best man speech for me, and please be absolutely brutal. Right, let's hear it. Start whenever you're ready, and I'll stop you if it's terrible.",
+        "Fine, I'll cut the van. What about the story at the very end? Cut that one entirely as well.",
+        "Harsh, but fair enough. What should I add instead? Something genuine about his partner. Not just that she's nice, everyone knows she's nice.",
+        "Like what? Give me an example. How she makes him a better person, although without insulting who he used to be.",
+        "I always rush when I'm nervous in front of crowds. Then practise it three times tonight, although not in front of a mirror, because you'll start performing.",
+        "Why not the mirror? Isn't that what everyone does? Because you'll rehearse your face instead of your feelings, and the audience always notices the difference."
+      ]
+    },
+    {
+      "title": "The Second-Hand Shop Find",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Look what I found in the charity shop this morning! Guess what's in this bag. Is that a real vinyl record player? In that condition? It looks ancient! It works! I tested it in the back room while the volunteer watched suspiciously, although the belt needs replacing. How much did they want for it? Twelve pounds, which I genuinely consider theft in my favour. I nearly hid it under my coat. Did you buy any records while you were there? It is, although the speakers that came with it are absolutely terrible, so that's another project entirely. Just use the bluetooth ones you already own for now. I did, although the neighbours probably heard the entire album through the wall last night. Did they complain about the noise? And it's still going strong two years later, which proves I'm a natural-born organiser.",
+      "segments": [
+        "Look what I found in the charity shop this morning! Guess what's in this bag. Is that a real vinyl record player? In that condition? It looks ancient!",
+        "It works! I tested it in the back room while the volunteer watched suspiciously, although the belt needs replacing. How much did they want for it?",
+        "Twelve pounds, which I genuinely consider theft in my favour. I nearly hid it under my coat. Did you buy any records while you were there?",
+        "It is, although the speakers that came with it are absolutely terrible, so that's another project entirely. Just use the bluetooth ones you already own for now.",
+        "I did, although the neighbours probably heard the entire album through the wall last night. Did they complain about the noise?",
+        "And it's still going strong two years later, which proves I'm a natural-born organiser."
+      ]
+    },
+    {
+      "title": "The Flight Delay",
+      "level": "B1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Excuse me, the departure board just changed again. Is our flight delayed or cancelled? Let me check. The board says delayed by two hours now, although they keep changing the number. Again? An hour ago it said only forty minutes. This is getting ridiculous. Did they give any reason for the delay this time? They should issue meal vouchers, although please don't expect a feast. Think sandwich and a soft drink. And if we miss our connection because of this? Probably, although I've learned the hard way never to promise anything about airports. What's your trick? You seem strangely calm about all this. Screenshot the boarding pass, download the offline airport map, and keep every single receipt. Sounds like you've been badly burned by airlines before. That's the right attitude. You get the coffee, I'll guard our place in the queue.",
+      "segments": [
+        "Excuse me, the departure board just changed again. Is our flight delayed or cancelled? Let me check. The board says delayed by two hours now, although they keep changing the number.",
+        "Again? An hour ago it said only forty minutes. This is getting ridiculous. Did they give any reason for the delay this time?",
+        "They should issue meal vouchers, although please don't expect a feast. Think sandwich and a soft drink. And if we miss our connection because of this?",
+        "Probably, although I've learned the hard way never to promise anything about airports. What's your trick? You seem strangely calm about all this.",
+        "Screenshot the boarding pass, download the offline airport map, and keep every single receipt. Sounds like you've been badly burned by airlines before.",
+        "That's the right attitude. You get the coffee, I'll guard our place in the queue."
+      ]
+    },
+    {
+      "title": "The Book Club Argument",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "So, did anyone else absolutely hate the ending of this month's book? Be honest. Hated is a strong word, although I'll admit I found it lazy and rushed. Lazy? The entire book was carefully building toward that twist from the very first chapter! Building toward a twist that directly contradicts everything we learned about the main character, yes. I read the reviews after finishing, which is exactly why I trust my own reaction more. That is absolutely not how that works, and deep down you know it. Anyway, setting the ending aside, what did everyone think of the middle section? That's where I completely lost interest, although I stubbornly pushed through for the sake of the ending. See, I stopped at chapter twelve and quietly started a different book on the same evening. And did you actually finish the second book? Fine. But next month we're voting on the book, and nobody is allowed to pick a thriller again.",
+      "segments": [
+        "So, did anyone else absolutely hate the ending of this month's book? Be honest. Hated is a strong word, although I'll admit I found it lazy and rushed.",
+        "Lazy? The entire book was carefully building toward that twist from the very first chapter! Building toward a twist that directly contradicts everything we learned about the main character, yes.",
+        "I read the reviews after finishing, which is exactly why I trust my own reaction more. That is absolutely not how that works, and deep down you know it.",
+        "Anyway, setting the ending aside, what did everyone think of the middle section? That's where I completely lost interest, although I stubbornly pushed through for the sake of the ending.",
+        "See, I stopped at chapter twelve and quietly started a different book on the same evening. And did you actually finish the second book?",
+        "Fine. But next month we're voting on the book, and nobody is allowed to pick a thriller again."
+      ]
+    },
+    {
+      "title": "The Volunteer Shift",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Welcome to your very first shift at the food bank. Are you ready to get started? Ready, although I should confess that I have absolutely no idea what I'm doing. Nobody does on day one, so don't worry at all. First job: we sort the morning donations. Just put everything neatly on the shelves? Not quite. Check every date first, although bring anything unclear straight to me instead of guessing. And what about damaged cans or crushed boxes? Sometimes, although mostly it's just people helping people, which is honestly a relief to witness. Good to know. Where should I put these vegetable crates? By the door on the left, although keep the potatoes well away from the onions. Why do they need to be separated? Two years now, although it feels much longer. Come on, the first delivery van is arriving.",
+      "segments": [
+        "Welcome to your very first shift at the food bank. Are you ready to get started? Ready, although I should confess that I have absolutely no idea what I'm doing.",
+        "Nobody does on day one, so don't worry at all. First job: we sort the morning donations. Just put everything neatly on the shelves?",
+        "Not quite. Check every date first, although bring anything unclear straight to me instead of guessing. And what about damaged cans or crushed boxes?",
+        "Sometimes, although mostly it's just people helping people, which is honestly a relief to witness. Good to know. Where should I put these vegetable crates?",
+        "By the door on the left, although keep the potatoes well away from the onions. Why do they need to be separated?",
+        "Two years now, although it feels much longer. Come on, the first delivery van is arriving."
+      ]
+    },
+    {
+      "title": "The Home Insurance Call",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Good morning, I'm calling about my home insurance renewal, which arrived in the post yesterday. Of course, thank you for calling. I can see your policy here. What would you like to know? By how much would it lower it, realistically? Around two hundred a year, although your excess in the event of a claim would rise to three hundred. And what exactly is covered under the standard policy these days? Fire, flood, and theft are included, although accidental damage is only available as a paid extra. So my dog destroying the sofa would not be covered at all? Correct, although it would be covered if you added the optional pet damage extension. Thank you. And please make sure nothing renews automatically until I've confirmed in writing. Noted and confirmed. Nothing will be charged without your explicit approval.",
+      "segments": [
+        "Good morning, I'm calling about my home insurance renewal, which arrived in the post yesterday. Of course, thank you for calling. I can see your policy here. What would you like to know?",
+        "By how much would it lower it, realistically? Around two hundred a year, although your excess in the event of a claim would rise to three hundred.",
+        "And what exactly is covered under the standard policy these days? Fire, flood, and theft are included, although accidental damage is only available as a paid extra.",
+        "So my dog destroying the sofa would not be covered at all? Correct, although it would be covered if you added the optional pet damage extension.",
+        "Thank you. And please make sure nothing renews automatically until I've confirmed in writing. Noted and confirmed. Nothing will be charged without your explicit approval."
+      ]
+    },
+    {
+      "title": "The Fitness Milestone",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "You ran a half marathon today? When exactly did all of this happen? Six months ago I couldn't run to the end of my own street without stopping for breath. And which part made the real difference, in your honest opinion? The Sunday long run, definitely, although the strength work quietly saved my knees from disaster. Did you get injured at all along the way? Only a shin problem in month three, although I rested it properly instead of stubbornly pushing through. Classic first-race mistake. Did you manage to slow down? I had to, because my legs filed a formal complaint at the ten-kilometre mark and refused to negotiate. So what's the next goal now? A full marathon, although not until spring at the earliest, and only if my knee formally agrees. That's how it always works. First you buy the expensive shoes, and then you slowly become the person who runs.",
+      "segments": [
+        "You ran a half marathon today? When exactly did all of this happen? Six months ago I couldn't run to the end of my own street without stopping for breath.",
+        "And which part made the real difference, in your honest opinion? The Sunday long run, definitely, although the strength work quietly saved my knees from disaster.",
+        "Did you get injured at all along the way? Only a shin problem in month three, although I rested it properly instead of stubbornly pushing through.",
+        "Classic first-race mistake. Did you manage to slow down? I had to, because my legs filed a formal complaint at the ten-kilometre mark and refused to negotiate.",
+        "So what's the next goal now? A full marathon, although not until spring at the earliest, and only if my knee formally agrees.",
+        "That's how it always works. First you buy the expensive shoes, and then you slowly become the person who runs."
+      ]
+    },
+    {
+      "title": "The Rent Increase Letter",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Did you get the letter from the letting agency about the rent increase? Yes, eight percent, which is a lot of money when absolutely nothing in the flat has changed. What does our contract actually say about how much they can increase it? Once a year, although frustratingly it doesn't cap the amount they can demand. So we simply can't refuse it if they push? Not outright refuse, although we can formally challenge whether the increase is justified. Understandable. Should we get some independent advice before writing anything? The tenants' association runs free evening clinics, although you need to book a slot well in advance. Good plan. Let's write the letter together tonight, although I'll send the first draft for review. Send it over tonight, and I'll add the price data from the association's report.",
+      "segments": [
+        "Did you get the letter from the letting agency about the rent increase? Yes, eight percent, which is a lot of money when absolutely nothing in the flat has changed.",
+        "What does our contract actually say about how much they can increase it? Once a year, although frustratingly it doesn't cap the amount they can demand.",
+        "So we simply can't refuse it if they push? Not outright refuse, although we can formally challenge whether the increase is justified.",
+        "Understandable. Should we get some independent advice before writing anything? The tenants' association runs free evening clinics, although you need to book a slot well in advance.",
+        "Good plan. Let's write the letter together tonight, although I'll send the first draft for review. Send it over tonight, and I'll add the price data from the association's report."
+      ]
+    },
+    {
+      "title": "The Cooking Class Debrief",
+      "level": "B1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "So how was the Italian cooking class you kept talking about? You promised me dumplings. It was genuinely great, although I managed to make a complete and total mess of my dumplings. What exactly went wrong with them? The dough was far too wet, so everything stuck to my hands, the table, and briefly my sleeve. And the taste? Were they completely inedible? Actually delicious! Which genuinely surprised everyone at my station, including me most of all. Yes, although I now fully understand why absolutely nobody makes it at home on a busy weeknight. Did you take any notes to recreate it later? I will, although I'm inviting you over, because I'll need someone brave to eat the accidents. Deal. I'll bring the wine and a strong, forgiving stomach. Then we'll enrol together and die together. That's what real friendship is for.",
+      "segments": [
+        "So how was the Italian cooking class you kept talking about? You promised me dumplings. It was genuinely great, although I managed to make a complete and total mess of my dumplings.",
+        "What exactly went wrong with them? The dough was far too wet, so everything stuck to my hands, the table, and briefly my sleeve.",
+        "And the taste? Were they completely inedible? Actually delicious! Which genuinely surprised everyone at my station, including me most of all.",
+        "Yes, although I now fully understand why absolutely nobody makes it at home on a busy weeknight. Did you take any notes to recreate it later?",
+        "I will, although I'm inviting you over, because I'll need someone brave to eat the accidents. Deal. I'll bring the wine and a strong, forgiving stomach.",
+        "Then we'll enrol together and die together. That's what real friendship is for."
+      ]
+    },
+    {
+      "title": "The Panel on Automation",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 2,
+      "body": "Welcome. Our question tonight is whether automation is destroying work or simply relocating it. Historically, technology has always created more jobs than it eliminated, although the transition was rarely kind. That historical argument comforts me less than it should, because this wave is cognitive, not physical. If judgement itself can be automated, then the safe haven of skilled work is no longer safe. I'd push back on that. What's automated is the routine component of judgement, not the accountability. Accountability is precisely the problem, since it's the one thing nobody wants to be assigned to. Let's talk about distribution rather than disappearance. The productivity gains are real, although they're accruing to capital. Which is a policy failure, not a technological one. We chose not to tax the gains. We also chose not to retrain the displaced, which is the same choice wearing a different coat. Retraining is a slogan. What people need is income security during transitions, which is far more expensive. Then perhaps the honest conclusion is that automation isn't the threat; our social contract is. That's the most agreeable thing anyone has said tonight, although I suspect we agree more than we've admitted. We have about ten minutes for questions, and I'm told they're already written down.",
+      "segments": [
+        "Welcome. Our question tonight is whether automation is destroying work or simply relocating it. Historically, technology has always created more jobs than it eliminated, although the transition was rarely kind.",
+        "That historical argument comforts me less than it should, because this wave is cognitive, not physical. If judgement itself can be automated, then the safe haven of skilled work is no longer safe.",
+        "I'd push back on that. What's automated is the routine component of judgement, not the accountability. Accountability is precisely the problem, since it's the one thing nobody wants to be assigned to.",
+        "Let's talk about distribution rather than disappearance. The productivity gains are real, although they're accruing to capital. Which is a policy failure, not a technological one. We chose not to tax the gains.",
+        "We also chose not to retrain the displaced, which is the same choice wearing a different coat. Retraining is a slogan. What people need is income security during transitions, which is far more expensive.",
+        "Then perhaps the honest conclusion is that automation isn't the threat; our social contract is. That's the most agreeable thing anyone has said tonight, although I suspect we agree more than we've admitted.",
+        "We have about ten minutes for questions, and I'm told they're already written down."
+      ]
+    },
+    {
+      "title": "The Housing Crisis Interview",
+      "level": "B2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "You've argued that we have a planning crisis, not a housing shortage. Defend that. We build roughly half the homes we need, and the constraint isn't concrete, it's permission. But land in our cities is scarce, and infrastructure costs are enormous. Both are real, although neither explains why the homes we do build skew so heavily to the luxury end. Because that's where the margin is, and developers respond to margins. Correct, which is a choice we made through the tax system, not a law of nature. What would you change first? Land value capture. When public investment makes a site valuable, the public should see some of that. That sounds like confiscation to owners. It sounds like fairness to renters, which is now the majority of young adults. And planning reform? Simply build more? Build where people actually want to live, although that means accepting density in desirable areas. Which existing residents consistently resist. Yes, and that's the uncomfortable part. No policy survives contact with a garden view. So it's political will, not economics. It's always been political will. Economics tells us what's possible; politics tells us what we'll tolerate.",
+      "segments": [
+        "You've argued that we have a planning crisis, not a housing shortage. Defend that. We build roughly half the homes we need, and the constraint isn't concrete, it's permission.",
+        "But land in our cities is scarce, and infrastructure costs are enormous. Both are real, although neither explains why the homes we do build skew so heavily to the luxury end.",
+        "Because that's where the margin is, and developers respond to margins. Correct, which is a choice we made through the tax system, not a law of nature.",
+        "What would you change first? Land value capture. When public investment makes a site valuable, the public should see some of that.",
+        "That sounds like confiscation to owners. It sounds like fairness to renters, which is now the majority of young adults.",
+        "And planning reform? Simply build more? Build where people actually want to live, although that means accepting density in desirable areas.",
+        "Which existing residents consistently resist. Yes, and that's the uncomfortable part. No policy survives contact with a garden view.",
+        "So it's political will, not economics. It's always been political will. Economics tells us what's possible; politics tells us what we'll tolerate."
+      ]
+    },
+    {
+      "title": "The Ethics of Persuasive Design",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Tonight we're discussing whether persuasive design is manipulation, and I'll start by saying yes. I'd resist that framing. People choose to open the app; we don't hold their thumbs. But the interface isn't neutral. Every default is an argument, and the arguments all point one way. That's true of any environment, including a city street or a supermarket aisle. Except the supermarket isn't measuring your hesitation and rewriting the aisle by Thursday. Fair, although I'd note that adults are not helpless. Literacy and intention are real capacities. Literacy is a nice word for an unequal fight between one brain and a thousand engineers. The same argument was made about books, then radio, then television, and society adapted. Adapted slowly and painfully, with regulation arriving after the damage. That's the pattern we're repeating. So what would you actually regulate? The parts that exploit vulnerability: autoplay for children, streaks that punish absence, dark patterns in refunds. That's a narrower list than most people expect. It is, although narrow rules that get enforced beat sweeping principles that get ignored. Which brings us to enforcement, and I'm told our next question is about budgets.",
+      "segments": [
+        "Tonight we're discussing whether persuasive design is manipulation, and I'll start by saying yes. I'd resist that framing. People choose to open the app; we don't hold their thumbs.",
+        "But the interface isn't neutral. Every default is an argument, and the arguments all point one way. That's true of any environment, including a city street or a supermarket aisle.",
+        "Except the supermarket isn't measuring your hesitation and rewriting the aisle by Thursday. Fair, although I'd note that adults are not helpless. Literacy and intention are real capacities.",
+        "Literacy is a nice word for an unequal fight between one brain and a thousand engineers. The same argument was made about books, then radio, then television, and society adapted.",
+        "Adapted slowly and painfully, with regulation arriving after the damage. That's the pattern we're repeating. So what would you actually regulate?",
+        "The parts that exploit vulnerability: autoplay for children, streaks that punish absence, dark patterns in refunds. That's a narrower list than most people expect.",
+        "It is, although narrow rules that get enforced beat sweeping principles that get ignored. Which brings us to enforcement, and I'm told our next question is about budgets."
+      ]
+    },
+    {
+      "title": "The University Lecture on Trust",
+      "level": "B2",
+      "topic": "bildung",
+      "est_minutes": 2,
+      "body": "Today I want to examine why trust has become the central economic variable of our decade. Trust reduces transaction costs. Where it's abundant, contracts are short and cooperation is cheap. Where it's scarce, everything is audited, insured, and litigated, and the bill lands on everyone. The puzzle is that material living standards have risen while measured trust has fallen. Partly that's because institutions grew complex faster than our ability to hold them accountable. And partly because we can now see institutional failure in real time, which feels like more failure. It may be more failure. Or it may be better reporting of the same failure. Distinguishing those two matters enormously, since the remedies are opposite: reform versus reassurance. Consider expertise. We depend on judgements we cannot verify, from bridges to vaccines. Deference to expertise collapsed when experts were visibly wrong, although they were also visibly silenced. The honest position is that expertise works and is fallible, which is a harder message to sell. It's the only message that survives contact with reality, though. Trust without verification is credulity. Next week we'll look at how digital platforms have restructured who gets believed, and at what price.",
+      "segments": [
+        "Today I want to examine why trust has become the central economic variable of our decade. Trust reduces transaction costs. Where it's abundant, contracts are short and cooperation is cheap.",
+        "Where it's scarce, everything is audited, insured, and litigated, and the bill lands on everyone. The puzzle is that material living standards have risen while measured trust has fallen.",
+        "Partly that's because institutions grew complex faster than our ability to hold them accountable. And partly because we can now see institutional failure in real time, which feels like more failure.",
+        "It may be more failure. Or it may be better reporting of the same failure. Distinguishing those two matters enormously, since the remedies are opposite: reform versus reassurance.",
+        "Consider expertise. We depend on judgements we cannot verify, from bridges to vaccines. Deference to expertise collapsed when experts were visibly wrong, although they were also visibly silenced.",
+        "The honest position is that expertise works and is fallible, which is a harder message to sell. It's the only message that survives contact with reality, though. Trust without verification is credulity.",
+        "Next week we'll look at how digital platforms have restructured who gets believed, and at what price."
+      ]
+    },
+    {
+      "title": "The Climate Policy Debate",
+      "level": "B2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Our motion is that carbon pricing is the single most effective climate instrument. I support it. Price the externality and ten thousand decisions adjust overnight, without ten thousand regulations. Except the public rejects carbon taxes when the revenue disappears into general funds. Which is a design flaw, not a conceptual one. Dividend it back, visibly. A dividend helps households, although it does little for heavy industry, which simply relocates. Border adjustments handle that, although they require trade partners who are willing to cooperate. And what about the people whose jobs depend on the activities you're pricing out of existence? Just transition funding, although I'll concede it's been underfunded and badly delivered. That concession is doing a lot of work. Delivery is the whole game. Then let's agree on the principle and argue about implementation, which is where the fights belong. The problem is that implementation failures become political facts, and principles lose to facts. Which is precisely why we should pilot, evaluate, and publish results rather than legislate slogans. A rare moment of agreement. Let's take it to the floor before it spoils.",
+      "segments": [
+        "Our motion is that carbon pricing is the single most effective climate instrument. I support it. Price the externality and ten thousand decisions adjust overnight, without ten thousand regulations.",
+        "Except the public rejects carbon taxes when the revenue disappears into general funds. Which is a design flaw, not a conceptual one. Dividend it back, visibly.",
+        "A dividend helps households, although it does little for heavy industry, which simply relocates. Border adjustments handle that, although they require trade partners who are willing to cooperate.",
+        "And what about the people whose jobs depend on the activities you're pricing out of existence? Just transition funding, although I'll concede it's been underfunded and badly delivered.",
+        "That concession is doing a lot of work. Delivery is the whole game. Then let's agree on the principle and argue about implementation, which is where the fights belong.",
+        "The problem is that implementation failures become political facts, and principles lose to facts. Which is precisely why we should pilot, evaluate, and publish results rather than legislate slogans.",
+        "A rare moment of agreement. Let's take it to the floor before it spoils."
+      ]
+    },
+    {
+      "title": "The Cities Exhibition Guide",
+      "level": "B2",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Welcome to the exhibition on cities, which asks how urban life was invented and reinvented. You'll begin in the medieval quarter, where the street plan itself is the exhibit. Notice that the market square sits at the intersection of two trade routes, which was never accidental. The guildhalls opposite were built to display wealth, although their facades also functioned as advertising. Move now into the industrial room, where the smell of coal has been reconstructed, controversially. Critics called it theatrical, although visitors consistently report that it's the exhibit they remember. The next section examines the sanitary revolution, without which no modern city could exist. Clean water and sewers saved more lives than any monument in this building, although no statue commemorates a drain. You'll then encounter the automobile, presented here as both liberator and demolisher, deliberately without resolution. The final room is given over to the present, and it is largely empty by design. The empty space is yours to fill, and there are cards and a wall at the end. Please leave your proposals there, as the exhibition is updated annually with the best of them.",
+      "segments": [
+        "Welcome to the exhibition on cities, which asks how urban life was invented and reinvented. You'll begin in the medieval quarter, where the street plan itself is the exhibit.",
+        "Notice that the market square sits at the intersection of two trade routes, which was never accidental. The guildhalls opposite were built to display wealth, although their facades also functioned as advertising.",
+        "Move now into the industrial room, where the smell of coal has been reconstructed, controversially. Critics called it theatrical, although visitors consistently report that it's the exhibit they remember.",
+        "The next section examines the sanitary revolution, without which no modern city could exist. Clean water and sewers saved more lives than any monument in this building, although no statue commemorates a drain.",
+        "You'll then encounter the automobile, presented here as both liberator and demolisher, deliberately without resolution. The final room is given over to the present, and it is largely empty by design.",
+        "The empty space is yours to fill, and there are cards and a wall at the end. Please leave your proposals there, as the exhibition is updated annually with the best of them."
+      ]
+    },
+    {
+      "title": "The Doctor's Consultation",
+      "level": "B2",
+      "topic": "gesundheit",
+      "est_minutes": 2,
+      "body": "I've reviewed your results, and I want to walk you through them carefully. Your cholesterol is elevated, although the ratio matters more than the total, and yours is reasonable. What's the actual risk here? Over ten years, roughly one in twenty, which sounds abstract, so let's make it concrete. Meaning that with your family history, the number is closer to one in twelve. That's more than I expected. What would move it? Two things with large effects: exercise and diet, although not the kind of diet you're thinking of. Not cutting out entire food groups? No. Mediterranean pattern, more fibre, less processed meat. Boring, effective, sustainable. And medication? I'd like to try three months of lifestyle change first, although I won't insist if you'd rather not. I'd rather try. What's the threshold for reconsidering? If the numbers haven't moved by then, we'll talk about statins, and I'll be honest about the trade-offs. What about the chest tightness I mentioned? That's worth an ECG, although I expect it to be normal given your age and history. And if I feel it during exercise? Stop, and call us the same day, although don't panic first. Understood. Three months, then we review? Three months, and bring a food diary, although be honest in it, not flattering.",
+      "segments": [
+        "I've reviewed your results, and I want to walk you through them carefully. Your cholesterol is elevated, although the ratio matters more than the total, and yours is reasonable.",
+        "What's the actual risk here? Over ten years, roughly one in twenty, which sounds abstract, so let's make it concrete. Meaning that with your family history, the number is closer to one in twelve.",
+        "That's more than I expected. What would move it? Two things with large effects: exercise and diet, although not the kind of diet you're thinking of.",
+        "Not cutting out entire food groups? No. Mediterranean pattern, more fibre, less processed meat. Boring, effective, sustainable. And medication?",
+        "I'd like to try three months of lifestyle change first, although I won't insist if you'd rather not. I'd rather try. What's the threshold for reconsidering?",
+        "If the numbers haven't moved by then, we'll talk about statins, and I'll be honest about the trade-offs. What about the chest tightness I mentioned?",
+        "That's worth an ECG, although I expect it to be normal given your age and history. And if I feel it during exercise? Stop, and call us the same day, although don't panic first.",
+        "Understood. Three months, then we review? Three months, and bring a food diary, although be honest in it, not flattering."
+      ]
+    },
+    {
+      "title": "The Job Negotiation",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 2,
+      "body": "Thank you for coming in. We're pleased to offer you the role. Thank you. I'm genuinely interested, although I'd like to discuss the package before accepting. Of course. What are your thoughts? The base is below what I'm currently earning, although the scope is broader than I expected. We positioned it at the midpoint of the band, which is standard for external hires. Understood, although the band midpoint doesn't reflect the responsibilities we just discussed. Which are? Managing two teams and the vendor relationship, which the advert listed as a future phase. That's a fair point, although the phase two budget isn't approved yet. Then perhaps a review at six months tied to those responsibilities, in writing. We could do that, although I'd want the review criteria agreed now, not later. Agreed. What else is on your mind? The equity, which I understand is modest at this level, although the vesting schedule concerns me. It's four years with a one-year cliff, which is standard here. Standard, although I'd like to discuss the start date, given what I'm leaving behind. A guaranteed bonus in year one, although I'm open on the structure. Let me take that to the board and come back to you by Friday.",
+      "segments": [
+        "Thank you for coming in. We're pleased to offer you the role. Thank you. I'm genuinely interested, although I'd like to discuss the package before accepting.",
+        "Of course. What are your thoughts? The base is below what I'm currently earning, although the scope is broader than I expected.",
+        "We positioned it at the midpoint of the band, which is standard for external hires. Understood, although the band midpoint doesn't reflect the responsibilities we just discussed.",
+        "Which are? Managing two teams and the vendor relationship, which the advert listed as a future phase. That's a fair point, although the phase two budget isn't approved yet.",
+        "Then perhaps a review at six months tied to those responsibilities, in writing. We could do that, although I'd want the review criteria agreed now, not later. Agreed.",
+        "What else is on your mind? The equity, which I understand is modest at this level, although the vesting schedule concerns me.",
+        "It's four years with a one-year cliff, which is standard here. Standard, although I'd like to discuss the start date, given what I'm leaving behind.",
+        "A guaranteed bonus in year one, although I'm open on the structure. Let me take that to the board and come back to you by Friday."
+      ]
+    },
+    {
+      "title": "The Book Club on Memory",
+      "level": "B2",
+      "topic": "hobby",
+      "est_minutes": 2,
+      "body": "This novel is really about how unreliable memory is, and I think the narrator is lying. Lying implies intent. I'd say she's editing, which is something we all do. But the editing is self-serving, which is exactly what makes it a lie. If she believed it, is it a lie? That's the question the book keeps asking. I finished it convinced she invented the ending, although I can't prove it from the text. Which is rather the point. The author refuses to be the arbiter of truth. I found that frustrating. I wanted to be told. Didn't we all. But being told would have made it a mystery novel instead of this. What did everyone make of the structure? The chapters run backwards. Brilliant, although it made me reread the opening three times. That's the effect. Knowing the ending changes what you think you remember from the beginning. Which is precisely how real memory works, according to the psychology. So the form is the argument. The book isn't about memory, it performs it. Well said, although I'd add that it's also about forgiveness. Which requires a fixed version of events, and the narrator can't have forgiveness because she won't commit to a version. Next month we're reading something shorter.",
+      "segments": [
+        "This novel is really about how unreliable memory is, and I think the narrator is lying. Lying implies intent. I'd say she's editing, which is something we all do.",
+        "But the editing is self-serving, which is exactly what makes it a lie. If she believed it, is it a lie? That's the question the book keeps asking.",
+        "I finished it convinced she invented the ending, although I can't prove it from the text. Which is rather the point. The author refuses to be the arbiter of truth.",
+        "I found that frustrating. I wanted to be told. Didn't we all. But being told would have made it a mystery novel instead of this.",
+        "What did everyone make of the structure? The chapters run backwards. Brilliant, although it made me reread the opening three times.",
+        "That's the effect. Knowing the ending changes what you think you remember from the beginning. Which is precisely how real memory works, according to the psychology.",
+        "So the form is the argument. The book isn't about memory, it performs it. Well said, although I'd add that it's also about forgiveness.",
+        "Which requires a fixed version of events, and the narrator can't have forgiveness because she won't commit to a version. Next month we're reading something shorter."
+      ]
+    },
+    {
+      "title": "The Travel Podcast",
+      "level": "B2",
+      "topic": "reisen",
+      "est_minutes": 2,
+      "body": "Today we're asking whether tourism can be sustainable, or whether that's a contradiction in terms. My starting position is that any activity with a flight attached has a problem it can't solve. That's a strong claim. Tourism employs one in ten people in some countries. Which is exactly why the answer isn't to stop travelling, it's to travel differently. Meaning fewer, longer, closer, and with money that stays local. And measured properly. Most sustainability claims are marketing, although a few are audited. What would you tell a listener who wants to travel this year? Pick one trip, take the train where you can, and stay a week rather than a weekend. That's a lifestyle change, not a booking hack. Tourism is a lifestyle. That's rather the issue. What about the destinations that are being loved to death? Pay the tourist tax, respect the closures, and don't visit places that have asked you not to. That last one will be unpopular. It should be unpopular. Popular isn't the criterion for being right. Our final question: is there a version of tourism that actively helps? Yes, although it's slow, unglamorous, and rarely makes anyone's feed, which tells you something.",
+      "segments": [
+        "Today we're asking whether tourism can be sustainable, or whether that's a contradiction in terms. My starting position is that any activity with a flight attached has a problem it can't solve.",
+        "That's a strong claim. Tourism employs one in ten people in some countries. Which is exactly why the answer isn't to stop travelling, it's to travel differently.",
+        "Meaning fewer, longer, closer, and with money that stays local. And measured properly. Most sustainability claims are marketing, although a few are audited.",
+        "What would you tell a listener who wants to travel this year? Pick one trip, take the train where you can, and stay a week rather than a weekend.",
+        "That's a lifestyle change, not a booking hack. Tourism is a lifestyle. That's rather the issue.",
+        "What about the destinations that are being loved to death? Pay the tourist tax, respect the closures, and don't visit places that have asked you not to.",
+        "That last one will be unpopular. It should be unpopular. Popular isn't the criterion for being right.",
+        "Our final question: is there a version of tourism that actively helps? Yes, although it's slow, unglamorous, and rarely makes anyone's feed, which tells you something."
+      ]
+    },
+    {
+      "title": "The Retirement Planning Talk",
+      "level": "B2",
+      "topic": "arbeit",
+      "est_minutes": 2,
+      "body": "Thanks for coming. Tonight is about retirement, which most of you would prefer to think about later. That's the single most expensive sentence in personal finance, so let's start with the arithmetic. You'll need roughly two-thirds of your working income, although that's a rule of thumb, not a promise. Where does the two-thirds come from? It assumes you stop commuting, stop saving for retirement, and your mortgage is likely paid off. And if the mortgage isn't paid off? Then the number rises, which is why the housing decision is a retirement decision. What about the state pension? It exists, although it's designed as a floor, not a ceiling, and it won't move with your lifestyle. So the gap is ours to fill, and the earlier the cheaper. Compounding is generous in your thirties and rude in your fifties, and there's no negotiating with either. What's the most common mistake you see? People optimise the tax wrapper and ignore the fees inside it. Fees compound too, although nobody notices them because they're deducted quietly. Any single piece of advice? Set a contribution you'll never reduce, and stop checking it quarterly. Because you'll trade long-term returns for short-term reassurance. Questions at the back, and yes, there'll be a follow-up session in the spring.",
+      "segments": [
+        "Thanks for coming. Tonight is about retirement, which most of you would prefer to think about later. That's the single most expensive sentence in personal finance, so let's start with the arithmetic.",
+        "You'll need roughly two-thirds of your working income, although that's a rule of thumb, not a promise. Where does the two-thirds come from?",
+        "It assumes you stop commuting, stop saving for retirement, and your mortgage is likely paid off. And if the mortgage isn't paid off? Then the number rises, which is why the housing decision is a retirement decision.",
+        "What about the state pension? It exists, although it's designed as a floor, not a ceiling, and it won't move with your lifestyle.",
+        "So the gap is ours to fill, and the earlier the cheaper. Compounding is generous in your thirties and rude in your fifties, and there's no negotiating with either.",
+        "What's the most common mistake you see? People optimise the tax wrapper and ignore the fees inside it. Fees compound too, although nobody notices them because they're deducted quietly.",
+        "Any single piece of advice? Set a contribution you'll never reduce, and stop checking it quarterly. Because you'll trade long-term returns for short-term reassurance.",
+        "Questions at the back, and yes, there'll be a follow-up session in the spring."
+      ]
+    },
+    {
+      "title": "The Philosophy of Language",
+      "level": "B2",
+      "topic": "bildung",
+      "est_minutes": 2,
+      "body": "Today's question is whether language shapes thought or merely records it. The strong claim, that language determines thought, has been largely abandoned, and rightly so. But the weak claim survives: the categories available to you make some thoughts easier than others. Speakers of languages with precise colour terms discriminate faster, although they aren't incapable without them. That's a difference in habit, not capacity, which is a much more modest finding. Modest, though not trivial. Habit shapes attention, and attention shapes what you notice over a lifetime. Consider legal language. Concepts like negligence don't exist until a system needs them. Exactly. Some concepts are inventions, and you can't think them without the tool. Which raises the question of what we can't think for lack of a word. Probably very little, although we can't be sure, which is the uncomfortable part. Isn't that unfalsifiable? Somewhat, although the interesting work is on the boundary where it can be tested. Where's that? Translation failures. When a concept resists translation, you've found a genuine difference in the toolkit. So translation is the laboratory. A rather messy one, full of compromise. Next week we'll read the classic critique, and it is not kind.",
+      "segments": [
+        "Today's question is whether language shapes thought or merely records it. The strong claim, that language determines thought, has been largely abandoned, and rightly so.",
+        "But the weak claim survives: the categories available to you make some thoughts easier than others. Speakers of languages with precise colour terms discriminate faster, although they aren't incapable without them.",
+        "That's a difference in habit, not capacity, which is a much more modest finding. Modest, though not trivial. Habit shapes attention, and attention shapes what you notice over a lifetime.",
+        "Consider legal language. Concepts like negligence don't exist until a system needs them. Exactly. Some concepts are inventions, and you can't think them without the tool.",
+        "Which raises the question of what we can't think for lack of a word. Probably very little, although we can't be sure, which is the uncomfortable part.",
+        "Isn't that unfalsifiable? Somewhat, although the interesting work is on the boundary where it can be tested. Where's that? Translation failures.",
+        "When a concept resists translation, you've found a genuine difference in the toolkit. So translation is the laboratory. A rather messy one, full of compromise. Next week we'll read the classic critique, and it is not kind."
+      ]
+    }
+  ]
+}

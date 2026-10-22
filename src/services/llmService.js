@@ -86,7 +86,7 @@ export function getLLMProvider() {
  * Gibt die aktive LLM-Konfiguration für die Anzeige in den Einstellungen zurück.
  *
  * Die maßgebliche Konfiguration liegt im Backend (LLM_BASE_URL / LLM_API_KEY /
- * LLM_MODEL) und wird dort über GET /api/llm/provider abgefragt. Nur wenn das
+ * LLM_MODEL) und wird dort über GET /api/v2/llm/provider abgefragt. Nur wenn das
  * Backend nicht erreichbar ist, wird auf die Frontend-Build-Variablen
  * (VITE_LLM_*) zurückgegriffen.
  */

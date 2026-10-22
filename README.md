@@ -1,128 +1,77 @@
-# Refresh Your English 🇬🇧
+# Refresh Your English 🌍
 
-Eine moderne Vokabel-Trainings-App mit React und Tailwind CSS, die LLM-basierte Module für effektives Englischlernen bietet.
+Mehrsprachige Lern-App (React/Vite + Express/SQLite): sprachneutrale Engine
+plus deklarative **Language Packs** unter `content/packs/<code>/`.
+Aktive Packs: **Englisch (en)** und **Italienisch (it)**.
 
-## 🚀 Features
+Lernweg: Onboarding (Zielsprache, Niveau, Ziel) → adaptiver Placement-Test
+(6 Skills, IRT-artige Theta-Schätzung) → tägliche Session aus
+Input (Lesen/Hören) · Grammatik-Fokus · Produktion (Schreiben/Sprechen) ·
+Can-do-Check. Dazu FSRS-SRS-Review, Reader mit Wort-Abdeckung, Fortschritts-Dashboard.
 
-### Modul 1: Übersetzungsübung
-- Übersetze deutsche Sätze ins Englische
-- Erhalte KI-basiertes Feedback zu deinen Übersetzungen
-- Detaillierte Bewertung auf einer Skala von 1-10
-- Verbesserungsvorschläge für natürlichere Übersetzungen
-- Fortschrittsanzeige und Punktesystem
-
-### Modul 2: Action Modus
-- Zeitbasiertes Vokabeltraining mit Countdown
-- Drei Schwierigkeitsstufen (Einfach/Normal/Schwer)
-- Punktesystem mit Zeit- und Serien-Boni
-- Trainiere deinen aktiven Sprachschatz unter Zeitdruck
-- Echtzeit-Statistiken und Genauigkeitsmessung
-
-## 🛠️ Technologie-Stack
-
-- **React** - UI-Framework
-- **Tailwind CSS** - Styling
-- **Vite** - Build-Tool
-- **LLM-Integration** - KI-basierte Bewertung über eine frei konfigurierbare OpenAI-kompatible Schnittstelle
-
-## 📦 Installation
+## 🚀 Schnellstart
 
 ```bash
-# Dependencies installieren
 npm install
+cd backend && npm install
 
-# Entwicklungsserver starten
+# 1. Migrationen + Content seeden (en und it)
+node backend/src/scripts/migrate-v2.js
+node backend/src/scripts/seed-vocab.js en it
+node backend/src/scripts/seed-reader.js en it
+node backend/src/scripts/seed-listening.js en it
+
+# 2. Backend (Port 3001) – JWT_SECRET ist Pflicht
+cd backend && JWT_SECRET=devsecret node src/server.js
+
+# 3. Frontend (Port 5173) – vom Repo-Root
 npm run dev
-
-# Production Build erstellen
-npm run build
 ```
 
-## 🔧 LLM-Integration
+Tests: `cd backend && npx vitest run` · Build: `npm run build`
 
-Die KI-Funktionen laufen über eine **frei konfigurierbare OpenAI-kompatible Schnittstelle**
-(Base URL + API-Key + Modellname). Damit lassen sich Mistral, OpenAI oder lokale Modelle nutzen.
+## 🧩 Architektur
 
-1. Erstelle eine `.env` Datei im Root-Verzeichnis:
-```env
-VITE_LLM_BASE_URL=https://api.mistral.ai/v1
-VITE_LLM_API_KEY=your_api_key
-VITE_LLM_MODEL=mistral-large-latest
-```
+- **Engine** (`backend/src/services`, `src/features`): kennt keine Sprach-Codes,
+  sondern nur Pack-Inhalte. Alles Sprachspezifische liegt im Pack.
+- **Language Pack** (`content/packs/<code>/`):
+  `manifest.json`, `vocab/seed.json`, `grammar/<code>_cefr.json`,
+  `reader/seed.json`, `listening/seed.json`, `output/prompts.json`,
+  `curriculum/units_*.json`, `placement/items.json`.
+- **API:** ausschließlich `/api/v2/*` (+ `/api/auth`). v1 wurde mit dem
+  Cut-over entfernt – Details und Rollback in [docs/CUTOVER-V2.md](docs/CUTOVER-V2.md).
+- **Neue Sprache:** Pack-Verzeichnis nach Vorbild von `content/packs/it/`
+  anlegen, seeden, fertig – kein Engine-Code nötig.
 
-Das Backend nutzt dieselbe Konfiguration über `LLM_BASE_URL`, `LLM_API_KEY` und `LLM_MODEL`.
+## 🔧 Konfiguration
 
-### Unterstützte LLM-Anbieter
-- Mistral (`https://api.mistral.ai/v1`)
-- OpenAI (`https://api.openai.com/v1`)
-- Lokale Modelle (Ollama `http://localhost:11434/v1`, LM Studio, vLLM)
-- Jede andere OpenAI-kompatible API
+Backend-ENV: `JWT_SECRET` (Pflicht), `DB_PATH` (Standard `backend/data/vocabulary.db`),
+`PACKS_DIR` (Standard `content/packs`), `LLM_BASE_URL` / `LLM_API_KEY` / `LLM_MODEL`
+(OpenAI-kompatibel: Mistral, OpenAI, Ollama, vLLM …).
 
-### Sprachfunktionen
-Speech-to-Text und Text-to-Speech laufen ausschließlich über die **Browser Web Speech API**
-und benötigen keine Konfiguration.
+Frontend-ENV: `VITE_API_URL` (Standard `http://localhost:3001/api`).
 
-## 🎯 Verwendung
-
-1. Starte die App mit `npm run dev`
-2. Wähle ein Trainingsmodul:
-   - **Übersetzungsübung**: Für detailliertes Feedback und Verbesserungen
-   - **Action Modus**: Für schnelles Vokabeltraining unter Zeitdruck
-3. Verbessere deinen englischen Wortschatz!
+Speech-to-Text und Text-to-Speech laufen über die Browser **Web Speech API**
+(konfigurationsfrei).
 
 ## 📚 Projektstruktur
 
 ```
+content/packs/<code>/   # Language Packs (einzige Content-Quelle)
+backend/src/
+├── languages/          # Pack-Registry + Schema
+├── llm/                # Provider, Prompts, Task-Runner
+├── routes/v2/          # API v2 (languages, placement, vocab, reader,
+│                       #   grammar, writing, speaking, session, progress, llm)
+├── services/           # Engine: FSRS, Placement, Composer, Reader, …
+└── scripts/            # migrate-v2, seed-*, gen-*, drop-v1-tables
 src/
-├── components/
-│   ├── TranslationModule.jsx    # Übersetzungsübung
-│   └── ActionModule.jsx          # Action Modus
-├── services/
-│   └── llmService.js             # LLM-API Integration
-├── App.jsx                       # Hauptkomponente
-└── index.css                     # Tailwind Styles
+├── core/               # Auth-Context, Sprach-Kontext, v2Client
+├── features/           # onboarding, placement, session, review, reader,
+│                       #   grammar, writing, speaking, progress
+└── components/         # Auth, Settings, LogViewer, TTS/STT
 ```
-
-## 🎨 Features im Detail
-
-### Übersetzungsmodul
-- Beispielsätze mit unterschiedlichen Schwierigkeitsgraden
-- KI-Bewertung mit detailliertem Feedback
-- Verbesserungsvorschläge
-- Musterlösung zur Überprüfung
-- Fortschrittsverfolgung
-
-### Action Modus
-- Countdown-Timer (5-15 Sekunden je nach Schwierigkeit)
-- Punktesystem mit Boni
-- Serien-System für konsistente richtige Antworten
-- Genauigkeits-Statistiken
-- Visuelle Fortschrittsanzeige
-
-## 🚀 Zukünftige Erweiterungen
-
-- [ ] Benutzer-Authentifizierung
-- [ ] Persistente Fortschrittsspeicherung
-- [ ] Erweiterte Vokabellisten und Kategorien
-- [ ] Sprachausgabe für Aussprachetraining
-- [ ] Multiplayer-Modus
-- [ ] Eigene Vokabellisten erstellen
-- [ ] Exportfunktion für Lernstatistiken
 
 ## 📝 Lizenz
 
 MIT License
-
-## 🤝 Contributing
-
-Beiträge sind willkommen! Bitte erstelle einen Pull Request oder öffne ein Issue für Vorschläge und Verbesserungen.
-
----
-
-Made with ❤️ for English learners
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

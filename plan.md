@@ -529,10 +529,14 @@ Annahmen: 1 Entwickler + KI-Unterstützung, Teilzeit ~20–25 h/Woche. Aufwände
 - Wortschatz auf 3.549 Lemmata erweitert (A1:1071, A2:852, B1:1041, B2:393, C1:192), inkl. B2/C1-Liste aus Awesome-Italian.
 - **Fertig, wenn:** B1→B2-Pfad existiert; Dashboard zeigt Skills + Fehlerprofil; Session Composer reagiert auf Fehler. ✅ (verifiziert: 149 Tests, Build, E2E)
 
-### Phase 8 – Cut-over & Aufräumen (8–12 PT)
-- v1 entfernen, Alt-Tabellen löschen, doppelte LLM-Logik löschen.
-- Doku, Betrieb, Backups, Monitoring.
-- **Fertig, wenn:** nur noch v2 aktiv, Englisch- und Italienisch-Pfad stabil, Rollback dokumentiert.
+### Phase 8 – Cut-over & Aufräumen (8–12 PT) ✅ umgesetzt
+- **Englisch zuerst portiert** (Nutzer-Vorgabe: Englisch-Pfad muss stabil bleiben), dann v1 entfernt:
+  - `content/packs/en/`: vocab/seed.json (1600 Lemmata: kuratierter A1/A2-Kern + 1529 portierte v1-B2-Wörter), grammar/en_cefr.json (24 Punkte A1–B2, 192 Übungen), reader/seed.json (120 Texte), listening/seed.json (70 Hörtexte mit Segments), output/prompts.json (200 Prompts), curriculum/units_a1_b2.json (38 Units A1:12/A2:12/B1:6/B2:8), placement/items.json (48 adaptive Items, 6 Skills).
+  - Seeding: `node src/scripts/seed-vocab.js en`, `seed-reader.js en`, `seed-listening.js en`.
+- **v1 entfernt:** Backend-Routen vocabulary/progress/flashcards/gamification/action-mode/llm + zugehörige Controller gelöscht; `/api/llm/provider` als `GET /api/v2/llm/provider` portiert; `auth` bleibt. Frontend: Übersetzung/Action/Dialog/Trainer/Bibliothek/Statistiken/Gamification-Banner gelöscht; `apiService` auf Auth + LLM-Info reduziert. Feature-Flag `MULTILANG_ENGINE` aufgehoben – v2 ist jetzt die einzige API.
+- **Alt-Tabellen:** `node src/scripts/drop-v1-tables.js --yes` (Trockenlauf ohne Flag; erst nach Backup ausführen).
+- **Rollback:** siehe [docs/CUTOVER-V2.md](docs/CUTOVER-V2.md).
+- **Fertig, wenn:** nur noch v2 aktiv, Englisch- und Italienisch-Pfad stabil, Rollback dokumentiert. ✅ (verifiziert: 149 Backend-Tests, Frontend-Build, E2E für en + it über Placement/Session/Reader/Grammatik/Vokabeln)
 
 **Gesamt:** ca. 140–190 PT Code/Content-Tooling + 30–45 PT Content-Review. Bei 20–25 h/Woche realistisch **9–14 Monate** bis B1-fähigem Italienisch-Pfad, B2 danach.
 

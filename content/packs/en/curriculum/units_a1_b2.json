@@ -1,0 +1,1395 @@
+{
+  "lang": "en",
+  "version": "1.0.0",
+  "units": [
+    {
+      "id": "en-a1-u01",
+      "level": "A1",
+      "order": 1,
+      "theme": "Begrüßung & Vorstellung",
+      "goal": "Sich begrüßen und mit Namen vorstellen",
+      "input": {
+        "reading": [
+          "My Best Friend"
+        ],
+        "listening": [
+          "Meeting at the Bus Stop"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-to-be"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-001-alltag"
+        ],
+        "speaking": [
+          "a1-speaking-001-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann jemanden begrüßen und mich vorstellen",
+          "Kann meinen Namen und mein Alter nennen",
+          "Kann die Frage „How are you?“ beantworten"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u02",
+      "level": "A1",
+      "order": 2,
+      "theme": "Im Café bestellen",
+      "goal": "Getränke und Essen bestellen und bezahlen",
+      "input": {
+        "reading": [
+          "Pizza Night"
+        ],
+        "listening": [
+          "Ordering Lunch"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-articles",
+          "en-plurals"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-004-essen"
+        ],
+        "speaking": [
+          "a1-speaking-004-essen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein Gericht oder Getränk bestellen",
+          "Kann nach dem Preis fragen",
+          "Kann höflich mit „please“ und „thank you“ bestellen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u03",
+      "level": "A1",
+      "order": 3,
+      "theme": "Über meine Familie sprechen",
+      "goal": "Familienmitglieder vorstellen und beschreiben",
+      "input": {
+        "reading": [
+          "My Family"
+        ],
+        "listening": [
+          "Family Dinner"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-possessives"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-005-familie"
+        ],
+        "speaking": [
+          "a1-speaking-005-familie"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann meine Familie vorstellen",
+          "Kann Alter und Beruf nennen",
+          "Kann Possessivpronomen (my, his, her) benutzen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u04",
+      "level": "A1",
+      "order": 4,
+      "theme": "In der Stadt unterwegs",
+      "goal": "Nach dem Weg fragen und Orte benennen",
+      "input": {
+        "reading": [
+          "My Street"
+        ],
+        "listening": [
+          "Asking for Directions"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-there-is",
+          "en-articles"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-009-stadt"
+        ],
+        "speaking": [
+          "a1-speaking-009-stadt"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann nach dem Weg fragen",
+          "Kann einfache Wegbeschreibung verstehen",
+          "Kann Orte in der Stadt benennen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u05",
+      "level": "A1",
+      "order": 5,
+      "theme": "Schule und Lernen",
+      "goal": "Über den Schulalltag sprechen und im Unterricht reagieren",
+      "input": {
+        "reading": [
+          "English Class"
+        ],
+        "listening": [
+          "In the Classroom"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-003-bildung"
+        ],
+        "speaking": [
+          "a1-speaking-003-bildung"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Schulfächer und Gegenstände benennen",
+          "Kann einfache Anweisungen im Unterricht verstehen",
+          "Kann über meinen Schulalltag sprechen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u06",
+      "level": "A1",
+      "order": 6,
+      "theme": "Einkaufen im Alltag",
+      "goal": "Im Geschäft einkaufen und Preise verstehen",
+      "input": {
+        "reading": [
+          "In the Supermarket"
+        ],
+        "listening": [
+          "Buying Fruit"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple",
+          "en-plurals"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-011-alltag"
+        ],
+        "speaking": [
+          "a1-speaking-011-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann im Geschäft nach Produkten fragen",
+          "Kann Preise und Mengen verstehen",
+          "Kann eine einfache Einkaufsliste verstehen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u07",
+      "level": "A1",
+      "order": 7,
+      "theme": "Wetter und Jahreszeiten",
+      "goal": "Über das Wetter und die Jahreszeiten sprechen",
+      "input": {
+        "reading": [
+          "Rainy Days"
+        ],
+        "listening": [
+          "Weather Talk"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-010-wetter"
+        ],
+        "speaking": [
+          "a1-speaking-010-wetter"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann das Wetter beschreiben",
+          "Kann sagen, welche Kleidung ich bei Wetter trage",
+          "Kann einfache Wetterfragen verstehen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u08",
+      "level": "A1",
+      "order": 8,
+      "theme": "Freizeit und Hobbys",
+      "goal": "Über Hobbys und Wochenendpläne sprechen",
+      "input": {
+        "reading": [
+          "My Bike"
+        ],
+        "listening": [
+          "Weekend Plans"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple",
+          "en-possessives"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-007-hobby"
+        ],
+        "speaking": [
+          "a1-speaking-007-hobby"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann meine Hobbys beschreiben",
+          "Kann Verabredungen für das Wochenende verstehen",
+          "Kann sagen, was ich gern mache"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u09",
+      "level": "A1",
+      "order": 9,
+      "theme": "Beim Arzt",
+      "goal": "Symptome beschreiben und Ratschläge verstehen",
+      "input": {
+        "reading": [
+          "Feeling Better"
+        ],
+        "listening": [
+          "At the Doctor's"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-006-gesundheit"
+        ],
+        "speaking": [
+          "a1-speaking-006-gesundheit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann einfache Symptome beschreiben",
+          "Kann einfache Anweisungen des Arztes verstehen",
+          "Kann um Hilfe bitten, wenn ich mich nicht fühle"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u10",
+      "level": "A1",
+      "order": 10,
+      "theme": "Arbeit und Berufe",
+      "goal": "Berufe benennen und einfache Bürogespräche verstehen",
+      "input": {
+        "reading": [
+          "My Week at the Office"
+        ],
+        "listening": [
+          "Welcome to the Office"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-simple",
+          "en-to-be"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-002-arbeit"
+        ],
+        "speaking": [
+          "a1-speaking-002-arbeit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Berufe und Arbeitsorte benennen",
+          "Kann einfache Fragen zur Arbeit verstehen",
+          "Kann meine Tätigkeiten in einfachen Sätzen beschreiben"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u11",
+      "level": "A1",
+      "order": 11,
+      "theme": "Auf Reisen",
+      "goal": "Im Hotel einchecken und Reiseinfos verstehen",
+      "input": {
+        "reading": [
+          "A Day at the Beach"
+        ],
+        "listening": [
+          "At the Hotel"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-there-is",
+          "en-articles"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-008-reisen"
+        ],
+        "speaking": [
+          "a1-speaking-008-reisen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann im Hotel einchecken",
+          "Kann einfache Hotelinfos verstehen",
+          "Kann nach Einrichtungen und Zeiten fragen"
+        ]
+      }
+    },
+    {
+      "id": "en-a1-u12",
+      "level": "A1",
+      "order": 12,
+      "theme": "Tiere und Zuhause",
+      "goal": "Über Haustiere und mein Zuhause sprechen",
+      "input": {
+        "reading": [
+          "The Cat Next Door"
+        ],
+        "listening": [
+          "The Lost Cat"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-possessives",
+          "en-there-is"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-writing-021-alltag"
+        ],
+        "speaking": [
+          "a1-speaking-011-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann mein Zuhause und meine Räume beschreiben",
+          "Kann über mein Haustier sprechen",
+          "Kann sagen, wo Dinge sind (there is/are)"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u01",
+      "level": "A2",
+      "order": 1,
+      "theme": "Erlebnisse erzählen",
+      "goal": "In einfachen Vergangenheitsformen von Erlebnissen erzählen",
+      "input": {
+        "reading": [
+          "The Day We Moved House"
+        ],
+        "listening": [
+          "Voicemail from Sara"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-001-alltag"
+        ],
+        "speaking": [
+          "a2-speaking-001-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann einfache Erlebnisse im Past Simple erzählen",
+          "Kann regelmäßige und vergangene Handlungen unterscheiden",
+          "Kann eine kurze Geschichte erzählen"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u02",
+      "level": "A2",
+      "order": 2,
+      "theme": "Berufsleben",
+      "goal": "Über die Arbeitswelt sprechen und Gespräche im Büro verstehen",
+      "input": {
+        "reading": [
+          "My First Day at Work"
+        ],
+        "listening": [
+          "The Interview at the Bookshop"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple",
+          "en-prepositions-time"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-002-arbeit"
+        ],
+        "speaking": [
+          "a2-speaking-002-arbeit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über meine Arbeitserfahrung sprechen",
+          "Kann ein einfaches Bewerbungsgespräch verstehen",
+          "Kann Zeitangaben (at, on, in) korrekt verwenden"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u03",
+      "level": "A2",
+      "order": 3,
+      "theme": "Schule und Schulreisen",
+      "goal": "Über Schulerlebnisse berichten und Infos verstehen",
+      "input": {
+        "reading": [
+          "The School Trip to Oxford"
+        ],
+        "listening": [
+          "The Parents' Meeting"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-003-bildung"
+        ],
+        "speaking": [
+          "a2-speaking-003-bildung"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann von einem Schulausflug berichten",
+          "Kann Informationen in einem Elternabend verstehen",
+          "Kann Vergangenheit mit because und so verknüpfen"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u04",
+      "level": "A2",
+      "order": 4,
+      "theme": "Kochen und Rezepte",
+      "goal": "Über Kocherlebnisse sprechen und Anweisungen verstehen",
+      "input": {
+        "reading": [
+          "Cooking for My Parents"
+        ],
+        "listening": [
+          "The Cooking Class"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple",
+          "en-modals-can"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-004-essen"
+        ],
+        "speaking": [
+          "a2-speaking-004-essen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein einfaches Rezept beschreiben",
+          "Kann Kochanweisungen verstehen",
+          "Kann können/müssen im Alltag ausdrücken (can, can't)"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u05",
+      "level": "A2",
+      "order": 5,
+      "theme": "Familienfeiern",
+      "goal": "Über Feste und Familienereignisse erzählen",
+      "input": {
+        "reading": [
+          "Our Grandmother's Birthday"
+        ],
+        "listening": [
+          "The Birthday Surprise Plan"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple",
+          "en-prepositions-time"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-005-familie"
+        ],
+        "speaking": [
+          "a2-speaking-005-familie"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über ein Familienfest erzählen",
+          "Kann Zeit und Ort eines Ereignisses angeben",
+          "Kann eine kurze Anekdote erzählen"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u06",
+      "level": "A2",
+      "order": 6,
+      "theme": "Gesundheit und Arzt",
+      "goal": "Gesundheitsprobleme beschreiben und Ratschläge verstehen",
+      "input": {
+        "reading": [
+          "A Visit to the Clinic"
+        ],
+        "listening": [
+          "The Doctor's Advice"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-modals-can"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-006-gesundheit"
+        ],
+        "speaking": [
+          "a2-speaking-006-gesundheit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Gesundheitsprobleme beschreiben",
+          "Kann ärztliche Ratschläge verstehen",
+          "Kann can/can't für Empfehlungen verwenden"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u07",
+      "level": "A2",
+      "order": 7,
+      "theme": "Hobbys entdecken",
+      "goal": "Über neue Aktivitäten und Erfahrungen sprechen",
+      "input": {
+        "reading": [
+          "Joining the Chess Club"
+        ],
+        "listening": [
+          "The Concert Plan"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-perfect"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-007-hobby"
+        ],
+        "speaking": [
+          "a2-speaking-007-hobby"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Erfahrungen mit Present Perfect nennen (I have tried …)",
+          "Kann über ein neues Hobby sprechen",
+          "Kann schon/noch nicht correctly verwenden"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u08",
+      "level": "A2",
+      "order": 8,
+      "theme": "Reiseerlebnisse",
+      "goal": "Von Reisen erzählen und Reiseberichte verstehen",
+      "input": {
+        "reading": [
+          "Our Weekend in the Mountains"
+        ],
+        "listening": [
+          "Camping in the Rain"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple",
+          "en-present-perfect"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-008-reisen"
+        ],
+        "speaking": [
+          "a2-speaking-008-reisen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann von einer Reise erzählen",
+          "Kann Reiseberichte verstehen",
+          "Kann Vergangenheit und Erfahrung (Past Simple / Present Perfect) unterscheiden"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u09",
+      "level": "A2",
+      "order": 9,
+      "theme": "Stadt und Orientierung",
+      "goal": "Mich in der Stadt zurechtfinden und Beschreibungen verstehen",
+      "input": {
+        "reading": [
+          "Lost in the City"
+        ],
+        "listening": [
+          "The Museum Audio Guide"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-prepositions-time"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-009-stadt"
+        ],
+        "speaking": [
+          "a2-speaking-009-stadt"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Orte und Richtungen beschreiben",
+          "Kann einer Audio-Guide-Beschreibung folgen",
+          "Kann Präpositionen des Ortes und der Zeit verwenden"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u10",
+      "level": "A2",
+      "order": 10,
+      "theme": "Wetter und Natur",
+      "goal": "Über Wetterereignisse sprechen und Vergleiche anstellen",
+      "input": {
+        "reading": [
+          "The Storm Last Night"
+        ],
+        "listening": [
+          "The Broken Heater"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-simple",
+          "en-comparatives"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-010-wetter"
+        ],
+        "speaking": [
+          "a2-speaking-010-wetter"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein Wetterereignis erzählen",
+          "Kann Vergleiche mit -er/more bilden",
+          "Kann Reparaturanfragen verstehen"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u11",
+      "level": "A2",
+      "order": 11,
+      "theme": "Pläne und Zukunft",
+      "goal": "Über Pläne sprechen und Zukunftsabsichten ausdrücken",
+      "input": {
+        "reading": [
+          "My Part-Time Job"
+        ],
+        "listening": [
+          "The Garden Project"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-future-will",
+          "en-modals-can"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-012-arbeit"
+        ],
+        "speaking": [
+          "a2-speaking-012-arbeit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Pläne mit will/going to ausdrücken",
+          "Kann Verabredungen treffen",
+          "Kann Möglichkeiten mit can besprechen"
+        ]
+      }
+    },
+    {
+      "id": "en-a2-u12",
+      "level": "A2",
+      "order": 12,
+      "theme": "Erfahrungen und Vergleiche",
+      "goal": "Erfahrungen berichten und Dinge vergleichen",
+      "input": {
+        "reading": [
+          "My First Marathon"
+        ],
+        "listening": [
+          "The Marathon Training Plan"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-perfect",
+          "en-comparatives"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-writing-016-gesundheit"
+        ],
+        "speaking": [
+          "a2-speaking-016-gesundheit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann persönliche Erfahrungen berichten (Have you ever …?)",
+          "Kann Dinge vergleichen (better, more difficult)",
+          "Kann Trainingspläne und Tipps verstehen"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u01",
+      "level": "B1",
+      "order": 1,
+      "theme": "Meinung und Begründung",
+      "goal": "Die eigene Meinung äußern und begründen",
+      "input": {
+        "reading": [
+          "Should We Ban Homework?"
+        ],
+        "listening": [
+          "The Neighbourhood Meeting"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-conditional-1-2"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-003-bildung"
+        ],
+        "speaking": [
+          "b1-speaking-003-bildung"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann meine Meinung zu einem Thema äußern",
+          "Kann meine Meinung begründen",
+          "Kann einfache if-Sätze (Conditional 1) bilden"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u02",
+      "level": "B1",
+      "order": 2,
+      "theme": "Arbeitswelt",
+      "goal": "Über Arbeit sprechen und Berichte von anderen wiedergeben",
+      "input": {
+        "reading": [
+          "The Five O'Clock Rule"
+        ],
+        "listening": [
+          "The Career Change Conversation"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-reported-speech"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-002-arbeit"
+        ],
+        "speaking": [
+          "b1-speaking-002-arbeit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über meine Arbeitssituation sprechen",
+          "Kann Aussagen anderer wiedergeben (reported speech)",
+          "Kann Vor- und Nachteile einer Entscheidung nennen"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u03",
+      "level": "B1",
+      "order": 3,
+      "theme": "Alltag und Gewohnheiten",
+      "goal": "Über Lebensgewohnheiten sprechen und Empfehlungen geben",
+      "input": {
+        "reading": [
+          "Why I Quit Scrolling"
+        ],
+        "listening": [
+          "The Podcast Recommendation"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-gerund-infinitive"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-001-alltag"
+        ],
+        "speaking": [
+          "b1-speaking-001-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Gewohnheiten und Veränderungen beschreiben",
+          "Kann Gerundium und Infinitiv korrekt verwenden",
+          "Kann Empfehlungen und Tipps geben"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u04",
+      "level": "B1",
+      "order": 4,
+      "theme": "Gesundheit und Lebensstil",
+      "goal": "Über Gesundheitsthemen diskutieren und Erfahrungen austauschen",
+      "input": {
+        "reading": [
+          "Sleep Is Not Lazy"
+        ],
+        "listening": [
+          "The Fitness Milestone"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-present-perfect-vs-past"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-006-gesundheit"
+        ],
+        "speaking": [
+          "b1-speaking-006-gesundheit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über Gesundheit und Lebensstil diskutieren",
+          "Kann Present Perfect und Past Simple korrekt unterscheiden",
+          "Kann Erfolge und Rückschläge beschreiben"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u05",
+      "level": "B1",
+      "order": 5,
+      "theme": "Stadt und Gemeinschaft",
+      "goal": "Über das Leben in der Stadt sprechen und Passiv verstehen",
+      "input": {
+        "reading": [
+          "The Community Garden"
+        ],
+        "listening": [
+          "The Volunteer Shift"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-passive",
+          "en-relative-clauses"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-009-stadt"
+        ],
+        "speaking": [
+          "b1-speaking-009-stadt"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über Projekte in meiner Stadt sprechen",
+          "Kann Passivsätze verstehen und bilden",
+          "Kann Relativsätze (who, which, that) verwenden"
+        ]
+      }
+    },
+    {
+      "id": "en-b1-u06",
+      "level": "B1",
+      "order": 6,
+      "theme": "Reisen und Unterwegssein",
+      "goal": "Reiseerlebnisse erzählen und auf Probleme reagieren",
+      "input": {
+        "reading": [
+          "Two Weeks Without a Car"
+        ],
+        "listening": [
+          "The Flight Delay"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-conditional-1-2",
+          "en-present-perfect-vs-past"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-writing-008-reisen"
+        ],
+        "speaking": [
+          "b1-speaking-008-reisen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Reiseerlebnisse detailliert erzählen",
+          "Kann auf Reiseprobleme angemessen reagieren",
+          "Kann hypothetische Situationen mit Conditional 1 besprechen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u01",
+      "level": "B2",
+      "order": 1,
+      "theme": "Arbeitswelt und Zukunft",
+      "goal": "Zu Zukunftsthemen der Arbeitswelt argumentieren",
+      "input": {
+        "reading": [
+          "The Case Against the Four-Day Week"
+        ],
+        "listening": [
+          "The Panel on Automation"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-connectors"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-002-arbeit"
+        ],
+        "speaking": [
+          "b2-speaking-002-arbeit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann zu einem komplexen Thema argumentieren",
+          "Kann Diskussionen und Panels folgen",
+          "Kann Konnektoren (however, therefore, nevertheless) gezielt einsetzen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u02",
+      "level": "B2",
+      "order": 2,
+      "theme": "Stadt und Wohnen",
+      "goal": "Stadtentwicklung diskutieren und Position beziehen",
+      "input": {
+        "reading": [
+          "Who Owns the City?"
+        ],
+        "listening": [
+          "The Housing Crisis Interview"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-subjunctive",
+          "en-connectors"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-009-stadt"
+        ],
+        "speaking": [
+          "b2-speaking-009-stadt"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann zu Stadtentwicklung Stellung nehmen",
+          "Kann Wunschsätze (If cities were …) bilden",
+          "Kann komplexe Interviews verstehen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u03",
+      "level": "B2",
+      "order": 3,
+      "theme": "Medien und Aufmerksamkeit",
+      "goal": "Medienphänomene analysieren und bewerten",
+      "input": {
+        "reading": [
+          "The Attention Economy and Its Discontents"
+        ],
+        "listening": [
+          "The Ethics of Persuasive Design"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-connectors",
+          "en-phrasal-verbs"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-011-alltag"
+        ],
+        "speaking": [
+          "b2-speaking-011-alltag"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Medienphänomene analysieren und bewerten",
+          "Kann Phrasal Verbs idiomatisch verwenden",
+          "Kann einer ethischen Diskussion folgen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u04",
+      "level": "B2",
+      "order": 4,
+      "theme": "Bildung und Gesellschaft",
+      "goal": "Bildungstrends einordnen und diskutieren",
+      "input": {
+        "reading": [
+          "Universities in the Age of Search"
+        ],
+        "listening": [
+          "The Cities Exhibition Guide"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-perfect"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-003-bildung"
+        ],
+        "speaking": [
+          "b2-speaking-003-bildung"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Bildungstrends einordnen und diskutieren",
+          "Kann Vorzeitigkeit mit Past Perfect ausdrücken",
+          "Kann einem akademischen Vortrag folgen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u05",
+      "level": "B2",
+      "order": 5,
+      "theme": "Gesundheit und Forschung",
+      "goal": "Über Gesundheitsforschung sprechen und Informationen einordnen",
+      "input": {
+        "reading": [
+          "The Placebo Society"
+        ],
+        "listening": [
+          "The Doctor's Consultation"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-past-perfect",
+          "en-connectors"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-006-gesundheit"
+        ],
+        "speaking": [
+          "b2-speaking-006-gesundheit"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über Gesundheitsforschung sprechen",
+          "Kann medizinische Beratungsgespräche verstehen",
+          "Kann Informationen kritisch einordnen und verknüpfen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u06",
+      "level": "B2",
+      "order": 6,
+      "theme": "Nachhaltigkeit und Klima",
+      "goal": "Klimapolitische Positionen diskutieren",
+      "input": {
+        "reading": [
+          "The Green Premium and Who Pays"
+        ],
+        "listening": [
+          "The Climate Policy Debate"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-conditional-3"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-010-wetter"
+        ],
+        "speaking": [
+          "b2-speaking-010-wetter"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann klimapolitische Positionen diskutieren",
+          "Kann irreale Bedingungen (Conditional 3) bilden",
+          "Kann an einer strukturierten Debatte teilnehmen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u07",
+      "level": "B2",
+      "order": 7,
+      "theme": "Reisen und Kultur",
+      "goal": "Tourismus kritisch betrachten und Standpunkte austauschen",
+      "input": {
+        "reading": [
+          "The Tourism Backlash"
+        ],
+        "listening": [
+          "The Travel Podcast"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-phrasal-verbs",
+          "en-connectors"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-008-reisen"
+        ],
+        "speaking": [
+          "b2-speaking-008-reisen"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Tourismus kritisch betrachten",
+          "Kann in Podcasts Standpunkte erkennen",
+          "Kann idiomatisch und differenziert sprechen"
+        ]
+      }
+    },
+    {
+      "id": "en-b2-u08",
+      "level": "B2",
+      "order": 8,
+      "theme": "Sprache und Denken",
+      "goal": "Sprachphilosophische Fragen erörtern",
+      "input": {
+        "reading": [
+          "The Subjunctive of Power"
+        ],
+        "listening": [
+          "The Philosophy of Language"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "en-subjunctive",
+          "en-would-used-to"
+        ],
+        "vocabLevel": "B2"
+      },
+      "output": {
+        "writing": [
+          "b2-writing-013-bildung"
+        ],
+        "speaking": [
+          "b2-speaking-013-bildung"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann sprachphilosophische Fragen erörtern",
+          "Kann Konjunktiv II für Hypothesen nutzen",
+          "Kann frühere Gewohnheiten (used to / would) beschreiben"
+        ]
+      }
+    }
+  ]
+}

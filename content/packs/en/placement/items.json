@@ -1,0 +1,807 @@
+{
+  "lang": "en",
+  "version": 1,
+  "items": [
+    {
+      "id": "en-r-01",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -2.2,
+      "type": "mc",
+      "prompt": "\"My name is Anna. I am from Berlin.\" Where is Anna from?",
+      "options": [
+        "Berlin",
+        "Rome",
+        "London",
+        "We don't know"
+      ],
+      "answer": "Berlin"
+    },
+    {
+      "id": "en-r-02",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -1.6,
+      "type": "mc",
+      "prompt": "\"I get up at seven o'clock.\" What time does the person get up?",
+      "options": [
+        "7:00",
+        "17:00",
+        "9:00",
+        "6:00"
+      ],
+      "answer": "7:00"
+    },
+    {
+      "id": "en-r-03",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -1.0,
+      "type": "mc",
+      "prompt": "\"There is a cat under the table.\" Where is the cat?",
+      "options": [
+        "Under the table",
+        "On the table",
+        "In the garden",
+        "By the door"
+      ],
+      "answer": "Under the table"
+    },
+    {
+      "id": "en-r-04",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": -0.3,
+      "type": "mc",
+      "prompt": "\"Although it was raining, we went for a walk.\" What can we conclude?",
+      "options": [
+        "They walked despite the rain",
+        "They stayed home",
+        "It stopped raining first",
+        "They ran"
+      ],
+      "answer": "They walked despite the rain"
+    },
+    {
+      "id": "en-r-05",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 0.2,
+      "type": "mc",
+      "prompt": "\"She turned down the offer because the hours were too long.\" Why did she refuse?",
+      "options": [
+        "Working hours",
+        "The salary",
+        "The location",
+        "The job title"
+      ],
+      "answer": "Working hours"
+    },
+    {
+      "id": "en-r-06",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 0.6,
+      "type": "mc",
+      "prompt": "\"By the time we arrived, the film had already started.\" The film started...",
+      "options": [
+        "before they arrived",
+        "when they arrived",
+        "after they arrived",
+        "never"
+      ],
+      "answer": "before they arrived"
+    },
+    {
+      "id": "en-r-07",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 1.0,
+      "type": "mc",
+      "prompt": "\"The report, which had been delayed twice, was finally published.\" What is true?",
+      "options": [
+        "It appeared after further delays",
+        "It appeared on time",
+        "It was never published",
+        "It was rejected"
+      ],
+      "answer": "It appeared after further delays"
+    },
+    {
+      "id": "en-r-08",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 1.4,
+      "type": "mc",
+      "prompt": "\"He was said to have resigned over differences in strategy.\" What happened?",
+      "options": [
+        "People claimed he quit",
+        "He was fired",
+        "He changed strategy",
+        "He denied everything"
+      ],
+      "answer": "People claimed he quit"
+    },
+    {
+      "id": "en-l-09",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -2.0,
+      "type": "listen",
+      "prompt": "Listen: who is speaking?",
+      "options": [
+        "A passenger",
+        "A pilot",
+        "A teacher",
+        "A doctor"
+      ],
+      "answer": "A passenger",
+      "audioText": "Excuse me, could you tell me where gate twelve is? My flight to Munich leaves in forty minutes."
+    },
+    {
+      "id": "en-l-10",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -1.5,
+      "type": "listen",
+      "prompt": "Listen: what did she order?",
+      "options": [
+        "Tea",
+        "Coffee",
+        "Water",
+        "Juice"
+      ],
+      "answer": "Coffee",
+      "audioText": "I'll have a coffee with a little milk, please, and a croissant."
+    },
+    {
+      "id": "en-l-11",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -0.9,
+      "type": "listen",
+      "prompt": "Listen: when does the train leave?",
+      "options": [
+        "Half past nine",
+        "Nine o'clock",
+        "Nine thirty",
+        "Ten thirty"
+      ],
+      "answer": "Nine thirty",
+      "audioText": "The next train to Bristol departs at nine thirty from platform three."
+    },
+    {
+      "id": "en-l-12",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": -0.2,
+      "type": "listen",
+      "prompt": "Listen: why is he calling?",
+      "options": [
+        "To cancel an appointment",
+        "To make an appointment",
+        "To complain",
+        "To ask for directions"
+      ],
+      "answer": "To cancel an appointment",
+      "audioText": "I'm afraid I won't be able to make my appointment tomorrow morning. Something urgent has come up at work."
+    },
+    {
+      "id": "en-l-13",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 0.3,
+      "type": "listen",
+      "prompt": "Listen: what does the woman suggest?",
+      "options": [
+        "Watching a film at home",
+        "Going to the cinema",
+        "Reading a book",
+        "Going to bed"
+      ],
+      "answer": "Watching a film at home",
+      "audioText": "The cinema tickets are quite expensive. Why don't we just stay in and watch something on the laptop?"
+    },
+    {
+      "id": "en-l-14",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 0.7,
+      "type": "listen",
+      "prompt": "Listen: what happened to the package?",
+      "options": [
+        "It was delivered to the wrong address",
+        "It was lost",
+        "It was delayed",
+        "It was damaged"
+      ],
+      "answer": "It was delivered to the wrong address",
+      "audioText": "I'm sorry, but according to our records the parcel was signed for at number forty-two, not forty-four."
+    },
+    {
+      "id": "en-l-15",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 1.1,
+      "type": "listen",
+      "prompt": "Listen: what is the speaker's main point?",
+      "options": [
+        "The plan needs more support",
+        "The plan is perfect",
+        "The meeting is cancelled",
+        "The budget is final"
+      ],
+      "answer": "The plan needs more support",
+      "audioText": "Look, the ideas are sound, but until we have the department heads on board, I don't think we can move forward with this."
+    },
+    {
+      "id": "en-l-16",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 1.5,
+      "type": "listen",
+      "prompt": "Listen: what does the manager imply?",
+      "options": [
+        "The report must be redone",
+        "The report is accepted",
+        "The meeting is over",
+        "The employee should leave"
+      ],
+      "answer": "The report must be redone",
+      "audioText": "Hmm, these figures don't match the quarterly numbers at all. I'd have thought the data would have been checked before it reached my desk."
+    },
+    {
+      "id": "en-g-17",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -2.1,
+      "type": "mc",
+      "prompt": "She ___ to school every day.",
+      "options": [
+        "goes",
+        "go",
+        "going",
+        "gone"
+      ],
+      "answer": "goes"
+    },
+    {
+      "id": "en-g-18",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -1.4,
+      "type": "mc",
+      "prompt": "There ___ two books on the table.",
+      "options": [
+        "are",
+        "is",
+        "be",
+        "being"
+      ],
+      "answer": "are"
+    },
+    {
+      "id": "en-g-19",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -0.8,
+      "type": "mc",
+      "prompt": "I ___ born in 1995.",
+      "options": [
+        "was",
+        "were",
+        "am",
+        "been"
+      ],
+      "answer": "was"
+    },
+    {
+      "id": "en-g-20",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": -0.1,
+      "type": "mc",
+      "prompt": "If it rains tomorrow, we ___ at home.",
+      "options": [
+        "will stay",
+        "would stay",
+        "stayed",
+        "will stayed"
+      ],
+      "answer": "will stay"
+    },
+    {
+      "id": "en-g-21",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 0.3,
+      "type": "mc",
+      "prompt": "I've lived here ___ 2015.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "from"
+      ],
+      "answer": "since"
+    },
+    {
+      "id": "en-g-22",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 0.8,
+      "type": "mc",
+      "prompt": "The letter ___ by the secretary yesterday.",
+      "options": [
+        "was typed",
+        "typed",
+        "is typing",
+        "has typed"
+      ],
+      "answer": "was typed"
+    },
+    {
+      "id": "en-g-23",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 1.2,
+      "type": "mc",
+      "prompt": "She asked me where I ___ from.",
+      "options": [
+        "came",
+        "come",
+        "comes",
+        "am coming"
+      ],
+      "answer": "came"
+    },
+    {
+      "id": "en-g-24",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 1.6,
+      "type": "mc",
+      "prompt": "I wish I ___ harder for the exam.",
+      "options": [
+        "had studied",
+        "have studied",
+        "would study",
+        "study"
+      ],
+      "answer": "had studied"
+    },
+    {
+      "id": "en-v-25",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -2.0,
+      "type": "mc",
+      "prompt": "Choose the correct word: You use a ___ to cut paper.",
+      "options": [
+        "scissors",
+        "hammer",
+        "fork",
+        "brush"
+      ],
+      "answer": "scissors"
+    },
+    {
+      "id": "en-v-26",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -1.3,
+      "type": "mc",
+      "prompt": "What's the opposite of 'early'?",
+      "options": [
+        "late",
+        "fast",
+        "young",
+        "slow"
+      ],
+      "answer": "late"
+    },
+    {
+      "id": "en-v-27",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -0.7,
+      "type": "mc",
+      "prompt": "A person who treats animals is a ___.",
+      "options": [
+        "vet",
+        "nurse",
+        "surgeon",
+        "dentist"
+      ],
+      "answer": "vet"
+    },
+    {
+      "id": "en-v-28",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0.0,
+      "type": "mc",
+      "prompt": "Choose the correct word: Can you ___ me a favour?",
+      "options": [
+        "do",
+        "make",
+        "give",
+        "take"
+      ],
+      "answer": "do"
+    },
+    {
+      "id": "en-v-29",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0.4,
+      "type": "mc",
+      "prompt": "'To postpone' means to ___.",
+      "options": [
+        "delay",
+        "cancel",
+        "repeat",
+        "finish"
+      ],
+      "answer": "delay"
+    },
+    {
+      "id": "en-v-30",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0.9,
+      "type": "mc",
+      "prompt": "Choose the correct word: The company decided to ___ him.",
+      "options": [
+        "sack",
+        "bag",
+        "pack",
+        "box"
+      ],
+      "answer": "sack"
+    },
+    {
+      "id": "en-v-31",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 1.3,
+      "type": "mc",
+      "prompt": "'Reluctant' most nearly means ___.",
+      "options": [
+        "unwilling",
+        "happy",
+        "quick",
+        "careful"
+      ],
+      "answer": "unwilling"
+    },
+    {
+      "id": "en-v-32",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 1.7,
+      "type": "mc",
+      "prompt": "Choose the correct word: Her explanation didn't quite ___.",
+      "options": [
+        "add up",
+        "add on",
+        "add in",
+        "add to"
+      ],
+      "answer": "add up"
+    },
+    {
+      "id": "en-w-33",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -1.8,
+      "type": "produce",
+      "prompt": "Write a sentence about what you did yesterday.",
+      "keywords": [
+        "yesterday",
+        "was",
+        "went",
+        "had",
+        "did",
+        "ate",
+        "saw",
+        "played",
+        "watched",
+        "worked"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-w-34",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -1.0,
+      "type": "produce",
+      "prompt": "Write a sentence describing your family.",
+      "keywords": [
+        "my",
+        "mother",
+        "father",
+        "brother",
+        "sister",
+        "family",
+        "years",
+        "is",
+        "are"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-w-35",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -0.4,
+      "type": "produce",
+      "prompt": "Write a sentence about what you usually do in the morning.",
+      "keywords": [
+        "usually",
+        "morning",
+        "get up",
+        "breakfast",
+        "coffee",
+        "go",
+        "work",
+        "school"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-w-36",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 0.2,
+      "type": "produce",
+      "prompt": "Write a sentence explaining why you are learning English.",
+      "keywords": [
+        "because",
+        "learn",
+        "english",
+        "work",
+        "travel",
+        "want",
+        "useful",
+        "job"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "en-w-37",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 0.6,
+      "type": "produce",
+      "prompt": "Write a sentence describing your last holiday.",
+      "keywords": [
+        "holiday",
+        "went",
+        "beach",
+        "hotel",
+        "weather",
+        "friends",
+        "family",
+        "visited",
+        "stayed"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "en-w-38",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 1.0,
+      "type": "produce",
+      "prompt": "Write a sentence giving a reason and a result (use 'because' or 'so').",
+      "keywords": [
+        "because",
+        "so",
+        "therefore",
+        "missed",
+        "late",
+        "rain",
+        "work",
+        "exam"
+      ],
+      "minWords": 6
+    },
+    {
+      "id": "en-w-39",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 1.4,
+      "type": "produce",
+      "prompt": "Write a sentence describing a change in your life over the last few years.",
+      "keywords": [
+        "since",
+        "used to",
+        "changed",
+        "moved",
+        "started",
+        "become",
+        "different",
+        "now"
+      ],
+      "minWords": 6
+    },
+    {
+      "id": "en-w-40",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 1.8,
+      "type": "produce",
+      "prompt": "Write a sentence arguing for or against working from home.",
+      "keywords": [
+        "because",
+        "however",
+        "although",
+        "productivity",
+        "home",
+        "office",
+        "flexible",
+        "commute"
+      ],
+      "minWords": 7
+    },
+    {
+      "id": "en-s-41",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -1.7,
+      "type": "produce",
+      "prompt": "Say how you are and how your day is going.",
+      "keywords": [
+        "fine",
+        "good",
+        "well",
+        "great",
+        "tired",
+        "busy",
+        "day",
+        "today"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-s-42",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -0.9,
+      "type": "produce",
+      "prompt": "Say what you like to do in your free time.",
+      "keywords": [
+        "like",
+        "enjoy",
+        "read",
+        "sport",
+        "music",
+        "friends",
+        "walk",
+        "cook",
+        "watch"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-s-43",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -0.3,
+      "type": "produce",
+      "prompt": "Say what you had for breakfast and what you drink.",
+      "keywords": [
+        "breakfast",
+        "coffee",
+        "tea",
+        "bread",
+        "eggs",
+        "milk",
+        "juice",
+        "eat",
+        "drink"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "en-s-44",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 0.3,
+      "type": "produce",
+      "prompt": "Say what you did last weekend.",
+      "keywords": [
+        "weekend",
+        "went",
+        "saw",
+        "met",
+        "friends",
+        "stayed",
+        "watched",
+        "played",
+        "visited"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "en-s-45",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 0.7,
+      "type": "produce",
+      "prompt": "Say what you are going to do next weekend and why.",
+      "keywords": [
+        "going to",
+        "will",
+        "next",
+        "weekend",
+        "because",
+        "want",
+        "visit",
+        "meet",
+        "rest"
+      ],
+      "minWords": 6
+    },
+    {
+      "id": "en-s-46",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 1.1,
+      "type": "produce",
+      "prompt": "Say what you would do if you had a free day tomorrow.",
+      "keywords": [
+        "would",
+        "if",
+        "had",
+        "travel",
+        "sleep",
+        "spend",
+        "friends",
+        "beach",
+        "read"
+      ],
+      "minWords": 6
+    },
+    {
+      "id": "en-s-47",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 1.5,
+      "type": "produce",
+      "prompt": "Say what you think is the biggest advantage of learning languages.",
+      "keywords": [
+        "think",
+        "advantage",
+        "because",
+        "culture",
+        "travel",
+        "job",
+        "communication",
+        "opportunity"
+      ],
+      "minWords": 7
+    },
+    {
+      "id": "en-s-48",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 1.9,
+      "type": "produce",
+      "prompt": "Say what you would have done differently if you had known the news earlier.",
+      "keywords": [
+        "would have",
+        "if",
+        "known",
+        "earlier",
+        "changed",
+        "prepared",
+        "told",
+        "different"
+      ],
+      "minWords": 7
+    }
+  ]
+}

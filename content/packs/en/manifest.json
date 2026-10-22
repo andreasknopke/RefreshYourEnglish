@@ -17,6 +17,9 @@
   },
   "frequencyList": "freq/en_top_5000.csv",
   "grammarSyllabus": "grammar/en_cefr.json",
-  "curriculum": "curriculum/en_a1_b2.json",
+  "curriculum": "curriculum/units_a1_b2.json",
+  "curriculumUnits": "curriculum/units_a1_b2.json",
+  "listening": "listening/seed.json",
+  "outputPrompts": "output/prompts.json",
   "pronunciation": "pron/en_rules.json"
 }

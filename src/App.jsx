@@ -1,16 +1,9 @@
 import { useState, useEffect } from 'react';
-import TranslationModule from './components/TranslationModule';
-import ActionModule from './components/ActionModule';
-import DialogModule from './components/DialogModule';
-import VocabularyTrainer from './components/VocabularyTrainer';
-import VocabularyLibrary from './components/VocabularyLibrary';
 import SettingsModule from './components/SettingsModule';
-import StatsModule from './components/StatsModule';
 import AuthModal from './components/AuthModal';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import VerifyEmail from './components/VerifyEmail';
 import ResetPassword from './components/ResetPassword';
-import GamificationBanner from './components/GamificationBanner';
 import LogViewer from './components/LogViewer';
 import apiService from './services/apiService';
 import logService from './services/logService';
@@ -29,7 +22,6 @@ function App() {
   const [activeModule, setActiveModule] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
-  const [dueFlashcardsCount, setDueFlashcardsCount] = useState(0);
   const [showLogViewer, setShowLogViewer] = useState(false);
   const [backendStatus, setBackendStatus] = useState('checking'); // 'checking', 'online', 'offline'
 
@@ -85,12 +77,11 @@ function App() {
     return () => window.removeEventListener('auth-required', handleAuthRequired);
   }, []);
 
-  // Lade fällige Flashcards für Badge
+  // Backend-Status regelmäßig prüfen
   useEffect(() => {
     if (user) {
-      loadDueFlashcardsCount();
-      // Update alle 30 Sekunden
-      const interval = setInterval(loadDueFlashcardsCount, 30000);
+      checkBackendStatus();
+      const interval = setInterval(checkBackendStatus, 30000);
       return () => clearInterval(interval);
     }
   }, [user]);
@@ -111,19 +102,6 @@ function App() {
       cancelled = true;
     };
   }, [user, refreshUserLanguages]);
-
-  const loadDueFlashcardsCount = async () => {
-    try {
-      const data = await apiService.getDueFlashcards();
-      setDueFlashcardsCount(data.flashcards?.length || 0);
-      setBackendStatus('online');
-    } catch (error) {
-      console.error('Failed to load due flashcards count:', error);
-      if (error.message.includes('Backend nicht erreichbar')) {
-        setBackendStatus('offline');
-      }
-    }
-  };
 
   const checkBackendStatus = async () => {
     try {
@@ -229,17 +207,6 @@ function App() {
             </div>
           )}
 
-          {/* Stats Button */}
-          {user && (
-            <button
-              onClick={() => setActiveModule('stats')}
-              className="glass-card px-4 py-3 rounded-2xl font-bold text-gray-700 hover:text-purple-600 hover:scale-105 transition-all"
-              title="Statistiken"
-            >
-              📊
-            </button>
-          )}
-          
           {/* Debug Log Button */}
           <button
             onClick={() => setShowLogViewer(true)}
@@ -282,9 +249,6 @@ function App() {
             </button>
           )}
         </div>
-
-        {/* Gamification Banner */}
-        {user && <GamificationBanner user={user} />}
 
         {/* Onboarding / Placement (nur wenn eingeloggt und noch keine Zielsprache) */}
         {user && !langLoading && flow === 'onboarding' && (
@@ -483,170 +447,8 @@ function App() {
                 <span className="relative z-10">Sprechen →</span>
               </button>
             </div>
-
-            {/* Modul 1: Übersetzungsübung */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-              </div>
-              
-              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
-                Übersetzung
-              </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
-                Übersetze Sätze mit KI-Feedback
-              </p>
-              <button
-                onClick={() => setActiveModule('translation')}
-                className="w-full btn-primary relative z-10 text-sm py-2"
-              >
-                <span className="relative z-10">Starten →</span>
-              </button>
-            </div>
-
-            {/* Modul 2: Action Modus */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:-rotate-1 transition-all duration-300 flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              
-              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
-                Action Modus
-              </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
-                Vokabeln mit Countdown-Timer
-              </p>
-              <button
-                onClick={() => setActiveModule('action')}
-                className="w-full btn-secondary relative z-10 text-sm py-2"
-              >
-                <span className="relative z-10">Starten →</span>
-              </button>
-            </div>
-
-            {/* Modul 3: Dialog Trainer */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </div>
-              
-              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
-                Dialog
-              </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
-                Konversationstraining mit KI
-              </p>
-              <button
-                onClick={() => setActiveModule('dialog')}
-                className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all relative z-10"
-              >
-                <span className="relative z-10">Starten →</span>
-              </button>
-            </div>
-
-            {/* Modul 4: Vocabulary Trainer */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300 flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Badge für fällige Karten */}
-              {user && dueFlashcardsCount > 0 && (
-                <div className="absolute top-2 right-2 z-20">
-                  <div className="bg-red-500 text-white text-xs font-bold rounded-full w-7 h-7 flex items-center justify-center shadow-lg animate-pulse">
-                    {dueFlashcardsCount}
-                  </div>
-                </div>
-              )}
-              
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              
-              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
-                Flashcards
-              </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
-                Spaced Repetition Lernen
-              </p>
-              <button
-                onClick={() => setActiveModule('trainer')}
-                disabled={!user}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
-              >
-                <span className="relative z-10">{user ? 'Starten →' : '🔒 Login'}</span>
-              </button>
-            </div>
-
-            {/* Modul 5: Vokabelbibliothek */}
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl mb-3 shadow-lg relative z-10 group-hover:-rotate-12 transition-transform duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                </svg>
-              </div>
-              
-              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
-                Bibliothek
-              </h2>
-              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
-                Vokabeln verwalten und suchen
-              </p>
-              <button
-                onClick={() => setActiveModule('library')}
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold text-sm py-2 rounded-lg hover:scale-105 transition-all relative z-10"
-              >
-                <span className="relative z-10">Starten →</span>
-              </button>
-            </div>
           </div>
 
-          {/* Statistik Modul - Volle Breite Card */}
-          {user && (
-            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-600 rounded-xl shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-300">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <h2 className="text-xl font-bold text-gray-800 mb-1">
-                      Statistiken & Fortschritt
-                    </h2>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      Deine ausführlichen Lernstatistiken, Erfolge und Fortschrittsanalyse
-                    </p>
-                  </div>
-                </div>
-                
-                <button
-                  onClick={() => setActiveModule('stats')}
-                  className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 text-white font-semibold text-sm py-3 px-8 rounded-lg hover:scale-105 transition-all relative z-10 shadow-lg"
-                >
-                  <span className="relative z-10">Anzeigen →</span>
-                </button>
-              </div>
-            </div>
-          )}
           </div>
         ) : (
           <div className="animate-fade-in">
@@ -660,10 +462,6 @@ function App() {
               Zurück
             </button>
             
-            {activeModule === 'translation' && <TranslationModule user={user} />}
-            {activeModule === 'action' && <ActionModule user={user} />}
-            {activeModule === 'dialog' && <DialogModule user={user} />}
-            {activeModule === 'trainer' && <VocabularyTrainer user={user} />}
             {activeModule === 'review' && <ReviewModule />}
             {activeModule === 'reader' && <ReaderModule />}
             {activeModule === 'grammar' && <GrammarModule />}
@@ -671,9 +469,7 @@ function App() {
             {activeModule === 'speaking' && <SpeakingModule />}
             {activeModule === 'session' && <DailySession onOpenModule={(m) => m && setActiveModule(m)} />}
             {activeModule === 'progress' && <ProgressDashboard />}
-            {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
-            {activeModule === 'stats' && <StatsModule user={user} />}
           </div>
         )}
         </>
