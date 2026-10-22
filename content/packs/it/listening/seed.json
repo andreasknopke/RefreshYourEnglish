@@ -1,0 +1,1499 @@
+{
+  "lang": "it",
+  "version": "1.0.0",
+  "texts": [
+    {
+      "title": "Saluti e presentazioni",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Buongiorno, come ti chiami? Mi chiamo Luca, e tu? Io sono Anna, piacere. Piacere mio, da dove vieni? Vengo da Roma, e tu? Io vengo da Milano.",
+      "segments": [
+        "Buongiorno, come ti chiami?",
+        "Mi chiamo Luca, e tu?",
+        "Io sono Anna, piacere.",
+        "Piacere mio, da dove vieni?",
+        "Vengo da Roma, e tu?",
+        "Io vengo da Milano."
+      ]
+    },
+    {
+      "title": "Al bar",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Buongiorno, cosa desidera? Un caffè, per favore. Con latte o senza? Con latte, grazie. E da mangiare? Un cornetto, per favore. Sono due euro e cinquanta.",
+      "segments": [
+        "Buongiorno, cosa desidera?",
+        "Un caffè, per favore.",
+        "Con latte o senza?",
+        "Con latte, grazie.",
+        "E da mangiare?",
+        "Un cornetto, per favore.",
+        "Sono due euro e cinquanta."
+      ]
+    },
+    {
+      "title": "La mia famiglia",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Questa è la mia famiglia. Mio padre si chiama Paolo. Mia madre si chiama Giulia. Ho un fratello e una sorella. Mio fratello si chiama Marco. La mia sorella si chiama Sara. Amo molto la mia famiglia.",
+      "segments": [
+        "Questa è la mia famiglia.",
+        "Mio padre si chiama Paolo.",
+        "Mia madre si chiama Giulia.",
+        "Ho un fratello e una sorella.",
+        "Mio fratello si chiama Marco.",
+        "La mia sorella si chiama Sara.",
+        "Amo molto la mia famiglia."
+      ]
+    },
+    {
+      "title": "A casa",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "La mia casa è piccola. C’è un soggiorno grande. La cucina è bianca. Il bagno è vicino alla camera. Nel giardino c’è un albero. Mi piace la mia casa.",
+      "segments": [
+        "La mia casa è piccola.",
+        "C’è un soggiorno grande.",
+        "La cucina è bianca.",
+        "Il bagno è vicino alla camera.",
+        "Nel giardino c’è un albero.",
+        "Mi piace la mia casa."
+      ]
+    },
+    {
+      "title": "Al mercato",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Buongiorno, cosa desidera? Un chilo di pomodori, per favore. Anche delle mele? Sì, tre mele, grazie. Altro? No, grazie. Quant’è? Sono cinque euro.",
+      "segments": [
+        "Buongiorno, cosa desidera?",
+        "Un chilo di pomodori, per favore.",
+        "Anche delle mele?",
+        "Sì, tre mele, grazie.",
+        "Altro?",
+        "No, grazie. Quant’è?",
+        "Sono cinque euro."
+      ]
+    },
+    {
+      "title": "Chiedere indicazioni",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Scusi, dov’è la stazione? La stazione? Vada sempre dritto. Poi giri a sinistra. È lontano? No, è vicino, cinque minuti. Grazie mille, è molto gentile.",
+      "segments": [
+        "Scusi, dov’è la stazione?",
+        "La stazione? Vada sempre dritto.",
+        "Poi giri a sinistra.",
+        "È lontano?",
+        "No, è vicino, cinque minuti.",
+        "Grazie mille, è molto gentile."
+      ]
+    },
+    {
+      "title": "La mia giornata",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Mi alzo alle sette. Faccio colazione con il caffè. Vado al lavoro alle otto. Pranzo a mezzogiorno. Torno a casa alle sei. La sera guardo la televisione.",
+      "segments": [
+        "Mi alzo alle sette.",
+        "Faccio colazione con il caffè.",
+        "Vado al lavoro alle otto.",
+        "Pranzo a mezzogiorno.",
+        "Torno a casa alle sei.",
+        "La sera guardo la televisione."
+      ]
+    },
+    {
+      "title": "Al ristorante",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Buonasera, un tavolo per due? Sì, da questa parte. Cosa desiderate da mangiare? Due paste al ragù, per favore. Da bere? Un’acqua naturale e un vino rosso.",
+      "segments": [
+        "Buonasera, un tavolo per due?",
+        "Sì, da questa parte.",
+        "Cosa desiderate da mangiare?",
+        "Due paste al ragù, per favore.",
+        "Da bere?",
+        "Un’acqua naturale e un vino rosso."
+      ]
+    },
+    {
+      "title": "Hobby e tempo libero",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Cosa fai nel tempo libero? Mi piace leggere. Anche a me piace leggere. E tu, cosa fai? Io gioco a calcio. Ti va di andare al cinema? Sì, volentieri!",
+      "segments": [
+        "Cosa fai nel tempo libero?",
+        "Mi piace leggere.",
+        "Anche a me piace leggere.",
+        "E tu, cosa fai?",
+        "Io gioco a calcio.",
+        "Ti va di andare al cinema?",
+        "Sì, volentieri!"
+      ]
+    },
+    {
+      "title": "Il meteo",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "Che tempo fa oggi? Oggi c’è il sole. Fa caldo? Sì, fa molto caldo. E domani? Domani piove. Che peccato, c’è il brutto tempo.",
+      "segments": [
+        "Che tempo fa oggi?",
+        "Oggi c’è il sole.",
+        "Fa caldo?",
+        "Sì, fa molto caldo.",
+        "E domani?",
+        "Domani piove.",
+        "Che peccato, c’è il brutto tempo."
+      ]
+    },
+    {
+      "title": "Fare la spesa",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Vado al supermercato. Compro il pane e il latte. Quanto costano le uova? Le uova costano due euro. Prendo anche la frutta. Il totale è dieci euro. Pago con la carta.",
+      "segments": [
+        "Vado al supermercato.",
+        "Compro il pane e il latte.",
+        "Quanto costano le uova?",
+        "Le uova costano due euro.",
+        "Prendo anche la frutta.",
+        "Il totale è dieci euro.",
+        "Pago con la carta."
+      ]
+    },
+    {
+      "title": "I colori e i numeri",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Qual è il tuo colore preferito? Il mio colore preferito è il blu. E il tuo? A me piace il rosso. Quanti anni hai? Ho venticinque anni. Io ne ho trenta.",
+      "segments": [
+        "Qual è il tuo colore preferito?",
+        "Il mio colore preferito è il blu.",
+        "E il tuo?",
+        "A me piace il rosso.",
+        "Quanti anni hai?",
+        "Ho venticinque anni.",
+        "Io ne ho trenta."
+      ]
+    },
+    {
+      "title": "In città",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Abito in un piccolo paese. C’è una piazza centrale. La chiesa è antica. Il mercato è il sabato. Ci sono molti bar. La gente è simpatica.",
+      "segments": [
+        "Abito in un piccolo paese.",
+        "C’è una piazza centrale.",
+        "La chiesa è antica.",
+        "Il mercato è il sabato.",
+        "Ci sono molti bar.",
+        "La gente è simpatica."
+      ]
+    },
+    {
+      "title": "Gli animali",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Ho un cane e un gatto. Il cane si chiama Bobi. Il gatto è nero. Il cane corre nel parco. Il gatto dorme sul divano. Mi piacciono molto gli animali.",
+      "segments": [
+        "Ho un cane e un gatto.",
+        "Il cane si chiama Bobi.",
+        "Il gatto è nero.",
+        "Il cane corre nel parco.",
+        "Il gatto dorme sul divano.",
+        "Mi piacciono molto gli animali."
+      ]
+    },
+    {
+      "title": "A scuola",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Studio l’italiano. Vado a scuola il lunedì. La maestra è gentile. Imparo molte parole nuove. Mi piace leggere ad alta voce. L’italiano è bello.",
+      "segments": [
+        "Studio l’italiano.",
+        "Vado a scuola il lunedì.",
+        "La maestra è gentile.",
+        "Imparo molte parole nuove.",
+        "Mi piace leggere ad alta voce.",
+        "L’italiano è bello."
+      ]
+    },
+    {
+      "title": "Dal dottore",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Buongiorno, cosa ha? Ho mal di testa. Da quanto tempo? Da tre giorni. Apre la bocca, per favore. Prenda questa medicina. Grazie, dottore.",
+      "segments": [
+        "Buongiorno, cosa ha?",
+        "Ho mal di testa.",
+        "Da quanto tempo?",
+        "Da tre giorni.",
+        "Apre la bocca, per favore.",
+        "Prenda questa medicina.",
+        "Grazie, dottore."
+      ]
+    },
+    {
+      "title": "Il telefono",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Pronto, ciao Marco! Ciao Anna, come stai? Bene, grazie, e tu? Anch’io sto bene. Che fai stasera? Niente di speciale. Ti chiamo domani, ciao!",
+      "segments": [
+        "Pronto, ciao Marco!",
+        "Ciao Anna, come stai?",
+        "Bene, grazie, e tu?",
+        "Anch’io sto bene.",
+        "Che fai stasera?",
+        "Niente di speciale.",
+        "Ti chiamo domani, ciao!"
+      ]
+    },
+    {
+      "title": "In biblioteca",
+      "level": "A1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Buongiorno, cerco un libro. Di cosa ha bisogno? Un libro per bambini. È nella seconda sala. Posso prenderlo in prestito? Sì, per due settimane. Grazie mille.",
+      "segments": [
+        "Buongiorno, cerco un libro.",
+        "Di cosa ha bisogno?",
+        "Un libro per bambini.",
+        "È nella seconda sala.",
+        "Posso prenderlo in prestito?",
+        "Sì, per due settimane.",
+        "Grazie mille."
+      ]
+    },
+    {
+      "title": "La mattina",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Suona la sveglia. Apro gli occhi. Mi lavo la faccia. Mi vesto in fretta. Bevo un caffè. Esco di casa alle sette.",
+      "segments": [
+        "Suona la sveglia.",
+        "Apro gli occhi.",
+        "Mi lavo la faccia.",
+        "Mi vesto in fretta.",
+        "Bevo un caffè.",
+        "Esco di casa alle sette."
+      ]
+    },
+    {
+      "title": "Al parco",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Oggi vado al parco. Il tempo è bello. Ci sono molti bambini. I bambini giocano a palla. Un cane corre sull’erba. Mi siedo su una panchina.",
+      "segments": [
+        "Oggi vado al parco.",
+        "Il tempo è bello.",
+        "Ci sono molti bambini.",
+        "I bambini giocano a palla.",
+        "Un cane corre sull’erba.",
+        "Mi siedo su una panchina."
+      ]
+    },
+    {
+      "title": "Il compleanno",
+      "level": "A1",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Oggi è il mio compleanno. La mia famiglia fa una festa. Mia madre prepara la torta. Mio padre compra i regali. Invito i miei amici. Cantiamo «Tanti auguri a te».",
+      "segments": [
+        "Oggi è il mio compleanno.",
+        "La mia famiglia fa una festa.",
+        "Mia madre prepara la torta.",
+        "Mio padre compra i regali.",
+        "Invito i miei amici.",
+        "Cantiamo «Tanti auguri a te»."
+      ]
+    },
+    {
+      "title": "La mia camera",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "La mia camera è ordinata. Il letto è vicino alla finestra. Sulla scrivania c’è il computer. Nell’armadio ci sono i vestiti. Ho molti libri sullo scaffale. Mi piace stare nella mia camera.",
+      "segments": [
+        "La mia camera è ordinata.",
+        "Il letto è vicino alla finestra.",
+        "Sulla scrivania c’è il computer.",
+        "Nell’armadio ci sono i vestiti.",
+        "Ho molti libri sullo scaffale.",
+        "Mi piace stare nella mia camera."
+      ]
+    },
+    {
+      "title": "In autobus",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Scusi, questo autobus va in centro? Sì, ci va. Quante fermate ci sono? Sono tre fermate. Dove devo scendere? Scenda alla piazza. Grazie, buona giornata.",
+      "segments": [
+        "Scusi, questo autobus va in centro?",
+        "Sì, ci va.",
+        "Quante fermate ci sono?",
+        "Sono tre fermate.",
+        "Dove devo scendere?",
+        "Scenda alla piazza.",
+        "Grazie, buona giornata."
+      ]
+    },
+    {
+      "title": "La moda",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Mi piace questo vestito. Di che colore è? È blu e bianco. Quanto costa? Costa trenta euro. Lo provo, per favore? Certo, lo spogliatoio è là.",
+      "segments": [
+        "Mi piace questo vestito.",
+        "Di che colore è?",
+        "È blu e bianco.",
+        "Quanto costa?",
+        "Costa trenta euro.",
+        "Lo provo, per favore?",
+        "Certo, lo spogliatoio è là."
+      ]
+    },
+    {
+      "title": "Il caffè con gli amici",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Ci vediamo al bar? Sì, alle cinque. Ordino un caffè. Io prendo un tè. Parliamo del lavoro. Ridiamo insieme. È bello stare con gli amici.",
+      "segments": [
+        "Ci vediamo al bar?",
+        "Sì, alle cinque.",
+        "Ordino un caffè.",
+        "Io prendo un tè.",
+        "Parliamo del lavoro.",
+        "Ridiamo insieme.",
+        "È bello stare con gli amici."
+      ]
+    },
+    {
+      "title": "Il giardino",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Nel giardino ci sono i fiori. La mamma annaffia le piante. Il papà taglia l’erba. Io gioco con il cane. C’è un albero di mele. Il giardino è il mio posto preferito.",
+      "segments": [
+        "Nel giardino ci sono i fiori.",
+        "La mamma annaffia le piante.",
+        "Il papà taglia l’erba.",
+        "Io gioco con il cane.",
+        "C’è un albero di mele.",
+        "Il giardino è il mio posto preferito."
+      ]
+    },
+    {
+      "title": "La sera",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "La sera sono stanco. Mangio la pasta. Guardo un film. Leggo un libro. Parlo al telefono con mia nonna. Vado a letto alle undici.",
+      "segments": [
+        "La sera sono stanco.",
+        "Mangio la pasta.",
+        "Guardo un film.",
+        "Leggo un libro.",
+        "Parlo al telefono con mia nonna.",
+        "Vado a letto alle undici."
+      ]
+    },
+    {
+      "title": "In palestra",
+      "level": "A1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Vado in palestra due volte a settimana. Faccio esercizi con i pesi. Corro sul tapis roulant. Bevo molta acqua. Mi sento più forte. Lo sport fa bene alla salute.",
+      "segments": [
+        "Vado in palestra due volte a settimana.",
+        "Faccio esercizi con i pesi.",
+        "Corro sul tapis roulant.",
+        "Bevo molta acqua.",
+        "Mi sento più forte.",
+        "Lo sport fa bene alla salute."
+      ]
+    },
+    {
+      "title": "Il mercato del sabato",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Il sabato vado al mercato. Compro frutta e verdura fresca. Il venditore è simpatico. Le arance sono dolci. Pago in contanti. Torno a casa con le borse piene.",
+      "segments": [
+        "Il sabato vado al mercato.",
+        "Compro frutta e verdura fresca.",
+        "Il venditore è simpatico.",
+        "Le arance sono dolci.",
+        "Pago in contanti.",
+        "Torno a casa con le borse piene."
+      ]
+    },
+    {
+      "title": "Il mio quartiere",
+      "level": "A1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Abito in un quartiere tranquillo. C’è un forno vicino a casa. Compro il pane fresco ogni mattina. Ci sono due parchi. I negozi chiudono alle otto. Mi piace il mio quartiere.",
+      "segments": [
+        "Abito in un quartiere tranquillo.",
+        "C’è un forno vicino a casa.",
+        "Compro il pane fresco ogni mattina.",
+        "Ci sono due parchi.",
+        "I negozi chiudono alle otto.",
+        "Mi piace il mio quartiere."
+      ]
+    },
+    {
+      "title": "Le stagioni",
+      "level": "A1",
+      "topic": "wetter",
+      "est_minutes": 1,
+      "body": "In primavera fioriscono gli alberi. In estate fa molto caldo. In autunno cadono le foglie. In inverno nevica in montagna. La mia stagione preferita è la primavera. Mi piace il clima mite.",
+      "segments": [
+        "In primavera fioriscono gli alberi.",
+        "In estate fa molto caldo.",
+        "In autunno cadono le foglie.",
+        "In inverno nevica in montagna.",
+        "La mia stagione preferita è la primavera.",
+        "Mi piace il clima mite."
+      ]
+    },
+    {
+      "title": "In treno",
+      "level": "A1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Il treno parte alle dieci. Il mio posto è il numero dodici. Metto la valigia sopra. Guardo fuori dal finestrino. Il paesaggio è bellissimo. Arrivo a Firenze alle undici.",
+      "segments": [
+        "Il treno parte alle dieci.",
+        "Il mio posto è il numero dodici.",
+        "Metto la valigia sopra.",
+        "Guardo fuori dal finestrino.",
+        "Il paesaggio è bellissimo.",
+        "Arrivo a Firenze alle undici."
+      ]
+    },
+    {
+      "title": "La ricetta della pasta",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Faccio bollire l’acqua. Butto la pasta nell’acqua. Aspetto dieci minuti. Scolo la pasta. Condisco con il pomodoro. Aggiungo il parmigiano. Buon appetito!",
+      "segments": [
+        "Faccio bollire l’acqua.",
+        "Butto la pasta nell’acqua.",
+        "Aspetto dieci minuti.",
+        "Scolo la pasta.",
+        "Condisco con il pomodoro.",
+        "Aggiungo il parmigiano. Buon appetito!"
+      ]
+    },
+    {
+      "title": "Il mio lavoro",
+      "level": "A1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Lavoro in un ufficio. Sono impiegato. Uso il computer tutto il giorno. Parlo con i clienti. Faccio una pausa a mezzogiorno. Il mio lavoro è interessante.",
+      "segments": [
+        "Lavoro in un ufficio.",
+        "Sono impiegato.",
+        "Uso il computer tutto il giorno.",
+        "Parlo con i clienti.",
+        "Faccio una pausa a mezzogiorno.",
+        "Il mio lavoro è interessante."
+      ]
+    },
+    {
+      "title": "In spiaggia",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Oggi andiamo in spiaggia. Porto il costume e il telo. Il mare è azzurro. Nuoto un po’. Prendo il sole. Mangio un gelato. Che bello!",
+      "segments": [
+        "Oggi andiamo in spiaggia.",
+        "Porto il costume e il telo.",
+        "Il mare è azzurro.",
+        "Nuoto un po’.",
+        "Prendo il sole.",
+        "Mangio un gelato. Che bello!"
+      ]
+    },
+    {
+      "title": "La spesa dal fruttivendolo",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Buongiorno, quanto costano le fragole? Tre euro al chilo. Mi dia mezzo chilo. Desidera altro? Sì, un’insalata. Bene, sono quattro euro in tutto.",
+      "segments": [
+        "Buongiorno, quanto costano le fragole?",
+        "Tre euro al chilo.",
+        "Mi dia mezzo chilo.",
+        "Desidera altro?",
+        "Sì, un’insalata.",
+        "Bene, sono quattro euro in tutto."
+      ]
+    },
+    {
+      "title": "Il vicino di casa",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Il mio vicino si chiama Gianni. È anziano e gentile. Mi saluta ogni mattina. A volte mi porta dei dolci. Lo aiuto a portare la spesa. È un uomo molto disponibile.",
+      "segments": [
+        "Il mio vicino si chiama Gianni.",
+        "È anziano e gentile.",
+        "Mi saluta ogni mattina.",
+        "A volte mi porta dei dolci.",
+        "Lo aiuto a portare la spesa.",
+        "È un uomo molto disponibile."
+      ]
+    },
+    {
+      "title": "Il mio telefono",
+      "level": "A1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Il mio telefono è nuovo. Ha la fotocamera buona. Scatto molte foto. Mando messaggi agli amici. Ascolto la musica. Lo carico ogni sera.",
+      "segments": [
+        "Il mio telefono è nuovo.",
+        "Ha la fotocamera buona.",
+        "Scatto molte foto.",
+        "Mando messaggi agli amici.",
+        "Ascolto la musica.",
+        "Lo carico ogni sera."
+      ]
+    },
+    {
+      "title": "A cena a casa",
+      "level": "A1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Stasera mangiamo la pizza. La mamma prepara l’impasto. Aggiungiamo il formaggio. Mangiamo tutti insieme. Parliamo della giornata. La cena in famiglia è la migliore.",
+      "segments": [
+        "Stasera mangiamo la pizza.",
+        "La mamma prepara l’impasto.",
+        "Aggiungiamo il formaggio.",
+        "Mangiamo tutti insieme.",
+        "Parliamo della giornata.",
+        "La cena in famiglia è la migliore."
+      ]
+    },
+    {
+      "title": "Il mio animale preferito",
+      "level": "A1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Il mio animale preferito è il delfino. Il delfino è intelligente. Vive nel mare. È grigio e veloce. Mi piace guardare i documentari. Vorrei vedere i delfini dal vivo.",
+      "segments": [
+        "Il mio animale preferito è il delfino.",
+        "Il delfino è intelligente.",
+        "Vive nel mare.",
+        "È grigio e veloce.",
+        "Mi piace guardare i documentari.",
+        "Vorrei vedere i delfini dal vivo."
+      ]
+    },
+    {
+      "title": "Ieri sera",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Ieri sera sono uscito con gli amici. Abbiamo cenato in una trattoria. Ho ordinato una pizza margherita. Era molto buona. Dopo siamo andati al cinema. Il film mi è piaciuto molto. Sono tornato a casa a mezzanotte.",
+      "segments": [
+        "Ieri sera sono uscito con gli amici.",
+        "Abbiamo cenato in una trattoria.",
+        "Ho ordinato una pizza margherita.",
+        "Era molto buona.",
+        "Dopo siamo andati al cinema.",
+        "Il film mi è piaciuto molto.",
+        "Sono tornato a casa a mezzanotte."
+      ]
+    },
+    {
+      "title": "Una gita fuori porta",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "La settimana scorsa abbiamo fatto una gita. Siamo andati in un piccolo borgo. Abbiamo visitato il castello. Le strade erano strette e antiche. Abbiamo mangiato i prodotti locali. Il panorama era meraviglioso. Vorrei tornarci presto.",
+      "segments": [
+        "La settimana scorsa abbiamo fatto una gita.",
+        "Siamo andati in un piccolo borgo.",
+        "Abbiamo visitato il castello.",
+        "Le strade erano strette e antiche.",
+        "Abbiamo mangiato i prodotti locali.",
+        "Il panorama era meraviglioso.",
+        "Vorrei tornarci presto."
+      ]
+    },
+    {
+      "title": "Quando ero bambino",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Quando ero bambino, abitavo in campagna. Giocavo tutto il giorno all’aperto. La nonna mi raccontava le storie. D’estate nuotavo nel fiume. Non avevo la televisione. Mi divertivo con poco. Quegli anni erano sereni.",
+      "segments": [
+        "Quando ero bambino, abitavo in campagna.",
+        "Giocavo tutto il giorno all’aperto.",
+        "La nonna mi raccontava le storie.",
+        "D’estate nuotavo nel fiume.",
+        "Non avevo la televisione.",
+        "Mi divertivo con poco.",
+        "Quegli anni erano sereni."
+      ]
+    },
+    {
+      "title": "Un giorno speciale",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Era un giorno d’estate. Il sole splendeva e c’era poca gente. Mentre camminavo, ho trovato un portafoglio. L’ho portato subito alla polizia. Il proprietario mi ha ringraziato. Mi sono sentito orgoglioso. È stata una piccola grande soddisfazione.",
+      "segments": [
+        "Era un giorno d’estate.",
+        "Il sole splendeva e c’era poca gente.",
+        "Mentre camminavo, ho trovato un portafoglio.",
+        "L’ho portato subito alla polizia.",
+        "Il proprietario mi ha ringraziato.",
+        "Mi sono sentito orgoglioso.",
+        "È stata una piccola grande soddisfazione."
+      ]
+    },
+    {
+      "title": "Fare compere",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Sono andato a comprare un regalo per mia sorella. Non sapevo cosa prendere. Alla fine l’ho scelto io. L’ho avvolto con cura. Lei l’ha aperto e ha sorriso. Le è piaciuto moltissimo. Ero contento di averla sorpresa.",
+      "segments": [
+        "Sono andato a comprare un regalo per mia sorella.",
+        "Non sapevo cosa prendere.",
+        "Alla fine l’ho scelto io.",
+        "L’ho avvolto con cura.",
+        "Lei l’ha aperto e ha sorriso.",
+        "Le è piaciuto moltissimo.",
+        "Ero contento di averla sorpresa."
+      ]
+    },
+    {
+      "title": "Una telefonata",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Mi ha telefonato il mio vecchio amico. Non lo sentivo da anni. Ci siamo raccontati le nostre vite. Mi ha chiesto come stavo. Gli ho risposto che tutto bene. Ci siamo dati appuntamento. È stato bello risentirlo.",
+      "segments": [
+        "Mi ha telefonato il mio vecchio amico.",
+        "Non lo sentivo da anni.",
+        "Ci siamo raccontati le nostre vite.",
+        "Mi ha chiesto come stavo.",
+        "Gli ho risposto che tutto bene.",
+        "Ci siamo dati appuntamento.",
+        "È stato bello risentirlo."
+      ]
+    },
+    {
+      "title": "Dal fruttivendolo",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Quante mele vuole? Ne prendo due chili. Le arance sono dolci? Sì, ne assaggi una. Le prendo tutte. Gliene aggiungo anche un po’ di limoni. Glieli metto nella borsa.",
+      "segments": [
+        "Quante mele vuole?",
+        "Ne prendo due chili.",
+        "Le arance sono dolci?",
+        "Sì, ne assaggi una.",
+        "Le prendo tutte.",
+        "Gliene aggiungo anche un po’ di limoni.",
+        "Glieli metto nella borsa."
+      ]
+    },
+    {
+      "title": "In albergo",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Buonasera, ho una prenotazione a nome Rossi. Sì, una camera doppia con vista. Perfetta. A che ora è la colazione? Dalle sette alle dieci. C’è il Wi-Fi in camera? Sì, la password è sul tavolo. Grazie, buon soggiorno.",
+      "segments": [
+        "Buonasera, ho una prenotazione a nome Rossi.",
+        "Sì, una camera doppia con vista.",
+        "Perfetta. A che ora è la colazione?",
+        "Dalle sette alle dieci.",
+        "C’è il Wi-Fi in camera?",
+        "Sì, la password è sul tavolo.",
+        "Grazie, buon soggiorno."
+      ]
+    },
+    {
+      "title": "Dal medico",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Dottore, mi sento molto stanco. Da quanto tempo? Da circa due settimane. Dorme bene? No, mi sveglio spesso di notte. Deve riposare di più e bere acqua. Le prescrivo delle analisi.",
+      "segments": [
+        "Dottore, mi sento molto stanco.",
+        "Da quanto tempo?",
+        "Da circa due settimane.",
+        "Dorme bene?",
+        "No, mi sveglio spesso di notte.",
+        "Deve riposare di più e bere acqua.",
+        "Le prescrivo delle analisi."
+      ]
+    },
+    {
+      "title": "Richieste gentili",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Scusi, potrebbe aiutarmi? Certo, mi dica. Potrebbe dirmi dov’è la farmacia? La farmacia è all’angolo. Le sarei molto grato. Non c’è di che. Grazie mille per la disponibilità.",
+      "segments": [
+        "Scusi, potrebbe aiutarmi?",
+        "Certo, mi dica.",
+        "Potrebbe dirmi dov’è la farmacia?",
+        "La farmacia è all’angolo.",
+        "Le sarei molto grato.",
+        "Non c’è di che.",
+        "Grazie mille per la disponibilità."
+      ]
+    },
+    {
+      "title": "Cosa preferisci?",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Preferisci il mare o la montagna? Preferirei il mare, in realtà. Perché? Perché mi piace nuotare. Anche a me piacerebbe andare al mare. Potremmo partire a giugno. Che bella idea!",
+      "segments": [
+        "Preferisci il mare o la montagna?",
+        "Preferirei il mare, in realtà.",
+        "Perché?",
+        "Perché mi piace nuotare.",
+        "Anche a me piacerebbe andare al mare.",
+        "Potremmo partire a giugno.",
+        "Che bella idea!"
+      ]
+    },
+    {
+      "title": "Una giornata tipo",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Di solito mi sveglio alle sette. Faccio colazione e leggo le notizie. Prendo l’autobus per il lavoro. A pranzo esco con i colleghi. Nel pomeriggio rispondo alle email. La sera cucino qualcosa di semplice. Poi mi rilasso un po’.",
+      "segments": [
+        "Di solito mi sveglio alle sette.",
+        "Faccio colazione e leggo le notizie.",
+        "Prendo l’autobus per il lavoro.",
+        "A pranzo esco con i colleghi.",
+        "Nel pomeriggio rispondo alle email.",
+        "La sera cucino qualcosa di semplice.",
+        "Poi mi rilasso un po’."
+      ]
+    },
+    {
+      "title": "Le vacanze estive",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "L’estate scorsa siamo andati in Puglia. Abbiamo affittato una casa vicino al mare. Le spiagge erano splendide. Abbiamo mangiato il pesce fresco. Abbiamo visitato i trulli di Alberobello. Abbiamo fatto il bagno ogni giorno. Sono state vacanze indimenticabili.",
+      "segments": [
+        "L’estate scorsa siamo andati in Puglia.",
+        "Abbiamo affittato una casa vicino al mare.",
+        "Le spiagge erano splendide.",
+        "Abbiamo mangiato il pesce fresco.",
+        "Abbiamo visitato i trulli di Alberobello.",
+        "Abbiamo fatto il bagno ogni giorno.",
+        "Sono state vacanze indimenticabili."
+      ]
+    },
+    {
+      "title": "Un regalo",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Volevo fare un regalo a mio padre. Gli piace leggere, così ho pensato a un libro. L’ho comprato in una libreria del centro. Gliel’ho dato per il suo compleanno. Quando l’ha aperto, si è commosso. Mi ha abbracciato forte. È stato un momento bellissimo.",
+      "segments": [
+        "Volevo fare un regalo a mio padre.",
+        "Gli piace leggere, così ho pensato a un libro.",
+        "L’ho comprato in una libreria del centro.",
+        "Gliel’ho dato per il suo compleanno.",
+        "Quando l’ha aperto, si è commosso.",
+        "Mi ha abbracciato forte.",
+        "È stato un momento bellissimo."
+      ]
+    },
+    {
+      "title": "Al telefono con la banca",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Buongiorno, vorrei aprire un conto. Certo, ha un documento d’identità? Sì, eccolo. E il codice fiscale? Certo, glielo do subito. Bene, compili questo modulo. Grazie, è molto gentile.",
+      "segments": [
+        "Buongiorno, vorrei aprire un conto.",
+        "Certo, ha un documento d’identità?",
+        "Sì, eccolo.",
+        "E il codice fiscale?",
+        "Certo, glielo do subito.",
+        "Bene, compili questo modulo.",
+        "Grazie, è molto gentile."
+      ]
+    },
+    {
+      "title": "Il concerto",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Sabato siamo andati a un concerto. La band ha suonato le nostre canzoni preferite. Abbiamo cantato e ballato tutta la sera. Era difficile sentire, ma che energia! Abbiamo comprato le magliette. Siamo usciti tardi, ma felici. Lo rifaremo sicuramente.",
+      "segments": [
+        "Sabato siamo andati a un concerto.",
+        "La band ha suonato le nostre canzoni preferite.",
+        "Abbiamo cantato e ballato tutta la sera.",
+        "Era difficile sentire, ma che energia!",
+        "Abbiamo comprato le magliette.",
+        "Siamo usciti tardi, ma felici.",
+        "Lo rifaremo sicuramente."
+      ]
+    },
+    {
+      "title": "Cucinare per gli amici",
+      "level": "A2",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "Ho invitato gli amici a cena. Ho preparato le lasagne. Mentre cuocevano, abbiamo bevuto un aperitivo. Gli amici hanno portato il dolce. A tutti è piaciuto molto. Mi hanno fatto i complimenti. Cucinare per gli altri mi rende felice.",
+      "segments": [
+        "Ho invitato gli amici a cena.",
+        "Ho preparato le lasagne.",
+        "Mentre cuocevano, abbiamo bevuto un aperitivo.",
+        "Gli amici hanno portato il dolce.",
+        "A tutti è piaciuto molto.",
+        "Mi hanno fatto i complimenti.",
+        "Cucinare per gli altri mi rende felice."
+      ]
+    },
+    {
+      "title": "Un malinteso",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Avevamo un appuntamento alle cinque. Io sono arrivato alle sei. Lui mi aspettava dall’altra parte della piazza. Ci siamo cercati per un’ora. Alla fine ci siamo trovati per caso. Abbiamo riso del malinteso. Poi abbiamo preso un caffè insieme.",
+      "segments": [
+        "Avevamo un appuntamento alle cinque.",
+        "Io sono arrivato alle sei.",
+        "Lui mi aspettava dall’altra parte della piazza.",
+        "Ci siamo cercati per un’ora.",
+        "Alla fine ci siamo trovati per caso.",
+        "Abbiamo riso del malinteso.",
+        "Poi abbiamo preso un caffè insieme."
+      ]
+    },
+    {
+      "title": "Il corso di lingua",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Mi sono iscritto a un corso di italiano. Le lezioni sono due volte a settimana. La docente è paziente e chiara. Facciamo molti esercizi di conversazione. All’inizio era difficile capire. Ora riesco a parlare meglio. Sono contento dei miei progressi.",
+      "segments": [
+        "Mi sono iscritto a un corso di italiano.",
+        "Le lezioni sono due volte a settimana.",
+        "La docente è paziente e chiara.",
+        "Facciamo molti esercizi di conversazione.",
+        "All’inizio era difficile capire.",
+        "Ora riesco a parlare meglio.",
+        "Sono contento dei miei progressi."
+      ]
+    },
+    {
+      "title": "Un’occasione persa",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Ieri c’era un’offerta al supermercato. Volevo comprarci, ma non avevo tempo. Quando sono arrivato, era tutto finito. Mi sono pentito di non essere andato prima. La prossima volta ci vado subito. Spero che rifacciano la promozione. Pazienza, non si può avere tutto.",
+      "segments": [
+        "Ieri c’era un’offerta al supermercato.",
+        "Volevo comprarci, ma non avevo tempo.",
+        "Quando sono arrivato, era tutto finito.",
+        "Mi sono pentito di non essere andato prima.",
+        "La prossima volta ci vado subito.",
+        "Spero che rifacciano la promozione.",
+        "Pazienza, non si può avere tutto."
+      ]
+    },
+    {
+      "title": "Il vicino rumoroso",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Il mio vicino ascolta musica ad alto volume. Ogni sera è la stessa storia. Non riesco a dormire. Ieri sono andato a parlargli. Mi ha chiesto scusa e ha abbassato. Stasera è stato molto più silenzioso. A volte basta parlare per risolvere.",
+      "segments": [
+        "Il mio vicino ascolta musica ad alto volume.",
+        "Ogni sera è la stessa storia.",
+        "Non riesco a dormire.",
+        "Ieri sono andato a parlargli.",
+        "Mi ha chiesto scusa e ha abbassato.",
+        "Stasera è stato molto più silenzioso.",
+        "A volte basta parlare per risolvere."
+      ]
+    },
+    {
+      "title": "La mia serie preferita",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Ho iniziato una nuova serie. Parla di una famiglia a Napoli. Gli attori sono bravissimi. Ogni episodio mi tiene incollato. Ne ho visti cinque in un giorno. La consiglio a tutti. Aspetto la seconda stagione.",
+      "segments": [
+        "Ho iniziato una nuova serie.",
+        "Parla di una famiglia a Napoli.",
+        "Gli attori sono bravissimi.",
+        "Ogni episodio mi tiene incollato.",
+        "Ne ho visti cinque in un giorno.",
+        "La consiglio a tutti.",
+        "Aspetto la seconda stagione."
+      ]
+    },
+    {
+      "title": "Un incidente stradale",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Ieri c’è stato un piccolo incidente. Due auto si sono toccate all’incrocio. Per fortuna nessuno si è fatto male. Hanno chiamato la polizia. Hanno compilato il modulo. Il traffico era bloccato. Alla fine tutto si è risolto.",
+      "segments": [
+        "Ieri c’è stato un piccolo incidente.",
+        "Due auto si sono toccate all’incrocio.",
+        "Per fortuna nessuno si è fatto male.",
+        "Hanno chiamato la polizia.",
+        "Hanno compilato il modulo.",
+        "Il traffico era bloccato.",
+        "Alla fine tutto si è risolto."
+      ]
+    },
+    {
+      "title": "Il colloquio",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Ho fatto un colloquio di lavoro. Mi hanno chiesto della mia esperienza. Ho parlato dei progetti che ho seguito. Mi hanno chiesto perché volevo quel posto. Ho risposto con sincerità. Mi hanno detto che mi richiamano. Spero che vada bene.",
+      "segments": [
+        "Ho fatto un colloquio di lavoro.",
+        "Mi hanno chiesto della mia esperienza.",
+        "Ho parlato dei progetti che ho seguito.",
+        "Mi hanno chiesto perché volevo quel posto.",
+        "Ho risposto con sincerità.",
+        "Mi hanno detto che mi richiamano.",
+        "Spero che vada bene."
+      ]
+    },
+    {
+      "title": "La gita in montagna",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Siamo partiti presto per la montagna. Abbiamo camminato per tre ore. Il sentiero era ripido ma panoramico. In cima c’era una vista spettacolare. Abbiamo pranzato con un panino. Siamo scesi prima del buio. Ero stanco ma soddisfatto.",
+      "segments": [
+        "Siamo partiti presto per la montagna.",
+        "Abbiamo camminato per tre ore.",
+        "Il sentiero era ripido ma panoramico.",
+        "In cima c’era una vista spettacolare.",
+        "Abbiamo pranzato con un panino.",
+        "Siamo scesi prima del buio.",
+        "Ero stanco ma soddisfatto."
+      ]
+    },
+    {
+      "title": "Il regalo sbagliato",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Ho comprato un regalo per mia zia. Era un maglione, ma era della taglia sbagliata. Quando l’ha provato, non le stava. Lei è stata gentilissima e non ha detto nulla. L’ho riportato al negozio. Ho cambiato il taglia. Alla fine le è piaciuto molto.",
+      "segments": [
+        "Ho comprato un regalo per mia zia.",
+        "Era un maglione, ma era della taglia sbagliata.",
+        "Quando l’ha provato, non le stava.",
+        "Lei è stata gentilissima e non ha detto nulla.",
+        "L’ho riportato al negozio.",
+        "Ho cambiato il taglia.",
+        "Alla fine le è piaciuto molto."
+      ]
+    },
+    {
+      "title": "Un nuovo collega",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "In ufficio è arrivato un nuovo collega. All’inizio era un po’ timido. Gli ho mostrato come funziona il sistema. A poco a poco si è integrato. Ora pranziamo sempre insieme. È diventato un buon amico. Sono contento di averlo aiutato.",
+      "segments": [
+        "In ufficio è arrivato un nuovo collega.",
+        "All’inizio era un po’ timido.",
+        "Gli ho mostrato come funziona il sistema.",
+        "A poco a poco si è integrato.",
+        "Ora pranziamo sempre insieme.",
+        "È diventato un buon amico.",
+        "Sono contento di averlo aiutato."
+      ]
+    },
+    {
+      "title": "La lezione di guida",
+      "level": "A2",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Oggi ho fatto la mia prima lezione di guida. L’istruttore era molto paziente. Ho imparato a partire e a frenare. All’inizio tremavo un po’. Alla fine mi sentivo più sicuro. Devo esercitarmi di più. Spero di prendere la patente.",
+      "segments": [
+        "Oggi ho fatto la mia prima lezione di guida.",
+        "L’istruttore era molto paziente.",
+        "Ho imparato a partire e a frenare.",
+        "All’inizio tremavo un po’.",
+        "Alla fine mi sentivo più sicuro.",
+        "Devo esercitarmi di più.",
+        "Spero di prendere la patente."
+      ]
+    },
+    {
+      "title": "Il picnic",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Abbiamo organizzato un picnic al lago. Ognuno ha portato qualcosa. Io ho portato la frutta e i panini. Abbiamo mangiato sull’erba. Poi abbiamo giocato a carte. Il tempo era perfetto. È stata una giornata rilassante.",
+      "segments": [
+        "Abbiamo organizzato un picnic al lago.",
+        "Ognuno ha portato qualcosa.",
+        "Io ho portato la frutta e i panini.",
+        "Abbiamo mangiato sull’erba.",
+        "Poi abbiamo giocato a carte.",
+        "Il tempo era perfetto.",
+        "È stata una giornata rilassante."
+      ]
+    },
+    {
+      "title": "Un’email di lavoro",
+      "level": "A2",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Devo scrivere un’email al cliente. Devo essere formale e chiaro. Spiego il problema e la soluzione. Allego il preventivo. Rileggo due volte prima di inviare. Scrivo «Cordiali saluti» alla fine. Poi premo invio e aspetto la risposta.",
+      "segments": [
+        "Devo scrivere un’email al cliente.",
+        "Devo essere formale e chiaro.",
+        "Spiego il problema e la soluzione.",
+        "Allego il preventivo.",
+        "Rileggo due volte prima di inviare.",
+        "Scrivo «Cordiali saluti» alla fine.",
+        "Poi premo invio e aspetto la risposta."
+      ]
+    },
+    {
+      "title": "La festa di laurea",
+      "level": "A2",
+      "topic": "familie",
+      "est_minutes": 1,
+      "body": "Mia sorella ha finito l’università. Abbiamo fatto una festa per la sua laurea. Sono venuti tutti i parenti. Abbiamo mangiato, bevuto e ballato. Le abbiamo fatto un regalo tutti insieme. Era felicissima e commossa. È stato un giorno da ricordare.",
+      "segments": [
+        "Mia sorella ha finito l’università.",
+        "Abbiamo fatto una festa per la sua laurea.",
+        "Sono venuti tutti i parenti.",
+        "Abbiamo mangiato, bevuto e ballato.",
+        "Le abbiamo fatto un regalo tutti insieme.",
+        "Era felicissima e commossa.",
+        "È stato un giorno da ricordare."
+      ]
+    },
+    {
+      "title": "Il mercato dell’usato",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Sabato sono andato al mercato dell’usato. Ho trovato dei libri vecchi a poco prezzo. Ho comprato anche una lampada. Il venditore era simpatico e chiacchierone. Ho trattato un po’ sul prezzo. Alla fine ho speso poco. Adoro cercare tesori nascosti.",
+      "segments": [
+        "Sabato sono andato al mercato dell’usato.",
+        "Ho trovato dei libri vecchi a poco prezzo.",
+        "Ho comprato anche una lampada.",
+        "Il venditore era simpatico e chiacchierone.",
+        "Ho trattato un po’ sul prezzo.",
+        "Alla fine ho speso poco.",
+        "Adoro cercare tesori nascosti."
+      ]
+    },
+    {
+      "title": "Un viaggio inaspettato",
+      "level": "A2",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Il treno era cancellato e siamo rimasti bloccati. Abbiamo dovuto cercare un altro mezzo. Alla fine abbiamo preso un autobus. Siamo arrivati in ritardo di due ore. Però abbiamo scoperto un bel paesino. A volte gli imprevisti regalano sorprese. È andata meglio del previsto.",
+      "segments": [
+        "Il treno era cancellato e siamo rimasti bloccati.",
+        "Abbiamo dovuto cercare un altro mezzo.",
+        "Alla fine abbiamo preso un autobus.",
+        "Siamo arrivati in ritardo di due ore.",
+        "Però abbiamo scoperto un bel paesino.",
+        "A volte gli imprevisti regalano sorprese.",
+        "È andata meglio del previsto."
+      ]
+    },
+    {
+      "title": "La dieta",
+      "level": "A2",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Ho deciso di mangiare più sano. Bevo più acqua e mangio verdure. Ho ridotto la pasta e i dolci. All’inizio era difficile resistere. Ora mi sento più leggero. Faccio anche una passeggiata ogni giorno. Mi sento davvero meglio.",
+      "segments": [
+        "Ho deciso di mangiare più sano.",
+        "Bevo più acqua e mangio verdure.",
+        "Ho ridotto la pasta e i dolci.",
+        "All’inizio era difficile resistere.",
+        "Ora mi sento più leggero.",
+        "Faccio anche una passeggiata ogni giorno.",
+        "Mi sento davvero meglio."
+      ]
+    },
+    {
+      "title": "Il corso di cucina",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Mi sono iscritto a un corso di cucina. Impariamo a fare la pasta fresca. Lo chef ci mostra ogni passaggio. Abbiamo fatto gli gnocchi oggi. Sono venuti fuori benissimo. Li ho portati a casa per la famiglia. È un hobby che mi diverte molto.",
+      "segments": [
+        "Mi sono iscritto a un corso di cucina.",
+        "Impariamo a fare la pasta fresca.",
+        "Lo chef ci mostra ogni passaggio.",
+        "Abbiamo fatto gli gnocchi oggi.",
+        "Sono venuti fuori benissimo.",
+        "Li ho portati a casa per la famiglia.",
+        "È un hobby che mi diverte molto."
+      ]
+    },
+    {
+      "title": "Un litigio con un amico",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Ieri ho litigato con un amico. Abbiamo discusso per una sciocchezza. Per un giorno non ci siamo parlati. Poi l’ho chiamato per fare pace. Anche lui voleva chiarire. Ci siamo scusati a vicenda. Ora va tutto bene di nuovo.",
+      "segments": [
+        "Ieri ho litigato con un amico.",
+        "Abbiamo discusso per una sciocchezza.",
+        "Per un giorno non ci siamo parlati.",
+        "Poi l’ho chiamato per fare pace.",
+        "Anche lui voleva chiarire.",
+        "Ci siamo scusati a vicenda.",
+        "Ora va tutto bene di nuovo."
+      ]
+    },
+    {
+      "title": "La ricerca di casa",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Sto cercando una casa più grande. Ho visitato diversi appartamenti. Alcuni erano troppo cari. Uno mi è piaciuto, ma era buio. Alla fine ne ho trovato uno luminoso. Ha un balcone e due camere. Non vedo l’ora di trasferirmi.",
+      "segments": [
+        "Sto cercando una casa più grande.",
+        "Ho visitato diversi appartamenti.",
+        "Alcuni erano troppo cari.",
+        "Uno mi è piaciuto, ma era buio.",
+        "Alla fine ne ho trovato uno luminoso.",
+        "Ha un balcone e due camere.",
+        "Non vedo l’ora di trasferirmi."
+      ]
+    },
+    {
+      "title": "Il volontariato",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Faccio volontariato in una mensa. Aiuto a preparare e servire i pasti. Ci sono molte persone che hanno bisogno. I volontari sono una bella squadra. Mi fa sentire utile. A volte ricevo un sorriso che vale tutto. Consiglio a tutti di provare.",
+      "segments": [
+        "Faccio volontariato in una mensa.",
+        "Aiuto a preparare e servire i pasti.",
+        "Ci sono molte persone che hanno bisogno.",
+        "I volontari sono una bella squadra.",
+        "Mi fa sentire utile.",
+        "A volte ricevo un sorriso che vale tutto.",
+        "Consiglio a tutti di provare."
+      ]
+    },
+    {
+      "title": "La riunione di condominio",
+      "level": "A2",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Ieri sera c’è stata la riunione di condominio. Abbiamo discusso del parcheggio. Alcuni volevano più posti auto. Altri preferivano il verde. Alla fine abbiamo votato. Ha vinto la proposta del giardino. La riunione è finita tardi.",
+      "segments": [
+        "Ieri sera c’è stata la riunione di condominio.",
+        "Abbiamo discusso del parcheggio.",
+        "Alcuni volevano più posti auto.",
+        "Altri preferivano il verde.",
+        "Alla fine abbiamo votato.",
+        "Ha vinto la proposta del giardino.",
+        "La riunione è finita tardi."
+      ]
+    },
+    {
+      "title": "Un’escursione in bici",
+      "level": "A2",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "Abbiamo fatto un’escursione in bicicletta. Il percorso lungo il fiume era pianeggiante. Abbiamo fatto una sosta in un bar. Poi abbiamo ripreso a pedalare. Alla fine ero distrutto ma felice. Le gambe mi facevano male. È stata una bella giornata all’aria aperta.",
+      "segments": [
+        "Abbiamo fatto un’escursione in bicicletta.",
+        "Il percorso lungo il fiume era pianeggiante.",
+        "Abbiamo fatto una sosta in un bar.",
+        "Poi abbiamo ripreso a pedalare.",
+        "Alla fine ero distrutto ma felice.",
+        "Le gambe mi facevano male.",
+        "È stata una bella giornata all’aria aperta."
+      ]
+    },
+    {
+      "title": "Dibattito: social media",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Credo che i social media siano utili ma anche rischiosi. Da un lato ci tengono connessi con gli altri. Dall’altro, possono creare dipendenza. Penso che i giovani passino troppo tempo sullo schermo. Alcuni sostengono che sia un problema educativo. Io sono convinto che servano regole più chiare. In ogni caso, tutto dipende da come li usiamo.",
+      "segments": [
+        "Credo che i social media siano utili ma anche rischiosi.",
+        "Da un lato ci tengono connessi con gli altri.",
+        "Dall’altro, possono creare dipendenza.",
+        "Penso che i giovani passino troppo tempo sullo schermo.",
+        "Alcuni sostengono che sia un problema educativo.",
+        "Io sono convinto che servano regole più chiare.",
+        "In ogni caso, tutto dipende da come li usiamo."
+      ]
+    },
+    {
+      "title": "Penso che sia importante",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Penso che imparare le lingue sia fondamentale. Non basta studiare la grammatica: bisogna parlare. È importante che si faccia pratica ogni giorno. Molti dicono che sia difficile, ma non è vero. Basta essere costanti e non avere paura di sbagliare. Se avessi più tempo, viaggerei di più. Sono sicuro che ne varrebbe la pena.",
+      "segments": [
+        "Penso che imparare le lingue sia fondamentale.",
+        "Non basta studiare la grammatica: bisogna parlare.",
+        "È importante che si faccia pratica ogni giorno.",
+        "Molti dicono che sia difficile, ma non è vero.",
+        "Basta essere costanti e non avere paura di sbagliare.",
+        "Se avessi più tempo, viaggerei di più.",
+        "Sono sicuro che ne varrebbe la pena."
+      ]
+    },
+    {
+      "title": "Organizzare una festa",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Dobbiamo organizzare la festa di Marco. Penso che dovremmo farla sabato sera. Potremmo affittare una sala oppure farla a casa. Qualcuno si occuperebbe della musica? Mi piacerebbe che ognuno portasse qualcosa da mangiare. Bisogna anche decidere gli invitati. Se tutti collaborano, verrà benissimo.",
+      "segments": [
+        "Dobbiamo organizzare la festa di Marco.",
+        "Penso che dovremmo farla sabato sera.",
+        "Potremmo affittare una sala oppure farla a casa.",
+        "Qualcuno si occuperebbe della musica?",
+        "Mi piacerebbe che ognuno portasse qualcosa da mangiare.",
+        "Bisogna anche decidere gli invitati.",
+        "Se tutti collaborano, verrà benissimo."
+      ]
+    },
+    {
+      "title": "Colloquio di lavoro",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Mi parli della sua esperienza. Ho lavorato per cinque anni nel marketing. Mi sono occupato di campagne digitali. Penso che il mio punto di forza sia la creatività. Perché vuole lavorare con noi? Perché ammiro la vostra azienda e i suoi valori. Quando potrebbe iniziare?",
+      "segments": [
+        "Mi parli della sua esperienza.",
+        "Ho lavorato per cinque anni nel marketing.",
+        "Mi sono occupato di campagne digitali.",
+        "Penso che il mio punto di forza sia la creatività.",
+        "Perché vuole lavorare con noi?",
+        "Perché ammiro la vostra azienda e i suoi valori.",
+        "Quando potrebbe iniziare?"
+      ]
+    },
+    {
+      "title": "In stazione",
+      "level": "B1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Vorrei un biglietto per Firenze, per favore. Andata e ritorno? Sì, per sabato. C’è un treno alle nove e quindici. Va bene, lo prendo. Dal binario quattro, binario quattro. Buon viaggio e buona giornata.",
+      "segments": [
+        "Vorrei un biglietto per Firenze, per favore.",
+        "Andata e ritorno?",
+        "Sì, per sabato.",
+        "C’è un treno alle nove e quindici.",
+        "Va bene, lo prendo.",
+        "Dal binario quattro, binario quattro.",
+        "Buon viaggio e buona giornata."
+      ]
+    },
+    {
+      "title": "Riepilogo B1: attualità",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Negli ultimi anni il mondo è cambiato molto. La tecnologia ha trasformato il nostro modo di lavorare. C’è chi è ottimista e chi è preoccupato. Io ritengo che il progresso porti opportunità. Tuttavia, bisogna fare attenzione alle disuguaglianze. Spero che le istituzioni intervengano. Il futuro dipende anche dalle scelte di oggi.",
+      "segments": [
+        "Negli ultimi anni il mondo è cambiato molto.",
+        "La tecnologia ha trasformato il nostro modo di lavorare.",
+        "C’è chi è ottimista e chi è preoccupato.",
+        "Io ritengo che il progresso porti opportunità.",
+        "Tuttavia, bisogna fare attenzione alle disuguaglianze.",
+        "Spero che le istituzioni intervengano.",
+        "Il futuro dipende anche dalle scelte di oggi."
+      ]
+    },
+    {
+      "title": "Il lavoro da remoto",
+      "level": "B1",
+      "topic": "arbeit",
+      "est_minutes": 1,
+      "body": "Molti ormai lavorano da casa. Da un lato c’è più flessibilità. Dall’altro, manca il contatto umano. Penso che il modello ideale sia ibrido. Alcuni sostengono che la produttività aumenti. Io dubito che sia così per tutti. Dipende molto dal tipo di lavoro e dalla persona.",
+      "segments": [
+        "Molti ormai lavorano da casa.",
+        "Da un lato c’è più flessibilità.",
+        "Dall’altro, manca il contatto umano.",
+        "Penso che il modello ideale sia ibrido.",
+        "Alcuni sostengono che la produttività aumenti.",
+        "Io dubito che sia così per tutti.",
+        "Dipende molto dal tipo di lavoro e dalla persona."
+      ]
+    },
+    {
+      "title": "La salute mentale",
+      "level": "B1",
+      "topic": "gesundheit",
+      "est_minutes": 1,
+      "body": "Negli ultimi anni si parla di più di salute mentale. È importante che se ne parli senza vergogna. Molti soffrono in silenzio per paura del giudizio. Credo che la scuola dovrebbe insegnare a gestire lo stress. Alcuni propongono più supporto psicologico. Sono d’accordo: è un investimento, non un costo. Stare bene con sé stessi è la base di tutto.",
+      "segments": [
+        "Negli ultimi anni si parla di più di salute mentale.",
+        "È importante che se ne parli senza vergogna.",
+        "Molti soffrono in silenzio per paura del giudizio.",
+        "Credo che la scuola dovrebbe insegnare a gestire lo stress.",
+        "Alcuni propongono più supporto psicologico.",
+        "Sono d’accordo: è un investimento, non un costo.",
+        "Stare bene con sé stessi è la base di tutto."
+      ]
+    },
+    {
+      "title": "Il turismo di massa",
+      "level": "B1",
+      "topic": "reisen",
+      "est_minutes": 1,
+      "body": "Le città d’arte soffrono il turismo di massa. Da una parte porta lavoro e ricchezza. Dall’altra, rovina i centri storici. Penso che bisognerebbe regolamentare gli affitti brevi. Alcuni residenti sono costretti ad andarsene. Vorrei che si trovasse un equilibrio. Il turismo sostenibile è la strada giusta.",
+      "segments": [
+        "Le città d’arte soffrono il turismo di massa.",
+        "Da una parte porta lavoro e ricchezza.",
+        "Dall’altra, rovina i centri storici.",
+        "Penso che bisognerebbe regolamentare gli affitti brevi.",
+        "Alcuni residenti sono costretti ad andarsene.",
+        "Vorrei che si trovasse un equilibrio.",
+        "Il turismo sostenibile è la strada giusta."
+      ]
+    },
+    {
+      "title": "La lettura nell’era digitale",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "Molti dicono che i giovani non leggano più. Io non sono d’accordo: leggono, ma in modo diverso. Leggono sul telefono, sui blog, sui social. Forse la qualità è diversa, non inferiore. Penso che la carta abbia un fascino unico. Sarebbe bello che le biblioteche si rinnovassero. In ogni caso, leggere resta fondamentale.",
+      "segments": [
+        "Molti dicono che i giovani non leggano più.",
+        "Io non sono d’accordo: leggono, ma in modo diverso.",
+        "Leggono sul telefono, sui blog, sui social.",
+        "Forse la qualità è diversa, non inferiore.",
+        "Penso che la carta abbia un fascino unico.",
+        "Sarebbe bello che le biblioteche si rinnovassero.",
+        "In ogni caso, leggere resta fondamentale."
+      ]
+    },
+    {
+      "title": "La cucina e la memoria",
+      "level": "B1",
+      "topic": "essen",
+      "est_minutes": 1,
+      "body": "La cucina è legata ai ricordi e alla famiglia. Ogni piatto può riportarci a un momento preciso. Penso che le ricette tradizionali vadano custodite. Molti giovani stanno riscoprendo la cucina di casa. È importante che si tramandino i gesti antichi. Se avessi una nonna cuoca, imparerei da lei. Il cibo è cultura, non solo nutrimento.",
+      "segments": [
+        "La cucina è legata ai ricordi e alla famiglia.",
+        "Ogni piatto può riportarci a un momento preciso.",
+        "Penso che le ricette tradizionali vadano custodite.",
+        "Molti giovani stanno riscoprendo la cucina di casa.",
+        "È importante che si tramandino i gesti antichi.",
+        "Se avessi una nonna cuoca, imparerei da lei.",
+        "Il cibo è cultura, non solo nutrimento."
+      ]
+    },
+    {
+      "title": "La mobilità sostenibile",
+      "level": "B1",
+      "topic": "stadt",
+      "est_minutes": 1,
+      "body": "Le città devono diventare più vivibili. Bisognerebbe incentivare bici e mezzi pubblici. Molti sono contrari a togliere spazio alle auto. Io penso che il beneficio superi i disagi. Meno traffico significa meno inquinamento. Spero che l’amministrazione agisca presto. Il cambiamento richiede tempo e collaborazione.",
+      "segments": [
+        "Le città devono diventare più vivibili.",
+        "Bisognerebbe incentivare bici e mezzi pubblici.",
+        "Molti sono contrari a togliere spazio alle auto.",
+        "Io penso che il beneficio superi i disagi.",
+        "Meno traffico significa meno inquinamento.",
+        "Spero che l’amministrazione agisca presto.",
+        "Il cambiamento richiede tempo e collaborazione."
+      ]
+    },
+    {
+      "title": "L’amicizia ai tempi dei social",
+      "level": "B1",
+      "topic": "alltag",
+      "est_minutes": 1,
+      "body": "Abbiamo centinaia di amici online, ma quanti veri? Penso che l’amicizia richieda tempo e presenza. Non basta un «mi piace» per dimostrare affetto. Alcuni sostengono che i social avvicinino le persone. Io credo che a volte le allontanino. Vorrei più incontri dal vivo e meno schermi. Le amicizie vere si costruiscono insieme.",
+      "segments": [
+        "Abbiamo centinaia di amici online, ma quanti veri?",
+        "Penso che l’amicizia richieda tempo e presenza.",
+        "Non basta un «mi piace» per dimostrare affetto.",
+        "Alcuni sostengono che i social avvicinino le persone.",
+        "Io credo che a volte le allontanino.",
+        "Vorrei più incontri dal vivo e meno schermi.",
+        "Le amicizie vere si costruiscono insieme."
+      ]
+    },
+    {
+      "title": "Il futuro dei giovani",
+      "level": "B1",
+      "topic": "bildung",
+      "est_minutes": 1,
+      "body": "I giovani di oggi hanno molte opportunità e molte incertezze. Da un lato possono viaggiare e studiare all’estero. Dall’altro, il lavoro è precario e competitivo. Penso che servano più formazione pratica. Sarebbe auspicabile che la scuola ascoltasse di più gli studenti. Se potessi, investirei molto nell’istruzione. Il loro futuro è il futuro di tutti.",
+      "segments": [
+        "I giovani di oggi hanno molte opportunità e molte incertezze.",
+        "Da un lato possono viaggiare e studiare all’estero.",
+        "Dall’altro, il lavoro è precario e competitivo.",
+        "Penso che servano più formazione pratica.",
+        "Sarebbe auspicabile che la scuola ascoltasse di più gli studenti.",
+        "Se potessi, investirei molto nell’istruzione.",
+        "Il loro futuro è il futuro di tutti."
+      ]
+    },
+    {
+      "title": "La musica che ci unisce",
+      "level": "B1",
+      "topic": "hobby",
+      "est_minutes": 1,
+      "body": "La musica ha il potere di unire le persone. In un concerto siamo tutti uguali, uniti dallo stesso ritmo. Penso che ogni generazione abbia la sua colonna sonora. Alcuni dicono che la musica di oggi sia inferiore. Io credo che ogni epoca abbia i suoi capolavori. Ascoltare musica insieme crea legami. Non a caso si dice che la musica è linguaggio universale.",
+      "segments": [
+        "La musica ha il potere di unire le persone.",
+        "In un concerto siamo tutti uguali, uniti dallo stesso ritmo.",
+        "Penso che ogni generazione abbia la sua colonna sonora.",
+        "Alcuni dicono che la musica di oggi sia inferiore.",
+        "Io credo che ogni epoca abbia i suoi capolavori.",
+        "Ascoltare musica insieme crea legami.",
+        "Non a caso si dice che la musica è linguaggio universale."
+      ]
+    }
+  ]
+}

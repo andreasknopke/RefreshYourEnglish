@@ -19,6 +19,7 @@ import v2ReaderRoutes from './routes/v2/reader.js';
 import v2GrammarRoutes from './routes/v2/grammar.js';
 import v2WritingRoutes from './routes/v2/writing.js';
 import v2SpeakingRoutes from './routes/v2/speaking.js';
+import v2SessionRoutes from './routes/v2/session.js';
 
 dotenv.config();
 
@@ -185,6 +186,7 @@ if (String(process.env.MULTILANG_ENGINE ?? '').match(/^(1|true|yes)$/i)) {
   app.use('/api/v2/me/languages', v2GrammarRoutes);
   app.use('/api/v2/me/languages', v2WritingRoutes);
   app.use('/api/v2/me/languages', v2SpeakingRoutes);
+  app.use('/api/v2/me/languages', v2SessionRoutes);
   app.use('/api/v2/placement', v2PlacementRoutes);
   console.log('🧩 MULTILANG_ENGINE aktiv: /api/v2 (languages, me/languages, placement, vocab, reader, grammar, writing, speaking) verfügbar');
 }

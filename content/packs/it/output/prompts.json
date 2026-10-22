@@ -1,0 +1,1206 @@
+{
+  "lang": "it",
+  "version": "1.0.0",
+  "prompts": [
+    {
+      "id": "a1-writing-001-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Beschreibe deinen Alltag in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-002-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe 4 Sätze über deinen Alltag. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-003-alltag",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Was gibt es bei deinen Alltag? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-004-alltag",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne deinen Alltag.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-005-alltag",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Sprich 3 Sätze über deinen Alltag. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-006-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Beschreibe deine Familie in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-007-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe 4 Sätze über deine Familie. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-008-familie",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Was gibt es bei deine Familie? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-009-familie",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne deine Familie.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-010-familie",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Sprich 3 Sätze über deine Familie. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-011-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Beschreibe eine Reise in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-012-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe 4 Sätze über eine Reise. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-013-reisen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Was gibt es bei eine Reise? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-014-reisen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne eine Reise.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-015-reisen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Sprich 3 Sätze über eine Reise. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-016-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Beschreibe italienisches Essen in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-017-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe 4 Sätze über italienisches Essen. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-018-essen",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Was gibt es bei italienisches Essen? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-019-essen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne italienisches Essen.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-020-essen",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Sprich 3 Sätze über italienisches Essen. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-021-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Beschreibe deine Arbeit in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-022-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe 4 Sätze über deine Arbeit. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-023-arbeit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Was gibt es bei deine Arbeit? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-024-arbeit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne deine Arbeit.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-025-arbeit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Sprich 3 Sätze über deine Arbeit. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-026-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Beschreibe deine Hobbys in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-027-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe 4 Sätze über deine Hobbys. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-028-hobby",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Was gibt es bei deine Hobbys? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-029-hobby",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne deine Hobbys.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-030-hobby",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Sprich 3 Sätze über deine Hobbys. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-031-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Beschreibe deine Stadt in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-032-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe 4 Sätze über deine Stadt. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-033-stadt",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Was gibt es bei deine Stadt? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-034-stadt",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne deine Stadt.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-035-stadt",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Sprich 3 Sätze über deine Stadt. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-036-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Beschreibe das Wetter in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-037-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe 4 Sätze über das Wetter. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-038-wetter",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Was gibt es bei das Wetter? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-039-wetter",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne das Wetter.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-040-wetter",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Sprich 3 Sätze über das Wetter. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-041-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Beschreibe Gesundheit und Fitness in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-042-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe 4 Sätze über Gesundheit und Fitness. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-043-gesundheit",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Was gibt es bei Gesundheit und Fitness? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-044-gesundheit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne Gesundheit und Fitness.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-045-gesundheit",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Sprich 3 Sätze über Gesundheit und Fitness. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-046-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Beschreibe Lernen und Schule in 3–4 einfachen Sätzen.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-047-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe 4 Sätze über Lernen und Schule. Benutze „sono“ oder „ho“.",
+      "target": null
+    },
+    {
+      "id": "a1-writing-048-bildung",
+      "level": "A1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Was gibt es bei Lernen und Schule? Schreibe 3–4 Sätze auf Italienisch.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-049-bildung",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele nach: Stelle dich vor und erwähne Lernen und Schule.",
+      "target": null
+    },
+    {
+      "id": "a1-speaking-050-bildung",
+      "level": "A1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Sprich 3 Sätze über Lernen und Schule. Sprich langsam und deutlich.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-051-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Erzähle, was du gestern bezüglich deinen Alltag gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-052-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Beschreibe deinen Alltag und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-053-alltag",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe 5–6 Sätze über deinen Alltag. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-054-alltag",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über deinen Alltag (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-055-alltag",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele ein Gespräch über deinen Alltag mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-056-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Erzähle, was du gestern bezüglich deine Familie gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-057-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Beschreibe deine Familie und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-058-familie",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Familie. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-059-familie",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über deine Familie (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-060-familie",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele ein Gespräch über deine Familie mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-061-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Erzähle, was du gestern bezüglich eine Reise gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-062-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Beschreibe eine Reise und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-063-reisen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe 5–6 Sätze über eine Reise. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-064-reisen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über eine Reise (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-065-reisen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele ein Gespräch über eine Reise mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-066-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Erzähle, was du gestern bezüglich italienisches Essen gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-067-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Beschreibe italienisches Essen und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-068-essen",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe 5–6 Sätze über italienisches Essen. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-069-essen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über italienisches Essen (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-070-essen",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele ein Gespräch über italienisches Essen mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-071-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Erzähle, was du gestern bezüglich deine Arbeit gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-072-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Beschreibe deine Arbeit und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-073-arbeit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Arbeit. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-074-arbeit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über deine Arbeit (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-075-arbeit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele ein Gespräch über deine Arbeit mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-076-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Erzähle, was du gestern bezüglich deine Hobbys gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-077-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Beschreibe deine Hobbys und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-078-hobby",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Hobbys. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-079-hobby",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über deine Hobbys (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-080-hobby",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele ein Gespräch über deine Hobbys mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-081-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Erzähle, was du gestern bezüglich deine Stadt gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-082-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Beschreibe deine Stadt und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-083-stadt",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe 5–6 Sätze über deine Stadt. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-084-stadt",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über deine Stadt (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-085-stadt",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele ein Gespräch über deine Stadt mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-086-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Erzähle, was du gestern bezüglich das Wetter gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-087-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Beschreibe das Wetter und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-088-wetter",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe 5–6 Sätze über das Wetter. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-089-wetter",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über das Wetter (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-090-wetter",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele ein Gespräch über das Wetter mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-091-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Erzähle, was du gestern bezüglich Gesundheit und Fitness gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-092-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Beschreibe Gesundheit und Fitness und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-093-gesundheit",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe 5–6 Sätze über Gesundheit und Fitness. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-094-gesundheit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über Gesundheit und Fitness (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-095-gesundheit",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele ein Gespräch über Gesundheit und Fitness mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-096-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Erzähle, was du gestern bezüglich Lernen und Schule gemacht hast (passato prossimo).",
+      "target": null
+    },
+    {
+      "id": "a2-writing-097-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Beschreibe Lernen und Schule und begründe kurz, warum es dir wichtig ist.",
+      "target": null
+    },
+    {
+      "id": "a2-writing-098-bildung",
+      "level": "A2",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe 5–6 Sätze über Lernen und Schule. Benutze mindestens ein Pronomen (lo, la, mi …).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-099-bildung",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Erzähle laut eine kurze Geschichte über Lernen und Schule (Vergangenheit).",
+      "target": null
+    },
+    {
+      "id": "a2-speaking-100-bildung",
+      "level": "A2",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele ein Gespräch über Lernen und Schule mit einem Partner nach.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-101-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen deinen Alltag. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-102-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Diskutiere Vor- und Nachteile von deinen Alltag (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-103-alltag",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "alltag",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über deinen Alltag.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-104-alltag",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Halte ein 1-Minuten-Statement über deinen Alltag und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-105-alltag",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "alltag",
+      "prompt_de": "Spiele eine Diskussion über deinen Alltag nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-106-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen deine Familie. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-107-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Diskutiere Vor- und Nachteile von deine Familie (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-108-familie",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "familie",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über deine Familie.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-109-familie",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Halte ein 1-Minuten-Statement über deine Familie und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-110-familie",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "familie",
+      "prompt_de": "Spiele eine Diskussion über deine Familie nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-111-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen eine Reise. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-112-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Diskutiere Vor- und Nachteile von eine Reise (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-113-reisen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "reisen",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über eine Reise.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-114-reisen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Halte ein 1-Minuten-Statement über eine Reise und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-115-reisen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "reisen",
+      "prompt_de": "Spiele eine Diskussion über eine Reise nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-116-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen italienisches Essen. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-117-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Diskutiere Vor- und Nachteile von italienisches Essen (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-118-essen",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "essen",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über italienisches Essen.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-119-essen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Halte ein 1-Minuten-Statement über italienisches Essen und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-120-essen",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "essen",
+      "prompt_de": "Spiele eine Diskussion über italienisches Essen nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-121-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen deine Arbeit. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-122-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Diskutiere Vor- und Nachteile von deine Arbeit (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-123-arbeit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "arbeit",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über deine Arbeit.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-124-arbeit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Halte ein 1-Minuten-Statement über deine Arbeit und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-125-arbeit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "arbeit",
+      "prompt_de": "Spiele eine Diskussion über deine Arbeit nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-126-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen deine Hobbys. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-127-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Diskutiere Vor- und Nachteile von deine Hobbys (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-128-hobby",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "hobby",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über deine Hobbys.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-129-hobby",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Halte ein 1-Minuten-Statement über deine Hobbys und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-130-hobby",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "hobby",
+      "prompt_de": "Spiele eine Diskussion über deine Hobbys nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-131-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen deine Stadt. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-132-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Diskutiere Vor- und Nachteile von deine Stadt (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-133-stadt",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "stadt",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über deine Stadt.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-134-stadt",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Halte ein 1-Minuten-Statement über deine Stadt und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-135-stadt",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "stadt",
+      "prompt_de": "Spiele eine Diskussion über deine Stadt nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-136-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen das Wetter. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-137-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Diskutiere Vor- und Nachteile von das Wetter (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-138-wetter",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "wetter",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über das Wetter.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-139-wetter",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Halte ein 1-Minuten-Statement über das Wetter und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-140-wetter",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "wetter",
+      "prompt_de": "Spiele eine Diskussion über das Wetter nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-141-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen Gesundheit und Fitness. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-142-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Diskutiere Vor- und Nachteile von Gesundheit und Fitness (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-143-gesundheit",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "gesundheit",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über Gesundheit und Fitness.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-144-gesundheit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Halte ein 1-Minuten-Statement über Gesundheit und Fitness und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-145-gesundheit",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "gesundheit",
+      "prompt_de": "Spiele eine Diskussion über Gesundheit und Fitness nach (stimme zu / widersprich).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-146-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Argumentiere in 6–8 Sätzen für oder gegen Lernen und Schule. Benutze „secondo me“ und „penso che“.",
+      "target": null
+    },
+    {
+      "id": "b1-writing-147-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Diskutiere Vor- und Nachteile von Lernen und Schule (Konditional + Konjunktiv).",
+      "target": null
+    },
+    {
+      "id": "b1-writing-148-bildung",
+      "level": "B1",
+      "kind": "writing",
+      "topic": "bildung",
+      "prompt_de": "Schreibe einen kurzen Meinungsbeitrag (6–8 Sätze) über Lernen und Schule.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-149-bildung",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Halte ein 1-Minuten-Statement über Lernen und Schule und begründe deine Meinung.",
+      "target": null
+    },
+    {
+      "id": "b1-speaking-150-bildung",
+      "level": "B1",
+      "kind": "speaking",
+      "topic": "bildung",
+      "prompt_de": "Spiele eine Diskussion über Lernen und Schule nach (stimme zu / widersprich).",
+      "target": null
+    }
+  ]
+}

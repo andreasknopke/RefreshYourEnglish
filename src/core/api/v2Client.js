@@ -137,7 +137,18 @@ export const v2Client = {
       body: JSON.stringify(payload)
     }),
   getSpeakingStats: (userLanguageId) =>
-    request(`/v2/me/languages/${userLanguageId}/speaking/stats`)
+    request(`/v2/me/languages/${userLanguageId}/speaking/stats`),
+
+  // Tages-Sitzung (Session Composer)
+  getTodaySession: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/session/today`),
+  completeSessionStage: (userLanguageId, stageKey) =>
+    request(`/v2/me/languages/${userLanguageId}/session/complete`, {
+      method: 'POST',
+      body: JSON.stringify({ stageKey })
+    }),
+  getSessionProgress: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/session/progress`)
 };
 
 export default v2Client;

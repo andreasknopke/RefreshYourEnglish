@@ -1,0 +1,1111 @@
+{
+  "lang": "it",
+  "version": "1.0.0",
+  "units": [
+    {
+      "id": "it-a1-u01",
+      "level": "A1",
+      "order": 1,
+      "theme": "Begrüßung & Vorstellung",
+      "goal": "Sich begrüßen und mit Namen vorstellen",
+      "input": {
+        "reading": [
+          "Il mio amico Marco"
+        ],
+        "listening": [
+          "Saluti e presentazioni"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-essere"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-presentarsi"
+        ],
+        "speaking": [
+          "presentarsi"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann jemanden begrüßen",
+          "Kann meinen Namen nennen",
+          "Kann fragen, wie es jemandem geht"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u02",
+      "level": "A1",
+      "order": 2,
+      "theme": "Im Café",
+      "goal": "Getränke bestellen und bezahlen",
+      "input": {
+        "reading": [
+          "Al bar"
+        ],
+        "listening": [
+          "Al bar"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-art-determinativi",
+          "it-art-indeterminativi"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-bar-ordinare"
+        ],
+        "speaking": [
+          "bar-kafe"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann einen Kaffee bestellen",
+          "Kann nach dem Preis fragen",
+          "Kann höflich mit „per favore“ sprechen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u03",
+      "level": "A1",
+      "order": 3,
+      "theme": "Familie",
+      "goal": "Familienmitglieder beschreiben",
+      "input": {
+        "reading": [
+          "La mia famiglia"
+        ],
+        "listening": [
+          "La mia famiglia"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-possessivi",
+          "it-concordanza-agg"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-famiglia"
+        ],
+        "speaking": [
+          "presentarsi"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann meine Familie vorstellen",
+          "Kann Alter und Beruf nennen",
+          "Kann Possessivartikel verwenden"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u04",
+      "level": "A1",
+      "order": 4,
+      "theme": "Zuhause",
+      "goal": "Räume und Gegenstände im Haus benennen",
+      "input": {
+        "reading": [
+          "A casa"
+        ],
+        "listening": [
+          "A casa"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-plurale-nomi",
+          "it-preposizioni-semplici"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-casa"
+        ],
+        "speaking": [
+          "direzione-strada"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Räume benennen",
+          "Kann sagen, wo etwas ist",
+          "Kann den Plural bilden"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u05",
+      "level": "A1",
+      "order": 5,
+      "theme": "Einkaufen",
+      "goal": "Auf dem Markt Obst und Gemüse kaufen",
+      "input": {
+        "reading": [
+          "Al mercato"
+        ],
+        "listening": [
+          "Al mercato"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-art-indeterminativi",
+          "it-plurale-nomi"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-spesa"
+        ],
+        "speaking": [
+          "fare-spesa"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Mengen nennen (un chilo di…)",
+          "Kann nach dem Preis fragen",
+          "Kann höflich kaufen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u06",
+      "level": "A1",
+      "order": 6,
+      "theme": "Nach dem Weg fragen",
+      "goal": "Einen Weg erfragen und verstehen",
+      "input": {
+        "reading": [
+          "In città"
+        ],
+        "listening": [
+          "Chiedere indicazioni"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-preposizioni-articolate"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-citta"
+        ],
+        "speaking": [
+          "direzione-strada"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann fragen, wo etwas ist",
+          "Kann Richtungen verstehen",
+          "Kann Danke sagen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u07",
+      "level": "A1",
+      "order": 7,
+      "theme": "Regelmäßige Verben",
+      "goal": "Über tägliche Routinen sprechen",
+      "input": {
+        "reading": [
+          "La mia giornata"
+        ],
+        "listening": [
+          "La mia giornata"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-verbi-are",
+          "it-verbi-ere-ire"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-giornata"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann -are/-ere/-ire-Verben konjugieren",
+          "Kann meinen Tagesablauf beschreiben",
+          "Kann Uhrzeiten nennen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u08",
+      "level": "A1",
+      "order": 8,
+      "theme": "Essen & Restaurant",
+      "goal": "Ein Gericht bestellen",
+      "input": {
+        "reading": [
+          "Al ristorante"
+        ],
+        "listening": [
+          "Al ristorante"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-avere",
+          "it-art-determinativi"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-cibo-preferito"
+        ],
+        "speaking": [
+          "ristorante-prenotare"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein Gericht bestellen",
+          "Kann Lieblingsessen nennen",
+          "Kann „vorrei“ verwenden"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u09",
+      "level": "A1",
+      "order": 9,
+      "theme": "Hobbys",
+      "goal": "Freizeitaktivitäten beschreiben",
+      "input": {
+        "reading": [
+          "Il mio tempo libero"
+        ],
+        "listening": [
+          "Hobby e tempo libero"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-verbi-are",
+          "it-concordanza-agg"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-hobby"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann sagen, was ich gerne mache",
+          "Kann „mi piace“ verwenden",
+          "Kann Hobbys nennen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u10",
+      "level": "A1",
+      "order": 10,
+      "theme": "Wetter & Jahreszeiten",
+      "goal": "Über das Wetter sprechen",
+      "input": {
+        "reading": [
+          "Il tempo e le stagioni"
+        ],
+        "listening": [
+          "Il meteo"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-essere",
+          "it-avere"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-meteo"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann das Wetter beschreiben",
+          "Kann Jahreszeiten nennen",
+          "Kann einfache Sätze mit „fa/c’è“ bilden"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u11",
+      "level": "A1",
+      "order": 11,
+      "theme": "Zahlen & Einkaufen II",
+      "goal": "Preise, Mengen und Zahlen",
+      "input": {
+        "reading": [
+          "Fare la spesa"
+        ],
+        "listening": [
+          "Fare la spesa"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-plurale-nomi",
+          "it-art-determinativi"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-numeri-spesa"
+        ],
+        "speaking": [
+          "fare-spesa"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Zahlen und Preise verstehen",
+          "Kann Mengen kaufen",
+          "Kann den Gesamtpreis erfragen"
+        ]
+      }
+    },
+    {
+      "id": "it-a1-u12",
+      "level": "A1",
+      "order": 12,
+      "theme": "A1-Wiederholung",
+      "goal": "Grundlagen festigen",
+      "input": {
+        "reading": [
+          "A casa",
+          "Al bar"
+        ],
+        "listening": [
+          "Riepilogo A1"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-essere",
+          "it-avere",
+          "it-art-determinativi",
+          "it-verbi-are"
+        ],
+        "vocabLevel": "A1"
+      },
+      "output": {
+        "writing": [
+          "a1-riepilogo"
+        ],
+        "speaking": [
+          "presentarsi"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann einfache Alltagssätze bilden",
+          "Kann Artikel und Grundverben anwenden",
+          "Kann mich vorstellen und bestellen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u01",
+      "level": "A2",
+      "order": 1,
+      "theme": "Vergangenheit: passato prossimo",
+      "goal": "Über vergangene Ereignisse berichten",
+      "input": {
+        "reading": [
+          "Un viaggio in Italia"
+        ],
+        "listening": [
+          "Ieri sera"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-avere"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-ieri"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann das passato prossimo mit avere bilden",
+          "Kann über gestern erzählen",
+          "Kann Partizipien bilden"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u02",
+      "level": "A2",
+      "order": 2,
+      "theme": "Vergangenheit: essere & Bewegung",
+      "goal": "Bewegung und Zustände in der Vergangenheit",
+      "input": {
+        "reading": [
+          "Una gita"
+        ],
+        "listening": [
+          "Una gita fuori porta"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-essere"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-vacanza-passata"
+        ],
+        "speaking": [
+          "viaggio-treno"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann passato prossimo mit essere bilden",
+          "Kann Übereinstimmung im Partizip beachten",
+          "Kann eine Ausfahrt erzählen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u03",
+      "level": "A2",
+      "order": 3,
+      "theme": "Imperfetto",
+      "goal": "Gewohnheiten und Hintergründe in der Vergangenheit",
+      "input": {
+        "reading": [
+          "Quando ero bambino"
+        ],
+        "listening": [
+          "Quando ero bambino"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-imperfetto"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-infanzia"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann das imperfetto bilden",
+          "Kann frühere Gewohnheiten beschreiben",
+          "Kann Vergangenheit erzählen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u04",
+      "level": "A2",
+      "order": 4,
+      "theme": "passato vs. imperfetto",
+      "goal": "Beide Vergangenheiten korrekt unterscheiden",
+      "input": {
+        "reading": [
+          "Un giorno speciale"
+        ],
+        "listening": [
+          "Un giorno speciale"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-vs-imperfetto"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-storia-passato"
+        ],
+        "speaking": [
+          "viaggio-treno"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann passato prossimo und imperfetto unterscheiden",
+          "Kann eine kleine Geschichte erzählen",
+          "Kann Hintergrund vs. Handlung trennen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u05",
+      "level": "A2",
+      "order": 5,
+      "theme": "Direkte Pronomen",
+      "goal": "Objekte durch Pronomen ersetzen",
+      "input": {
+        "reading": [
+          "Lo shopping"
+        ],
+        "listening": [
+          "Fare compere"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-pronomi-diretti"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-acquisti"
+        ],
+        "speaking": [
+          "fare-spesa"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann direkte Objektpronomen verwenden",
+          "Kann Sätze verkürzen",
+          "Kann Pronomen korrekt platzieren"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u06",
+      "level": "A2",
+      "order": 6,
+      "theme": "Indirekte Pronomen",
+      "goal": "Personen als indirekte Objekte",
+      "input": {
+        "reading": [
+          "Una telefonata"
+        ],
+        "listening": [
+          "Una telefonata"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-pronomi-indiretti"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-telefono"
+        ],
+        "speaking": [
+          "medico"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann indirekte Objektpronomen verwenden",
+          "Kann „mipiace“ bilden",
+          "Kann jemandem etwas sagen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u07",
+      "level": "A2",
+      "order": 7,
+      "theme": "ci & ne",
+      "goal": "Mengenangaben und Ortsverweise",
+      "input": {
+        "reading": [
+          "Dal fruttivendolo"
+        ],
+        "listening": [
+          "Dal fruttivendolo"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-ci-ne"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-ne-ci"
+        ],
+        "speaking": [
+          "fare-spesa"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann „ne“ für Mengen nutzen",
+          "Kann „ci“ für Orte nutzen",
+          "Kann Sätze natürlich verkürzen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u08",
+      "level": "A2",
+      "order": 8,
+      "theme": "Hotel & Reise",
+      "goal": "Im Hotel einchecken und reisen",
+      "input": {
+        "reading": [
+          "In albergo"
+        ],
+        "listening": [
+          "In albergo"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-essere",
+          "it-preposizioni-articolate"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-albergo"
+        ],
+        "speaking": [
+          "hotel-checkin"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann ein Zimmer buchen",
+          "Kann Wünsche äußern",
+          "Kann Reiseerlebnisse erzählen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u09",
+      "level": "A2",
+      "order": 9,
+      "theme": "Gesundheit",
+      "goal": "Beschwerden beschreiben",
+      "input": {
+        "reading": [
+          "Dal medico"
+        ],
+        "listening": [
+          "Dal medico"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-avere",
+          "it-concordanza-agg"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-salute"
+        ],
+        "speaking": [
+          "medico"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Beschwerden nennen",
+          "Kann „ho male a…“ verwenden",
+          "Kann Ratschläge verstehen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u10",
+      "level": "A2",
+      "order": 10,
+      "theme": "Konditional: Höflichkeit",
+      "goal": "Höflich bitten und wünschen",
+      "input": {
+        "reading": [
+          "Una richiesta"
+        ],
+        "listening": [
+          "Richieste gentili"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-condizionale"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-cortesia"
+        ],
+        "speaking": [
+          "ristorante-prenotare"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann „vorrei“ verwenden",
+          "Kann höflich bitten",
+          "Kann Wünsche äußern"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u11",
+      "level": "A2",
+      "order": 11,
+      "theme": "Meinung & Vorlieben",
+      "goal": "Vorlieben begründen",
+      "input": {
+        "reading": [
+          "Le mie preferenze"
+        ],
+        "listening": [
+          "Cosa preferisci?"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-condizionale",
+          "it-concordanza-agg"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-preferenze"
+        ],
+        "speaking": [
+          "hobby-tempo-libero"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Vorlieben äußern",
+          "Kann „preferisco“ verwenden",
+          "Kann kurz begründen"
+        ]
+      }
+    },
+    {
+      "id": "it-a2-u12",
+      "level": "A2",
+      "order": 12,
+      "theme": "A2-Wiederholung",
+      "goal": "Vergangenheit und Pronomen festigen",
+      "input": {
+        "reading": [
+          "Un viaggio in Italia",
+          "Una giornata tipo"
+        ],
+        "listening": [
+          "Riepilogo A2"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-avere",
+          "it-imperfetto",
+          "it-pronomi-diretti"
+        ],
+        "vocabLevel": "A2"
+      },
+      "output": {
+        "writing": [
+          "a2-riepilogo"
+        ],
+        "speaking": [
+          "viaggio-treno"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann in der Vergangenheit erzählen",
+          "Kann Pronomen sicher verwenden",
+          "Kann zusammenhängende Texte verstehen"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u01",
+      "level": "B1",
+      "order": 1,
+      "theme": "Meinungen äußern",
+      "goal": "Eigene Meinung begründen",
+      "input": {
+        "reading": [
+          "I social media"
+        ],
+        "listening": [
+          "Dibattito: social media"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-condizionale",
+          "it-congiuntivo"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-opinione"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Meinung mit „secondo me“ äußern",
+          "Kann Argumente nennen",
+          "Kann zustimmen/widersprechen"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u02",
+      "level": "B1",
+      "order": 2,
+      "theme": "Konjunktiv: Wünsche & Zweifel",
+      "goal": "Meinungen und Zweifel ausdrücken",
+      "input": {
+        "reading": [
+          "Penso che…"
+        ],
+        "listening": [
+          "Penso che sia importante"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-congiuntivo"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-congiuntivo"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann „penso che + congiuntivo“ bilden",
+          "Kann Zweifel ausdrücken",
+          "Kann Nebensätze gestalten"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u03",
+      "level": "B1",
+      "order": 3,
+      "theme": "Planen & Vereinbaren",
+      "goal": "Eine Feier organisieren",
+      "input": {
+        "reading": [
+          "Organizziamo una festa"
+        ],
+        "listening": [
+          "Organizzare una festa"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-condizionale",
+          "it-futuro"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-pianificare"
+        ],
+        "speaking": [
+          "pianificare-festa"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann Vorschläge machen",
+          "Kann Absprachen treffen",
+          "Kann Pläne besprechen"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u04",
+      "level": "B1",
+      "order": 4,
+      "theme": "Arbeit & Bewerbung",
+      "goal": "Über Erfahrung und Stärken sprechen",
+      "input": {
+        "reading": [
+          "Un colloquio di lavoro"
+        ],
+        "listening": [
+          "Colloquio di lavoro"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-passato-vs-imperfetto",
+          "it-condizionale"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-lavoro"
+        ],
+        "speaking": [
+          "lavoro-colloquio"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann über Berufserfahrung sprechen",
+          "Kann Stärken beschreiben",
+          "Kann formell auftreten"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u05",
+      "level": "B1",
+      "order": 5,
+      "theme": "Reise & Planung",
+      "goal": "Zugverbindungen und Reisen planen",
+      "input": {
+        "reading": [
+          "In stazione"
+        ],
+        "listening": [
+          "In stazione"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-futuro",
+          "it-condizionale"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-viaggio"
+        ],
+        "speaking": [
+          "viaggio-treno"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann eine Reise planen",
+          "Kann Fahrplaninformationen verstehen",
+          "Kann in Zukunft sprechen (futuro)"
+        ]
+      }
+    },
+    {
+      "id": "it-b1-u06",
+      "level": "B1",
+      "order": 6,
+      "theme": "B1-Wiederholung",
+      "goal": "Produktivität und Nuancen festigen",
+      "input": {
+        "reading": [
+          "Attualità"
+        ],
+        "listening": [
+          "Riepilogo B1"
+        ]
+      },
+      "fokus": {
+        "grammar": [
+          "it-congiuntivo",
+          "it-condizionale",
+          "it-passato-vs-imperfetto"
+        ],
+        "vocabLevel": "B1"
+      },
+      "output": {
+        "writing": [
+          "b1-riepilogo"
+        ],
+        "speaking": [
+          "opinione-dibattito"
+        ]
+      },
+      "check": {
+        "cando": [
+          "Kann zusammenhängend argumentieren",
+          "Kann Konjunktiv und Konditional anwenden",
+          "Kann an Diskussionen teilnehmen"
+        ]
+      }
+    }
+  ]
+}

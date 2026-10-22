@@ -18,5 +18,8 @@
   "frequencyList": "freq/it_top_5000.csv",
   "grammarSyllabus": "grammar/it_cefr.json",
   "curriculum": "curriculum/it_a1_b1.json",
+  "curriculumUnits": "curriculum/units_a1_b1.json",
+  "listening": "listening/seed.json",
+  "outputPrompts": "output/prompts.json",
   "pronunciation": "pron/it_rules.json"
 }

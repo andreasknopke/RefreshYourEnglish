@@ -22,6 +22,7 @@ import ReaderModule from './features/reader/ReaderModule';
 import GrammarModule from './features/grammar/GrammarModule';
 import WritingModule from './features/writing/WritingModule';
 import SpeakingModule from './features/speaking/SpeakingModule';
+import DailySession from './features/session/DailySession';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
@@ -314,6 +315,30 @@ function App() {
           <div className="max-w-7xl mx-auto">
             {/* Hauptmodule Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
+            {/* Modul: Tages-Sitzung (Session Composer, Mehrsprachige Engine) */}
+            <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 transition-all duration-300 flex flex-col ring-2 ring-indigo-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl mb-3 shadow-lg relative z-10">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+              </div>
+
+              <h2 className="text-xl font-bold text-gray-800 mb-2 relative z-10">
+                Tages-Sitzung
+              </h2>
+              <p className="text-xs text-gray-600 mb-3 leading-relaxed relative z-10 flex-grow">
+                Deine automatisch geplante Einheit: Input → Fokus → Output → Check
+              </p>
+              <button
+                onClick={() => setActiveModule('session')}
+                className="w-full btn-primary relative z-10 text-sm py-2"
+              >
+                <span className="relative z-10">Heute lernen →</span>
+              </button>
+            </div>
+
             {/* Modul 0: SRS-Review (Mehrsprachige Engine) */}
             <div className="glass-card rounded-2xl p-4 shadow-xl relative overflow-hidden group hover:scale-105 hover:rotate-1 transition-all duration-300 flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -619,6 +644,7 @@ function App() {
             {activeModule === 'grammar' && <GrammarModule />}
             {activeModule === 'writing' && <WritingModule />}
             {activeModule === 'speaking' && <SpeakingModule />}
+            {activeModule === 'session' && <DailySession onOpenModule={(m) => m && setActiveModule(m)} />}
             {activeModule === 'library' && <VocabularyLibrary user={user} />}
             {activeModule === 'settings' && <SettingsModule />}
             {activeModule === 'stats' && <StatsModule user={user} />}

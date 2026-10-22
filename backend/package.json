@@ -16,6 +16,7 @@
     "db:backfill-languages": "node src/scripts/backfill-user-languages.js",
     "db:seed-vocab": "node src/scripts/seed-vocab.js",
     "db:seed-reader": "node src/scripts/seed-reader.js",
+    "db:seed-listening": "node src/scripts/seed-listening.js",
     "db:backfill-vocab": "node src/scripts/backfill-vocab.js",
     "test": "vitest run",
     "test:watch": "vitest"
