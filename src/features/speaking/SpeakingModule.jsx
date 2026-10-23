@@ -238,9 +238,16 @@ function DialogTab({ id, sttLocale, ttsLocale, focus = null, onBackToSession = n
       {replyDone ? (
         <div className="glass-card rounded-2xl p-4 text-center">
           <p className="text-sm text-gray-600 mb-2">Gespräch abgeschlossen. 🎉</p>
-          <button onClick={() => openScenario(active.id)} className="btn-secondary px-4 py-2 text-sm">
-            Nochmal spielen
-          </button>
+          <div className="flex gap-2 justify-center">
+            {focus?.module === 'speaking' && onBackToSession && (
+              <button onClick={onBackToSession} className="btn-primary px-4 py-2 text-sm">
+                Weiter zur Tages-Sitzung →
+              </button>
+            )}
+            <button onClick={() => openScenario(active.id)} className="btn-secondary px-4 py-2 text-sm">
+              Nochmal spielen
+            </button>
+          </div>
         </div>
       ) : (
         <div className="flex gap-2 items-end">

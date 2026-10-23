@@ -403,6 +403,11 @@ function ReaderModule({ focus = null, onBackToSession = null }) {
                   ? `✓ Bestanden! ${Math.round(quizResult.score * 100)}% richtig.`
                   : `${Math.round(quizResult.score * 100)}% richtig – lies den Text noch einmal und versuche es erneut.`}
               </div>
+              {quizResult.passed && focus?.module === 'reader' && onBackToSession && (
+                <button onClick={onBackToSession} className="btn-primary w-full py-2.5">
+                  Weiter zur Tages-Sitzung →
+                </button>
+              )}
               {!quizResult.passed && (
                 <button
                   onClick={() => {
@@ -433,15 +438,22 @@ function ReaderModule({ focus = null, onBackToSession = null }) {
           <p className="text-sm text-gray-600">
             Für diesen Text gibt es noch keine Verständnisfragen.
           </p>
-          <button
-            onClick={markRead}
-            disabled={markedRead}
-            className={`text-sm font-semibold px-4 py-2 rounded-lg ${
-              markedRead ? 'text-emerald-600' : 'btn-primary'
-            }`}
-          >
-            {markedRead ? '✓ Gelesen' : 'Als gelesen markieren'}
-          </button>
+          <div className="flex gap-2 shrink-0">
+            <button
+              onClick={markRead}
+              disabled={markedRead}
+              className={`text-sm font-semibold px-4 py-2 rounded-lg ${
+                markedRead ? 'text-emerald-600' : 'btn-primary'
+              }`}
+            >
+              {markedRead ? '✓ Gelesen' : 'Als gelesen markieren'}
+            </button>
+            {markedRead && focus?.module === 'reader' && onBackToSession && (
+              <button onClick={onBackToSession} className="btn-primary text-sm px-4 py-2">
+                Weiter zur Tages-Sitzung →
+              </button>
+            )}
+          </div>
         </div>
       )}
 

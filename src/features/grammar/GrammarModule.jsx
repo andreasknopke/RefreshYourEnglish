@@ -93,6 +93,9 @@ function GrammarModule({ focus = null, onBackToSession = null }) {
     setAnswer(null);
     if (exIdx + 1 < point.exercises.length) {
       setExIdx(exIdx + 1);
+    } else if (focus?.module === 'grammar' && onBackToSession) {
+      // Aus der Tages-Sitzung: nach der letzten Übung direkt zurück
+      onBackToSession();
     } else {
       setView('points');
       setPoint(null);
