@@ -9,17 +9,14 @@ Lernweg: Onboarding (Zielsprache, Niveau, Ziel) → adaptiver Placement-Test
 Input (Lesen/Hören) · Grammatik-Fokus · Produktion (Schreiben/Sprechen) ·
 Can-do-Check. Dazu FSRS-SRS-Review, Reader mit Wort-Abdeckung, Fortschritts-Dashboard.
 
-## 🚀 Schnellstart
+## Schnellstart
 
 ```bash
 npm install
 cd backend && npm install
 
-# 1. Migrationen + Content seeden (en und it)
-node backend/src/scripts/migrate-v2.js
-node backend/src/scripts/seed-vocab.js en it
-node backend/src/scripts/seed-reader.js en it
-node backend/src/scripts/seed-listening.js en it
+# 1. Migrationen + Content seeden (alle Packs aus content/packs/)
+node backend/src/scripts/bootstrap.js
 
 # 2. Backend (Port 3001) – JWT_SECRET ist Pflicht
 cd backend && JWT_SECRET=devsecret node src/server.js

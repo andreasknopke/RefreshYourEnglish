@@ -8,4 +8,4 @@ cmds = ["npm ci --prefix backend", "npm ci"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "node backend/src/server.js"
+cmd = "node backend/src/scripts/bootstrap.js && node backend/src/server.js"

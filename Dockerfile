@@ -70,6 +70,10 @@ COPY --from=backend-deps /app/backend/node_modules ./backend/node_modules
 # Backend-Quellcode aus dem Build-Kontext (eindeutige, separate COPYs)
 COPY backend/package.json ./backend/package.json
 COPY backend/src ./backend/src
+COPY backend/migrations ./backend/migrations
+
+# Language Packs (einzige Content-Quelle für Seeding zur Startzeit)
+COPY content ./content
 
 # Datenverzeichnis für SQLite (mit Volume belegen für Persistenz)
 RUN mkdir -p /app/backend/data
@@ -82,4 +86,5 @@ EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
     CMD curl -fsS "http://localhost:${PORT:-3001}/health" || exit 1
 
-CMD ["node", "backend/src/server.js"]
+# Bootstrap (Migrationen + Seeding aller Packs, idempotent) vor dem Start.
+CMD ["sh", "-c", "node backend/src/scripts/bootstrap.js && exec node backend/src/server.js"]

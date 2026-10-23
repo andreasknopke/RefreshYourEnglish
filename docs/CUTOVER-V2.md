@@ -29,6 +29,14 @@ Gamification-Banner).
 
 ```bash
 cd backend
+node src/scripts/bootstrap.js        # Migrationen + Seeding aller Packs (idempotent)
+```
+
+Der Container-Start (Dockerfile-CMD, nixpacks `[start]`) führt den Bootstrap
+automatisch vor dem Server aus. Einzelne Sprachen: `bootstrap.js en it`.
+Manuell Schritt für Schritt:
+
+```bash
 node src/scripts/migrate-v2.js
 node src/scripts/seed-vocab.js en it
 node src/scripts/seed-reader.js en it
