@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react';
 import ttsService from '../services/ttsService';
 import * as llmService from '../services/llmService';
 import DiagnosticsPanel from './DiagnosticsPanel';
+import { useLanguage } from '../core/language/LanguageContext';
 
 function SettingsModule() {
   const [availableVoices, setAvailableVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [llmInfo, setLLMInfo] = useState(null);
+  const { activeUserLanguage } = useLanguage();
+
+  // Stimme bezieht sich immer auf die aktive Zielsprache (it/en …).
+  const langPrefix = (activeUserLanguage?.targetLang || 'en').toLowerCase();
 
   useEffect(() => {
     // LLM-Konfiguration kommt aus dem Backend (LLM_BASE_URL / LLM_API_KEY / LLM_MODEL)
@@ -19,9 +24,9 @@ function SettingsModule() {
     const loadVoices = () => {
       const voices = ttsService.getAvailableVoices();
       setAvailableVoices(voices);
-      
-      // Load preferred voice
-      const preferred = ttsService.getPreferredVoice();
+
+      // Load preferred voice (pro Sprache)
+      const preferred = ttsService.getPreferredVoice(langPrefix);
       setSelectedVoice(preferred);
     };
     
@@ -35,11 +40,11 @@ function SettingsModule() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [langPrefix]);
 
   const handleVoiceChange = (voiceName) => {
     try {
-      ttsService.setPreferredVoice(voiceName);
+      ttsService.setPreferredVoice(voiceName, langPrefix);
       setSelectedVoice(voiceName);
     } catch (error) {
       console.error('Failed to change voice:', error);
@@ -171,11 +176,11 @@ function SettingsModule() {
               <div className="p-4 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border-2 border-indigo-200">
                 <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
                   <span>🎙️</span>
-                  Stimme auswählen
+                  Stimme auswählen ({langPrefix === 'it' ? 'Italienisch' : langPrefix === 'en' ? 'Englisch' : langPrefix})
                 </h4>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {availableVoices
-                    .filter(voice => voice.lang.startsWith('en'))
+                    .filter(voice => ttsService.voiceMatchesLang(voice, langPrefix))
                     .map((voice) => (
                       <div
                         key={voice.name}
@@ -213,9 +218,10 @@ function SettingsModule() {
                       </div>
                     ))}
                 </div>
-                {availableVoices.filter(v => v.lang.startsWith('en')).length === 0 && (
+                {availableVoices.filter(v => ttsService.voiceMatchesLang(v, langPrefix)).length === 0 && (
                   <p className="text-sm text-gray-500 text-center py-4">
-                    Keine englischen Stimmen verfügbar
+                    Keine {langPrefix === 'it' ? 'italienischen' : langPrefix === 'en' ? 'englischen' : langPrefix}-Stimmen verfügbar.
+                    In Windows/Chrome unter „Sprachen hinzufügen“ installieren.
                   </p>
                 )}
               </div>

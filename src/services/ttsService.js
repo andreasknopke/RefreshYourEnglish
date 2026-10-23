@@ -40,70 +40,78 @@ class TTSService {
   }
 
   /**
-   * Setzt die bevorzugte Browser-Stimme
+   * Setzt die bevorzugte Browser-Stimme pro Sprache.
    * @param {string} voiceName - Name der Stimme
+   * @param {string} language - Sprachcode ('en', 'it', ...)
    */
-  setPreferredVoice(voiceName) {
-    localStorage.setItem('preferred_browser_voice', voiceName);
+  setPreferredVoice(voiceName, language = 'en') {
+    localStorage.setItem(`preferred_browser_voice:${language}`, voiceName);
   }
 
   /**
-   * Gibt die bevorzugte Browser-Stimme zurück
+   * Gibt die bevorzugte Browser-Stimme einer Sprache zurück.
+   * @param {string} language - Sprachcode ('en', 'it', ...)
    */
-  getPreferredVoice() {
-    return localStorage.getItem('preferred_browser_voice') || null;
+  getPreferredVoice(language = 'en') {
+    return localStorage.getItem(`preferred_browser_voice:${language}`) || null;
   }
 
   /**
-   * Wählt die beste verfügbare Stimme aus
-   * @param {string} language - Sprache ('en' oder 'de')
+   * Prüft, ob eine Stimme zu einem Sprachprefix passt ('it' matcht 'it',
+   * 'it-IT', 'it_IT').
+   */
+  voiceMatchesLang(voice, prefix) {
+    const lang = (voice.lang || '').replace('_', '-').toLowerCase();
+    return lang === prefix || lang.startsWith(prefix + '-');
+  }
+
+  /**
+   * Wählt die beste verfügbare Stimme für eine Sprache aus.
+   * Wichtig: es wird NIEMALS eine Stimme einer anderen Sprache gewählt –
+   * sonst klingt Italienisch plötzlich mit englischem Akzent.
+   * @param {string} language - Sprachcode ('en', 'it', ...) oder volles Locale
    */
   selectBestVoice(language = 'en') {
     const voices = window.speechSynthesis.getVoices();
-    
-    console.log('🎙️ Verfügbare Stimmen:', voices.map(v => v.name));
-    
-    // Priorität 0: Benutzerdefinierte Stimme aus Settings
-    const preferredVoiceName = this.getPreferredVoice();
+
+    console.log('🎙️ Verfügbare Stimmen:', voices.map(v => `${v.name} [${v.lang}]`));
+
+    const locale = this.resolveLocale(language);      // z. B. 'it-IT'
+    const prefix = locale.split('-')[0].toLowerCase(); // z. B. 'it'
+
+    // Priorität 0: Benutzerdefinierte Stimme aus Settings (nur wenn sie
+    // tatsächlich zu dieser Sprache passt).
+    const preferredVoiceName = this.getPreferredVoice(prefix);
     if (preferredVoiceName) {
-      const voice = voices.find(v => v.name === preferredVoiceName);
+      const voice = voices.find(
+        v => v.name === preferredVoiceName && this.voiceMatchesLang(v, prefix)
+      );
       if (voice) {
         console.log('✅ Using preferred voice:', voice.name);
         return voice;
       }
     }
-    
-    if (language === 'en') {
-      // Priorität 1: Jenny (Natural)
-      let voice = voices.find(v => 
-        v.name.includes('Jenny') && v.name.includes('Natural')
-      );
-      
-      if (voice) {
-        console.log('✅ Using Jenny (Natural)');
-        return voice;
-      }
-      
-      // Priorität 2: Beliebige Natural-Stimme für Englisch
-      voice = voices.find(v => 
-        v.name.includes('Natural') && v.lang.startsWith('en')
-      );
-      
-      if (voice) {
-        console.log('✅ Using:', voice.name);
-        return voice;
-      }
-      
-      // Priorität 3: Beliebige englische Stimme
-      voice = voices.find(v => v.lang.startsWith('en'));
-      
-      if (voice) {
-        console.log('⚠️ Using fallback:', voice.name);
-        return voice;
-      }
+
+    // Stimmen, deren Lang zu dieser Sprache passt (zuerst exaktes Locale,
+    // dann nur Sprachprefix).
+    const exact = voices.filter(v => v.lang.replace('_', '-').toLowerCase() === locale.toLowerCase());
+    const loose = voices.filter(v => this.voiceMatchesLang(v, prefix));
+    const pool = exact.length > 0 ? exact : loose;
+
+    // Bevorzuge hochwertige Stimmen (Natural/Google/Premium/Enhanced …).
+    const quality = /(natural|google|premium|enhanced|neural)/i;
+    const voice =
+      pool.find(v => quality.test(v.name)) ||   // beste passende Stimme
+      pool.find(v => !/lokal|local/i.test(v.name)) ||
+      pool[0] ||                                 // beliebige passende Stimme
+      null;
+
+    if (voice) {
+      console.log(`✅ Using voice for "${prefix}":`, voice.name, `[${voice.lang}]`);
+      return voice;
     }
-    
-    console.log('⚠️ Keine passende Stimme gefunden');
+
+    console.warn(`⚠️ Keine "${prefix}"-Stimme installiert – Browser wählt Standard (Akzent möglich).`);
     return null;
   }
 
