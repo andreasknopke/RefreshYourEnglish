@@ -20,12 +20,12 @@
           "type": "mc",
           "s": "She ___ my sister.",
           "o": [
-            "is",
-            "are",
+            "be",
             "am",
-            "be"
+            "is",
+            "are"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -33,9 +33,9 @@
           "s": "They ___ teachers.",
           "o": [
             "are",
+            "be",
             "is",
-            "am",
-            "be"
+            "am"
           ],
           "a": 0,
           "tag": "agreement"
@@ -44,12 +44,12 @@
           "type": "mc",
           "s": "I ___ tired.",
           "o": [
-            "am",
             "is",
-            "are",
-            "be"
+            "be",
+            "am",
+            "are"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -64,12 +64,12 @@
           "type": "mc",
           "s": "We ___ not hungry.",
           "o": [
-            "are",
             "is",
-            "am",
-            "be"
+            "are",
+            "be",
+            "am"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -84,24 +84,24 @@
           "type": "mc",
           "s": "___ you ready?",
           "o": [
-            "Are",
-            "Is",
+            "Be",
             "Am",
-            "Be"
+            "Is",
+            "Are"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Plural von „he is“:",
           "o": [
-            "they are",
             "they is",
+            "they be",
             "they am",
-            "they be"
+            "they are"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         }
       ]
@@ -123,24 +123,24 @@
           "type": "mc",
           "s": "He ___ to school.",
           "o": [
+            "gone",
             "goes",
-            "go",
             "going",
-            "gone"
+            "go"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "She ___ coffee.",
           "o": [
-            "drinks",
-            "drink",
             "drinking",
-            "drank"
+            "drank",
+            "drink",
+            "drinks"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -155,12 +155,12 @@
           "type": "mc",
           "s": "___ he like music?",
           "o": [
-            "Does",
             "Do",
-            "Is",
-            "Are"
+            "Does",
+            "Are",
+            "Is"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -187,24 +187,24 @@
           "type": "mc",
           "s": "3. Person Singular von „have“:",
           "o": [
-            "has",
-            "have",
             "having",
-            "had"
+            "had",
+            "has",
+            "have"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "I ___ get up at seven.",
           "o": [
-            "always",
-            "always am",
             "am always",
-            "to always"
+            "always",
+            "to always",
+            "always am"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         }
       ]
@@ -225,24 +225,24 @@
           "type": "mc",
           "s": "___ hour",
           "o": [
-            "an",
             "a",
-            "the",
-            "-"
+            "-",
+            "an",
+            "the"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "___ university",
           "o": [
-            "a",
             "an",
             "the",
+            "a",
             "-"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -269,24 +269,24 @@
           "type": "mc",
           "s": "___ honest man",
           "o": [
-            "an",
-            "a",
+            "-",
             "the",
-            "-"
+            "a",
+            "an"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Ich trinke Milch. = I drink ___ milk.",
           "o": [
-            "-",
-            "a",
             "an",
-            "the"
+            "the",
+            "a",
+            "-"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -301,12 +301,12 @@
           "type": "mc",
           "s": "„an“ steht vor:",
           "o": [
-            "Vokalklang",
-            "Konsonant",
+            "Zahl",
             "Plural",
-            "Zahl"
+            "Konsonant",
+            "Vokalklang"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         }
       ]
@@ -328,24 +328,24 @@
           "type": "mc",
           "s": "Plural von „child“:",
           "o": [
-            "children",
             "childs",
+            "childes",
             "childrens",
-            "childes"
+            "children"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "Plural von „box“:",
           "o": [
-            "boxes",
             "boxs",
-            "boxies",
-            "box"
+            "boxes",
+            "box",
+            "boxies"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "spelling"
         },
         {
@@ -360,12 +360,12 @@
           "type": "mc",
           "s": "Plural von „man“:",
           "o": [
-            "men",
-            "mans",
             "mens",
+            "mans",
+            "men",
             "man"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
@@ -380,24 +380,24 @@
           "type": "mc",
           "s": "Plural von „bus“:",
           "o": [
-            "buses",
             "buss",
-            "busies",
-            "bus"
+            "bus",
+            "buses",
+            "busies"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "Plural von „woman“:",
           "o": [
-            "women",
             "womans",
             "womens",
+            "women",
             "woman"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
@@ -427,24 +427,24 @@
           "type": "mc",
           "s": "___ a book on the table.",
           "o": [
-            "There is",
-            "There are",
             "It is",
-            "They are"
+            "They are",
+            "There is",
+            "There are"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "___ three chairs.",
           "o": [
+            "There have",
             "There are",
             "There is",
-            "It is",
-            "There have"
+            "It is"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -453,8 +453,8 @@
           "o": [
             "any",
             "some",
-            "many",
-            "a"
+            "a",
+            "many"
           ],
           "a": 0,
           "tag": "lexis"
@@ -471,24 +471,24 @@
           "type": "mc",
           "s": "There are not ___ people.",
           "o": [
-            "many",
             "much",
-            "a",
-            "an"
+            "an",
+            "many",
+            "a"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "___ some water in the glass.",
           "o": [
-            "There is",
             "There are",
-            "It is",
-            "They are"
+            "They are",
+            "There is",
+            "It is"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -503,12 +503,12 @@
           "type": "mc",
           "s": "„there is“ passt zu:",
           "o": [
+            "Adjektive",
             "unzählig",
-            "Plural",
             "Verben",
-            "Adjektive"
+            "Plural"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         }
       ]
@@ -530,12 +530,12 @@
           "type": "mc",
           "s": "Das Auto meines Vaters = my ___ car.",
           "o": [
-            "father’s",
             "father",
+            "father of",
             "fathers",
-            "father of"
+            "father’s"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -543,8 +543,8 @@
           "s": "Maria und ___ Hund",
           "o": [
             "her",
-            "his",
             "its",
+            "his",
             "their"
           ],
           "a": 0,
@@ -562,24 +562,24 @@
           "type": "mc",
           "s": "Das ist ___ (unser) Haus.",
           "o": [
-            "our",
-            "us",
             "we",
-            "ours"
+            "ours",
+            "us",
+            "our"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Die Katze putzt ___ (sein/ihr, Tier) Fell.",
           "o": [
-            "its",
             "it’s",
             "his",
+            "its",
             "her"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -594,24 +594,24 @@
           "type": "mc",
           "s": "Toms und Annas Kinder = Tom and ___ children",
           "o": [
-            "Anna’s",
             "Anna",
+            "Anna’s",
             "Annas of",
             "of Anna"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„its“ schreibt sich ohne Apostroph, weil:",
           "o": [
-            "Possessivpronomen",
+            "Abkürzung",
             "Verb",
-            "Plural",
-            "Abkürzung"
+            "Possessivpronomen",
+            "Plural"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         }
       ]
@@ -634,9 +634,9 @@
           "s": "Yesterday I ___ to the cinema.",
           "o": [
             "went",
-            "go",
             "gone",
-            "going"
+            "going",
+            "go"
           ],
           "a": 0,
           "tag": "tense"
@@ -645,12 +645,12 @@
           "type": "mc",
           "s": "She ___ a letter last night.",
           "o": [
-            "wrote",
+            "writes",
             "write",
-            "written",
-            "writes"
+            "wrote",
+            "written"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -665,24 +665,24 @@
           "type": "mc",
           "s": "___ you see the film?",
           "o": [
-            "Did",
-            "Do",
+            "Were",
             "Does",
-            "Were"
+            "Do",
+            "Did"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "He ___ (not come).",
           "o": [
-            "did not come",
             "did not came",
-            "does not came",
-            "do not come"
+            "did not come",
+            "do not come",
+            "does not came"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -698,9 +698,9 @@
           "s": "Past von „see“:",
           "o": [
             "saw",
-            "seed",
+            "seeing",
             "seen",
-            "seeing"
+            "seed"
           ],
           "a": 0,
           "tag": "tense"
@@ -710,9 +710,9 @@
           "s": "Nach „did“ steht das",
           "o": [
             "Infinitiv",
+            "-ing",
             "Past",
-            "Partizip",
-            "-ing"
+            "Partizip"
           ],
           "a": 0,
           "tag": "tense"
@@ -736,24 +736,24 @@
           "type": "mc",
           "s": "I ___ never been to Spain.",
           "o": [
-            "have",
-            "has",
             "had",
-            "am"
+            "am",
+            "have",
+            "has"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "She ___ finished her homework.",
           "o": [
+            "is",
             "has",
             "have",
-            "had",
-            "is"
+            "had"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -768,24 +768,24 @@
           "type": "mc",
           "s": "___ you ever eaten sushi?",
           "o": [
-            "Have",
             "Has",
-            "Did",
-            "Had"
+            "Have",
+            "Had",
+            "Did"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Present Perfect von „go“:",
           "o": [
-            "have gone",
             "have went",
             "has went",
-            "had went"
+            "had went",
+            "have gone"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -800,24 +800,24 @@
           "type": "mc",
           "s": "„yet“ steht meist in",
           "o": [
+            "Befehlen",
             "Fragen/Verneinung",
             "Aussagesätzen",
-            "Befehlen",
             "Ausrufen"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "„for“ +",
           "o": [
+            "Person",
             "Zeitraum",
-            "Zeitpunkt",
             "Ort",
-            "Person"
+            "Zeitpunkt"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         }
       ]
@@ -840,24 +840,24 @@
           "type": "mc",
           "s": "tall → Komparativ:",
           "o": [
-            "taller",
             "more tall",
+            "taller",
             "most tall",
             "tallest"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "good → Superlativ:",
           "o": [
-            "best",
             "goodest",
             "most good",
+            "best",
             "better"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -872,24 +872,24 @@
           "type": "mc",
           "s": "bad → Komparativ:",
           "o": [
-            "worse",
-            "badder",
             "more bad",
+            "badder",
+            "worse",
             "worst"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Er ist größer ___ ich.",
           "o": [
-            "than",
-            "then",
+            "as",
             "that",
-            "as"
+            "then",
+            "than"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -904,12 +904,12 @@
           "type": "mc",
           "s": "far → Superlativ:",
           "o": [
-            "farthest",
+            "further",
             "farst",
-            "most far",
-            "further"
+            "farthest",
+            "most far"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -943,24 +943,24 @@
           "type": "mc",
           "s": "Du ___ rauchen (Verbot).",
           "o": [
-            "must not",
-            "must to not",
             "don’t must",
-            "not must"
+            "not must",
+            "must to not",
+            "must not"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "She ___ speak French.",
           "o": [
-            "can",
+            "is can",
             "cans",
-            "can to",
-            "is can"
+            "can",
+            "can to"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -975,24 +975,24 @@
           "type": "mc",
           "s": "Nach „can“ steht:",
           "o": [
-            "Infinitiv ohne to",
-            "Infinitiv mit to",
             "-ing",
-            "Past"
+            "Past",
+            "Infinitiv ohne to",
+            "Infinitiv mit to"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "„have to“ bedeutet",
           "o": [
-            "müssen",
-            "können",
             "dürfen",
-            "wollen"
+            "wollen",
+            "können",
+            "müssen"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -1009,24 +1009,24 @@
           "type": "mc",
           "s": "Frage mit „can“:",
           "o": [
+            "Can you to swim?",
             "Can you swim?",
             "Do you can?",
-            "Can you to swim?",
             "You can?"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "„must“ im Past (Pflicht) =",
           "o": [
-            "had to",
-            "musted",
+            "have to",
             "must",
-            "have to"
+            "musted",
+            "had to"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         }
       ]
@@ -1049,12 +1049,12 @@
           "type": "mc",
           "s": "___ Monday",
           "o": [
-            "On",
-            "In",
+            "To",
             "At",
-            "To"
+            "On",
+            "In"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -1062,9 +1062,9 @@
           "s": "___ 2020",
           "o": [
             "In",
+            "By",
             "On",
-            "At",
-            "By"
+            "At"
           ],
           "a": 0,
           "tag": "preposition"
@@ -1073,12 +1073,12 @@
           "type": "mc",
           "s": "___ nine o’clock",
           "o": [
-            "At",
-            "In",
             "On",
+            "In",
+            "At",
             "To"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -1093,12 +1093,12 @@
           "type": "mc",
           "s": "___ my birthday",
           "o": [
-            "On",
-            "In",
             "At",
-            "To"
+            "In",
+            "To",
+            "On"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "preposition"
         },
         {
@@ -1113,24 +1113,24 @@
           "type": "mc",
           "s": "___ the morning",
           "o": [
+            "To",
             "In",
             "On",
-            "At",
-            "To"
+            "At"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "am Montag = ___ Monday",
           "o": [
-            "on",
             "in",
             "at",
+            "on",
             "by"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         }
       ]
@@ -1152,12 +1152,12 @@
           "type": "mc",
           "s": "Ich werde kommen. = I ___ come.",
           "o": [
-            "will",
-            "am will",
             "will to",
+            "am will",
+            "will",
             "going"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1166,8 +1166,8 @@
           "o": [
             "is going to",
             "will going",
-            "is will",
-            "going"
+            "going",
+            "is will"
           ],
           "a": 0,
           "tag": "tense"
@@ -1184,24 +1184,24 @@
           "type": "mc",
           "s": "Verneinung von „will“:",
           "o": [
-            "will not / won’t",
+            "don’t will",
             "will no",
             "not will",
-            "don’t will"
+            "will not / won’t"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "„going to“ braucht",
           "o": [
-            "be + going to",
             "will",
+            "be + going to",
             "have",
             "do"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -1216,12 +1216,12 @@
           "type": "mc",
           "s": "Vorhersage ohne Plan nutzt",
           "o": [
-            "will",
-            "going to",
             "present",
-            "past"
+            "past",
+            "going to",
+            "will"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1229,9 +1229,9 @@
           "s": "Feste Pläne nutzen eher",
           "o": [
             "going to",
+            "shall",
             "will",
-            "would",
-            "shall"
+            "would"
           ],
           "a": 0,
           "tag": "tense"
@@ -1254,24 +1254,24 @@
           "type": "mc",
           "s": "If it rains, I ___ at home.",
           "o": [
-            "will stay",
             "would stay",
-            "stayed",
-            "stay"
+            "stay",
+            "will stay",
+            "stayed"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "If I ___ rich, I would travel.",
           "o": [
-            "were",
-            "am",
+            "be",
             "will be",
-            "be"
+            "were",
+            "am"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1286,24 +1286,24 @@
           "type": "mc",
           "s": "Typ 1 if-Satz steht im",
           "o": [
-            "Present",
-            "Past",
             "Future",
-            "Perfect"
+            "Present",
+            "Perfect",
+            "Past"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "If I ___ you, I would go.",
           "o": [
-            "were",
             "am",
             "was being",
+            "were",
             "will be"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1318,24 +1318,24 @@
           "type": "mc",
           "s": "Im if-Satz steht kein",
           "o": [
-            "will",
             "Present",
+            "Subjekt",
             "Verb",
-            "Subjekt"
+            "will"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Typ 2 drückt",
           "o": [
-            "Unwirkliches",
-            "Vergangenes",
+            "Fragen",
             "Befehle",
-            "Fragen"
+            "Vergangenes",
+            "Unwirkliches"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         }
       ]
@@ -1356,24 +1356,24 @@
           "type": "mc",
           "s": "The letter ___ yesterday.",
           "o": [
-            "was sent",
+            "has send",
             "sent",
-            "is send",
-            "has send"
+            "was sent",
+            "is send"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Passiv von „They make cars“:",
           "o": [
-            "Cars are made",
             "Cars make",
+            "Cars made",
             "Cars is made",
-            "Cars made"
+            "Cars are made"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1388,24 +1388,24 @@
           "type": "mc",
           "s": "Passiv braucht",
           "o": [
-            "be + past participle",
-            "have + inf",
             "be + -ing",
+            "have + inf",
+            "be + past participle",
             "will + inf"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "The bridge ___ in 1850.",
           "o": [
-            "was built",
             "built",
-            "is build",
-            "has build"
+            "has build",
+            "was built",
+            "is build"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1420,12 +1420,12 @@
           "type": "mc",
           "s": "Future Passiv:",
           "o": [
-            "will be done",
             "will do",
             "will doing",
-            "will have"
+            "will have",
+            "will be done"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1433,9 +1433,9 @@
           "s": "Passiv betont",
           "o": [
             "die Handlung/Leidende",
+            "den Ort",
             "den Täter",
-            "die Zeit",
-            "den Ort"
+            "die Zeit"
           ],
           "a": 0,
           "tag": "lexis"
@@ -1459,24 +1459,24 @@
           "type": "mc",
           "s": "The woman ___ lives next door.",
           "o": [
-            "who",
-            "which",
             "what",
-            "whose"
+            "which",
+            "whose",
+            "who"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "The car ___ I bought.",
           "o": [
-            "which",
             "who",
-            "what",
-            "where"
+            "which",
+            "where",
+            "what"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -1484,9 +1484,9 @@
           "s": "Non-defining: mein Bruder, ___ in Rom lebt",
           "o": [
             "who",
-            "that",
             "what",
-            "which"
+            "which",
+            "that"
           ],
           "a": 0,
           "tag": "word_order"
@@ -1504,9 +1504,9 @@
           "s": "Im non-defining Satz ist „that“",
           "o": [
             "nicht erlaubt",
-            "Pflicht",
+            "besser",
             "egal",
-            "besser"
+            "Pflicht"
           ],
           "a": 0,
           "tag": "word_order"
@@ -1515,12 +1515,12 @@
           "type": "mc",
           "s": "The city ___ I was born",
           "o": [
-            "where",
-            "which",
             "who",
-            "when"
+            "which",
+            "when",
+            "where"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -1536,12 +1536,12 @@
           "type": "mc",
           "s": "„which“ bezieht sich auf",
           "o": [
-            "Sachen/Tiere",
             "Personen",
             "Orte",
+            "Sachen/Tiere",
             "Zeiten"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -1562,12 +1562,12 @@
           "type": "mc",
           "s": "“I am happy” → He said he ___ happy.",
           "o": [
+            "has been",
             "was",
-            "is",
             "were",
-            "has been"
+            "is"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -1576,8 +1576,8 @@
           "o": [
             "would",
             "will",
-            "was",
-            "had"
+            "had",
+            "was"
           ],
           "a": 0,
           "tag": "tense"
@@ -1595,9 +1595,9 @@
           "s": "Present Simple wird zu",
           "o": [
             "Past Simple",
-            "Past Perfect",
             "Future",
-            "bleibt"
+            "bleibt",
+            "Past Perfect"
           ],
           "a": 0,
           "tag": "tense"
@@ -1607,8 +1607,8 @@
           "s": "„tomorrow“ wird zu",
           "o": [
             "the next day",
-            "yesterday",
             "now",
+            "yesterday",
             "today"
           ],
           "a": 0,
@@ -1627,9 +1627,9 @@
           "s": "„will“ wird zu",
           "o": [
             "would",
-            "will",
             "had",
-            "was"
+            "was",
+            "will"
           ],
           "a": 0,
           "tag": "tense"
@@ -1638,12 +1638,12 @@
           "type": "mc",
           "s": "Indirekte Fragen nutzen",
           "o": [
-            "Aussagesatz-Wortstellung",
-            "Frage-Wortstellung",
             "do",
+            "Frage-Wortstellung",
+            "Aussagesatz-Wortstellung",
             "Satzzeichen ?"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -1665,24 +1665,24 @@
           "type": "mc",
           "s": "I enjoy ___ books.",
           "o": [
-            "reading",
-            "to read",
             "read",
-            "to reading"
+            "reading",
+            "to reading",
+            "to read"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "She wants ___ home.",
           "o": [
-            "to go",
+            "goes",
             "going",
-            "go",
-            "goes"
+            "to go",
+            "go"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -1709,12 +1709,12 @@
           "type": "mc",
           "s": "I avoid ___ late.",
           "o": [
-            "arriving",
             "to arrive",
-            "arrive",
-            "arrived"
+            "arriving",
+            "arrived",
+            "arrive"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -1729,12 +1729,12 @@
           "type": "mc",
           "s": "„enjoy“ verlangt",
           "o": [
-            "-ing",
-            "to + inf",
             "Past",
-            "Modal"
+            "Modal",
+            "-ing",
+            "to + inf"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -1742,9 +1742,9 @@
           "s": "„want“ verlangt",
           "o": [
             "to + inf",
+            "Modal",
             "-ing",
-            "Past",
-            "Modal"
+            "Past"
           ],
           "a": 0,
           "tag": "lexis"
@@ -1767,24 +1767,24 @@
           "type": "mc",
           "s": "I ___ him yesterday.",
           "o": [
-            "saw",
             "have seen",
+            "saw",
             "have saw",
             "see"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "I ___ him twice.",
           "o": [
-            "have seen",
             "saw",
             "see",
+            "have seen",
             "had saw"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1799,24 +1799,24 @@
           "type": "mc",
           "s": "„ever“ passt zu",
           "o": [
-            "Present Perfect",
             "Past Simple",
-            "Future",
-            "Past Perfect"
+            "Past Perfect",
+            "Present Perfect",
+            "Future"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "„in 2010“ passt zu",
           "o": [
-            "Past Simple",
+            "Progressive",
             "Present Perfect",
-            "Future",
-            "Progressive"
+            "Past Simple",
+            "Future"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1831,24 +1831,24 @@
           "type": "mc",
           "s": "Abgeschlossene Zeitangabe nutzt",
           "o": [
+            "would",
             "Past Simple",
             "Present Perfect",
-            "will",
-            "would"
+            "will"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "„just“ passt zu",
           "o": [
-            "Present Perfect",
             "Past Simple",
+            "would",
             "Future",
-            "would"
+            "Present Perfect"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         }
       ]
@@ -1869,24 +1869,24 @@
           "type": "mc",
           "s": "If I ___ harder, I would have passed.",
           "o": [
-            "had studied",
             "studied",
-            "would study",
-            "study"
+            "study",
+            "had studied",
+            "would study"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "… I ___ passed.",
           "o": [
+            "will have",
             "would have",
             "would",
-            "will have",
             "had"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -1901,12 +1901,12 @@
           "type": "mc",
           "s": "Gemischt (heutige Folge): If I had gone, I ___ happy now.",
           "o": [
-            "would be",
+            "was",
             "would have been",
-            "will be",
-            "was"
+            "would be",
+            "will be"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1914,9 +1914,9 @@
           "s": "Typ 3 if-Satz nutzt",
           "o": [
             "Past Perfect",
-            "Past Simple",
+            "would have",
             "Present",
-            "would have"
+            "Past Simple"
           ],
           "a": 0,
           "tag": "tense"
@@ -1933,24 +1933,24 @@
           "type": "mc",
           "s": "Typ 3 drückt",
           "o": [
+            "Zukunft",
             "unwirkliche Vergangenheit",
             "Gegenwart",
-            "Zukunft",
             "Befehle"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Hauptsatz Typ 3:",
           "o": [
-            "would have + p.p.",
-            "would + inf",
             "will + inf",
-            "had + inf"
+            "would have + p.p.",
+            "had + inf",
+            "would + inf"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         }
       ]
@@ -1971,12 +1971,12 @@
           "type": "mc",
           "s": "When I arrived, the film ___.",
           "o": [
-            "had started",
-            "started",
+            "starts",
             "has started",
-            "starts"
+            "started",
+            "had started"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -2004,9 +2004,9 @@
           "s": "Past Perfect drückt",
           "o": [
             "Vorzeitigkeit",
+            "Dauer",
             "Gleichzeitigkeit",
-            "Zukunft",
-            "Dauer"
+            "Zukunft"
           ],
           "a": 0,
           "tag": "tense"
@@ -2015,12 +2015,12 @@
           "type": "mc",
           "s": "Bildung:",
           "o": [
-            "had + p.p.",
+            "will + have",
             "have + p.p.",
-            "was + -ing",
-            "will + have"
+            "had + p.p.",
+            "was + -ing"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2035,12 +2035,12 @@
           "type": "mc",
           "s": "Signalwort für Past Perfect:",
           "o": [
-            "by the time",
             "now",
+            "by the time",
             "tomorrow",
             "always"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -2074,12 +2074,12 @@
           "type": "mc",
           "s": "Früher rauchte ich. = I ___ smoke.",
           "o": [
-            "used to",
             "use to",
             "am used to",
+            "used to",
             "would to"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2088,8 +2088,8 @@
           "o": [
             "would",
             "would to",
-            "used",
-            "use to"
+            "use to",
+            "used"
           ],
           "a": 0,
           "tag": "tense"
@@ -2106,24 +2106,24 @@
           "type": "mc",
           "s": "„would“ für vergangene Gewohnheit geht NICHT bei",
           "o": [
-            "Zuständen",
-            "Handlungen",
+            "Fragen",
             "Verben",
-            "Fragen"
+            "Zuständen",
+            "Handlungen"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Verneinung:",
           "o": [
+            "used not to",
             "didn’t use to",
             "didn’t used to",
-            "used not to",
             "no used to"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -2138,24 +2138,24 @@
           "type": "mc",
           "s": "„be used to“ + -ing bedeutet",
           "o": [
-            "gewohnt sein",
-            "früher",
             "werden",
-            "wollen"
+            "wollen",
+            "gewohnt sein",
+            "früher"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„used to“ bezieht sich auf",
           "o": [
-            "Vergangenheit",
-            "Gegenwart",
+            "Bedingung",
             "Zukunft",
-            "Bedingung"
+            "Vergangenheit",
+            "Gegenwart"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         }
       ]
@@ -2189,12 +2189,12 @@
           "type": "mc",
           "s": "If I ___ you, I would go.",
           "o": [
-            "were",
             "was",
             "am",
-            "would be"
+            "would be",
+            "were"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -2209,12 +2209,12 @@
           "type": "mc",
           "s": "I insist that she ___ the truth.",
           "o": [
-            "tell",
+            "will tell",
             "tells",
-            "told",
-            "will tell"
+            "tell",
+            "told"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2222,9 +2222,9 @@
           "s": "Der subjunctive nutzt",
           "o": [
             "Infinitiv ohne -s",
-            "3. Pers. -s",
             "Past",
-            "-ing"
+            "-ing",
+            "3. Pers. -s"
           ],
           "a": 0,
           "tag": "tense"
@@ -2241,24 +2241,24 @@
           "type": "mc",
           "s": "„If I ___ rich“ (gehoben):",
           "o": [
+            "will be",
             "were",
             "was",
-            "am",
-            "will be"
+            "am"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Subjunctive nach",
           "o": [
-            "suggest/insist/that",
             "and/but",
+            "suggest/insist/that",
             "the/a",
             "very"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         }
       ]
@@ -2280,12 +2280,12 @@
           "type": "mc",
           "s": "___ it rained, we went out.",
           "o": [
-            "Although",
+            "So that",
             "Despite",
-            "Because",
-            "So that"
+            "Although",
+            "Because"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -2293,8 +2293,8 @@
           "s": "___ the rain, we went out.",
           "o": [
             "Despite",
-            "Although",
             "Because",
+            "Although",
             "However"
           ],
           "a": 0,
@@ -2306,8 +2306,8 @@
           "o": [
             "so that",
             "although",
-            "despite",
-            "however"
+            "however",
+            "despite"
           ],
           "a": 0,
           "tag": "lexis"
@@ -2325,12 +2325,12 @@
           "type": "mc",
           "s": "„however“ drückt",
           "o": [
-            "Gegensatz",
-            "Grund",
+            "Folge",
             "Zweck",
-            "Folge"
+            "Grund",
+            "Gegensatz"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -2359,12 +2359,12 @@
           "type": "mc",
           "s": "„in order to“ +",
           "o": [
-            "Infinitiv",
-            "Satz",
+            "-ing",
             "Nomen",
-            "-ing"
+            "Infinitiv",
+            "Satz"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -2386,12 +2386,12 @@
           "type": "mc",
           "s": "aufgeben =",
           "o": [
-            "give up",
-            "give in",
             "give out",
-            "give away"
+            "give away",
+            "give up",
+            "give in"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -2410,12 +2410,12 @@
           "type": "mc",
           "s": "herausfinden =",
           "o": [
-            "find out",
+            "find off",
             "find up",
-            "find on",
-            "find off"
+            "find out",
+            "find on"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -2430,24 +2430,24 @@
           "type": "mc",
           "s": "nachschlagen =",
           "o": [
-            "look up",
+            "look away",
             "look after",
-            "look off",
-            "look away"
+            "look up",
+            "look off"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "vorkommen/erscheinen =",
           "o": [
-            "turn up",
-            "turn down",
             "turn off",
-            "turn in"
+            "turn up",
+            "turn in",
+            "turn down"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -2462,12 +2462,12 @@
           "type": "mc",
           "s": "Phrasal Verbs sind",
           "o": [
-            "idiomatisch",
             "wörtlich",
-            "veraltet",
-            "dialektal"
+            "idiomatisch",
+            "dialektal",
+            "veraltet"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         }
       ]

@@ -21,12 +21,12 @@
           "type": "mc",
           "s": "___ libro è interessante.",
           "o": [
-            "Il",
             "Lo",
+            "L'",
             "La",
-            "L'"
+            "Il"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "gender"
         },
         {
@@ -34,11 +34,11 @@
           "s": "___ studente studia molto.",
           "o": [
             "Il",
+            "I",
             "Lo",
-            "La",
-            "I"
+            "La"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "gender"
         },
         {
@@ -46,11 +46,11 @@
           "s": "___ casa è grande.",
           "o": [
             "Il",
-            "Lo",
             "La",
+            "Lo",
             "Le"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "gender"
         },
         {
@@ -58,8 +58,8 @@
           "s": "___ amici sono simpatici.",
           "o": [
             "I",
-            "Gli",
             "Le",
+            "Gli",
             "Lo"
           ],
           "a": 0,
@@ -69,24 +69,24 @@
           "type": "mc",
           "s": "___ amiche sono simpatiche.",
           "o": [
-            "I",
-            "Gli",
             "Le",
-            "La"
+            "La",
+            "I",
+            "Gli"
           ],
-          "a": 2,
+          "a": 0,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "___ zaino è nuovo.",
           "o": [
-            "Il",
-            "Lo",
+            "I",
             "La",
-            "I"
+            "Lo",
+            "Il"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "gender"
         },
         {
@@ -128,8 +128,8 @@
           "o": [
             "un",
             "uno",
-            "una",
-            "un'"
+            "un'",
+            "una"
           ],
           "a": 0,
           "tag": "gender"
@@ -139,9 +139,9 @@
           "s": "È ___ professore.",
           "o": [
             "un",
+            "gli",
             "uno",
-            "una",
-            "gli"
+            "una"
           ],
           "a": 0,
           "tag": "gender"
@@ -150,12 +150,12 @@
           "type": "mc",
           "s": "È ___ studente.",
           "o": [
-            "un",
-            "uno",
+            "lo",
             "una",
-            "lo"
+            "uno",
+            "un"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "gender"
         },
         {
@@ -174,12 +174,12 @@
           "type": "mc",
           "s": "È ___ donna.",
           "o": [
-            "un",
             "uno",
             "una",
-            "un'"
+            "un'",
+            "un"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "gender"
         },
         {
@@ -203,11 +203,11 @@
           "s": "Cerco ___ università (f).",
           "o": [
             "un",
-            "uno",
+            "un'",
             "una",
-            "un'"
+            "uno"
           ],
-          "a": 3,
+          "a": 1,
           "tag": "gender"
         }
       ]
@@ -230,22 +230,22 @@
           "type": "mc",
           "s": "La macchina è ___ (veloce).",
           "o": [
-            "veloce",
-            "veloci",
             "veloca",
+            "veloci",
+            "veloce",
             "veloca"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "I bambini sono ___ (alto).",
           "o": [
-            "alto",
+            "alte",
             "alta",
             "alti",
-            "alte"
+            "alto"
           ],
           "a": 2,
           "tag": "agreement"
@@ -255,8 +255,8 @@
           "s": "Le case sono ___ (bello).",
           "o": [
             "bello",
-            "bella",
             "belli",
+            "bella",
             "belle"
           ],
           "a": 3,
@@ -266,12 +266,12 @@
           "type": "mc",
           "s": "Il vino è ___ (buono).",
           "o": [
-            "buono",
             "buona",
-            "buoni",
-            "buone"
+            "buone",
+            "buono",
+            "buoni"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -302,12 +302,12 @@
           "type": "mc",
           "s": "Un uomo ___ (onesto).",
           "o": [
-            "onesto",
-            "onesta",
+            "oneste",
             "onesti",
-            "oneste"
+            "onesto",
+            "onesta"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         }
       ]
@@ -328,12 +328,12 @@
           "type": "mc",
           "s": "Io ___ Marco.",
           "o": [
-            "sono",
-            "sei",
+            "siamo",
             "è",
-            "siamo"
+            "sono",
+            "sei"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -342,8 +342,8 @@
           "o": [
             "sono",
             "sei",
-            "è",
-            "siete"
+            "siete",
+            "è"
           ],
           "a": 1,
           "tag": "tense"
@@ -352,8 +352,8 @@
           "type": "mc",
           "s": "Lei ___ dottoressa.",
           "o": [
-            "sono",
             "sei",
+            "sono",
             "è",
             "sono"
           ],
@@ -364,12 +364,12 @@
           "type": "mc",
           "s": "Noi ___ amici.",
           "o": [
+            "sono",
             "siamo",
             "siete",
-            "sono",
             "è"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -426,24 +426,24 @@
           "type": "mc",
           "s": "Io ___ un gatto.",
           "o": [
-            "ho",
             "hai",
-            "ha",
-            "abbiamo"
+            "ho",
+            "abbiamo",
+            "ha"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Tu ___ ragione.",
           "o": [
-            "ho",
-            "hai",
+            "avete",
             "ha",
-            "avete"
+            "hai",
+            "ho"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -451,35 +451,35 @@
           "s": "Lui ___ fame.",
           "o": [
             "ho",
+            "hanno",
             "hai",
-            "ha",
-            "hanno"
+            "ha"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Noi ___ sete.",
           "o": [
-            "abbiamo",
-            "avete",
             "hanno",
+            "avete",
+            "abbiamo",
             "ha"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Voi ___ tempo?",
           "o": [
+            "hai",
             "abbiamo",
             "avete",
-            "hanno",
-            "hai"
+            "hanno"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -525,46 +525,46 @@
           "type": "mc",
           "s": "Plural von „libro“:",
           "o": [
-            "libri",
             "libre",
+            "libri",
             "libro",
             "libera"
-          ],
-          "a": 0,
-          "tag": "agreement"
-        },
-        {
-          "type": "mc",
-          "s": "Plural von „casa“:",
-          "o": [
-            "casi",
-            "case",
-            "case",
-            "caso"
           ],
           "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
+          "s": "Plural von „casa“:",
+          "o": [
+            "caso",
+            "casi",
+            "case",
+            "case"
+          ],
+          "a": 2,
+          "tag": "agreement"
+        },
+        {
+          "type": "mc",
           "s": "Plural von „amico“:",
           "o": [
-            "amici",
+            "amice",
             "amiche",
-            "amigo",
-            "amice"
+            "amici",
+            "amigo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Plural von „amica“:",
           "o": [
-            "amici",
+            "amine",
             "amiche",
-            "amicas",
-            "amine"
+            "amici",
+            "amicas"
           ],
           "a": 1,
           "tag": "agreement"
@@ -598,11 +598,11 @@
           "s": "Le ___ (ragazza) ridono.",
           "o": [
             "ragazza",
-            "ragazze",
             "ragazzi",
-            "ragazzo"
+            "ragazzo",
+            "ragazze"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "agreement"
         }
       ]
@@ -635,12 +635,12 @@
           "type": "mc",
           "s": "Tu ___ (mangiare) la pizza.",
           "o": [
-            "mangio",
-            "mangi",
             "mangia",
-            "mangiate"
+            "mangio",
+            "mangiate",
+            "mangi"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -648,9 +648,9 @@
           "s": "Lui ___ (abitare) a Roma.",
           "o": [
             "abito",
-            "abiti",
+            "abitano",
             "abita",
-            "abitano"
+            "abiti"
           ],
           "a": 2,
           "tag": "tense"
@@ -659,22 +659,22 @@
           "type": "mc",
           "s": "Noi ___ (cantare) bene.",
           "o": [
-            "cantiamo",
             "cantate",
+            "canto",
             "cantano",
-            "canto"
+            "cantiamo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Voi ___ (parlare) troppo.",
           "o": [
-            "cantiamo",
+            "parli",
             "parlate",
-            "parlano",
-            "parli"
+            "cantiamo",
+            "parlano"
           ],
           "a": 1,
           "tag": "tense"
@@ -721,12 +721,12 @@
           "type": "mc",
           "s": "Io ___ (vendere) l’auto.",
           "o": [
-            "vendo",
-            "vendi",
             "vende",
-            "vendiamo"
+            "vendo",
+            "vendiamo",
+            "vendi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -745,21 +745,21 @@
           "type": "mc",
           "s": "Lei ___ (leggere) il giornale.",
           "o": [
-            "leggo",
             "leggi",
-            "legge",
-            "leggono"
+            "leggono",
+            "leggo",
+            "legge"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Io ___ (capire) tutto.",
           "o": [
-            "capo",
-            "capi",
             "capisce",
+            "capi",
+            "capo",
             "capisco"
           ],
           "a": 3,
@@ -769,12 +769,12 @@
           "type": "mc",
           "s": "Noi ___ (partire) domani.",
           "o": [
-            "partiamo",
+            "parto",
             "partite",
             "partono",
-            "parto"
+            "partiamo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -821,8 +821,8 @@
           "s": "Vado ___ Roma.",
           "o": [
             "a",
-            "in",
             "di",
+            "in",
             "da"
           ],
           "a": 0,
@@ -833,44 +833,44 @@
           "s": "Il libro ___ Anna.",
           "o": [
             "a",
-            "di",
             "da",
-            "per"
-          ],
-          "a": 1,
-          "tag": "preposition"
-        },
-        {
-          "type": "mc",
-          "s": "Vengo ___ Milano.",
-          "o": [
-            "a",
-            "di",
-            "da",
-            "in"
-          ],
-          "a": 2,
-          "tag": "preposition"
-        },
-        {
-          "type": "mc",
-          "s": "Abito ___ Italia.",
-          "o": [
-            "a",
-            "di",
-            "da",
-            "in"
+            "per",
+            "di"
           ],
           "a": 3,
           "tag": "preposition"
         },
         {
           "type": "mc",
+          "s": "Vengo ___ Milano.",
+          "o": [
+            "da",
+            "in",
+            "di",
+            "a"
+          ],
+          "a": 0,
+          "tag": "preposition"
+        },
+        {
+          "type": "mc",
+          "s": "Abito ___ Italia.",
+          "o": [
+            "da",
+            "in",
+            "di",
+            "a"
+          ],
+          "a": 1,
+          "tag": "preposition"
+        },
+        {
+          "type": "mc",
           "s": "Parlo ___ Marco.",
           "o": [
-            "a",
-            "con",
             "di",
+            "con",
+            "a",
             "su"
           ],
           "a": 1,
@@ -897,12 +897,12 @@
           "type": "mc",
           "s": "Vado ___ cinema (Ort).",
           "o": [
+            "con",
             "a",
-            "in",
             "di",
-            "con"
+            "in"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "preposition"
         }
       ]
@@ -936,10 +936,10 @@
           "type": "mc",
           "s": "Il colore ___ cielo (di+il).",
           "o": [
-            "al",
+            "nel",
             "del",
-            "dal",
-            "nel"
+            "al",
+            "dal"
           ],
           "a": 1,
           "tag": "preposition"
@@ -948,36 +948,36 @@
           "type": "mc",
           "s": "Vengo ___ mercato (da+il).",
           "o": [
+            "nel",
             "al",
             "del",
-            "dal",
-            "nel"
-          ],
-          "a": 2,
-          "tag": "preposition"
-        },
-        {
-          "type": "mc",
-          "s": "Il gatto è ___ giardino (in+il).",
-          "o": [
-            "al",
-            "del",
-            "dal",
-            "nel"
+            "dal"
           ],
           "a": 3,
           "tag": "preposition"
         },
         {
           "type": "mc",
-          "s": "Parlo ___ professoressa (a+la).",
+          "s": "Il gatto è ___ giardino (in+il).",
           "o": [
-            "alla",
-            "alla",
-            "della",
-            "nella"
+            "nel",
+            "del",
+            "al",
+            "dal"
           ],
           "a": 0,
+          "tag": "preposition"
+        },
+        {
+          "type": "mc",
+          "s": "Parlo ___ professoressa (a+la).",
+          "o": [
+            "nella",
+            "della",
+            "alla",
+            "alla"
+          ],
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -1000,10 +1000,10 @@
           "type": "mc",
           "s": "Torno ___ scuola (da+la).",
           "o": [
-            "alla",
-            "dalla",
             "nella",
-            "sulla"
+            "dalla",
+            "sulla",
+            "alla"
           ],
           "a": 1,
           "tag": "preposition"
@@ -1027,9 +1027,9 @@
           "type": "mc",
           "s": "Questa è ___ casa (meine).",
           "o": [
-            "mio",
-            "mia",
             "miei",
+            "mia",
+            "mio",
             "mie"
           ],
           "a": 1,
@@ -1039,20 +1039,20 @@
           "type": "mc",
           "s": "Dov’è ___ fratello (dein)?",
           "o": [
-            "tuo",
-            "tua",
             "tuoi",
-            "tue"
+            "tuo",
+            "tue",
+            "tua"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Sono ___ amici (unsere).",
           "o": [
-            "nostro",
             "nostra",
+            "nostro",
             "nostri",
             "nostre"
           ],
@@ -1064,11 +1064,11 @@
           "s": "È ___ sorella (seine).",
           "o": [
             "suo",
-            "sua",
             "suoi",
-            "sue"
+            "sue",
+            "sua"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -1091,12 +1091,12 @@
           "type": "mc",
           "s": "I ___ libri (meine).",
           "o": [
+            "miei",
             "mio",
             "mia",
-            "miei",
             "mie"
           ],
-          "a": 2,
+          "a": 0,
           "tag": "agreement"
         },
         {
@@ -1125,48 +1125,48 @@
           "type": "mc",
           "s": "Io ___ mangiato (mangiare).",
           "o": [
+            "ha",
             "ho",
-            "hai",
             "sono",
-            "ha"
+            "hai"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Tu ___ visto il film?",
           "o": [
-            "hai",
             "ho",
+            "ha",
             "sei",
-            "ha"
+            "hai"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Lui ___ parlato con Anna.",
           "o": [
+            "è",
             "ha",
             "ho",
-            "è",
             "hai"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Noi ___ finito i compiti.",
           "o": [
-            "abbiamo",
-            "siamo",
+            "hanno",
             "avete",
-            "hanno"
+            "abbiamo",
+            "siamo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1197,12 +1197,12 @@
           "type": "mc",
           "s": "Voi ___ letto il libro?",
           "o": [
-            "avete",
-            "abbiamo",
             "siete",
-            "hanno"
+            "hanno",
+            "avete",
+            "abbiamo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         }
       ]
@@ -1225,20 +1225,20 @@
           "s": "Maria ___ arrivata (arrivare).",
           "o": [
             "ha",
-            "è",
+            "hai",
             "sono",
-            "hai"
+            "è"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Io ___ andato a Roma (m).",
           "o": [
-            "ho",
-            "sono",
             "hai",
+            "sono",
+            "ho",
             "sei"
           ],
           "a": 1,
@@ -1249,11 +1249,11 @@
           "s": "Le ragazze ___ uscite.",
           "o": [
             "hanno",
-            "sono",
+            "avete",
             "è",
-            "avete"
+            "sono"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -1296,12 +1296,12 @@
           "type": "mc",
           "s": "Tu ___ venuta? (f)",
           "o": [
-            "hai",
             "sei",
+            "hai",
             "hai",
             "sei"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "agreement"
         }
       ]
@@ -1348,8 +1348,8 @@
           "o": [
             "leggeva",
             "lesse",
-            "legge",
-            "leggerà"
+            "leggerà",
+            "legge"
           ],
           "a": 0,
           "tag": "tense"
@@ -1358,12 +1358,12 @@
           "type": "mc",
           "s": "Voi ___ (dormire) troppo.",
           "o": [
-            "dormivate",
             "dormiste",
-            "dormite",
-            "dormirete"
+            "dormirete",
+            "dormivate",
+            "dormite"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1394,12 +1394,12 @@
           "type": "mc",
           "s": "Ieri ___ (avere) fame.",
           "o": [
+            "ho",
             "avevo",
             "ebbi",
-            "ho",
             "avrò"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         }
       ]
@@ -1420,36 +1420,36 @@
           "type": "mc",
           "s": "Ieri ___ (andare) al cinema.",
           "o": [
+            "andavo",
+            "vado",
             "sono andato",
-            "andavo",
-            "andavo",
-            "vado"
+            "andavo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Da ragazzo ___ (correre) ogni giorno.",
           "o": [
-            "ho corso",
-            "correvo",
+            "corrò",
             "corro",
-            "corrò"
+            "ho corso",
+            "correvo"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Mentre ___ (leggere), ha chiamato.",
           "o": [
-            "ho letto",
-            "leggevo",
             "leggo",
-            "leggerò"
+            "leggerò",
+            "leggevo",
+            "ho letto"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1485,8 +1485,8 @@
           "s": "Quando ___ (essere) giovane, abitavo qui.",
           "o": [
             "ero",
-            "sono stato",
             "sarò",
+            "sono stato",
             "sono"
           ],
           "a": 0,
@@ -1518,36 +1518,36 @@
           "type": "mc",
           "s": "___ vedo ogni giorno (Maria).",
           "o": [
-            "La",
-            "Lo",
             "Le",
-            "Li"
+            "Li",
+            "La",
+            "Lo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ compro al mercato (i libri).",
           "o": [
-            "Li",
-            "Le",
+            "La",
             "Lo",
-            "La"
+            "Li",
+            "Le"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Anna? ___ chiamo stasera.",
           "o": [
+            "le",
             "la",
             "lo",
-            "le",
             "li"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -1555,11 +1555,11 @@
           "s": "Il libro? ___ ho letto (l’).",
           "o": [
             "lo",
+            "li",
             "l’",
-            "la",
-            "li"
+            "la"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -1582,12 +1582,12 @@
           "type": "mc",
           "s": "La torta ___ ho mangiata (sie).",
           "o": [
-            "l’",
+            "le",
             "la",
             "lo",
-            "le"
+            "l’"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -1616,48 +1616,48 @@
           "type": "mc",
           "s": "___ do il libro (a Marco).",
           "o": [
-            "Gli",
-            "Le",
             "Lo",
-            "La"
+            "La",
+            "Le",
+            "Gli"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ scrivo a Maria (ihr).",
           "o": [
-            "Gli",
-            "Le",
             "La",
-            "Li"
+            "Li",
+            "Le",
+            "Gli"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ piace la musica (mir).",
           "o": [
-            "Mi",
             "Ti",
-            "Ci",
-            "Vi"
+            "Vi",
+            "Mi",
+            "Ci"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ telefoniamo stasera (uns).",
           "o": [
-            "Ci",
+            "Ti",
             "Vi",
-            "Mi",
-            "Ti"
+            "Ci",
+            "Mi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -1680,12 +1680,12 @@
           "type": "mc",
           "s": "Ai bambini ___ compro un regalo (ihnen).",
           "o": [
-            "gli",
-            "le",
             "li",
-            "lo"
+            "lo",
+            "le",
+            "gli"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -1726,10 +1726,10 @@
           "type": "mc",
           "s": "Quante mele hai? ___ ho tre.",
           "o": [
-            "ci",
+            "li",
             "ne",
-            "le",
-            "li"
+            "ci",
+            "le"
           ],
           "a": 1,
           "tag": "lexis"
@@ -1738,24 +1738,24 @@
           "type": "mc",
           "s": "___ penso sempre (ci penso).",
           "o": [
-            "ci",
             "ne",
+            "mi",
             "lo",
-            "mi"
+            "ci"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Vuoi del caffè? Sì, ___ voglio.",
           "o": [
+            "lo",
             "ci",
             "ne",
-            "lo",
             "mi"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -1771,24 +1771,24 @@
           "type": "mc",
           "s": "Delle domande? ___ ho molte.",
           "o": [
-            "ci",
             "ne",
+            "ci",
             "le",
             "le"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Non ___ capisco niente (es).",
           "o": [
-            "ne",
+            "la",
             "ci",
             "lo",
-            "la"
+            "ne"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -1819,24 +1819,24 @@
           "type": "mc",
           "s": "___ un caffè, per favore (volere).",
           "o": [
+            "Vorrò",
             "Vorrei",
-            "Voglio",
             "Volevo",
-            "Vorrò"
+            "Voglio"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "___ aiutarmi? (potere)",
           "o": [
-            "Puoi",
-            "Potresti",
+            "Potrai",
             "Potevi",
-            "Potrai"
+            "Puoi",
+            "Potresti"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1844,11 +1844,11 @@
           "s": "___ la bistecca (volere).",
           "o": [
             "Voglio",
-            "Vorrei",
             "Volevo",
-            "Vorrò"
+            "Vorrò",
+            "Vorrei"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1857,8 +1857,8 @@
           "o": [
             "possiamo",
             "potremmo",
-            "potevamo",
-            "potremo"
+            "potremo",
+            "potevamo"
           ],
           "a": 1,
           "tag": "tense"
@@ -1885,8 +1885,8 @@
           "o": [
             "So",
             "Saprei",
-            "Sapevo",
-            "Saprò"
+            "Saprò",
+            "Sapevo"
           ],
           "a": 1,
           "tag": "tense"
@@ -1929,12 +1929,12 @@
           "type": "mc",
           "s": "Spero che tu ___ (stare) bene.",
           "o": [
-            "stai",
             "stia",
+            "stai",
             "starai",
             "stavi"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -1942,8 +1942,8 @@
           "s": "È importante che voi ___ (studiare).",
           "o": [
             "studiate",
-            "studiate",
             "studierete",
+            "studiate",
             "studiavate"
           ],
           "a": 0,
@@ -1954,11 +1954,11 @@
           "s": "Credo che loro ___ (avere) ragione.",
           "o": [
             "hanno",
-            "abbiano",
+            "avranno",
             "avevano",
-            "avranno"
+            "abbiano"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1981,12 +1981,12 @@
           "type": "mc",
           "s": "Penso che ___ (sapere) la verità.",
           "o": [
-            "sa",
             "sappia",
             "sapeva",
+            "sa",
             "saprà"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -2016,24 +2016,24 @@
           "type": "mc",
           "s": "___ sono studente. (ich)",
           "o": [
-            "Io",
             "Tu",
             "Egli",
+            "Io",
             "Noi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ sei gentile. (du)",
           "o": [
-            "Io",
             "Tu",
+            "Io",
             "Lei",
             "Voi"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "word_order"
         },
         {
@@ -2042,8 +2042,8 @@
           "o": [
             "Lui",
             "Lei",
-            "Noi",
-            "Loro"
+            "Loro",
+            "Noi"
           ],
           "a": 1,
           "tag": "word_order"
@@ -2052,36 +2052,36 @@
           "type": "mc",
           "s": "___ siamo italiani. (wir)",
           "o": [
-            "Noi",
-            "Voi",
             "Loro",
-            "Tu"
-          ],
-          "a": 0,
-          "tag": "word_order"
-        },
-        {
-          "type": "mc",
-          "s": "___ siete stanchi? (ihr)",
-          "o": [
             "Noi",
-            "Voi",
-            "Loro",
-            "Io"
+            "Tu",
+            "Voi"
           ],
           "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
-          "s": "___ sono partiti. (sie, Pl.)",
+          "s": "___ siete stanchi? (ihr)",
           "o": [
-            "Loro",
-            "Lei",
+            "Voi",
+            "Io",
             "Noi",
-            "Egli"
+            "Loro"
           ],
           "a": 0,
+          "tag": "word_order"
+        },
+        {
+          "type": "mc",
+          "s": "___ sono partiti. (sie, Pl.)",
+          "o": [
+            "Egli",
+            "Loro",
+            "Noi",
+            "Lei"
+          ],
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -2096,12 +2096,12 @@
           "type": "mc",
           "s": "Welches Pronomen fehlt? ___ ho fame. (ich)",
           "o": [
-            "Io",
-            "Mi",
             "Ne",
-            "Ci"
+            "Ci",
+            "Io",
+            "Mi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -2123,36 +2123,36 @@
           "type": "mc",
           "s": "Io ___ parlo tedesco.",
           "o": [
-            "non",
-            "no",
+            "mai",
             "ne",
-            "mai"
+            "no",
+            "non"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "Lui ___ mangia carne.",
           "o": [
-            "no",
-            "non",
             "ne",
-            "niente"
+            "no",
+            "niente",
+            "non"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "Non ho ___ tempo. (keine)",
           "o": [
+            "niente",
             "nessun",
             "nessuna",
-            "nessuno",
-            "niente"
+            "nessuno"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "spelling"
         },
         {
@@ -2168,24 +2168,24 @@
           "type": "mc",
           "s": "Non vedo ___ (niemand).",
           "o": [
-            "nessuno",
+            "mai",
             "niente",
-            "nulla",
-            "mai"
+            "nessuno",
+            "nulla"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "Wir gehen nie aus: ___ usciamo mai.",
           "o": [
-            "Non",
             "No",
-            "Ne",
-            "Neanche"
+            "Non",
+            "Neanche",
+            "Ne"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "spelling"
         },
         {
@@ -2227,12 +2227,12 @@
           "type": "mc",
           "s": "___ ti chiami?",
           "o": [
-            "Come",
-            "Che",
+            "Dove",
             "Chi",
-            "Dove"
+            "Che",
+            "Come"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -2252,9 +2252,9 @@
           "s": "___ studi italiano? (warum)",
           "o": [
             "Perché",
+            "Che",
             "Quando",
-            "Come",
-            "Che"
+            "Come"
           ],
           "a": 0,
           "tag": "word_order"
@@ -2263,24 +2263,24 @@
           "type": "mc",
           "s": "___ è quella donna? (wer)",
           "o": [
-            "Chi",
             "Che",
+            "Quale",
             "Cosa",
-            "Quale"
+            "Chi"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ costa? (wie viel)",
           "o": [
-            "Quanto",
-            "Quanti",
             "Quante",
+            "Quanti",
+            "Quanto",
             "Quanto"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -2303,12 +2303,12 @@
           "type": "mc",
           "s": "___ sei venuto? (wie)",
           "o": [
-            "Come",
             "Quanto",
-            "Chi",
-            "Dove"
+            "Dove",
+            "Come",
+            "Chi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -2330,36 +2330,36 @@
           "type": "mc",
           "s": "___ un problema.",
           "o": [
-            "C’è",
             "Ci sono",
             "C’",
-            "Ci è"
+            "Ci è",
+            "C’è"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "___ molti studenti.",
           "o": [
-            "Ci sono",
-            "C’è",
             "C’",
+            "C’è",
+            "Ci sono",
             "È"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "___ una tavola.",
           "o": [
-            "C’è",
+            "È",
             "Ci sono",
             "Sono",
-            "È"
+            "C’è"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -2374,12 +2374,12 @@
           "type": "mc",
           "s": "___ acqua? (Singular)",
           "o": [
-            "C’è",
-            "Ci sono",
             "Sono",
-            "Ha"
+            "Ha",
+            "Ci sono",
+            "C’è"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -2387,9 +2387,9 @@
           "s": "___ due fratelli.",
           "o": [
             "Ci sono",
-            "C’è",
+            "Ha",
             "C’",
-            "Ha"
+            "C’è"
           ],
           "a": 0,
           "tag": "agreement"
@@ -2407,12 +2407,12 @@
           "type": "mc",
           "s": "Pluralform von „es gibt“:",
           "o": [
-            "ci sono",
-            "c’è",
             "vi è",
-            "ne sono"
+            "c’è",
+            "ne sono",
+            "ci sono"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         }
       ]
@@ -2434,8 +2434,20 @@
           "type": "mc",
           "s": "___ libro è interessante. (m.Sg)",
           "o": [
+            "Queste",
+            "Questi",
             "Questo",
+            "Questa"
+          ],
+          "a": 2,
+          "tag": "agreement"
+        },
+        {
+          "type": "mc",
+          "s": "___ casa è bella. (f.Sg)",
+          "o": [
             "Questa",
+            "Questo",
             "Questi",
             "Queste"
           ],
@@ -2444,35 +2456,23 @@
         },
         {
           "type": "mc",
-          "s": "___ casa è bella. (f.Sg)",
+          "s": "___ libri sono nuovi. (m.Pl)",
           "o": [
             "Questo",
-            "Questa",
             "Questi",
-            "Queste"
+            "Queste",
+            "Questa"
           ],
           "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
-          "s": "___ libri sono nuovi. (m.Pl)",
-          "o": [
-            "Questo",
-            "Questa",
-            "Questi",
-            "Queste"
-          ],
-          "a": 2,
-          "tag": "agreement"
-        },
-        {
-          "type": "mc",
           "s": "___ amiche sono simpatiche. (f.Pl)",
           "o": [
-            "Questo",
-            "Questa",
             "Questi",
+            "Questa",
+            "Questo",
             "Queste"
           ],
           "a": 3,
@@ -2490,12 +2490,12 @@
           "type": "mc",
           "s": "jene Kinder (m.Pl): ___ bambini",
           "o": [
-            "quei",
+            "quel",
             "quello",
-            "quella",
-            "quel"
+            "quei",
+            "quella"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -2510,12 +2510,12 @@
           "type": "mc",
           "s": "Form für „quel“ vor „z“:",
           "o": [
-            "quello",
-            "quel",
             "quei",
-            "gli"
+            "quel",
+            "gli",
+            "quello"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         }
       ]
@@ -2537,48 +2537,48 @@
           "type": "mc",
           "s": "Ich gehe immer spazieren: Vado ___ a piedi.",
           "o": [
-            "sempre",
+            "spesso",
             "mai",
             "raramente",
-            "spesso"
+            "sempre"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "nie: Non studio ___.",
           "o": [
+            "spesso",
             "mai",
             "sempre",
-            "spesso",
             "volentieri"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "oft: ___ leggo.",
           "o": [
-            "Spesso",
-            "Mai",
             "Raramente",
-            "Poco"
+            "Spesso",
+            "Poco",
+            "Mai"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "selten: ___ esco.",
           "o": [
+            "Mai",
             "Raramente",
             "Sempre",
-            "Spesso",
-            "Mai"
+            "Spesso"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -2593,12 +2593,12 @@
           "type": "mc",
           "s": "Position: „sempre“ steht meist",
           "o": [
-            "nach dem Verb",
-            "vor dem Subjekt",
+            "nach dem Objekt",
             "am Satzende",
-            "nach dem Objekt"
+            "nach dem Verb",
+            "vor dem Subjekt"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -2613,12 +2613,12 @@
           "type": "mc",
           "s": "Gegenteil von „sempre“:",
           "o": [
-            "mai",
-            "spesso",
             "sempre",
-            "bene"
+            "mai",
+            "bene",
+            "spesso"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         }
       ]
@@ -2640,12 +2640,12 @@
           "type": "mc",
           "s": "___ chiamo Luca. (ich)",
           "o": [
-            "Mi",
-            "Ti",
+            "Ci",
             "Si",
-            "Ci"
+            "Ti",
+            "Mi"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -2664,36 +2664,36 @@
           "type": "mc",
           "s": "Lei ___ chiama Maria.",
           "o": [
+            "ci",
             "si",
             "mi",
-            "ti",
-            "ci"
+            "ti"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Noi ___ svegliamo alle 7.",
           "o": [
-            "ci",
-            "si",
+            "mi",
             "vi",
-            "mi"
+            "si",
+            "ci"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Voi ___ lavate le mani.",
           "o": [
-            "vi",
             "ci",
             "si",
+            "vi",
             "ti"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -2716,12 +2716,12 @@
           "type": "mc",
           "s": "Loro ___ incontrano.",
           "o": [
-            "si",
-            "li",
             "ne",
-            "ci"
+            "ci",
+            "si",
+            "li"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         }
       ]
@@ -2743,24 +2743,24 @@
           "type": "mc",
           "s": "Heute ist der 3. Juni: Oggi è ___ 3 giugno.",
           "o": [
-            "il",
+            "del",
             "a",
-            "in",
-            "del"
+            "il",
+            "in"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
           "type": "mc",
           "s": "im Jahr 2026: ___ 2026",
           "o": [
-            "nel",
+            "di",
             "il",
-            "a",
-            "di"
+            "nel",
+            "a"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
@@ -2775,12 +2775,12 @@
           "type": "mc",
           "s": "Monate schreibt man",
           "o": [
+            "mit Punkt",
             "klein",
             "groß",
-            "kursiv",
-            "mit Punkt"
+            "kursiv"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "spelling"
         },
         {
@@ -2795,12 +2795,12 @@
           "type": "mc",
           "s": "Ich bin am 1. Mai geboren: Sono nato ___ 1 maggio.",
           "o": [
-            "il",
-            "a",
+            "di",
             "in",
-            "di"
+            "il",
+            "a"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         },
         {
@@ -2815,12 +2815,12 @@
           "type": "mc",
           "s": "Plural von „mille“:",
           "o": [
-            "mila",
-            "mille",
+            "millesimo",
             "milli",
-            "millesimo"
+            "mila",
+            "mille"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "spelling"
         }
       ]
@@ -2842,36 +2842,36 @@
           "type": "mc",
           "s": "Domani ___ (parlare) con Anna.",
           "o": [
-            "parlerò",
+            "parlato",
             "parlo",
-            "parlavo",
-            "parlato"
+            "parlerò",
+            "parlavo"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Noi ___ (essere) pronti.",
           "o": [
-            "saremo",
             "siamo",
             "eravamo",
+            "saremo",
             "siamo stati"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Loro ___ (andare) a Roma.",
           "o": [
+            "andavano",
             "andranno",
             "vanno",
-            "andavano",
             "andati"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -2887,12 +2887,12 @@
           "type": "mc",
           "s": "Tu ___ (fare) bene.",
           "o": [
-            "farai",
             "fai",
+            "fatto",
             "facevi",
-            "fatto"
+            "farai"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -2909,9 +2909,9 @@
           "s": "Voi ___ (vedere) il film.",
           "o": [
             "vedrete",
+            "visto",
             "vedete",
-            "vedevate",
-            "visto"
+            "vedevate"
           ],
           "a": 0,
           "tag": "tense"
@@ -2943,24 +2943,24 @@
           "type": "mc",
           "s": "Quando sono arrivato, loro ___ (partire).",
           "o": [
-            "erano partiti",
             "sono partiti",
+            "partirono",
             "partivano",
-            "partirono"
+            "erano partiti"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Non ___ (avere) mai visto Roma.",
           "o": [
-            "avevo",
             "ho",
-            "ebbi",
-            "avrò"
+            "avrò",
+            "avevo",
+            "ebbi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2975,12 +2975,12 @@
           "type": "mc",
           "s": "Dopo che ___ (finire), siamo usciti.",
           "o": [
-            "avevamo finito",
-            "abbiamo finito",
+            "finimmo",
             "finivamo",
-            "finimmo"
+            "avevamo finito",
+            "abbiamo finito"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2995,12 +2995,12 @@
           "type": "mc",
           "s": "Weil sie müde ___ (essere), sono andati a letto.",
           "o": [
+            "furono",
             "erano",
             "sono",
-            "furono",
             "saranno"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3015,12 +3015,12 @@
           "type": "mc",
           "s": "Hilfsverb des Trapassato:",
           "o": [
-            "imperfetto di essere/avere",
-            "passato remoto",
+            "condizionale",
             "presente",
-            "condizionale"
+            "imperfetto di essere/avere",
+            "passato remoto"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         }
       ]
@@ -3042,24 +3042,24 @@
           "type": "mc",
           "s": "La casa è più grande ___ la macchina.",
           "o": [
-            "di",
-            "che",
             "da",
-            "a"
+            "a",
+            "di",
+            "che"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "È più stanco ___ felice.",
           "o": [
-            "che",
-            "di",
             "da",
-            "per"
+            "di",
+            "per",
+            "che"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -3082,24 +3082,24 @@
           "type": "mc",
           "s": "Er ist größer als ich: È più alto ___ me.",
           "o": [
-            "di",
+            "del",
             "che",
             "da",
-            "del"
+            "di"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "mehr … als (Zahl): più studenti ___ professori",
           "o": [
-            "che",
-            "di",
+            "a",
             "da",
-            "a"
+            "di",
+            "che"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -3115,8 +3115,8 @@
           "s": "kleiner/weniger (irreg.):",
           "o": [
             "minore",
-            "piccolo",
             "meno",
+            "piccolo",
             "peggiore"
           ],
           "a": 0,
@@ -3141,24 +3141,24 @@
           "type": "mc",
           "s": "Er ist der Größte: È ___ più alto.",
           "o": [
+            "la",
             "il",
             "lo",
-            "la",
             "i"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Sie ist die Klügste: È ___ più intelligente.",
           "o": [
-            "la",
             "il",
+            "la",
             "le",
             "lo"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -3189,12 +3189,12 @@
           "type": "mc",
           "s": "das Maximum (irreg.):",
           "o": [
-            "massimo",
             "più grande",
+            "massimo",
             "ottimo",
             "maggiorissimo"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -3202,9 +3202,9 @@
           "s": "Sie ist am müdesten: È la ___ stanca.",
           "o": [
             "più",
+            "meno",
             "molto",
-            "assai",
-            "meno"
+            "assai"
           ],
           "a": 0,
           "tag": "agreement"
@@ -3236,36 +3236,36 @@
           "type": "mc",
           "s": "Il ragazzo ___ studia è bravo.",
           "o": [
+            "chi",
             "che",
             "cui",
-            "chi",
             "cui"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "La persona con ___ lavoro.",
           "o": [
-            "cui",
             "che",
-            "chi",
-            "la"
+            "la",
+            "cui",
+            "chi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Il film ___ ho visto.",
           "o": [
-            "che",
-            "cui",
             "chi",
-            "dove"
+            "cui",
+            "dove",
+            "che"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -3280,12 +3280,12 @@
           "type": "mc",
           "s": "„cui“ benutzt man vor allem",
           "o": [
-            "nach Präpositionen",
+            "nur für Dinge",
             "als Subjekt",
-            "nur für Personen",
-            "nur für Dinge"
+            "nach Präpositionen",
+            "nur für Personen"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -3312,12 +3312,12 @@
           "type": "mc",
           "s": "„che“ kann sein:",
           "o": [
-            "Subjekt oder direktes Objekt",
-            "nur Objekt",
+            "nur nach Präposition",
             "nur Subjekt",
-            "nur nach Präposition"
+            "Subjekt oder direktes Objekt",
+            "nur Objekt"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -3339,12 +3339,12 @@
           "type": "mc",
           "s": "Sprich! (tu) = ___!",
           "o": [
-            "Parla",
             "Parli",
             "Parlate",
+            "Parla",
             "Parlano"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -3352,8 +3352,8 @@
           "s": "Sprechen Sie! (Lei) = ___!",
           "o": [
             "Parli",
-            "Parla",
             "Parlate",
+            "Parla",
             "Parla tu"
           ],
           "a": 0,
@@ -3363,12 +3363,12 @@
           "type": "mc",
           "s": "Essen Sie! (Lei, mangiare) = ___!",
           "o": [
+            "Mangio",
             "Mangi",
-            "Mangia",
             "Mangiate",
-            "Mangio"
+            "Mangia"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3383,12 +3383,12 @@
           "type": "mc",
           "s": "Nicht sprechen! (tu) = ___ parlare!",
           "o": [
-            "non",
-            "non parlare",
             "no",
-            "ne"
+            "non",
+            "ne",
+            "non parlare"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3439,12 +3439,12 @@
           "type": "mc",
           "s": "Ich muss gehen: Io ___ andare.",
           "o": [
+            "dobbiamo",
             "devo",
-            "devi",
             "deve",
-            "dobbiamo"
+            "devi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3452,9 +3452,9 @@
           "s": "Kannst du? ___ tu aiutarmi?",
           "o": [
             "Puoi",
-            "Può",
+            "Potete",
             "Possiamo",
-            "Potete"
+            "Può"
           ],
           "a": 0,
           "tag": "tense"
@@ -3463,12 +3463,12 @@
           "type": "mc",
           "s": "Er will kommen: Lui ___ venire.",
           "o": [
-            "vuole",
             "voglio",
+            "vuole",
             "vuoi",
             "vogliono"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3491,12 +3491,12 @@
           "type": "mc",
           "s": "Nach Modalverb folgt das Verb im",
           "o": [
+            "Futur",
             "Infinitiv",
             "Konjunktiv",
-            "Futur",
             "Partizip"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -3504,9 +3504,9 @@
           "s": "Sie (Lei) möchte: ___ un caffè.",
           "o": [
             "Vuole",
-            "Voglio",
             "Vuoi",
-            "Vogliono"
+            "Vogliono",
+            "Voglio"
           ],
           "a": 0,
           "tag": "tense"
@@ -3538,36 +3538,36 @@
           "type": "mc",
           "s": "Hier wird gut gegessen: Qui ___ mangia bene.",
           "o": [
+            "vi",
             "si",
             "ci",
-            "ne",
-            "vi"
+            "ne"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Es werden Häuser verkauft: ___ vendono case.",
           "o": [
-            "Si",
             "Ci",
+            "Le",
             "Ne",
-            "Le"
+            "Si"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Man spricht Italienisch: ___ parla italiano.",
           "o": [
-            "Si",
             "Ci",
-            "Ne",
-            "Lo"
+            "Si",
+            "Lo",
+            "Ne"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -3582,24 +3582,24 @@
           "type": "mc",
           "s": "Bei Plural-Objekt steht das Verb im",
           "o": [
-            "Plural",
+            "Futur",
             "Singular",
             "Konjunktiv",
-            "Futur"
+            "Plural"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "„Si vendono“ – „vendono“ weil",
           "o": [
-            "„case“ Plural ist",
-            "es Futur ist",
             "es Konjunktiv ist",
-            "Fehler"
+            "es Futur ist",
+            "Fehler",
+            "„case“ Plural ist"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -3614,12 +3614,12 @@
           "type": "mc",
           "s": "si passivante ersetzt meist",
           "o": [
-            "das Passiv",
-            "das Futur",
+            "den Imperativ",
             "den Konjunktiv",
-            "den Imperativ"
+            "das Futur",
+            "das Passiv"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         }
       ]
@@ -3641,9 +3641,9 @@
           "s": "Gib es ihm! = ___ dai!",
           "o": [
             "Glielo",
-            "Lo gli",
+            "Lelo",
             "Gli lo",
-            "Lelo"
+            "Lo gli"
           ],
           "a": 0,
           "tag": "word_order"
@@ -3652,12 +3652,12 @@
           "type": "mc",
           "s": "Ich schreibe sie dir: ___ scrivo.",
           "o": [
-            "Te la",
-            "Ti la",
+            "Gliela",
             "La ti",
-            "Gliela"
+            "Te la",
+            "Ti la"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -3680,24 +3680,24 @@
           "type": "mc",
           "s": "Er kauft sie uns: ___ compra.",
           "o": [
-            "Ce le",
             "Ci le",
+            "Ce le",
             "Le ci",
             "Cele"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Bei Kombination wird das direkte Pronomen zu",
           "o": [
-            "lo/la/li/le",
-            "mi/ti/si",
+            "ci",
             "ne",
-            "ci"
+            "lo/la/li/le",
+            "mi/ti/si"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -3712,12 +3712,12 @@
           "type": "mc",
           "s": "Position der Pronomen-Kombination:",
           "o": [
+            "vor dem Subjekt",
             "vor dem Verb",
             "nach dem Verb",
-            "am Satzende",
-            "vor dem Subjekt"
+            "am Satzende"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         }
       ]
@@ -3739,8 +3739,8 @@
           "s": "Ich habe zwei (davon): ___ ho due.",
           "o": [
             "Ne",
-            "Li",
             "Ci",
+            "Li",
             "Lo"
           ],
           "a": 0,
@@ -3750,12 +3750,12 @@
           "type": "mc",
           "s": "Möchtest du welche? ___ vuoi?",
           "o": [
-            "Ne",
             "Li",
+            "Ci",
             "Lo",
-            "Ci"
+            "Ne"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -3771,9 +3771,9 @@
           "s": "„ne“ ersetzt",
           "o": [
             "di + Menge/Zahl",
-            "das Subjekt",
+            "den Ort",
             "nur Personen",
-            "den Ort"
+            "das Subjekt"
           ],
           "a": 0,
           "tag": "lexis"
@@ -3782,12 +3782,12 @@
           "type": "mc",
           "s": "Hast du Brüder? Ja, ___ ho due.",
           "o": [
-            "ne",
             "li",
-            "ci",
-            "gli"
+            "ne",
+            "gli",
+            "ci"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -3802,24 +3802,24 @@
           "type": "mc",
           "s": "Position von „ne“:",
           "o": [
-            "vor dem konjugierten Verb",
             "nach dem Verb",
+            "vor dem Subjekt",
             "am Satzende",
-            "vor dem Subjekt"
+            "vor dem konjugierten Verb"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "„Ne voglio tre“ – „voglio“ bleibt",
           "o": [
-            "ohne Angleichung",
             "im Plural",
-            "im Konjunktiv",
-            "im Futur"
+            "ohne Angleichung",
+            "im Futur",
+            "im Konjunktiv"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         }
       ]
@@ -3866,8 +3866,8 @@
           "s": "schnell = ___",
           "o": [
             "velocemente",
-            "veloce",
             "velocità",
+            "veloce",
             "veloci"
           ],
           "a": 0,
@@ -3877,12 +3877,12 @@
           "type": "mc",
           "s": "Bildung von -mente-Adverbien:",
           "o": [
-            "feminine Adjektivform + mente",
             "maskuline Form + mente",
             "Infinitiv + mente",
-            "Plural + mente"
+            "Plural + mente",
+            "feminine Adjektivform + mente"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "spelling"
         },
         {
@@ -3897,12 +3897,12 @@
           "type": "mc",
           "s": "stark/laut (irreg. Adverb):",
           "o": [
-            "forte",
             "fortemente",
             "forti",
-            "forza"
+            "forza",
+            "forte"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -3935,24 +3935,24 @@
           "type": "mc",
           "s": "Ich glaube, er hat es getan: Credo che lo ___ fatto.",
           "o": [
-            "abbia",
-            "ha",
+            "ebbe",
             "avesse",
-            "ebbe"
+            "ha",
+            "abbia"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Ich glaube nicht, dass sie gekommen sind: Non credo che ___ venuti.",
           "o": [
-            "siano",
             "sono",
+            "siano",
             "erano",
             "furono"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -3968,9 +3968,9 @@
           "s": "Wir denken, sie haben gegessen: Pensiamo che ___ mangiato.",
           "o": [
             "abbiano",
-            "hanno",
+            "ebbero",
             "avevano",
-            "ebbero"
+            "hanno"
           ],
           "a": 0,
           "tag": "tense"
@@ -4001,8 +4001,8 @@
           "o": [
             "sia venuto",
             "sei venuto",
-            "eri venuto",
-            "fosti venuto"
+            "fosti venuto",
+            "eri venuto"
           ],
           "a": 0,
           "tag": "tense"
@@ -4033,12 +4033,12 @@
           "type": "mc",
           "s": "Ich wollte, dass du kommst: Volevo che tu ___ (venire).",
           "o": [
+            "venite",
             "venissi",
-            "venga",
             "venissi",
-            "venite"
+            "venga"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -4046,8 +4046,8 @@
           "s": "Ich dachte, es sei wahr: Pensavo che ___ (essere) vero.",
           "o": [
             "fosse",
-            "sia",
             "era",
+            "sia",
             "fu"
           ],
           "a": 0,
@@ -4066,9 +4066,9 @@
           "s": "Endung 1. Pers. Sg. Cong. imperfetto:",
           "o": [
             "-ssi",
+            "-va",
             "-re",
-            "-vo",
-            "-va"
+            "-vo"
           ],
           "a": 0,
           "tag": "tense"
@@ -4087,8 +4087,8 @@
           "o": [
             "restaste",
             "restiate",
-            "restavate",
-            "restaste"
+            "restaste",
+            "restavate"
           ],
           "a": 0,
           "tag": "tense"
@@ -4098,8 +4098,8 @@
           "s": "Cong. imperfetto nutzt man, wenn der Hauptsatz",
           "o": [
             "in der Vergangenheit steht",
-            "in der Gegenwart steht",
             "im Futur steht",
+            "in der Gegenwart steht",
             "ein Befehl ist"
           ],
           "a": 0,
@@ -4133,9 +4133,9 @@
           "s": "Wenn ich Zeit hätte, würde ich reisen: Se ___ tempo, viaggerei.",
           "o": [
             "avessi",
+            "avrei",
             "ho",
-            "avrò",
-            "avrei"
+            "avrò"
           ],
           "a": 0,
           "tag": "tense"
@@ -4145,8 +4145,8 @@
           "s": "Wenn es regnet, bleibe ich: Se piove, ___ a casa.",
           "o": [
             "resto",
-            "resterei",
             "restassi",
+            "resterei",
             "resterei"
           ],
           "a": 0,
@@ -4156,12 +4156,12 @@
           "type": "mc",
           "s": "Wenn ich es gewusst hätte, wäre ich gekommen: Se lo ___, sarei venuto.",
           "o": [
-            "avessi saputo",
             "ho saputo",
+            "sapevo",
             "seppi",
-            "sapevo"
+            "avessi saputo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -4177,8 +4177,8 @@
           "s": "Wenn du kämest, wäre ich glücklich: Se tu ___, sarei felice.",
           "o": [
             "venissi",
-            "vieni",
             "verrai",
+            "vieni",
             "verresti"
           ],
           "a": 0,
@@ -4197,9 +4197,9 @@
           "s": "Wenn ich reich wäre, würde ich kaufen: Se fossi ricco, ___ una casa.",
           "o": [
             "comprerei",
-            "compro",
             "comprassi",
-            "comprerò"
+            "comprerò",
+            "compro"
           ],
           "a": 0,
           "tag": "tense"
@@ -4231,36 +4231,36 @@
           "type": "mc",
           "s": "Er sagt, er kommt: Dice che ___ (venire).",
           "o": [
-            "viene",
-            "venisse",
             "verrebbe",
+            "venisse",
+            "viene",
             "veniva"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Er sagte, er käme: Ha detto che ___ (venire).",
           "o": [
+            "venne",
             "veniva",
-            "viene",
             "verrà",
-            "venne"
+            "viene"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Sie fragt, wo du wohnst: Chiede dove ___ (abitare).",
           "o": [
+            "abiterai",
             "abiti",
             "abitassi",
-            "abitavi",
-            "abiterai"
+            "abitavi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -4275,12 +4275,12 @@
           "type": "mc",
           "s": "Nach „ha chiesto se…“ folgt oft",
           "o": [
-            "Konjunktiv/Indikativ Vergangenheit",
-            "Futur",
             "Imperativ",
+            "Futur",
+            "Konjunktiv/Indikativ Vergangenheit",
             "Infinitiv"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -4296,24 +4296,24 @@
           "type": "mc",
           "s": "„domani“ in der Vergangenheit wird zu",
           "o": [
-            "il giorno dopo",
             "domani",
+            "adesso",
             "ieri",
-            "adesso"
+            "il giorno dopo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Einleitende Verben der indirekten Rede:",
           "o": [
-            "dire, chiedere, pensare",
-            "essere, avere",
             "andare, venire",
+            "essere, avere",
+            "dire, chiedere, pensare",
             "mangiare, bere"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -4335,36 +4335,36 @@
           "type": "mc",
           "s": "Der Brief wird geschrieben: La lettera ___ scritta.",
           "o": [
-            "è",
-            "ha",
             "viene",
-            "va"
+            "è",
+            "va",
+            "ha"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "von (Handelnder) =",
           "o": [
-            "da",
             "di",
             "a",
+            "da",
             "per"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "Das Haus wurde verkauft: La casa ___ venduta.",
           "o": [
-            "è stata",
             "ha stato",
             "è",
+            "è stata",
             "venne"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -4379,24 +4379,24 @@
           "type": "mc",
           "s": "Partizip im Passiv richtet sich nach",
           "o": [
-            "dem Subjekt (Genus/Numerus)",
+            "dem Verb",
             "dem Objekt",
             "dem Agens",
-            "dem Verb"
+            "dem Subjekt (Genus/Numerus)"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "„venire“ im Passiv nutzt man",
           "o": [
-            "bei einfachen Zeiten",
-            "nur im Perfekt",
             "nie",
-            "nur im Plural"
+            "nur im Plural",
+            "nur im Perfekt",
+            "bei einfachen Zeiten"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -4438,12 +4438,12 @@
           "type": "mc",
           "s": "Er liest gerade: Sta ___ (leggere).",
           "o": [
-            "leggendo",
-            "legge",
+            "leggeva",
             "letto",
-            "leggeva"
+            "legge",
+            "leggendo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -4466,12 +4466,12 @@
           "type": "mc",
           "s": "machend (irreg.) =",
           "o": [
-            "facendo",
-            "farendo",
+            "faceva",
             "fatto",
-            "faceva"
+            "farendo",
+            "facendo"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -4479,8 +4479,8 @@
           "s": "„stare + gerundio“ drückt aus",
           "o": [
             "Verlauf in diesem Moment",
-            "Vergangenheit",
             "Zukunft",
+            "Vergangenheit",
             "Wunsch"
           ],
           "a": 0,
@@ -4498,12 +4498,12 @@
           "type": "mc",
           "s": "Sie geht gerade: Sta ___ (andare).",
           "o": [
-            "andando",
             "va",
-            "andato",
-            "andava"
+            "andava",
+            "andando",
+            "andato"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -4569,12 +4569,12 @@
           "type": "mc",
           "s": "regelmäßige Endung -ere-Verben:",
           "o": [
-            "-uto",
-            "-ato",
+            "-uto/-ito gemischt",
             "-ito",
-            "-uto/-ito gemischt"
+            "-ato",
+            "-uto"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "spelling"
         },
         {
@@ -4597,12 +4597,12 @@
           "type": "mc",
           "s": "sagen (dire) →",
           "o": [
-            "detto",
             "dito",
+            "detto",
             "diceva",
             "dire"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "spelling"
         }
       ]
@@ -4624,9 +4624,9 @@
           "s": "Wenn ich fertig bin, gehe ich: Quando ___ finito, uscirò.",
           "o": [
             "avrò",
+            "ebbi",
             "ho",
-            "avevo",
-            "ebbi"
+            "avevo"
           ],
           "a": 0,
           "tag": "tense"
@@ -4636,9 +4636,9 @@
           "s": "Nachdem wir angekommen sind: Dopo che ___ arrivati, …",
           "o": [
             "saremo",
+            "fummo",
             "siamo",
-            "eravamo",
-            "fummo"
+            "eravamo"
           ],
           "a": 0,
           "tag": "tense"
@@ -4655,12 +4655,12 @@
           "type": "mc",
           "s": "Futuro anteriore drückt",
           "o": [
-            "Vorzeitigkeit in der Zukunft",
-            "Vergangenheit",
+            "Wunsch",
             "Gegenwart",
-            "Wunsch"
+            "Vorzeitigkeit in der Zukunft",
+            "Vergangenheit"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -4687,12 +4687,12 @@
           "type": "mc",
           "s": "Quando ___ (finire) il lavoro, ti chiamo.",
           "o": [
-            "avrò finito",
-            "ho finito",
             "finirò",
-            "finivo"
+            "finivo",
+            "avrò finito",
+            "ho finito"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -4722,8 +4722,8 @@
           "s": "Ich wäre gekommen: Io ___ venuto.",
           "o": [
             "sarei",
-            "sono",
             "ero",
+            "sono",
             "verrei"
           ],
           "a": 0,
@@ -4733,12 +4733,12 @@
           "type": "mc",
           "s": "Er hätte gekauft: Lui ___ comprato.",
           "o": [
-            "avrebbe",
             "ha",
+            "avrebbe",
             "aveva",
             "ebbe"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -4754,9 +4754,9 @@
           "s": "Bildung:",
           "o": [
             "cond. presente essere/avere + part.",
-            "cong. + part.",
             "futuro + part.",
-            "imperfetto + part."
+            "imperfetto + part.",
+            "cong. + part."
           ],
           "a": 0,
           "tag": "tense"
@@ -4773,24 +4773,24 @@
           "type": "mc",
           "s": "Ich hätte es gesagt: ___ detto.",
           "o": [
-            "Avrei",
-            "Ho",
+            "Dirò",
             "Avevo",
-            "Dirò"
+            "Avrei",
+            "Ho"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Condizionale passato nutzt man oft",
           "o": [
-            "in Bedingungssätzen 3. Typ",
+            "für Gewohnheiten",
             "im Präsens",
-            "im Imperativ",
-            "für Gewohnheiten"
+            "in Bedingungssätzen 3. Typ",
+            "im Imperativ"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -4820,24 +4820,24 @@
           "type": "mc",
           "s": "Ich bin im Begriff zu gehen: Sto ___ andare.",
           "o": [
-            "per",
-            "a",
+            "da",
             "di",
-            "da"
+            "per",
+            "a"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "Ich gehe schlafen: Vado ___ dormire.",
           "o": [
-            "a",
+            "da",
             "per",
-            "di",
-            "da"
+            "a",
+            "di"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -4845,9 +4845,9 @@
           "s": "Er hat aufgehört zu arbeiten: Ha finito ___ lavorare.",
           "o": [
             "di",
+            "da",
             "a",
-            "per",
-            "da"
+            "per"
           ],
           "a": 0,
           "tag": "preposition"
@@ -4864,12 +4864,12 @@
           "type": "mc",
           "s": "„stare per + inf.“ bedeutet",
           "o": [
+            "vorhaben",
             "im Begriff sein",
             "gerade dabei gewesen",
-            "vorhaben",
             "beenden"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -4884,12 +4884,12 @@
           "type": "mc",
           "s": "„andare + a + inf.“ drückt aus",
           "o": [
-            "Zukunftsabsicht",
             "Vergangenheit",
-            "Passiv",
-            "Wunsch"
+            "Wunsch",
+            "Zukunftsabsicht",
+            "Passiv"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -4919,24 +4919,24 @@
           "type": "mc",
           "s": "Ich bleibe zu Hause, ___ sono stanco.",
           "o": [
-            "perché",
             "affinché",
             "benché",
+            "perché",
             "se"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "___ piove, non esco. (Da)",
           "o": [
-            "Poiché",
-            "Affinché",
+            "Purché",
             "Benché",
-            "Purché"
+            "Poiché",
+            "Affinché"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -4944,9 +4944,9 @@
           "s": "Da du hier bist: ___ sei qui, resta.",
           "o": [
             "Dato che",
-            "Affinché",
             "Benché",
-            "Purché"
+            "Purché",
+            "Affinché"
           ],
           "a": 0,
           "tag": "lexis"
@@ -4963,12 +4963,12 @@
           "type": "mc",
           "s": "„poiché“ ist",
           "o": [
-            "gehobener als perché",
             "umgangssprachlicher",
             "ein Konjunktiv",
-            "ein Pronomen"
+            "ein Pronomen",
+            "gehobener als perché"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -4995,12 +4995,12 @@
           "type": "mc",
           "s": "Kausal-Konnektoren beantworten die Frage",
           "o": [
-            "warum?",
             "wann?",
             "wo?",
+            "warum?",
             "wie?"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -5022,24 +5022,24 @@
           "type": "mc",
           "s": "Ich gehe raus, obwohl es regnet: Esco benché ___ (piovere).",
           "o": [
-            "piova",
+            "pioverà",
             "piove",
-            "piovesse",
-            "pioverà"
+            "piova",
+            "piovesse"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Obwohl es spät ist: ___ sia tardi, studio.",
           "o": [
+            "Purché",
             "Nonostante",
-            "Perché",
             "Affinché",
-            "Purché"
+            "Perché"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -5047,8 +5047,8 @@
           "s": "„anche se“ verlangt",
           "o": [
             "Indikativ",
-            "Konjunktiv",
             "Konditional",
+            "Konjunktiv",
             "Infinitiv"
           ],
           "a": 0,
@@ -5068,9 +5068,9 @@
           "s": "Obwohl er müde war: Benché ___ (essere) stanco, …",
           "o": [
             "fosse",
+            "sarà",
             "era",
-            "è",
-            "sarà"
+            "è"
           ],
           "a": 0,
           "tag": "tense"
@@ -5079,12 +5079,12 @@
           "type": "mc",
           "s": "Konzessive Konnektoren drücken aus",
           "o": [
-            "Einräumung (obwohl)",
             "Grund",
-            "Ziel",
-            "Bedingung"
+            "Einräumung (obwohl)",
+            "Bedingung",
+            "Ziel"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -5099,12 +5099,12 @@
           "type": "mc",
           "s": "„nonostante“ steht oft mit",
           "o": [
-            "Konjunktiv",
-            "Indikativ",
+            "Imperativ",
             "Futur",
-            "Imperativ"
+            "Konjunktiv",
+            "Indikativ"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         }
       ]
@@ -5126,8 +5126,8 @@
           "s": "Ich lerne, damit du bestehst: Studio affinché tu ___ (passare).",
           "o": [
             "passi",
-            "passi",
             "passerai",
+            "passi",
             "passavi"
           ],
           "a": 0,
@@ -5137,24 +5137,24 @@
           "type": "mc",
           "s": "Ich spreche leise, um nicht zu stören: Parlo piano ___ non disturbare.",
           "o": [
-            "per",
+            "da",
             "perché",
             "affinché",
-            "da"
+            "per"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "„affinché“ verlangt",
           "o": [
-            "Konjunktiv",
             "Indikativ",
-            "Futur",
-            "Infinitiv"
+            "Infinitiv",
+            "Konjunktiv",
+            "Futur"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -5170,8 +5170,8 @@
           "s": "„per + Infinitiv“ entspricht dt.",
           "o": [
             "um … zu",
-            "weil",
             "obwohl",
+            "weil",
             "wenn"
           ],
           "a": 0,
@@ -5182,8 +5182,8 @@
           "s": "vorausgesetzt, dass =",
           "o": [
             "purché",
-            "affinché",
             "benché",
+            "affinché",
             "poiché"
           ],
           "a": 0,
@@ -5201,12 +5201,12 @@
           "type": "mc",
           "s": "Finale Konnektoren beantworten die Frage",
           "o": [
-            "wozu?",
             "warum?",
+            "wozu?",
             "wann?",
             "wie?"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         }
       ]
@@ -5228,36 +5228,36 @@
           "type": "mc",
           "s": "Man muss gehen: ___ andare.",
           "o": [
-            "Bisogna",
             "Bisogna che",
-            "Bisognare",
-            "Bisogna di"
+            "Bisogna",
+            "Bisogna di",
+            "Bisognare"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Es ist wichtig, dass du kommst: È importante che tu ___ (venire).",
           "o": [
-            "venga",
-            "vieni",
             "verrai",
-            "venissi"
+            "venissi",
+            "venga",
+            "vieni"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Man braucht Geduld: ___ vuole pazienza.",
           "o": [
-            "Ci",
-            "Ne",
             "Si",
+            "Ne",
+            "Ci",
             "Vi"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -5272,12 +5272,12 @@
           "type": "mc",
           "s": "„è necessario che“ verlangt",
           "o": [
-            "Konjunktiv",
+            "Infinitiv",
             "Indikativ",
-            "Futur",
-            "Infinitiv"
+            "Konjunktiv",
+            "Futur"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -5285,9 +5285,9 @@
           "s": "„ci vogliono“ (Plural) weil",
           "o": [
             "das Objekt Plural ist",
-            "es Futur ist",
             "es Konjunktiv ist",
-            "Fehler"
+            "Fehler",
+            "es Futur ist"
           ],
           "a": 0,
           "tag": "agreement"
@@ -5305,8 +5305,8 @@
           "s": "„bisogna“ steht mit",
           "o": [
             "Infinitiv",
-            "Konjunktiv",
             "Futur",
+            "Konjunktiv",
             "Partizip"
           ],
           "a": 0,
@@ -5343,12 +5343,12 @@
           "type": "mc",
           "s": "Ich schaffe es zu enden: Riesco ___ finire.",
           "o": [
+            "da",
             "a",
-            "di",
             "per",
-            "da"
+            "di"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "preposition"
         },
         {
@@ -5356,9 +5356,9 @@
           "s": "Ich warte darauf zu hören: Aspetto ___ sentire.",
           "o": [
             "di",
-            "a",
             "per",
-            "da"
+            "da",
+            "a"
           ],
           "a": 0,
           "tag": "preposition"
@@ -5375,12 +5375,12 @@
           "type": "mc",
           "s": "Sie hat sich verheiratet mit: Si è sposata ___ Marco.",
           "o": [
+            "per",
             "con",
             "a",
-            "di",
-            "per"
+            "di"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "preposition"
         },
         {
@@ -5397,8 +5397,8 @@
           "o": [
             "di",
             "a",
-            "su",
-            "per"
+            "per",
+            "su"
           ],
           "a": 0,
           "tag": "preposition"
@@ -5431,9 +5431,9 @@
           "s": "Formell „Können Sie mir helfen?“:",
           "o": [
             "Mi può aiutare?",
-            "Puoi aiutarmi?",
+            "Aiutami",
             "Mi puoi aiutare?",
-            "Aiutami"
+            "Puoi aiutarmi?"
           ],
           "a": 0,
           "tag": "lexis"
@@ -5462,24 +5462,24 @@
           "type": "mc",
           "s": "„gradire“ ist",
           "o": [
-            "höflicher als „volere“",
             "umgangssprachlich",
             "ein Substantiv",
+            "höflicher als „volere“",
             "ein Adjektiv"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Informell „vielleicht/gerne“:",
           "o": [
-            "magari",
-            "gradirebbe",
             "eccessivamente",
+            "gradirebbe",
+            "magari",
             "desidera"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -5495,24 +5495,24 @@
           "type": "mc",
           "s": "Zu einem Vorgesetzten nutzt man",
           "o": [
-            "Lei",
-            "tu",
             "voi",
-            "noi"
+            "noi",
+            "Lei",
+            "tu"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Unter Freunden nutzt man",
           "o": [
-            "tu",
-            "Lei",
             "voi",
-            "loro"
+            "loro",
+            "tu",
+            "Lei"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -5534,36 +5534,36 @@
           "type": "mc",
           "s": "sowohl Kaffee als auch Tee: ___ il caffè ___ il tè",
           "o": [
-            "sia…che",
-            "né…né",
             "o…o",
+            "né…né",
+            "sia…che",
             "non solo…ma"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "weder … noch: Non voglio ___ caffè ___ tè.",
           "o": [
-            "né…né",
-            "sia…che",
+            "e…e",
             "o…o",
-            "e…e"
+            "sia…che",
+            "né…né"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "nicht nur … sondern auch: ___ solo studi, ___ lavori.",
           "o": [
+            "O…o",
             "Non…ma anche",
             "Sia…che",
-            "Né…né",
-            "O…o"
+            "Né…né"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -5578,12 +5578,12 @@
           "type": "mc",
           "s": "„sia … che“ verbindet",
           "o": [
-            "zwei gleiche Elemente",
-            "Satz und Wort",
             "nur Verben",
-            "nur Sätze"
+            "Satz und Wort",
+            "nur Sätze",
+            "zwei gleiche Elemente"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -5598,12 +5598,12 @@
           "type": "mc",
           "s": "„non solo … ma anche“ drückt aus",
           "o": [
-            "Steigerung",
-            "Gegensatz",
             "Grund",
-            "Ziel"
+            "Steigerung",
+            "Ziel",
+            "Gegensatz"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -5633,24 +5633,24 @@
           "type": "mc",
           "s": "Wenn ich studiert hätte: Se ___ studiato, …",
           "o": [
-            "avessi",
-            "ho",
+            "ebbi",
             "avevo",
-            "ebbi"
+            "ho",
+            "avessi"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Ich dachte, er sei schon gegangen: Pensavo che ___ già partito.",
           "o": [
+            "sarà",
             "fosse",
-            "è",
             "era",
-            "sarà"
+            "è"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -5665,12 +5665,12 @@
           "type": "mc",
           "s": "Bildung:",
           "o": [
-            "cong. imperfetto essere/avere + part.",
-            "cong. presente + part.",
             "imperfetto + part.",
-            "futuro + part."
+            "futuro + part.",
+            "cong. presente + part.",
+            "cong. imperfetto essere/avere + part."
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -5685,24 +5685,24 @@
           "type": "mc",
           "s": "Er glaubte, sie hätten es gesagt: credeva che lo ___ detto.",
           "o": [
-            "avessero",
-            "hanno",
             "avevano",
-            "ebbero"
+            "ebbero",
+            "hanno",
+            "avessero"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Konditional 3. Typ Wenn-Satz nutzt",
           "o": [
-            "cong. trapassato",
-            "cong. presente",
             "indicativo",
-            "futuro"
+            "futuro",
+            "cong. trapassato",
+            "cong. presente"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -5732,9 +5732,9 @@
           "s": "Wenn ich damals studiert hätte, wäre ich jetzt Arzt: Se ___ studiato, ora sarei medico.",
           "o": [
             "avessi",
+            "avevo",
             "ho",
-            "avrei",
-            "avevo"
+            "avrei"
           ],
           "a": 0,
           "tag": "tense"
@@ -5743,24 +5743,24 @@
           "type": "mc",
           "s": "… ora ___ medico.",
           "o": [
-            "sarei",
             "sono",
             "ero",
-            "sarò"
+            "sarò",
+            "sarei"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Wenn ich reich wäre, hätte ich gestern gekauft: Se fossi ricco, ieri ___ la casa.",
           "o": [
-            "avrei comprato",
+            "comprai",
             "compro",
             "comprerei",
-            "comprai"
+            "avrei comprato"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -5776,24 +5776,24 @@
           "type": "mc",
           "s": "Se ___ (sapere) ieri, ora sarei tranquillo.",
           "o": [
+            "saprei",
             "avessi saputo",
             "so",
-            "sapevo",
-            "saprei"
+            "sapevo"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Bei gemischten Typen sind die Zeiten",
           "o": [
-            "unabhängig",
-            "immer gleich",
             "immer Futur",
-            "immer Konjunktiv"
+            "immer Konjunktiv",
+            "immer gleich",
+            "unabhängig"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -5809,8 +5809,8 @@
           "s": "„ora“ signalisiert im Hauptsatz",
           "o": [
             "Gegenwart",
-            "Vergangenheit",
             "Zukunft",
+            "Vergangenheit",
             "Bedingung"
           ],
           "a": 0,
@@ -5859,12 +5859,12 @@
           "type": "mc",
           "s": "Nominalstil ist typisch für",
           "o": [
-            "formelle Schriftsprache",
             "Umgangssprache",
             "Dialog",
-            "Lieder"
+            "Lieder",
+            "formelle Schriftsprache"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -5880,8 +5880,8 @@
           "s": "„la costruzione“ kommt von",
           "o": [
             "costruire",
-            "costrutto",
             "costante",
+            "costrutto",
             "costituire"
           ],
           "a": 0,
@@ -5899,12 +5899,12 @@
           "type": "mc",
           "s": "Nominalisierung ersetzt oft",
           "o": [
-            "einen Nebensatz",
-            "ein Subjekt",
             "einen Artikel",
+            "ein Subjekt",
+            "einen Nebensatz",
             "ein Pronomen"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         }
       ]
@@ -5926,36 +5926,36 @@
           "type": "mc",
           "s": "„In bocca al lupo!“ bedeutet",
           "o": [
-            "Viel Glück",
-            "Gute Nacht",
+            "Guten Appetit",
             "Auf Wiedersehen",
-            "Guten Appetit"
+            "Viel Glück",
+            "Gute Nacht"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„prendere in giro“ heißt",
           "o": [
+            "verzeihen",
             "veräppeln",
-            "umarmen",
             "erinnern",
-            "verzeihen"
+            "umarmen"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„costare un occhio della testa“ =",
           "o": [
-            "sehr teuer",
-            "billig",
             "schmerzhaft",
-            "kostenlos"
+            "billig",
+            "kostenlos",
+            "sehr teuer"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -5970,24 +5970,24 @@
           "type": "mc",
           "s": "„non piove“ (umgangssprachlich) heißt",
           "o": [
-            "alles ist gut",
-            "es regnet",
+            "niemand da",
             "schlechtes Wetter",
-            "niemand da"
+            "alles ist gut",
+            "es regnet"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„avere le gambe a fagiolo“ =",
           "o": [
-            "müde Beine",
-            "gutes Gleichgewicht",
             "Hunger",
+            "gutes Gleichgewicht",
+            "müde Beine",
             "Schlaf"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -6002,12 +6002,12 @@
           "type": "mc",
           "s": "Redewendungen sind",
           "o": [
-            "idiomatisch (nicht wörtlich)",
-            "wörtlich",
+            "dialektal",
             "veraltet",
-            "dialektal"
+            "idiomatisch (nicht wörtlich)",
+            "wörtlich"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -6029,48 +6029,48 @@
           "type": "mc",
           "s": "Es wird wohl 8 sein: ___ le otto.",
           "o": [
-            "Saranno",
-            "Sono",
             "Erano",
+            "Sono",
+            "Saranno",
             "Saranno state"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Er muss müde sein (Vermutung): ___ essere stanco.",
           "o": [
-            "Deve",
-            "Devi",
+            "Devono",
             "Dobbiamo",
-            "Devono"
+            "Devi",
+            "Deve"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Es könnte wahr sein: ___ essere vero.",
           "o": [
-            "Potrebbe",
-            "Può",
+            "Poteva",
             "Potrà",
-            "Poteva"
+            "Potrebbe",
+            "Può"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Das kann nicht wahr sein (Ausschluss): Non ___ essere vero.",
           "o": [
-            "può",
-            "deve",
             "vuole",
-            "sa"
+            "sa",
+            "deve",
+            "può"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6085,12 +6085,12 @@
           "type": "mc",
           "s": "„deve essere“ drückt hier",
           "o": [
+            "Erlaubnis",
             "Vermutung",
             "Pflicht",
-            "Erlaubnis",
             "Wunsch"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -6106,12 +6106,12 @@
           "type": "mc",
           "s": "Epistemisches „futuro“ drückt",
           "o": [
-            "Vermutung",
-            "Zukunft",
             "Befehl",
+            "Zukunft",
+            "Vermutung",
             "Wunsch"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -6134,8 +6134,8 @@
           "o": [
             "sarebbe venuto",
             "verrà",
-            "viene",
-            "venne"
+            "venne",
+            "viene"
           ],
           "a": 0,
           "tag": "tense"
@@ -6144,12 +6144,12 @@
           "type": "mc",
           "s": "Ich wusste, wir würden gewinnen: Sapevo che ___ (vincere).",
           "o": [
-            "avremmo vinto",
             "vinceremo",
+            "vinse",
             "vinciamo",
-            "vinse"
+            "avremmo vinto"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6166,9 +6166,9 @@
           "s": "Futur in der Vergangenheit =",
           "o": [
             "condizionale passato",
+            "cong. imperfetto",
             "futuro semplice",
-            "imperfetto",
-            "cong. imperfetto"
+            "imperfetto"
           ],
           "a": 0,
           "tag": "tense"
@@ -6177,12 +6177,12 @@
           "type": "mc",
           "s": "Ha promesso che ___ (aiutare).",
           "o": [
-            "avrebbe aiutato",
+            "aiutò",
             "aiuterà",
             "aiuta",
-            "aiutò"
+            "avrebbe aiutato"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6198,24 +6198,24 @@
           "type": "mc",
           "s": "Ausgangssatz steht im",
           "o": [
-            "Präteritum/Perfekt",
-            "Präsens",
             "Futur",
-            "Konjunktiv"
+            "Präsens",
+            "Konjunktiv",
+            "Präteritum/Perfekt"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "„sarebbe venuto“ entspricht dt.",
           "o": [
-            "er würde kommen / er werde kommen",
             "er kam",
+            "er wäre gekommen (Bedingung)",
             "er käme",
-            "er wäre gekommen (Bedingung)"
+            "er würde kommen / er werde kommen"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         }
       ]
@@ -6238,9 +6238,9 @@
           "s": "außerdem =",
           "o": [
             "inoltre",
-            "tuttavia",
+            "però",
             "dunque",
-            "però"
+            "tuttavia"
           ],
           "a": 0,
           "tag": "lexis"
@@ -6249,24 +6249,24 @@
           "type": "mc",
           "s": "jedoch/trotzdem =",
           "o": [
-            "tuttavia",
-            "inoltre",
             "quindi",
-            "infatti"
+            "infatti",
+            "inoltre",
+            "tuttavia"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "also/folglich =",
           "o": [
-            "dunque",
+            "eppure",
             "però",
             "invece",
-            "eppure"
+            "dunque"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6281,24 +6281,24 @@
           "type": "mc",
           "s": "im Gegenteil/hingegen =",
           "o": [
-            "invece",
+            "anche",
             "inoltre",
             "quindi",
-            "anche"
+            "invece"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "eigentlich/wirklich =",
           "o": [
-            "in realtà",
-            "inoltre",
             "dunque",
-            "perciò"
+            "in realtà",
+            "perciò",
+            "inoltre"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -6314,12 +6314,12 @@
           "type": "mc",
           "s": "Textkonnektoren dienen der",
           "o": [
-            "Kohärenz",
-            "Aussprache",
             "Konjugation",
-            "Wortbildung"
+            "Aussprache",
+            "Wortbildung",
+            "Kohärenz"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         }
       ]
@@ -6341,36 +6341,36 @@
           "type": "mc",
           "s": "Er sagte, zu kommen: Ha detto ___ venire.",
           "o": [
-            "di",
-            "a",
             "che",
-            "per"
+            "per",
+            "di",
+            "a"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "Er sagte, nicht zu gehen: Ha detto ___ non andare.",
           "o": [
+            "per",
             "di",
             "a",
-            "che",
-            "per"
+            "che"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "Er fragte, ob ich frei sei: Ha chiesto se ___ (essere) libero.",
           "o": [
-            "fossi",
             "sono",
             "ero",
-            "sarò"
+            "sarò",
+            "fossi"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6386,8 +6386,8 @@
           "s": "Indirekte Ja/Nein-Frage beginnt mit",
           "o": [
             "se",
-            "che",
             "di",
+            "che",
             "perché"
           ],
           "a": 0,
@@ -6405,12 +6405,12 @@
           "type": "mc",
           "s": "Nach „ha chiesto“ folgt oft",
           "o": [
-            "Konjunktiv",
             "Futur",
             "Imperativ",
-            "Infinitiv"
+            "Infinitiv",
+            "Konjunktiv"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6418,9 +6418,9 @@
           "s": "„Ha detto di venire“ = Er sagte,",
           "o": [
             "(jemand) solle kommen",
+            "er käme",
             "er kam",
-            "er kommt",
-            "er käme"
+            "er kommt"
           ],
           "a": 0,
           "tag": "lexis"
@@ -6443,24 +6443,24 @@
           "type": "mc",
           "s": "Er war so müde, dass…: Era ___ stanco che si addormentò.",
           "o": [
-            "così",
-            "tanto",
             "tale",
-            "quanto"
+            "così",
+            "quanto",
+            "tanto"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "Folge-Konnektor:",
           "o": [
-            "che",
             "se",
-            "affinché",
-            "benché"
+            "che",
+            "benché",
+            "affinché"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
@@ -6476,24 +6476,24 @@
           "type": "mc",
           "s": "„tale … che“ bedeutet",
           "o": [
-            "solcher/solche, dass",
             "obwohl",
             "damit",
-            "wenn"
+            "wenn",
+            "solcher/solche, dass"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "„al punto che“ =",
           "o": [
-            "sodass",
-            "obwohl",
             "damit",
-            "falls"
+            "obwohl",
+            "falls",
+            "sodass"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6508,24 +6508,24 @@
           "type": "mc",
           "s": "Konsekutivsätze drücken",
           "o": [
-            "eine Folge",
-            "einen Grund",
             "einen Zweck",
-            "eine Bedingung"
+            "eine Bedingung",
+            "eine Folge",
+            "einen Grund"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Nach „così … che“ steht meist",
           "o": [
+            "Imperativ",
             "Indikativ",
             "Konjunktiv",
-            "Futur",
-            "Imperativ"
+            "Futur"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         }
       ]
@@ -6547,24 +6547,24 @@
           "type": "mc",
           "s": "sogar =",
           "o": [
-            "perfino",
-            "appena",
             "almeno",
-            "neppure"
+            "perfino",
+            "neppure",
+            "appena"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "nicht einmal =",
           "o": [
-            "nemmeno",
             "perfino",
+            "appena",
             "addirittura",
-            "appena"
+            "nemmeno"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6572,8 +6572,8 @@
           "s": "kaum =",
           "o": [
             "appena",
-            "perfino",
             "almeno",
+            "perfino",
             "persino"
           ],
           "a": 0,
@@ -6592,9 +6592,9 @@
           "s": "sogar/überraschend (verstärkend) =",
           "o": [
             "addirittura",
-            "appena",
+            "neanche",
             "almeno",
-            "neanche"
+            "appena"
           ],
           "a": 0,
           "tag": "lexis"
@@ -6612,24 +6612,24 @@
           "type": "mc",
           "s": "„perfino“ entspricht dt.",
           "o": [
-            "sogar",
             "kaum",
-            "zumindest",
-            "nie"
+            "sogar",
+            "nie",
+            "zumindest"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Gradpartikel betonen",
           "o": [
-            "Überraschung/Steigerung",
             "Zeit",
             "Ort",
+            "Überraschung/Steigerung",
             "Frage"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "lexis"
         }
       ]
@@ -6653,8 +6653,8 @@
           "o": [
             "di",
             "a",
-            "che",
-            "per"
+            "per",
+            "che"
           ],
           "a": 0,
           "tag": "preposition"
@@ -6663,12 +6663,12 @@
           "type": "mc",
           "s": "Es wird verlangt, dass er anwesend sei: Si richiede che ___ (essere) presente.",
           "o": [
-            "sia",
             "è",
+            "era",
             "sarà",
-            "era"
+            "sia"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -6676,9 +6676,9 @@
           "s": "Wir laden Sie ein: La ___ a partecipare.",
           "o": [
             "invitiamo",
+            "invito",
             "inviti",
-            "inviti a",
-            "invito"
+            "inviti a"
           ],
           "a": 0,
           "tag": "tense"
@@ -6695,12 +6695,12 @@
           "type": "mc",
           "s": "Formeller Stil nutzt oft",
           "o": [
-            "unpersönliche Formen",
             "Slang",
             "Ausrufe",
-            "Diminutive"
+            "Diminutive",
+            "unpersönliche Formen"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6716,9 +6716,9 @@
           "s": "„Si richiede che“ verlangt",
           "o": [
             "Konjunktiv",
-            "Indikativ",
             "Futur",
-            "Infinitiv"
+            "Infinitiv",
+            "Indikativ"
           ],
           "a": 0,
           "tag": "tense"
@@ -6727,12 +6727,12 @@
           "type": "mc",
           "s": "Formelle Schreiben nutzen",
           "o": [
-            "Passiv/„si“, Konjunktiv",
-            "nur Aktiv",
+            "nur Futur",
             "nur Imperativ",
-            "nur Futur"
+            "nur Aktiv",
+            "Passiv/„si“, Konjunktiv"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "word_order"
         }
       ]
@@ -6754,24 +6754,24 @@
           "type": "mc",
           "s": "Ich schaffe es: ___ la faccio.",
           "o": [
-            "Ce",
             "Ci",
-            "Ne",
-            "Mi"
+            "Ce",
+            "Mi",
+            "Ne"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "Ich gehe weg: ___ ne vado.",
           "o": [
+            "Ne",
             "Me",
-            "Mi",
             "Ce",
-            "Ne"
+            "Mi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -6786,12 +6786,12 @@
           "type": "mc",
           "s": "„farcela“ bedeutet",
           "o": [
-            "es schaffen",
             "machen",
+            "es schaffen",
             "gehen",
             "sehen"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -6799,9 +6799,9 @@
           "s": "„andarsene“ bedeutet",
           "o": [
             "weggehen",
+            "warten",
             "hingehen",
-            "besuchen",
-            "warten"
+            "besuchen"
           ],
           "a": 0,
           "tag": "lexis"
@@ -6820,8 +6820,8 @@
           "s": "Bei „me ne vado“ gehören „me“ und „ne“",
           "o": [
             "zum Verb",
-            "zum Objekt",
             "zum Subjekt",
+            "zum Objekt",
             "zum Adjektiv"
           ],
           "a": 0,
@@ -6855,24 +6855,24 @@
           "type": "mc",
           "s": "Komm hierher: Vieni ___!",
           "o": [
-            "qui",
-            "lì",
             "là",
-            "giù"
+            "lì",
+            "giù",
+            "qui"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
           "type": "mc",
           "s": "dort (fern): ___",
           "o": [
-            "là",
-            "qui",
+            "giù",
             "qua",
-            "giù"
+            "qui",
+            "là"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6907,12 +6907,12 @@
           "type": "mc",
           "s": "noch =",
           "o": [
-            "ancora",
             "già",
+            "tardi",
             "subito",
-            "tardi"
+            "ancora"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "lexis"
         },
         {
@@ -6928,8 +6928,8 @@
           "s": "früh vs. spät:",
           "o": [
             "presto / tardi",
-            "qui / lì",
             "già / ancora",
+            "qui / lì",
             "sopra / sotto"
           ],
           "a": 0,
@@ -6955,36 +6955,36 @@
           "type": "mc",
           "s": "jeden Tag: ___ giorno",
           "o": [
-            "Ogni",
             "Qualche",
-            "Tutto",
-            "Tanto"
+            "Tanto",
+            "Ogni",
+            "Tutto"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "einige (immer Singular): ___ amici",
           "o": [
-            "Qualche",
+            "Molti",
             "Alcuni",
             "Tanti",
-            "Molti"
+            "Qualche"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "alle (f.Pl.): ___ ragazze",
           "o": [
-            "Tutte",
-            "Tutto",
             "Tutti",
-            "Tanta"
+            "Tanta",
+            "Tutto",
+            "Tutte"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
@@ -7000,24 +7000,24 @@
           "type": "mc",
           "s": "wenige (m.Pl.): ___ amici",
           "o": [
-            "pochi",
             "poco",
+            "poche",
             "poca",
-            "poche"
+            "pochi"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "„ogni“ steht mit",
           "o": [
-            "Singular",
-            "Plural",
             "beidem",
+            "Plural",
+            "Singular",
             "Verb"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -7033,12 +7033,12 @@
           "type": "mc",
           "s": "„qualche“ verlangt",
           "o": [
-            "Singular",
             "Plural",
+            "Artikel",
             "Verb",
-            "Artikel"
+            "Singular"
           ],
-          "a": 0,
+          "a": 3,
           "tag": "agreement"
         }
       ]

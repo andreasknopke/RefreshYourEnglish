@@ -12,6 +12,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { shuffleMcExercise } from './shuffleUtil.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.resolve(__dirname, '../../../content/packs/en/grammar/en_cefr.json');
@@ -417,6 +418,11 @@ for (const p of points) {
     if (e.type === 'mc' && (e.a < 0 || e.a >= e.o.length)) throw new Error(`${p.id}: mc-Antwort außerhalb Optionen`);
     if (e.type === 'fill' && (!Array.isArray(e.ans) || e.ans.length === 0)) throw new Error(`${p.id}: fill ohne Antwort`);
   }
+}
+
+// Richtige Antworten gleichmäßig über A–D verteilen (deterministischer Seed)
+for (const p of points) {
+  p.exercises.forEach((e, i) => shuffleMcExercise(e, `${p.id}#${i}`));
 }
 
 const doc = {

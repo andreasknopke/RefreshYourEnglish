@@ -1,4 +1,9 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { describe, it, expect, beforeAll } from 'vitest';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import { TEST_DB_PATH, seedUserAndLanguage } from './helpers/testDb.js';
 import {
   listGrammarPoints,
@@ -39,10 +44,16 @@ describe('Grammar Service', () => {
   });
 
   it('mc-Antwort richtig → correct true, kein Fehlerprofil', () => {
+    // Richtige Position aus den Quelldaten ermitteln (Optionen sind gemischt)
+    const src = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, '../../content/packs/it/grammar/it_cefr.json'), 'utf-8')
+    );
+    const point = src.points.find((p) => p.id === 'it-essere');
+    const ex = point.exercises[0];
     const res = answerExercise(ctx.userLanguageId, ctx.userId, {
       pointId: 'it-essere',
-      exerciseIndex: 0, // "Io ___ Marco." → 0 = sono
-      answer: 0
+      exerciseIndex: 0,
+      answer: ex.a
     });
     expect(res.correct).toBe(true);
     expect(res.errorTag).toBeNull();
@@ -50,10 +61,16 @@ describe('Grammar Service', () => {
   });
 
   it('mc-Antwort falsch → correct false + Fehler-Tag', () => {
+    const src = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, '../../content/packs/it/grammar/it_cefr.json'), 'utf-8')
+    );
+    const point = src.points.find((p) => p.id === 'it-essere');
+    const ex = point.exercises[0];
+    const wrong = [0, 1, 2, 3].find((i) => i !== ex.a);
     const res = answerExercise(ctx.userLanguageId, ctx.userId, {
       pointId: 'it-essere',
       exerciseIndex: 0,
-      answer: 2 // "è" ist falsch für "Io"
+      answer: wrong
     });
     expect(res.correct).toBe(false);
     expect(res.errorTag).toBe('tense');

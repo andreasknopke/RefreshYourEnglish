@@ -10,10 +10,10 @@
       "type": "mc",
       "prompt": "\"My name is Anna. I am from Berlin.\" Where is Anna from?",
       "options": [
+        "We don't know",
         "Berlin",
-        "Rome",
         "London",
-        "We don't know"
+        "Rome"
       ],
       "answer": "Berlin"
     },
@@ -26,8 +26,8 @@
       "prompt": "\"I get up at seven o'clock.\" What time does the person get up?",
       "options": [
         "7:00",
-        "17:00",
         "9:00",
+        "17:00",
         "6:00"
       ],
       "answer": "7:00"
@@ -36,14 +36,14 @@
       "id": "en-r-03",
       "skill": "reading",
       "level": "A1",
-      "difficulty": -1.0,
+      "difficulty": -1,
       "type": "mc",
       "prompt": "\"There is a cat under the table.\" Where is the cat?",
       "options": [
-        "Under the table",
-        "On the table",
+        "By the door",
         "In the garden",
-        "By the door"
+        "Under the table",
+        "On the table"
       ],
       "answer": "Under the table"
     },
@@ -55,10 +55,10 @@
       "type": "mc",
       "prompt": "\"Although it was raining, we went for a walk.\" What can we conclude?",
       "options": [
-        "They walked despite the rain",
         "They stayed home",
+        "They ran",
         "It stopped raining first",
-        "They ran"
+        "They walked despite the rain"
       ],
       "answer": "They walked despite the rain"
     },
@@ -70,10 +70,10 @@
       "type": "mc",
       "prompt": "\"She turned down the offer because the hours were too long.\" Why did she refuse?",
       "options": [
-        "Working hours",
-        "The salary",
         "The location",
-        "The job title"
+        "The salary",
+        "The job title",
+        "Working hours"
       ],
       "answer": "Working hours"
     },
@@ -85,10 +85,10 @@
       "type": "mc",
       "prompt": "\"By the time we arrived, the film had already started.\" The film started...",
       "options": [
-        "before they arrived",
         "when they arrived",
         "after they arrived",
-        "never"
+        "never",
+        "before they arrived"
       ],
       "answer": "before they arrived"
     },
@@ -96,14 +96,14 @@
       "id": "en-r-07",
       "skill": "reading",
       "level": "A2",
-      "difficulty": 1.0,
+      "difficulty": 1,
       "type": "mc",
       "prompt": "\"The report, which had been delayed twice, was finally published.\" What is true?",
       "options": [
-        "It appeared after further delays",
-        "It appeared on time",
         "It was never published",
-        "It was rejected"
+        "It appeared on time",
+        "It was rejected",
+        "It appeared after further delays"
       ],
       "answer": "It appeared after further delays"
     },
@@ -115,9 +115,9 @@
       "type": "mc",
       "prompt": "\"He was said to have resigned over differences in strategy.\" What happened?",
       "options": [
-        "People claimed he quit",
         "He was fired",
         "He changed strategy",
+        "People claimed he quit",
         "He denied everything"
       ],
       "answer": "People claimed he quit"
@@ -126,13 +126,13 @@
       "id": "en-l-09",
       "skill": "listening",
       "level": "A1",
-      "difficulty": -2.0,
+      "difficulty": -2,
       "type": "listen",
       "prompt": "Listen: who is speaking?",
       "options": [
         "A passenger",
-        "A pilot",
         "A teacher",
+        "A pilot",
         "A doctor"
       ],
       "answer": "A passenger",
@@ -146,10 +146,10 @@
       "type": "listen",
       "prompt": "Listen: what did she order?",
       "options": [
-        "Tea",
-        "Coffee",
+        "Juice",
         "Water",
-        "Juice"
+        "Tea",
+        "Coffee"
       ],
       "answer": "Coffee",
       "audioText": "I'll have a coffee with a little milk, please, and a croissant."
@@ -162,10 +162,10 @@
       "type": "listen",
       "prompt": "Listen: when does the train leave?",
       "options": [
-        "Half past nine",
-        "Nine o'clock",
+        "Ten thirty",
         "Nine thirty",
-        "Ten thirty"
+        "Half past nine",
+        "Nine o'clock"
       ],
       "answer": "Nine thirty",
       "audioText": "The next train to Bristol departs at nine thirty from platform three."
@@ -178,10 +178,10 @@
       "type": "listen",
       "prompt": "Listen: why is he calling?",
       "options": [
-        "To cancel an appointment",
-        "To make an appointment",
+        "To ask for directions",
         "To complain",
-        "To ask for directions"
+        "To make an appointment",
+        "To cancel an appointment"
       ],
       "answer": "To cancel an appointment",
       "audioText": "I'm afraid I won't be able to make my appointment tomorrow morning. Something urgent has come up at work."
@@ -194,8 +194,8 @@
       "type": "listen",
       "prompt": "Listen: what does the woman suggest?",
       "options": [
-        "Watching a film at home",
         "Going to the cinema",
+        "Watching a film at home",
         "Reading a book",
         "Going to bed"
       ],
@@ -210,9 +210,9 @@
       "type": "listen",
       "prompt": "Listen: what happened to the package?",
       "options": [
-        "It was delivered to the wrong address",
-        "It was lost",
         "It was delayed",
+        "It was lost",
+        "It was delivered to the wrong address",
         "It was damaged"
       ],
       "answer": "It was delivered to the wrong address",
@@ -226,10 +226,10 @@
       "type": "listen",
       "prompt": "Listen: what is the speaker's main point?",
       "options": [
-        "The plan needs more support",
-        "The plan is perfect",
+        "The budget is final",
         "The meeting is cancelled",
-        "The budget is final"
+        "The plan is perfect",
+        "The plan needs more support"
       ],
       "answer": "The plan needs more support",
       "audioText": "Look, the ideas are sound, but until we have the department heads on board, I don't think we can move forward with this."
@@ -242,10 +242,10 @@
       "type": "listen",
       "prompt": "Listen: what does the manager imply?",
       "options": [
-        "The report must be redone",
-        "The report is accepted",
         "The meeting is over",
-        "The employee should leave"
+        "The employee should leave",
+        "The report is accepted",
+        "The report must be redone"
       ],
       "answer": "The report must be redone",
       "audioText": "Hmm, these figures don't match the quarterly numbers at all. I'd have thought the data would have been checked before it reached my desk."
@@ -258,10 +258,10 @@
       "type": "mc",
       "prompt": "She ___ to school every day.",
       "options": [
-        "goes",
-        "go",
         "going",
-        "gone"
+        "gone",
+        "go",
+        "goes"
       ],
       "answer": "goes"
     },
@@ -273,10 +273,10 @@
       "type": "mc",
       "prompt": "There ___ two books on the table.",
       "options": [
-        "are",
-        "is",
         "be",
-        "being"
+        "are",
+        "being",
+        "is"
       ],
       "answer": "are"
     },
@@ -288,9 +288,9 @@
       "type": "mc",
       "prompt": "I ___ born in 1995.",
       "options": [
-        "was",
-        "were",
         "am",
+        "were",
+        "was",
         "been"
       ],
       "answer": "was"
@@ -303,9 +303,9 @@
       "type": "mc",
       "prompt": "If it rains tomorrow, we ___ at home.",
       "options": [
+        "stayed",
         "will stay",
         "would stay",
-        "stayed",
         "will stayed"
       ],
       "answer": "will stay"
@@ -318,9 +318,9 @@
       "type": "mc",
       "prompt": "I've lived here ___ 2015.",
       "options": [
+        "during",
         "since",
         "for",
-        "during",
         "from"
       ],
       "answer": "since"
@@ -333,10 +333,10 @@
       "type": "mc",
       "prompt": "The letter ___ by the secretary yesterday.",
       "options": [
-        "was typed",
-        "typed",
+        "has typed",
         "is typing",
-        "has typed"
+        "was typed",
+        "typed"
       ],
       "answer": "was typed"
     },
@@ -348,10 +348,10 @@
       "type": "mc",
       "prompt": "She asked me where I ___ from.",
       "options": [
-        "came",
         "come",
         "comes",
-        "am coming"
+        "am coming",
+        "came"
       ],
       "answer": "came"
     },
@@ -363,10 +363,10 @@
       "type": "mc",
       "prompt": "I wish I ___ harder for the exam.",
       "options": [
-        "had studied",
-        "have studied",
         "would study",
-        "study"
+        "had studied",
+        "study",
+        "have studied"
       ],
       "answer": "had studied"
     },
@@ -374,14 +374,14 @@
       "id": "en-v-25",
       "skill": "vocabulary",
       "level": "A1",
-      "difficulty": -2.0,
+      "difficulty": -2,
       "type": "mc",
       "prompt": "Choose the correct word: You use a ___ to cut paper.",
       "options": [
-        "scissors",
-        "hammer",
+        "brush",
         "fork",
-        "brush"
+        "hammer",
+        "scissors"
       ],
       "answer": "scissors"
     },
@@ -393,10 +393,10 @@
       "type": "mc",
       "prompt": "What's the opposite of 'early'?",
       "options": [
-        "late",
-        "fast",
         "young",
-        "slow"
+        "slow",
+        "fast",
+        "late"
       ],
       "answer": "late"
     },
@@ -409,9 +409,9 @@
       "prompt": "A person who treats animals is a ___.",
       "options": [
         "vet",
-        "nurse",
+        "dentist",
         "surgeon",
-        "dentist"
+        "nurse"
       ],
       "answer": "vet"
     },
@@ -419,13 +419,13 @@
       "id": "en-v-28",
       "skill": "vocabulary",
       "level": "A2",
-      "difficulty": 0.0,
+      "difficulty": 0,
       "type": "mc",
       "prompt": "Choose the correct word: Can you ___ me a favour?",
       "options": [
+        "give",
         "do",
         "make",
-        "give",
         "take"
       ],
       "answer": "do"
@@ -438,9 +438,9 @@
       "type": "mc",
       "prompt": "'To postpone' means to ___.",
       "options": [
-        "delay",
         "cancel",
         "repeat",
+        "delay",
         "finish"
       ],
       "answer": "delay"
@@ -454,8 +454,8 @@
       "prompt": "Choose the correct word: The company decided to ___ him.",
       "options": [
         "sack",
-        "bag",
         "pack",
+        "bag",
         "box"
       ],
       "answer": "sack"
@@ -483,9 +483,9 @@
       "type": "mc",
       "prompt": "Choose the correct word: Her explanation didn't quite ___.",
       "options": [
-        "add up",
-        "add on",
         "add in",
+        "add on",
+        "add up",
         "add to"
       ],
       "answer": "add up"
@@ -515,7 +515,7 @@
       "id": "en-w-34",
       "skill": "writing",
       "level": "A1",
-      "difficulty": -1.0,
+      "difficulty": -1,
       "type": "produce",
       "prompt": "Write a sentence describing your family.",
       "keywords": [
@@ -593,7 +593,7 @@
       "id": "en-w-38",
       "skill": "writing",
       "level": "A2",
-      "difficulty": 1.0,
+      "difficulty": 1,
       "type": "produce",
       "prompt": "Write a sentence giving a reason and a result (use 'because' or 'so').",
       "keywords": [

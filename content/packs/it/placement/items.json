@@ -2,162 +2,719 @@
   "lang": "it",
   "version": "1.0.0",
   "items": [
-    { "id": "it-r-01", "skill": "reading", "level": "A1", "difficulty": -2.2, "type": "mc",
+    {
+      "id": "it-r-01",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -2.2,
+      "type": "mc",
       "prompt": "„Mi chiamo Luca.“ Come si chiama la persona?",
-      "options": ["Luca", "Marco", "Un amico", "Non si sa"], "answer": "Luca" },
-    { "id": "it-r-02", "skill": "reading", "level": "A1", "difficulty": -1.8, "type": "mc",
+      "options": [
+        "Un amico",
+        "Non si sa",
+        "Marco",
+        "Luca"
+      ],
+      "answer": "Luca"
+    },
+    {
+      "id": "it-r-02",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -1.8,
+      "type": "mc",
       "prompt": "„Il negozio apre alle nove.“ A che ora apre il negozio?",
-      "options": ["Alle nove", "Alle sette", "A mezzogiorno", "Alle undici"], "answer": "Alle nove" },
-    { "id": "it-r-03", "skill": "reading", "level": "A1", "difficulty": -1.2, "type": "mc",
+      "options": [
+        "Alle nove",
+        "Alle sette",
+        "Alle undici",
+        "A mezzogiorno"
+      ],
+      "answer": "Alle nove"
+    },
+    {
+      "id": "it-r-03",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -1.2,
+      "type": "mc",
       "prompt": "„Maria prende un caffè e un cornetto.“ Cosa ordina Maria?",
-      "options": ["Caffè e cornetto", "Solo un caffè", "Un tè", "Una pizza"], "answer": "Caffè e cornetto" },
-    { "id": "it-r-04", "skill": "reading", "level": "A2", "difficulty": -0.4, "type": "mc",
+      "options": [
+        "Una pizza",
+        "Un tè",
+        "Solo un caffè",
+        "Caffè e cornetto"
+      ],
+      "answer": "Caffè e cornetto"
+    },
+    {
+      "id": "it-r-04",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": -0.4,
+      "type": "mc",
       "prompt": "„Ieri ho studiato tutta la sera perché domani c'è l'esame.“ Perché ha studiato?",
-      "options": ["Perché ha un esame", "Perché ama leggere", "Per il lavoro", "Per il professore"], "answer": "Perché ha un esame" },
-    { "id": "it-r-05", "skill": "reading", "level": "A2", "difficulty": 0.2, "type": "mc",
+      "options": [
+        "Perché ama leggere",
+        "Per il professore",
+        "Perché ha un esame",
+        "Per il lavoro"
+      ],
+      "answer": "Perché ha un esame"
+    },
+    {
+      "id": "it-r-05",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 0.2,
+      "type": "mc",
       "prompt": "„Nonostante la pioggia, siamo usciti a camminare.“ Cosa significa?",
-      "options": ["Sono usciti nonostante la pioggia", "Sono rimasti a casa", "Ha smesso di piovere", "Hanno comprato un ombrello"], "answer": "Sono usciti nonostante la pioggia" },
-    { "id": "it-r-06", "skill": "reading", "level": "A2", "difficulty": 0.8, "type": "mc",
+      "options": [
+        "Sono rimasti a casa",
+        "Hanno comprato un ombrello",
+        "Sono usciti nonostante la pioggia",
+        "Ha smesso di piovere"
+      ],
+      "answer": "Sono usciti nonostante la pioggia"
+    },
+    {
+      "id": "it-r-06",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 0.8,
+      "type": "mc",
       "prompt": "„Se avessi più tempo, viaggerei di più.“ Cosa si capisce?",
-      "options": ["La persona ha poco tempo", "La persona viaggia molto", "La persona non vuole viaggiare", "La persona ha già viaggiato"], "answer": "La persona ha poco tempo" },
-    { "id": "it-r-07", "skill": "reading", "level": "A1", "difficulty": -2.6, "type": "mc",
+      "options": [
+        "La persona ha già viaggiato",
+        "La persona non vuole viaggiare",
+        "La persona ha poco tempo",
+        "La persona viaggia molto"
+      ],
+      "answer": "La persona ha poco tempo"
+    },
+    {
+      "id": "it-r-07",
+      "skill": "reading",
+      "level": "A1",
+      "difficulty": -2.6,
+      "type": "mc",
       "prompt": "„Buongiorno! Come sta?“ A chi si rivolge questa frase?",
-      "options": ["A una persona in modo formale", "A un bambino", "A un animale", "A sé stesso"], "answer": "A una persona in modo formale" },
-    { "id": "it-r-08", "skill": "reading", "level": "A2", "difficulty": 1.4, "type": "mc",
+      "options": [
+        "A un animale",
+        "A un bambino",
+        "A sé stesso",
+        "A una persona in modo formale"
+      ],
+      "answer": "A una persona in modo formale"
+    },
+    {
+      "id": "it-r-08",
+      "skill": "reading",
+      "level": "A2",
+      "difficulty": 1.4,
+      "type": "mc",
       "prompt": "„Il film, che abbiamo visto ieri, era noioso.“ Di chi parliamo?",
-      "options": ["Di un film", "Di un cinema", "Di una persona", "Di una recensione"], "answer": "Di un film" },
-
-    { "id": "it-l-01", "skill": "listening", "level": "A1", "difficulty": -2.4, "type": "listen",
+      "options": [
+        "Di un cinema",
+        "Di una recensione",
+        "Di un film",
+        "Di una persona"
+      ],
+      "answer": "Di un film"
+    },
+    {
+      "id": "it-l-01",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -2.4,
+      "type": "listen",
       "audioText": "Ho vent'anni.",
       "prompt": "Quanti anni ha la persona?",
-      "options": ["Vent'anni", "Dodici anni", "Venti giorni", "Due anni"], "answer": "Vent'anni" },
-    { "id": "it-l-02", "skill": "listening", "level": "A1", "difficulty": -2.0, "type": "listen",
+      "options": [
+        "Dodici anni",
+        "Due anni",
+        "Vent'anni",
+        "Venti giorni"
+      ],
+      "answer": "Vent'anni"
+    },
+    {
+      "id": "it-l-02",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -2,
+      "type": "listen",
       "audioText": "Il treno parte alle sette e quindici.",
       "prompt": "Quando parte il treno?",
-      "options": ["Alle 7:15", "Alle 7:50", "Alle 6:15", "Alle 8:15"], "answer": "Alle 7:15" },
-    { "id": "it-l-03", "skill": "listening", "level": "A1", "difficulty": -1.4, "type": "listen",
+      "options": [
+        "Alle 7:15",
+        "Alle 7:50",
+        "Alle 6:15",
+        "Alle 8:15"
+      ],
+      "answer": "Alle 7:15"
+    },
+    {
+      "id": "it-l-03",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -1.4,
+      "type": "listen",
       "audioText": "Vorrei un bicchiere d'acqua, per favore.",
       "prompt": "Cosa chiede la persona?",
-      "options": ["Un bicchiere d'acqua", "Un bicchiere di vino", "Un caffè", "Il conto"], "answer": "Un bicchiere d'acqua" },
-    { "id": "it-l-04", "skill": "listening", "level": "A2", "difficulty": -0.5, "type": "listen",
+      "options": [
+        "Un caffè",
+        "Un bicchiere d'acqua",
+        "Il conto",
+        "Un bicchiere di vino"
+      ],
+      "answer": "Un bicchiere d'acqua"
+    },
+    {
+      "id": "it-l-04",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": -0.5,
+      "type": "listen",
       "audioText": "La settimana prossima vado a trovare mia sorella a Firenze.",
       "prompt": "Dove va la persona?",
-      "options": ["A Firenze", "Da sua madre", "Al lavoro", "In stazione"], "answer": "A Firenze" },
-    { "id": "it-l-05", "skill": "listening", "level": "A2", "difficulty": 0.1, "type": "listen",
+      "options": [
+        "Da sua madre",
+        "Al lavoro",
+        "A Firenze",
+        "In stazione"
+      ],
+      "answer": "A Firenze"
+    },
+    {
+      "id": "it-l-05",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 0.1,
+      "type": "listen",
       "audioText": "Purtroppo il negozio era già chiuso quando sono arrivato.",
       "prompt": "Perché la persona è delusa?",
-      "options": ["Il negozio era chiuso", "Il negozio era caro", "Non c'era il suo prodotto", "Era troppo lontano"], "answer": "Il negozio era chiuso" },
-    { "id": "it-l-06", "skill": "listening", "level": "A2", "difficulty": 0.6, "type": "listen",
+      "options": [
+        "Il negozio era chiuso",
+        "Era troppo lontano",
+        "Non c'era il suo prodotto",
+        "Il negozio era caro"
+      ],
+      "answer": "Il negozio era chiuso"
+    },
+    {
+      "id": "it-l-06",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 0.6,
+      "type": "listen",
       "audioText": "Non appena finisce il lavoro, ci vediamo al bar.",
       "prompt": "Quando si vedono?",
-      "options": ["Dopo il lavoro", "Prima del lavoro", "Durante il lavoro", "Mai"], "answer": "Dopo il lavoro" },
-    { "id": "it-l-07", "skill": "listening", "level": "A1", "difficulty": -2.7, "type": "listen",
+      "options": [
+        "Dopo il lavoro",
+        "Durante il lavoro",
+        "Mai",
+        "Prima del lavoro"
+      ],
+      "answer": "Dopo il lavoro"
+    },
+    {
+      "id": "it-l-07",
+      "skill": "listening",
+      "level": "A1",
+      "difficulty": -2.7,
+      "type": "listen",
       "audioText": "Mi scusi, dov'è la stazione?",
       "prompt": "Cosa cerca la persona?",
-      "options": ["La stazione", "Un bar", "Un albergo", "Un museo"], "answer": "La stazione" },
-    { "id": "it-l-08", "skill": "listening", "level": "A2", "difficulty": 1.2, "type": "listen",
+      "options": [
+        "Un museo",
+        "La stazione",
+        "Un bar",
+        "Un albergo"
+      ],
+      "answer": "La stazione"
+    },
+    {
+      "id": "it-l-08",
+      "skill": "listening",
+      "level": "A2",
+      "difficulty": 1.2,
+      "type": "listen",
       "audioText": "Se fossi in te, accetterei subito quell'offerta di lavoro.",
       "prompt": "Cosa consiglia chi parla?",
-      "options": ["Accettare il lavoro", "Rifiutare il lavoro", "Cercare un altro lavoro", "Aspettare un anno"], "answer": "Accettare il lavoro" },
-
-    { "id": "it-g-01", "skill": "grammar", "level": "A1", "difficulty": -2.5, "type": "mc",
+      "options": [
+        "Cercare un altro lavoro",
+        "Aspettare un anno",
+        "Accettare il lavoro",
+        "Rifiutare il lavoro"
+      ],
+      "answer": "Accettare il lavoro"
+    },
+    {
+      "id": "it-g-01",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -2.5,
+      "type": "mc",
       "prompt": "___ casa è grande.",
-      "options": ["La", "Il", "Le", "I"], "answer": "La" },
-    { "id": "it-g-02", "skill": "grammar", "level": "A1", "difficulty": -2.1, "type": "mc",
+      "options": [
+        "I",
+        "Il",
+        "La",
+        "Le"
+      ],
+      "answer": "La"
+    },
+    {
+      "id": "it-g-02",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -2.1,
+      "type": "mc",
       "prompt": "Io ___ studente.",
-      "options": ["sono", "sei", "è", "siamo"], "answer": "sono" },
-    { "id": "it-g-03", "skill": "grammar", "level": "A1", "difficulty": -1.6, "type": "mc",
+      "options": [
+        "siamo",
+        "sono",
+        "è",
+        "sei"
+      ],
+      "answer": "sono"
+    },
+    {
+      "id": "it-g-03",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -1.6,
+      "type": "mc",
       "prompt": "Noi ___ italiano tutti i giorni.",
-      "options": ["studiamo", "studi", "studia", "studiano"], "answer": "studiamo" },
-    { "id": "it-g-04", "skill": "grammar", "level": "A1", "difficulty": -1.0, "type": "mc",
+      "options": [
+        "studiano",
+        "studi",
+        "studia",
+        "studiamo"
+      ],
+      "answer": "studiamo"
+    },
+    {
+      "id": "it-g-04",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -1,
+      "type": "mc",
       "prompt": "Quanti libri ___ tu?",
-      "options": ["hai", "ha", "ho", "avete"], "answer": "hai" },
-    { "id": "it-g-05", "skill": "grammar", "level": "A2", "difficulty": -0.3, "type": "mc",
+      "options": [
+        "ho",
+        "avete",
+        "ha",
+        "hai"
+      ],
+      "answer": "hai"
+    },
+    {
+      "id": "it-g-05",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": -0.3,
+      "type": "mc",
       "prompt": "Ieri io ___ al mercato.",
-      "options": ["sono andato", "vado", "andavo", "andrò"], "answer": "sono andato" },
-    { "id": "it-g-06", "skill": "grammar", "level": "A2", "difficulty": 0.3, "type": "mc",
+      "options": [
+        "andavo",
+        "vado",
+        "sono andato",
+        "andrò"
+      ],
+      "answer": "sono andato"
+    },
+    {
+      "id": "it-g-06",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 0.3,
+      "type": "mc",
       "prompt": "Da bambino ___ in campagna.",
-      "options": ["vivevo", "ho vissuto", "vivere", "vivrò"], "answer": "vivevo" },
-    { "id": "it-g-07", "skill": "grammar", "level": "A2", "difficulty": 0.9, "type": "mc",
+      "options": [
+        "vivere",
+        "vivrò",
+        "vivevo",
+        "ho vissuto"
+      ],
+      "answer": "vivevo"
+    },
+    {
+      "id": "it-g-07",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 0.9,
+      "type": "mc",
       "prompt": "Vado ___ cinema stasera.",
-      "options": ["al", "a", "in", "da"], "answer": "al" },
-    { "id": "it-g-08", "skill": "grammar", "level": "A2", "difficulty": 1.5, "type": "mc",
+      "options": [
+        "al",
+        "in",
+        "a",
+        "da"
+      ],
+      "answer": "al"
+    },
+    {
+      "id": "it-g-08",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 1.5,
+      "type": "mc",
       "prompt": "Penso che ___ una buona idea.",
-      "options": ["sia", "è", "sarà", "era"], "answer": "sia" },
-    { "id": "it-g-09", "skill": "grammar", "level": "A1", "difficulty": -1.9, "type": "mc",
+      "options": [
+        "era",
+        "è",
+        "sia",
+        "sarà"
+      ],
+      "answer": "sia"
+    },
+    {
+      "id": "it-g-09",
+      "skill": "grammar",
+      "level": "A1",
+      "difficulty": -1.9,
+      "type": "mc",
       "prompt": "Marco e Giulia ___ fratelli.",
-      "options": ["sono", "è", "sei", "siamo"], "answer": "sono" },
-    { "id": "it-g-10", "skill": "grammar", "level": "A2", "difficulty": 0.5, "type": "mc",
+      "options": [
+        "sono",
+        "è",
+        "siamo",
+        "sei"
+      ],
+      "answer": "sono"
+    },
+    {
+      "id": "it-g-10",
+      "skill": "grammar",
+      "level": "A2",
+      "difficulty": 0.5,
+      "type": "mc",
       "prompt": "___ mi chiami?",
-      "options": ["Come", "Che", "Quale", "Quando"], "answer": "Come" },
-
-    { "id": "it-v-01", "skill": "vocabulary", "level": "A1", "difficulty": -2.6, "type": "mc",
+      "options": [
+        "Quale",
+        "Come",
+        "Che",
+        "Quando"
+      ],
+      "answer": "Come"
+    },
+    {
+      "id": "it-v-01",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -2.6,
+      "type": "mc",
       "prompt": "Was heißt „der Apfel“ auf Italienisch?",
-      "options": ["la mela", "il pane", "il latte", "l'acqua"], "answer": "la mela" },
-    { "id": "it-v-02", "skill": "vocabulary", "level": "A1", "difficulty": -2.2, "type": "mc",
+      "options": [
+        "il latte",
+        "il pane",
+        "l'acqua",
+        "la mela"
+      ],
+      "answer": "la mela"
+    },
+    {
+      "id": "it-v-02",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -2.2,
+      "type": "mc",
       "prompt": "Was heißt „casa“ auf Deutsch?",
-      "options": ["Haus", "Auto", "Straße", "Garten"], "answer": "Haus" },
-    { "id": "it-v-03", "skill": "vocabulary", "level": "A1", "difficulty": -1.5, "type": "mc",
+      "options": [
+        "Haus",
+        "Straße",
+        "Auto",
+        "Garten"
+      ],
+      "answer": "Haus"
+    },
+    {
+      "id": "it-v-03",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -1.5,
+      "type": "mc",
       "prompt": "Was heißt „arbeiten“ auf Italienisch?",
-      "options": ["lavorare", "mangiare", "dormire", "parlare"], "answer": "lavorare" },
-    { "id": "it-v-04", "skill": "vocabulary", "level": "A2", "difficulty": -0.6, "type": "mc",
+      "options": [
+        "parlare",
+        "lavorare",
+        "dormire",
+        "mangiare"
+      ],
+      "answer": "lavorare"
+    },
+    {
+      "id": "it-v-04",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": -0.6,
+      "type": "mc",
       "prompt": "Was heißt „la stazione“ auf Deutsch?",
-      "options": ["der Bahnhof", "die Station", "der Hafen", "das Stadion"], "answer": "der Bahnhof" },
-    { "id": "it-v-05", "skill": "vocabulary", "level": "A2", "difficulty": 0.0, "type": "mc",
+      "options": [
+        "die Station",
+        "das Stadion",
+        "der Hafen",
+        "der Bahnhof"
+      ],
+      "answer": "der Bahnhof"
+    },
+    {
+      "id": "it-v-05",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0,
+      "type": "mc",
       "prompt": "Was heißt „ich bin müde“?",
-      "options": ["sono stanco", "ho fame", "ho sete", "sono contento"], "answer": "sono stanco" },
-    { "id": "it-v-06", "skill": "vocabulary", "level": "A2", "difficulty": 0.7, "type": "mc",
+      "options": [
+        "sono contento",
+        "sono stanco",
+        "ho sete",
+        "ho fame"
+      ],
+      "answer": "sono stanco"
+    },
+    {
+      "id": "it-v-06",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0.7,
+      "type": "mc",
       "prompt": "Was heißt „il conto“ im Restaurant?",
-      "options": ["die Rechnung", "das Konto", "der Trank", "der Anteil"], "answer": "die Rechnung" },
-    { "id": "it-v-07", "skill": "vocabulary", "level": "A2", "difficulty": 1.1, "type": "mc",
+      "options": [
+        "das Konto",
+        "die Rechnung",
+        "der Anteil",
+        "der Trank"
+      ],
+      "answer": "die Rechnung"
+    },
+    {
+      "id": "it-v-07",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 1.1,
+      "type": "mc",
       "prompt": "Was heißt „sich beeilen“?",
-      "options": ["sbrigarsi", "fermarsi", "riposarsi", "alzarsi"], "answer": "sbrigarsi" },
-    { "id": "it-v-08", "skill": "vocabulary", "level": "A1", "difficulty": -2.0, "type": "mc",
+      "options": [
+        "alzarsi",
+        "fermarsi",
+        "riposarsi",
+        "sbrigarsi"
+      ],
+      "answer": "sbrigarsi"
+    },
+    {
+      "id": "it-v-08",
+      "skill": "vocabulary",
+      "level": "A1",
+      "difficulty": -2,
+      "type": "mc",
       "prompt": "Was heißt „der Bruder“?",
-      "options": ["il fratello", "la sorella", "il cugino", "lo zio"], "answer": "il fratello" },
-    { "id": "it-v-09", "skill": "vocabulary", "level": "A2", "difficulty": 0.4, "type": "mc",
+      "options": [
+        "la sorella",
+        "il cugino",
+        "il fratello",
+        "lo zio"
+      ],
+      "answer": "il fratello"
+    },
+    {
+      "id": "it-v-09",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 0.4,
+      "type": "mc",
       "prompt": "Was heißt „der Regen“?",
-      "options": ["la pioggia", "il vento", "il sole", "la neve"], "answer": "la pioggia" },
-    { "id": "it-v-10", "skill": "vocabulary", "level": "A2", "difficulty": 1.6, "type": "mc",
+      "options": [
+        "la pioggia",
+        "il sole",
+        "il vento",
+        "la neve"
+      ],
+      "answer": "la pioggia"
+    },
+    {
+      "id": "it-v-10",
+      "skill": "vocabulary",
+      "level": "A2",
+      "difficulty": 1.6,
+      "type": "mc",
       "prompt": "Was heißt „trotzdem“?",
-      "options": ["tuttavia", "perciò", "perché", "allora"], "answer": "tuttavia" },
-
-    { "id": "it-w-01", "skill": "writing", "level": "A1", "difficulty": -2.3, "type": "produce",
+      "options": [
+        "allora",
+        "tuttavia",
+        "perché",
+        "perciò"
+      ],
+      "answer": "tuttavia"
+    },
+    {
+      "id": "it-w-01",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -2.3,
+      "type": "produce",
       "prompt": "Schreibe einen Satz: „Ich heiße … und komme aus …“",
-      "keywords": ["mi chiamo", "sono"], "minWords": 4 },
-    { "id": "it-w-02", "skill": "writing", "level": "A1", "difficulty": -1.7, "type": "produce",
+      "keywords": [
+        "mi chiamo",
+        "sono"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "it-w-02",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -1.7,
+      "type": "produce",
       "prompt": "Schreibe einen Satz mit „mangiare“ (ich esse …):",
-      "keywords": ["mangi"], "minWords": 3 },
-    { "id": "it-w-03", "skill": "writing", "level": "A2", "difficulty": -0.2, "type": "produce",
+      "keywords": [
+        "mangi"
+      ],
+      "minWords": 3
+    },
+    {
+      "id": "it-w-03",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": -0.2,
+      "type": "produce",
       "prompt": "Beschreibe in 1–2 Sätzen, was du gestern gemacht hast (passato prossimo):",
-      "keywords": ["ho", "sono"], "minWords": 5 },
-    { "id": "it-w-04", "skill": "writing", "level": "A2", "difficulty": 0.5, "type": "produce",
+      "keywords": [
+        "ho",
+        "sono"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "it-w-04",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 0.5,
+      "type": "produce",
       "prompt": "Schreibe einen Satz mit „perché“ (weil):",
-      "keywords": ["perche"], "minWords": 5 },
-    { "id": "it-w-05", "skill": "writing", "level": "A2", "difficulty": 1.3, "type": "produce",
+      "keywords": [
+        "perche"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "it-w-05",
+      "skill": "writing",
+      "level": "A2",
+      "difficulty": 1.3,
+      "type": "produce",
       "prompt": "Schreibe einen Satz mit „penso che …“ (congiuntivo):",
-      "keywords": ["penso che", "sia", "abbia", "possa", "vada"], "minWords": 4 },
-    { "id": "it-w-06", "skill": "writing", "level": "A1", "difficulty": -2.8, "type": "produce",
+      "keywords": [
+        "penso che",
+        "sia",
+        "abbia",
+        "possa",
+        "vada"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "it-w-06",
+      "skill": "writing",
+      "level": "A1",
+      "difficulty": -2.8,
+      "type": "produce",
       "prompt": "Schreibe einen Begrüßungssatz (z. B. Guten Morgen, wie geht's?):",
-      "keywords": ["buongiorno", "buonasera", "ciao", "salve"], "minWords": 2 },
-
-    { "id": "it-s-01", "skill": "speaking", "level": "A1", "difficulty": -2.4, "type": "produce",
+      "keywords": [
+        "buongiorno",
+        "buonasera",
+        "ciao",
+        "salve"
+      ],
+      "minWords": 2
+    },
+    {
+      "id": "it-s-01",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -2.4,
+      "type": "produce",
       "prompt": "Sprich: Stelle dich mit Name und Alter vor.",
-      "keywords": ["mi chiamo", "ho", "anni"], "minWords": 4 },
-    { "id": "it-s-02", "skill": "speaking", "level": "A1", "difficulty": -1.8, "type": "produce",
+      "keywords": [
+        "mi chiamo",
+        "ho",
+        "anni"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "it-s-02",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -1.8,
+      "type": "produce",
       "prompt": "Sprich: Bestelle höflich einen Kaffee.",
-      "keywords": ["caffe", "vorrei", "per favore"], "minWords": 3 },
-    { "id": "it-s-03", "skill": "speaking", "level": "A2", "difficulty": -0.4, "type": "produce",
+      "keywords": [
+        "caffe",
+        "vorrei",
+        "per favore"
+      ],
+      "minWords": 3
+    },
+    {
+      "id": "it-s-03",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": -0.4,
+      "type": "produce",
       "prompt": "Sprich: Frag nach dem Weg zum Bahnhof.",
-      "keywords": ["scusi", "stazione", "dove"], "minWords": 4 },
-    { "id": "it-s-04", "skill": "speaking", "level": "A2", "difficulty": 0.4, "type": "produce",
+      "keywords": [
+        "scusi",
+        "stazione",
+        "dove"
+      ],
+      "minWords": 4
+    },
+    {
+      "id": "it-s-04",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 0.4,
+      "type": "produce",
       "prompt": "Sprich: Erzähle kurz, was du am Wochenende gemacht hast.",
-      "keywords": ["ho", "sono", "sabato", "domenica"], "minWords": 6 },
-    { "id": "it-s-05", "skill": "speaking", "level": "A2", "difficulty": 1.0, "type": "produce",
+      "keywords": [
+        "ho",
+        "sono",
+        "sabato",
+        "domenica"
+      ],
+      "minWords": 6
+    },
+    {
+      "id": "it-s-05",
+      "skill": "speaking",
+      "level": "A2",
+      "difficulty": 1,
+      "type": "produce",
       "prompt": "Sprich: Sage deine Meinung über Filme mit „secondo me …“.",
-      "keywords": ["secondo me"], "minWords": 5 },
-    { "id": "it-s-06", "skill": "speaking", "level": "A1", "difficulty": -2.9, "type": "produce",
+      "keywords": [
+        "secondo me"
+      ],
+      "minWords": 5
+    },
+    {
+      "id": "it-s-06",
+      "skill": "speaking",
+      "level": "A1",
+      "difficulty": -2.9,
+      "type": "produce",
       "prompt": "Sprich: Zähle die Zahlen 1 bis 5 auf Italienisch.",
-      "keywords": ["uno", "due", "tre", "quattro", "cinque"], "minWords": 3 }
+      "keywords": [
+        "uno",
+        "due",
+        "tre",
+        "quattro",
+        "cinque"
+      ],
+      "minWords": 3
+    }
   ]
 }
