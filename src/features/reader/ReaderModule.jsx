@@ -8,7 +8,7 @@ import ttsService from '../../services/ttsService';
  * klickbaren Wörtern (bekannt/unbekannt), Glossar-Popup, Satz-Mining und
  * Segment-Audio (Browser-TTS).
  */
-function ReaderModule({ focus = null }) {
+function ReaderModule({ focus = null, onBackToSession = null }) {
   const { activeUserLanguage, activePack } = useLanguage();
   const [view, setView] = useState('list'); // list | reading
   const [texts, setTexts] = useState([]);
@@ -269,10 +269,10 @@ function ReaderModule({ focus = null }) {
     <div className="max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-3">
         <button
-          onClick={() => setView('list')}
+          onClick={() => (focus?.module === 'reader' && onBackToSession ? onBackToSession() : setView('list'))}
           className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold"
         >
-          ← Zurück
+          {focus?.module === 'reader' && onBackToSession ? '← Zurück zur Tages-Sitzung' : '← Zurück'}
         </button>
         <button onClick={playAll} className="text-sm text-gray-500 hover:text-gray-700">
           ▶ Ganz vorlesen

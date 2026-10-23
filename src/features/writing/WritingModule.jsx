@@ -8,7 +8,7 @@ import TTSButton from '../../components/TTSButton';
  * lässt den Lernenden produzieren und zeigt LLM-Feedback mit Fehlerkategorien.
  * Fehler fließen ins Fehlerprofil.
  */
-function WritingModule({ focus = null }) {
+function WritingModule({ focus = null, onBackToSession = null }) {
   const { activeUserLanguage } = useLanguage();
   const [view, setView] = useState('task'); // task | feedback | profile
   const [task, setTask] = useState(null);
@@ -102,6 +102,14 @@ function WritingModule({ focus = null }) {
   if (view === 'task') {
     return (
       <div className="max-w-2xl mx-auto">
+        {focus?.module === 'writing' && onBackToSession && (
+          <button
+            onClick={onBackToSession}
+            className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold mb-2"
+          >
+            ← Zurück zur Tages-Sitzung
+          </button>
+        )}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-gray-800">Schreiben</h2>
           <button onClick={openProfile} className="btn-secondary px-4 py-2 text-sm">
@@ -149,9 +157,18 @@ function WritingModule({ focus = null }) {
   if (view === 'feedback' && result) {
     return (
       <div className="max-w-2xl mx-auto">
-        <button onClick={() => setView('task')} className="text-sm text-gray-500 hover:text-gray-700 mb-3">
-          ← Neue Aufgabe
-        </button>
+        {focus?.module === 'writing' && onBackToSession ? (
+          <button
+            onClick={onBackToSession}
+            className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold mb-3"
+          >
+            ← Zurück zur Tages-Sitzung
+          </button>
+        ) : (
+          <button onClick={() => setView('task')} className="text-sm text-gray-500 hover:text-gray-700 mb-3">
+            ← Neue Aufgabe
+          </button>
+        )}
         <div className="glass-card rounded-3xl p-6 mb-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-500">Bewertung</span>

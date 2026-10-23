@@ -9,7 +9,7 @@ import STTButton from '../../components/STTButton';
  * Aussprachebewertung. STT/TTS-Locale kommen aus dem Language Pack
  * (activePack.sttLocale / ttsLocale) – nichts ist hartkodiert.
  */
-function SpeakingModule({ focus = null }) {
+function SpeakingModule({ focus = null, onBackToSession = null }) {
   const { activeUserLanguage, activePack } = useLanguage();
   const [tab, setTab] = useState('dialog'); // dialog | shadowing
 
@@ -34,7 +34,7 @@ function SpeakingModule({ focus = null }) {
         </div>
       </div>
       {tab === 'dialog' ? (
-        <DialogTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} focus={focus} />
+        <DialogTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} focus={focus} onBackToSession={onBackToSession} />
       ) : (
         <ShadowingTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} />
       )}
@@ -58,7 +58,7 @@ function TabButton({ active, onClick, children }) {
 // ---------------------------------------------------------------------------
 // Dialog
 // ---------------------------------------------------------------------------
-function DialogTab({ id, sttLocale, ttsLocale, focus = null }) {
+function DialogTab({ id, sttLocale, ttsLocale, focus = null, onBackToSession = null }) {
   const [scenarios, setScenarios] = useState(null);
   const [active, setActive] = useState(null);
   const [turns, setTurns] = useState([]);
@@ -168,16 +168,25 @@ function DialogTab({ id, sttLocale, ttsLocale, focus = null }) {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setActive(null);
-          setTurns([]);
-          setFeedback(null);
-        }}
-        className="text-sm text-gray-500 hover:text-gray-700 mb-3"
-      >
-        ← Andere Szene
-      </button>
+      {focus?.module === 'speaking' && onBackToSession ? (
+        <button
+          onClick={onBackToSession}
+          className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold mb-3"
+        >
+          ← Zurück zur Tages-Sitzung
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            setActive(null);
+            setTurns([]);
+            setFeedback(null);
+          }}
+          className="text-sm text-gray-500 hover:text-gray-700 mb-3"
+        >
+          ← Andere Szene
+        </button>
+      )}
 
       <div className="glass-card rounded-3xl p-4 mb-3">
         <div className="text-sm font-semibold text-gray-700">{active.title}</div>

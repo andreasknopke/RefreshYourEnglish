@@ -9,7 +9,7 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2'];
  * Beispiele und stellt 8 Übungen (Multiple-Choice / Lückentext). Falsche
  * Antworten werden mit Fehler-Tag im Fehlerprofil gesammelt.
  */
-function GrammarModule({ focus = null }) {
+function GrammarModule({ focus = null, onBackToSession = null }) {
   const { activeUserLanguage } = useLanguage();
   const [view, setView] = useState('points'); // points | exercise | profile
   const [level, setLevel] = useState('');
@@ -170,8 +170,11 @@ function GrammarModule({ focus = null }) {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-3">
-          <button onClick={() => setView('points')} className="text-sm text-gray-500 hover:text-gray-700">
-            ← Zurück
+          <button
+            onClick={() => (focus?.module === 'grammar' && onBackToSession ? onBackToSession() : setView('points'))}
+            className="text-sm text-gray-500 hover:text-gray-700"
+          >
+            {focus?.module === 'grammar' && onBackToSession ? '← Zurück zur Tages-Sitzung' : '← Zurück'}
           </button>
           <span className="text-sm text-gray-400">
             Übung {exIdx + 1} / {point.exercises.length}

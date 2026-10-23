@@ -28,6 +28,12 @@ function App() {
     setSessionFocus(null);
     setActiveModule(m);
   };
+
+  // Aus einem Sitzungs-Modul zurück zur Tages-Sitzung
+  const backToSession = () => {
+    setSessionFocus(null);
+    setActiveModule('session');
+  };
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
   const [showLogViewer, setShowLogViewer] = useState(false);
@@ -507,7 +513,10 @@ function App() {
         ) : (
           <div className="animate-fade-in">
             <button
-              onClick={() => { setSessionFocus(null); setActiveModule(null); }}
+              onClick={() => {
+                if (sessionFocus) backToSession();
+                else { setSessionFocus(null); setActiveModule(null); }
+              }}
               className="mb-4 flex items-center text-indigo-600 hover:text-indigo-800 font-semibold text-base hover:-translate-x-2 transition-transform duration-200"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -517,10 +526,18 @@ function App() {
             </button>
             
             {activeModule === 'review' && <ReviewModule />}
-            {activeModule === 'reader' && <ReaderModule focus={sessionFocus} />}
-            {activeModule === 'grammar' && <GrammarModule focus={sessionFocus} />}
-            {activeModule === 'writing' && <WritingModule focus={sessionFocus} />}
-            {activeModule === 'speaking' && <SpeakingModule focus={sessionFocus} />}
+            {activeModule === 'reader' && (
+              <ReaderModule focus={sessionFocus} onBackToSession={backToSession} />
+            )}
+            {activeModule === 'grammar' && (
+              <GrammarModule focus={sessionFocus} onBackToSession={backToSession} />
+            )}
+            {activeModule === 'writing' && (
+              <WritingModule focus={sessionFocus} onBackToSession={backToSession} />
+            )}
+            {activeModule === 'speaking' && (
+              <SpeakingModule focus={sessionFocus} onBackToSession={backToSession} />
+            )}
             {activeModule === 'session' && (
               <DailySession
                 onOpenModule={(m, payload) => {
