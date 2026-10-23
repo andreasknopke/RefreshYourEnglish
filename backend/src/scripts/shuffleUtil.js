@@ -42,14 +42,26 @@ export function seededShuffle(arr, seedStr) {
 
 /**
  * Mischt die Optionen eines mc-Experiments (o + a) deterministisch.
- * Mutiert und gibt das Exercise-Objekt zurueck.
+ * Entfernt vorher Duplikate (case-insensitiv) und stellt sicher, dass die
+ * richtige Antwort erhalten bleibt. Mutiert und gibt das Exercise-Objekt
+ * zurueck.
  */
 export function shuffleMcExercise(exercise, seedStr) {
   if (exercise.type !== 'mc' || !Array.isArray(exercise.o) || exercise.o.length < 2) {
     return exercise;
   }
   const correct = exercise.o[exercise.a];
-  const shuffled = seededShuffle(exercise.o, seedStr);
+  // Duplikate entfernen, richtige Antwort hat Vorrang (erste Position)
+  const seen = new Set([String(correct).trim().toLowerCase()]);
+  const unique = [correct];
+  for (const o of exercise.o) {
+    const key = String(o).trim().toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(o);
+  }
+  if (unique.length < 2) return exercise;
+  const shuffled = seededShuffle(unique, seedStr);
   exercise.a = shuffled.indexOf(correct);
   exercise.o = shuffled;
   return exercise;
@@ -62,8 +74,18 @@ export function shuffleMcExercise(exercise, seedStr) {
 export function shufflePlacementItem(item, seedStr) {
   if (!Array.isArray(item.options) || item.options.length < 2) return item;
   if (!item.options.includes(item.answer)) return item;
+  // Duplikate entfernen (richtige Antwort hat Vorrang)
+  const seen = new Set([String(item.answer).trim().toLowerCase()]);
+  const unique = [item.answer];
+  for (const o of item.options) {
+    const key = String(o).trim().toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(o);
+  }
+  if (unique.length < 2) return item;
   // Kanonische Ausgangsordnung -> idempotent (mehrfaches Ausfuehren ist stabil)
-  const canonical = item.options.slice().sort((a, b) =>
+  const canonical = unique.slice().sort((a, b) =>
     a === item.answer ? -1 : b === item.answer ? 1 : String(a).localeCompare(String(b))
   );
   item.options = seededShuffle(canonical, seedStr);

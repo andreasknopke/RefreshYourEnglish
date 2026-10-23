@@ -49,7 +49,7 @@ const points = [
     explanation: 'Adjektive richten sich in Genus und Numerus nach dem Nomen: -o (m.Sg), -a (f.Sg), -i (m.Pl), -e (f.Pl).',
     examples: ['il ragazzo alto', 'la ragazza alta', 'i ragazzi alti', 'le ragazze alte'],
     exercises: [
-      { type: 'mc', s: 'La macchina è ___ (veloce).', o: ['veloce', 'veloci', 'veloca', 'veloca'], a: 0, tag: 'agreement' },
+      { type: 'mc', s: 'La macchina è ___ (veloce).', o: ['veloce', 'veloci', 'veloca'], a: 0, tag: 'agreement' },
       { type: 'mc', s: 'I bambini sono ___ (alto).', o: ['alto', 'alta', 'alti', 'alte'], a: 2, tag: 'agreement' },
       { type: 'mc', s: 'Le case sono ___ (bello).', o: ['bello', 'bella', 'belli', 'belle'], a: 3, tag: 'agreement' },
       { type: 'mc', s: 'Il vino è ___ (buono).', o: ['buono', 'buona', 'buoni', 'buone'], a: 0, tag: 'agreement' },
@@ -67,7 +67,7 @@ const points = [
     exercises: [
       { type: 'mc', s: 'Io ___ Marco.', o: ['sono', 'sei', 'è', 'siamo'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Tu ___ alto.', o: ['sono', 'sei', 'è', 'siete'], a: 1, tag: 'tense' },
-      { type: 'mc', s: 'Lei ___ dottoressa.', o: ['sono', 'sei', 'è', 'sono'], a: 2, tag: 'tense' },
+      { type: 'mc', s: 'Lei ___ dottoressa.', o: ['sono', 'sei', 'è', 'siamo'], a: 2, tag: 'tense' },
       { type: 'mc', s: 'Noi ___ amici.', o: ['siamo', 'siete', 'sono', 'è'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Voi ___ pronti?', o: ['siamo', 'siete', 'sono', 'sei'], a: 1, tag: 'tense' },
       { type: 'fill', s: 'Loro ___ stanchi.', ans: ['sono'], tag: 'tense' },
@@ -98,7 +98,7 @@ const points = [
     examples: ['libro → libri', 'casa → case', 'amico → amici'],
     exercises: [
       { type: 'mc', s: 'Plural von „libro“:', o: ['libri', 'libre', 'libro', 'libera'], a: 0, tag: 'agreement' },
-      { type: 'mc', s: 'Plural von „casa“:', o: ['casi', 'case', 'case', 'caso'], a: 1, tag: 'agreement' },
+      { type: 'mc', s: 'Plural von „casa“:', o: ['casi', 'case', 'casa', 'caso'], a: 1, tag: 'agreement' },
       { type: 'mc', s: 'Plural von „amico“:', o: ['amici', 'amiche', 'amigo', 'amice'], a: 0, tag: 'agreement' },
       { type: 'mc', s: 'Plural von „amica“:', o: ['amici', 'amiche', 'amicas', 'amine'], a: 1, tag: 'agreement' },
       { type: 'fill', s: 'ragazzo → ___', ans: ['ragazzi'], tag: 'agreement' },
@@ -165,7 +165,7 @@ const points = [
       { type: 'mc', s: 'Il colore ___ cielo (di+il).', o: ['al', 'del', 'dal', 'nel'], a: 1, tag: 'preposition' },
       { type: 'mc', s: 'Vengo ___ mercato (da+il).', o: ['al', 'del', 'dal', 'nel'], a: 2, tag: 'preposition' },
       { type: 'mc', s: 'Il gatto è ___ giardino (in+il).', o: ['al', 'del', 'dal', 'nel'], a: 3, tag: 'preposition' },
-      { type: 'mc', s: 'Parlo ___ professoressa (a+la).', o: ['alla', 'alla', 'della', 'nella'], a: 0, tag: 'preposition' },
+      { type: 'mc', s: 'Parlo ___ professoressa (a+la).', o: ['alla', 'dalla', 'della', 'nella'], a: 0, tag: 'preposition' },
       { type: 'fill', s: 'Sono ___ stanza (in+la).', ans: ['nella'], tag: 'preposition' },
       { type: 'fill', s: 'Il libro ___ studente (di+lo).', ans: ['dello'], tag: 'preposition' },
       { type: 'mc', s: 'Torno ___ scuola (da+la).', o: ['alla', 'dalla', 'nella', 'sulla'], a: 1, tag: 'preposition' }
@@ -216,7 +216,7 @@ const points = [
       { type: 'fill', s: 'Noi ___ partiti (partire).', ans: ['siamo'], tag: 'agreement' },
       { type: 'fill', s: 'Anna è ___ (uscire, f).', ans: ['uscita'], tag: 'agreement' },
       { type: 'fill', s: 'I bambini ___ caduti (cadere).', ans: ['sono'], tag: 'agreement' },
-      { type: 'mc', s: 'Tu ___ venuta? (f)', o: ['hai', 'sei', 'hai', 'sei'], a: 1, tag: 'agreement' }
+      { type: 'mc', s: 'Tu ___ venuta? (f)', o: ['hai', 'sei', 'è', 'ha'], a: 1, tag: 'agreement' }
     ]
   },
   {
@@ -225,7 +225,7 @@ const points = [
     explanation: 'Für Gewohnheiten/Hintergrund in der Vergangenheit. -are: -avo,-avi,-ava,-avamo,-avate,-avano. -ere: -evo..., -ire: -ivo...',
     examples: ['Da bambino giocavo in giardino.', 'Leggevo ogni sera.'],
     exercises: [
-      { type: 'mc', s: 'Da piccolo ___ (giocare) molto.', o: ['giocavo', 'giocai', 'gioco', 'giocavo'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Da piccolo ___ (giocare) molto.', o: ['giocavo', 'giocai', 'gioco', 'giocava'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Noi ___ (mangiare) sempre la pasta.', o: ['mangiavamo', 'mangiammo', 'mangiamo', 'mangeremo'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Lei ___ (leggere) ogni sera.', o: ['leggeva', 'lesse', 'legge', 'leggerà'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Voi ___ (dormire) troppo.', o: ['dormivate', 'dormiste', 'dormite', 'dormirete'], a: 0, tag: 'tense' },
@@ -241,7 +241,7 @@ const points = [
     explanation: 'Passato prossimo = abgeschlossene Einzelhandlung; Imperfetto = Hintergrund/Gewohnheit. „Mentre leggevo (Imp), è arrivato (PP) Marco.“',
     examples: ['Ieri ho mangiato la pizza.', 'Mentre dormivo, ha telefonato.'],
     exercises: [
-      { type: 'mc', s: 'Ieri ___ (andare) al cinema.', o: ['sono andato', 'andavo', 'andavo', 'vado'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ieri ___ (andare) al cinema.', o: ['sono andato', 'andavo', 'andato', 'vado'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Da ragazzo ___ (correre) ogni giorno.', o: ['ho corso', 'correvo', 'corro', 'corrò'], a: 1, tag: 'tense' },
       { type: 'mc', s: 'Mentre ___ (leggere), ha chiamato.', o: ['ho letto', 'leggevo', 'leggo', 'leggerò'], a: 1, tag: 'tense' },
       { type: 'mc', s: 'Alle 8 ___ (svegliarsi).', o: ['mi sono svegliato', 'mi svegliavo', 'mi sveglio', 'mi sveglierò'], a: 0, tag: 'tense' },
@@ -294,7 +294,7 @@ const points = [
       { type: 'mc', s: '___ penso sempre (ci penso).', o: ['ci', 'ne', 'lo', 'mi'], a: 0, tag: 'lexis' },
       { type: 'mc', s: 'Vuoi del caffè? Sì, ___ voglio.', o: ['ci', 'ne', 'lo', 'mi'], a: 1, tag: 'lexis' },
       { type: 'fill', s: 'Quante mele hai? ___ ho tre.', ans: ['ne', 'Ne'], tag: 'lexis' },
-      { type: 'mc', s: 'Delle domande? ___ ho molte.', o: ['ci', 'ne', 'le', 'le'], a: 1, tag: 'lexis' },
+      { type: 'mc', s: 'Delle domande? ___ ho molte.', o: ['ci', 'ne', 'le', 'la'], a: 1, tag: 'lexis' },
       { type: 'mc', s: 'Non ___ capisco niente (es).', o: ['ne', 'ci', 'lo', 'la'], a: 0, tag: 'lexis' },
       { type: 'fill', s: 'A Roma? Ci ___ vado spesso (bleiben/stare).', ans: ['vado', 'resto', 'stò'], tag: 'lexis' }
     ]
@@ -323,7 +323,7 @@ const points = [
     exercises: [
       { type: 'mc', s: 'Penso che lui ___ (essere) onesto.', o: ['è', 'sia', 'sarà', 'fosse'], a: 1, tag: 'tense' },
       { type: 'mc', s: 'Spero che tu ___ (stare) bene.', o: ['stai', 'stia', 'starai', 'stavi'], a: 1, tag: 'tense' },
-      { type: 'mc', s: 'È importante che voi ___ (studiare).', o: ['studiate', 'studiate', 'studierete', 'studiavate'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'È importante che voi ___ (studiare).', o: ['studiate', 'studi', 'studierete', 'studiavate'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Credo che loro ___ (avere) ragione.', o: ['hanno', 'abbiano', 'avevano', 'avranno'], a: 1, tag: 'tense' },
       { type: 'fill', s: 'Voglio che Maria ___ (venire).', ans: ['venga'], tag: 'tense' },
       { type: 'fill', s: 'Benché ___ (fare) freddo, esco.', ans: ['faccia'], tag: 'tense' },
@@ -375,7 +375,7 @@ const points = [
       { type: 'mc', s: '___ abiti?', o: ['Dove', 'Quando', 'Perché', 'Chi'], a: 0, tag: 'word_order' },
       { type: 'mc', s: '___ studi italiano? (warum)', o: ['Perché', 'Quando', 'Come', 'Che'], a: 0, tag: 'word_order' },
       { type: 'mc', s: '___ è quella donna? (wer)', o: ['Chi', 'Che', 'Cosa', 'Quale'], a: 0, tag: 'word_order' },
-      { type: 'mc', s: '___ costa? (wie viel)', o: ['Quanto', 'Quanti', 'Quante', 'Quanto'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: '___ costa? (wie viel)', o: ['Quanto', 'Quanti', 'Quante', 'Quanta'], a: 0, tag: 'word_order' },
       { type: 'fill', s: 'Wann kommst du? = ___ vieni?', ans: ['Quando'], tag: 'word_order' },
       { type: 'fill', s: 'Was machst du? = Che ___ fai?', ans: ['cosa'], tag: 'word_order' },
       { type: 'mc', s: '___ sei venuto? (wie)', o: ['Come', 'Quanto', 'Chi', 'Dove'], a: 0, tag: 'word_order' }
@@ -533,7 +533,7 @@ const points = [
     explanation: '„che“ = Subjekt oder direktes Objekt (der/die/das). „cui“ = nach Präposition (mit dem, in dem, für den) oder Besitz (il cui).',
     examples: ['L’uomo che parla è mio padre.', 'La donna con cui esco.', 'Il libro di cui parlo.'],
     exercises: [
-      { type: 'mc', s: 'Il ragazzo ___ studia è bravo.', o: ['che', 'cui', 'chi', 'cui'], a: 0, tag: 'word_order' },
+      { type: 'mc', s: 'Il ragazzo ___ studia è bravo.', o: ['che', 'cui', 'chi', 'quale'], a: 0, tag: 'word_order' },
       { type: 'mc', s: 'La persona con ___ lavoro.', o: ['cui', 'che', 'chi', 'la'], a: 0, tag: 'word_order' },
       { type: 'mc', s: 'Il film ___ ho visto.', o: ['che', 'cui', 'chi', 'dove'], a: 0, tag: 'word_order' },
       { type: 'fill', s: 'der Mann, mit dem… = l’uomo ___ cui…', ans: ['con'], tag: 'word_order' },
@@ -663,12 +663,12 @@ const points = [
     explanation: 'Gleichzeitigkeit/Nachzeitigkeit, wenn der Hauptsatz in der Vergangenheit steht. Endungen: -ssi, -ssi, -sse, -ssimo, -ste, -ssero.',
     examples: ['Volevo che tu venissi.', 'Pensavo che fosse vero.'],
     exercises: [
-      { type: 'mc', s: 'Ich wollte, dass du kommst: Volevo che tu ___ (venire).', o: ['venissi', 'venga', 'venissi', 'venite'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ich wollte, dass du kommst: Volevo che tu ___ (venire).', o: ['venissi', 'venga', 'veniste', 'venite'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Ich dachte, es sei wahr: Pensavo che ___ (essere) vero.', o: ['fosse', 'sia', 'era', 'fu'], a: 0, tag: 'tense' },
       { type: 'fill', s: 'Er wollte, dass sie (Pl.) kämen: voleva che loro ___ (venire)', ans: ['venissero'], tag: 'tense' },
       { type: 'mc', s: 'Endung 1. Pers. Sg. Cong. imperfetto:', o: ['-ssi', '-re', '-vo', '-va'], a: 0, tag: 'tense' },
       { type: 'fill', s: 'Sie glaubte, ich wisse es: credeva che io lo ___ (sapere)', ans: ['sapessi'], tag: 'tense' },
-      { type: 'mc', s: 'Wir wollten, ihr bliebt: Volevamo che voi ___ (restare).', o: ['restaste', 'restiate', 'restavate', 'restaste'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Wir wollten, ihr bliebt: Volevamo che voi ___ (restare).', o: ['restaste', 'restiate', 'restavate', 'restassi'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Cong. imperfetto nutzt man, wenn der Hauptsatz', o: ['in der Vergangenheit steht', 'in der Gegenwart steht', 'im Futur steht', 'ein Befehl ist'], a: 0, tag: 'tense' },
       { type: 'fill', s: 'er wäre (cong. imperf. essere) = che lui ___', ans: ['fosse'], tag: 'tense' }
     ]
@@ -680,7 +680,7 @@ const points = [
     examples: ['Se piove, resto a casa.', 'Se avessi tempo, viaggerei.', 'Se avessi saputo, sarei venuto.'],
     exercises: [
       { type: 'mc', s: 'Wenn ich Zeit hätte, würde ich reisen: Se ___ tempo, viaggerei.', o: ['avessi', 'ho', 'avrò', 'avrei'], a: 0, tag: 'tense' },
-      { type: 'mc', s: 'Wenn es regnet, bleibe ich: Se piove, ___ a casa.', o: ['resto', 'resterei', 'restassi', 'resterei'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Wenn es regnet, bleibe ich: Se piove, ___ a casa.', o: ['resto', 'resterei', 'restassi', 'restavo'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Wenn ich es gewusst hätte, wäre ich gekommen: Se lo ___, sarei venuto.', o: ['avessi saputo', 'ho saputo', 'seppi', 'sapevo'], a: 0, tag: 'tense' },
       { type: 'fill', s: '2. Typ: se + ___ (Modus)', ans: ['congiuntivo'], tag: 'tense' },
       { type: 'mc', s: 'Wenn du kämest, wäre ich glücklich: Se tu ___, sarei felice.', o: ['venissi', 'vieni', 'verrai', 'verresti'], a: 0, tag: 'tense' },
@@ -839,7 +839,7 @@ const points = [
     explanation: 'Absicht/Ziel: affinché + Congiuntivo, perché + Congiuntivo (damit), „per“ + Infinitiv (um … zu). „purché“ = vorausgesetzt, dass.',
     examples: ['Studio affinché/ perché passi l’esame.', 'Parlo piano per non disturbare.'],
     exercises: [
-      { type: 'mc', s: 'Ich lerne, damit du bestehst: Studio affinché tu ___ (passare).', o: ['passi', 'passi', 'passerai', 'passavi'], a: 0, tag: 'tense' },
+      { type: 'mc', s: 'Ich lerne, damit du bestehst: Studio affinché tu ___ (passare).', o: ['passi', 'passa', 'passerai', 'passavi'], a: 0, tag: 'tense' },
       { type: 'mc', s: 'Ich spreche leise, um nicht zu stören: Parlo piano ___ non disturbare.', o: ['per', 'perché', 'affinché', 'da'], a: 0, tag: 'preposition' },
       { type: 'mc', s: '„affinché“ verlangt', o: ['Konjunktiv', 'Indikativ', 'Futur', 'Infinitiv'], a: 0, tag: 'tense' },
       { type: 'fill', s: 'damit (mit Konjunktiv) = ___', ans: ['affinché'], tag: 'tense' },

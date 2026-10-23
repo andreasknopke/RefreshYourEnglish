@@ -33,24 +33,24 @@
           "type": "mc",
           "s": "___ studente studia molto.",
           "o": [
-            "Il",
-            "I",
             "Lo",
+            "I",
+            "Il",
             "La"
           ],
-          "a": 2,
+          "a": 0,
           "tag": "gender"
         },
         {
           "type": "mc",
           "s": "___ casa è grande.",
           "o": [
-            "Il",
             "La",
             "Lo",
+            "Il",
             "Le"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "gender"
         },
         {
@@ -69,12 +69,12 @@
           "type": "mc",
           "s": "___ amiche sono simpatiche.",
           "o": [
-            "Le",
+            "Gli",
             "La",
-            "I",
-            "Gli"
+            "Le",
+            "I"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -83,10 +83,10 @@
           "o": [
             "I",
             "La",
-            "Lo",
-            "Il"
+            "Il",
+            "Lo"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "gender"
         },
         {
@@ -152,34 +152,34 @@
           "o": [
             "lo",
             "una",
-            "uno",
-            "un"
-          ],
-          "a": 2,
-          "tag": "gender"
-        },
-        {
-          "type": "mc",
-          "s": "È ___ amica.",
-          "o": [
             "un",
-            "uno",
-            "una",
-            "un'"
+            "uno"
           ],
           "a": 3,
           "tag": "gender"
         },
         {
           "type": "mc",
+          "s": "È ___ amica.",
+          "o": [
+            "un'",
+            "un",
+            "uno",
+            "una"
+          ],
+          "a": 0,
+          "tag": "gender"
+        },
+        {
+          "type": "mc",
           "s": "È ___ donna.",
           "o": [
+            "un",
             "uno",
-            "una",
             "un'",
-            "un"
+            "una"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "gender"
         },
         {
@@ -202,12 +202,12 @@
           "type": "mc",
           "s": "Cerco ___ università (f).",
           "o": [
-            "un",
             "un'",
             "una",
-            "uno"
+            "uno",
+            "un"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "gender"
         }
       ]
@@ -231,11 +231,10 @@
           "s": "La macchina è ___ (veloce).",
           "o": [
             "veloca",
-            "veloci",
             "veloce",
-            "veloca"
+            "veloci"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -243,23 +242,23 @@
           "s": "I bambini sono ___ (alto).",
           "o": [
             "alte",
+            "alto",
             "alta",
-            "alti",
-            "alto"
+            "alti"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Le case sono ___ (bello).",
           "o": [
-            "bello",
-            "belli",
+            "belle",
             "bella",
-            "belle"
+            "bello",
+            "belli"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "agreement"
         },
         {
@@ -340,24 +339,24 @@
           "type": "mc",
           "s": "Tu ___ alto.",
           "o": [
-            "sono",
             "sei",
+            "sono",
             "siete",
             "è"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Lei ___ dottoressa.",
           "o": [
-            "sei",
             "sono",
-            "è",
-            "sono"
+            "siamo",
+            "sei",
+            "è"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -376,12 +375,12 @@
           "type": "mc",
           "s": "Voi ___ pronti?",
           "o": [
-            "siamo",
             "siete",
+            "siamo",
             "sono",
             "sei"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -440,22 +439,22 @@
           "o": [
             "avete",
             "ha",
-            "hai",
-            "ho"
+            "ho",
+            "hai"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Lui ___ fame.",
           "o": [
-            "ho",
+            "ha",
             "hanno",
-            "hai",
-            "ha"
+            "ho",
+            "hai"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -475,11 +474,11 @@
           "s": "Voi ___ tempo?",
           "o": [
             "hai",
-            "abbiamo",
             "avete",
+            "abbiamo",
             "hanno"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -538,11 +537,11 @@
           "s": "Plural von „casa“:",
           "o": [
             "caso",
-            "casi",
             "case",
-            "case"
+            "casi",
+            "casa"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -562,11 +561,11 @@
           "s": "Plural von „amica“:",
           "o": [
             "amine",
-            "amiche",
             "amici",
+            "amiche",
             "amicas"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -597,12 +596,12 @@
           "type": "mc",
           "s": "Le ___ (ragazza) ridono.",
           "o": [
-            "ragazza",
+            "ragazze",
             "ragazzi",
             "ragazzo",
-            "ragazze"
+            "ragazza"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "agreement"
         }
       ]
@@ -636,23 +635,23 @@
           "s": "Tu ___ (mangiare) la pizza.",
           "o": [
             "mangia",
-            "mangio",
+            "mangi",
             "mangiate",
-            "mangi"
+            "mangio"
           ],
-          "a": 3,
+          "a": 1,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Lui ___ (abitare) a Roma.",
           "o": [
-            "abito",
-            "abitano",
             "abita",
-            "abiti"
+            "abitano",
+            "abiti",
+            "abito"
           ],
-          "a": 2,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -672,11 +671,11 @@
           "s": "Voi ___ (parlare) troppo.",
           "o": [
             "parli",
-            "parlate",
             "cantiamo",
+            "parlate",
             "parlano"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -733,36 +732,36 @@
           "type": "mc",
           "s": "Tu ___ (scrivere) una lettera.",
           "o": [
-            "scrivo",
             "scrivi",
+            "scrivo",
             "scrive",
             "scrivete"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Lei ___ (leggere) il giornale.",
           "o": [
-            "leggi",
-            "leggono",
             "leggo",
-            "legge"
+            "leggono",
+            "legge",
+            "leggi"
           ],
-          "a": 3,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Io ___ (capire) tutto.",
           "o": [
-            "capisce",
             "capi",
             "capo",
-            "capisco"
+            "capisco",
+            "capisce"
           ],
-          "a": 3,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -832,21 +831,9 @@
           "type": "mc",
           "s": "Il libro ___ Anna.",
           "o": [
-            "a",
+            "di",
             "da",
             "per",
-            "di"
-          ],
-          "a": 3,
-          "tag": "preposition"
-        },
-        {
-          "type": "mc",
-          "s": "Vengo ___ Milano.",
-          "o": [
-            "da",
-            "in",
-            "di",
             "a"
           ],
           "a": 0,
@@ -854,14 +841,26 @@
         },
         {
           "type": "mc",
+          "s": "Vengo ___ Milano.",
+          "o": [
+            "di",
+            "in",
+            "a",
+            "da"
+          ],
+          "a": 3,
+          "tag": "preposition"
+        },
+        {
+          "type": "mc",
           "s": "Abito ___ Italia.",
           "o": [
-            "da",
-            "in",
             "di",
-            "a"
+            "da",
+            "a",
+            "in"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "preposition"
         },
         {
@@ -869,11 +868,11 @@
           "s": "Parlo ___ Marco.",
           "o": [
             "di",
-            "con",
             "a",
+            "con",
             "su"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -937,11 +936,11 @@
           "s": "Il colore ___ cielo (di+il).",
           "o": [
             "nel",
-            "del",
             "al",
+            "del",
             "dal"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -949,23 +948,23 @@
           "s": "Vengo ___ mercato (da+il).",
           "o": [
             "nel",
+            "dal",
             "al",
-            "del",
-            "dal"
+            "del"
           ],
-          "a": 3,
+          "a": 1,
           "tag": "preposition"
         },
         {
           "type": "mc",
           "s": "Il gatto è ___ giardino (in+il).",
           "o": [
-            "nel",
-            "del",
+            "dal",
             "al",
-            "dal"
+            "nel",
+            "del"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "preposition"
         },
         {
@@ -974,10 +973,10 @@
           "o": [
             "nella",
             "della",
-            "alla",
+            "dalla",
             "alla"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "preposition"
         },
         {
@@ -1001,11 +1000,11 @@
           "s": "Torno ___ scuola (da+la).",
           "o": [
             "nella",
-            "dalla",
+            "alla",
             "sulla",
-            "alla"
+            "dalla"
           ],
-          "a": 1,
+          "a": 3,
           "tag": "preposition"
         }
       ]
@@ -1028,11 +1027,11 @@
           "s": "Questa è ___ casa (meine).",
           "o": [
             "miei",
-            "mia",
             "mio",
+            "mia",
             "mie"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -1051,24 +1050,24 @@
           "type": "mc",
           "s": "Sono ___ amici (unsere).",
           "o": [
-            "nostra",
             "nostro",
             "nostri",
+            "nostra",
             "nostre"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "È ___ sorella (seine).",
           "o": [
-            "suo",
+            "sua",
             "suoi",
             "sue",
-            "sua"
+            "suo"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "agreement"
         },
         {
@@ -1091,12 +1090,12 @@
           "type": "mc",
           "s": "I ___ libri (meine).",
           "o": [
+            "mia",
             "miei",
             "mio",
-            "mia",
             "mie"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         },
         {
@@ -1224,12 +1223,12 @@
           "type": "mc",
           "s": "Maria ___ arrivata (arrivare).",
           "o": [
-            "ha",
+            "è",
             "hai",
             "sono",
-            "è"
+            "ha"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "agreement"
         },
         {
@@ -1237,35 +1236,35 @@
           "s": "Io ___ andato a Roma (m).",
           "o": [
             "hai",
-            "sono",
             "ho",
+            "sono",
             "sei"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Le ragazze ___ uscite.",
           "o": [
-            "hanno",
+            "sono",
             "avete",
             "è",
-            "sono"
+            "hanno"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "agreement"
         },
         {
           "type": "mc",
           "s": "Lui ___ nato a Napoli.",
           "o": [
-            "ha",
             "è",
+            "ha",
             "sono",
             "hai"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "agreement"
         },
         {
@@ -1296,12 +1295,12 @@
           "type": "mc",
           "s": "Tu ___ venuta? (f)",
           "o": [
+            "ha",
             "sei",
-            "hai",
-            "hai",
-            "sei"
+            "è",
+            "hai"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "agreement"
         }
       ]
@@ -1325,7 +1324,7 @@
             "giocavo",
             "giocai",
             "gioco",
-            "giocavo"
+            "giocava"
           ],
           "a": 0,
           "tag": "tense"
@@ -1420,7 +1419,7 @@
           "type": "mc",
           "s": "Ieri ___ (andare) al cinema.",
           "o": [
-            "andavo",
+            "andato",
             "vado",
             "sono andato",
             "andavo"
@@ -1434,10 +1433,10 @@
           "o": [
             "corrò",
             "corro",
-            "ho corso",
-            "correvo"
+            "correvo",
+            "ho corso"
           ],
-          "a": 3,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -1446,10 +1445,10 @@
           "o": [
             "leggo",
             "leggerò",
-            "leggevo",
-            "ho letto"
+            "ho letto",
+            "leggevo"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "tense"
         },
         {
@@ -1554,12 +1553,12 @@
           "type": "mc",
           "s": "Il libro? ___ ho letto (l’).",
           "o": [
-            "lo",
-            "li",
             "l’",
+            "li",
+            "lo",
             "la"
           ],
-          "a": 2,
+          "a": 0,
           "tag": "word_order"
         },
         {
@@ -1630,10 +1629,10 @@
           "o": [
             "La",
             "Li",
-            "Le",
-            "Gli"
+            "Gli",
+            "Le"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -1727,11 +1726,11 @@
           "s": "Quante mele hai? ___ ho tre.",
           "o": [
             "li",
-            "ne",
             "ci",
+            "ne",
             "le"
           ],
-          "a": 1,
+          "a": 2,
           "tag": "lexis"
         },
         {
@@ -1751,11 +1750,11 @@
           "s": "Vuoi del caffè? Sì, ___ voglio.",
           "o": [
             "lo",
-            "ci",
             "ne",
+            "ci",
             "mi"
           ],
-          "a": 2,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -1771,12 +1770,12 @@
           "type": "mc",
           "s": "Delle domande? ___ ho molte.",
           "o": [
-            "ne",
             "ci",
-            "le",
+            "ne",
+            "la",
             "le"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "lexis"
         },
         {
@@ -1833,34 +1832,34 @@
           "o": [
             "Potrai",
             "Potevi",
-            "Puoi",
-            "Potresti"
+            "Potresti",
+            "Puoi"
           ],
-          "a": 3,
+          "a": 2,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "___ la bistecca (volere).",
           "o": [
-            "Voglio",
+            "Vorrei",
             "Volevo",
             "Vorrò",
-            "Vorrei"
+            "Voglio"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Noi ___ venire (potere).",
           "o": [
-            "possiamo",
             "potremmo",
+            "possiamo",
             "potremo",
             "potevamo"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -1883,12 +1882,12 @@
           "type": "mc",
           "s": "___ sapere la risposta (sapere).",
           "o": [
-            "So",
             "Saprei",
+            "So",
             "Saprò",
             "Sapevo"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -1917,24 +1916,24 @@
           "type": "mc",
           "s": "Penso che lui ___ (essere) onesto.",
           "o": [
-            "è",
             "sia",
+            "è",
             "sarà",
             "fosse"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "tense"
         },
         {
           "type": "mc",
           "s": "Spero che tu ___ (stare) bene.",
           "o": [
-            "stia",
             "stai",
+            "stia",
             "starai",
             "stavi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "tense"
         },
         {
@@ -1943,7 +1942,7 @@
           "o": [
             "studiate",
             "studierete",
-            "studiate",
+            "studi",
             "studiavate"
           ],
           "a": 0,
@@ -1953,12 +1952,12 @@
           "type": "mc",
           "s": "Credo che loro ___ (avere) ragione.",
           "o": [
-            "hanno",
+            "abbiano",
             "avranno",
             "avevano",
-            "abbiano"
+            "hanno"
           ],
-          "a": 3,
+          "a": 0,
           "tag": "tense"
         },
         {
@@ -1981,12 +1980,12 @@
           "type": "mc",
           "s": "Penso che ___ (sapere) la verità.",
           "o": [
-            "sappia",
-            "sapeva",
             "sa",
+            "sapeva",
+            "sappia",
             "saprà"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "tense"
         },
         {
@@ -2028,24 +2027,24 @@
           "type": "mc",
           "s": "___ sei gentile. (du)",
           "o": [
-            "Tu",
             "Io",
+            "Tu",
             "Lei",
             "Voi"
           ],
-          "a": 0,
+          "a": 1,
           "tag": "word_order"
         },
         {
           "type": "mc",
           "s": "___ è Maria. (sie)",
           "o": [
-            "Lui",
             "Lei",
+            "Lui",
             "Loro",
             "Noi"
           ],
-          "a": 1,
+          "a": 0,
           "tag": "word_order"
         },
         {
@@ -2064,12 +2063,12 @@
           "type": "mc",
           "s": "___ siete stanchi? (ihr)",
           "o": [
-            "Voi",
-            "Io",
             "Noi",
+            "Io",
+            "Voi",
             "Loro"
           ],
-          "a": 0,
+          "a": 2,
           "tag": "word_order"
         },
         {
@@ -2136,11 +2135,11 @@
           "s": "Lui ___ mangia carne.",
           "o": [
             "ne",
-            "no",
+            "non",
             "niente",
-            "non"
+            "no"
           ],
-          "a": 3,
+          "a": 1,
           "tag": "spelling"
         },
         {
@@ -2277,10 +2276,10 @@
           "o": [
             "Quante",
             "Quanti",
-            "Quanto",
+            "Quanta",
             "Quanto"
           ],
-          "a": 2,
+          "a": 3,
           "tag": "word_order"
         },
         {
@@ -2446,36 +2445,36 @@
           "type": "mc",
           "s": "___ casa è bella. (f.Sg)",
           "o": [
-            "Questa",
             "Questo",
+            "Questa",
             "Questi",
             "Queste"
-          ],
-          "a": 0,
-          "tag": "agreement"
-        },
-        {
-          "type": "mc",
-          "s": "___ libri sono nuovi. (m.Pl)",
-          "o": [
-            "Questo",
-            "Questi",
-            "Queste",
-            "Questa"
           ],
           "a": 1,
           "tag": "agreement"
         },
         {
           "type": "mc",
-          "s": "___ amiche sono simpatiche. (f.Pl)",
+          "s": "___ libri sono nuovi. (m.Pl)",
           "o": [
             "Questi",
             "Questa",
-            "Questo",
-            "Queste"
+            "Queste",
+            "Questo"
           ],
-          "a": 3,
+          "a": 0,
+          "tag": "agreement"
+        },
+        {
+          "type": "mc",
+          "s": "___ amiche sono simpatiche. (f.Pl)",
+          "o": [
+            "Questa",
+            "Questo",
+            "Queste",
+            "Questi"
+          ],
+          "a": 2,
           "tag": "agreement"
         },
         {
@@ -3239,7 +3238,7 @@
             "chi",
             "che",
             "cui",
-            "cui"
+            "quale"
           ],
           "a": 1,
           "tag": "word_order"
@@ -4035,7 +4034,7 @@
           "o": [
             "venite",
             "venissi",
-            "venissi",
+            "veniste",
             "venga"
           ],
           "a": 1,
@@ -4087,7 +4086,7 @@
           "o": [
             "restaste",
             "restiate",
-            "restaste",
+            "restassi",
             "restavate"
           ],
           "a": 0,
@@ -4146,7 +4145,7 @@
           "o": [
             "resto",
             "restassi",
-            "resterei",
+            "restavo",
             "resterei"
           ],
           "a": 0,
@@ -5127,7 +5126,7 @@
           "o": [
             "passi",
             "passerai",
-            "passi",
+            "passa",
             "passavi"
           ],
           "a": 0,
