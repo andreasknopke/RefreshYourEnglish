@@ -208,3 +208,36 @@ function safeParse(s) {
 }
 
 export { thetaToCefr };
+
+/**
+ * Placement-Status einer Sprache: wurde der Test je vollständig abgeschlossen?
+ * Liefert zusätzlich die letzte (ggf. abgebrochene) Session, damit der Client
+ * zum Wiederholen einladen kann.
+ * @returns {{done: boolean, lastSession: object|null}}
+ */
+export function getPlacementStatus(userLanguageId) {
+  const finished = db
+    .prepare(
+      'SELECT id, finished_at, result FROM placement_sessions WHERE user_language_id = ? AND finished_at IS NOT NULL ORDER BY finished_at DESC LIMIT 1'
+    )
+    .get(userLanguageId);
+  if (finished) {
+    return {
+      done: true,
+      lastSession: {
+        id: finished.id,
+        finishedAt: finished.finished_at,
+        result: safeParse(finished.result)
+      }
+    };
+  }
+  const last = db
+    .prepare(
+      'SELECT id, started_at FROM placement_sessions WHERE user_language_id = ? ORDER BY started_at DESC LIMIT 1'
+    )
+    .get(userLanguageId);
+  return {
+    done: false,
+    lastSession: last ? { id: last.id, startedAt: last.started_at, result: null } : null
+  };
+}

@@ -7,6 +7,7 @@ import ResetPassword from './components/ResetPassword';
 import LogViewer from './components/LogViewer';
 import apiService from './services/apiService';
 import logService from './services/logService';
+import v2Client from './core/api/v2Client';
 import { useLanguage } from './core/language/LanguageContext';
 import OnboardingWizard from './features/onboarding/OnboardingWizard';
 import PlacementTest from './features/placement/PlacementTest';
@@ -34,6 +35,8 @@ function App() {
     switchLanguage
   } = useLanguage();
   const [flow, setFlow] = useState(null); // 'onboarding' | 'placement' | null
+  // Placement-Status der aktiven Sprache: { done, lastSession } | null
+  const [placementStatus, setPlacementStatus] = useState(null);
 
   useEffect(() => {
     // Log App Start
@@ -102,6 +105,25 @@ function App() {
       cancelled = true;
     };
   }, [user, refreshUserLanguages]);
+
+  // Placement-Status der aktiven Sprache laden (für Erinnerung/Banner).
+  const activeLangId = activeUserLanguage?.id;
+  useEffect(() => {
+    setPlacementStatus(null);
+    if (!user || !activeLangId) return;
+    let cancelled = false;
+    v2Client
+      .getPlacementStatus(activeLangId)
+      .then((s) => {
+        if (!cancelled) setPlacementStatus(s);
+      })
+      .catch(() => {
+        if (!cancelled) setPlacementStatus(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user, activeLangId]);
 
   const checkBackendStatus = async () => {
     try {
@@ -267,7 +289,11 @@ function App() {
             <PlacementTest
               userLanguage={activeUserLanguage}
               lang={activeUserLanguage.targetLang}
-              onComplete={() => setFlow(null)}
+              onComplete={() => {
+                setFlow(null);
+                // Banner-Status aktualisieren (Test jetzt abgeschlossen)
+                setPlacementStatus((prev) => prev && { ...prev, done: true });
+              }}
               onSkip={() => setFlow(null)}
             />
           </div>
@@ -278,6 +304,27 @@ function App() {
         <>
         {!activeModule ? (
           <div className="max-w-7xl mx-auto">
+            {/* Erinnerung: Einstufungstest nicht abgeschlossen */}
+            {user && activeUserLanguage && placementStatus && !placementStatus.done && (
+              <div className="mb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 rounded-2xl border-2 border-amber-300 bg-amber-50 px-5 py-4">
+                <div>
+                  <p className="font-bold text-amber-800">
+                    📋 Einstufungstest nicht abgeschlossen
+                  </p>
+                  <p className="text-sm text-amber-700">
+                    Ohne Placement starten wir mit deinem angegebenen Niveau. Der
+                    adaptive Test passt die täglichen Sessions genauer an dich an.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setFlow('placement')}
+                  className="shrink-0 rounded-xl bg-amber-500 px-5 py-2.5 font-semibold text-white hover:bg-amber-600 transition-colors"
+                >
+                  Jetzt nachholen →
+                </button>
+              </div>
+            )}
+
             {/* Hauptmodule Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
             {/* Modul: Tages-Sitzung (Session Composer, Mehrsprachige Engine) */}

@@ -11,7 +11,7 @@
 import express from 'express';
 import { authenticateToken } from '../../middleware/auth.js';
 import { getUserLanguage } from '../../services/userLanguageService.js';
-import { startPlacement, answerPlacement } from '../../services/placementService.js';
+import { startPlacement, answerPlacement, getPlacementStatus } from '../../services/placementService.js';
 
 const router = express.Router();
 
@@ -31,6 +31,18 @@ router.post('/start', (req, res) => {
     console.error('❌ placement start:', err);
     res.status(500).json({ error: err.message });
   }
+});
+
+/**
+ * GET /api/v2/placement/status/:userLanguageId
+ * Wurde der Einstufungstest für diese Sprache abgeschlossen?
+ */
+router.get('/status/:userLanguageId', (req, res) => {
+  const ul = getUserLanguage(Number(req.params.userLanguageId), req.user.userId);
+  if (!ul) {
+    return res.status(404).json({ error: 'Sprache nicht gefunden' });
+  }
+  res.json(getPlacementStatus(ul.id));
 });
 
 router.post('/answer', (req, res) => {

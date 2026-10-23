@@ -67,6 +67,8 @@ export const v2Client = {
       method: 'POST',
       body: JSON.stringify({ sessionId, userLanguageId, itemId, response })
     }),
+  getPlacementStatus: (userLanguageId) =>
+    request(`/v2/placement/status/${userLanguageId}`),
 
   // Vocab / Review (SRS)
   getReviewQueue: (userLanguageId, limit = 20) =>

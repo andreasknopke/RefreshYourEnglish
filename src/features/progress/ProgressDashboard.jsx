@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import v2Client from '../../core/api/v2Client';
 import { useLanguage } from '../../core/language/LanguageContext';
+import PlacementTest from '../placement/PlacementTest';
 
 const BAND_STYLE = {
   stark: { bar: 'bg-emerald-500', text: 'text-emerald-700', label: 'stark' },
@@ -21,6 +22,7 @@ function ProgressDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [exporting, setExporting] = useState(false);
+  const [retaking, setRetaking] = useState(false);
 
   const load = useCallback(async () => {
     if (!activeUserLanguage) return;
@@ -86,14 +88,36 @@ function ProgressDashboard() {
             {data.goalType ? ` · Ziel: ${data.goalType}` : ''}
           </p>
         </div>
-        <button
-          onClick={doExport}
-          disabled={exporting}
-          className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
-        >
-          {exporting ? 'Exportiere …' : '⬇️ Export (JSON)'}
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setRetaking(true)}
+            className="rounded-lg border border-indigo-300 bg-white px-4 py-2 text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-50"
+          >
+            📋 Test wiederholen
+          </button>
+          <button
+            onClick={doExport}
+            disabled={exporting}
+            className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 disabled:opacity-50"
+          >
+            {exporting ? 'Exportiere …' : '⬇️ Export (JSON)'}
+          </button>
+        </div>
       </div>
+
+      {retaking && (
+        <div className="rounded-xl border border-indigo-200 bg-white p-5 shadow-sm">
+          <PlacementTest
+            userLanguage={activeUserLanguage}
+            lang={activeUserLanguage.targetLang}
+            onComplete={() => {
+              setRetaking(false);
+              load();
+            }}
+            onSkip={() => setRetaking(false)}
+          />
+        </div>
+      )}
 
       {/* Gesamtfortschritt */}
       <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
