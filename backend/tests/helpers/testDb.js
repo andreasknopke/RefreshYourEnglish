@@ -50,3 +50,36 @@ export function seedUserAndLanguage({ targetLang = 'it', nativeLang = 'de', star
   db.close();
   return { userId, userLanguageId: l.lastInsertRowid };
 }
+
+/**
+ * Simuliert echte Aktivität für Sitzungs-Items, damit das Gating sie als
+ * erledigt akzeptiert (Test-Helfer, schreibt direkt in attempts/progress).
+ */
+export function seedActivityForItems(userLanguageId, items) {
+  const db = new Database(tmpFile);
+  for (const it of items || []) {
+    if (it.kind === 'reading' || it.kind === 'listening') {
+      db.prepare(
+        `INSERT INTO user_text_progress (user_language_id, text_id, completed_at)
+         VALUES (?, ?, datetime('now'))
+         ON CONFLICT(user_language_id, text_id) DO UPDATE SET completed_at = datetime('now')`
+      ).run(userLanguageId, it.id);
+    } else if (it.kind === 'grammar') {
+      db.prepare(
+        `INSERT INTO attempts (user_language_id, exercise_id, response, score)
+         VALUES (?, ?, ?, 1)`
+      ).run(userLanguageId, `${it.id}#0`, JSON.stringify({ kind: 'grammar', pointId: it.id, chosen: 0 }));
+    } else if (it.kind === 'writing') {
+      db.prepare(
+        `INSERT INTO attempts (user_language_id, exercise_id, response, score)
+         VALUES (?, ?, ?, 1)`
+      ).run(userLanguageId, `writing:${it.id}`, JSON.stringify({ kind: 'writing', prompt: it.prompt, text: 'test' }));
+    } else if (it.kind === 'speaking') {
+      db.prepare(
+        `INSERT INTO attempts (user_language_id, exercise_id, response, score)
+         VALUES (?, ?, ?, 1)`
+      ).run(userLanguageId, `dialog:${it.id}`, JSON.stringify({ kind: 'dialog', scenarioId: it.id, turns: 1 }));
+    }
+  }
+  db.close();
+}

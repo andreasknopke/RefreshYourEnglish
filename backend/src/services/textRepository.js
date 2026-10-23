@@ -134,3 +134,59 @@ export function splitIntoSegments(body) {
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
 }
+
+// ---------------------------------------------------------------------------
+// Lesequiz + Übersetzungen (Phase 9)
+// ---------------------------------------------------------------------------
+
+export function getQuiz(textId) {
+  const row = db.prepare('SELECT * FROM text_quizzes WHERE text_id = ?').get(textId);
+  if (!row) return null;
+  try {
+    return JSON.parse(row.questions);
+  } catch {
+    return null;
+  }
+}
+
+export function upsertQuiz(textId, questions) {
+  db.prepare(
+    `INSERT INTO text_quizzes (text_id, questions) VALUES (?, ?)
+     ON CONFLICT(text_id) DO UPDATE SET questions = excluded.questions, created_at = CURRENT_TIMESTAMP`
+  ).run(textId, JSON.stringify(questions));
+  return questions;
+}
+
+export function getUserQuizResult(userLanguageId, textId) {
+  const row = db
+    .prepare('SELECT * FROM user_text_quizzes WHERE user_language_id = ? AND text_id = ?')
+    .get(userLanguageId, textId);
+  if (!row) return null;
+  return { score: row.score, passed: !!row.passed };
+}
+
+export function upsertUserQuizResult(userLanguageId, textId, { score, passed, answers }) {
+  db.prepare(
+    `INSERT INTO user_text_quizzes (user_language_id, text_id, score, passed, answers)
+     VALUES (?, ?, ?, ?, ?)
+     ON CONFLICT(user_language_id, text_id) DO UPDATE SET
+       score = excluded.score, passed = excluded.passed,
+       answers = excluded.answers, created_at = CURRENT_TIMESTAMP`
+  ).run(userLanguageId, textId, score, passed ? 1 : 0, JSON.stringify(answers || []));
+}
+
+export function getTranslation(textId, nativeLang) {
+  const row = db
+    .prepare('SELECT body FROM text_translations WHERE text_id = ? AND native_lang = ?')
+    .get(textId, nativeLang);
+  return row ? row.body : null;
+}
+
+export function upsertTranslation(textId, nativeLang, body) {
+  db.prepare(
+    `INSERT INTO text_translations (text_id, native_lang, body) VALUES (?, ?, ?)
+     ON CONFLICT(text_id, native_lang) DO UPDATE SET
+       body = excluded.body, created_at = CURRENT_TIMESTAMP`
+  ).run(textId, nativeLang, body);
+  return body;
+}

@@ -11,7 +11,11 @@ import { authenticateToken } from '../../middleware/auth.js';
 import {
   listTextsWithCoverage,
   getTextForReading,
-  mineWord
+  mineWord,
+  getQuizForText,
+  submitQuizForText,
+  getTranslationForText,
+  markTextRead
 } from '../../services/readerService.js';
 
 const router = express.Router();
@@ -57,4 +61,62 @@ router.post('/:id/texts/:textId/mine', (req, res) => {
   res.status(result.created ? 201 : 200).json(result);
 });
 
+/**
+ * GET /api/v2/me/languages/:id/texts/:textId/quiz
+ * Verständnis-Quiz (LLM-generiert, gecacht; Offline-Fallback: Vokabelfragen)
+ */
+router.get('/:id/texts/:textId/quiz', async (req, res, next) => {
+  try {
+    const result = await getQuizForText(
+      Number(req.params.textId),
+      Number(req.params.id),
+      req.user.userId
+    );
+    if (result.error) return res.status(404).json({ error: result.error });
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST /api/v2/me/languages/:id/texts/:textId/quiz
+ * Body: { answers: [<optionstring je Frage>] }
+ */
+router.post('/:id/texts/:textId/quiz', (req, res) => {
+  const result = submitQuizForText(Number(req.params.textId), Number(req.params.id), req.user.userId, {
+    answers: req.body?.answers
+  });
+  if (result.error) return res.status(400).json({ error: result.error });
+  res.json(result);
+});
+
+/**
+ * GET /api/v2/me/languages/:id/texts/:textId/translation
+ * Übersetzung des Textes in die Muttersprache (LLM, gecacht)
+ */
+router.get('/:id/texts/:textId/translation', async (req, res, next) => {
+  try {
+    const result = await getTranslationForText(
+      Number(req.params.textId),
+      Number(req.params.id),
+      req.user.userId
+    );
+    if (result.error) return res.status(404).json({ error: result.error });
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
 export default router;
+
+/**
+ * POST /api/v2/me/languages/:id/texts/:textId/read
+ * Markiert den Text als gelesen (Abschluss des Lesens).
+ */
+router.post('/:id/texts/:textId/read', (req, res) => {
+  const result = markTextRead(Number(req.params.textId), Number(req.params.id), req.user.userId);
+  if (result.error) return res.status(404).json({ error: result.error });
+  res.json(result);
+});

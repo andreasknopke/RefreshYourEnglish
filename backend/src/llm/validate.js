@@ -85,6 +85,36 @@ export const contracts = {
     };
   },
 
+  generate_comprehension_quiz(parsed) {
+    const qs = Array.isArray(parsed?.questions) ? parsed.questions : [];
+    if (qs.length === 0) {
+      return { ok: false, error: 'generate_comprehension_quiz: questions fehlen' };
+    }
+    const clean = [];
+    for (const q of qs) {
+      const text = asString(q?.q);
+      const options = asStringArray(q?.options).filter(Boolean);
+      const answer = asString(q?.answer);
+      if (!text || options.length < 2 || !answer) continue;
+      if (!options.includes(answer)) {
+        return { ok: false, error: `generate_comprehension_quiz: answer nicht in options ("${text.slice(0, 40)}")` };
+      }
+      clean.push({ q: text, options, answer });
+    }
+    if (clean.length === 0) {
+      return { ok: false, error: 'generate_comprehension_quiz: keine gültigen Fragen' };
+    }
+    return { ok: true, data: { questions: clean } };
+  },
+
+  translate_text(parsed) {
+    const translation = asString(parsed?.translation);
+    if (!translation) {
+      return { ok: false, error: 'translate_text: translation fehlt' };
+    }
+    return { ok: true, data: { translation } };
+  },
+
   evaluate_writing(parsed) {
     if (!parsed || typeof parsed !== 'object') {
       return { ok: false, error: 'evaluate_writing: keine Objendantwort' };

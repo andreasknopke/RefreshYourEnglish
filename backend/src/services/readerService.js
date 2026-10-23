@@ -16,10 +16,17 @@ import {
   listTexts,
   getKnownLemmas,
   upsertTextProgress,
-  getTextProgress
+  getTextProgress,
+  getQuiz,
+  upsertQuiz,
+  getUserQuizResult,
+  upsertUserQuizResult,
+  getTranslation,
+  upsertTranslation
 } from './textRepository.js';
 import { getUserLanguage } from './userLanguageService.js';
 import { addVocabCard } from './reviewService.js';
+import { runLLMTask } from '../llm/taskRunner.js';
 
 const STOPWORDS = new Set([
   // italienische Funktionswörter, die nicht als Vokabel gelernt werden
@@ -166,6 +173,18 @@ export function getTextForReading(textId, userLanguageId, userId) {
 }
 
 /**
+ * Markiert einen Text als gelesen (für das Sitzungs-Gating).
+ */
+export function markTextRead(textId, userLanguageId, userId) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { error: 'Sprache nicht gefunden' };
+  const text = getTextById(textId);
+  if (!text || text.lang !== ul.targetLang) return { error: 'Text nicht gefunden' };
+  upsertTextProgress(userLanguageId, textId, { completed: true });
+  return { ok: true };
+}
+
+/**
  * Satz-Mining: markiert ein Wort aus dem Reader als zu lernende Karte.
  * Übersetzung kann später per LLM ergänzt werden; hier optional übergeben.
  */
@@ -178,4 +197,170 @@ export function mineWord(userLanguageId, userId, { lemma, translation, example, 
     example: example || null,
     source
   });
+}
+
+// ---------------------------------------------------------------------------
+// Lesequiz + Übersetzung (Phase 9)
+// ---------------------------------------------------------------------------
+
+const PASS_THRESHOLD = 0.6; // ab 60 % richtiger Antworten gilt das Quiz als bestanden
+
+/**
+ * Liefert das Verständnis-Quiz zu einem Text. Existiert noch keines, wird es
+ * per LLM generiert und gecacht. Ohne LLM (oder Fehler) kommt ein Fallback:
+ * Vokabel-Fragen aus dem Text selbst (Sinn erschließen, ohne LLM).
+ */
+export async function getQuizForText(textId, userLanguageId, userId) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { error: 'Sprache nicht gefunden' };
+  const text = getTextById(textId);
+  if (!text || text.lang !== ul.targetLang) return { error: 'Text nicht gefunden' };
+
+  let questions = getQuiz(textId);
+  let source = 'cache';
+  if (!questions) {
+    const level = ul.startCefr || ul.targetCefr || 'A2';
+    const result = await runLLMTask(
+      'generate_comprehension_quiz',
+      'v1',
+      {
+        targetLang: ul.targetLang,
+        nativeLang: ul.nativeLang,
+        level,
+        title: text.title,
+        body: text.body,
+        count: 3
+      },
+      { fallback: buildFallbackQuiz(text) }
+    );
+    if (!result.ok) return { error: result.error || 'Quiz-Generierung fehlgeschlagen' };
+    questions = result.data.questions;
+    source = result.source;
+    if (questions.length > 0) upsertQuiz(textId, questions);
+  }
+
+  // Antworttexte nie an den Client liefern (nur Optionen + Frage)
+  const publicQuestions = questions.map((q) => ({ q: q.q, options: q.options }));
+  const attempt = getUserQuizResult(userLanguageId, textId);
+  return {
+    questions: publicQuestions,
+    source,
+    attempt // { score, passed } | null
+  };
+}
+
+/**
+ * Wertet ein eingereichtes Quiz aus (Server-seitig, Antworttexte bleiben
+ * beim Server). Bestehen ab PASS_THRESHOLD.
+ */
+export function submitQuizForText(textId, userLanguageId, userId, { answers }) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { error: 'Sprache nicht gefunden' };
+  const text = getTextById(textId);
+  if (!text || text.lang !== ul.targetLang) return { error: 'Text nicht gefunden' };
+
+  const questions = getQuiz(textId);
+  if (!questions) return { error: 'Quiz nicht gefunden' };
+  if (!Array.isArray(answers) || answers.length !== questions.length) {
+    return { error: 'Antworten passen nicht zur Anzahl der Fragen' };
+  }
+
+  const detailed = questions.map((q, i) => {
+    const chosen = String(answers[i] ?? '');
+    return { q: q.q, chosen, correct: chosen === q.answer, answer: q.answer };
+  });
+  const score = detailed.filter((d) => d.correct).length / questions.length;
+  const passed = score >= PASS_THRESHOLD;
+  upsertUserQuizResult(userLanguageId, textId, { score, passed, answers: detailed });
+
+  return { ok: true, score, passed, results: detailed };
+}
+
+/**
+ * Übersetzung des Textkörpers in die Muttersprache (gecacht, LLM).
+ */
+export async function getTranslationForText(textId, userLanguageId, userId) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { error: 'Sprache nicht gefunden' };
+  const text = getTextById(textId);
+  if (!text || text.lang !== ul.targetLang) return { error: 'Text nicht gefunden' };
+
+  const cached = getTranslation(textId, ul.nativeLang);
+  if (cached) return { translation: cached, source: 'cache' };
+
+  const level = ul.startCefr || ul.targetCefr || 'A2';
+  const result = await runLLMTask(
+    'translate_text',
+    'v1',
+    {
+      targetLang: ul.targetLang,
+      nativeLang: ul.nativeLang,
+      level,
+      title: text.title,
+      body: text.body
+    },
+  );
+  if (!result.ok) return { error: result.error || 'Übersetzung nicht verfügbar' };
+
+  upsertTranslation(textId, ul.nativeLang, result.data.translation);
+  return { translation: result.data.translation, source: 'llm' };
+}
+
+/**
+ * Offline-Fallback-Quiz: Wortschatz-Fragen aus dem Text.
+ * Richtige Antwort = ein Wort, das wirklich im Text vorkommt; Distraktoren =
+ * andere Wörter desselben Textes bzw. generische Platzhalter.
+ */
+function buildFallbackQuiz(text) {
+  const words = tokenize(text.body)
+    .filter((w) => w.length >= 5 && !STOPWORDS.has(w))
+    .filter((w, i, arr) => arr.indexOf(w) === i);
+  if (words.length < 1) return { questions: [] };
+
+  // Distraktoren: häufige italienische Wörter, die NICHT im Text vorkommen
+  const inText = new Set(tokenize(text.body));
+  const distractorPool = FALLBACK_DISTRACTORS.filter((w) => !inText.has(w));
+  if (distractorPool.length < 3) return { questions: [] };
+
+  const questions = [];
+  const picks = words.slice(0, Math.min(3, words.length));
+  for (const w of picks) {
+    const distractors = pickRandom(distractorPool, 3);
+    const options = shuffle([w, ...distractors]);
+    questions.push({
+      q: `Welches Wort kommt im Text „${text.title}" tatsächlich vor?`,
+      options,
+      answer: w
+    });
+  }
+  return { questions };
+}
+
+// Häufige italienische Wörter als Distraktor-Pool für Offline-Quizze
+const FALLBACK_DISTRACTORS = [
+  'finestra', 'bicicletta', 'biblioteca', 'cielo', 'montagna', 'fiume', 'cucina',
+  'giardino', 'campana', 'neve', 'sabbia', 'specchio', 'candela', 'tavolo',
+  'scaffale', 'cassetto', 'cancello', 'cuscino', 'lenzuolo', 'ascensore',
+  'campanile', 'traghetto', 'valigia', 'ombrello', 'secchio', 'tanica',
+  'mattone', 'grattacielo', 'tettoia', 'pavimento', 'soffitto', 'cantina',
+  'bagagliaio', 'parabrezza', 'motorino', 'filobus', 'metropolitana', 'binario',
+  'spazzaneve', 'parchimetro', 'distributore', 'autogrill', 'camper', 'bifore'
+];
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickRandom(pool, n) {
+  const copy = [...pool];
+  const out = [];
+  for (let i = 0; i < n && copy.length > 0; i++) {
+    out.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0]);
+  }
+  return out;
 }

@@ -1,8 +1,13 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { TEST_DB_PATH, seedUserAndLanguage } from './helpers/testDb.js';
+import { TEST_DB_PATH, seedUserAndLanguage, seedActivityForItems } from './helpers/testDb.js';
 import { upsertText } from '../src/services/textRepository.js';
 import { loadUnits, listUnits, getUnit, firstUnitForLevel, nextUnit } from '../src/services/curriculumRepository.js';
-import { getTodaySession, completeStage, getSessionProgress } from '../src/services/sessionComposer.js';
+import {
+  getTodaySession,
+  completeStage,
+  confirmCando,
+  getSessionProgress
+} from '../src/services/sessionComposer.js';
 
 describe('Curriculum Repository', () => {
   beforeAll(() => {
@@ -89,13 +94,65 @@ describe('Session Composer v1', () => {
 
   it('completeStage markiert Stufe und Progress zeigt sie', () => {
     const c = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de', startCefr: 'A1' });
-    getTodaySession(c.userLanguageId, c.userId); // erzeugen
+    const s = getTodaySession(c.userLanguageId, c.userId); // erzeugen
+    const input = s.stages.find((st) => st.key === 'input');
+    seedActivityForItems(c.userLanguageId, input.items);
     const res = completeStage(c.userLanguageId, c.userId, { stageKey: 'input' });
     expect(res.ok).toBe(true);
     expect(res.completed).toContain('input');
     const prog = getSessionProgress(c.userLanguageId, c.userId);
     expect(prog.hasSession).toBe(true);
     expect(prog.completed).toContain('input');
+  });
+
+  it('completeStage blockiert unausgefüllte Stufen (echte Prüfung)', () => {
+    const c = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de', startCefr: 'A1' });
+    getTodaySession(c.userLanguageId, c.userId);
+    const res = completeStage(c.userLanguageId, c.userId, { stageKey: 'input' });
+    expect(res.ok).toBeUndefined();
+    expect(res.error).toMatch(/offen/);
+  });
+
+  it('completeStage blockiert übersprungene Stufen (Reihenfolge)', () => {
+    const c = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de', startCefr: 'A1' });
+    const s = getTodaySession(c.userLanguageId, c.userId);
+    const output = s.stages.find((st) => st.key === 'output');
+    seedActivityForItems(c.userLanguageId, output.items);
+    const res = completeStage(c.userLanguageId, c.userId, { stageKey: 'output' });
+    expect(res.error).toMatch(/zuerst/);
+  });
+
+  it('Items werden mit done-Flags geliefert', () => {
+    const c = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de', startCefr: 'A1' });
+    const s = getTodaySession(c.userLanguageId, c.userId);
+    const input = s.stages.find((st) => st.key === 'input');
+    expect(input.items.every((it) => it.done === false)).toBe(true);
+    seedActivityForItems(c.userLanguageId, input.items);
+    const s2 = getTodaySession(c.userLanguageId, c.userId); // cached, aber live dekoriert
+    const input2 = s2.stages.find((st) => st.key === 'input');
+    expect(input2.items.every((it) => it.done)).toBe(true);
+    expect(input2.allDone).toBe(true);
+  });
+
+  it('Check-Stufe braucht bestätigte Can-do-Aussagen', () => {
+    const c = seedUserAndLanguage({ targetLang: 'it', nativeLang: 'de', startCefr: 'A1' });
+    const s = getTodaySession(c.userLanguageId, c.userId);
+    for (const st of s.stages) seedActivityForItems(c.userLanguageId, st.items);
+    // Check enthält Can-do-Items, die manuell bestätigt werden müssen
+    const check = s.stages.find((st) => st.key === 'check');
+    const candos = check.items.filter((it) => it.kind === 'cando');
+    if (candos.length > 0) {
+      const blocked = completeStage(c.userLanguageId, c.userId, { stageKey: 'check' });
+      expect(blocked.error).toBeTruthy();
+      // Vorstufen abschließen
+      for (const key of ['input', 'fokus', 'output']) {
+        const r = completeStage(c.userLanguageId, c.userId, { stageKey: key });
+        expect(r.ok).toBe(true);
+      }
+      for (const cd of candos) confirmCando(c.userLanguageId, c.userId, { candoId: cd.id });
+      const res = completeStage(c.userLanguageId, c.userId, { stageKey: 'check' });
+      expect(res.ok).toBe(true);
+    }
   });
 
   it('completeStage ohne Sitzung -> Fehler', () => {

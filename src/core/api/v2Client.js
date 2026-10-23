@@ -149,8 +149,26 @@ export const v2Client = {
       method: 'POST',
       body: JSON.stringify({ stageKey })
     }),
+  confirmSessionCando: (userLanguageId, candoId) =>
+    request(`/v2/me/languages/${userLanguageId}/session/cando`, {
+      method: 'POST',
+      body: JSON.stringify({ candoId })
+    }),
   getSessionProgress: (userLanguageId) =>
     request(`/v2/me/languages/${userLanguageId}/session/progress`),
+
+  // Lesetext-Quiz + Übersetzung
+  getTextQuiz: (userLanguageId, textId) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}/quiz`),
+  submitTextQuiz: (userLanguageId, textId, answers) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}/quiz`, {
+      method: 'POST',
+      body: JSON.stringify({ answers })
+    }),
+  getTextTranslation: (userLanguageId, textId) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}/translation`),
+  markTextRead: (userLanguageId, textId) =>
+    request(`/v2/me/languages/${userLanguageId}/texts/${textId}/read`, { method: 'POST' }),
 
   // Progress Dashboard
   getProgress: (userLanguageId) =>

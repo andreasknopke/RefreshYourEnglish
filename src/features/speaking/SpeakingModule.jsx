@@ -9,7 +9,7 @@ import STTButton from '../../components/STTButton';
  * Aussprachebewertung. STT/TTS-Locale kommen aus dem Language Pack
  * (activePack.sttLocale / ttsLocale) – nichts ist hartkodiert.
  */
-function SpeakingModule() {
+function SpeakingModule({ focus = null }) {
   const { activeUserLanguage, activePack } = useLanguage();
   const [tab, setTab] = useState('dialog'); // dialog | shadowing
 
@@ -34,7 +34,7 @@ function SpeakingModule() {
         </div>
       </div>
       {tab === 'dialog' ? (
-        <DialogTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} />
+        <DialogTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} focus={focus} />
       ) : (
         <ShadowingTab id={activeUserLanguage.id} sttLocale={sttLocale} ttsLocale={ttsLocale} />
       )}
@@ -58,7 +58,7 @@ function TabButton({ active, onClick, children }) {
 // ---------------------------------------------------------------------------
 // Dialog
 // ---------------------------------------------------------------------------
-function DialogTab({ id, sttLocale, ttsLocale }) {
+function DialogTab({ id, sttLocale, ttsLocale, focus = null }) {
   const [scenarios, setScenarios] = useState(null);
   const [active, setActive] = useState(null);
   const [turns, setTurns] = useState([]);
@@ -80,6 +80,14 @@ function DialogTab({ id, sttLocale, ttsLocale }) {
       alive = false;
     };
   }, [id]);
+
+  // Deep-Link aus der Tages-Sitzung: Szenario direkt öffnen
+  useEffect(() => {
+    if (focus && focus.module === 'speaking' && focus.id) {
+      openScenario(focus.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, focus?.id]);
 
   const openScenario = async (sid) => {
     setLoading(true);

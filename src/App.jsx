@@ -21,6 +21,13 @@ import ProgressDashboard from './features/progress/ProgressDashboard';
 
 function App() {
   const [activeModule, setActiveModule] = useState(null);
+  const [sessionFocus, setSessionFocus] = useState(null); // Deep-Link aus der Tages-Sitzung
+
+  // Modul ohne Deep-Link öffnen (normale Navigation)
+  const openModule = (m) => {
+    setSessionFocus(null);
+    setActiveModule(m);
+  };
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [user, setUser] = useState(null);
   const [showLogViewer, setShowLogViewer] = useState(false);
@@ -240,7 +247,7 @@ function App() {
           
           {/* Settings Button */}
           <button
-            onClick={() => setActiveModule('settings')}
+            onClick={() => openModule('settings')}
             className="glass-card px-4 py-3 rounded-2xl font-bold text-gray-700 hover:text-indigo-600 hover:scale-105 transition-all"
             title="Einstellungen"
           >
@@ -344,7 +351,7 @@ function App() {
                 Deine automatisch geplante Einheit: Input → Fokus → Output → Check
               </p>
               <button
-                onClick={() => setActiveModule('session')}
+                onClick={() => openModule('session')}
                 className="w-full btn-primary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Heute lernen →</span>
@@ -368,7 +375,7 @@ function App() {
                 Skills, Fehlerprofil, Can-do-Report und Export
               </p>
               <button
-                onClick={() => setActiveModule('progress')}
+                onClick={() => openModule('progress')}
                 className="w-full btn-primary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Dashboard ansehen →</span>
@@ -392,7 +399,7 @@ function App() {
                 Spaced Repetition (FSRS) für deine Sprache
               </p>
               <button
-                onClick={() => setActiveModule('review')}
+                onClick={() => openModule('review')}
                 className="w-full btn-primary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Lernen →</span>
@@ -416,7 +423,7 @@ function App() {
                 Comprehensible Input mit Wortschatz-Mining
               </p>
               <button
-                onClick={() => setActiveModule('reader')}
+                onClick={() => openModule('reader')}
                 className="w-full btn-secondary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Lesen →</span>
@@ -440,7 +447,7 @@ function App() {
                 Fokus-Übungen mit Fehlerprofil
               </p>
               <button
-                onClick={() => setActiveModule('grammar')}
+                onClick={() => openModule('grammar')}
                 className="w-full btn-secondary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Üben →</span>
@@ -464,7 +471,7 @@ function App() {
                 Übersetzen mit KI-Feedback
               </p>
               <button
-                onClick={() => setActiveModule('writing')}
+                onClick={() => openModule('writing')}
                 className="w-full btn-secondary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Schreiben →</span>
@@ -488,7 +495,7 @@ function App() {
                 Dialog &amp; Shadowing
               </p>
               <button
-                onClick={() => setActiveModule('speaking')}
+                onClick={() => openModule('speaking')}
                 className="w-full btn-secondary relative z-10 text-sm py-2"
               >
                 <span className="relative z-10">Sprechen →</span>
@@ -500,7 +507,7 @@ function App() {
         ) : (
           <div className="animate-fade-in">
             <button
-              onClick={() => setActiveModule(null)}
+              onClick={() => { setSessionFocus(null); setActiveModule(null); }}
               className="mb-4 flex items-center text-indigo-600 hover:text-indigo-800 font-semibold text-base hover:-translate-x-2 transition-transform duration-200"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -510,11 +517,19 @@ function App() {
             </button>
             
             {activeModule === 'review' && <ReviewModule />}
-            {activeModule === 'reader' && <ReaderModule />}
-            {activeModule === 'grammar' && <GrammarModule />}
-            {activeModule === 'writing' && <WritingModule />}
-            {activeModule === 'speaking' && <SpeakingModule />}
-            {activeModule === 'session' && <DailySession onOpenModule={(m) => m && setActiveModule(m)} />}
+            {activeModule === 'reader' && <ReaderModule focus={sessionFocus} />}
+            {activeModule === 'grammar' && <GrammarModule focus={sessionFocus} />}
+            {activeModule === 'writing' && <WritingModule focus={sessionFocus} />}
+            {activeModule === 'speaking' && <SpeakingModule focus={sessionFocus} />}
+            {activeModule === 'session' && (
+              <DailySession
+                onOpenModule={(m, payload) => {
+                  if (!m) return;
+                  setSessionFocus(payload ? { module: m, ...payload } : null);
+                  setActiveModule(m);
+                }}
+              />
+            )}
             {activeModule === 'progress' && <ProgressDashboard />}
             {activeModule === 'settings' && <SettingsModule />}
           </div>

@@ -8,7 +8,7 @@ import ttsService from '../../services/ttsService';
  * klickbaren Wörtern (bekannt/unbekannt), Glossar-Popup, Satz-Mining und
  * Segment-Audio (Browser-TTS).
  */
-function ReaderModule() {
+function ReaderModule({ focus = null }) {
   const { activeUserLanguage, activePack } = useLanguage();
   const [view, setView] = useState('list'); // list | reading
   const [texts, setTexts] = useState([]);
@@ -20,6 +20,18 @@ function ReaderModule() {
   const [activeWord, setActiveWord] = useState(null); // { word, known, translation }
   const [mining, setMining] = useState(false);
   const [playingSeq, setPlayingSeq] = useState(null);
+
+  // Quiz + Übersetzung
+  const [quiz, setQuiz] = useState(null); // { questions, attempt }
+  const [quizAnswers, setQuizAnswers] = useState([]);
+  const [quizResult, setQuizResult] = useState(null);
+  const [quizBusy, setQuizBusy] = useState(false);
+  const [quizError, setQuizError] = useState(null);
+  const [translation, setTranslation] = useState(null);
+  const [showTranslation, setShowTranslation] = useState(false);
+  const [translationBusy, setTranslationBusy] = useState(false);
+  const [translationError, setTranslationError] = useState(null);
+  const [markedRead, setMarkedRead] = useState(false);
 
   const lang = activeUserLanguage?.targetLang;
 
@@ -51,10 +63,91 @@ function ReaderModule() {
       setReading(data);
       setView('reading');
       setActiveWord(null);
+      setQuiz(null);
+      setQuizAnswers([]);
+      setQuizResult(null);
+      setQuizError(null);
+      setTranslation(null);
+      setShowTranslation(false);
+      setTranslationError(null);
+      setMarkedRead(false);
+      // Quiz laden (erscheint unter dem Text)
+      try {
+        const q = await v2Client.getTextQuiz(activeUserLanguage.id, id);
+        if (!q.error) {
+          setQuiz(q);
+          setQuizAnswers((q.questions || []).map(() => null));
+          if (q.attempt) setQuizResult({ score: q.attempt.score, passed: q.attempt.passed });
+        }
+      } catch {
+        /* Quiz optional */
+      }
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Deep-Link aus der Tages-Sitzung: Text direkt öffnen
+  useEffect(() => {
+    if (focus && focus.module === 'reader' && focus.id && activeUserLanguage) {
+      openText(focus.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeUserLanguage, focus?.id]);
+
+  const submitQuiz = async () => {
+    if (!reading || !quiz) return;
+    setQuizBusy(true);
+    setQuizError(null);
+    try {
+      const res = await v2Client.submitTextQuiz(
+        activeUserLanguage.id,
+        reading.text.id,
+        quizAnswers.map((a) => a || '')
+      );
+      if (res.error) {
+        setQuizError(res.error);
+        return;
+      }
+      setQuizResult(res);
+    } catch (err) {
+      setQuizError(err.message);
+    } finally {
+      setQuizBusy(false);
+    }
+  };
+
+  const showTranslationText = async () => {
+    if (!reading) return;
+    if (translation) {
+      setShowTranslation((v) => !v);
+      return;
+    }
+    setTranslationBusy(true);
+    setTranslationError(null);
+    try {
+      const res = await v2Client.getTextTranslation(activeUserLanguage.id, reading.text.id);
+      if (res.error) setTranslationError(res.error);
+      else {
+        setTranslation(res.translation);
+        setShowTranslation(true);
+      }
+    } catch (err) {
+      setTranslationError(err.message);
+    } finally {
+      setTranslationBusy(false);
+    }
+  };
+
+  const markRead = async () => {
+    if (!reading) return;
+    try {
+      await v2Client.markTextRead(activeUserLanguage.id, reading.text.id);
+      setMarkedRead(true);
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -200,6 +293,15 @@ function ReaderModule() {
           </p>
         </div>
 
+        {/* Anleitung */}
+        <div className="mb-4 text-xs text-gray-500 bg-indigo-50/60 border border-indigo-100 rounded-xl px-3 py-2 space-y-0.5">
+          <p className="font-semibold text-gray-600">So arbeitest du diesen Text:</p>
+          <p>1. Lies den Text langsam. Unbekannte Wörter (gestrichelt) anklicken → als Karte lernen.</p>
+          <p>2. Höre den Text an (🔊 pro Satz oder ▶ ganz vorlesen).</p>
+          <p>3. Beantworte unten die Verständnisfragen. Erst dann gilt der Text als erledigt.</p>
+          <p>4. Unsicher? „Auf Deutsch anzeigen" zeigt dir die Übersetzung.</p>
+        </div>
+
         <div className="space-y-3">
           {reading.segments.map((seg) => (
             <div key={seg.seq} className="flex items-start gap-2">
@@ -218,7 +320,130 @@ function ReaderModule() {
             </div>
           ))}
         </div>
+
+        {/* Übersetzung */}
+        <div className="mt-5 pt-4 border-t border-gray-100">
+          <button
+            onClick={showTranslationText}
+            disabled={translationBusy}
+            className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold"
+          >
+            {translationBusy ? 'Übersetzung wird geladen…' : showTranslation ? '🙈 Übersetzung verbergen' : '🇩🇪 Auf Deutsch anzeigen'}
+          </button>
+          {translationError && (
+            <p className="text-xs text-orange-600 mt-1">{translationError}</p>
+          )}
+          {showTranslation && translation && (
+            <div className="mt-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-600 italic whitespace-pre-wrap">
+              {translation}
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Verständnis-Quiz */}
+      {quiz && quiz.questions && quiz.questions.length > 0 && (
+        <div className="glass-card rounded-3xl p-6 shadow-xl mt-4">
+          <h3 className="font-bold text-gray-800 mb-1">🧠 Verständnisfragen</h3>
+          <p className="text-xs text-gray-500 mb-4">
+            Beantworte alle Fragen richtig genug, um den Text abzuschließen.
+          </p>
+          <div className="space-y-4">
+            {quiz.questions.map((q, qi) => (
+              <div key={qi}>
+                <p className="text-sm font-semibold text-gray-700 mb-2">
+                  {qi + 1}. {q.q}
+                </p>
+                <div className="space-y-1.5">
+                  {q.options.map((opt, oi) => {
+                    const chosen = quizAnswers[qi] === opt;
+                    const resultOpt = quizResult?.results?.[qi];
+                    let cls = 'border-gray-200 hover:border-indigo-300';
+                    if (quizResult && resultOpt) {
+                      if (opt === resultOpt.answer) cls = 'border-emerald-400 bg-emerald-50';
+                      else if (chosen && !resultOpt.correct) cls = 'border-red-300 bg-red-50';
+                      else cls = 'border-gray-200 opacity-60';
+                    } else if (chosen) {
+                      cls = 'border-indigo-400 bg-indigo-50';
+                    }
+                    return (
+                      <button
+                        key={oi}
+                        onClick={() => {
+                          if (quizResult) return;
+                          setQuizAnswers((prev) => {
+                            const next = [...prev];
+                            next[qi] = opt;
+                            return next;
+                          });
+                        }}
+                        className={`w-full text-left text-sm px-3 py-2 rounded-lg border transition-colors ${cls}`}
+                      >
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {quizError && <p className="text-sm text-red-600 mt-3">{quizError}</p>}
+
+          {quizResult ? (
+            <div className="mt-4 space-y-2">
+              <div
+                className={`text-sm font-bold rounded-lg px-3 py-2 ${
+                  quizResult.passed
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    : 'bg-orange-50 text-orange-700 border border-orange-200'
+                }`}
+              >
+                {quizResult.passed
+                  ? `✓ Bestanden! ${Math.round(quizResult.score * 100)}% richtig.`
+                  : `${Math.round(quizResult.score * 100)}% richtig – lies den Text noch einmal und versuche es erneut.`}
+              </div>
+              {!quizResult.passed && (
+                <button
+                  onClick={() => {
+                    setQuizResult(null);
+                    setQuizAnswers(quiz.questions.map(() => null));
+                  }}
+                  className="btn-secondary text-sm px-4 py-2"
+                >
+                  Erneut versuchen
+                </button>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={submitQuiz}
+              disabled={quizBusy || quizAnswers.some((a) => !a)}
+              className="btn-primary w-full mt-4 py-2.5 disabled:opacity-50"
+            >
+              {quizBusy ? '…' : 'Antworten prüfen'}
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Als gelesen markieren (falls kein Quiz verfügbar) */}
+      {quiz && (!quiz.questions || quiz.questions.length === 0) && (
+        <div className="glass-card rounded-3xl p-5 shadow-xl mt-4 flex items-center justify-between gap-3">
+          <p className="text-sm text-gray-600">
+            Für diesen Text gibt es noch keine Verständnisfragen.
+          </p>
+          <button
+            onClick={markRead}
+            disabled={markedRead}
+            className={`text-sm font-semibold px-4 py-2 rounded-lg ${
+              markedRead ? 'text-emerald-600' : 'btn-primary'
+            }`}
+          >
+            {markedRead ? '✓ Gelesen' : 'Als gelesen markieren'}
+          </button>
+        </div>
+      )}
 
       {/* Glossar-Popup */}
       {activeWord && (

@@ -18,12 +18,22 @@ const ITEM_LABEL = {
   cando: 'Can-do'
 };
 
+const ITEM_HINT = {
+  reading: 'Text lesen, anhören und die Verständnisfragen beantworten.',
+  listening: 'Genau hinhören und die Verständnisfragen beantworten.',
+  grammar: 'Alle Grammatikübungen zu diesem Punkt beantworten.',
+  writing: 'Den Schreibimpuls beantworten und abschicken.',
+  speaking: 'Den Dialog (oder Shadowing) mindestens einmal durchspielen.',
+  cando: 'Kreuze an, was du heute schon kannst.'
+};
+
 /**
- * Tages-Sitzung (Session Composer, Phase 6).
+ * Tages-Sitzung (Session Composer).
  *
  * Der Composer baut aus dem Curriculum automatisch eine Sitzung nach dem
- * Prinzip Input → Fokus → Output → Check. Der Lernende wählt keine Module
- * mehr selbst – er arbeitet die Stufen der Reihe nach ab und schließt sie ab.
+ * Prinzip Input → Fokus → Output → Check. Die Stufen sind gesperrt und
+ * werden erst freigeschaltet, wenn die vorherige abgeschlossen ist.
+ * "Stufe abschließen" prüft serverseitig, ob wirklich alles erledigt wurde.
  */
 function DailySession({ onOpenModule }) {
   const { activeUserLanguage } = useLanguage();
@@ -31,6 +41,7 @@ function DailySession({ onOpenModule }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(null);
+  const [stageErrors, setStageErrors] = useState({});
 
   const load = useCallback(async () => {
     if (!activeUserLanguage) return;
@@ -51,19 +62,56 @@ function DailySession({ onOpenModule }) {
     load();
   }, [load]);
 
+  // Beim Zurückkehren in die Sitzung Erledigt-Status neu laden
+  useEffect(() => {
+    const onFocus = () => {
+      if (!document.hidden && activeUserLanguage) {
+        v2Client
+          .getTodaySession(activeUserLanguage.id)
+          .then((data) => !data.error && setSession(data))
+          .catch(() => {});
+      }
+    };
+    window.addEventListener('focus', onFocus);
+    return () => window.removeEventListener('focus', onFocus);
+  }, [activeUserLanguage]);
+
   const completed = new Set(session?.completed || []);
 
   const completeStage = async (stageKey) => {
     if (!activeUserLanguage) return;
     setBusy(stageKey);
+    setStageErrors((prev) => ({ ...prev, [stageKey]: null }));
     try {
       const res = await v2Client.completeSessionStage(activeUserLanguage.id, stageKey);
-      setSession((prev) => ({ ...prev, completed: res.completed || [] }));
+      if (res.error) {
+        setStageErrors((prev) => ({ ...prev, [stageKey]: res.error }));
+        return;
+      }
+      // Live-Status neu laden (done-Flags)
+      const fresh = await v2Client.getTodaySession(activeUserLanguage.id);
+      setSession(fresh);
     } catch (err) {
-      setError(err.message);
+      setStageErrors((prev) => ({ ...prev, [stageKey]: err.message }));
     } finally {
       setBusy(null);
     }
+  };
+
+  const confirmCando = async (candoId) => {
+    if (!activeUserLanguage) return;
+    try {
+      await v2Client.confirmSessionCando(activeUserLanguage.id, candoId);
+      const fresh = await v2Client.getTodaySession(activeUserLanguage.id);
+      setSession(fresh);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const openItem = (item) => {
+    const mod = moduleForKind(item.kind);
+    if (mod && onOpenModule) onOpenModule(mod, item);
   };
 
   if (!activeUserLanguage) {
@@ -139,6 +187,10 @@ function DailySession({ onOpenModule }) {
             />
           </div>
         </div>
+        <p className="text-xs text-gray-400 mt-2">
+          Arbeite die Stufen der Reihe nach ab. Eine Stufe lässt sich erst abschließen,
+          wenn alle Aufgaben wirklich erledigt sind.
+        </p>
       </div>
 
       {allDone && (
@@ -154,15 +206,18 @@ function DailySession({ onOpenModule }) {
       {stages.map((stage, i) => {
         const meta = STAGE_META[stage.type] || STAGE_META.input;
         const isDone = completed.has(stage.key);
+        const isLocked = !isDone && stage.locked;
         return (
           <div
             key={stage.key}
-            className={`glass-card rounded-2xl p-5 shadow-lg transition-opacity ${isDone ? 'opacity-60' : ''}`}
+            className={`glass-card rounded-2xl p-5 shadow-lg transition-opacity ${
+              isDone ? 'opacity-60' : isLocked ? 'opacity-50' : ''
+            }`}
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.color} flex items-center justify-center text-lg shadow`}>
-                  {meta.icon}
+                  {isLocked ? '🔒' : meta.icon}
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-gray-400 uppercase">
@@ -188,32 +243,69 @@ function DailySession({ onOpenModule }) {
                     <span className="inline-block text-[10px] font-bold uppercase text-gray-400 mr-2">
                       {ITEM_LABEL[item.kind] || item.kind}
                     </span>
-                    <span className="text-sm text-gray-800 truncate">
+                    {item.done && (
+                      <span className="inline-block text-[10px] font-bold text-emerald-600 mr-1" title="Erledigt">
+                        ✓
+                      </span>
+                    )}
+                    <span className={`text-sm ${item.done ? 'text-gray-400 line-through' : 'text-gray-800'} truncate`}>
                       {item.title || item.prompt || item.text}
                     </span>
+                    <div className="text-[11px] text-gray-400 mt-0.5">{ITEM_HINT[item.kind]}</div>
                   </div>
-                  {onOpenModule && item.kind !== 'cando' && (
+                  {item.kind === 'cando' ? (
                     <button
-                      onClick={() => onOpenModule(moduleForKind(item.kind))}
-                      className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold shrink-0"
+                      onClick={() => confirmCando(item.id)}
+                      disabled={item.done || isLocked}
+                      className={`text-xs font-semibold shrink-0 px-2 py-1 rounded ${
+                        item.done
+                          ? 'text-emerald-600'
+                          : isLocked
+                            ? 'text-gray-300 cursor-not-allowed'
+                            : 'text-indigo-600 hover:text-indigo-800'
+                      }`}
                     >
-                      Öffnen →
+                      {item.done ? '✓ kann ich' : 'Kann ich ✓'}
                     </button>
+                  ) : (
+                    onOpenModule && (
+                      <button
+                        onClick={() => openItem(item)}
+                        disabled={isLocked}
+                        className={`text-xs font-semibold shrink-0 ${
+                          isLocked ? 'text-gray-300 cursor-not-allowed' : 'text-indigo-600 hover:text-indigo-800'
+                        }`}
+                      >
+                        {item.done ? 'Nochmal öffnen →' : 'Öffnen →'}
+                      </button>
+                    )
                   )}
                 </li>
               ))}
             </ul>
 
+            {stageErrors[stage.key] && (
+              <div className="mb-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                {stageErrors[stage.key]}
+              </div>
+            )}
+
             <button
               onClick={() => completeStage(stage.key)}
-              disabled={isDone || busy === stage.key}
+              disabled={isDone || isLocked || busy === stage.key}
               className={`w-full text-sm py-2 rounded-lg font-semibold transition-colors ${
-                isDone
+                isDone || isLocked
                   ? 'bg-gray-100 text-gray-400 cursor-default'
                   : 'btn-primary'
               }`}
             >
-              {isDone ? 'Abgeschlossen' : busy === stage.key ? '…' : 'Stufe abschließen'}
+              {isDone
+                ? 'Abgeschlossen'
+                : isLocked
+                  ? '🔒 Gesperrt – zuerst vorherige Stufe abschließen'
+                  : busy === stage.key
+                    ? '…'
+                    : 'Stufe abschließen'}
             </button>
           </div>
         );

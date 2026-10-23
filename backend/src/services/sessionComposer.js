@@ -22,7 +22,7 @@ import {
   nextUnit,
   levelRank
 } from './curriculumRepository.js';
-import { listTexts } from './textRepository.js';
+import { listTexts, getUserQuizResult } from './textRepository.js';
 import { getPoint, listPoints, getErrorProfile, getSkills } from './grammarRepository.js';
 import { getScenario, listScenarios } from './dialogRepository.js';
 import { getPromptById, listPrompts } from './outputRepository.js';
@@ -304,7 +304,13 @@ export function getTodaySession(userLanguageId, userId) {
 
   const date = todayStr();
   const cached = getCachedSession(userLanguageId, date);
-  if (cached) return { ...cached, cached: true };
+  if (cached) {
+    return {
+      ...cached,
+      cached: true,
+      stages: decorateStages(cached.stages, userLanguageId, cached.completed || [])
+    };
+  }
 
   const lang = ul.targetLang;
   const startLevel = ul.startCefr || 'A1';
@@ -335,7 +341,7 @@ export function getTodaySession(userLanguageId, userId) {
     ok: true,
     date,
     unit,
-    stages,
+    stages: decorateStages(stages, userLanguageId, []),
     minutes,
     cached: false,
     adaptive: plan.adaptive
@@ -442,7 +448,9 @@ function saveSession(userLanguageId, date, plan) {
 }
 
 /**
- * Markiert eine Stufe der heutigen Sitzung als abgeschlossen.
+ * Markiert eine Stufe der heutigen Sitzung als abgeschlossen – aber nur,
+ * wenn alle Stufen davor abgeschlossen sind und alle Items der Stufe
+ * nachweislich erledigt wurden (Quiz bestanden, Übung beantwortet, ...).
  */
 export function completeStage(userLanguageId, userId, { stageKey }) {
   const ul = getUserLanguage(userLanguageId, userId);
@@ -456,19 +464,154 @@ export function completeStage(userLanguageId, userId, { stageKey }) {
   if (!row) return { error: 'Keine Sitzung für heute' };
 
   let completed = [];
+  let plan;
   try {
     completed = JSON.parse(row.completed || '[]');
+    plan = JSON.parse(row.plan || '{}');
   } catch {
     completed = [];
+    plan = {};
   }
-  if (!completed.includes(stageKey)) completed.push(stageKey);
+  if (completed.includes(stageKey)) return { ok: true, date, completed };
 
+  const stages = plan.stages || [];
+  const idx = stages.findIndex((s) => s.key === stageKey);
+  if (idx < 0) return { error: 'Unbekannte Stufe' };
+
+  // Führung: Stufen nur der Reihe nach
+  for (let i = 0; i < idx; i++) {
+    if (!completed.includes(stages[i].key)) {
+      return { error: `Bitte zuerst die Stufe „${stages[i].title}" abschließen.` };
+    }
+  }
+
+  // Echte Prüfung: alle Items der Stufe erledigt?
+  const pending = (stages[idx].items || []).filter((it) => !isItemDone(userLanguageId, it, completed));
+  if (pending.length > 0) {
+    return {
+      error: `Noch ${pending.length} Aufgabe(n) offen – bitte zuerst vollständig bearbeiten.`,
+      pending: pending.map((p) => ({ kind: p.kind, id: p.id }))
+    };
+  }
+
+  completed.push(stageKey);
   db.prepare('UPDATE daily_sessions SET completed = ? WHERE id = ?').run(
     JSON.stringify(completed),
     row.id
   );
 
   return { ok: true, date, completed };
+}
+
+/**
+ * Bestätigt eine Can-do-Aussage der Check-Stufe (Selbsteinschätzung).
+ */
+export function confirmCando(userLanguageId, userId, { candoId }) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { error: 'Sprache nicht gefunden' };
+  if (!candoId) return { error: 'candoId fehlt' };
+
+  const date = todayStr();
+  const row = db
+    .prepare('SELECT * FROM daily_sessions WHERE user_language_id = ? AND date = ?')
+    .get(userLanguageId, date);
+  if (!row) return { error: 'Keine Sitzung für heute' };
+
+  let completed = [];
+  try {
+    completed = JSON.parse(row.completed || '[]');
+  } catch {
+    completed = [];
+  }
+  const key = `cando:${candoId}`;
+  if (!completed.includes(key)) completed.push(key);
+  db.prepare('UPDATE daily_sessions SET completed = ? WHERE id = ?').run(
+    JSON.stringify(completed),
+    row.id
+  );
+  return { ok: true, completed };
+}
+
+// ---------------------------------------------------------------------------
+// Item-Status: wurde ein Item wirklich erledigt?
+// ---------------------------------------------------------------------------
+
+/**
+ * Prüft die echte Erledigung eines Sitzungs-Items:
+ *  - reading/listening: Quiz bestanden ODER Text manuell als gelesen markiert
+ *  - grammar: mindestens ein Versuch auf den Grammatikpunkt
+ *  - writing: Bewertungsversuch mit exakt diesem Prompt
+ *  - speaking: Dialog-/Shadowing-Versuch mit exakt diesem Szenario
+ *  - cando: per confirmCando bestätigt
+ */
+export function isItemDone(userLanguageId, item, completedList = []) {
+  switch (item.kind) {
+    case 'reading':
+    case 'listening': {
+      const quiz = getUserQuizResult(userLanguageId, item.id);
+      if (quiz?.passed) return true;
+      // Ohne Quiz (z. B. LLM offline und Fallback leer) reicht "gelesen".
+      const hasQuiz = db
+        .prepare('SELECT 1 FROM text_quizzes WHERE text_id = ? LIMIT 1')
+        .get(item.id);
+      if (hasQuiz) return false;
+      const read = db
+        .prepare(
+          'SELECT 1 FROM user_text_progress WHERE user_language_id = ? AND text_id = ? AND completed_at IS NOT NULL LIMIT 1'
+        )
+        .get(userLanguageId, item.id);
+      return !!read;
+    }
+    case 'grammar':
+      return db
+        .prepare(
+          "SELECT 1 FROM attempts WHERE user_language_id = ? AND exercise_id LIKE ? ESCAPE '\\' LIMIT 1"
+        )
+        .get(userLanguageId, `${likeEscape(item.id)}#%`) !== undefined;
+    case 'writing': {
+      const promptJson = likeEscape(JSON.stringify(item.prompt).slice(1, -1));
+      return (
+        db
+          .prepare(
+            "SELECT 1 FROM attempts WHERE user_language_id = ? AND response LIKE ? ESCAPE '\\' AND response LIKE ? ESCAPE '\\' LIMIT 1"
+          )
+          .get(userLanguageId, '%"kind":"writing"%', `%"prompt":"${promptJson}"%`) !== undefined
+      );
+    }
+    case 'speaking': {
+      const sid = likeEscape(item.id);
+      return (
+        db
+          .prepare(
+            "SELECT 1 FROM attempts WHERE user_language_id = ? AND response LIKE ? ESCAPE '\\' AND response LIKE ? ESCAPE '\\' LIMIT 1"
+          )
+          .get(userLanguageId, '%"kind":"dialog"%', `%"scenarioId":"${sid}"%`) !== undefined
+      );
+    }
+    case 'cando':
+      return completedList.includes(`cando:${item.id}`);
+    default:
+      return false;
+  }
+}
+
+function likeEscape(s) {
+  return String(s).replace(/[%_\\]/g, (c) => `\\${c}`);
+}
+
+/**
+ * Dekoriert Stufen-Items mit done-Flag und Stufen mit locked-Flag
+ * (live, nicht aus dem Cache).
+ */
+function decorateStages(stages, userLanguageId, completed) {
+  let locked = false;
+  return (stages || []).map((s) => {
+    const stageLocked = locked;
+    const items = (s.items || []).map((it) => ({ ...it, done: isItemDone(userLanguageId, it, completed) }));
+    const allDone = items.length === 0 || items.every((it) => it.done);
+    if (!completed.includes(s.key)) locked = true;
+    return { ...s, items, locked: stageLocked, allDone };
+  });
 }
 
 /**

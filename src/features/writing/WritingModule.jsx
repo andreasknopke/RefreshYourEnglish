@@ -8,7 +8,7 @@ import TTSButton from '../../components/TTSButton';
  * lässt den Lernenden produzieren und zeigt LLM-Feedback mit Fehlerkategorien.
  * Fehler fließen ins Fehlerprofil.
  */
-function WritingModule() {
+function WritingModule({ focus = null }) {
   const { activeUserLanguage } = useLanguage();
   const [view, setView] = useState('task'); // task | feedback | profile
   const [task, setTask] = useState(null);
@@ -38,8 +38,17 @@ function WritingModule() {
   }, [activeUserLanguage]);
 
   useEffect(() => {
+    // Deep-Link aus der Tages-Sitzung: vorgegebenen Schreibimpuls verwenden
+    if (focus && focus.module === 'writing' && focus.prompt) {
+      setTask({ prompt: focus.prompt, topic: focus.topic || null });
+      setAnswer('');
+      setResult(null);
+      setLoading(false);
+      setView('task');
+      return;
+    }
     newTask();
-  }, [newTask]);
+  }, [newTask, focus]);
 
   if (!activeUserLanguage) {
     return <Empty text="Bitte wähle zuerst eine Zielsprache." />;

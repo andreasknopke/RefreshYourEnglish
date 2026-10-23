@@ -162,3 +162,71 @@ Respond ONLY with JSON matching this schema:
     };
   }
 });
+
+// ---------------------------------------------------------------------------
+// Task: generate_comprehension_quiz – LLM-generierte Kontrollfragen zum
+// Leseverständnis eines Textes (Multiple-Choice, Fragen in der Muttersprache).
+// ---------------------------------------------------------------------------
+registerPrompt('generate_comprehension_quiz', 'v1', {
+  description: 'Erzeugt Multiple-Choice-Fragen zum Textverständnis',
+  contract: 'generate_comprehension_quiz',
+  build({ targetLang, nativeLang, level, title, body, count = 3 }) {
+    const target = langName(targetLang);
+    const native = langName(nativeLang);
+
+    const system = `You are a language teacher creating reading-comprehension checks.
+The learner reads a ${target} text (level ${level}) and answers ${count} multiple-choice questions.
+Rules:
+- Questions and answer options are written in ${native} (so they test understanding of the ${target} content, not vocabulary knowledge).
+- Each question must be answerable ONLY from the text. No outside knowledge needed.
+- Exactly ONE option per question is correct; the other options must be plausible but clearly wrong according to the text.
+- Vary what each question asks about (who/what/where/why/when).
+Respond ONLY with JSON:
+{
+  "questions": [
+    { "q": "<question in ${native}>", "options": ["<opt1>", "<opt2>", "<opt3>", "<opt4>"], "answer": "<the exact correct option string>" }
+  ]
+}
+Each question needs exactly 4 options and "answer" must be one of them verbatim.`;
+
+    const user = `Title: ${title}\nText:\n"""\n${body}\n"""\n\nCreate ${count} comprehension questions.`;
+
+    return {
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user }
+      ],
+      temperature: 0.4,
+      maxTokens: 900
+    };
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Task: translate_text – übersetzt einen Lesetext vollständig in die
+// Muttersprache (für die "Auf Deutsch anzeigen"-Funktion).
+// ---------------------------------------------------------------------------
+registerPrompt('translate_text', 'v1', {
+  description: 'Übersetzt einen Lesetext in die Muttersprache',
+  contract: 'translate_text',
+  build({ targetLang, nativeLang, level, title, body }) {
+    const target = langName(targetLang);
+    const native = langName(nativeLang);
+
+    const system = `You are a professional ${target}→${native} translator.
+Translate the following ${target} text (written for level ${level}) into natural, easy-to-read ${native}.
+Keep sentence order and paragraph structure. Do not add comments or notes.
+Respond ONLY with JSON: {"translation": "<full ${native} translation>"}`;
+
+    const user = `Title: ${title}\nText:\n"""\n${body}\n"""`;
+
+    return {
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user }
+      ],
+      temperature: 0.2,
+      maxTokens: 1600
+    };
+  }
+});

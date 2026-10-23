@@ -11,6 +11,7 @@ import { authenticateToken } from '../../middleware/auth.js';
 import {
   getTodaySession,
   completeStage,
+  confirmCando,
   getSessionProgress
 } from '../../services/sessionComposer.js';
 
@@ -35,6 +36,18 @@ router.post('/:id/session/complete', (req, res) => {
   const { stageKey } = req.body || {};
   if (!stageKey) return res.status(400).json({ error: 'stageKey erforderlich' });
   const result = completeStage(Number(req.params.id), req.user.userId, { stageKey });
+  if (result.error) return res.status(400).json({ error: result.error });
+  res.json(result);
+});
+
+/**
+ * POST /api/v2/me/languages/:id/session/cando
+ * Body: { candoId } – Can-do-Aussage selbst bestätigt
+ */
+router.post('/:id/session/cando', (req, res) => {
+  const { candoId } = req.body || {};
+  if (!candoId) return res.status(400).json({ error: 'candoId erforderlich' });
+  const result = confirmCando(Number(req.params.id), req.user.userId, { candoId });
   if (result.error) return res.status(400).json({ error: result.error });
   res.json(result);
 });

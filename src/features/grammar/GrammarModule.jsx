@@ -9,7 +9,7 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2'];
  * Beispiele und stellt 8 Übungen (Multiple-Choice / Lückentext). Falsche
  * Antworten werden mit Fehler-Tag im Fehlerprofil gesammelt.
  */
-function GrammarModule() {
+function GrammarModule({ focus = null }) {
   const { activeUserLanguage } = useLanguage();
   const [view, setView] = useState('points'); // points | exercise | profile
   const [level, setLevel] = useState('');
@@ -41,6 +41,14 @@ function GrammarModule() {
     setPoint(null);
     loadPoints();
   }, [loadPoints]);
+
+  // Deep-Link aus der Tages-Sitzung: Grammatikpunkt direkt öffnen
+  useEffect(() => {
+    if (focus && focus.module === 'grammar' && focus.id && activeUserLanguage) {
+      openPoint(focus.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeUserLanguage, focus?.id]);
 
   if (!activeUserLanguage) {
     return <Empty text="Bitte wähle zuerst eine Zielsprache." />;
