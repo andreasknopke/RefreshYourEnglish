@@ -208,6 +208,20 @@ export function updateUserLanguage(userId, userLanguageId, updates) {
 }
 
 /**
+ * Markiert den Einstufungstest als bewusst übersprungen.
+ * Das Banner "Einstufungstest nicht abgeschlossen" wird danach nicht
+ * mehr angezeigt.
+ */
+export function dismissPlacement(userLanguageId, userId) {
+  const owned = db
+    .prepare('SELECT id FROM user_languages WHERE id = ? AND user_id = ?')
+    .get(userLanguageId, userId);
+  if (!owned) return false;
+  db.prepare('UPDATE user_languages SET placement_dismissed = 1 WHERE id = ?').run(userLanguageId);
+  return true;
+}
+
+/**
  * Speichert Einstufungs-/Skill-Ergebnisse.
  */
 export function saveSkillState(userLanguageId, skillScores) {
@@ -258,6 +272,7 @@ function hydrate(row) {
     deadline: row.deadline,
     interests,
     active: !!row.active,
+    placementDismissed: !!row.placement_dismissed,
     createdAt: row.created_at,
     skills
   };

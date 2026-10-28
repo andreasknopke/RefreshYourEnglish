@@ -42,6 +42,8 @@ function DailySession({ onOpenModule }) {
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(null);
   const [stageErrors, setStageErrors] = useState({});
+  const [curatorInsight, setCuratorInsight] = useState(null);
+  const [curating, setCurating] = useState(false);
 
   const load = useCallback(async () => {
     if (!activeUserLanguage) return;
@@ -106,6 +108,25 @@ function DailySession({ onOpenModule }) {
       setSession(fresh);
     } catch (err) {
       setError(err.message);
+    }
+  };
+
+  // KI-Kurator: personalisierten Plan anfragen (asynchron, LLM)
+  const runCurator = async () => {
+    if (!activeUserLanguage) return;
+    setCurating(true);
+    try {
+      const res = await v2Client.curateSession(activeUserLanguage.id);
+      if (res.error) throw new Error(res.error);
+      if (res.insight) setCuratorInsight(res.insight);
+      // Frischen Plan laden
+      const fresh = await v2Client.getTodaySession(activeUserLanguage.id);
+      if (!fresh.error) setSession(fresh);
+    } catch (err) {
+      // Kurator ist optional – Fehler nicht hart anzeigen
+      setCuratorInsight(null);
+    } finally {
+      setCurating(false);
     }
   };
 
@@ -191,6 +212,34 @@ function DailySession({ onOpenModule }) {
           Arbeite die Stufen der Reihe nach ab. Eine Stufe lässt sich erst abschließen,
           wenn alle Aufgaben wirklich erledigt sind.
         </p>
+      </div>
+
+      {/* KI-Kurator */}
+      <div className="glass-card rounded-2xl p-5 border border-indigo-100 bg-gradient-to-br from-indigo-50 to-violet-50">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🤖</span>
+            <div>
+              <p className="text-sm font-bold text-indigo-700">Dein KI-Lehrer</p>
+              {curatorInsight ? (
+                <p className="text-sm text-gray-700 mt-1 leading-relaxed">{curatorInsight}</p>
+              ) : (
+                <p className="text-sm text-gray-500 mt-1">
+                  {curating
+                    ? 'Analysiere deinen Fortschritt und baue deinen personalisierten Plan…'
+                    : 'Ich überwache deinen Fortschritt und passe deine Übungen an. Lass mich deinen heutigen Plan personalisieren.'}
+                </p>
+              )}
+            </div>
+          </div>
+          <button
+            onClick={runCurator}
+            disabled={curating}
+            className="btn-primary text-xs px-3 py-2 shrink-0 disabled:opacity-50"
+          >
+            {curating ? '…' : curatorInsight ? 'Neu planen' : 'Personalisieren'}
+          </button>
+        </div>
       </div>
 
       {allDone && (

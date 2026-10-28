@@ -115,6 +115,30 @@ export const contracts = {
     return { ok: true, data: { translation } };
   },
 
+  curator_plan(parsed) {
+    if (!parsed || typeof parsed !== 'object') {
+      return { ok: false, error: 'curator_plan: keine Objendantwort' };
+    }
+    const unitId = asString(parsed.unitId);
+    if (!unitId) {
+      return { ok: false, error: 'curator_plan: unitId fehlt' };
+    }
+    const weights = parsed.stageWeights && typeof parsed.stageWeights === 'object'
+      ? parsed.stageWeights
+      : {};
+    const items = parsed.items && typeof parsed.items === 'object' ? parsed.items : {};
+    return {
+      ok: true,
+      data: {
+        unitId,
+        stageWeights: weights,
+        items,
+        insight: asString(parsed.insight),
+        focusTags: asStringArray(parsed.focusTags)
+      }
+    };
+  },
+
   evaluate_writing(parsed) {
     if (!parsed || typeof parsed !== 'object') {
       return { ok: false, error: 'evaluate_writing: keine Objendantwort' };

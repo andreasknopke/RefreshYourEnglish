@@ -26,9 +26,29 @@ import { listTexts, getUserQuizResult } from './textRepository.js';
 import { getPoint, listPoints, getErrorProfile, getSkills } from './grammarRepository.js';
 import { getScenario, listScenarios } from './dialogRepository.js';
 import { getPromptById, listPrompts } from './outputRepository.js';
+import { curateSession } from './curatorService.js';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * Tages-basierter Offset für Item-Rotation.
+ * Stellt sicher, dass auch ohne LLM täglich andere Items ausgewählt werden.
+ */
+function dayOffset() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  return Math.floor((now - start) / 86400000);
+}
+
+/**
+ * Rotiert ein Array um einen Offset (zirkulär).
+ */
+function rotate(arr, offset) {
+  if (arr.length === 0) return arr;
+  const o = ((offset % arr.length) + arr.length) % arr.length;
+  return arr.slice(o).concat(arr.slice(0, o));
 }
 
 // ---------------------------------------------------------------------------
@@ -47,10 +67,11 @@ function resolveReading(lang, level, titles = [], maxCount = 2) {
     const hit = byTitle.get(String(title).toLowerCase());
     if (hit) picked.push({ id: hit.id, title: hit.title, level: hit.level });
   }
-  // Fallback: level-passende Texte auffüllen
-  for (const t of all) {
+  // Fallback: level-passende Texte auffüllen (rotiert, damit täglich andere Texte)
+  const remaining = rotate(all.filter((t) => !picked.some((p) => p.id === t.id)), dayOffset());
+  for (const t of remaining) {
     if (picked.length >= maxCount) break;
-    if (!picked.some((p) => p.id === t.id)) picked.push({ id: t.id, title: t.title, level: t.level });
+    picked.push({ id: t.id, title: t.title, level: t.level });
   }
   return picked.slice(0, maxCount);
 }
@@ -66,9 +87,10 @@ function resolveListening(lang, level, titles = [], maxCount = 1) {
     const hit = byTitle.get(String(title).toLowerCase());
     if (hit) picked.push({ id: hit.id, title: hit.title, level: hit.level });
   }
-  for (const t of all) {
+  const remaining = rotate(all.filter((t) => !picked.some((p) => p.id === t.id)), dayOffset());
+  for (const t of remaining) {
     if (picked.length >= maxCount) break;
-    if (!picked.some((p) => p.id === t.id)) picked.push({ id: t.id, title: t.title, level: t.level });
+    picked.push({ id: t.id, title: t.title, level: t.level });
   }
   return picked.slice(0, maxCount);
 }
@@ -93,7 +115,8 @@ function resolveWriting(lang, level, promptIds = []) {
     if (p && p.kind !== 'speaking') picked.push({ id: p.id, prompt: p.prompt_de, topic: p.topic });
   }
   if (picked.length === 0) {
-    for (const p of listPrompts(lang, { level, kind: 'writing' })) {
+    const pool = rotate(listPrompts(lang, { level, kind: 'writing' }), dayOffset());
+    for (const p of pool) {
       if (picked.length >= 1) break;
       picked.push({ id: p.id, prompt: p.prompt_de, topic: p.topic });
     }
@@ -111,8 +134,9 @@ function resolveSpeaking(lang, level, scenarioIds = []) {
     if (s) picked.push({ id: s.id, title: s.title, level: s.level, roles: s.roles });
   }
   if (picked.length === 0) {
-    // Fallback über dialogRepository.listScenarios
-    for (const s of listScenarios(lang, level)) {
+    // Fallback über dialogRepository.listScenarios (rotiert)
+    const pool = rotate(listScenarios(lang, level), dayOffset());
+    for (const s of pool) {
       if (picked.length >= 1) break;
       picked.push({ id: s.id, title: s.title, level: s.level, roles: s.roles });
     }
@@ -321,7 +345,8 @@ export function getTodaySession(userLanguageId, userId) {
 
   const level = unit.level;
   const adaptivity = computeAdaptivity(userLanguageId);
-  const stages = buildStages(lang, unit, adaptivity);
+  const dailyMinutes = ul.dailyMinutes || 30;
+  const stages = buildStages(lang, unit, adaptivity, dailyMinutes);
   const minutes = stages.reduce((a, s) => a + (s.minutes || 0), 0);
 
   const plan = {
@@ -348,18 +373,22 @@ export function getTodaySession(userLanguageId, userId) {
   };
 }
 
-function buildStages(lang, unit, adaptivity) {
+function buildStages(lang, unit, adaptivity, dailyMinutes = 30) {
   const level = unit.level;
   const { weights = STAGE_MINUTES, focusTags = [] } = adaptivity || {};
+  // Das Zeitbudget des Nutzers bestimmt die Gesamtminuten der Sitzung.
+  const targetTotal = Math.max(10, Math.min(120, Number(dailyMinutes) || 30));
   const minutes = normalizeMinutes(
     { input: weights.input, fokus: weights.fokus, output: weights.output, check: weights.check },
-    Object.values(STAGE_MINUTES).reduce((a, b) => a + b, 0)
+    targetTotal
   );
 
-  // Item-Anzahl adaptiv: schwache Stufen bekommen mehr Items.
-  const readingCount = weights.input > STAGE_MINUTES.input ? 2 : 1;
-  const listeningCount = 1;
-  const grammarCount = weights.fokus > STAGE_MINUTES.fokus ? 3 : 2;
+  // Item-Anzahl adaptiv: schwache Stufen bekommen mehr Items,
+  // kurze Budgets weniger.
+  const shortBudget = targetTotal < 25;
+  const readingCount = shortBudget ? 1 : weights.input > STAGE_MINUTES.input ? 2 : 1;
+  const listeningCount = shortBudget ? 0 : 1;
+  const grammarCount = shortBudget ? 2 : weights.fokus > STAGE_MINUTES.fokus ? 3 : 2;
 
   const reading = resolveReading(lang, level, unit.input?.reading || [], readingCount);
   const listening = resolveListening(lang, level, unit.input?.listening || [], listeningCount);
@@ -624,4 +653,103 @@ export function getSessionProgress(userLanguageId, userId) {
   const cached = getCachedSession(userLanguageId, date);
   if (!cached) return { ok: true, date, hasSession: false };
   return { ok: true, date, hasSession: true, unitId: cached.unitId, completed: cached.completed || [] };
+}
+
+/**
+ * KI-Kurator: Erzeugt einen personalisierten Tagesplan.
+ *
+ * Ablauf:
+ * 1. LLM wird mit Lernzustand befragt (Unit, Gewichte, Items, Insight).
+ * 2. Wenn LLM fehlschlägt → deterministischer Fallback (Rotation + Adaptivität).
+ * 3. Ergebnis wird in daily_sessions gespeichert (überschreibt den deterministischen Plan).
+ *
+ * @returns {Promise<{ok: boolean, plan?: object, insight?: string, source?: string, error?: string}>}
+ */
+export async function curateTodaySession(userLanguageId, userId) {
+  const ul = getUserLanguage(userLanguageId, userId);
+  if (!ul) return { ok: false, error: 'Sprache nicht gefunden' };
+
+  const lang = ul.targetLang;
+  const date = todayStr();
+
+  // Kurator anfragen
+  const result = await curateSession(userLanguageId, userId);
+  if (!result.ok) {
+    return { ok: false, source: 'fallback', error: result.error };
+  }
+
+  const { plan, insight, source } = result;
+
+  // Unit bestimmen: Kurator-Vorschlag oder deterministisch
+  const startLevel = ul.startCefr || 'A1';
+  const targetLevel = ul.targetCefr || 'B1';
+  let unit = plan?.unitId ? getUnit(lang, plan.unitId) : null;
+  if (!unit) {
+    unit = selectUnit(lang, userLanguageId, startLevel, targetLevel);
+    if (!unit) return { ok: false, error: 'Keine Unit verfügbar' };
+  }
+
+  // Kurator-Items als "curated Unit" überlagern (IDs, die der LLM gewählt hat).
+  // resolve*() fällt auf deterministische Rotation zurück, wenn keine/ungültigen IDs.
+  const curatedUnit = {
+    ...unit,
+    input: {
+      reading: plan?.items?.reading || unit.input?.reading || [],
+      listening: plan?.items?.listening || unit.input?.listening || []
+    },
+    fokus: {
+      grammar: plan?.items?.grammar || unit.fokus?.grammar || []
+    },
+    output: {
+      writing: plan?.items?.writing || unit.output?.writing || [],
+      speaking: plan?.items?.speaking || unit.output?.speaking || []
+    }
+  };
+
+  // Adaptivität + Kurator-Gewichte kombinieren
+  const adaptivity = computeAdaptivity(userLanguageId);
+  const weights = plan?.stageWeights
+    ? {
+        input: plan.stageWeights.input,
+        fokus: plan.stageWeights.fokus,
+        output: plan.stageWeights.output,
+        check: plan.stageWeights.check
+      }
+    : adaptivity.weights;
+  const effectiveAdaptivity = { weights, focusTags: adaptivity.focusTags };
+
+  // Stufen bauen (nutzt curatedUnit + Kurator-Gewichte)
+  const stages = buildStages(lang, curatedUnit, effectiveAdaptivity, ul.dailyMinutes || 30);
+  const minutes = stages.reduce((a, s) => a + (s.minutes || 0), 0);
+
+  // Plan im exakt selben Format wie getTodaySession
+  const planObj = {
+    userLanguageId,
+    date,
+    unitId: unit.id,
+    level: unit.level,
+    theme: unit.theme,
+    goal: unit.goal,
+    stages,
+    minutes,
+    adaptive: adaptivity.focusTags.length > 0 ? { focusTags: adaptivity.focusTags } : null,
+    curatorInsight: insight || null,
+    curatorSource: source,
+    curatedAt: new Date().toISOString()
+  };
+
+  // Speichern (überschreibt den deterministischen Plan, behält completed)
+  const existing = getCachedSession(userLanguageId, date);
+  saveSession(userLanguageId, date, {
+    ...planObj,
+    completed: existing?.completed || []
+  });
+
+  return {
+    ok: true,
+    plan: planObj,
+    insight,
+    source,
+    stages: decorateStages(stages, userLanguageId, planObj.completed || [])
+  };
 }

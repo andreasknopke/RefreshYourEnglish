@@ -69,6 +69,11 @@ export const v2Client = {
     }),
   getPlacementStatus: (userLanguageId) =>
     request(`/v2/placement/status/${userLanguageId}`),
+  dismissPlacement: (userLanguageId) =>
+    request('/v2/placement/dismiss', {
+      method: 'POST',
+      body: JSON.stringify({ userLanguageId })
+    }),
 
   // Vocab / Review (SRS)
   getReviewQueue: (userLanguageId, limit = 20) =>
@@ -156,6 +161,15 @@ export const v2Client = {
     }),
   getSessionProgress: (userLanguageId) =>
     request(`/v2/me/languages/${userLanguageId}/session/progress`),
+
+  // KI-Kurator
+  curateSession: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/session/curate`, {
+      method: 'POST',
+      body: JSON.stringify({})
+    }),
+  getCuratorReport: (userLanguageId) =>
+    request(`/v2/me/languages/${userLanguageId}/curator/report`),
 
   // Lesetext-Quiz + Übersetzung
   getTextQuiz: (userLanguageId, textId) =>

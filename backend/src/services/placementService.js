@@ -216,6 +216,10 @@ export { thetaToCefr };
  * @returns {{done: boolean, lastSession: object|null}}
  */
 export function getPlacementStatus(userLanguageId) {
+  const ul = db
+    .prepare('SELECT placement_dismissed FROM user_languages WHERE id = ?')
+    .get(userLanguageId);
+
   const finished = db
     .prepare(
       'SELECT id, finished_at, result FROM placement_sessions WHERE user_language_id = ? AND finished_at IS NOT NULL ORDER BY finished_at DESC LIMIT 1'
@@ -224,6 +228,7 @@ export function getPlacementStatus(userLanguageId) {
   if (finished) {
     return {
       done: true,
+      dismissed: false,
       lastSession: {
         id: finished.id,
         finishedAt: finished.finished_at,
@@ -238,6 +243,7 @@ export function getPlacementStatus(userLanguageId) {
     .get(userLanguageId);
   return {
     done: false,
+    dismissed: !!ul?.placement_dismissed,
     lastSession: last ? { id: last.id, startedAt: last.started_at, result: null } : null
   };
 }

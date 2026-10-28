@@ -12,6 +12,7 @@ import express from 'express';
 import { authenticateToken } from '../../middleware/auth.js';
 import { getUserLanguage } from '../../services/userLanguageService.js';
 import { startPlacement, answerPlacement, getPlacementStatus } from '../../services/placementService.js';
+import { dismissPlacement } from '../../services/userLanguageService.js';
 
 const router = express.Router();
 
@@ -43,6 +44,22 @@ router.get('/status/:userLanguageId', (req, res) => {
     return res.status(404).json({ error: 'Sprache nicht gefunden' });
   }
   res.json(getPlacementStatus(ul.id));
+});
+
+/**
+ * POST /api/v2/placement/dismiss
+ * Body: { userLanguageId } – Einstufungstest bewusst überspringen.
+ * Das "nicht abgeschlossen"-Banner wird danach nicht mehr angezeigt.
+ */
+router.post('/dismiss', (req, res) => {
+  const { userLanguageId } = req.body || {};
+  const ul = getUserLanguage(Number(userLanguageId), req.user.userId);
+  if (!ul) {
+    return res.status(404).json({ error: 'Sprache nicht gefunden' });
+  }
+  const ok = dismissPlacement(ul.id, req.user.userId);
+  if (!ok) return res.status(404).json({ error: 'Sprache nicht gefunden' });
+  res.json({ ok: true });
 });
 
 router.post('/answer', (req, res) => {

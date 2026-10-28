@@ -12,8 +12,10 @@ import {
   getTodaySession,
   completeStage,
   confirmCando,
-  getSessionProgress
+  getSessionProgress,
+  curateTodaySession
 } from '../../services/sessionComposer.js';
+import { getCuratorReport } from '../../services/curatorService.js';
 
 const router = express.Router();
 
@@ -57,6 +59,32 @@ router.post('/:id/session/cando', (req, res) => {
  */
 router.get('/:id/session/progress', (req, res) => {
   const result = getSessionProgress(Number(req.params.id), req.user.userId);
+  if (result.error) return res.status(404).json({ error: result.error });
+  res.json(result);
+});
+
+/**
+ * POST /api/v2/me/languages/:id/session/curate
+ * KI-Kurator: Erzeugt einen personalisierten Tagesplan.
+ * Asynchron (LLM-Aufruf), kann 10-30s dauern.
+ */
+router.post('/:id/session/curate', async (req, res) => {
+  try {
+    const result = await curateTodaySession(Number(req.params.id), req.user.userId);
+    if (result.error) return res.status(400).json({ error: result.error });
+    res.json(result);
+  } catch (err) {
+    console.error('[curate]', err);
+    res.status(500).json({ error: 'Kurator-Fehler' });
+  }
+});
+
+/**
+ * GET /api/v2/me/languages/:id/curator/report
+ * Lernzustand + Kurator-Insight (ohne LLM-Aufruf, nur gespeicherte Daten).
+ */
+router.get('/:id/curator/report', (req, res) => {
+  const result = getCuratorReport(Number(req.params.id), req.user.userId);
   if (result.error) return res.status(404).json({ error: result.error });
   res.json(result);
 });

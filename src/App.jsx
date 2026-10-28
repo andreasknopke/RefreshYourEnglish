@@ -289,9 +289,21 @@ function App() {
         {user && !langLoading && flow === 'onboarding' && (
           <div className="py-6">
             <OnboardingWizard
-              onComplete={({ wantsPlacement }) =>
-                setFlow(wantsPlacement ? 'placement' : null)
-              }
+              onComplete={async ({ userLanguage, wantsPlacement }) => {
+                if (wantsPlacement) {
+                  setFlow('placement');
+                } else {
+                  // Nutzer hat Placement bewusst abgelehnt → Banner unterdrücken
+                  if (userLanguage?.id) {
+                    try {
+                      await v2Client.dismissPlacement(userLanguage.id);
+                    } catch {
+                      /* ignore */
+                    }
+                  }
+                  setFlow(null);
+                }
+              }}
               onCancel={() => setFlow(null)}
             />
           </div>
@@ -307,7 +319,15 @@ function App() {
                 // Banner-Status aktualisieren (Test jetzt abgeschlossen)
                 setPlacementStatus((prev) => prev && { ...prev, done: true });
               }}
-              onSkip={() => setFlow(null)}
+              onSkip={async () => {
+                try {
+                  await v2Client.dismissPlacement(activeLangId);
+                  setPlacementStatus((prev) => prev && { ...prev, dismissed: true });
+                } catch {
+                  /* ignore */
+                }
+                setFlow(null);
+              }}
             />
           </div>
         )}
@@ -317,8 +337,8 @@ function App() {
         <>
         {!activeModule ? (
           <div className="max-w-7xl mx-auto">
-            {/* Erinnerung: Einstufungstest nicht abgeschlossen */}
-            {user && activeUserLanguage && placementStatus && !placementStatus.done && (
+            {/* Erinnerung: Einstufungstest nicht abgeschlossen (nur wenn nicht bewusst übersprungen) */}
+            {user && activeUserLanguage && placementStatus && !placementStatus.done && !placementStatus.dismissed && (
               <div className="mb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 rounded-2xl border-2 border-amber-300 bg-amber-50 px-5 py-4">
                 <div>
                   <p className="font-bold text-amber-800">
@@ -329,12 +349,28 @@ function App() {
                     adaptive Test passt die täglichen Sessions genauer an dich an.
                   </p>
                 </div>
-                <button
-                  onClick={() => setFlow('placement')}
-                  className="shrink-0 rounded-xl bg-amber-500 px-5 py-2.5 font-semibold text-white hover:bg-amber-600 transition-colors"
-                >
-                  Jetzt nachholen →
-                </button>
+                <div className="flex gap-2 shrink-0">
+                  <button
+                    onClick={async () => {
+                      try {
+                        await v2Client.dismissPlacement(activeLangId);
+                        setPlacementStatus((prev) => prev && { ...prev, dismissed: true });
+                      } catch {
+                        /* ignore */
+                      }
+                    }}
+                    className="rounded-xl px-4 py-2.5 font-semibold text-amber-700 hover:bg-amber-100 transition-colors"
+                    title="Nicht mehr daran erinnern"
+                  >
+                    Nicht mehr erinnern
+                  </button>
+                  <button
+                    onClick={() => setFlow('placement')}
+                    className="rounded-xl bg-amber-500 px-5 py-2.5 font-semibold text-white hover:bg-amber-600 transition-colors"
+                  >
+                    Jetzt nachholen →
+                  </button>
+                </div>
               </div>
             )}
 

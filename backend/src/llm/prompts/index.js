@@ -230,3 +230,116 @@ Respond ONLY with JSON: {"translation": "<full ${native} translation>"}`;
     };
   }
 });
+
+// ---------------------------------------------------------------------------
+// Task: curator_plan – Der KI-Kurator analysiert den Lernfortschritt und
+// baut eine personalisierte Tageslektion. Er wählt konkrete Items aus und
+// liefert eine didaktische Begründung.
+// ---------------------------------------------------------------------------
+registerPrompt('curator_plan', 'v1', {
+  description: 'KI-Kurator: analysiert Fortschritt und plant die Tageslektion',
+  contract: 'curator_plan',
+  build({ learnerState }) {
+    const target = langName(learnerState.targetLang);
+    const native = langName(learnerState.nativeLang);
+
+    // Kompakte Darstellung des Lernzustands für den LLM
+    const skillsSummary = Object.entries(learnerState.skills || {})
+      .map(([skill, s]) => `${skill}: ${s.score}/100 (${s.cefrBand || 'unbekannt'})`)
+      .join(', ');
+
+    const errorSummary = (learnerState.errorProfile || [])
+      .filter((e) => e.count >= 2)
+      .map((e) => `${e.category} (${e.count}x)`)
+      .join(', ') || 'keine dominanten Fehler';
+
+    const grammarAcc = learnerState.grammarAccuracy?.accuracy != null
+      ? `${Math.round(learnerState.grammarAccuracy.accuracy * 100)}%`
+      : 'unbekannt';
+
+    const vocabSummary = learnerState.vocabStats
+      ? `total=${learnerState.vocabStats.total}, due=${learnerState.vocabStats.due}, new=${learnerState.vocabStats.new}, learning=${learnerState.vocabStats.learning}`
+      : 'keine Daten';
+
+    // Kürzliche Versuche: nur die relevanten (Score + Fehler-Tags)
+    const recentSummary = (learnerState.recentAttempts || [])
+      .slice(0, 15)
+      .map((a) => `${a.exerciseId}: score=${a.score}${a.errorTags?.length ? `, errors=[${a.errorTags.join(',')}]` : ''}`)
+      .join('\n') || 'keine Versuche';
+
+    const completedUnits = (learnerState.completedUnits || []).join(', ') || 'keine';
+
+    // Verfügbare Items (nur IDs + Titel, kompakt)
+    const fmtItems = (items) =>
+      (items || []).map((i) => `${i.id} (${i.level}, ${i.title || i.topic || ''})`).join('\n') || 'leer';
+
+    const system = `You are an experienced ${target} language teacher (the "AI Curator").
+Your job: analyze the learner's progress and plan today's personalized lesson.
+
+Learner profile:
+- Target language: ${target}, Native language: ${native}
+- Start level: ${learnerState.startCefr}, Target level: ${learnerState.targetCefr}
+- Daily time budget: ${learnerState.dailyMinutes} minutes
+- Goal: ${learnerState.goalType || 'unbekannt'}
+- Interests: ${(learnerState.interests || []).join(', ') || 'keine'}
+
+Current skill scores (0-100): ${skillsSummary}
+Dominant error categories: ${errorSummary}
+Grammar accuracy: ${grammarAcc}
+Vocabulary: ${vocabSummary}
+Completed curriculum units: ${completedUnits}
+
+Recent practice attempts (exerciseId: score, errors):
+${recentSummary}
+
+Available items:
+--- READING ---
+${fmtItems(learnerState.availableItems?.reading)}
+--- LISTENING ---
+${fmtItems(learnerState.availableItems?.listening)}
+--- GRAMMAR ---
+${fmtItems(learnerState.availableItems?.grammar)}
+--- WRITING ---
+${fmtItems(learnerState.availableItems?.writing)}
+--- SPEAKING ---
+${fmtItems(learnerState.availableItems?.speaking)}
+
+Planning rules:
+1. Choose ONE unit (unitId) that matches the learner's current progress. If they are struggling, repeat a unit they haven't fully mastered. If they are progressing well, move to the next unit.
+2. Assign stageWeights (minutes) for input, fokus, output, check. The sum should equal the daily time budget (${learnerState.dailyMinutes} min). Weak skills get more time.
+3. Pick specific items for each stage from the available lists:
+   - reading: 1-2 texts (prefer topics matching interests)
+   - listening: 0-1 texts
+   - grammar: 2-3 points (prioritize points matching dominant error categories)
+   - writing: 1 prompt
+   - speaking: 1 scenario
+4. Write a short insight (2-3 sentences in ${native}) explaining your pedagogical reasoning: what you noticed about the learner's progress and why you chose these items.
+5. List focusTags: the error categories you are addressing today.
+
+Respond ONLY with JSON:
+{
+  "unitId": "<id of the chosen unit>",
+  "stageWeights": { "input": <min>, "fokus": <min>, "output": <min>, "check": <min> },
+  "items": {
+    "reading": ["<id>", ...],
+    "listening": ["<id>", ...],
+    "grammar": ["<id>", ...],
+    "writing": ["<id>", ...],
+    "speaking": ["<id>", ...]
+  },
+  "insight": "<2-3 sentences in ${native} explaining your plan>",
+  "focusTags": ["<error category>", ...]
+}`;
+
+    const user = `Plan today's lesson for this learner. Remember: adapt to their actual performance, not just their level. If they are struggling with a specific area, focus on it. If they are doing well, introduce new material.`;
+
+    return {
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user }
+      ],
+      temperature: 0.4,
+      maxTokens: 1200
+    };
+  }
+});
